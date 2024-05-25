@@ -4,7 +4,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { MdMoving } from "react-icons/md";
 const HomeCompOne = () => {
   return (
-    <div className='bg-black lg:flex lg:px-[13rem] px-6 lg:py-[8rem] py-[6rem] items-center h-full'>
+    <div className='bg-black lg:flex lg:px-[13rem] px-6 lg:py-[8rem] py-[6rem] pb-[4rem] items-center h-full'>
         
         <div className='w-full'>
             <h2 className='lg:text-5xl text-4xl font-bold text-white'>Hiring Made Easy !</h2>
@@ -25,7 +25,7 @@ const HomeCompOne = () => {
                 </button>
 
             </form>
-            <div className='pt-8'>
+            {/* <div className='pt-8'>
                 <p className='text-sm text-neutral-400 pb-3'>Popular Services</p>
                 <div className='lg:flex grid grid-cols-2 text-white gap-3'>
                     
@@ -42,7 +42,11 @@ const HomeCompOne = () => {
                     </button>
 
                 </div>
-            </div>
+            </div> */}
+
+            <button className='bg-neutral-900 border-2 text-xs border-neutral-800 text-white py-4 cursor-pointer px-14 lg:mt-10 mt-6 rounded-md flex items-center gap-3'>
+                Join For Free <FaArrowRightLong />
+            </button>
         </div>
 
         <div className='w-3/5 ml-auto lg:block hidden'>
