@@ -11,9 +11,18 @@ import img8 from '../Images/Group 26.png'
 import bg from '../Images/bg.png'
 import bg2 from '../Images/bg2.png'
 
+
+import prof1 from '../Images/prof1.png'
+import prof2 from '../Images/prof2.png'
+import prof3 from '../Images/prof3.jpg'
+import prof4 from '../Images/prof4.jpg'
+
+
+import avatar from '../Images/Avatars.png'
+
 const HomeComThree = () => {
   return (
-    <div className='lg:px-[13rem]  py-[5rem] px-6'>
+    <div className='lg:px-[10rem]  py-[5rem] px-6'>
         <h2 className='text-center text-lg pb-6'>Choose Different Category </h2>
 
         <div className='grid lg:grid-cols-4 grid-cols-2 gap-5'>
@@ -87,6 +96,105 @@ const HomeComThree = () => {
                     <button className='bg-neutral-800 m-auto flex py-4 px-10 text-sm rounded-md border-none'>Get Started for free</button>
                 </div>
             </div>
+        </div>
+
+
+        <div className='pt-10'>
+            <h2 className='py-5'>Top Creatives</h2>
+            <div className='grid lg:grid-cols-4 grid-cols-1 lg:gap-5 gap-10'>
+                <div >
+                    <div className='rounded-lg overflow-hidden'>
+                        <img src={prof1} alt="" className='rounded-lg object-cover'/>
+                    </div>
+
+                    <div className='flex pt-5 gap-3 items-center'>
+                        <div className='w-8 overflow-hidden'>
+                            <img src={avatar} className='w-10' alt="" />
+                        </div>
+
+                        <div>
+                            <h2 className='text-sm'>John Doe</h2>
+                            <p className='text-xs'>Fasion Designer</p>
+                        </div>
+
+                        <div className=' ml-auto'>
+                            <button className='bg-black py-2 px-5 text-xs text-white rounded-md'>View Profile</button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div >
+                    <div className='rounded-lg overflow-hidden'>
+                        <img src={prof2} alt="" className='rounded-lg object-cover'/>
+                    </div>
+
+                    <div className='flex pt-5 gap-3 items-center'>
+                        <div className='w-8 overflow-hidden'>
+                            <img src={avatar} className='w-10' alt="" />
+                        </div>
+
+                        <div>
+                            <h2 className='text-sm'>John Doe</h2>
+                            <p className='text-xs'>Fasion Designer</p>
+                        </div>
+
+                        <div className=' ml-auto'>
+                            <button className='bg-black py-2 px-5 text-xs text-white rounded-md'>View Profile</button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div >
+                    <div className='rounded-lg overflow-hidden'>
+                        <img src={prof3} alt="" className='rounded-lg object-cover'/>
+                    </div>
+
+                    <div className='flex pt-5 gap-3 items-center'>
+                        <div className='w-8 overflow-hidden'>
+                            <img src={avatar} className='w-10' alt="" />
+                        </div>
+
+                        <div>
+                            <h2 className='text-sm'>John Doe</h2>
+                            <p className='text-xs'>Fasion Designer</p>
+                        </div>
+
+                        <div className=' ml-auto'>
+                            <button className='bg-black py-2 px-5 text-xs text-white rounded-md'>View Profile</button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div >
+                    <div className='rounded-lg overflow-hidden'>
+                        <img src={prof4} alt="" className='rounded-lg object-cover'/>
+                    </div>
+
+                    <div className='flex pt-5 gap-3 items-center'>
+                        <div className='w-8 overflow-hidden'>
+                            <img src={avatar} className='w-10' alt="" />
+                        </div>
+
+                        <div>
+                            <h2 className='text-sm'>John Doe</h2>
+                            <p className='text-xs'>Fasion Designer</p>
+                        </div>
+
+                        <div className=' ml-auto'>
+                            <button className='bg-black py-2 px-5 text-xs text-white rounded-md'>View Profile</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <button className='bg-black lg:py-4 lg:px-20 py-3 px-14 text-xs rounded-md border-none flex m-auto lg:mt-20 mt-10 text-white'>View More</button>
         </div>
     </div>
   )
