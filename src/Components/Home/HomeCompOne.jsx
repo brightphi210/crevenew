@@ -7,7 +7,7 @@ const HomeCompOne = () => {
     <div className='bg-black lg:flex lg:px-[13rem] px-6 lg:py-[8rem] py-[7rem] items-center h-full'>
         
         <div className='w-full'>
-            <h2 className='lg:text-5xl text-3xl font-bold text-white'>HIRING MADE EASY !</h2>
+            <h2 className='lg:text-5xl text-4xl font-bold text-white'>Hiring Made Easy !</h2>
             <h3 className='lg:text-3xl text-xl text-white py-5'>Hire an Expert or Be an Expert .</h3>
             <p className='lg:text-sm text-xs text-slate-300 lg:w-10/12 w-full'> 
                 In the ever-evolving landscape of skills and knowledge, the choice between 
