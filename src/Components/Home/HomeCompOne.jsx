@@ -1,7 +1,7 @@
 import React from 'react'
 import hero from '../Images/hero.png'
 import { FaArrowRightLong } from "react-icons/fa6";
-import { MdMoving } from "react-icons/md";
+// import { MdMoving } from "react-icons/md";
 const HomeCompOne = () => {
   return (
     <div className='bg-black lg:flex lg:px-[13rem] px-6 lg:py-[8rem] py-[6rem] pb-[4rem] items-center h-full'>
