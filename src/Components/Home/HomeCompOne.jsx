@@ -1,10 +1,10 @@
 import React from 'react'
-import hero from './Images/hero.png'
+import hero from '../Images/hero.png'
 import { FaArrowRightLong } from "react-icons/fa6";
 import { MdMoving } from "react-icons/md";
-const HomeComp = () => {
+const HomeCompOne = () => {
   return (
-    <div className='bg-black lg:flex lg:px-[13rem] px-5 lg:py-[8rem] py-[7rem] items-center h-full'>
+    <div className='bg-black lg:flex lg:px-[13rem] px-6 lg:py-[8rem] py-[7rem] items-center h-full'>
         
         <div className='w-full'>
             <h2 className='lg:text-5xl text-3xl font-bold text-white'>HIRING MADE EASY !</h2>
@@ -45,7 +45,6 @@ const HomeComp = () => {
             </div>
         </div>
 
-
         <div className='w-3/5 ml-auto lg:block hidden'>
             <img src={hero} alt="" className='w-full'/>
         </div>
@@ -53,4 +52,4 @@ const HomeComp = () => {
   )
 }
 
-export default HomeComp
+export default HomeCompOne

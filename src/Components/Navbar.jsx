@@ -6,7 +6,7 @@ import { MdPeople } from "react-icons/md";
 const Navbar = () => {
   return (
     <div className='py-10 bg-black' >
-        <div className='lg:w-10/12 w-11/12 fixed bg-white left-0 right-0 flex items-center m-auto py-3 lg:px-10 px-3 rounded-lg backdrop-filter backdrop-blur-lg bg-opacity-90'>
+        <div className='lg:w-10/12 w-11/12 fixed z-10 bg-white left-0 right-0 flex items-center m-auto py-3 lg:px-10 px-3 rounded-lg backdrop-filter backdrop-blur-lg bg-opacity-90'>
             <div className='lg:block w-24 hidden'>
                 <img src={logo} alt="" className='cursor-pointer'/>
             </div>

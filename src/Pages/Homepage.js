@@ -1,12 +1,14 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
-import HomeComp from '../Components/HomeComp'
+import HomeCompOne from '../Components/Home/HomeCompOne'
+import HomeCompoTwo from '../Components/Home/HomeCompoTwo'
 
 const Homepage = () => {
   return (
     <div>
         <Navbar />
-        <HomeComp />
+        <HomeCompOne />
+        <HomeCompoTwo />
     </div>
   )
 }
