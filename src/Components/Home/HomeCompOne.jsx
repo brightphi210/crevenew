@@ -4,7 +4,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { MdMoving } from "react-icons/md";
 const HomeCompOne = () => {
   return (
-    <div className='bg-black lg:flex lg:px-[13rem] px-6 lg:py-[8rem] py-[7rem] items-center h-full'>
+    <div className='bg-black lg:flex lg:px-[13rem] px-6 lg:py-[8rem] py-[6rem] items-center h-full'>
         
         <div className='w-full'>
             <h2 className='lg:text-5xl text-4xl font-bold text-white'>Hiring Made Easy !</h2>
