@@ -4,11 +4,11 @@ import { FaArrowRightLong } from "react-icons/fa6";
 // import { MdMoving } from "react-icons/md";
 const HomeCompOne = () => {
   return (
-    <div className='bg-slate-50 lg:flex lg:px-[13rem] px-6 lg:py-[8rem] py-[6rem] pb-[4rem] items-center h-full'>
+    <div className='bg-black lg:flex lg:px-[13rem] px-6 lg:py-[8rem] py-[6rem] pb-[4rem] items-center h-full'>
         
         <div className='w-full'>
-            <h2 className='lg:text-5xl text-4xl font-bold text-black'>Hiring Made Easy !</h2>
-            <h3 className='lg:text-3xl text-xl text-black py-5'>Hire an Expert or Be an Expert .</h3>
+            <h2 className='lg:text-5xl text-4xl font-bold text-white'>Hiring Made Easy !</h2>
+            <h3 className='lg:text-3xl text-xl text-white py-5'>Hire an Expert or Be an Expert .</h3>
             <p className='lg:text-sm text-xs text-slate-300 lg:w-10/12 w-full'> 
                 In the ever-evolving landscape of skills and knowledge, the choice between 
                 hiring an expert or becoming one yourself is a pivotal decision.
