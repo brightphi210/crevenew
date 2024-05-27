@@ -70,14 +70,6 @@ const RegisterCom = () => {
 
 export default RegisterCom
 
-{/* <video src={videoFile} 
-autoPlay 
-controls={false} 
-muted loop
-preload="auto">
-
-</video> */}
-
 
 
 
