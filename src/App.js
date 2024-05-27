@@ -16,15 +16,14 @@ function App() {
           <Route path='/' element={<Homepage />}/>
           <Route path='/login' element={<Login />}/>
           <Route path='/register' element={<Register />}/>
+          <Route path='/otp' element={<OTP />}/>
 
 
           <Route element={<PrivateRoute role="Client"/>}>
             <Route path='/user-dashboard-home' element={<UserHomeDash />}/>
-            <Route path='/otp' element={<OTP />}/>
           </Route>
 
           <Route element={<PrivateRoute role="Creative"/>}>
-            <Route path='/otp' element={<OTP />}/>
             <Route path='/creative-dashboard-home' element={<CreaiveHomeDash />}/>
           </Route>
 
