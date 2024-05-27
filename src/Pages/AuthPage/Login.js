@@ -1,8 +1,11 @@
 import React from 'react'
+import LoginCom from '../../Components/AuthCom/LoginCom'
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <div>
+      <LoginCom />
+    </div>
   )
 }
 

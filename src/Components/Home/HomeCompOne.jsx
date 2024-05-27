@@ -4,11 +4,11 @@ import { FaArrowRightLong } from "react-icons/fa6";
 // import { MdMoving } from "react-icons/md";
 const HomeCompOne = () => {
   return (
-    <div className='bg-black lg:flex lg:px-[13rem] px-6 lg:py-[8rem] py-[6rem] pb-[4rem] items-center h-full'>
+    <div className='bg-slate-50 lg:flex lg:px-[13rem] px-6 lg:py-[8rem] py-[6rem] pb-[4rem] items-center h-full'>
         
         <div className='w-full'>
-            <h2 className='lg:text-5xl text-4xl font-bold text-white'>Hiring Made Easy !</h2>
-            <h3 className='lg:text-3xl text-xl text-white py-5'>Hire an Expert or Be an Expert .</h3>
+            <h2 className='lg:text-5xl text-4xl font-bold text-black'>Hiring Made Easy !</h2>
+            <h3 className='lg:text-3xl text-xl text-black py-5'>Hire an Expert or Be an Expert .</h3>
             <p className='lg:text-sm text-xs text-slate-300 lg:w-10/12 w-full'> 
                 In the ever-evolving landscape of skills and knowledge, the choice between 
                 hiring an expert or becoming one yourself is a pivotal decision.
@@ -16,11 +16,12 @@ const HomeCompOne = () => {
             
             <form action="" className='relative lg:w-[30rem]' >
                 <input type="text" placeholder='Search here' 
-                    className='py-4 px-5 border-none bg-white mt-5 w-full text-xs  outline-none rounded-lg'
+                    className='py-4 px-5 border border-slate-300  mt-5 w-full text-xs  outline-none rounded-lg'
                     required
                 />
 
-                <button className='rounde-lg bg-black text-white py-3 px-4 absolute right-1 top-6 rounded-lg'>
+
+                <button className='rounde-lg py-3 border-none bg-black text-white px-4 absolute right-1 top-6 rounded-lg'>
                     <FaArrowRightLong />
                 </button>
 
