@@ -6,7 +6,7 @@ const HomeCompOne = () => {
   return (
     <div className='bg-white bgUrl lg:flex flex justify-center items-center h-screen'>
         
-        <div className='w-full lg:px-0 px-6 lg:pt-0 pt-[10rem]'>
+        <div className='w-full lg:px-0 px-6 lg:pt-0 lg:pb-0 pt-[8rem] pb-16'>
             <div className=' text-black text-center'>
                 <h2 className='lg:text-5xl text-4xl font-bold'>Discover Best Talents <br className='lg:block hidden'/> Around You</h2>
                 <p className='lg:text-sm text-xs text-slate-700 py-5  w-full'> 
