@@ -55,7 +55,7 @@ const RegisterCom = () => {
   }
 
   return (
-    <div class="bg-white flex justify-center items-center h-screen">
+    <div class="bg-white flex justify-center items-center lg:h-screen lg:pt-0 pt-[5rem]">
 
     <div class="w-1/2 h-screen hidden lg:block">
       <video 

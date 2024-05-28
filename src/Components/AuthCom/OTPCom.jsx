@@ -74,7 +74,7 @@ const OTPCom = () => {
 
 
     return (
-        <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-12">
+        <div className="relative flex lg:h-screen pt-[5rem] flex-col justify-center overflow-hidden bg-gray-50 py-12">
             <div className="relative bg-white px-6 pt-10 pb-9 shadow-xl mx-auto lg:w-full w-11/12 max-w-lg rounded-2xl">
                 <div className="mx-auto flex w-full max-w-md flex-col space-y-16">
                     <div className="flex flex-col items-center justify-center text-center space-y-2">
