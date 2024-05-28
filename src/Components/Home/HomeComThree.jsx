@@ -17,8 +17,19 @@ import prof2 from '../Images/prof2.png'
 import prof3 from '../Images/prof3.jpg'
 import prof4 from '../Images/prof4.jpg'
 
+import { FaQuoteLeft } from "react-icons/fa6";
+import { GoStarFill } from "react-icons/go";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 import avatar from '../Images/Avatars.png'
+
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Pagination, Autoplay, Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
 
 const HomeComThree = () => {
   return (
@@ -99,7 +110,7 @@ const HomeComThree = () => {
         </div>
 
 
-        <div className='pt-10'>
+        <div className='pt-5'>
             <h2 className='py-5'>Top Creatives</h2>
             <div className='grid lg:grid-cols-4 grid-cols-1 lg:gap-5 gap-10'>
                 <div >
@@ -118,7 +129,10 @@ const HomeComThree = () => {
                         </div>
 
                         <div className=' ml-auto'>
-                            <button className='bg-black py-2 px-5 text-xs text-white rounded-md'>View Profile</button>
+                            <button className='bg-white border border-gray-600 flex items-center gap-2 py-2 px-5 text-xs text-black rounded-md'>
+                                View Profile 
+                                <FaArrowRightLong />
+                            </button>
                         </div>
                     </div>
 
@@ -141,7 +155,10 @@ const HomeComThree = () => {
                         </div>
 
                         <div className=' ml-auto'>
-                            <button className='bg-black py-2 px-5 text-xs text-white rounded-md'>View Profile</button>
+                                          <button className='bg-white border border-gray-600 flex items-center gap-2 py-2 px-5 text-xs text-black rounded-md'>
+                                View Profile 
+                                <FaArrowRightLong />
+                            </button>
                         </div>
                     </div>
 
@@ -165,7 +182,10 @@ const HomeComThree = () => {
                         </div>
 
                         <div className=' ml-auto'>
-                            <button className='bg-black py-2 px-5 text-xs text-white rounded-md'>View Profile</button>
+                                          <button className='bg-white border border-gray-600 flex items-center gap-2 py-2 px-5 text-xs text-black rounded-md'>
+                                View Profile 
+                                <FaArrowRightLong />
+                            </button>
                         </div>
                     </div>
 
@@ -188,13 +208,216 @@ const HomeComThree = () => {
                         </div>
 
                         <div className=' ml-auto'>
-                            <button className='bg-black py-2 px-5 text-xs text-white rounded-md'>View Profile</button>
+                            <button className='bg-white border border-gray-600 flex items-center gap-2 py-2 px-5 text-xs text-black rounded-md'>
+                                View Profile 
+                                <FaArrowRightLong />
+                            </button>
                         </div>
                     </div>
 
                 </div>
             </div>
-            <button className='bg-black lg:py-4 lg:px-20 py-3 px-14 text-xs rounded-md border-none flex m-auto lg:mt-20 mt-10 text-white'>View More</button>
+            <button className='bg-black lg:py-4 lg:px-20 py-3 px-14 text-xs rounded-md border-none flex m-auto lg:mt-20 mt-5 text-white'>View More</button>
+        </div>
+
+
+
+        <div className='pt-20'>
+            <h2 className='pb-8'>Thousands of people are getting <br /> their job done with Creve</h2>
+
+            <Swiper
+                slidesPerView={1}
+                spaceBetween={10}
+                navigation={true}
+                loop={true}
+                pagination={{
+                    clickable: true,
+                }}
+
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
+                breakpoints={{
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                },
+                768: {
+                    slidesPerView: 4,
+                    spaceBetween: 10,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 10,
+                },
+                }}
+                modules={[Pagination, Autoplay, Navigation]}
+                className="mySwiper"
+            >
+                <SwiperSlide>
+                    <div className='border border-slate-300 py-4 px-6 rounded-lg'>
+                        <p className='text-3xl'><FaQuoteLeft /></p>
+                        <p className='text-xs py-5 leading-[1.5rem]'>
+                            Lorem ipsum dolor sit amet, consectetur 
+                            adipiscing elit, sed do eiusmod tempor 
+                            incididunt ut labore et dolore magna aliqua. 
+                            Ut enim ad minim veniam, quis nostrud 
+                            exercitation ullamco laboris
+                        </p>
+
+                        <div className='flex gap-2 items-center'>
+                            <div className='w-10 h-10 flex justify-center overflow-hidden items-center rounded-full'>
+                                <img src={avatar} alt="" className='w-10'/>
+                            </div>
+                            <div>
+                                <p>John Doe</p>
+                                <div className='flex gap-2 text-xs'>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                <div className='border border-slate-300 py-4 px-6 rounded-lg'>
+                        <p className='text-3xl'><FaQuoteLeft /></p>
+                        <p className='text-xs py-5 leading-[1.5rem]'>
+                            Lorem ipsum dolor sit amet, consectetur 
+                            adipiscing elit, sed do eiusmod tempor 
+                            incididunt ut labore et dolore magna aliqua. 
+                            Ut enim ad minim veniam, quis nostrud 
+                            exercitation ullamco laboris
+                        </p>
+
+                        <div className='flex gap-2 items-center'>
+                            <div className='w-10 h-10 flex justify-center overflow-hidden items-center rounded-full'>
+                                <img src={avatar} alt="" className='w-10'/>
+                            </div>
+                            <div>
+                                <p>John Doe</p>
+                                <div className='flex gap-2 text-xs'>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                <div className='border border-slate-300 py-4 px-6 rounded-lg'>
+                        <p className='text-3xl'><FaQuoteLeft /></p>
+                        <p className='text-xs py-5 leading-[1.5rem]'>
+                            Lorem ipsum dolor sit amet, consectetur 
+                            adipiscing elit, sed do eiusmod tempor 
+                            incididunt ut labore et dolore magna aliqua. 
+                            Ut enim ad minim veniam, quis nostrud 
+                            exercitation ullamco laboris
+                        </p>
+
+                        <div className='flex gap-2 items-center'>
+                            <div className='w-10 h-10 flex justify-center overflow-hidden items-center rounded-full'>
+                                <img src={avatar} alt="" className='w-10'/>
+                            </div>
+                            <div>
+                                <p>John Doe</p>
+                                <div className='flex gap-2 text-xs'>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                <div className='border border-slate-300 py-4 px-6 rounded-lg'>
+                        <p className='text-3xl'><FaQuoteLeft /></p>
+                        <p className='text-xs py-5 leading-[1.5rem]'>
+                            Lorem ipsum dolor sit amet, consectetur 
+                            adipiscing elit, sed do eiusmod tempor 
+                            incididunt ut labore et dolore magna aliqua. 
+                            Ut enim ad minim veniam, quis nostrud 
+                            exercitation ullamco laboris
+                        </p>
+
+                        <div className='flex gap-2 items-center'>
+                            <div className='w-10 h-10 flex justify-center overflow-hidden items-center rounded-full'>
+                                <img src={avatar} alt="" className='w-10'/>
+                            </div>
+                            <div>
+                                <p>John Doe</p>
+                                <div className='flex gap-2 text-xs'>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                <div className='border border-slate-300 py-4 px-6 rounded-lg'>
+                        <p className='text-3xl'><FaQuoteLeft /></p>
+                        <p className='text-xs py-5 leading-[1.5rem]'>
+                            Lorem ipsum dolor sit amet, consectetur 
+                            adipiscing elit, sed do eiusmod tempor 
+                            incididunt ut labore et dolore magna aliqua. 
+                            Ut enim ad minim veniam, quis nostrud 
+                            exercitation ullamco laboris
+                        </p>
+
+                        <div className='flex gap-2 items-center'>
+                            <div className='w-10 h-10 flex justify-center overflow-hidden items-center rounded-full'>
+                                <img src={avatar} alt="" className='w-10'/>
+                            </div>
+                            <div>
+                                <p>John Doe</p>
+                                <div className='flex gap-2 text-xs'>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                <div className='border border-slate-300 py-4 px-6 rounded-lg'>
+                        <p className='text-3xl'><FaQuoteLeft /></p>
+                        <p className='text-xs py-5 leading-[1.5rem]'>
+                            Lorem ipsum dolor sit amet, consectetur 
+                            adipiscing elit, sed do eiusmod tempor 
+                            incididunt ut labore et dolore magna aliqua. 
+                            Ut enim ad minim veniam, quis nostrud 
+                            exercitation ullamco laboris
+                        </p>
+
+                        <div className='flex gap-2 items-center'>
+                            <div className='w-10 h-10 flex justify-center overflow-hidden items-center rounded-full'>
+                                <img src={avatar} alt="" className='w-10'/>
+                            </div>
+                            <div>
+                                <p>John Doe</p>
+                                <div className='flex gap-2 text-xs'>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide>
+            </Swiper>
         </div>
     </div>
   )

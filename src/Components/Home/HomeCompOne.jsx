@@ -4,35 +4,43 @@ import { FaArrowRightLong } from "react-icons/fa6";
 // import { MdMoving } from "react-icons/md";
 const HomeCompOne = () => {
   return (
-    <div className='bg-black lg:flex lg:px-[13rem] px-6 lg:py-[8rem] py-[6rem] pb-[4rem] items-center h-full'>
+    <div className='bg-white bgUrl lg:flex flex justify-center items-center h-screen'>
         
-        <div className='w-full'>
-            <h2 className='lg:text-5xl text-4xl font-bold text-white'>Hiring Made Easy !</h2>
-            <h3 className='lg:text-3xl text-xl text-white py-5'>Hire an Expert or Be an Expert .</h3>
-            <p className='lg:text-sm text-xs text-slate-300 lg:w-10/12 w-full'> 
-                In the ever-evolving landscape of skills and knowledge, the choice between 
-                hiring an expert or becoming one yourself is a pivotal decision.
-            </p>
-            
-            <form action="" className='relative lg:w-[30rem]' >
-                <input type="text" placeholder='Search here' 
-                    className='py-4 px-5 border border-slate-300  mt-5 w-full text-xs  outline-none rounded-lg'
-                    required
-                />
+        <div className='w-full lg:px-0 px-6 lg:pt-0 pt-[10rem]'>
+            <div className=' text-black text-center'>
+                <h2 className='lg:text-5xl text-4xl font-bold'>Discover Best Talents <br className='lg:block hidden'/> Around You</h2>
+                <p className='lg:text-sm text-xs text-slate-700 py-5  w-full'> 
+                    In the ever-evolving landscape of skills and knowledge, the choice between  <br className='lg:block hidden'/>
+                    hiring an expert or becoming one yourself is a pivotal decision.
+                </p>
+                
+                <form action="" className='relative lg:w-1/3 w-full m-auto' >
+                    <input type="text" placeholder='Search here' 
+                        className='py-4 px-5 border border-slate-300  mt-0 w-full text-xs  outline-none rounded-lg'
+                        required
+                    />
 
 
-                <button className='rounde-lg py-3 border-none bg-black text-white px-4 absolute right-1 top-6 rounded-lg'>
-                    <FaArrowRightLong />
-                </button>
+                    <button className='rounde-lg py-3 border-none bg-neutral-700 text-white px-4 absolute right-1 top-1 rounded-lg'>
+                        <FaArrowRightLong />
+                    </button>
 
-            </form>
-            <button className='bg-neutral-900 border-2 text-xs border-neutral-800 text-white py-4 cursor-pointer px-14 lg:mt-10 mt-6 rounded-md flex items-center gap-3'>
-                Join For Free <FaArrowRightLong />
-            </button>
-        </div>
+                </form>
 
-        <div className='w-3/5 ml-auto lg:block hidden'>
-            <img src={hero} alt="" className='w-full'/>
+                <div className='flex gap-2 justify-center m-auto lg:mt-3 mt-0'>
+                    <button className='bg-neutral-900 shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] text-xs  text-white py-4 cursor-pointer px-8 lg:mt-3 mt-6 rounded-md flex items-center gap-3'>
+                        Join For Free <FaArrowRightLong />
+                    </button>
+
+                    <button className='bg-white shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] border text-xs border-neutral-800 text-black py-4 cursor-pointer px-8 lg:mt-3 mt-6 rounded-md flex items-center gap-3'>
+                        Login <FaArrowRightLong />
+                    </button>
+                </div>
+            </div>
+
+            <div className='w-full lg:hidden pt-5'>
+                <img src={hero} alt="" className='w-full'/>
+            </div>
         </div>
     </div>
   )

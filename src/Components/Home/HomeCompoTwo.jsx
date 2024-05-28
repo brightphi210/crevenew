@@ -7,8 +7,8 @@ import hero2 from '../Images//hero2.png'
 const HomeCompoTwo = () => {
   return (
     <div className=''>
-        <div className='flex lg:py-20 py-10 lg:flex-row flex-col items-center justify-between lg:px-[13rem] px-5 lg:gap-5 gap-8'>
-            <div className='text-center shadow-md w-full py-5 lg:pb-14 pb-10'>
+        <div className='flex bg-black lg:py-20 py-20 lg:flex-row flex-col  justify-between lg:px-[10rem] px-5 lg:gap-5 gap-8'>
+            <div className='text-center bg-white rounded-2xl shadow-md w-full py-5 pb-10'>
                 <div className='bg-neutral-100 p-8 mb-4 m-auto flex justify-center items-center w-fit rounded-full'>
                     <img src={icon2} alt="" className='lg:w-14 w-10'/>
                 </div>
@@ -17,7 +17,7 @@ const HomeCompoTwo = () => {
             </div>
 
 
-            <div className='text-center shadow-md w-full py-5 lg:pb-14 pb-10'>
+            <div className='text-center bg-slate-300 rounded-2xl shadow-md w-full py-5 pb-10'>
                 <div className='bg-neutral-100 p-8 mb-4 m-auto flex justify-center items-center w-fit rounded-full'>
                     <img src={icon1} alt="" className='lg:w-14 w-10'/>
                 </div>
@@ -26,7 +26,16 @@ const HomeCompoTwo = () => {
             </div>
 
 
-            <div className='text-center shadow-md w-full py-5 lg:pb-14 pb-10'>
+            <div className='text-center bg-white rounded-2xl shadow-md w-full py-5  pb-10'>
+                <div className='bg-neutral-100 p-8 mb-4 m-auto flex justify-center items-center w-fit rounded-full'>
+                    <img src={icon3} alt="" className='lg:w-14 w-10'/>
+                </div>
+                <h2 className='py-2 lg:text-xl text-lg font-semibold'>Book Creative</h2>
+                <p className='text-neutral-500 lg:text-sm text-xs '>Book a creative and get on call <br /> with him or her!</p>
+            </div>
+
+
+            <div className='text-center bg-slate-300 rounded-2xl shadow-md w-full py-5  pb-10'>
                 <div className='bg-neutral-100 p-8 mb-4 m-auto flex justify-center items-center w-fit rounded-full'>
                     <img src={icon3} alt="" className='lg:w-14 w-10'/>
                 </div>

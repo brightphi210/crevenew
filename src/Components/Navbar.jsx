@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <div className='py-10 bg-black' >
-        <div className='lg:w-10/12 w-11/12 fixed z-10 border border-slate-100 bg-white left-0 right-0 flex items-center m-auto py-3 lg:px-10 px-3 rounded-lg backdrop-filter backdrop-blur-3xl bg-opacity-80'>
+    <div className='' >
+        <div className='lg:w-full z-10 fixed border border-slate-100 bg-white left-0 right-0 flex items-center m-auto py-3 lg:px-10 px-3 backdrop-filter backdrop-blur-3xl bg-opacity-80'>
             <div className='lg:block w-24 hidden'>
                 <Link to={'/'}>
                     <img src={logo} alt="" className='cursor-pointer'/>

@@ -10,3 +10,53 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
+
+.bgUrl{
+  background-image: url('./Components/Images/bdf.png');
+  background-size: contain;
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center; /* Center the background image */
+}
+
+
+/* $small-One : 320px;
+$small-Two : 480px;
+$medium-One : 481px ;
+$medium-Two : 768px;
+$large-One : 1025px;
+$large-Two : 1200px; */
+
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .bgUrl{
+    background-image: none;
+    height: fit-content;
+  }
+}
+
+.swiper-button-prev:after{
+  display: none !important;
+}
+
+.swiper-button-next:after{
+  font-size: 10px !important;
+  top: -100px;
+  right: 10px;
+  position: absolute;
+  background-color: black !important;
+  color: white;
+  padding: 10px 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+
+.swiper-pagination {
+  position: relative !important;
+  margin-top: 20px;
+}
