@@ -17,12 +17,12 @@ const HomeCompoTwo = () => {
             </div>
 
 
-            <div className='text-center bg-slate-300 rounded-2xl shadow-md w-full py-5 pb-10'>
+            <div className='text-center bg-neutral-900 rounded-2xl shadow-md w-full py-5 pb-10'>
                 <div className='bg-neutral-100 p-8 mb-4 m-auto flex justify-center items-center w-fit rounded-full'>
                     <img src={icon1} alt="" className='lg:w-14 w-10'/>
                 </div>
-                <h2 className='py-2 lg:text-xl text-lg font-semibold'>Search Creatives </h2>
-                <p className='text-neutral-500 lg:text-sm text-xs '>Search the best creatives work here</p>
+                <h2 className='py-2 lg:text-xl text-lg font-semibold text-white'>Search Creatives </h2>
+                <p className='text-neutral-200 lg:text-sm text-xs '>Search the best creatives work here</p>
             </div>
 
 
@@ -31,16 +31,16 @@ const HomeCompoTwo = () => {
                     <img src={icon3} alt="" className='lg:w-14 w-10'/>
                 </div>
                 <h2 className='py-2 lg:text-xl text-lg font-semibold'>Book Creative</h2>
-                <p className='text-neutral-500 lg:text-sm text-xs '>Book a creative and get on call <br /> with him or her!</p>
+                <p className='text-neutral-800 lg:text-sm text-xs '>Book a creative and get on call <br /> with him or her!</p>
             </div>
 
 
-            <div className='text-center bg-slate-300 rounded-2xl shadow-md w-full py-5  pb-10'>
+            <div className='text-center bg-neutral-900 rounded-2xl shadow-md w-full py-5  pb-10'>
                 <div className='bg-neutral-100 p-8 mb-4 m-auto flex justify-center items-center w-fit rounded-full'>
                     <img src={icon3} alt="" className='lg:w-14 w-10'/>
                 </div>
-                <h2 className='py-2 lg:text-xl text-lg font-semibold'>Hire Creative</h2>
-                <p className='text-neutral-500 lg:text-sm text-xs '>Hire creative and get the best!</p>
+                <h2 className='py-2 lg:text-xl text-lg font-semibold text-white'>Hire Creative</h2>
+                <p className='text-neutral-200 lg:text-sm text-xs '>Hire creative and get the best!</p>
             </div>
 
 
