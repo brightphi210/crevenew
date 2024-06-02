@@ -81,13 +81,13 @@ $large-Two : 1200px; */
 }
 
 .mycolor{
-  color: rgb(0, 221, 179);
+  color: rgb(2, 185, 152);
 }
 
 .mycolor2{
-  background-color: rgb(0, 221, 179);
+  background-color: rgb(2, 185, 152);
 }
 
 .mycolor3{
-  border: 1px solid rgb(0, 221, 179);
+  border: 1px solid rgb(2, 185, 152);
 }
