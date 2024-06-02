@@ -15,7 +15,7 @@ const CreativeSideBarCom = ({show}) => {
         <div>
             <p className='text-xs text-neutral-400 p-6 pt-10 lg:p-6 pb-3 border-b-neutral-600 border-b flex items-center gap-3 '>Menu <FaLongArrowAltRight /></p>
             <ul className='flex flex-col gap-5 p-6'>
-                <li className='text-xs bg-cyan-500 px-3 py-2 rounded-md w-fit text-white hover:bg-white hover:text-black cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
+                <li className='text-xs bg-cyan-500 mycolor2 px-3 py-2 rounded-md w-fit text-white hover:bg-white hover:text-black cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
                 <li className='text-xs hover:text-accent cursor-pointer flex items-center gap-3'><IoBookmark className=''/> Bookings</li>
                 <li className='text-xs hover:text-accent cursor-pointer flex items-center gap-3'><IoNotifications className=''/> Notifications</li>
                 <li className='text-xs hover:text-accent cursor-pointer flex items-center gap-3'><CgProfile className=''/> Profile</li>

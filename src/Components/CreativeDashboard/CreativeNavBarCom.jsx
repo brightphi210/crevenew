@@ -16,7 +16,7 @@ const CreativeNavBarCom = ({handleShow, show}) => {
       </div>
 
       <div className='flex flex-row gap-3 ml-auto items-center'>
-        <p className='text-3xl cursor-pointer text-cyan-600'><IoNotificationsCircle /></p>
+        <p className='text-3xl cursor-pointer text-cyan-600 mycolor'><IoNotificationsCircle /></p>
         <div >
           <img src={prof} alt="" className='w-7 cursor-pointer'/>
         </div>

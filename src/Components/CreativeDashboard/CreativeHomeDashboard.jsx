@@ -101,7 +101,7 @@ export const CreativeHome = () => {
                   grow your network and market your skills.
                 </p>
                 <h2 className='lg:text-2xl text-lg py-3'>Get 80 Connects each month</h2>
-                <button className='bg-cyan-500 py-3 px-10 rounded-md text-xs'>Learn More</button>
+                <button className='bg-cyan-500 mycolor2 py-3 px-10 rounded-md text-xs'>Learn More</button>
               </div>
 
               <div className='lg:ml-auto'>
@@ -116,7 +116,7 @@ export const CreativeHome = () => {
                 Creve 101 will guide you through the basics of our platform.
                 </p>
                 <h2 className='lg:text-2xl text-lg py-3'>Learn how to get started on Creve</h2>
-                <button className='bg-cyan-500 py-3 px-10 rounded-md text-xs'>Learn More</button>
+                <button className='bg-cyan-500 mycolor2 py-3 px-10 rounded-md text-xs'>Learn More</button>
               </div>
 
               <div className='lg:ml-auto'>
@@ -126,7 +126,7 @@ export const CreativeHome = () => {
           </Carousel>
         </div>
 
-        <div className='bg-neutral-200 w-full p-5 rounded-xl flex justify-center items-center'>
+        <div className='bg-neutral-200  w-full p-5 rounded-xl flex justify-center items-center'>
 
           <div className=''>
             <div className='border-2 border-white w-fit rounded-full flex m-auto'>
@@ -137,7 +137,7 @@ export const CreativeHome = () => {
               <h2 className='lg:text-sm text-sm'>John Doe</h2>
               <p className='text-xs py-2'>Senior Electrician</p>
               <div className='flex items-center gap-2'>
-                <progress className="progress progress-info " value="70" max="100"></progress>
+                <progress className="progress progress-success " value="70" max="100"></progress>
                 <p className='text-xs'>70%</p>
               </div>
               <button className='bg-black text-white rounded-md text-[0.6rem] py-2 px-3 flex  mt-2 gap-2'><MdModeEditOutline className='text-md'/>Edith Profile</button>
@@ -158,13 +158,13 @@ export const CreativeHome = () => {
                 <img src={prof} alt="" className='w-6'/>
               </div>
               <h2 className='text-xs'>Amadi John</h2>
-              <p className='text-[0.6rem] text-cyan-400'>5pm</p>
+              <p className='text-[0.6rem] text-cyan-400 mycolor'>5pm</p>
             </div>
 
 
 
             <div className='ml-auto flex gap-3'>
-              <button className='lg:text-[0.7rem] text-xs border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
+              <button className='lg:text-[0.7rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
             </div>
           </div>
 
@@ -175,13 +175,13 @@ export const CreativeHome = () => {
                 <img src={prof} alt="" className='w-6'/>
               </div>
               <h2 className='text-xs'>Amadi John</h2>
-              <p className='text-[0.6rem] text-cyan-400'>5pm</p>
+              <p className='text-[0.6rem] text-cyan-400 mycolor'>5pm</p>
             </div>
 
 
 
             <div className='ml-auto flex gap-3'>
-              <button className='lg:text-[0.7rem] text-xs border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
+              <button className='lg:text-[0.7rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
             </div>
           </div>
 
@@ -193,13 +193,13 @@ export const CreativeHome = () => {
                 <img src={prof} alt="" className='w-6'/>
               </div>
               <h2 className='text-xs'>Amadi John</h2>
-              <p className='text-[0.6rem] text-cyan-400'>5pm</p>
+              <p className='text-[0.6rem] text-cyan-400 mycolor'>5pm</p>
             </div>
 
 
 
             <div className='ml-auto flex gap-3'>
-              <button className='lg:text-[0.7rem] text-xs border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
+              <button className='lg:text-[0.7rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
             </div>
           </div>
 
@@ -209,13 +209,13 @@ export const CreativeHome = () => {
                 <img src={prof} alt="" className='w-6'/>
               </div>
               <h2 className='text-xs'>Amadi John</h2>
-              <p className='text-[0.6rem] text-cyan-400'>5pm</p>
+              <p className='text-[0.6rem] text-cyan-400 mycolor'>5pm</p>
             </div>
 
 
 
             <div className='ml-auto flex gap-3'>
-              <button className='lg:text-[0.7rem] text-xs border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
+              <button className='lg:text-[0.7rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
             </div>
           </div>
 
@@ -230,17 +230,17 @@ export const CreativeHome = () => {
 
             <div className=''>
               <div className='my-3 hover:bg-neutral-200 p-3 rounded-md'>
-                <h2 className='text-xs flex items-center gap-2'><IoNotifications className='text-cyan-500'/>Your account has been verified</h2>
+                <h2 className='text-xs flex items-center gap-2'><IoNotifications className='text-cyan-500 mycolor'/>Your account has been verified</h2>
                 <p className='text-xs text-neutral-600'>2 days ago</p>
               </div>
 
               <div className='my-3 hover:bg-neutral-200 p-3 rounded-md'>
-                <h2 className='text-xs flex items-center gap-2'><IoNotifications className='text-cyan-500'/>Your account has been verified</h2>
+                <h2 className='text-xs flex items-center gap-2'><IoNotifications className='text-cyan-500 mycolor'/>Your account has been verified</h2>
                 <p className='text-xs text-neutral-600'>2 days ago</p>
               </div>
 
               <div className='my-3 hover:bg-neutral-200 p-3 rounded-md'>
-                <h2 className='text-xs flex items-center gap-2'><IoNotifications className='text-cyan-500'/>Your account has been verified</h2>
+                <h2 className='text-xs flex items-center gap-2'><IoNotifications className='text-cyan-500 mycolor'/>Your account has been verified</h2>
                 <p className='text-xs text-neutral-600'>2 days ago</p>
               </div>
 
@@ -250,9 +250,9 @@ export const CreativeHome = () => {
           </div>
 
           <div className='bg-neutral-100 p-5 w-full rounded-xl mt-3 flex flex-col gap-2'>
-            <p className='text-xs flex items-center gap-5 cursor-pointe'>Upgrade to creve pro <FaUnlockKeyhole /></p>
-            <p className='text-xs flex items-center gap-5 cursor-pointer'>Help Center <MdHelpCenter /></p>
-            <p className='text-xs flex items-center gap-5 cursor-pointer'>Join Community <GrUpgrade /></p>
+            <p className='text-sm flex items-center gap-5 cursor-pointe'>Upgrade to creve pro <FaUnlockKeyhole /></p>
+            <p className='text-sm flex items-center gap-5 cursor-pointer'>Help Center <MdHelpCenter /></p>
+            <p className='text-sm flex items-center gap-5 cursor-pointer'>Join Community <GrUpgrade /></p>
           </div>
         </div>
 
