@@ -23,13 +23,19 @@ import { FaUnlockKeyhole } from "react-icons/fa6";
 const CreativeHomeDashboard = () => {
   const [token, setToken] = useState(() => localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
 
+  const [show, setShow] = useState(false)
+
+  const handleShow = () => {
+    setShow(!show)
+  }
+
   return (
     <div className='flex flex-row w-full'>
       <div className='w-full'>
-        <CreativeSideBarCom />
+        <CreativeSideBarCom show={show} />
       </div>
       <div className='w-full'>
-        <CreativeNavBarCom />
+        <CreativeNavBarCom show={show} handleShow={handleShow}/>
         <CreativeHome />
       </div>
     </div>
@@ -68,10 +74,10 @@ export const CreativeHome = () => {
   return (
 
 
-    <div className='p-16 pt-20 pl-[18rem]'>
-      <div className='flex flex-row gap-10'>
+    <div className='lg:p-16 pt-20 lg:pl-[18rem] p-5'>
+      <div className='flex lg:flex-row flex-col gap-10'>
 
-        <div className='w-9/12 bg-black rounded-xl text-white'>
+        <div className='lg:w-9/12 w-full bg-black rounded-xl text-white'>
           <Carousel
             responsive={responsive}
             swipeable={true}
@@ -88,7 +94,7 @@ export const CreativeHome = () => {
             dotListClass="custom-dot-list-style"
           >
 
-            <div className='p-10 px-20 flex flex-row items-center'>
+            <div className='p-10 lg:px-20 px-8 flex lg:flex-row flex-col items-center'>
               <div className=''>
                 <p className='text-sm'>
                   Join Freelancer Plus now to unlock new features to help you <br />
@@ -98,8 +104,8 @@ export const CreativeHome = () => {
                 <button className='bg-cyan-500 py-3 px-10 rounded-md text-xs'>Learn More</button>
               </div>
 
-              <div className='ml-auto'>
-                <img src={voucher} alt="" className='w-40 '/>
+              <div className='lg:ml-auto'>
+                <img src={voucher} alt="" className='lg:w-40 lg:mt-0 w-1/2 mt-10'/>
               </div>
             </div>
 
@@ -142,8 +148,8 @@ export const CreativeHome = () => {
 
       </div>
 
-      <div className='mt-10 flex flex-row w-full gap-10'>
-        <div className='bg-neutral-100 w-9/12 p-5 rounded-xl'>
+      <div className='mt-10 flex lg:flex-row flex-col  w-full gap-10'>
+        <div className='bg-neutral-100 lg:w-9/12 w-full p-5 rounded-xl'>
           <h2 className='text-xs'>Booked Messages</h2>
 
           <div className='p-3 my-5 rounded-md flex hover:bg-neutral-200' >
@@ -158,8 +164,8 @@ export const CreativeHome = () => {
 
 
             <div className='ml-auto flex gap-3'>
-              <button className='text-xs bg-black text-white py-2 px-4 rounded-md flex gap-2 items-center'>copy number <IoCopyOutline /></button>
-              <button className='text-xs border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
+              <button className='text-[0.7rem] bg-black text-white py-2 px-4 rounded-md flex gap-2 items-center'>copy number <IoCopyOutline /></button>
+              <button className='text-[0.7rem] border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
             </div>
           </div>
 
@@ -176,8 +182,8 @@ export const CreativeHome = () => {
 
 
             <div className='ml-auto flex gap-3'>
-              <button className='text-xs bg-black text-white py-2 px-4 rounded-md flex gap-2 items-center'>copy number <IoCopyOutline /></button>
-              <button className='text-xs border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
+              <button className='text-[0.7rem] bg-black text-white py-2 px-4 rounded-md flex gap-2 items-center'>copy number <IoCopyOutline /></button>
+              <button className='text-[0.7rem] border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
             </div>
           </div>
 
@@ -195,8 +201,8 @@ export const CreativeHome = () => {
 
 
             <div className='ml-auto flex gap-3'>
-              <button className='text-xs bg-black text-white py-2 px-4 rounded-md flex gap-2 items-center'>copy number <IoCopyOutline /></button>
-              <button className='text-xs border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
+              <button className='text-[0.7rem] bg-black text-white py-2 px-4 rounded-md flex gap-2 items-center'>copy number <IoCopyOutline /></button>
+              <button className='text-[0.7rem] border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
             </div>
           </div>
 
@@ -212,8 +218,8 @@ export const CreativeHome = () => {
 
 
             <div className='ml-auto flex gap-3'>
-              <button className='text-xs bg-black text-white py-2 px-4 rounded-md flex gap-2 items-center'>copy number <IoCopyOutline /></button>
-              <button className='text-xs border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
+              <button className='text-[0.7rem] bg-black text-white py-2 px-4 rounded-md flex gap-2 items-center'>copy number <IoCopyOutline /></button>
+              <button className='text-[0.7rem] border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
             </div>
           </div>
 
@@ -222,8 +228,8 @@ export const CreativeHome = () => {
         </div>
 
 
-        <div className='w-[22rem]'>
-          <div className='bg-neutral-100 p-5 rounded-xl '>
+        <div className='lg:w-1/4 w-full'>
+          <div className='bg-neutral-100 p-5 w-full rounded-xl '>
             <p className='text-xs'>Notifications</p>
 
             <div className=''>
@@ -247,7 +253,7 @@ export const CreativeHome = () => {
             </div>
           </div>
 
-          <div className='bg-neutral-100 p-5 rounded-xl mt-3 flex flex-col gap-2'>
+          <div className='bg-neutral-100 p-5 w-full rounded-xl mt-3 flex flex-col gap-2'>
             <p className='text-xs flex items-center gap-5 cursor-pointe'>Upgrade to creve pro <FaUnlockKeyhole /></p>
             <p className='text-xs flex items-center gap-5 cursor-pointer'>Help Center <MdHelpCenter /></p>
             <p className='text-xs flex items-center gap-5 cursor-pointer'>Join Community <GrUpgrade /></p>

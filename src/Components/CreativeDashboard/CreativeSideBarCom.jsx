@@ -8,9 +8,9 @@ import { IoSettingsSharp } from "react-icons/io5";
 import { FaLock } from "react-icons/fa6";
 import { BiLogOutCircle } from "react-icons/bi";
 
-const CreativeSideBarCom = () => {
+const CreativeSideBarCom = ({show}) => {
   return (
-    <div className='bg-black w-[15rem] fixed h-screen text-white z-50'>
+    <div className={show === true ? 'bg-black lg:w-[15rem] w-full fixed h-screen lg:block  text-white z-50' : 'hidden'}>
       <div className='pt-10 flex flex-col'>
         <div>
             <p className='text-xs text-neutral-400 p-6 pb-3 border-b-neutral-600 border-b flex items-center gap-3'>Menu <FaLongArrowAltRight /></p>
