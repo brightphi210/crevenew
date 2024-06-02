@@ -13,7 +13,7 @@ import { MdModeEditOutline } from "react-icons/md";
 import { MdArrowOutward } from "react-icons/md";
 import { IoCopyOutline } from "react-icons/io5";
 
-import { IoNotifications } from "react-icons/io5";
+import { IoNotificationsCircle } from "react-icons/io5";
 import { GrUpgrade } from "react-icons/gr";
 import { MdHelpCenter } from "react-icons/md";
 import { FaUnlockKeyhole } from "react-icons/fa6";
@@ -229,19 +229,31 @@ export const CreativeHome = () => {
             <p className='text-xs'>Notifications</p>  
 
             <div className=''>
-              <div className='my-3 hover:bg-neutral-200 p-3 rounded-md'>
-                <h2 className='text-xs flex items-center gap-2'><IoNotifications className='text-cyan-500 mycolor'/>Your account has been verified</h2>
-                <p className='text-xs text-neutral-600'>2 days ago</p>
+            <div className='my-3 hover:bg-neutral-200 flex items-center gap-3 p-3 rounded-md'>
+                <p className='text-cyan-500 mycolor text-4xl'><IoNotificationsCircle /></p>
+                <div>
+                  <h2 className='text-sm flex items-center gap-2'>Your account is verified</h2>
+                  <p className='text-xs text-neutral-400'>2 days ago</p>
+                </div>
+                
               </div>
 
-              <div className='my-3 hover:bg-neutral-200 p-3 rounded-md'>
-                <h2 className='text-xs flex items-center gap-2'><IoNotifications className='text-cyan-500 mycolor'/>Your account has been verified</h2>
-                <p className='text-xs text-neutral-600'>2 days ago</p>
+              <div className='my-3 hover:bg-neutral-200 flex items-center gap-3 p-3 rounded-md'>
+                <p className='text-cyan-500 mycolor text-4xl'><IoNotificationsCircle /></p>
+                <div>
+                  <h2 className='text-sm flex items-center gap-2'>Login Successful</h2>
+                  <p className='text-xs text-neutral-400'>2 days ago</p>
+                </div>
+                
               </div>
 
-              <div className='my-3 hover:bg-neutral-200 p-3 rounded-md'>
-                <h2 className='text-xs flex items-center gap-2'><IoNotifications className='text-cyan-500 mycolor'/>Your account has been verified</h2>
-                <p className='text-xs text-neutral-600'>2 days ago</p>
+              <div className='my-3 hover:bg-neutral-200 flex items-center gap-3 p-3 rounded-md'>
+                <p className='text-cyan-500 mycolor text-4xl'><IoNotificationsCircle /></p>
+                <div>
+                  <h2 className='text-sm flex items-center gap-2'>Login Successful</h2>
+                  <p className='text-xs text-neutral-400'>2 days ago</p>
+                </div>
+                
               </div>
 
               <button className='bg-black text-xs px-5 py-2 text-white w-full rounded-md'>See All</button>
@@ -249,10 +261,10 @@ export const CreativeHome = () => {
             </div>
           </div>
 
-          <div className='bg-neutral-100 p-5 w-full rounded-xl mt-3 flex flex-col gap-2'>
-            <p className='text-sm flex items-center gap-5 cursor-pointe'>Upgrade to creve pro <FaUnlockKeyhole /></p>
-            <p className='text-sm flex items-center gap-5 cursor-pointer'>Help Center <MdHelpCenter /></p>
-            <p className='text-sm flex items-center gap-5 cursor-pointer'>Join Community <GrUpgrade /></p>
+          <div className='bg-neutral-100 p-5 w-full rounded-xl mt-3 flex flex-col gap-5'>
+            <p className='text-xs flex items-center gap-5 cursor-pointe'>Upgrade to creve pro <FaUnlockKeyhole /></p>
+            <p className='text-xs flex items-center gap-5 cursor-pointer'>Help Center <MdHelpCenter /></p>
+            <p className='text-xs flex items-center gap-5 cursor-pointer'>Join Community <GrUpgrade /></p>
           </div>
         </div>
 
