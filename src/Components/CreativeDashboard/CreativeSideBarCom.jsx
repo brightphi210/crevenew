@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MdOutlineDashboard } from "react-icons/md";
 import { IoBookmark } from "react-icons/io5";
 import { IoNotifications } from "react-icons/io5";
@@ -7,8 +7,25 @@ import { CgProfile } from "react-icons/cg";
 import { IoSettingsSharp } from "react-icons/io5";
 import { FaLock } from "react-icons/fa6";
 import { BiLogOutCircle } from "react-icons/bi";
+import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 
 const CreativeSideBarCom = ({show}) => {
+
+  const navigate = useNavigate()
+  const [token, setToken] = useState(() => localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
+
+  const userToken = token?.access ? jwtDecode(token.access) : null;
+  console.log('This is the token', userToken);
+
+  const logout = async (e) => {
+      e.preventDefault()
+      setToken(null)
+      localStorage.removeItem('token')
+      navigate('/')
+  }
+
+
   return (
     <div className={show === false ? 'hidden bg-black lg:w-[15rem] w-full fixed h-screen lg:block  text-white z-50' : 'block bg-black lg:w-[15rem] w-full fixed h-screen lg:block  text-white z-50'}>
       <div className='pt-10 flex flex-col'>
@@ -27,7 +44,7 @@ const CreativeSideBarCom = ({show}) => {
             <ul className='flex flex-col gap-5 p-6'>
                 <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoSettingsSharp className=''/> Settings</li>
                 <li className='text-sm text-neutral-400 cursor-default flex items-center gap-3'><FaLock className=''/> Creve Pro</li>
-                <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><BiLogOutCircle className=''/> Logout</li>
+                <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3' onClick={logout}><BiLogOutCircle className=''/> Logout</li>
             </ul>
         </div>
 

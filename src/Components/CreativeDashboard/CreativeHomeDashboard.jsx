@@ -224,7 +224,7 @@ export const CreativeHome = () => {
         </div>
 
 
-        <div className='lg:w-1/4 w-full'>
+        <div className='lg:w-[22rem] w-full'>
           <div className='bg-neutral-100 p-5 w-full rounded-xl '>
             <p className='text-xs'>Notifications</p>  
 
