@@ -96,11 +96,11 @@ export const CreativeHome = () => {
 
             <div className='p-10 lg:px-20 px-8 flex lg:flex-row flex-col items-center'>
               <div className=''>
-                <p className='text-sm'>
-                  Join Freelancer Plus now to unlock new features to help you <br />
+                <p className='lg:text-sm text-xs'>
+                  Join Freelancer Plus now to unlock new features to help you <br className='lg:block hidden'/>
                   grow your network and market your skills.
                 </p>
-                <h2 className='text-2xl py-3'>Get 80 Connects each month</h2>
+                <h2 className='lg:text-2xl text-lg py-3'>Get 80 Connects each month</h2>
                 <button className='bg-cyan-500 py-3 px-10 rounded-md text-xs'>Learn More</button>
               </div>
 
@@ -110,37 +110,37 @@ export const CreativeHome = () => {
             </div>
 
             
-            <div className='p-10 px-20 flex flex-row items-center'>
+            <div className='p-10 lg:px-20 px-8 flex lg:flex-row flex-col items-center'>
               <div className=''>
-                <p className='text-sm'>
+                <p className='lg:text-sm text-xs'>
                 Creve 101 will guide you through the basics of our platform.
                 </p>
-                <h2 className='text-2xl py-3'>Learn how to get started on Creve</h2>
+                <h2 className='lg:text-2xl text-lg py-3'>Learn how to get started on Creve</h2>
                 <button className='bg-cyan-500 py-3 px-10 rounded-md text-xs'>Learn More</button>
               </div>
 
-              <div className='ml-auto'>
-                <img src={laptop} alt="" className='w-40 '/>
+              <div className='lg:ml-auto'>
+                <img src={laptop} alt="" className='lg:w-40 lg:mt-0 w-10/12 mt-10 '/>
               </div>
             </div>
           </Carousel>
         </div>
 
-        <div className='bg-neutral-200 w-full rounded-xl flex justify-center items-center'>
+        <div className='bg-neutral-200 w-full p-5 rounded-xl flex justify-center items-center'>
 
           <div className=''>
             <div className='border-2 border-white w-fit rounded-full flex m-auto'>
-              <img src={prof} alt="" className='w-16'/>
+              <img src={prof} alt="" className='lg:w-16 w-14'/>
             </div>
 
             <div className='text-center pt-2'>
-              <h2>John Doe</h2>
+              <h2 className='lg:text-sm text-sm'>John Doe</h2>
               <p className='text-xs py-2'>Senior Electrician</p>
               <div className='flex items-center gap-2'>
                 <progress className="progress progress-info " value="70" max="100"></progress>
                 <p className='text-xs'>70%</p>
               </div>
-              <button className='bg-black text-white rounded-md text-xs py-2 px-3 flex  mt-2 gap-2'><MdModeEditOutline className='text-lg'/>Edith Profile</button>
+              <button className='bg-black text-white rounded-md text-[0.6rem] py-2 px-3 flex  mt-2 gap-2'><MdModeEditOutline className='text-md'/>Edith Profile</button>
             </div>
 
           </div>
@@ -149,10 +149,10 @@ export const CreativeHome = () => {
       </div>
 
       <div className='mt-10 flex lg:flex-row flex-col  w-full gap-10'>
-        <div className='bg-neutral-100 lg:w-9/12 w-full p-5 rounded-xl'>
+        <div className='bg-neutral-100 lg:w-9/12 w-full lg:p-5 py-5 px-2 rounded-xl'>
           <h2 className='text-xs'>Booked Messages</h2>
 
-          <div className='p-3 my-5 rounded-md flex hover:bg-neutral-200' >
+          <div className='p-3 my-5 rounded-md flex lg:flex-row flex-col gap-3 hover:bg-neutral-200' >
             <div className='flex gap-4 items-center'>
               <div>
                 <img src={prof} alt="" className='w-6'/>
@@ -163,14 +163,14 @@ export const CreativeHome = () => {
 
 
 
-            <div className='ml-auto flex gap-3'>
+            <div className='lg:ml-auto flex gap-3'>
               <button className='text-[0.7rem] bg-black text-white py-2 px-4 rounded-md flex gap-2 items-center'>copy number <IoCopyOutline /></button>
               <button className='text-[0.7rem] border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
             </div>
           </div>
 
 
-          <div className='p-3 my-5 rounded-md flex hover:bg-neutral-200' >
+          <div className='lg:p-3 p-1 my-5 rounded-md flex hover:bg-neutral-200' >
             <div className='flex gap-4 items-center'>
               <div>
                 <img src={prof} alt="" className='w-6'/>
