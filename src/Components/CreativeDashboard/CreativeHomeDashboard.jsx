@@ -152,7 +152,7 @@ export const CreativeHome = () => {
         <div className='bg-neutral-100 lg:w-9/12 w-full lg:p-5 py-5 px-2 rounded-xl'>
           <h2 className='text-xs'>Booked Messages</h2>
 
-          <div className='p-3 my-5 rounded-md flex lg:flex-row flex-col gap-3 hover:bg-neutral-200' >
+          <div className='p-3 my-5 rounded-md flex lg:flex-row flex-col gap-3 hover:bg-neutral-200 border-y border-neutral-200' >
             <div className='flex gap-4 items-center'>
               <div>
                 <img src={prof} alt="" className='w-6'/>
@@ -164,13 +164,13 @@ export const CreativeHome = () => {
 
 
             <div className='lg:ml-auto flex gap-3'>
-              <button className='text-[0.7rem] bg-black text-white py-2 px-4 rounded-md flex gap-2 items-center'>copy number <IoCopyOutline /></button>
-              <button className='text-[0.7rem] border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
+              <button className='lg:text-[0.7rem] text-[0.5rem] bg-black text-white py-2 px-4 rounded-md flex gap-2 items-center'>copy number <IoCopyOutline /></button>
+              <button className='lg:text-[0.7rem] text-[0.5rem] border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
             </div>
           </div>
 
 
-          <div className='lg:p-3 p-1 my-5 rounded-md flex hover:bg-neutral-200' >
+          <div className='p-3 my-5 rounded-md flex lg:flex-row flex-col gap-3 hover:bg-neutral-200 border-y border-neutral-200 ' >
             <div className='flex gap-4 items-center'>
               <div>
                 <img src={prof} alt="" className='w-6'/>
@@ -181,15 +181,15 @@ export const CreativeHome = () => {
 
 
 
-            <div className='ml-auto flex gap-3'>
-              <button className='text-[0.7rem] bg-black text-white py-2 px-4 rounded-md flex gap-2 items-center'>copy number <IoCopyOutline /></button>
-              <button className='text-[0.7rem] border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
+            <div className='lg:ml-auto flex gap-3'>
+              <button className='lg:text-[0.7rem] text-[0.5rem] bg-black text-white py-2 px-4 rounded-md flex gap-2 items-center'>copy number <IoCopyOutline /></button>
+              <button className='lg:text-[0.7rem] text-[0.5rem] border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
             </div>
           </div>
 
 
 
-          <div className='p-3 my-5 rounded-md flex hover:bg-neutral-200' >
+          <div className='p-3 my-5 rounded-md flex lg:flex-row flex-col gap-3 hover:bg-neutral-200 border-y border-neutral-200' >
             <div className='flex gap-4 items-center'>
               <div>
                 <img src={prof} alt="" className='w-6'/>
@@ -200,13 +200,13 @@ export const CreativeHome = () => {
 
 
 
-            <div className='ml-auto flex gap-3'>
-              <button className='text-[0.7rem] bg-black text-white py-2 px-4 rounded-md flex gap-2 items-center'>copy number <IoCopyOutline /></button>
-              <button className='text-[0.7rem] border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
+            <div className='lg:ml-auto flex gap-3'>
+              <button className='lg:text-[0.7rem] text-[0.5rem] bg-black text-white py-2 px-4 rounded-md flex gap-2 items-center'>copy number <IoCopyOutline /></button>
+              <button className='lg:text-[0.7rem] text-[0.5rem] border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
             </div>
           </div>
 
-          <div className='p-3 my-5 rounded-md flex hover:bg-neutral-200' >
+          <div className='p-3 my-5 rounded-md flex lg:flex-row flex-col gap-3 hover:bg-neutral-200 border-y border-neutral-200' >
             <div className='flex gap-4 items-center'>
               <div>
                 <img src={prof} alt="" className='w-6'/>
@@ -217,13 +217,13 @@ export const CreativeHome = () => {
 
 
 
-            <div className='ml-auto flex gap-3'>
-              <button className='text-[0.7rem] bg-black text-white py-2 px-4 rounded-md flex gap-2 items-center'>copy number <IoCopyOutline /></button>
-              <button className='text-[0.7rem] border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
+            <div className='lg:ml-auto flex gap-3'>
+              <button className='lg:text-[0.7rem] text-[0.5rem] bg-black text-white py-2 px-4 rounded-md flex gap-2 items-center'>copy number <IoCopyOutline /></button>
+              <button className='lg:text-[0.7rem] text-[0.5rem] border border-cyan-500 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
             </div>
           </div>
 
-          <button className='bg-black text-xs px-5 py-2 text-white rounded-md'>See All</button>
+          <button className='bg-black text-xs px-5 py-2 text-white rounded-md w-full lg:w-fit'>See All</button>
 
         </div>
 
