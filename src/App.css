@@ -79,11 +79,21 @@ $large-Two : 1200px; */
   width: 28%;
 }
 
+
 @media only screen and (min-width: 320px) and (max-width: 480px) {
   .height{
     height: 80vh;
     max-width: 95%;
     width: 95%;
+  }
+}
+
+
+@media only screen and (min-width: 481px) and (max-width: 1626px) {
+  .height{
+    height: 80vh;
+    max-width: 50%;
+    width: 50%;
   }
 }
 
