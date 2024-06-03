@@ -300,7 +300,7 @@ export const ProfileModal = ({showModal}) => {
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕</button>
 
 
-          <div className='mycolor2 h-[15rem] overflow-hidden'>
+          <div className='mycolor4 h-[15rem] overflow-hidden'>
             <img src={completeImage} alt="" />
           </div>
 
