@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CreativeNavBarCom from './CreativeNavBarCom';
 import CreativeSideBarCom from './CreativeSideBarCom';
 import voucher from '../Images/vouvher.png'
@@ -11,12 +11,14 @@ import "react-multi-carousel/lib/styles.css";
 
 import { MdModeEditOutline } from "react-icons/md";
 import { MdArrowOutward } from "react-icons/md";
-import { IoCopyOutline } from "react-icons/io5";
 
 import { IoNotificationsCircle } from "react-icons/io5";
 import { GrUpgrade } from "react-icons/gr";
 import { MdHelpCenter } from "react-icons/md";
 import { FaUnlockKeyhole } from "react-icons/fa6";
+import { FaCheckCircle } from "react-icons/fa";
+
+import completeImage from '../Images/Buffer-bro.png'
 
 
 
@@ -24,6 +26,7 @@ const CreativeHomeDashboard = () => {
   const [token, setToken] = useState(() => localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
 
   const [show, setShow] = useState(false)
+  const [showModal, setShowModal] = useState(true)
 
   const handleShow = () => {
     setShow(!show)
@@ -37,6 +40,7 @@ const CreativeHomeDashboard = () => {
       <div className='w-full'>
         <CreativeNavBarCom show={show} handleShow={handleShow}/>
         <CreativeHome />
+        <ProfileModal showModal={showModal}/>
       </div>
     </div>
   )
@@ -56,17 +60,17 @@ export const CreativeHome = () => {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 1,
-      slidesToSlide: 1 // optional, default to 1.
+      slidesToSlide: 1
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
       items: 1,
-      slidesToSlide: 1 // optional, default to 1.
+      slidesToSlide: 1
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 1,
-      slidesToSlide: 1 // optional, default to 1.
+      slidesToSlide: 1
     }
   };
 
@@ -89,8 +93,8 @@ export const CreativeHome = () => {
             autoPlay={true}
             autoPlaySpeed={50000}
             keyBoardControl={true}
-            containerClass="carousel-container"
-            removeArrowOnDeviceType={["tablet", "mobile" ]}
+            // containerClass="carousel-container"
+            removeArrowOnDeviceType={["tablet", ]}
             dotListClass="custom-dot-list-style"
           >
 
@@ -275,3 +279,53 @@ export const CreativeHome = () => {
   )
 }
 
+
+export const ProfileModal = ({showModal}) => {
+
+
+  // useEffect(() => {
+  //   if(showModal){
+  //     document.getElementById('my_modal_3').showModal();
+  //   }else{
+  //     document.getElementById('my_modal_3').close();
+  //   }
+  // },[])
+  return (
+    <div>
+
+
+      <dialog id="my_modal_3" className="modal">
+        <div className="modal-box  p-0 rounded-md lg:height " >
+          <button onClick={()=>{document.getElementById('my_modal_3').close()}} 
+            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕</button>
+
+
+          <div className='mycolor2 h-[15rem] overflow-hidden'>
+            <img src={completeImage} alt="" />
+          </div>
+
+          <div className='p-5'>
+            <h3 className="font-medium lg:text-2xl text-xl pb-3">Complete Your Profile</h3>
+            <p className='text-xs lg:pb-10 pb-5'>
+              Completing your profile boosts visibility, and networking opportunities. 
+              It ensures you can be easily found.
+            </p>
+
+            <hr />
+            <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>Upload a stricking cover image </p>
+            <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>Upload previous works, to get hired quickly </p>
+            <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>upload a clear profile picture </p>
+            <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>Fill your profile details</p>
+
+
+            <p className="pt-10 text-center text-xs ">Once the steps above is done your good to go 😊</p>
+
+            <button className='mt-3 mycolor2 text-white w-full p-3 rounded-md lg:text-sm text-xs'>Complete your profile</button>
+          </div>
+        </div>
+      </dialog>
+
+
+    </div>
+  )
+}

@@ -9,6 +9,7 @@ import { FaLock } from "react-icons/fa6";
 import { BiLogOutCircle } from "react-icons/bi";
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const CreativeSideBarCom = ({show}) => {
 
@@ -32,10 +33,16 @@ const CreativeSideBarCom = ({show}) => {
         <div>
             <p className='text-xs text-neutral-400 p-6 pt-10 lg:p-6 pb-3 border-b-neutral-600 border-b flex items-center gap-3 '>Menu <FaLongArrowAltRight /></p>
             <ul className='flex flex-col gap-5 p-6 pb-10'>
-                <li className='text-sm bg-cyan-500 mycolor2 px-3 py-2 rounded-md w-fit text-white hover:bg-white hover:text-black cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
+                <Link to={'/creative-dashboard-home'}>
+                  <li className='text-sm bg-cyan-500 mycolor2 px-3 py-2 rounded-md w-fit text-white hover:bg-white hover:text-black cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
+                </Link>
+
                 <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoBookmark className=''/> Bookings</li>
                 <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoNotifications className=''/> Notifications</li>
-                <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><CgProfile className=''/> Profile</li>
+                
+                <Link to={'/creative-dashboard-profile'}>
+                  <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><CgProfile className=''/> Profile</li>
+                </Link>
             </ul>
         </div>
 

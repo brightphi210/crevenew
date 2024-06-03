@@ -7,6 +7,7 @@ import OTP from './Pages/AuthPage/OTP';
 import PrivateRoute from './Components/Auth/AuthContext';
 import UserHomeDash from './Pages/UserDash/UserHomeDash';
 import CreaiveHomeDash from './Pages/CreativeDash/CreaiveHomeDash';
+import CreativeProfileDash from './Pages/CreativeDash/CreativeProfileDash';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
 
           <Route element={<PrivateRoute role="Creative"/>}>
             <Route path='/creative-dashboard-home' element={<CreaiveHomeDash />}/>
+            <Route path='/creative-dashboard-profile' element={<CreativeProfileDash />}/>
           </Route>
 
         </Routes>

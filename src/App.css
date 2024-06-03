@@ -91,3 +91,13 @@ $large-Two : 1200px; */
 .mycolor3{
   border: 1px solid rgb(2, 185, 152);
 }
+
+.height{
+  height: 80vh;
+  max-width: 28%;
+  width: 28%;
+}
+
+.width{
+  width: 120%;
+}
