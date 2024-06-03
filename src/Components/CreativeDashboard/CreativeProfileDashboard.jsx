@@ -11,6 +11,8 @@ import { TbBrandWhatsapp } from "react-icons/tb";
 import { MdOutlinePhoneInTalk } from "react-icons/md";
 import { HiLanguage } from "react-icons/hi2";
 import { FaToolbox } from "react-icons/fa6";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
+
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 
@@ -63,61 +65,61 @@ export const CreativeProfile= () => {
             <button className='ml-auto flex items-center text-sm gap-2 underline'><MdModeEditOutline />Edit</button>
         </div>
 
-        <div className='bg-black p-8 rounded-md text-white'>
+        <div className='bg-black lg:p-8 p-5 rounded-lg text-white'>
 
             <div className='flex items-center gap-6'>
                 <div className='border-2 border-white rounded-full'>
-                    <img src={prof} alt="" className='w-24'/>
+                    <img src={prof} alt="" className='lg:w-24  w-24'/>
                 </div>
 
                 <div>
-                    <h2>Bright Philip</h2>
-                    <p className='flex items-center gap-2 py-2 text-sm'>12 Reviews <FaStar /><FaStar /><FaStar /></p>
-                    <p className='flex items-center gap-2 text-xs'><FaLocationDot className='text-accent'/>64, Nanka street, Port Harcourt, Rivers State.</p>
+                    <h2 className='text-sm'>Bright Philip</h2>
+                    <p className='flex items-center gap-2 py-2 lg:text-sm text-xs'>12 Reviews <FaStar /><FaStar /><FaStar /></p>
+                    <button className='bg-accent text-xs py-2 px-4 rounded-full flex items-center gap-2'><RiVerifiedBadgeFill />verified</button>
                 </div>
             </div>
 
         </div>
       </div>
 
-      <div className='flex gap-10 lg:flex-row mt-10'>
-            <div className='w-1/2 border border-neutral-200 p-10 rounded-md'>
-                <h2>General Informations</h2>
+      <div className='flex gap-10 lg:flex-row flex-col-reverse mt-10'>
+            <div className='lg:w-1/2 w-full border border-neutral-200 lg:p-10 p-5 rounded-md'>
+                <h2 className='lg:text-lg text-sm pb-3'>General Informations</h2>
                 <hr />
 
                 <div className='py-4'>
                     <h2 className='text-sm'>Work Type</h2>
-                    <p className='text-xs pt-3 flex items-center gap-2'><TbSmartHome className='text-accent text-lg'/>Remote</p>
+                    <p className='text-xs pt-4 flex items-center gap-2'><TbSmartHome className='text-accent text-sm'/>Remote</p>
                 </div>
 
                 <div className='py-4'>
                     <h2 className='text-sm'>Location</h2>
-                    <p className='flex pt-3 items-center gap-2 text-xs'><FaLocationDot className='text-accent text-lg'/>64, Nanka street, Port Harcourt, Rivers State.</p>
+                    <p className='flex pt-4 items-center gap-2 text-xs'><FaLocationDot className='text-accent text-sm'/>64, Nanka street, Port Harcourt, Rivers State.</p>
                 </div>
 
                 <div className='py-4'>
                     <h2 className='text-sm'>Language</h2>
-                    <p className='text-xs pt-3 flex items-center gap-2'> <HiLanguage className='text-accent text-lg'/>English</p>
+                    <p className='text-xs pt-4 flex items-center gap-2'> <HiLanguage className='text-accent text-sm'/>English</p>
                 </div>
 
                 <div className='py-4'>
                     <h2 className='text-sm'>Contact</h2>
-                    <p className='text-xs pt-3 flex items-center gap-2'><TbBrandWhatsapp className='text-accent text-lg'/>Whatsapp</p>
-                    <p className='text-xs pt-3 flex items-center gap-2'><MdOutlinePhoneInTalk className='text-accent text-lg'/>08094422807</p>
-                    <p className='text-xs pt-3 flex items-center gap-2'><FaGlobe className='text-accent text-lg'/>website</p>
+                    <p className='text-xs pt-4 flex items-center gap-2'><TbBrandWhatsapp className='text-accent text-sm'/>Whatsapp</p>
+                    <p className='text-xs pt-4 flex items-center gap-2'><MdOutlinePhoneInTalk className='text-accent text-sm'/>08094422807</p>
+                    <p className='text-xs pt-4 flex items-center gap-2'><FaGlobe className='text-accent text-sm'/>website</p>
                 </div>
 
             </div>
 
-            <div className='width border border-neutral-200 p-10 rounded-md'>
-                <h2>Details</h2>
+            <div className='lg:w-3/5 w-full border border-neutral-200 lg:p-10 p-5 rounded-md'>
+                <h2 className=''>Details</h2>
                 <hr />
 
                 <div className='pt-5'>
 
-                    <div className='flex items-center'>
+                    <div className='flex lg:flex-row gap-3 flex-col lg:items-center'>
                         <h2 className='text-xl flex items-center gap-3'><FaToolbox />Senior Electrician</h2>
-                        <p className='ml-auto'>Starting Price : <strong>N5,000</strong></p>
+                        <p className='lg:ml-auto text-xs'>Starting Price : <strong>N5,000</strong></p>
                     </div>
 
                     <div className='flex flex-row flex-wrap gap-3 py-5 '>
@@ -126,44 +128,43 @@ export const CreativeProfile= () => {
                         <button className='border border-neutral-300 py-2 px-4 text-xs rounded-md'>Plumber</button>
                     </div>
 
-                    <p className='text-xs pb-5'>
+                    <p className='text-xs pb-5 text-justify'>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
                         Doloremque excepturi alias velit, aliquid aspernatur dolores sint dolorum 
                         soluta labore dicta enim, officiis nostrum eveniet repellat facere dolor, 
-                        placeat aperiam! Consequuntur!
                     </p>
 
                     <div>
                         <PhotoProvider>
 
                             <PhotoView src={item1}>
-                                <div className='w-full h-[25rem]  overflow-hidden rounded-2xl cursor-pointer bg-black'>
+                                <div className='w-full lg:h-[25rem] h-[10rem]  overflow-hidden lg:rounded-2xl rounded-md cursor-pointer bg-black'>
                                     <img src={item1} alt="" className='w-full'/>
                                 </div>
                             </PhotoView>
 
 
-                            <div className="flex flex-row gap-5 w-full mt-5">
+                            <div className="lg:flex lg:flex-row gap-5 w-full mt-5 grid grid-cols-2 ">
                                 <PhotoView  src={item6}>
-                                    <div className='h-[7rem] overflow-hidden w-1/4 cursor-pointer rounded-lg bg-black'>
+                                    <div className='lg:h-[7rem] h-[4rem] overflow-hidden lg:w-1/4 w-full cursor-pointer rounded-lg bg-black'>
                                         <img src={item6} alt="" className='w-full hover:transform hover:scale-105 transition-all ease-linear'/>
                                     </div>
                                 </PhotoView>
 
                                 <PhotoView  src={item3}>
-                                    <div className='h-[7rem] overflow-hidden w-1/4 cursor-pointer rounded-lg bg-black'>
+                                    <div className='lg:h-[7rem] h-[4rem] overflow-hidden lg:w-1/4 w-full cursor-pointer rounded-lg bg-black'>
                                         <img src={item3} alt="" className='w-full hover:transform hover:scale-105 transition-all ease-linear'/>
                                     </div>
                                 </PhotoView>
 
                                 <PhotoView  src={item4}>
-                                    <div className='h-[7rem] overflow-hidden w-1/4 cursor-pointer rounded-lg bg-black'>
+                                    <div className='lg:h-[7rem] h-[4rem] overflow-hidden lg:w-1/4 w-full cursor-pointer rounded-lg bg-black'>
                                         <img src={item4} alt="" className='w-full hover:transform hover:scale-105 transition-all ease-linear'/>
                                     </div>
                                 </PhotoView>
 
                                 <PhotoView  src={item5}>
-                                    <div className='h-[7rem] overflow-hidden w-1/4 cursor-pointer rounded-lg bg-black'>
+                                    <div className='lg:h-[7rem] h-[4rem] overflow-hidden lg:w-1/4 w-full cursor-pointer rounded-lg bg-black'>
                                         <img src={item5} alt="" className='w-full hover:transform hover:scale-105 transition-all ease-linear'/>
                                     </div>
                                 </PhotoView>
@@ -172,7 +173,7 @@ export const CreativeProfile= () => {
                     </div>
 
                     <div className='w-full max-w-full pt-5'>
-                        <h2>Reviews</h2>
+                        <h2 className='text-sm py-3'>Reviews</h2>
 
                         <div className='w-full'>
                             <Swiper
