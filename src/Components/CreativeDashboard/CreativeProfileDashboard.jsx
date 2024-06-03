@@ -138,7 +138,7 @@ export const CreativeProfile= () => {
                         <PhotoProvider>
 
                             <PhotoView src={item1}>
-                                <div className='w-full lg:h-[25rem] xl:h-[20rem] h-[10rem] overflow-hidden  lg:rounded-2xl rounded-md cursor-pointer bg-black'>
+                                <div className='w-full lg:h-[20rem] h-[15rem] overflow-hidden  lg:rounded-2xl rounded-md cursor-pointer bg-black'>
                                     <img src={item1} alt="" className='w-full object-contain hover:transform hover:scale-105 transition-all ease-linear'/>
                                 </div>
                             </PhotoView>

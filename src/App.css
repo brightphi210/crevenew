@@ -151,3 +151,10 @@ $large-Two : 1200px; */
   transform: translate3d(0, 0, 0);
   z-index: 10;
 }
+
+
+@media only screen and (min-width: 1025px) and (max-width: 1265px) {
+  .res{
+    height: 10rem;
+  }
+}
