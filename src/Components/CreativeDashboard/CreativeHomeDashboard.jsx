@@ -295,7 +295,7 @@ export const ProfileModal = ({showModal}) => {
 
 
       <dialog id="my_modal_3" className="modal">
-        <div className="modal-box  p-0 rounded-md lg:height " >
+        <div className="modal-box  p-0 rounded-md height " >
           <button onClick={()=>{document.getElementById('my_modal_3').close()}} 
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕</button>
 
