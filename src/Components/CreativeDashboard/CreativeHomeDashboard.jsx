@@ -283,13 +283,13 @@ export const CreativeHome = () => {
 export const ProfileModal = ({showModal}) => {
 
 
-  // useEffect(() => {
-  //   if(showModal){
-  //     document.getElementById('my_modal_3').showModal();
-  //   }else{
-  //     document.getElementById('my_modal_3').close();
-  //   }
-  // },[])
+  useEffect(() => {
+    if(showModal){
+      document.getElementById('my_modal_3').showModal();
+    }else{
+      document.getElementById('my_modal_3').close();
+    }
+  },[])
   return (
     <div>
 
