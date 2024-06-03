@@ -15,11 +15,18 @@ import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 import item1 from '../Images/item1.jpg'
-import item2 from '../Images/item2.jpg'
 import item3 from '../Images/item3.jpg'
 import item4 from '../Images/item4.jpg'
 import item5 from '../Images/item5.jpg'
 import item6 from '../Images/item6.jpg'
+
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 
 const CreativeProfileDashboard = () => {
 
@@ -102,7 +109,7 @@ export const CreativeProfile= () => {
 
             </div>
 
-            <div className='w-full border border-neutral-200 p-10 rounded-md'>
+            <div className='width border border-neutral-200 p-10 rounded-md'>
                 <h2>Details</h2>
                 <hr />
 
@@ -139,29 +146,97 @@ export const CreativeProfile= () => {
                             <div className="flex flex-row gap-5 w-full mt-5">
                                 <PhotoView  src={item6}>
                                     <div className='h-[7rem] overflow-hidden w-1/4 cursor-pointer rounded-lg bg-black'>
-                                        <img src={item6} alt="" className='w-full '/>
+                                        <img src={item6} alt="" className='w-full hover:transform hover:scale-105 transition-all ease-linear'/>
                                     </div>
                                 </PhotoView>
 
                                 <PhotoView  src={item3}>
                                     <div className='h-[7rem] overflow-hidden w-1/4 cursor-pointer rounded-lg bg-black'>
-                                        <img src={item3} alt="" className='w-full'/>
+                                        <img src={item3} alt="" className='w-full hover:transform hover:scale-105 transition-all ease-linear'/>
                                     </div>
                                 </PhotoView>
 
                                 <PhotoView  src={item4}>
                                     <div className='h-[7rem] overflow-hidden w-1/4 cursor-pointer rounded-lg bg-black'>
-                                        <img src={item4} alt="" className='w-full'/>
+                                        <img src={item4} alt="" className='w-full hover:transform hover:scale-105 transition-all ease-linear'/>
                                     </div>
                                 </PhotoView>
 
                                 <PhotoView  src={item5}>
                                     <div className='h-[7rem] overflow-hidden w-1/4 cursor-pointer rounded-lg bg-black'>
-                                        <img src={item5} alt="" className='w-full'/>
+                                        <img src={item5} alt="" className='w-full hover:transform hover:scale-105 transition-all ease-linear'/>
                                     </div>
                                 </PhotoView>
                             </div>
                         </PhotoProvider>
+                    </div>
+
+                    <div className='w-full max-w-full pt-5'>
+                        <h2>Reviews</h2>
+
+                        <div className='w-full'>
+                            <Swiper
+                                cssMode={true}
+                                navigation={true}
+                                pagination={true}
+                                mousewheel={true}
+                                loop={true}
+                                keyboard={true}
+                                modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+                                className="mySwiper"
+                            >
+                                <SwiperSlide>
+                                    <div>
+                                        <div className='flex flex-row items-center gap-3 m-auto justify-center'>
+                                            <div className='border border-neutral-300 w-10 rounded-full'>
+                                                <img src={prof} alt="" className='w-10'/>
+                                            </div>
+                                            <h2>Jane Doe</h2>
+                                        </div>
+
+                                        <p className='text-xs text-center w-9/12 flex m-auto pt-4 mb-10'>
+                                            Hi, I’m Cassie, Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        </p>
+                                    </div>
+                                </SwiperSlide>
+                                
+
+                                <SwiperSlide>
+                                    <div>
+                                        <div className='flex flex-row items-center gap-3 m-auto justify-center'>
+                                            <div className='border border-neutral-300 w-10 rounded-full'>
+                                                <img src={prof} alt="" className='w-10'/>
+                                            </div>
+                                            <h2>Jane Doe</h2>
+                                        </div>
+
+                                        <p className='text-xs text-center w-9/12 flex m-auto pt-4 mb-10'>
+                                            Hi, I’m Cassie, Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        </p>
+                                    </div>
+                                </SwiperSlide>
+
+
+
+                                    <SwiperSlide>
+                                    <div>
+                                        <div className='flex flex-row items-center gap-3 m-auto justify-center'>
+                                            <div className='border border-neutral-300 w-10 rounded-full'>
+                                                <img src={prof} alt="" className='w-10'/>
+                                            </div>
+                                            <h2>Jane Doe</h2>
+                                        </div>
+
+                                        <p className='text-xs text-center w-9/12 flex m-auto pt-4 mb-10'>
+                                            Hi, I’m Cassie, Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        </p>
+                                    </div>
+                                </SwiperSlide>
+                            </Swiper>
+                        </div>
                     </div>
                 </div>
             </div>
