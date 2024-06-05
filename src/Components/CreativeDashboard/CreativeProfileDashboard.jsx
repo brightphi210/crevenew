@@ -28,6 +28,7 @@ import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { Link } from 'react-router-dom';
 
 
 const CreativeProfileDashboard = () => {
@@ -62,7 +63,11 @@ export const CreativeProfile= () => {
       <div>
         <div className='flex items-center py-5'>
             <h2>My Profile</h2>
-            <button className='ml-auto flex items-center text-sm gap-2 underline'><MdModeEditOutline />Edit</button>
+            <Link to={'/creative-dashboard-profile-update'} className='ml-auto'>
+                    <button className='ml-auto flex items-center text-sm gap-2 underline'>
+                    <MdModeEditOutline />Edit
+                </button>
+            </Link>
         </div>
 
         <div className='bg-black lg:p-8 p-5 rounded-lg text-white'>
