@@ -44,9 +44,9 @@ export const CreatingProfileUpdateHome = () => {
     const [fileName, setFileName] = useState('') 
     const [coverImage, setCoverImage] = useState(null) 
   return (
-    <div className='p-20 pt-28 lg:pl-[18rem]'>
-      <form action="" className='flex flex-row gap-32'>
-        <div className='w-1/2 flex flex-col gap-5'>
+    <div className='lg:p-20 lg:pt-28 lg:pl-[18rem] p-5 pt-20'>
+      <form action="" className='flex lg:flex-row flex-col-reverse lg:gap-32 gap-5'>
+        <div className='lg:w-1/2 w-full flex flex-col gap-5'>
 
 
             <div>
@@ -57,6 +57,7 @@ export const CreatingProfileUpdateHome = () => {
                     <option className='text-xs'>Onsite</option>
                 </select>
             </div>
+            
 
             <div>
                 <p className="text-xs pb-3">Location</p>
@@ -69,10 +70,47 @@ export const CreatingProfileUpdateHome = () => {
             <div>
                 <p className="text-xs pb-3">Language</p>
                 <select className="select text-xs select-bordered w-full max-w-full">
-                <option className='text-xs'>English</option>
-                <option className='text-xs'>French</option>
-                <option className='text-xs'>Spanish</option>
-            </select>
+                    <option className='text-xs'>English</option>
+                    <option className='text-xs'>French</option>
+                    <option className='text-xs'>Spanish</option>
+                </select>
+            </div>
+
+            <div>
+                <p className="text-xs pb-3">Category</p>
+                <select className="select text-xs select-bordered w-full max-w-full">
+                    <option className='text-xs'>Digital Skills</option>
+                    <option className='text-xs'>Non-Digital Skills</option>
+                </select>
+            </div>
+
+ 
+
+
+            <div>
+                <p className="text-xs pb-3">Digital</p>
+                <select className="select text-xs select-bordered w-full max-w-full">
+                    <option className='text-xs'>Backend Development</option>
+                    <option className='text-xs'>Mobile Development</option>
+                    <option className='text-xs'>UI/UX</option>
+                    <option className='text-xs'>Graphic Design</option>
+                    <option className='text-xs'>Content Creation</option>
+                    <option className='text-xs'>Frontend Development</option>
+                </select>
+            </div>
+
+            <div>
+                <p className="text-xs pb-3">Non-Digital</p>
+                <select className="select text-xs select-bordered w-full max-w-full">
+                    <option className='text-xs'>Plumbing</option>
+                    <option className='text-xs'>Catering</option>
+                    <option className='text-xs'>Hair Stylist</option>
+                    <option className='text-xs'>Electronics/Repairs</option>
+                    <option className='text-xs'>Cobbling</option>
+                    <option className='text-xs'>Mechanic</option>
+                    <option className='text-xs'>Fashion Designing</option>
+                    <option className='text-xs'>Furniture Making</option>
+                </select>
             </div>
 
 
@@ -119,10 +157,13 @@ export const CreatingProfileUpdateHome = () => {
                     placeholder="starting price e.g 5,000"  
                     className="input text-xs input-bordered w-full max-w-full" />
             </div>
+
+
+            <button className="btn w-full bg-black text-white mt-5">Button</button>
     
         </div>
 
-        <div className='w-1/2 flex flex-col gap-5'>
+        <div className='lg:w-1/2 w-full flex flex-col gap-5'>
 
             <div >
                 <p className="text-xs pb-3">Cover Image</p>
@@ -139,18 +180,17 @@ export const CreatingProfileUpdateHome = () => {
                     />
 
                     {image ? 
-                            <div className='w-full h-[20rem] overflow-hidden rounded-xl'>
-                                <img src={image} alt='' className='w-full'/> 
-                            </div>
+                        <div className='w-full h-[20rem] overflow-hidden rounded-xl'>
+                            <img src={image} alt='' className='w-full'/> 
+                        </div>
 
-                            : 
-                            <div className='w-full h-[20rem] flex justify-center items-center cursor-pointer border border-neutral-300 rounded-lg'>
-                                <div className=''>
-                                    <p className='flex justify-center'><AiOutlineCloudUpload /></p>
-                                    <p>Upload Cover Image </p>
-                                </div>
+                        : 
+                        <div className='w-full h-[20rem] flex justify-center items-center cursor-pointer border border-neutral-300 rounded-lg'>
+                            <div className=''>
+                                <p className='flex justify-center'><AiOutlineCloudUpload /></p>
+                                <p>Upload Cover Image </p>
                             </div>
-                        
+                        </div>
                     }
    
                 </div>
@@ -182,36 +222,36 @@ export const CreatingProfileUpdateHome = () => {
                     
                 </div>
 
-                <ul className='flex flex-row gap-2 mt-4'>
-                    <li className='bg-neutral-200 rounded-md py-2 px-4 text-xs flex items-center gap-3'>Cobbling <IoCloseSharp className='cursor-pointer text-red-700'/></li>
-                    <li className='bg-neutral-200 rounded-md py-2 px-4 text-xs flex items-center gap-3'>Skit Maker <IoCloseSharp className='cursor-pointer text-red-700'/></li>
-                    <li className='bg-neutral-200 rounded-md py-2 px-4 text-xs flex items-center gap-3'>Furniture <IoCloseSharp className='cursor-pointer text-red-700'/></li>
-                    <li className='bg-neutral-200 rounded-md py-2 px-4 text-xs flex items-center gap-3'>Spraying <IoCloseSharp className='cursor-pointer text-red-700'/></li>
+                <ul className='l:flex lg:flex-row grid grid-cols-2 gap-2 mt-4'>
+                    <li className='bg-neutral-200 rounded-md py-2 px-4 text-xs flex items-center lg:gap-3 gap-2'>Cobbling <IoCloseSharp className='cursor-pointer text-red-700 ml-auto'/></li>
+                    <li className='bg-neutral-200 rounded-md py-2 px-4 text-xs flex items-center lg:gap-3 gap-2'>Skit Maker <IoCloseSharp className='cursor-pointer text-red-700 ml-auto'/></li>
+                    <li className='bg-neutral-200 rounded-md py-2 px-4 text-xs flex items-center lg:gap-3 gap-2'>Furniture <IoCloseSharp className='cursor-pointer text-red-700 ml-auto'/></li>
+                    <li className='bg-neutral-200 rounded-md py-2 px-4 text-xs flex items-center lg:gap-3 gap-2'>Spraying <IoCloseSharp className='cursor-pointer text-red-700 ml-auto'/></li>
                 </ul>
             </div>
 
             <div>
                 <p className="text-xs pb-3">Skills - (Maximum 4 Images)</p>
                 <input type="file" className="file-input file-input-bordered w-full max-w-full text-xs " />
-                <div className='mt-4 flex gap-3'>
-                    <div className='h-[4rem] w-[8rem] relative overflow-hidden rounded-lg'>
+                <div className='mt-4 lg:flex grid grid-cols-3 gap-2'>
+                    <div className='h-[3rem] w-[6rem] relative overflow-hidden rounded-lg'>
                         <img src={img1} alt="" className='w-[10rem] rounded-lg'/>
-                        <p className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer text-red-700'/></p>
+                        <p className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer lg:text-md text-xs text-red-700'/></p>
                     </div>
 
-                    <div className='h-[4rem] w-[8rem] relative overflow-hidden rounded-lg'>
+                    <div className='h-[3rem] w-[6rem] relative overflow-hidden rounded-lg'>
                         <img src={img2} alt="" className='w-[10rem] rounded-lg'/>
-                        <p className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer text-red-700'/></p>
+                        <p className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer lg:text-md text-xs text-red-700'/></p>
                     </div>
 
-                    <div className='h-[4rem] w-[8rem] relative overflow-hidden rounded-lg'>
+                    <div className='h-[3rem] w-[6rem] relative overflow-hidden rounded-lg'>
                         <img src={img1} alt="" className='w-[10rem] rounded-lg'/>
-                        <p className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer text-red-700'/></p>
+                        <p className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer lg:text-md text-xs text-red-700'/></p>
                     </div>
 
-                    <div className='h-[4rem] w-[8rem] relative overflow-hidden rounded-lg'>
+                    <div className='h-[3rem] w-[6rem] relative overflow-hidden rounded-lg'>
                         <img src={img2} alt="" className='w-[10rem] rounded-lg'/>
-                        <p className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer text-red-700'/></p>
+                        <p className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer lg:text-md text-xs text-red-700'/></p>
                     </div>
                 </div>
             </div>
