@@ -103,7 +103,7 @@ export const CreatingProfileUpdateHome = () => {
                 <p className="text-xs pb-3">Non-Digital</p>
                 <select className="select text-xs select-bordered w-full max-w-full">
                     <option className='text-xs'>Plumbing</option>
-                    <option className='text-xs'>Catering</option>
+                    <option className='text-xs'>Catering</option>   
                     <option className='text-xs'>Hair Stylist</option>
                     <option className='text-xs'>Electronics/Repairs</option>
                     <option className='text-xs'>Cobbling</option>

@@ -38,7 +38,10 @@ const CreativeSideBarCom = ({show}) => {
                 </Link>
 
                 <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoBookmark className=''/> Bookings</li>
-                <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoNotifications className=''/> Notifications</li>
+                
+                <Link to={'/creative-dashboard-notificationAll'}>
+                  <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoNotifications className=''/> Notifications</li>
+                </Link>
                 
                 <Link to={'/creative-dashboard-profile'}>
                   <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><CgProfile className=''/> Profile</li>
