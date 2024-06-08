@@ -33,7 +33,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 const HomeComThree = () => {
   return (
-    <div className='lg:px-[10rem]  py-[5rem] px-6'>
+    <div className='2xl:px-[7rem] xl:px-[5rem] lg:px-[5rem]  py-[5rem] px-6'>
         <h2 className='text-center text-lg pb-6'>Choose Different Category </h2>
 
         <div className='grid lg:grid-cols-4 grid-cols-2 gap-5'>
@@ -124,12 +124,12 @@ const HomeComThree = () => {
                         </div>
 
                         <div>
-                            <h2 className='text-sm'>John Doe</h2>
-                            <p className='text-xs'>Fasion Designer</p>
+                            <h2 className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm'>John Doe</h2>
+                            <p className='2xl:text-sm xl:text-[9px] lg:text-[9px] text-xs'>Fasion Designer</p>
                         </div>
 
                         <div className=' ml-auto'>
-                            <button className='bg-white border border-gray-600 flex items-center gap-2 py-2 px-5 text-xs text-black rounded-md'>
+                            <button className='bg-white border border-gray-600 flex items-center gap-2 py-2 2xl:px-5 xl:px-2 lg:px-2 px-5 2xl:text-sm xl:text-[9px] lg:text-[9px] text-xs text-black rounded-md'>
                                 View Profile 
                                 <FaArrowRightLong />
                             </button>
@@ -150,12 +150,12 @@ const HomeComThree = () => {
                         </div>
 
                         <div>
-                            <h2 className='text-sm'>John Doe</h2>
-                            <p className='text-xs'>Fasion Designer</p>
+                            <h2 className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm'>John Doe</h2>
+                            <p className='2xl:text-sm xl:text-[9px] lg:text-[9px] text-xs'>Fasion Designer</p>
                         </div>
 
                         <div className=' ml-auto'>
-                                          <button className='bg-white border border-gray-600 flex items-center gap-2 py-2 px-5 text-xs text-black rounded-md'>
+                            <button className='bg-white border border-gray-600 flex items-center gap-2 py-2 2xl:px-5 xl:px-2 lg:px-2 px-5 2xl:text-sm xl:text-[9px] lg:text-[9px] text-xs text-black rounded-md'>
                                 View Profile 
                                 <FaArrowRightLong />
                             </button>
@@ -177,12 +177,12 @@ const HomeComThree = () => {
                         </div>
 
                         <div>
-                            <h2 className='text-sm'>John Doe</h2>
-                            <p className='text-xs'>Fasion Designer</p>
+                            <h2 className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm'>John Doe</h2>
+                            <p className='2xl:text-sm xl:text-[9px] lg:text-[9px] text-xs'>Fasion Designer</p>
                         </div>
 
                         <div className=' ml-auto'>
-                                          <button className='bg-white border border-gray-600 flex items-center gap-2 py-2 px-5 text-xs text-black rounded-md'>
+                            <button className='bg-white border border-gray-600 flex items-center gap-2 py-2 2xl:px-5 xl:px-2 lg:px-2 px-5 2xl:text-sm xl:text-[9px] lg:text-[9px] text-xs text-black rounded-md'>
                                 View Profile 
                                 <FaArrowRightLong />
                             </button>
@@ -203,12 +203,12 @@ const HomeComThree = () => {
                         </div>
 
                         <div>
-                            <h2 className='text-sm'>John Doe</h2>
-                            <p className='text-xs'>Fasion Designer</p>
+                            <h2 className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm'>John Doe</h2>
+                            <p className='2xl:text-sm xl:text-[9px] lg:text-[9px] text-xs'>Fasion Designer</p>
                         </div>
 
                         <div className=' ml-auto'>
-                            <button className='bg-white border border-gray-600 flex items-center gap-2 py-2 px-5 text-xs text-black rounded-md'>
+                            <button className='bg-white border border-gray-600 flex items-center gap-2 py-2 2xl:px-5 xl:px-2 lg:px-2 px-5 2xl:text-sm xl:text-[9px] lg:text-[9px] text-xs text-black rounded-md'>
                                 View Profile 
                                 <FaArrowRightLong />
                             </button>
@@ -217,7 +217,7 @@ const HomeComThree = () => {
 
                 </div>
             </div>
-            <button className='bg-black lg:py-4 lg:px-20 py-3 px-14 text-xs rounded-md border-none flex m-auto lg:mt-20 mt-5 text-white'>View More</button>
+            <button className='bg-black 2xl:py-4 2xl:px-20 xl:px-10 lg:px-10  py-3 xl:py-2 lg:py-2 px-14 xl:text-[10px] lg:text-[10px] text-xs rounded-md border-none flex m-auto lg:mt-20 mt-2 text-white'>View More</button>
         </div>
 
 
@@ -257,8 +257,8 @@ const HomeComThree = () => {
             >
                 <SwiperSlide>
                     <div className='border border-slate-300 py-4 px-6 rounded-lg'>
-                        <p className='text-3xl'><FaQuoteLeft /></p>
-                        <p className='text-xs py-5 leading-[1.5rem]'>
+                        <p className='text-3xl 2xl:text-3xl xl:text-xl lg:text-xl'><FaQuoteLeft /></p>
+                        <p className='text-xs 2xl:text-sm xl:text-[9px] lg:text-[9px] py-5 leading-[1.4rem]'>
                             Lorem ipsum dolor sit amet, consectetur 
                             adipiscing elit, sed do eiusmod tempor 
                             incididunt ut labore et dolore magna aliqua. 
@@ -266,13 +266,13 @@ const HomeComThree = () => {
                             exercitation ullamco laboris
                         </p>
 
-                        <div className='flex gap-2 items-center'>
-                            <div className='w-10 h-10 flex justify-center overflow-hidden items-center rounded-full'>
+                        <div className='flex gap-2 items-center justify-center'>
+                            <div className='w-10 h-10 xl:w-8 lg:w-8 xl:h-8 lg:h-8 flex overflow-hidden items-center rounded-full'>
                                 <img src={avatar} alt="" className='w-10'/>
                             </div>
                             <div>
-                                <p>John Doe</p>
-                                <div className='flex gap-2 text-xs'>
+                                <p className='text-xs '>John Doe</p>
+                                <div className='flex gap-2 text-[10px]'>
                                     <p><GoStarFill /></p>
                                     <p><GoStarFill /></p>
                                     <p><GoStarFill /></p>
@@ -282,10 +282,40 @@ const HomeComThree = () => {
                         </div>
                     </div>
                 </SwiperSlide>
+
+                 <SwiperSlide>
+                    <div className='border border-slate-300 py-4 px-6 rounded-lg'>
+                        <p className='text-3xl 2xl:text-3xl xl:text-xl lg:text-xl'><FaQuoteLeft /></p>
+                        <p className='text-xs 2xl:text-sm xl:text-[9px] lg:text-[9px] py-5 leading-[1.4rem]'>
+                            Lorem ipsum dolor sit amet, consectetur 
+                            adipiscing elit, sed do eiusmod tempor 
+                            incididunt ut labore et dolore magna aliqua. 
+                            Ut enim ad minim veniam, quis nostrud 
+                            exercitation ullamco laboris
+                        </p>
+
+                        <div className='flex gap-2 items-center justify-center'>
+                            <div className='w-10 h-10 xl:w-8 lg:w-8 xl:h-8 lg:h-8 flex overflow-hidden items-center rounded-full'>
+                                <img src={avatar} alt="" className='w-10'/>
+                            </div>
+                            <div>
+                                <p className='text-xs '>John Doe</p>
+                                <div className='flex gap-2 text-[10px]'>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                    <p><GoStarFill /></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide>
+
+
                 <SwiperSlide>
-                <div className='border border-slate-300 py-4 px-6 rounded-lg'>
-                        <p className='text-3xl'><FaQuoteLeft /></p>
-                        <p className='text-xs py-5 leading-[1.5rem]'>
+                    <div className='border border-slate-300 py-4 px-6 rounded-lg'>
+                        <p className='text-3xl 2xl:text-3xl xl:text-xl lg:text-xl'><FaQuoteLeft /></p>
+                        <p className='text-xs 2xl:text-sm xl:text-[9px] lg:text-[9px] py-5 leading-[1.4rem]'>
                             Lorem ipsum dolor sit amet, consectetur 
                             adipiscing elit, sed do eiusmod tempor 
                             incididunt ut labore et dolore magna aliqua. 
@@ -293,13 +323,13 @@ const HomeComThree = () => {
                             exercitation ullamco laboris
                         </p>
 
-                        <div className='flex gap-2 items-center'>
-                            <div className='w-10 h-10 flex justify-center overflow-hidden items-center rounded-full'>
+                        <div className='flex gap-2 items-center justify-center'>
+                            <div className='w-10 h-10 xl:w-8 lg:w-8 xl:h-8 lg:h-8 flex overflow-hidden items-center rounded-full'>
                                 <img src={avatar} alt="" className='w-10'/>
                             </div>
                             <div>
-                                <p>John Doe</p>
-                                <div className='flex gap-2 text-xs'>
+                                <p className='text-xs '>John Doe</p>
+                                <div className='flex gap-2 text-[10px]'>
                                     <p><GoStarFill /></p>
                                     <p><GoStarFill /></p>
                                     <p><GoStarFill /></p>
@@ -309,10 +339,13 @@ const HomeComThree = () => {
                         </div>
                     </div>
                 </SwiperSlide>
+
+
+
                 <SwiperSlide>
-                <div className='border border-slate-300 py-4 px-6 rounded-lg'>
-                        <p className='text-3xl'><FaQuoteLeft /></p>
-                        <p className='text-xs py-5 leading-[1.5rem]'>
+                    <div className='border border-slate-300 py-4 px-6 rounded-lg'>
+                        <p className='text-3xl 2xl:text-3xl xl:text-xl lg:text-xl'><FaQuoteLeft /></p>
+                        <p className='text-xs 2xl:text-sm xl:text-[9px] lg:text-[9px] py-5 leading-[1.4rem]'>
                             Lorem ipsum dolor sit amet, consectetur 
                             adipiscing elit, sed do eiusmod tempor 
                             incididunt ut labore et dolore magna aliqua. 
@@ -320,13 +353,13 @@ const HomeComThree = () => {
                             exercitation ullamco laboris
                         </p>
 
-                        <div className='flex gap-2 items-center'>
-                            <div className='w-10 h-10 flex justify-center overflow-hidden items-center rounded-full'>
+                        <div className='flex gap-2 items-center justify-center'>
+                            <div className='w-10 h-10 xl:w-8 lg:w-8 xl:h-8 lg:h-8 flex overflow-hidden items-center rounded-full'>
                                 <img src={avatar} alt="" className='w-10'/>
                             </div>
                             <div>
-                                <p>John Doe</p>
-                                <div className='flex gap-2 text-xs'>
+                                <p className='text-xs '>John Doe</p>
+                                <div className='flex gap-2 text-[10px]'>
                                     <p><GoStarFill /></p>
                                     <p><GoStarFill /></p>
                                     <p><GoStarFill /></p>
@@ -336,10 +369,13 @@ const HomeComThree = () => {
                         </div>
                     </div>
                 </SwiperSlide>
+
+
+
                 <SwiperSlide>
-                <div className='border border-slate-300 py-4 px-6 rounded-lg'>
-                        <p className='text-3xl'><FaQuoteLeft /></p>
-                        <p className='text-xs py-5 leading-[1.5rem]'>
+                    <div className='border border-slate-300 py-4 px-6 rounded-lg'>
+                        <p className='text-3xl 2xl:text-3xl xl:text-xl lg:text-xl'><FaQuoteLeft /></p>
+                        <p className='text-xs 2xl:text-sm xl:text-[9px] lg:text-[9px] py-5 leading-[1.4rem]'>
                             Lorem ipsum dolor sit amet, consectetur 
                             adipiscing elit, sed do eiusmod tempor 
                             incididunt ut labore et dolore magna aliqua. 
@@ -347,13 +383,13 @@ const HomeComThree = () => {
                             exercitation ullamco laboris
                         </p>
 
-                        <div className='flex gap-2 items-center'>
-                            <div className='w-10 h-10 flex justify-center overflow-hidden items-center rounded-full'>
+                        <div className='flex gap-2 items-center justify-center'>
+                            <div className='w-10 h-10 xl:w-8 lg:w-8 xl:h-8 lg:h-8 flex overflow-hidden items-center rounded-full'>
                                 <img src={avatar} alt="" className='w-10'/>
                             </div>
                             <div>
-                                <p>John Doe</p>
-                                <div className='flex gap-2 text-xs'>
+                                <p className='text-xs '>John Doe</p>
+                                <div className='flex gap-2 text-[10px]'>
                                     <p><GoStarFill /></p>
                                     <p><GoStarFill /></p>
                                     <p><GoStarFill /></p>
@@ -363,60 +399,8 @@ const HomeComThree = () => {
                         </div>
                     </div>
                 </SwiperSlide>
-                <SwiperSlide>
-                <div className='border border-slate-300 py-4 px-6 rounded-lg'>
-                        <p className='text-3xl'><FaQuoteLeft /></p>
-                        <p className='text-xs py-5 leading-[1.5rem]'>
-                            Lorem ipsum dolor sit amet, consectetur 
-                            adipiscing elit, sed do eiusmod tempor 
-                            incididunt ut labore et dolore magna aliqua. 
-                            Ut enim ad minim veniam, quis nostrud 
-                            exercitation ullamco laboris
-                        </p>
 
-                        <div className='flex gap-2 items-center'>
-                            <div className='w-10 h-10 flex justify-center overflow-hidden items-center rounded-full'>
-                                <img src={avatar} alt="" className='w-10'/>
-                            </div>
-                            <div>
-                                <p>John Doe</p>
-                                <div className='flex gap-2 text-xs'>
-                                    <p><GoStarFill /></p>
-                                    <p><GoStarFill /></p>
-                                    <p><GoStarFill /></p>
-                                    <p><GoStarFill /></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                <div className='border border-slate-300 py-4 px-6 rounded-lg'>
-                        <p className='text-3xl'><FaQuoteLeft /></p>
-                        <p className='text-xs py-5 leading-[1.5rem]'>
-                            Lorem ipsum dolor sit amet, consectetur 
-                            adipiscing elit, sed do eiusmod tempor 
-                            incididunt ut labore et dolore magna aliqua. 
-                            Ut enim ad minim veniam, quis nostrud 
-                            exercitation ullamco laboris
-                        </p>
 
-                        <div className='flex gap-2 items-center'>
-                            <div className='w-10 h-10 flex justify-center overflow-hidden items-center rounded-full'>
-                                <img src={avatar} alt="" className='w-10'/>
-                            </div>
-                            <div>
-                                <p>John Doe</p>
-                                <div className='flex gap-2 text-xs'>
-                                    <p><GoStarFill /></p>
-                                    <p><GoStarFill /></p>
-                                    <p><GoStarFill /></p>
-                                    <p><GoStarFill /></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </SwiperSlide>
             </Swiper>
         </div>
     </div>

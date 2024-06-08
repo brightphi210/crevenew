@@ -175,6 +175,8 @@ $large-Two : 1200px; */
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+
+
 }
 
 
@@ -184,3 +186,13 @@ $large-Two : 1200px; */
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+
+
+
+.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal{
+  display: none !important;
+}
+
+
+
+

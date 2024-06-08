@@ -34,19 +34,19 @@ const CreativeSideBarCom = ({show}) => {
             <p className='text-xs text-neutral-400 p-6 pt-10 lg:p-6 pb-3 border-b-neutral-600 border-b flex items-center gap-3 '>Menu <FaLongArrowAltRight /></p>
             <ul className='flex flex-col gap-5 p-6 pb-10'>
                 <Link to={'/creative-dashboard-home'}>
-                  <li className='text-sm bg-cyan-500 mycolor2 px-3 py-2 rounded-md w-fit text-white hover:bg-white hover:text-black cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
+                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] bg-cyan-500 mycolor2 px-3 py-2 rounded-md w-fit text-white hover:bg-white hover:text-black cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
                 </Link>
 
                 <Link to={'/creative-dashboard-bookingsAll'} >
-                  <li className='lg:text-sm text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoBookmark className=''/> Bookings</li>
+                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoBookmark className=''/> Bookings</li>
                 </Link>
                 
                 <Link to={'/creative-dashboard-notificationAll'}>
-                  <li className='lg:text-sm text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoNotifications className=''/> Notifications</li>
+                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoNotifications className=''/> Notifications</li>
                 </Link>
                 
                 <Link to={'/creative-dashboard-profile'}>
-                  <li className='lg:text-sm text-base hover:text-accent cursor-pointer flex items-center gap-3'><CgProfile className=''/> Profile</li>
+                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-base hover:text-accent cursor-pointer flex items-center gap-3'><CgProfile className=''/> Profile</li>
                 </Link>
             </ul>
         </div>
@@ -54,9 +54,9 @@ const CreativeSideBarCom = ({show}) => {
         <div>
             <p className='text-xs text-neutral-400 p-6 pb-3 border-b-neutral-600 border-b flex items-center gap-3'>Preference <FaLongArrowAltRight /></p>
             <ul className='flex flex-col gap-5 p-6'>
-                <li className='lg:text-sm text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoSettingsSharp className=''/> Settings</li>
-                <li className='lg:text-sm text-base text-neutral-400 cursor-default flex items-center gap-3'><FaLock className=''/> Creve Pro</li>
-                <li className='lg:text-sm text-base hover:text-accent cursor-pointer flex items-center gap-3' onClick={logout}><BiLogOutCircle className=''/> Logout</li>
+                <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoSettingsSharp className=''/> Settings</li>
+                <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-base text-neutral-400 cursor-default flex items-center gap-3'><FaLock className=''/> Creve Pro</li>
+                <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-base hover:text-accent cursor-pointer flex items-center gap-3' onClick={logout}><BiLogOutCircle className=''/> Logout</li>
             </ul>
         </div>
 

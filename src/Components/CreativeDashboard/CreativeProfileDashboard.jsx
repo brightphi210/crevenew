@@ -87,8 +87,8 @@ export const CreativeProfile= () => {
         </div>
       </div>
 
-      <div className='flex gap-10 lg:flex-row flex-col-reverse mt-10'>
-            <div className='lg:w-1/2 w-full border border-neutral-200 lg:p-10 p-5 rounded-md'>
+      <div className='flex gap-10 2xl:flex-row xl:flex-col flex-col-reverse mt-10'>
+            <div className='2xl:w-1/2 xl:w-full w-full border border-neutral-200 lg:p-10 p-5 rounded-md'>
                 <h2 className='lg:text-lg text-sm pb-3'>General Informations</h2>
                 <hr />
 
@@ -116,7 +116,7 @@ export const CreativeProfile= () => {
 
             </div>
 
-            <div className='lg:w-3/5 w-full border border-neutral-200 lg:p-10 p-5 rounded-md'>
+            <div className='2xl:w-3/5 xl:w-full w-full border border-neutral-200 lg:p-10 p-5 rounded-md'>
                 <h2 className=''>Details</h2>
                 <hr />
 
@@ -143,34 +143,34 @@ export const CreativeProfile= () => {
                         <PhotoProvider>
 
                             <PhotoView src={item1}>
-                                <div className='w-full lg:h-[25rem] xl:h-[20rem] h-[10rem] overflow-hidden  lg:rounded-2xl rounded-md cursor-pointer bg-black'>
+                                <div className='w-full 2xl:h-[20rem] xl:h-[15rem] lg-[15rem] overflow-hidden  lg:rounded-2xl rounded-md cursor-pointer bg-black'>
                                     <img src={item1} alt="" className='w-full object-contain hover:transform hover:scale-105 transition-all ease-linear'/>
                                 </div>
                             </PhotoView>
 
 
-                            <div className="lg:flex lg:flex-row gap-5 w-full mt-5 grid grid-cols-2 ">
+                            <div className="2xl:grid 2xl:grid-cols-4 xl:grid xl:grid-cols-3 lg:grid lg:grid-cols-3 gap-5 w-full mt-5 grid grid-cols-2 ">
                                 <PhotoView  src={item6}>
-                                    <div className='lg:h-[6rem] h-[4rem] overflow-hidden lg:w-1/4 w-full cursor-pointer rounded-lg bg-black'>
-                                        <img src={item6} alt="" className='w-full hover:transform hover:scale-105 transition-all ease-linear'/>
+                                    <div className='2xl:h-[5rem] xl:h-[4rem] lg:h-[4rem] h-[4rem] overflow-hidden 2xl:w-[100%] w-full cursor-pointer rounded-lg bg-black'>
+                                        <img src={item6} alt="" className='2xl:w-[120%] hover:transform hover:scale-105 transition-all ease-linear'/>
                                     </div>
                                 </PhotoView>
 
                                 <PhotoView  src={item3}>
-                                    <div className='lg:h-[6rem] h-[4rem] overflow-hidden lg:w-1/4 w-full cursor-pointer rounded-lg bg-black'>
-                                        <img src={item3} alt="" className='w-full hover:transform hover:scale-105 transition-all ease-linear'/>
+                                    <div className='2xl:h-[5rem] xl:h-[4rem] lg:h-[4rem] h-[4rem] overflow-hidden 2xl:w-[100%] w-full cursor-pointer rounded-lg bg-black'>
+                                        <img src={item3} alt="" className='2xl:w-[120%] hover:transform hover:scale-105 transition-all ease-linear'/>
                                     </div>
                                 </PhotoView>
 
                                 <PhotoView  src={item4}>
-                                    <div className='lg:h-[6rem] h-[4rem] overflow-hidden lg:w-1/4 w-full cursor-pointer rounded-lg bg-black'>
-                                        <img src={item4} alt="" className='w-full hover:transform hover:scale-105 transition-all ease-linear'/>
+                                    <div className='2xl:h-[5rem] xl:h-[4rem] lg:h-[4rem] h-[4rem] overflow-hidden 2xl:w-[100%] w-full cursor-pointer rounded-lg bg-black'>
+                                        <img src={item4} alt="" className='2xl:w-[120%] hover:transform hover:scale-105 transition-all ease-linear'/>
                                     </div>
                                 </PhotoView>
 
                                 <PhotoView  src={item5}>
-                                    <div className='lg:h-[6rem] h-[4rem] overflow-hidden lg:w-1/4 w-full cursor-pointer rounded-lg bg-black'>
-                                        <img src={item5} alt="" className='w-full hover:transform hover:scale-105 transition-all ease-linear'/>
+                                    <div className='2xl:h-[5rem] xl:h-[4rem] lg:h-[4rem] h-[4rem] overflow-hidden 2xl:w-[100%] w-full cursor-pointer rounded-lg bg-black'>
+                                        <img src={item5} alt="" className='2xl:w-[120%] hover:transform hover:scale-105 transition-all ease-linear'/>
                                     </div>
                                 </PhotoView>
                             </div>

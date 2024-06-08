@@ -79,9 +79,9 @@ export const CreativeHome = () => {
 
 
     <div className='lg:p-16 pt-20 lg:pl-[18rem] p-5'>
-      <div className='flex lg:flex-row flex-col gap-10'>
+      <div className='flex 2xl:flex-row flex-col gap-10'>
 
-        <div className='lg:w-9/12 w-full bg-black rounded-xl text-white'>
+        <div className='2xl:w-9/12 w-full bg-black rounded-xl text-white'>
           <Carousel
             responsive={responsive}
             swipeable={true}
@@ -98,7 +98,7 @@ export const CreativeHome = () => {
             dotListClass="custom-dot-list-style"
           >
 
-            <div className='p-10 lg:px-20 px-8 flex lg:flex-row flex-col items-center'>
+            <div className='p-10 lg:px-20 px-8 flex 2xl:flex-row lg:flex-row flex-col items-center'>
               <div className=''>
                 <p className='lg:text-sm text-xs'>
                   Join Freelancer Plus now to unlock new features to help you <br className='lg:block hidden'/>
@@ -152,8 +152,8 @@ export const CreativeHome = () => {
 
       </div>
 
-      <div className='mt-10 flex lg:flex-row flex-col  w-full gap-10'>
-        <div className='bg-neutral-100 lg:w-9/12 w-full lg:p-5 py-5 px-2 rounded-xl'>
+      <div className='mt-10 flex 2xl:flex-row flex-col  w-full gap-10'>
+        <div className='bg-neutral-100 2xl:w-[77%] lg:p-5 py-5 px-2 rounded-xl'>
           <h2 className='text-xs'>Booked Messages</h2>
 
           <div className='p-3 my-5 rounded-md flex lg:flex-row flex-col gap-3 hover:bg-neutral-200 border-y border-neutral-200' >
@@ -227,12 +227,12 @@ export const CreativeHome = () => {
             </div>
           </div>
 
-          <button className='bg-black text-xs px-5 py-3 text-white rounded-md w-full lg:w-fit'>See All</button>
+          <button className='bg-black text-xs px-5 py-3 text-white rounded-md w-full 2xl:w-fit lg:w-fit'>See All</button>
 
         </div>
 
 
-        <div className='lg:w-[22rem] w-full'>
+        <div className=' 2xl:w-[23%] w-full'>
           <div className='bg-neutral-100 p-5 w-full rounded-xl '>
             <p className='text-xs'>Notifications</p>  
 
@@ -240,7 +240,7 @@ export const CreativeHome = () => {
             <div className='my-3 hover:bg-neutral-200 flex items-center gap-3 p-3 rounded-md'>
                 <p className='text-cyan-500 mycolor text-4xl'><IoNotificationsCircle /></p>
                 <div>
-                  <h2 className='text-sm flex items-center gap-2'>Your account is verified</h2>
+                  <h2 className='text-sm flex items-center gap-2 2xl:text-xs'>Your account is verified</h2>
                   <p className='text-xs text-neutral-400'>2 days ago</p>
                 </div>
                 
@@ -249,7 +249,7 @@ export const CreativeHome = () => {
               <div className='my-3 hover:bg-neutral-200 flex items-center gap-3 p-3 rounded-md'>
                 <p className='text-cyan-500 mycolor text-4xl'><IoNotificationsCircle /></p>
                 <div>
-                  <h2 className='text-sm flex items-center gap-2'>Login Successful</h2>
+                  <h2 className='text-sm flex items-center gap-2 2xl:text-xs'>Login Successful</h2>
                   <p className='text-xs text-neutral-400'>2 days ago</p>
                 </div>
                 
@@ -258,13 +258,13 @@ export const CreativeHome = () => {
               <div className='my-3 hover:bg-neutral-200 flex items-center gap-3 p-3 rounded-md'>
                 <p className='text-cyan-500 mycolor text-4xl'><IoNotificationsCircle /></p>
                 <div>
-                  <h2 className='text-sm flex items-center gap-2'>Login Successful</h2>
+                  <h2 className='text-sm flex items-center gap-2 2xl:text-xs'>Login Successful</h2>
                   <p className='text-xs text-neutral-400'>2 days ago</p>
                 </div>
                 
               </div>
 
-              <button className='bg-black text-xs px-5 py-3 text-white w-full rounded-md'>See All</button>
+              <button className='bg-black text-xs px-5 py-3 text-white 2xl:w-full w-full lg:w-fit rounded-md'>See All</button>
 
             </div>
           </div>
@@ -289,9 +289,9 @@ export const ProfileModal = ({showModal}) => {
 
   useEffect(() => {
     if(showModal){
-      document.getElementById('my_modal_3').showModal();
+      // document.getElementById('my_modal_3').showModal();
     }else{
-      document.getElementById('my_modal_3').close();
+      // document.getElementById('my_modal_3').close();
     }
   },[])
   return (

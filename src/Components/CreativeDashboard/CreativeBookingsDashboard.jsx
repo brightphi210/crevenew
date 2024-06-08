@@ -135,8 +135,8 @@ export const CreativeBookings = () => {
 
           {showBoookingsDesc === false ? 
 
-            <div className='bg-neutral-100 2xl:w-1/4 w-full p-5 lg:pt-20 rounded-lg'>
-                  <p className='lg:text-[10rem] text-[5rem] flex m-auto justify-center'><TbClick /></p>
+            <div className='bg-neutral-100 2xl:w-1/4 w-full p-5 2xl:pt-20 rounded-lg'>
+                  <p className='2xl:text-[8rem] text-[5rem] flex m-auto justify-center'><TbClick /></p>
                   <h2 className='text-center pt-5'>Click to see details</h2>
               </div>:
 
