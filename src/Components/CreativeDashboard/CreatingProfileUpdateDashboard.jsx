@@ -43,6 +43,17 @@ export const CreatingProfileUpdateHome = () => {
     const [image, setImage] = useState(null) 
     const [fileName, setFileName] = useState('') 
     const [coverImage, setCoverImage] = useState(null) 
+
+
+    const [selectedOption, setSelectedOption] = useState('digital')
+
+    const handleShowDigital = (e) =>{
+        setSelectedOption(e.target.value)
+    }
+    console.log(selectedOption);  
+
+
+
   return (
     <div className='lg:p-20 lg:pt-28 lg:pl-[18rem] p-5 pt-20'>
       <form action="" className='flex lg:flex-row flex-col-reverse lg:gap-32 gap-5'>
@@ -78,40 +89,47 @@ export const CreatingProfileUpdateHome = () => {
 
             <div>
                 <p className="text-xs pb-3">Category</p>
-                <select className="select text-xs select-bordered w-full max-w-full">
-                    <option className='text-xs'>Digital Skills</option>
-                    <option className='text-xs'>Non-Digital Skills</option>
+                <select className="select text-xs  select-bordered w-full max-w-full" value={selectedOption} onChange={handleShowDigital}>
+                    {/* <option className='text-xs'>- - Skills Category - -</option> */}
+                    <option className='text-xs' value={'digital'}>Digital Skills</option>
+                    <option className='text-xs' value={'nondigital'}>Non-Digital Skills</option>
                 </select>
             </div>
 
  
+            {selectedOption === 'digital' && (
+
+                <div>
+                    <p className="text-xs pb-3">Digital</p>
+                    <select className="select text-xs select-bordered w-full max-w-full">
+                        <option className='text-xs'>Backend Development</option>
+                        <option className='text-xs'>Mobile Development</option>
+                        <option className='text-xs'>UI/UX</option>
+                        <option className='text-xs'>Graphic Design</option>
+                        <option className='text-xs'>Content Creation</option>
+                        <option className='text-xs'>Frontend Development</option>
+                    </select>
+                </div>
+            ) }
+            
+            {selectedOption === 'nondigital' && (
+
+                <div>
+                    <p className="text-xs pb-3">Non-Digital</p>
+                    <select className="select text-xs select-bordered w-full max-w-full">
+                        <option className='text-xs'>Plumbing</option>
+                        <option className='text-xs'>Catering</option>   
+                        <option className='text-xs'>Hair Stylist</option>
+                        <option className='text-xs'>Electronics/Repairs</option>
+                        <option className='text-xs'>Cobbling</option>
+                        <option className='text-xs'>Mechanic</option>
+                        <option className='text-xs'>Fashion Designing</option>
+                        <option className='text-xs'>Furniture Making</option>
+                    </select>
+                </div>
+            )}
 
 
-            <div>
-                <p className="text-xs pb-3">Digital</p>
-                <select className="select text-xs select-bordered w-full max-w-full">
-                    <option className='text-xs'>Backend Development</option>
-                    <option className='text-xs'>Mobile Development</option>
-                    <option className='text-xs'>UI/UX</option>
-                    <option className='text-xs'>Graphic Design</option>
-                    <option className='text-xs'>Content Creation</option>
-                    <option className='text-xs'>Frontend Development</option>
-                </select>
-            </div>
-
-            <div>
-                <p className="text-xs pb-3">Non-Digital</p>
-                <select className="select text-xs select-bordered w-full max-w-full">
-                    <option className='text-xs'>Plumbing</option>
-                    <option className='text-xs'>Catering</option>   
-                    <option className='text-xs'>Hair Stylist</option>
-                    <option className='text-xs'>Electronics/Repairs</option>
-                    <option className='text-xs'>Cobbling</option>
-                    <option className='text-xs'>Mechanic</option>
-                    <option className='text-xs'>Fashion Designing</option>
-                    <option className='text-xs'>Furniture Making</option>
-                </select>
-            </div>
 
 
             <div>

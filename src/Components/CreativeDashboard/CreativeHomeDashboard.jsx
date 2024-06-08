@@ -266,7 +266,7 @@ export const CreativeHome = () => {
           </div>
 
           <div className='bg-neutral-100 p-5 w-full rounded-xl mt-3 flex flex-col gap-5'>
-            <p className='text-xs flex items-center gap-5 cursor-pointe'>Upgrade to creve pro <FaUnlockKeyhole /></p>
+            <p className='text-xs flex items-center gap-5 cursor-pointe text-neutral-400'>Upgrade to pro <FaUnlockKeyhole /></p>
             <p className='text-xs flex items-center gap-5 cursor-pointer'>Help Center <MdHelpCenter /></p>
             <p className='text-xs flex items-center gap-5 cursor-pointer'>Join Community <GrUpgrade /></p>
           </div>
