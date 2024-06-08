@@ -16,6 +16,7 @@ const LoginCom = () => {
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState('')
   const [show, setShow] = useState(false)
+  const [error, setError] = useState('')
 
 
   const url =`${BASE_URL}/api/token/`
@@ -54,13 +55,18 @@ const LoginCom = () => {
         }
 
         else{
+
+          const data = await res.json();
+          console.log(data);
           console.log('There was an error');
           setIsLoading(false)
+          setError(data.detail)
         }
-
-    } catch (error) {
-        console.log(error);
-    }
+          
+        } catch (error) {
+            console.log(error);
+            setError(error)
+        }
   }
 
   return (
@@ -111,7 +117,7 @@ const LoginCom = () => {
         </div>
 
 
-
+        <p className='text-xs text-red-500'>{error}</p>
         <div className='flex'>
           <button className="btn hover:bg-neutral-900 bg-black text-white w-full">{isLoading === true ? 'Loading . . ' : 'Login'}</button>
         </div>

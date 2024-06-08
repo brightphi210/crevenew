@@ -13,6 +13,8 @@ const RegisterCom = () => {
   const [fullname, setfullName] = useState('')
   const [role, setRole] = useState('')
 
+  const [error, setError] = useState('')
+
   const [isLoading, setIsLoading] = useState(false)
   const [show, setShow] = useState(false)
 
@@ -46,6 +48,9 @@ const RegisterCom = () => {
         localStorage.setItem('userData', JSON.stringify(data))
       } else {
         setIsLoading(false)
+        const data = await response.json()
+        console.log(data);
+        setError(data.password)
         console.log('There was an error');
       }
     } catch (error) {
@@ -141,6 +146,9 @@ const RegisterCom = () => {
           
           </div>
         </div>
+
+
+        <p className='text-xs text-red-500'>{error}</p>
 
         <div className='flex'>
           <button type='submit' 
