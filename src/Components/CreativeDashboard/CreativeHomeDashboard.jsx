@@ -4,6 +4,7 @@ import CreativeSideBarCom from './CreativeSideBarCom';
 import voucher from '../Images/vouvher.png'
 import laptop from '../Images/laptop.png'
 import prof from '../Images/Avatars.png'
+import community from '../Images/community2.png'
 
 
 import Carousel from "react-multi-carousel";
@@ -275,13 +276,13 @@ export const CreativeHome = () => {
           <div className='bg-neutral-100 p-5 w-full rounded-xl mt-3 flex flex-col gap-5'>
             <p className='text-xs flex items-center gap-5 cursor-pointe text-neutral-400'>Upgrade to pro <FaUnlockKeyhole /></p>
             <p className='text-xs flex items-center gap-5 cursor-pointer'>Help Center <MdHelpCenter /></p>
-            <p className='text-xs flex items-center gap-5 cursor-pointer'>Join Community <GrUpgrade /></p>
+            <p className='text-xs flex items-center gap-5 cursor-pointer' onClick={()=>document.getElementById('my_modal_3').showModal()}>Join Community <GrUpgrade /></p>
           </div>
         </div>
 
 
           <dialog id="my_modal_2" className="modal">
-            <div className="modal-box 2xl:w-[25rem] lx:w-[25rem]  lg:w-[25rem] w-[95%] absolute 2xl:right-10 2xl:top-20 xl:right-10 xl:top-20 lg:right-10 lg:top-20 2xl:h-[55vh] 2xl:max-h-[h-55vh] xl:h-[70vh] xl:max-h-[h-70vh] lg:max-h-[h-70vh] lg:h-[70vh] rounded-lg z-auto overflow-y-scroll">
+            <div className="modal-box 2xl:w-[25rem] lx:w-[25rem]  lg:w-[25rem] w-[90%] absolute 2xl:right-10 2xl:top-20 xl:right-10 xl:top-20 lg:right-10 lg:top-20 2xl:h-[55vh] 2xl:max-h-[h-55vh] xl:h-[70vh] xl:max-h-[h-70vh] lg:max-h-[h-70vh] lg:h-[70vh] rounded-lg z-auto overflow-y-scroll">
               <button onClick={()=>{document.getElementById('my_modal_2').close()}} 
                 className="btn btn-sm btn-circle btn-ghost absolute right-5 top-5 bg-white text-black hover:text-white">✕
               </button>
@@ -301,6 +302,37 @@ export const CreativeHome = () => {
                   <button className="btn btn-active hover:bg-black bg-black w-full text-xs px-5 py-3 rounded-md mt-5 text-white ">Contact</button>
                 </div>
               </div>
+            </div>
+            <form method="dialog" className="modal-backdrop">
+              <button>close</button>
+            </form>
+          </dialog>
+
+
+
+          <dialog id="my_modal_3" className="modal">
+            <div className="modal-box 2xl:w-[25rem] lx:w-[25rem] p-0 lg:w-[25rem] w-[90%]  2xl:h-[50vh] xl:h-[50vh]  lg:max-h-[h-50vh] lg:h-[50vh] rounded-lg">
+              
+
+              <div className='w-full'>
+                <img src={community} alt="" className='w-full'/>
+              </div>
+
+              <div className='p-5 pt-10'>
+                <h2>Welcome to your dashboard 👋 </h2>
+                <p className='text-xs py-5'>We’re glad to have you onboard. join our unique community to get latest updates from us.</p>
+
+                <div className='flex gap-3 mt-4'>
+                  <button className='mycolor3 py-3 px-5 text-xs rounded-md w-full' onClick={()=>{document.getElementById('my_modal_3').close()}}>Close</button>
+                  <button className='mycolor2 text-white py-3 px-5 text-xs rounded-md w-full'>Join Now</button>
+                </div>
+              </div>
+              
+              
+              <button onClick={()=>{document.getElementById('my_modal_3').close()}} 
+                className="btn btn-sm btn-circle btn-ghost absolute right-5 top-5 bg-white text-black hover:text-white">✕
+              </button>
+
             </div>
             <form method="dialog" className="modal-backdrop">
               <button>close</button>
