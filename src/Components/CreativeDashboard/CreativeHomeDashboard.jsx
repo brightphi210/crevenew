@@ -19,6 +19,7 @@ import { FaUnlockKeyhole } from "react-icons/fa6";
 import { FaCheckCircle } from "react-icons/fa";
 
 import completeImage from '../Images/Buffer-bro.png'
+import { Link } from 'react-router-dom';
 
 
 
@@ -144,7 +145,10 @@ export const CreativeHome = () => {
                 <progress className="progress progress-success " value="70" max="100"></progress>
                 <p className='text-xs'>70%</p>
               </div>
-              <button className='bg-black text-white rounded-md text-[0.6rem] py-2 px-3 flex  mt-2 gap-2'><MdModeEditOutline className='text-md'/>Edith Profile</button>
+
+              <Link to={'/creative-dashboard-profile-update'}>
+                <button className='bg-black text-white rounded-md text-[0.6rem] py-2 px-3 flex  mt-2 gap-2'><MdModeEditOutline className='text-md'/>Edith Profile</button>
+              </Link>
             </div>
 
           </div>
@@ -168,12 +172,12 @@ export const CreativeHome = () => {
 
 
             <div className='ml-auto flex '>
-              <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1'>View <MdArrowOutward /></button>
+              <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1' onClick={()=>document.getElementById('my_modal_2').showModal()}>View <MdArrowOutward /></button>
             </div>
           </div>
 
 
-          <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-white hover:bg-neutral-200' >
+          <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-white hover:bg-neutral-200'  onClick={()=>document.getElementById('my_modal_2').showModal()}>
             <div className='flex gap-2 items-center'>
               <div>
                 <img src={prof} alt="" className='w-6'/>
@@ -189,7 +193,7 @@ export const CreativeHome = () => {
             </div>
           </div>
 
-          <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-white hover:bg-neutral-200' >
+          <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-white hover:bg-neutral-200'  onClick={()=>document.getElementById('my_modal_2').showModal()}>
             <div className='flex gap-2 items-center'>
               <div>
                 <img src={prof} alt="" className='w-6'/>
@@ -206,7 +210,7 @@ export const CreativeHome = () => {
           </div>
 
 
-          <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-white hover:bg-neutral-200' >
+          <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-white hover:bg-neutral-200'  onClick={()=>document.getElementById('my_modal_2').showModal()}>
             <div className='flex gap-2 items-center'>
               <div>
                 <img src={prof} alt="" className='w-6'/>
@@ -222,7 +226,9 @@ export const CreativeHome = () => {
             </div>
           </div>
 
-          <button className='bg-black text-xs px-5 py-3 text-white rounded-md w-full 2xl:w-fit lg:w-fit'>See All</button>
+          <Link to={'/creative-dashboard-bookingsAll'}>
+            <button className='bg-black text-xs px-5 py-3 text-white rounded-md w-full 2xl:w-fit lg:w-fit'>See All</button>
+          </Link>
 
         </div>
 
@@ -259,7 +265,9 @@ export const CreativeHome = () => {
                 
               </div>
 
-              <button className='bg-black text-xs px-5 py-3 text-white 2xl:w-full w-full lg:w-fit rounded-md'>See All</button>
+              <Link to={'/creative-dashboard-notificationAll'}>
+                <button className='bg-black text-xs px-5 py-3 text-white 2xl:w-full w-full lg:w-fit rounded-md'>See All</button>
+              </Link>
 
             </div>
           </div>
@@ -272,7 +280,32 @@ export const CreativeHome = () => {
         </div>
 
 
+          <dialog id="my_modal_2" className="modal">
+            <div className="modal-box 2xl:w-[25rem] lx:w-[25rem]  lg:w-[25rem] w-[95%] absolute 2xl:right-10 2xl:top-20 xl:right-10 xl:top-20 lg:right-10 lg:top-20 2xl:h-[55vh] 2xl:max-h-[h-55vh] xl:h-[70vh] xl:max-h-[h-70vh] lg:max-h-[h-70vh] lg:h-[70vh] rounded-lg z-auto overflow-y-scroll">
+              <button onClick={()=>{document.getElementById('my_modal_2').close()}} 
+                className="btn btn-sm btn-circle btn-ghost absolute right-5 top-5 bg-white text-black hover:text-white">✕
+              </button>
 
+              <div className=' py-5 px-3'>
+                <div className='w-24 flex justify-center m-auto'>
+                  <img src={prof} alt="" />
+                </div>
+
+                <div className='text-center'>
+                  <h2 className='text-sm'>John Doe</h2>
+                  <p className='text-xs py-2'>john@gmail.com</p>
+                  <p className='text-xs'>Time: 5pm</p>
+
+
+                  <p className='bg-neutral-100 p-5 text-xs mt-3 text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus nisi sint asperiores, quibusdam, natus sequi rerum qui architecto est repellat incidunt facilis magnam eligendi aut eos laudantium earum, quidem deleniti?</p>
+                  <button className="btn btn-active hover:bg-black bg-black w-full text-xs px-5 py-3 rounded-md mt-5 text-white ">Contact</button>
+                </div>
+              </div>
+            </div>
+            <form method="dialog" className="modal-backdrop">
+              <button>close</button>
+            </form>
+          </dialog>
       </div>
     </div>
   )
