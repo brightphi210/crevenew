@@ -47,7 +47,7 @@ export const CreativeNotificationHome = () => {
             <p className='absolute top-4 left-5'><LuSearch /></p>
         </div>
         
-      </div>
+      </div>    
 
 
       <div>
@@ -71,5 +71,6 @@ export const CreativeNotificationHome = () => {
         
       </div>
     </div>
+
   )
 }

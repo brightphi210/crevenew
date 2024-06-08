@@ -64,9 +64,9 @@ const LoginCom = () => {
   }
 
   return (
-    <div class="bg-white flex justify-center items-center lg:h-screen lg:pt-0 pt-[5rem]">
+    <div class="bg-white flex lg:flex-row flex-col justify-center items-center lg:h-screen lg:pt-0 ">
 
-      <div class="w-1/2 h-screen hidden lg:block">
+      <div class="lg:w-1/2 w-full lg:h-screen h-[45vh]  lg:block">
         <video 
             src={vd1}
             autoPlay 
@@ -79,7 +79,7 @@ const LoginCom = () => {
       </div>
 
       <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
-        <h1 class="text-2xl font-semibold mb-4">Login</h1>
+        <h1 class="text-xl font-semibold mb-4">Login</h1>
 
         <form  className='flex flex-col gap-5' onSubmit={handleLogin}>
 
