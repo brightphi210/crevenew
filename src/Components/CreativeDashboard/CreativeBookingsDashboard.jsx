@@ -46,21 +46,21 @@ export const CreativeBookings = () => {
 
 
   return (
-    <div className='lg:p-20 lg:pt-28 lg:pl-[18rem] p-5 pt-20'>
+    <div className='2xl:p-20 2xl:pt-28 2xl:pl-[18rem] lg:pl-[18rem] p-5 pt-20'>
       <div>
         <div className=''>
             <h2>My Bookings</h2>
             <p className='text-xs pt-2'>List of all bookings from clients</p>
         </div>
 
-        <div className='w-full flex lg:flex-row flex-col-reverse mt-5 gap-10'>
+        <div className='w-full flex 2xl:flex-row lg:flex-col-reverse flex-col-reverse mt-5 gap-10'>
 
 
-          <div className='lg:w-9/12 w-full h-[40rem] overflow-y-scroll overflow-x-auto bg-neutral-100 rounded-lg'>
+          <div className='2xl:w-9/12 w-full h-[40rem] overflow-y-scroll overflow-x-auto bg-neutral-100 rounded-lg'>
 
-            <div className=' lg:p-10 p-5  grid lg:grid-cols-3 grid-cols-1 gap-5'>
+            <div className='myGrid myGridtwo myGridthree  2xl:p-10 p-5 lg:grid-cols-2 grid grid-cols-1 gap-5 '>
 
-              <div className='flex gap-5 items-center bg-white lg:w-fit w-full p-6 rounded-md drop-shadow-sm' >
+              <div className='flex gap-5 items-center bg-white lg:w-full w-full p-6 rounded-md drop-shadow-sm' >
                 <div className='w-24'>
                   <img src={prof} alt="" />
                 </div>
@@ -77,7 +77,7 @@ export const CreativeBookings = () => {
               </div>
 
 
-              <div className='flex gap-5 items-center bg-white lg:w-fit w-full p-6 rounded-md drop-shadow-sm' >
+              <div className='flex gap-5 items-center bg-white lg:w-full w-full p-6 rounded-md drop-shadow-sm' >
                 <div className='w-24'>
                   <img src={prof} alt="" />
                 </div>
@@ -93,7 +93,7 @@ export const CreativeBookings = () => {
                 </div>
               </div>
 
-              <div className='flex gap-5 items-center bg-white lg:w-fit w-full p-6 rounded-md drop-shadow-sm' >
+              <div className='flex gap-5 items-center bg-white lg:w-full w-full p-6 rounded-md drop-shadow-sm' >
                 <div className='w-24'>
                   <img src={prof} alt="" />
                 </div>
@@ -110,7 +110,7 @@ export const CreativeBookings = () => {
               </div>
 
 
-              <div className='flex gap-5 items-center bg-white lg:w-fit w-full p-6 rounded-md drop-shadow-sm' >
+              <div className='flex gap-5 items-center bg-white lg:w-full w-full p-6 rounded-md drop-shadow-sm' >
                 <div className='w-24'>
                   <img src={prof} alt="" />
                 </div>
@@ -135,7 +135,7 @@ export const CreativeBookings = () => {
 
           {showBoookingsDesc === false ? 
 
-            <div className='bg-neutral-100 lg:w-1/4 w-full p-5 lg:pt-20 rounded-lg'>
+            <div className='bg-neutral-100 2xl:w-1/4 w-full p-5 lg:pt-20 rounded-lg'>
                   <p className='lg:text-[10rem] text-[5rem] flex m-auto justify-center'><TbClick /></p>
                   <h2 className='text-center pt-5'>Click to see details</h2>
               </div>:

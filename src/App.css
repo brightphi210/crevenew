@@ -158,3 +158,29 @@ $large-Two : 1200px; */
     height: 10rem;
   }
 }
+
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .myGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+@media only screen and (min-width: 1023px) and (max-width: 1536px) {
+  .myGridtwo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+@media only screen and (min-width: 1537px) and (max-width: 1625px) {
+  .myGridthree{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
