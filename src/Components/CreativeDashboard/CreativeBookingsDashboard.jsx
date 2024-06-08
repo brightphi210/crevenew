@@ -53,14 +53,14 @@ export const CreativeBookings = () => {
             <p className='text-xs pt-2'>List of all bookings from clients</p>
         </div>
 
-        <div className='w-full flex lg:flex-row flex-col mt-5 gap-10'>
+        <div className='w-full flex lg:flex-row flex-col-reverse mt-5 gap-10'>
 
 
           <div className='lg:w-9/12 w-full h-[40rem] overflow-y-scroll overflow-x-auto bg-neutral-100 rounded-lg'>
 
             <div className=' lg:p-10 p-5  grid lg:grid-cols-3 grid-cols-1 gap-5'>
 
-              <div className='flex gap-5 items-center bg-white lg:lg:w-fit w-full w-full p-6 rounded-md drop-shadow-sm' >
+              <div className='flex gap-5 items-center bg-white lg:w-fit w-full p-6 rounded-md drop-shadow-sm' >
                 <div className='w-24'>
                   <img src={prof} alt="" />
                 </div>
@@ -135,13 +135,10 @@ export const CreativeBookings = () => {
 
           {showBoookingsDesc === false ? 
 
-            <div className='bg-neutral-100 lg:w-1/4 w-full p-5 pt-20 rounded-lg'>
-              <div className='w-32 flex m-auto'>
-
-              </div>
-                <p className='text-[10rem] flex m-auto justify-center'><TbClick /></p>
-                <h2 className='text-center pt-5'>Click to see details</h2>
-            </div>:
+            <div className='bg-neutral-100 lg:w-1/4 w-full p-5 lg:pt-20 rounded-lg'>
+                  <p className='lg:text-[10rem] text-[5rem] flex m-auto justify-center'><TbClick /></p>
+                  <h2 className='text-center pt-5'>Click to see details</h2>
+              </div>:
 
             <div className='bg-neutral-100 lg:w-1/4 w-full p-5 lg:pt-20 rounded-lg'>
                 <div className='flex m-auto w-32'>
