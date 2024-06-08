@@ -168,8 +168,8 @@ export const CreativeHome = () => {
 
 
             <div className='lg:ml-auto flex lg:gap-3'>
-              <button className='lg:text-[0.6rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Contact <MdArrowOutward /></button>
-              <button className='lg:text-[0.6rem] ml-auto text-xs bg-accent  text-white py-2 px-4 rounded-md flex gap-1'>Call <MdArrowOutward /></button>
+              <button className='lg:text-[0.7rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Contact <MdArrowOutward /></button>
+              <button className='lg:text-[0.7rem] ml-auto text-xs mycolor2  text-white py-2 px-4 rounded-md flex gap-1'>View <MdArrowOutward /></button>
             </div>
           </div>
 
@@ -186,8 +186,8 @@ export const CreativeHome = () => {
 
 
             <div className='lg:ml-auto flex lg:gap-3'>
-              <button className='lg:text-[0.6rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Contact <MdArrowOutward /></button>
-              <button className='lg:text-[0.6rem] ml-auto text-xs bg-accent  text-white py-2 px-4 rounded-md flex gap-1'>Call <MdArrowOutward /></button>
+              <button className='lg:text-[0.7rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Contact <MdArrowOutward /></button>
+              <button className='lg:text-[0.7rem] ml-auto text-xs mycolor2  text-white py-2 px-4 rounded-md flex gap-1'>View <MdArrowOutward /></button>
             </div>
           </div>
 
@@ -205,8 +205,8 @@ export const CreativeHome = () => {
 
 
             <div className='lg:ml-auto flex lg:gap-3'>
-              <button className='lg:text-[0.6rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Contact <MdArrowOutward /></button>
-              <button className='lg:text-[0.6rem] ml-auto text-xs bg-accent  text-white py-2 px-4 rounded-md flex gap-1'>Call <MdArrowOutward /></button>
+              <button className='lg:text-[0.7rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Contact <MdArrowOutward /></button>
+              <button className='lg:text-[0.7rem] ml-auto text-xs mycolor2  text-white py-2 px-4 rounded-md flex gap-1'>View <MdArrowOutward /></button>
             </div>
           </div>
 
@@ -222,8 +222,8 @@ export const CreativeHome = () => {
 
 
             <div className='lg:ml-auto flex lg:gap-3'>
-              <button className='lg:text-[0.6rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Contact <MdArrowOutward /></button>
-              <button className='lg:text-[0.6rem] ml-auto text-xs bg-accent  text-white py-2 px-4 rounded-md flex gap-1'>Call <MdArrowOutward /></button>
+              <button className='lg:text-[0.7rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Contact <MdArrowOutward /></button>
+              <button className='lg:text-[0.7rem] ml-auto text-xs mycolor2  text-white py-2 px-4 rounded-md flex gap-1'>View <MdArrowOutward /></button>
             </div>
           </div>
 

@@ -37,7 +37,9 @@ const CreativeSideBarCom = ({show}) => {
                   <li className='text-sm bg-cyan-500 mycolor2 px-3 py-2 rounded-md w-fit text-white hover:bg-white hover:text-black cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
                 </Link>
 
-                <li className='lg:text-sm text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoBookmark className=''/> Bookings</li>
+                <Link to={'/creative-dashboard-bookingsAll'} >
+                  <li className='lg:text-sm text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoBookmark className=''/> Bookings</li>
+                </Link>
                 
                 <Link to={'/creative-dashboard-notificationAll'}>
                   <li className='lg:text-sm text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoNotifications className=''/> Notifications</li>

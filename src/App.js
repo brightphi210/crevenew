@@ -10,6 +10,7 @@ import CreaiveHomeDash from './Pages/CreativeDash/CreaiveHomeDash';
 import CreativeProfileDash from './Pages/CreativeDash/CreativeProfileDash';
 import CreativeProfileUpdataDash from './Pages/CreativeDash/CreativeProfileUpdataDash';
 import CreativeNotificationDashboard from './Components/CreativeDashboard/CreativeNotificationDashboard';
+import CreativeBookingsDash from './Pages/CreativeDash/CreativeBookingsDash';
 
 function App() {
   return (
@@ -31,8 +32,9 @@ function App() {
             <Route path='/creative-dashboard-profile' element={<CreativeProfileDash />}/>
             <Route path='/creative-dashboard-profile-update' element={<CreativeProfileUpdataDash />}/>
             <Route path='/creative-dashboard-notificationAll' element={<CreativeNotificationDashboard />}/>
+            <Route path='/creative-dashboard-bookingsAll' element={<CreativeBookingsDash />}/>
           </Route>
-
+          
         </Routes>
       </BrowserRouter>
     </div>

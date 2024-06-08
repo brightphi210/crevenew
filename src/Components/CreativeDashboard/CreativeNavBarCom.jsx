@@ -4,6 +4,7 @@ import logo from '../Images/Creve1.png'
 import prof from '../Images/Avatars.png'
 import { MdMenu } from "react-icons/md";
 import { RiCloseLargeLine } from "react-icons/ri";
+import { Link } from 'react-router-dom';
 
 const CreativeNavBarCom = ({handleShow, show}) => {
   return (
@@ -13,13 +14,17 @@ const CreativeNavBarCom = ({handleShow, show}) => {
         {show === false ? <p className='text-xl block lg:hidden mr-3'><MdMenu /></p> : <p className='text-xl block lg:hidden mr-3'><RiCloseLargeLine /></p>}
       </div>
       <div className='cursor-pointer'>
-        <img src={logo} alt="" className='w-7'/>
+        <Link to={'/'}>
+          <img src={logo} alt="" className='w-7'/>
+        </Link>
       </div>
 
       <div className='flex flex-row gap-3 ml-auto items-center'>
         <p className='text-3xl cursor-pointer text-cyan-600 mycolor'><IoNotificationsCircle /></p>
         <div >
-          <img src={prof} alt="" className='w-7 cursor-pointer'/>
+          <Link to={'/creative-dashboard-profile'}>
+            <img src={prof} alt="" className='w-7 cursor-pointer'/>
+          </Link>
         </div>
       </div>
     </div>

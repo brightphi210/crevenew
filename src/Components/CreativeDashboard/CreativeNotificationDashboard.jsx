@@ -50,8 +50,8 @@ export const CreativeNotificationHome = () => {
       </div>    
 
 
-      <div>
-        <div className='border border-y-neutral-200 my-4 flex lg:flex-row flex-col gap-2  lg:py-2 py-2 px-5 rounded-lg hover:bg-neutral-50 cursor-pointer'>
+      <div className='bg-neutral-100 rounded-lg p-5'>
+        <div className='border border-y-neutral-200 bg-white my-4 flex lg:flex-row flex-col gap-2  lg:py-2 py-2 px-5 rounded-lg cursor-pointer'>
             <p className='flex items-center gap-2 text-xs'>Please to inform that your account has been verified</p>
 
             <div className='flex items-center lg:ml-auto lg:gap-10 gap-3'>
@@ -60,12 +60,12 @@ export const CreativeNotificationHome = () => {
             </div>
         </div>
 
-        <div className='border border-y-neutral-200 my-4 flex lg:flex-row flex-col gap-2  lg:py-2 py-2 px-5 rounded-lg hover:bg-neutral-50 cursor-pointer'>
+        <div className='border border-y-neutral-200 bg-white my-4 flex lg:flex-row flex-col gap-2  lg:py-2 py-2 px-5 rounded-lg cursor-pointer'>
             <p className='flex items-center gap-2 text-xs'>Please to inform that your account has been verified</p>
 
             <div className='flex items-center lg:ml-auto lg:gap-10 gap-3'>
                 <p className='text-xs'>Just Now</p>
-                <p className='p-2 bg-neutral-100 lg:text-sm text-xs ml-auto rounded-full text-red-500 cursor-pointer border-2 border-white'><MdDelete /></p>
+                <p className='p-2 bg-neutral-100 lg:text-sm text-xs ml-auto  rounded-full text-red-500 cursor-pointer border-2 border-white'><MdDelete /></p>
             </div>
         </div>
         
