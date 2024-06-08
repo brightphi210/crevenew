@@ -156,70 +156,74 @@ export const CreativeHome = () => {
         <div className='bg-neutral-100 lg:w-9/12 w-full lg:p-5 py-5 px-2 rounded-xl'>
           <h2 className='text-xs'>Booked Messages</h2>
 
-          <div className='p-3 my-5 rounded-md flex lg:flex-row gap-3 hover:bg-neutral-200 border-y border-neutral-200' >
+          <div className='p-3 my-5 rounded-md flex lg:flex-row flex-col gap-3 hover:bg-neutral-200 border-y border-neutral-200' >
             <div className='flex gap-4 items-center'>
               <div>
                 <img src={prof} alt="" className='w-6'/>
               </div>
               <h2 className='text-xs'>Amadi John</h2>
-              <p className='text-[0.6rem] text-cyan-400 mycolor'>5pm</p>
+              <p className='text-[0.6rem] ml-auto text-cyan-400 mycolor'>5pm</p>
             </div>
 
 
 
-            <div className='ml-auto flex gap-3'>
-              <button className='lg:text-[0.7rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
+            <div className='lg:ml-auto flex lg:gap-3'>
+              <button className='lg:text-[0.6rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Contact <MdArrowOutward /></button>
+              <button className='lg:text-[0.6rem] ml-auto text-xs bg-accent  text-white py-2 px-4 rounded-md flex gap-1'>Call <MdArrowOutward /></button>
             </div>
           </div>
 
 
-          <div className='p-3 my-5 rounded-md flex lg:flex-row gap-3 hover:bg-neutral-200 border-y border-neutral-200 ' >
+          <div className='p-3 my-5 rounded-md flex lg:flex-row flex-col gap-3 hover:bg-neutral-200 border-y border-neutral-200' >
             <div className='flex gap-4 items-center'>
               <div>
                 <img src={prof} alt="" className='w-6'/>
               </div>
               <h2 className='text-xs'>Amadi John</h2>
-              <p className='text-[0.6rem] text-cyan-400 mycolor'>5pm</p>
+              <p className='text-[0.6rem] ml-auto text-cyan-400 mycolor'>5pm</p>
             </div>
 
 
 
-            <div className='ml-auto flex gap-3'>
-              <button className='lg:text-[0.7rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
+            <div className='lg:ml-auto flex lg:gap-3'>
+              <button className='lg:text-[0.6rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Contact <MdArrowOutward /></button>
+              <button className='lg:text-[0.6rem] ml-auto text-xs bg-accent  text-white py-2 px-4 rounded-md flex gap-1'>Call <MdArrowOutward /></button>
             </div>
           </div>
 
 
 
-          <div className='p-3 my-5 rounded-md flex lg:flex-row gap-3 hover:bg-neutral-200 border-y border-neutral-200' >
+          <div className='p-3 my-5 rounded-md flex lg:flex-row flex-col gap-3 hover:bg-neutral-200 border-y border-neutral-200' >
             <div className='flex gap-4 items-center'>
               <div>
                 <img src={prof} alt="" className='w-6'/>
               </div>
               <h2 className='text-xs'>Amadi John</h2>
-              <p className='text-[0.6rem] text-cyan-400 mycolor'>5pm</p>
+              <p className='text-[0.6rem] ml-auto text-cyan-400 mycolor'>5pm</p>
             </div>
 
 
 
-            <div className='ml-auto flex gap-3'>
-              <button className='lg:text-[0.7rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
+            <div className='lg:ml-auto flex lg:gap-3'>
+              <button className='lg:text-[0.6rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Contact <MdArrowOutward /></button>
+              <button className='lg:text-[0.6rem] ml-auto text-xs bg-accent  text-white py-2 px-4 rounded-md flex gap-1'>Call <MdArrowOutward /></button>
             </div>
           </div>
 
-          <div className='p-3 my-5 rounded-md flex lg:flex-row gap-3 hover:bg-neutral-200 border-y border-neutral-200' >
+          <div className='p-3 my-5 rounded-md flex lg:flex-row flex-col gap-3 hover:bg-neutral-200 border-y border-neutral-200' >
             <div className='flex gap-4 items-center'>
               <div>
                 <img src={prof} alt="" className='w-6'/>
               </div>
               <h2 className='text-xs'>Amadi John</h2>
-              <p className='text-[0.6rem] text-cyan-400 mycolor'>5pm</p>
+              <p className='text-[0.6rem] ml-auto text-cyan-400 mycolor'>5pm</p>
             </div>
 
 
 
-            <div className='ml-auto flex gap-3'>
-              <button className='lg:text-[0.7rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Whatsapp <MdArrowOutward /></button>
+            <div className='lg:ml-auto flex lg:gap-3'>
+              <button className='lg:text-[0.6rem] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Contact <MdArrowOutward /></button>
+              <button className='lg:text-[0.6rem] ml-auto text-xs bg-accent  text-white py-2 px-4 rounded-md flex gap-1'>Call <MdArrowOutward /></button>
             </div>
           </div>
 
@@ -260,7 +264,7 @@ export const CreativeHome = () => {
                 
               </div>
 
-              <button className='bg-black text-xs px-5 py-2 text-white w-full rounded-md'>See All</button>
+              <button className='bg-black text-xs px-5 py-3 text-white w-full rounded-md'>See All</button>
 
             </div>
           </div>
