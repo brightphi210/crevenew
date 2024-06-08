@@ -156,74 +156,69 @@ export const CreativeHome = () => {
         <div className='bg-neutral-100 2xl:w-[77%] lg:p-5 py-5 px-2 rounded-xl'>
           <h2 className='text-xs'>Booked Messages</h2>
 
-          <div className='p-5 my-5 rounded-md flex lg:flex-row flex-col gap-3 bg-white hover:bg-neutral-200' >
-            <div className='flex gap-4 items-center'>
+          <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-white hover:bg-neutral-200' >
+            <div className='flex gap-2 items-center'>
               <div>
                 <img src={prof} alt="" className='w-6'/>
               </div>
-              <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-sm'>Amadi John</h2>
-              <p className='2xl:text-xs xl:text-xs lg:text-xs text-sm  text-cyan-400 mycolor'>5pm</p>
+              <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-xs'>Amadi John</h2>
+              <p className='2xl:text-xs xl:text-xs lg:text-xs text-[9px]  text-cyan-400 mycolor'>5pm</p>
             </div>
 
 
 
-            <div className='lg:ml-auto flex lg:gap-3 gap-2'>
-              <button className='lg:text-[10px] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Contact <MdArrowOutward /></button>
-              <button className='lg:text-[10px] text-xs mycolor2  text-white py-2 px-4 rounded-md flex gap-1'>View <MdArrowOutward /></button>
+            <div className='ml-auto flex '>
+              <button className='lg:text-[9px] text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1'>View <MdArrowOutward /></button>
             </div>
           </div>
 
 
-          <div className='p-5 my-5 rounded-md flex lg:flex-row flex-col gap-3 bg-white hover:bg-neutral-200' >
-            <div className='flex gap-4 items-center'>
+          <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-white hover:bg-neutral-200' >
+            <div className='flex gap-2 items-center'>
               <div>
                 <img src={prof} alt="" className='w-6'/>
               </div>
-              <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-sm'>Amadi John</h2>
-              <p className='2xl:text-xs xl:text-xs lg:text-xs text-sm  text-cyan-400 mycolor'>5pm</p>
+              <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-xs'>Amadi John</h2>
+              <p className='2xl:text-xs xl:text-xs lg:text-xs text-[9px]  text-cyan-400 mycolor'>5pm</p>
             </div>
 
 
 
-            <div className='lg:ml-auto flex lg:gap-3 gap-2'>
-              <button className='lg:text-[10px] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Contact <MdArrowOutward /></button>
-              <button className='lg:text-[10px] text-xs mycolor2  text-white py-2 px-4 rounded-md flex gap-1'>View <MdArrowOutward /></button>
+            <div className='ml-auto flex '>
+              <button className='lg:text-[9px] text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1'>View <MdArrowOutward /></button>
+            </div>
+          </div>
+
+          <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-white hover:bg-neutral-200' >
+            <div className='flex gap-2 items-center'>
+              <div>
+                <img src={prof} alt="" className='w-6'/>
+              </div>
+              <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-xs'>Amadi John</h2>
+              <p className='2xl:text-xs xl:text-xs lg:text-xs text-[9px]  text-cyan-400 mycolor'>5pm</p>
+            </div>
+
+
+
+            <div className='ml-auto flex '>
+              <button className='lg:text-[9px] text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1'>View <MdArrowOutward /></button>
             </div>
           </div>
 
 
-          <div className='p-5 my-5 rounded-md flex lg:flex-row flex-col gap-3 bg-white hover:bg-neutral-200' >
-            <div className='flex gap-4 items-center'>
+          <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-white hover:bg-neutral-200' >
+            <div className='flex gap-2 items-center'>
               <div>
                 <img src={prof} alt="" className='w-6'/>
               </div>
-              <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-sm'>Amadi John</h2>
-              <p className='2xl:text-xs xl:text-xs lg:text-xs text-sm  text-cyan-400 mycolor'>5pm</p>
+              <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-xs'>Amadi John</h2>
+              <p className='2xl:text-xs xl:text-xs lg:text-xs text-[9px]  text-cyan-400 mycolor'>5pm</p>
             </div>
 
 
 
-            <div className='lg:ml-auto flex lg:gap-3 gap-2'>
-              <button className='lg:text-[10px] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Contact <MdArrowOutward /></button>
-              <button className='lg:text-[10px] text-xs mycolor2  text-white py-2 px-4 rounded-md flex gap-1'>View <MdArrowOutward /></button>
-            </div>
-          </div>
-
-
-          <div className='p-5 my-5 rounded-md flex lg:flex-row flex-col gap-3 bg-white hover:bg-neutral-200' >
-            <div className='flex gap-4 items-center'>
-              <div>
-                <img src={prof} alt="" className='w-6'/>
-              </div>
-              <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-sm'>Amadi John</h2>
-              <p className='2xl:text-xs xl:text-xs lg:text-xs text-sm  text-cyan-400 mycolor'>5pm</p>
-            </div>
-
-
-
-            <div className='lg:ml-auto flex lg:gap-3 gap-2'>
-              <button className='lg:text-[10px] text-xs border border-cyan-500 mycolor3 text-black bg-white py-2 px-4 rounded-md flex gap-1'>Contact <MdArrowOutward /></button>
-              <button className='lg:text-[10px] text-xs mycolor2  text-white py-2 px-4 rounded-md flex gap-1'>View <MdArrowOutward /></button>
+            <div className='ml-auto flex '>
+              <button className='lg:text-[9px] text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1'>View <MdArrowOutward /></button>
             </div>
           </div>
 
