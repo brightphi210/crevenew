@@ -53,14 +53,14 @@ export const CreativeBookings = () => {
             <p className='text-xs pt-2'>List of all bookings from clients</p>
         </div>
 
-        <div className='w-full flex mt-5 gap-10'>
+        <div className='w-full flex lg:flex-row flex-col mt-5 gap-10'>
 
 
-          <div className='w-9/12 h-[40rem] overflow-y-scroll bg-neutral-100 rounded-lg'>
+          <div className='lg:w-9/12 w-full h-[40rem] overflow-y-scroll overflow-x-auto bg-neutral-100 rounded-lg'>
 
-            <div className=' p-10  grid grid-cols-3 gap-5'>
+            <div className=' lg:p-10 p-5  grid lg:grid-cols-3 grid-cols-1 gap-5'>
 
-              <div className='flex gap-5 items-center bg-white w-fit p-5 rounded-xl drop-shadow-md' >
+              <div className='flex gap-5 items-center bg-white lg:lg:w-fit w-full w-full p-6 rounded-md drop-shadow-sm' >
                 <div className='w-24'>
                   <img src={prof} alt="" />
                 </div>
@@ -70,30 +70,14 @@ export const CreativeBookings = () => {
                   <p className='text-xs'>johndoe@gmail.com</p>
 
                   <div className='flex gap-2 pt-1'>
-                    <button className='mycolor3 text-xs px-5 py-2 font-semibold rounded-md'>Contact</button>
-                    <button className='mycolor2 text-xs px-5 py-2 font-semibold rounded-md text-white' onClick={handleShowBoookingsDesc}>View</button>
-                  </div>
-                </div>
-              </div>
-
-              <div className='flex gap-5 items-center bg-white w-fit p-5 rounded-xl drop-shadow-md'>
-                <div className='w-24'>
-                  <img src={prof} alt="" />
-                </div>
-
-                <div className='flex flex-col gap-1'>
-                  <h2 className='font-semibold'>John Doe</h2>
-                  <p className='text-xs'>johndoe@gmail.com</p>
-
-                  <div className='flex gap-2 pt-1'>
-                    <button className='mycolor3 text-xs px-5 py-2 font-semibold rounded-md'>Contact</button>
-                    <button className='mycolor2 text-xs px-5 py-2 font-semibold rounded-md text-white' onClick={handleShowBoookingsDesc}>View</button>
+                    <button className='mycolor3 text-[10px] px-5 py-2 font-medium rounded-md'>Contact</button>
+                    <button className='mycolor2 text-[10px] px-5 py-2 font-medium rounded-md text-white' onClick={handleShowBoookingsDesc}>View</button>
                   </div>
                 </div>
               </div>
 
 
-              <div className='flex gap-5 items-center bg-white w-fit p-5 rounded-xl drop-shadow-md'>
+              <div className='flex gap-5 items-center bg-white lg:w-fit w-full p-6 rounded-md drop-shadow-sm' >
                 <div className='w-24'>
                   <img src={prof} alt="" />
                 </div>
@@ -103,13 +87,13 @@ export const CreativeBookings = () => {
                   <p className='text-xs'>johndoe@gmail.com</p>
 
                   <div className='flex gap-2 pt-1'>
-                    <button className='mycolor3 text-xs px-5 py-2 font-semibold rounded-md'>Contact</button>
-                    <button className='mycolor2 text-xs px-5 py-2 font-semibold rounded-md text-white' onClick={handleShowBoookingsDesc}>View</button>
+                    <button className='mycolor3 text-[10px] px-5 py-2 font-medium rounded-md'>Contact</button>
+                    <button className='mycolor2 text-[10px] px-5 py-2 font-medium rounded-md text-white' onClick={handleShowBoookingsDesc}>View</button>
                   </div>
                 </div>
               </div>
 
-              <div className='flex gap-5 items-center bg-white w-fit p-5 rounded-xl drop-shadow-md'>
+              <div className='flex gap-5 items-center bg-white lg:w-fit w-full p-6 rounded-md drop-shadow-sm' >
                 <div className='w-24'>
                   <img src={prof} alt="" />
                 </div>
@@ -119,8 +103,25 @@ export const CreativeBookings = () => {
                   <p className='text-xs'>johndoe@gmail.com</p>
 
                   <div className='flex gap-2 pt-1'>
-                    <button className='mycolor3 text-xs px-5 py-2 font-semibold rounded-md'>Contact</button>
-                    <button className='mycolor2 text-xs px-5 py-2 font-semibold rounded-md text-white' onClick={handleShowBoookingsDesc}>View</button>
+                    <button className='mycolor3 text-[10px] px-5 py-2 font-medium rounded-md'>Contact</button>
+                    <button className='mycolor2 text-[10px] px-5 py-2 font-medium rounded-md text-white' onClick={handleShowBoookingsDesc}>View</button>
+                  </div>
+                </div>
+              </div>
+
+
+              <div className='flex gap-5 items-center bg-white lg:w-fit w-full p-6 rounded-md drop-shadow-sm' >
+                <div className='w-24'>
+                  <img src={prof} alt="" />
+                </div>
+
+                <div className='flex flex-col gap-1'>
+                  <h2 className='font-semibold'>John Doe</h2>
+                  <p className='text-xs'>johndoe@gmail.com</p>
+
+                  <div className='flex gap-2 pt-1'>
+                    <button className='mycolor3 text-[10px] px-5 py-2 font-medium rounded-md'>Contact</button>
+                    <button className='mycolor2 text-[10px] px-5 py-2 font-medium rounded-md text-white' onClick={handleShowBoookingsDesc}>View</button>
                   </div>
                 </div>
               </div>
@@ -134,7 +135,7 @@ export const CreativeBookings = () => {
 
           {showBoookingsDesc === false ? 
 
-            <div className='bg-neutral-100 w-1/4 p-5 pt-20 rounded-lg'>
+            <div className='bg-neutral-100 lg:w-1/4 w-full p-5 pt-20 rounded-lg'>
               <div className='w-32 flex m-auto'>
 
               </div>
@@ -142,7 +143,7 @@ export const CreativeBookings = () => {
                 <h2 className='text-center pt-5'>Click to see details</h2>
             </div>:
 
-            <div className='bg-neutral-100 w-1/4 p-5 pt-20 rounded-lg'>
+            <div className='bg-neutral-100 lg:w-1/4 w-full p-5 lg:pt-20 rounded-lg'>
                 <div className='flex m-auto w-32'>
                   <img src={prof} alt="" />
                 </div>
