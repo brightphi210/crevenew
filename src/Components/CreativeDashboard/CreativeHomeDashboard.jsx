@@ -349,18 +349,18 @@ export const ProfileModal = ({showModal}) => {
 
   useEffect(() => {
     if(showModal){
-      // document.getElementById('my_modal_3').showModal();
+      // document.getElementById('my_modal_1').showModal();
     }else{
-      // document.getElementById('my_modal_3').close();
+      // document.getElementById('my_modal_2').close();
     }
   },[])
   return (
     <div>
 
 
-      <dialog id="my_modal_3" className="modal">
+      <dialog id="my_modal_1" className="modal">
         <div className="modal-box  p-0 rounded-md height " >
-          <button onClick={()=>{document.getElementById('my_modal_3').close()}} 
+          <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕</button>
 
 

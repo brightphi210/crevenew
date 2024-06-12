@@ -10,7 +10,7 @@ const LoginCom = () => {
   const navigate = useNavigate()
   let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
   const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
-  console.log(userToken);
+  // console.log(userToken);
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -29,7 +29,7 @@ const LoginCom = () => {
         const res = await fetch(url, {
             method: 'POST',
             headers : {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
 
             body : JSON.stringify({

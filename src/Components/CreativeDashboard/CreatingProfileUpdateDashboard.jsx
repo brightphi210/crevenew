@@ -10,6 +10,9 @@ import img1 from '../Images/item6.jpg'
 import img2 from '../Images/item5.jpg'
 import { AiOutlineCloudUpload } from 'react-icons/ai';
 import { MdDelete } from 'react-icons/md';
+import { BASE_URL } from '../Auth/BaseUrl';
+import { jwtDecode } from 'jwt-decode';
+import MultipleImageUpload from './Upload/MutilpleImageUpload';
 
 const CreatingProfileUpdateDashboard = () => {
 
@@ -45,27 +48,117 @@ export const CreatingProfileUpdateHome = () => {
     const [coverImage, setCoverImage] = useState(null) 
 
 
-    const [selectedOption, setSelectedOption] = useState('digital')
+    const [selectedOption, setSelectedOption] = useState('DigitalSkills')
 
     const handleShowDigital = (e) =>{
         setSelectedOption(e.target.value)
     }
-    console.log(selectedOption);  
 
+
+    let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
+    const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
+    // console.log(authUser.access);
+
+
+    const url =`${BASE_URL}/creativeprofile/${userToken.profile_id}/`
+
+
+    // "id": 9,
+    // "dskills": [],
+    // "images": [],
+    // "user": "ea955e3c-8b07-4f3e-af1e-60e8a4cc0abb",
+    // "digital_skills": null,
+    // "work_type": null,
+    // "verified": false,
+    // "cover_image": "https://creve.store/media/default.png",
+    // "summary_of_profile": null,
+    // "starting_price": null,
+    // "about": null,
+    // "nondigital_skills": null,
+    // "display_name": null,
+    // "category": null,
+    // "profile_pics": "https://creve.store/media/default.png",
+    // "location": null,
+    // "language": null,
+    // "whatsapp_link": null,
+    // "resume_link": null,
+    // "website_link": null
+
+    const [digital_skills, setDigitalSkills] = useState('BackendDevelopment')
+    const [work_type, setWorkType] = useState('Remote')
+    const [cover_image, setCover_Image] = useState(null)
+    const [summary_of_profile, setSummary_Of_Profile] = useState('')
+    const [starting_price, setStarting_Price] = useState('')
+    const [about, setAbout] = useState('')
+    const [nondigital_skills, setNondigital_Skills] = useState('Plumbing')
+    const [display_name, setDisplay_Name] = useState('')
+    const [location, setLocation] = useState('')
+    const [language, setLanguage] = useState('')
+    const [whatsapp_link, setWhatsapp_Link] = useState('')
+    // const [resume_link, setResume_Link] = useState('')
+    const [website_link, setWebsite_Link] = useState('')
+    const [dskills, setDskills] = useState([])
+    const [images, setImages] = useState([])
+
+    // console.log(cover_image);
+
+
+    const handleProfileUpdate = async (e) =>{
+        e.preventDefault() 
+
+        const formData = new FormData()
+        formData.append('digital_skills', digital_skills)
+        formData.append('work_type', work_type)
+        formData.append('cover_image', cover_image)
+        formData.append('summary_of_profile', summary_of_profile)
+        formData.append('starting_price', starting_price)
+        formData.append('about', about)
+        formData.append('nondigital_skills', nondigital_skills)
+        formData.append('display_name', display_name)
+        formData.append('category', selectedOption)
+        formData.append('location', location)
+        formData.append('language', language)
+        formData.append('whatsapp_link', whatsapp_link)
+        // formData.append('resume_link', resume_link)
+        formData.append('website_link', website_link)
+        formData.append('dskills', dskills)
+        formData.append('images', images)
+
+
+        try {
+            
+            const respose = await fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Authorization' : `Bearer ${authUser.access}`,
+                },
+                body: formData
+            })
+            
+            
+            const data = await respose.json()
+            console.log(data);
+
+
+        } catch (error) {
+            console.log('There was an error', error);
+        }
+    }
 
 
   return (
     <div className='lg:p-20 lg:pt-28 lg:pl-[18rem] p-5 pt-20'>
-      <form action="" className='flex lg:flex-row flex-col-reverse lg:gap-32 gap-5'>
+      <form action="" className='flex lg:flex-row flex-col-reverse lg:gap-32 gap-5' onSubmit={handleProfileUpdate}>
         <div className='lg:w-1/2 w-full flex flex-col gap-5'>
 
 
             <div>
                 <p className="text-xs pb-3">Work Type</p>
-                <select className="select text-xs select-bordered w-full max-w-full">
-                    <option className='text-xs'>Remote</option>
-                    <option className='text-xs'>Hybrid</option>
-                    <option className='text-xs'>Onsite</option>
+                <select className="select text-xs select-bordered w-full max-w-full" 
+                    value={work_type} onChange={(e) =>{setWorkType(e.target.value)}} required>
+                    <option className='text-xs' value={'Remote'}>Remote</option>
+                    <option className='text-xs' value={'Hybrid'}>Hybrid</option>
+                    <option className='text-xs' value={'On-site'}>On-site</option>
                 </select>
             </div>
             
@@ -75,56 +168,58 @@ export const CreatingProfileUpdateHome = () => {
                 <input type="text" 
                     placeholder="Location e.g #64, grace lane, port harcourt" 
                     className="input text-xs input-bordered w-full max-w-full" 
+                    value={location}
+                    onChange={(e)=>setLocation(e.target.value)}
                 />
             </div>
 
             <div>
                 <p className="text-xs pb-3">Language</p>
-                <select className="select text-xs select-bordered w-full max-w-full">
-                    <option className='text-xs'>English</option>
-                    <option className='text-xs'>French</option>
-                    <option className='text-xs'>Spanish</option>
-                </select>
+                <input type="text" 
+                    placeholder="Language e.g English, French etc." 
+                    className="input text-xs input-bordered w-full max-w-full" 
+                    value={language}
+                    onChange={(e)=>setLanguage(e.target.value)}
+                />
             </div>
 
             <div>
                 <p className="text-xs pb-3">Category</p>
                 <select className="select text-xs  select-bordered w-full max-w-full" value={selectedOption} onChange={handleShowDigital}>
-                    {/* <option className='text-xs'>- - Skills Category - -</option> */}
-                    <option className='text-xs' value={'digital'}>Digital Skills</option>
-                    <option className='text-xs' value={'nondigital'}>Non-Digital Skills</option>
+                    <option className='text-xs' value={'DigitalSkills'}>Digital Skills</option>
+                    <option className='text-xs' value={'Non-DigitalSkills'}>Non-Digital Skills</option>
                 </select>
             </div>
 
  
-            {selectedOption === 'digital' && (
+            {selectedOption === 'DigitalSkills' && (
 
                 <div>
                     <p className="text-xs pb-3">Digital</p>
-                    <select className="select text-xs select-bordered w-full max-w-full">
-                        <option className='text-xs'>Backend Development</option>
-                        <option className='text-xs'>Mobile Development</option>
-                        <option className='text-xs'>UI/UX</option>
-                        <option className='text-xs'>Graphic Design</option>
-                        <option className='text-xs'>Content Creation</option>
-                        <option className='text-xs'>Frontend Development</option>
+                    <select className="select text-xs select-bordered w-full max-w-full" value={digital_skills} onChange={(e)=>setDigitalSkills(e.target.value)}>
+                        <option className='text-xs' value={'BackendDevelopment'}>Backend Development</option>
+                        <option className='text-xs' value={'MobileDevelopment'}>Mobile Development</option>
+                        <option className='text-xs' value={'UI/UX_Design'}>UI/UX</option>
+                        <option className='text-xs' value={'Graphic_Design'}>Graphic Design</option>
+                        <option className='text-xs' value={'Content_Creation'}>Content Creation</option>
+                        <option className='text-xs' value={'Frontend_Development'}>Frontend Development</option>
                     </select>
                 </div>
             ) }
             
-            {selectedOption === 'nondigital' && (
+            {selectedOption === 'Non-DigitalSkills' && (
 
                 <div>
                     <p className="text-xs pb-3">Non-Digital</p>
-                    <select className="select text-xs select-bordered w-full max-w-full">
-                        <option className='text-xs'>Plumbing</option>
-                        <option className='text-xs'>Catering</option>   
-                        <option className='text-xs'>Hair Stylist</option>
-                        <option className='text-xs'>Electronics/Repairs</option>
-                        <option className='text-xs'>Cobbling</option>
-                        <option className='text-xs'>Mechanic</option>
-                        <option className='text-xs'>Fashion Designing</option>
-                        <option className='text-xs'>Furniture Making</option>
+                    <select className="select text-xs select-bordered w-full max-w-full" value={nondigital_skills} onChange={(e)=>setNondigital_Skills(e.target.value)}>
+                        <option className='text-xs' value={'Plumbing'}>Plumbing</option>
+                        <option className='text-xs' value={'Catering'}>Catering</option>   
+                        <option className='text-xs' value={'Hair_stylist'}>Hair Stylist</option>
+                        <option className='text-xs' value={'Electronics/Repairs'}>Electronics/Repairs</option>
+                        <option className='text-xs' value={'Furniture-Making'}>Furniture Making</option>
+                        <option className='text-xs' value={'Cobbling'}>Cobbling</option>
+                        <option className='text-xs' value={'Mechanic'}>Mechanic</option>
+                        <option className='text-xs' value={'Fashion-Designer'}>Fashion Designing</option>
                     </select>
                 </div>
             )}
@@ -137,6 +232,8 @@ export const CreatingProfileUpdateHome = () => {
                 <input 
                     type="text" 
                     placeholder="whatsapp e.g 08094422807" 
+                    value={whatsapp_link}
+                    onChange={(e)=>setWhatsapp_Link(e.target.value)}
                     className="input text-xs input-bordered w-full max-w-full" />
             </div>
 
@@ -155,6 +252,8 @@ export const CreatingProfileUpdateHome = () => {
                 <input 
                     type="text" 
                     placeholder="website e.g https://example.com"  
+                    value={website_link}
+                    onChange={(e)=>setWebsite_Link(e.target.value)}
                     className="input text-xs input-bordered w-full max-w-full" />
             </div>
 
@@ -163,6 +262,8 @@ export const CreatingProfileUpdateHome = () => {
                 <p className="text-xs pb-3">Profession</p>
                 <input 
                     type="text" 
+                    value={display_name}
+                    onChange={(e)=>setDisplay_Name(e.target.value)}
                     placeholder="profession e.g Senior Furniture Maker"  
                     className="input text-xs input-bordered w-full max-w-full" />
             </div>
@@ -172,6 +273,8 @@ export const CreatingProfileUpdateHome = () => {
                 <p className="text-xs pb-3">Price</p>
                 <input 
                     type="number" 
+                    value={starting_price}
+                    onChange={(e)=>setStarting_Price(e.target.value)}
                     placeholder="starting price e.g 5,000"  
                     className="input text-xs input-bordered w-full max-w-full" />
             </div>
@@ -193,6 +296,7 @@ export const CreatingProfileUpdateHome = () => {
                             if(files){
                                 setImage(URL.createObjectURL(files[0]))
                                 setCoverImage(files[0])
+                                setCover_Image(files[0])
                             }
                         }}
                     />
@@ -249,9 +353,10 @@ export const CreatingProfileUpdateHome = () => {
             </div>
 
             <div>
-                <p className="text-xs pb-3">Skills - (Maximum 4 Images)</p>
-                <input type="file" className="file-input file-input-bordered w-full max-w-full text-xs " />
-                <div className='mt-4 lg:flex grid grid-cols-3 gap-2'>
+                <p className="text-xs pb-3">Images - (Maximum 4 Images)</p>
+                <MultipleImageUpload />
+
+                {/* <div className='mt-4 lg:flex grid grid-cols-3 gap-2'>
                     <div className='h-[3rem] w-[6rem] relative overflow-hidden rounded-lg'>
                         <img src={img1} alt="" className='w-[10rem] rounded-lg'/>
                         <p className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer lg:text-md text-xs text-red-700'/></p>
@@ -271,12 +376,17 @@ export const CreatingProfileUpdateHome = () => {
                         <img src={img2} alt="" className='w-[10rem] rounded-lg'/>
                         <p className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer lg:text-md text-xs text-red-700'/></p>
                     </div>
-                </div>
+                </div> */}
             </div>
 
             <div>
                 <p className="text-xs pb-3">Bio</p>
-                <textarea className="textarea textarea-bordered w-full max-w-full min-h-[8rem] max-h-[8rem] h-[8rem]" placeholder="Bio"></textarea>
+                <textarea 
+                    className="textarea textarea-bordered w-full max-w-full min-h-[8rem] max-h-[8rem] h-[8rem]" 
+                    placeholder="Bio"
+                    value={about}
+                    onChange={(e)=>setAbout(e.target.value)}
+                ></textarea>
             </div>
         </div>
 
