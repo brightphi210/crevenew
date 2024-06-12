@@ -43,6 +43,42 @@ export default CreatingProfileUpdateDashboard
 
 export const CreatingProfileUpdateHome = () => {
 
+
+    var singleFileObj = [];
+    var singleFileArray = [];
+    
+    const [singleFile, setSingleFile] = useState([]);
+  
+    const [hiddenFile, setHiddenFile] = useState(false);
+  
+    const uploadSingleFiles = (e) => {
+      singleFileObj.push(e.target.files);
+      singleFileArray.push(URL.createObjectURL(singleFileObj[0][0]));
+      setSingleFile([...singleFile, singleFileArray]);
+    };
+  
+    console.log(...singleFile);
+  
+    const uploadFiles = (e) => {
+      e.preventDefault();
+      console.log(singleFile);
+      if(singleFile.length === 4) {
+          setHiddenFile(true)
+        }
+      
+    };
+  
+    const removeImage = (index) => {
+      console.log("reomve");
+      setSingleFile([
+        ...singleFile.slice(0, index),
+        ...singleFile.slice(index + 1, singleFile.length)
+      ]);
+    };
+  
+
+
+
     const [image, setImage] = useState(null) 
     const [fileName, setFileName] = useState('') 
     const [coverImage, setCoverImage] = useState(null) 
@@ -122,7 +158,7 @@ export const CreatingProfileUpdateHome = () => {
         // formData.append('resume_link', resume_link)
         formData.append('website_link', website_link)
         formData.append('dskills', dskills)
-        formData.append('images', images)
+        formData.append('images', ...singleFile)
 
 
         try {
@@ -354,7 +390,13 @@ export const CreatingProfileUpdateHome = () => {
 
             <div>
                 <p className="text-xs pb-3">Images - (Maximum 4 Images)</p>
-                <MultipleImageUpload />
+                <MultipleImageUpload 
+                    hiddenFile = {hiddenFile}
+                    uploadSingleFiles ={uploadSingleFiles}
+                    uploadFiles = {uploadFiles}
+                    removeImage = {removeImage}
+                    singleFile = {singleFile}
+                />
 
                 {/* <div className='mt-4 lg:flex grid grid-cols-3 gap-2'>
                     <div className='h-[3rem] w-[6rem] relative overflow-hidden rounded-lg'>

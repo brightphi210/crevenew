@@ -1,38 +1,14 @@
 import React, { useState } from "react";
 
-const IterateUplaod = () => {
-  var singleFileObj = [];
-  var singleFileArray = [];
-  
-  const [singleFile, setSingleFile] = useState([]);
-
-  const [hiddenFile, setHiddenFile] = useState(false);
-  console.log('This is the lenght of array', singleFile);
-
-  const uploadSingleFiles = (e) => {
-    singleFileObj.push(e.target.files);
-    singleFileArray.push(URL.createObjectURL(singleFileObj[0][0]));
-    setSingleFile([...singleFile, singleFileArray]);
-  };
-
-  console.log(singleFile);
-
-  const uploadFiles = (e) => {
-    e.preventDefault();
-    console.log(singleFile);
-    if(singleFile.length === 4) {
-        setHiddenFile(true)
-      }
-    
-  };
-
-  const removeImage = (index) => {
-    console.log("reomve");
-    setSingleFile([
-      ...singleFile.slice(0, index),
-      ...singleFile.slice(index + 1, singleFile.length)
-    ]);
-  };
+const IterateUplaod = (
+    {
+        hiddenFile,
+        uploadSingleFiles,
+        uploadFiles,
+        removeImage,
+        singleFile
+    }
+) => {
 
 
   return (
