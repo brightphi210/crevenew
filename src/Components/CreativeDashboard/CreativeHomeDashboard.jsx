@@ -95,7 +95,7 @@ export const CreativeHome = () => {
             autoPlay={true}
             autoPlaySpeed={50000}
             keyBoardControl={true}
-            // containerClass="carousel-container"
+            containerClass="carousel-container"
             removeArrowOnDeviceType={["tablet", ]}
             dotListClass="custom-dot-list-style"
           >

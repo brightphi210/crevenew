@@ -33,7 +33,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 const HomeComThree = () => {
   return (
-    <div className='2xl:px-[7rem] xl:px-[5rem] lg:px-[5rem]  py-[5rem] px-6'>
+    <div className='2xl:px-[13rem] xl:px-[5rem] lg:px-[5rem]  py-[5rem] px-6'>
         <h2 className='text-center text-lg pb-6'>Choose Different Category </h2>
 
         <div className='grid lg:grid-cols-4 grid-cols-2 gap-5'>

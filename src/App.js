@@ -13,10 +13,13 @@ import CreativeNotificationDashboard from './Components/CreativeDashboard/Creati
 import CreativeBookingsDash from './Pages/CreativeDash/CreativeBookingsDash';
 
 function App() {
+
+  
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
+
           <Route path='/' element={<Homepage />}/>
           <Route path='/login' element={<Login />}/>
           <Route path='/register' element={<Register />}/>

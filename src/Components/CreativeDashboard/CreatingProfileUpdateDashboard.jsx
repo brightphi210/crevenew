@@ -53,13 +53,13 @@ export const CreatingProfileUpdateHome = () => {
   
     const uploadSingleFiles = (e) => {
       singleFileObj.push(e.target.files);
+      setImage_list(singleFileObj[0][0]);
       singleFileArray.push(URL.createObjectURL(singleFileObj[0][0]));
       setSingleFile([...singleFile, singleFileArray]);
     };
   
-    console.log(...singleFile);
   
-    const uploadFiles = (e) => {
+    const uploadFiles = (e) => {    
       e.preventDefault();
       console.log(singleFile);
       if(singleFile.length === 4) {
@@ -76,19 +76,6 @@ export const CreatingProfileUpdateHome = () => {
       ]);
     };
   
-
-
-
-    const [image, setImage] = useState(null) 
-    const [fileName, setFileName] = useState('') 
-    const [coverImage, setCoverImage] = useState(null) 
-
-
-    const [selectedOption, setSelectedOption] = useState('DigitalSkills')
-
-    const handleShowDigital = (e) =>{
-        setSelectedOption(e.target.value)
-    }
 
 
     let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
@@ -120,6 +107,24 @@ export const CreatingProfileUpdateHome = () => {
     // "resume_link": null,
     // "website_link": null
 
+
+    const [fileName, setFileName] = useState('') 
+    const [coverImage, setCoverImage] = useState(null) 
+
+
+    const [selectedOption, setSelectedOption] = useState('DigitalSkills')
+
+    const handleShowDigital = (e) =>{
+        setSelectedOption(e.target.value)
+    }
+
+
+    const handlePostImage = (e) =>{
+        setImage_list(e.target.files[0])
+    }
+
+
+    
     const [digital_skills, setDigitalSkills] = useState('BackendDevelopment')
     const [work_type, setWorkType] = useState('Remote')
     const [cover_image, setCover_Image] = useState(null)
@@ -134,9 +139,11 @@ export const CreatingProfileUpdateHome = () => {
     // const [resume_link, setResume_Link] = useState('')
     const [website_link, setWebsite_Link] = useState('')
     const [dskills, setDskills] = useState([])
-    const [images, setImages] = useState([])
+    const [image, setImage] = useState(null) 
+    const [images_list, setImage_list] = useState([]) 
 
-    // console.log(cover_image);
+
+    console.log(images_list.length);
 
 
     const handleProfileUpdate = async (e) =>{
@@ -158,7 +165,7 @@ export const CreatingProfileUpdateHome = () => {
         // formData.append('resume_link', resume_link)
         formData.append('website_link', website_link)
         formData.append('dskills', dskills)
-        formData.append('images', ...singleFile)
+        formData.append('images', images_list)
 
 
         try {
@@ -398,24 +405,12 @@ export const CreatingProfileUpdateHome = () => {
                     singleFile = {singleFile}
                 />
 
-                {/* <div className='mt-4 lg:flex grid grid-cols-3 gap-2'>
+
+                {/* <input type="file"  multiple onChange={handlePostImage}/>
+
+                <div className='mt-4 lg:flex grid grid-cols-3 gap-2'>
                     <div className='h-[3rem] w-[6rem] relative overflow-hidden rounded-lg'>
                         <img src={img1} alt="" className='w-[10rem] rounded-lg'/>
-                        <p className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer lg:text-md text-xs text-red-700'/></p>
-                    </div>
-
-                    <div className='h-[3rem] w-[6rem] relative overflow-hidden rounded-lg'>
-                        <img src={img2} alt="" className='w-[10rem] rounded-lg'/>
-                        <p className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer lg:text-md text-xs text-red-700'/></p>
-                    </div>
-
-                    <div className='h-[3rem] w-[6rem] relative overflow-hidden rounded-lg'>
-                        <img src={img1} alt="" className='w-[10rem] rounded-lg'/>
-                        <p className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer lg:text-md text-xs text-red-700'/></p>
-                    </div>
-
-                    <div className='h-[3rem] w-[6rem] relative overflow-hidden rounded-lg'>
-                        <img src={img2} alt="" className='w-[10rem] rounded-lg'/>
                         <p className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer lg:text-md text-xs text-red-700'/></p>
                     </div>
                 </div> */}

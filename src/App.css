@@ -37,6 +37,13 @@ $large-Two : 1200px; */
   }
 }
 
+@media only screen and (min-width: 769px) and (max-width: 1017px) {
+  .bgUrl{
+    background-image: none;
+    height: fit-content;
+  }
+}
+
 
 
 .react-multiple-carousel__arrow {
