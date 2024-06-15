@@ -62,19 +62,46 @@ export const CreatingProfileUpdateHome = () => {
         setSelectedOption(e.target.value)
     }
 
+    
+    // const handlePostImage = (e) => {
+        //     const files = Array.from(e.target.files);
+        //     const imageArray = files.map(file => URL.createObjectURL(file));
+        //     setNewImages(...newImages, files);
+        //     setImage_list(files);
+        // };
+        
+        
+    const [limit, setLimit] = useState(false)
     const [images_list, setImage_list] = useState([]) 
+    const [previewUrls, setPreviewUrls] = useState([]);
+    console.log(images_list);
+    console.log(previewUrls);
 
-    const [newImages, setNewImages] = useState([])
+    
+  
+    const handlePostImage = (event) => {
+      const files = Array.from(event.target.files);
 
-    const handlePostImage = (e) => {
-        const files = Array.from(e.target.files);
-        const imageArray = files.map(file => URL.createObjectURL(file));
-        setNewImages(...newImages, files);
-        setImage_list(files);
+      if (images_list.length + files.length > 4) {
+        alert('Max of four images')
+        return;
+      }
+
+
+      setImage_list((prevImages) => [...prevImages, ...files]);
+  
+      const newPreviewUrls = files.map((file) => URL.createObjectURL(file));
+      setPreviewUrls((prevUrls) => [...prevUrls, ...newPreviewUrls]);
+
+      event.target.value = '';
     };
 
-    console.log(images_list);
 
+
+    const handleDeleteImage = (index) => {
+        setImage_list((prevImages) => prevImages.filter((_, i) => i !== index));
+        setPreviewUrls((prevUrls) => prevUrls.filter((_, i) => i !== index));
+    };
 
     
     const [digital_skills, setDigitalSkills] = useState('BackendDevelopment')
@@ -146,7 +173,7 @@ export const CreatingProfileUpdateHome = () => {
 
   return (
     <div className='lg:p-20 lg:pt-28 lg:pl-[18rem] p-5 pt-20'>
-      <form action="" className='flex lg:flex-row flex-col-reverse lg:gap-32 gap-5' onSubmit={handleProfileUpdate}>
+      <form action="" className='flex lg:flex-row flex-col-reverse lg:gap-14 gap-5' onSubmit={handleProfileUpdate}>
         <div className='lg:w-1/2 w-full flex flex-col gap-5'>
 
 
@@ -352,26 +379,15 @@ export const CreatingProfileUpdateHome = () => {
 
             <div>
                 <p className="text-xs pb-3">Images - (Maximum 4 Images)</p>
-                {/* <MultipleImageUpload 
-                    hiddenFile = {hiddenFile}
-                    uploadSingleFiles ={uploadSingleFiles}
-                    uploadFiles = {uploadFiles}
-                    removeImage = {removeImage}
-                    singleFile = {singleFile}
-                /> */}
-
-
-
-                
-
-
-                <input type="file"  multiple onChange={handlePostImage}/>
-
-                <div className='mt-4 lg:flex grid grid-cols-3 gap-2'>
-                    <div className='h-[3rem] w-[6rem] relative overflow-hidden rounded-lg'>
-                        <img src={img1} alt="" className='w-[10rem] rounded-lg'/>
-                        <p className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer lg:text-md text-xs text-red-700'/></p>
-                    </div>
+                <input type="file" multiple className="file-input file-input-bordered w-full text-xs" onChange={handlePostImage}/>
+       
+                <div className='mt-4 lg:flex grid grid-cols-2 gap-2 '>
+                    {previewUrls.map((url, index) => (
+                        <div className='2xl:w-[5rem] w-full 2xl:h-[3rem] h-[6rem] overflow-hidden relative rounded-sm object-cover'>
+                            <img key={index} src={url} alt={`Preview ${index}`} className='rounded-sm 2xl:w-[5rem] w-full 2xl:h-[3rem]'/>
+                            <p onClick={() => handleDeleteImage(index)} className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer lg:text-md text-xs text-red-700'/></p>
+                        </div>
+                    ))}
                 </div>
             </div>
 
