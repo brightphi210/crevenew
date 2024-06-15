@@ -1,5 +1,39 @@
 import React, { useState } from "react";
 
+
+    // var singleFileObj = [];
+    // var singleFileArray = [];
+    
+    // const [singleFile, setSingleFile] = useState([]);
+  
+    // const [hiddenFile, setHiddenFile] = useState(false);
+  
+    // const uploadSingleFiles = (e) => {
+    //     const file = e.target.files[0];
+    //     singleFileObj.push(e.target.files);
+    //     setImage_list(file);
+    //     singleFileArray.push(URL.createObjectURL(singleFileObj[0][0]));
+    //     setSingleFile([...singleFile, singleFileArray]);
+    // };
+  
+  
+    // const uploadFiles = (e) => {    
+    //   e.preventDefault();
+    //   console.log(singleFile);
+    //   if(singleFile.length === 4) {
+    //       setHiddenFile(true)
+    //     }
+      
+    // };
+  
+    // const removeImage = (index) => {
+    //   console.log("reomve");
+    //   setSingleFile([
+    //     ...singleFile.slice(0, index),
+    //     ...singleFile.slice(index + 1, singleFile.length)
+    //   ]);
+    // };
+  
 const IterateUplaod = (
     {
         hiddenFile,
@@ -40,6 +74,7 @@ const IterateUplaod = (
                       <input
                         type="file"
                         name="myfile"
+                        multiple
                         onChange={uploadSingleFiles}
                       />
                     </div>

@@ -13,6 +13,7 @@ import { MdDelete } from 'react-icons/md';
 import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
 import MultipleImageUpload from './Upload/MutilpleImageUpload';
+// import ImageUploading from 'react-images-uploading';
 
 const CreatingProfileUpdateDashboard = () => {
 
@@ -42,41 +43,7 @@ export default CreatingProfileUpdateDashboard
 
 
 export const CreatingProfileUpdateHome = () => {
-
-
-    var singleFileObj = [];
-    var singleFileArray = [];
     
-    const [singleFile, setSingleFile] = useState([]);
-  
-    const [hiddenFile, setHiddenFile] = useState(false);
-  
-    const uploadSingleFiles = (e) => {
-      singleFileObj.push(e.target.files);
-      setImage_list(singleFileObj[0][0]);
-      singleFileArray.push(URL.createObjectURL(singleFileObj[0][0]));
-      setSingleFile([...singleFile, singleFileArray]);
-    };
-  
-  
-    const uploadFiles = (e) => {    
-      e.preventDefault();
-      console.log(singleFile);
-      if(singleFile.length === 4) {
-          setHiddenFile(true)
-        }
-      
-    };
-  
-    const removeImage = (index) => {
-      console.log("reomve");
-      setSingleFile([
-        ...singleFile.slice(0, index),
-        ...singleFile.slice(index + 1, singleFile.length)
-      ]);
-    };
-  
-
 
     let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
     const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
@@ -84,29 +51,6 @@ export const CreatingProfileUpdateHome = () => {
 
 
     const url =`${BASE_URL}/creativeprofile/${userToken.profile_id}/`
-
-
-    // "id": 9,
-    // "dskills": [],
-    // "images": [],
-    // "user": "ea955e3c-8b07-4f3e-af1e-60e8a4cc0abb",
-    // "digital_skills": null,
-    // "work_type": null,
-    // "verified": false,
-    // "cover_image": "https://creve.store/media/default.png",
-    // "summary_of_profile": null,
-    // "starting_price": null,
-    // "about": null,
-    // "nondigital_skills": null,
-    // "display_name": null,
-    // "category": null,
-    // "profile_pics": "https://creve.store/media/default.png",
-    // "location": null,
-    // "language": null,
-    // "whatsapp_link": null,
-    // "resume_link": null,
-    // "website_link": null
-
 
     const [fileName, setFileName] = useState('') 
     const [coverImage, setCoverImage] = useState(null) 
@@ -118,10 +62,18 @@ export const CreatingProfileUpdateHome = () => {
         setSelectedOption(e.target.value)
     }
 
+    const [images_list, setImage_list] = useState([]) 
 
-    const handlePostImage = (e) =>{
-        setImage_list(e.target.files[0])
-    }
+    const [newImages, setNewImages] = useState([])
+
+    const handlePostImage = (e) => {
+        const files = Array.from(e.target.files);
+        const imageArray = files.map(file => URL.createObjectURL(file));
+        setNewImages(...newImages, files);
+        setImage_list(files);
+    };
+
+    console.log(images_list);
 
 
     
@@ -140,10 +92,9 @@ export const CreatingProfileUpdateHome = () => {
     const [website_link, setWebsite_Link] = useState('')
     const [dskills, setDskills] = useState([])
     const [image, setImage] = useState(null) 
-    const [images_list, setImage_list] = useState([]) 
 
+    // console.log('THis is image list', images_list);
 
-    console.log(images_list.length);
 
 
     const handleProfileUpdate = async (e) =>{
@@ -165,7 +116,11 @@ export const CreatingProfileUpdateHome = () => {
         // formData.append('resume_link', resume_link)
         formData.append('website_link', website_link)
         formData.append('dskills', dskills)
-        formData.append('images', images_list)
+
+        images_list.forEach((image, index) => {
+            formData.append(`images_list[${index}]`, image);
+        });
+        // formData.append('images_list', images_list)
 
 
         try {
@@ -397,23 +352,27 @@ export const CreatingProfileUpdateHome = () => {
 
             <div>
                 <p className="text-xs pb-3">Images - (Maximum 4 Images)</p>
-                <MultipleImageUpload 
+                {/* <MultipleImageUpload 
                     hiddenFile = {hiddenFile}
                     uploadSingleFiles ={uploadSingleFiles}
                     uploadFiles = {uploadFiles}
                     removeImage = {removeImage}
                     singleFile = {singleFile}
-                />
+                /> */}
 
 
-                {/* <input type="file"  multiple onChange={handlePostImage}/>
+
+                
+
+
+                <input type="file"  multiple onChange={handlePostImage}/>
 
                 <div className='mt-4 lg:flex grid grid-cols-3 gap-2'>
                     <div className='h-[3rem] w-[6rem] relative overflow-hidden rounded-lg'>
                         <img src={img1} alt="" className='w-[10rem] rounded-lg'/>
                         <p className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer lg:text-md text-xs text-red-700'/></p>
                     </div>
-                </div> */}
+                </div>
             </div>
 
             <div>
