@@ -34,6 +34,8 @@ import { Navigation, Pagination, Mousewheel, Keyboard, Autoplay } from 'swiper/m
 
 import empty1 from '../Images/No data-cuate.png'
 import empty2 from '../Images/No data-rafiki.png'
+import { BASE_URL } from '../Auth/BaseUrl';
+import { jwtDecode } from 'jwt-decode';
 
 
 
@@ -70,6 +72,52 @@ export const CreativeHome = () => {
 
   const [messages, setMessages] = useState(null)
   const [notification, setNotification] = useState(null)
+
+
+
+  const [profileData, setProfileData] = useState({})
+
+  let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
+  const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
+  const [isLoading, setIsLoading] = useState(false)
+  const url =`${BASE_URL}/creativeprofile/${userToken.profile_id}/`
+
+
+  const fetchProfile = async () => {
+
+      setIsLoading(true);
+
+      try {
+
+      const respose = await fetch(url, {
+          method: 'GET',
+          headers: {
+              'Authorization' : `Bearer ${authUser.access}`,
+          },
+      })
+      if (!respose.ok) {
+          setIsLoading(false);
+          throw new Error('Network response was not ok');
+      }
+      const data = await respose.json();
+
+      console.log(data);
+      setProfileData(data)
+
+
+
+
+      } catch (error) {
+          console.log(error);
+      } finally {
+      setIsLoading(false);
+      }
+  };
+
+
+  useEffect(() => {
+      fetchProfile();
+  }, []);
 
   
 
@@ -137,20 +185,20 @@ export const CreativeHome = () => {
         <div className='bg-neutral-100  w-full p-5 rounded-xl flex justify-center items-center'>
 
           <div className=''>
-            <div className='border-2 border-white w-fit rounded-full flex m-auto'>
-              <img src={prof} alt="" className='lg:w-16 w-14'/>
+            <div className='border-2 border-white w-20 rounded-full overflow-hidden flex m-auto'>
+              <img src={profileData.profile_pics} alt="" className='lg:w-24 w-24'/>
             </div>
 
             <div className='text-center pt-2'>
-              <h2 className='lg:text-sm text-sm'>John Doe</h2>
-              <p className='text-xs py-2'>Senior Electrician</p>
+              <h2 className='lg:text-sm text-sm'>{userToken.name} <span className='text-xs text-neutral-500'>({userToken.role})</span></h2>
+              <p className='text-xs py-2'>{profileData.display_name}</p>
               <div className='flex items-center gap-2'>
                 <progress className="progress progress-success " value="70" max="100"></progress>
                 <p className='text-xs'>70%</p>
               </div>
 
               <Link to={'/creative-dashboard-profile-update'}>
-                <button className='bg-black text-white rounded-md text-[0.6rem] py-2 px-3 flex  mt-2 gap-2'><MdModeEditOutline className='text-md'/>Edith Profile</button>
+                <button className='bg-black text-white rounded-md text-[0.6rem] py-2 px-3 flex justify-center m-auto    mt-2 gap-2'><MdModeEditOutline className='text-md'/>Edith Profile</button>
               </Link>
             </div>
 

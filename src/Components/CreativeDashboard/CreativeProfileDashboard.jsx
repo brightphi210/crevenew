@@ -146,7 +146,7 @@ export const CreativeProfile= () => {
                         </div>
 
                         <div>
-                            <h2 className='text-sm'>Bright Philip</h2>
+                            <h2 className='text-sm'>{userToken.name} <span className='text-xs text-neutral-300'>({userToken.role})</span></h2>
                             <p className='flex items-center gap-2 py-2 lg:text-sm text-xs'>12 Reviews <FaStar /><FaStar /><FaStar /></p>
 
                             {profileData.verified === true ? (

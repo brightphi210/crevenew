@@ -39,7 +39,7 @@ const CreativeSideBarCom = ({show}) => {
                 </Link>
 
                 <Link to={'/creative-dashboard-bookingsAll'} >
-                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoBookmarkOutline className=''/> Bookings</li>
+                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoBookmarkOutline className=''/> Messages</li>
                 </Link>
                 
                 <Link to={'/creative-dashboard-notificationAll'}>
