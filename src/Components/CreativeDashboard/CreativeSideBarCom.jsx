@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { MdOutlineDashboard } from "react-icons/md";
-import { IoBookmark } from "react-icons/io5";
-import { IoNotifications } from "react-icons/io5";
+import { IoBookmarkOutline } from "react-icons/io5";
+import { IoNotificationsOutline } from "react-icons/io5";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { IoSettingsSharp } from "react-icons/io5";
 import { FaLock } from "react-icons/fa6";
 import { BiLogOutCircle } from "react-icons/bi";
+import { FaBlog } from "react-icons/fa6";
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -28,35 +29,39 @@ const CreativeSideBarCom = ({show}) => {
 
 
   return (
-    <div className={show === false ? 'hidden bg-black lg:w-[15rem] w-full fixed h-screen lg:block  text-white z-50' : 'block bg-black lg:w-[15rem] w-full fixed h-screen lg:block  text-white z-50'}>
-      <div className='pt-10 flex flex-col'>
+    <div className={show === false ? 'hidden bg-neutral-50 lg:w-[15rem] w-full fixed h-screen lg:block  text-black ' : 'block bg-neutral-50 lg:w-[15rem] w-full fixed h-screen lg:block  text-black z-50'}>
+      <div className='pt-24 flex flex-col'>
         <div>
-            <p className='text-xs text-neutral-400 p-6 pt-10 lg:p-6 pb-3 border-b-neutral-600 border-b flex items-center gap-3 '>Menu <FaLongArrowAltRight /></p>
-            <ul className='flex flex-col gap-5 p-6 pb-10'>
+            <p className='text-xs text-neutral-400 p-6 lg:pt-0 lg:p-6 pb-3 border-b-neutral-200 border-b flex items-center gap-3 '>Menu <FaLongArrowAltRight /></p>
+            <ul className='flex flex-col gap-8 2xl:gap-8 xl:gap-5 lg:gap-3 md:gap-3 p-6 pb-10 2xl:pb-10 xl:pb-3 lg:pb-2'>
                 <Link to={'/creative-dashboard-home'}>
-                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] bg-cyan-500 mycolor2 px-3 py-2 rounded-md w-fit text-white hover:bg-white hover:text-black cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
+                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm text-black hover:text-accent cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
                 </Link>
 
                 <Link to={'/creative-dashboard-bookingsAll'} >
-                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoBookmark className=''/> Bookings</li>
+                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoBookmarkOutline className=''/> Bookings</li>
                 </Link>
                 
                 <Link to={'/creative-dashboard-notificationAll'}>
-                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoNotifications className=''/> Notifications</li>
+                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoNotificationsOutline className=''/> Notifications</li>
                 </Link>
-                
+
                 <Link to={'/creative-dashboard-profile'}>
-                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-base hover:text-accent cursor-pointer flex items-center gap-3'><CgProfile className=''/> Profile</li>
+                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><CgProfile className=''/> Profile</li>
+                </Link>
+
+                <Link to={'/creative-dashboard-notificationAll'}>
+                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><FaBlog className=''/> Creve Blog</li>
                 </Link>
             </ul>
         </div>
 
         <div>
-            <p className='text-xs text-neutral-400 p-6 pb-3 border-b-neutral-600 border-b flex items-center gap-3'>Preference <FaLongArrowAltRight /></p>
-            <ul className='flex flex-col gap-5 p-6'>
-                <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoSettingsSharp className=''/> Settings</li>
-                <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-base text-neutral-400 cursor-default flex items-center gap-3'><FaLock className=''/> Creve Pro</li>
-                <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-base hover:text-accent cursor-pointer flex items-center gap-3' onClick={logout}><BiLogOutCircle className=''/> Logout</li>
+            <p className='text-xs text-neutral-400 p-6 pb-3 border-b-neutral-200 border-b flex items-center gap-3'>Preference <FaLongArrowAltRight /></p>
+            <ul className='flex flex-col gap-5 2xl:gap-8 xl:gap-5 lg:gap-3 md:gap-3 p-6'>
+                <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoSettingsSharp className=''/> Settings</li>
+                <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm text-neutral-400 cursor-default flex items-center gap-3'><FaLock className=''/> Creve Pro</li>
+                <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3' onClick={logout}><BiLogOutCircle className=''/> Logout</li>
             </ul>
         </div>
 

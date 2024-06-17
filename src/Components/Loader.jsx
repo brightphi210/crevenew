@@ -6,9 +6,9 @@ const Loader = () => {
   return (
     <div>
 
-        <div className='flex justify-center items-center h-screen bg-gradient-to-b from-teal-50 to-cyan-50'>
+        <div className='flex justify-center items-center h-screen bg-white'>
           <div>
-            <img src={gif} alt="" className='w-40'/>
+            <img src={gif} alt="" className='w-32'/>
           </div>
         </div>
     </div>

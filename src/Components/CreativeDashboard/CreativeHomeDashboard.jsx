@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {useRef, useEffect, useState } from 'react'
 import CreativeNavBarCom from './CreativeNavBarCom';
 import CreativeSideBarCom from './CreativeSideBarCom';
 import voucher from '../Images/vouvher.png'
@@ -6,9 +6,6 @@ import laptop from '../Images/laptop.png'
 import prof from '../Images/Avatars.png'
 import community from '../Images/community2.png'
 
-
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 
 import { MdModeEditOutline } from "react-icons/md";
 import { MdArrowOutward } from "react-icons/md";
@@ -19,8 +16,24 @@ import { MdHelpCenter } from "react-icons/md";
 import { FaUnlockKeyhole } from "react-icons/fa6";
 import { FaCheckCircle } from "react-icons/fa";
 
+import { RiNotificationOffLine } from "react-icons/ri";
+import { IoNotificationsOffOutline } from "react-icons/io5";
+
+
 import completeImage from '../Images/Buffer-bro.png'
 import { Link } from 'react-router-dom';
+
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Navigation, Pagination, Mousewheel, Keyboard, Autoplay } from 'swiper/modules';
+
+
+import empty1 from '../Images/No data-cuate.png'
+import empty2 from '../Images/No data-rafiki.png'
 
 
 
@@ -55,84 +68,73 @@ export default CreativeHomeDashboard
 
 export const CreativeHome = () => {
 
-  // const [value, setValue] = useState('')
-  // const [copied, setCopied] = useState(false)
+  const [messages, setMessages] = useState(null)
+  const [notification, setNotification] = useState(null)
 
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 1,
-      slidesToSlide: 1
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 1,
-      slidesToSlide: 1
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-      slidesToSlide: 1
-    }
-  };
-
+  
 
   return (
 
 
-    <div className='lg:p-16 pt-20 lg:pl-[18rem] p-5'>
+    <div className='lg:p-16  lg:pl-[18rem] p-5 pt-20 lg:pt-28'>
       <div className='flex 2xl:flex-row flex-col gap-10'>
 
-        <div className='2xl:w-9/12 w-full bg-black rounded-xl text-white'>
-          <Carousel
-            responsive={responsive}
-            swipeable={true}
-            draggable={true}
-            showDots={true}
-            itemClass="carousel-item-padding-60-px"
-            ssr={true}
-            infinite={true}
-            autoPlay={true}
-            autoPlaySpeed={50000}
-            keyBoardControl={true}
-            containerClass="carousel-container"
-            removeArrowOnDeviceType={["tablet", ]}
-            dotListClass="custom-dot-list-style"
+        <div className='2xl:w-9/12 w-full bg-neutral-100   rounded-xl text-black'>
+
+          <Swiper
+            cssMode={true}
+            navigation={true}
+            pagination={{
+              clickable: true,
+              // dynamicBullets: true,
+            }}
+            mousewheel={true}
+            loop={true}
+            keyboard={true}
+            autoplay={{
+              delay: 10500,
+              disableOnInteraction: false,
+            }}
+            modules={[Navigation, Pagination, Mousewheel, Keyboard, Autoplay]}
+            className="mySwiper"
           >
+            <SwiperSlide>
+              <div className='p-10 lg:px-20 px-8 flex 2xl:flex-row lg:flex-row flex-col items-center'>
+                <div className=''>
+                  <p className='lg:text-sm text-xs'>
+                    Join Freelancer Plus now to unlock new features to help you <br className='lg:block hidden'/>
+                    grow your network and market your skills.
+                  </p>
+                  <h2 className='lg:text-2xl text-lg py-3'>Get 80 Connects each month</h2>
+                  <button className=' mycolor2 text-white py-3 px-10 rounded-md text-xs'>Learn More</button>
+                </div>
 
-            <div className='p-10 lg:px-20 px-8 flex 2xl:flex-row lg:flex-row flex-col items-center'>
-              <div className=''>
-                <p className='lg:text-sm text-xs'>
-                  Join Freelancer Plus now to unlock new features to help you <br className='lg:block hidden'/>
-                  grow your network and market your skills.
-                </p>
-                <h2 className='lg:text-2xl text-lg py-3'>Get 80 Connects each month</h2>
-                <button className='bg-cyan-500 mycolor2 py-3 px-10 rounded-md text-xs'>Learn More</button>
+                <div className='lg:ml-auto'>
+                  <img src={voucher} alt="" className='lg:w-40 lg:mt-0 w-1/2 mt-10'/>
+                </div>
               </div>
 
-              <div className='lg:ml-auto'>
-                <img src={voucher} alt="" className='lg:w-40 lg:mt-0 w-1/2 mt-10'/>
-              </div>
-            </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className='p-10 lg:px-20 px-8 flex lg:flex-row flex-col items-center'>
+                <div className=''>
+                  <p className='lg:text-sm text-xs'>
+                  Creve 101 will guide you through the basics of our platform.
+                  </p>
+                  <h2 className='lg:text-2xl text-lg py-3'>Learn how to get started on Creve</h2>
+                  <button className='mycolor2 text-white py-3 px-10 rounded-md text-xs'>Learn More</button>
+                </div>
 
-            
-            <div className='p-10 lg:px-20 px-8 flex lg:flex-row flex-col items-center'>
-              <div className=''>
-                <p className='lg:text-sm text-xs'>
-                Creve 101 will guide you through the basics of our platform.
-                </p>
-                <h2 className='lg:text-2xl text-lg py-3'>Learn how to get started on Creve</h2>
-                <button className='bg-cyan-500 mycolor2 py-3 px-10 rounded-md text-xs'>Learn More</button>
+                <div className='lg:ml-auto'>
+                  <img src={laptop} alt="" className='lg:w-40 lg:mt-0 w-10/12 mt-10 '/>
+                </div>
               </div>
+            </SwiperSlide>
 
-              <div className='lg:ml-auto'>
-                <img src={laptop} alt="" className='lg:w-40 lg:mt-0 w-10/12 mt-10 '/>
-              </div>
-            </div>
-          </Carousel>
+          </Swiper>
         </div>
 
-        <div className='bg-neutral-200  w-full p-5 rounded-xl flex justify-center items-center'>
+        <div className='bg-neutral-100  w-full p-5 rounded-xl flex justify-center items-center'>
 
           <div className=''>
             <div className='border-2 border-white w-fit rounded-full flex m-auto'>
@@ -158,120 +160,156 @@ export const CreativeHome = () => {
       </div>
 
       <div className='mt-10 flex 2xl:flex-row flex-col  w-full gap-10'>
-        <div className='bg-neutral-100 2xl:w-[77%] lg:p-5 py-5 px-2 rounded-xl'>
-          <h2 className='text-xs'>Booked Messages</h2>
+        <div className='border border-neutral-100 2xl:w-[77%] lg:p-5 py-5 px-2 rounded-xl'>
+          <h2 className='text-xs '>Messages</h2>
 
-          <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-white hover:bg-neutral-200' >
-            <div className='flex gap-2 items-center'>
-              <div>
-                <img src={prof} alt="" className='w-6'/>
+          {messages === null ? (
+            <div className='flex justify-center items-center h-full'>
+              <div className='p-5'>
+                <img src={empty1} alt="" className='w-[8rem] 2xl:w-[15rem] flex m-auto '/>
+                <h2 className='text-lg  text-center text-neutral-300'>No Messages Yet</h2>
               </div>
-              <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-xs'>Amadi John</h2>
-              <p className='2xl:text-xs xl:text-xs lg:text-xs text-[9px]  text-cyan-400 mycolor'>5pm</p>
             </div>
+            ) : (<>
+          
+            <div>
+
+              <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-neutral-50' >
+                <div className='flex gap-2 items-center'>
+                  <div>
+                    <img src={prof} alt="" className='w-6'/>
+                  </div>
+                  <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-xs'>Amadi John</h2>
+                  <p className='2xl:text-xs xl:text-xs lg:text-xs text-[9px]  text-cyan-400 mycolor'>5pm</p>
+                </div>
 
 
 
-            <div className='ml-auto flex '>
-              <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1' onClick={()=>document.getElementById('my_modal_2').showModal()}>View <MdArrowOutward /></button>
-            </div>
-          </div>
-
-
-          <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-white hover:bg-neutral-200'  onClick={()=>document.getElementById('my_modal_2').showModal()}>
-            <div className='flex gap-2 items-center'>
-              <div>
-                <img src={prof} alt="" className='w-6'/>
+                <div className='ml-auto flex '>
+                  <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1' onClick={()=>document.getElementById('my_modal_2').showModal()}>View <MdArrowOutward /></button>
+                </div>
               </div>
-              <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-xs'>Amadi John</h2>
-              <p className='2xl:text-xs xl:text-xs lg:text-xs text-[9px]  text-cyan-400 mycolor'>5pm</p>
-            </div>
+
+              <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-neutral-50'  onClick={()=>document.getElementById('my_modal_2').showModal()}>
+                <div className='flex gap-2 items-center'>
+                  <div>
+                    <img src={prof} alt="" className='w-6'/>
+                  </div>
+                  <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-xs'>Amadi John</h2>
+                  <p className='2xl:text-xs xl:text-xs lg:text-xs text-[9px]  text-cyan-400 mycolor'>5pm</p>
+                </div>
 
 
 
-            <div className='ml-auto flex '>
-              <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1'>View <MdArrowOutward /></button>
-            </div>
-          </div>
-
-          <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-white hover:bg-neutral-200'  onClick={()=>document.getElementById('my_modal_2').showModal()}>
-            <div className='flex gap-2 items-center'>
-              <div>
-                <img src={prof} alt="" className='w-6'/>
+                <div className='ml-auto flex '>
+                  <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1'>View <MdArrowOutward /></button>
+                </div>
               </div>
-              <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-xs'>Amadi John</h2>
-              <p className='2xl:text-xs xl:text-xs lg:text-xs text-[9px]  text-cyan-400 mycolor'>5pm</p>
-            </div>
+
+              <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-neutral-50'  onClick={()=>document.getElementById('my_modal_2').showModal()}>
+                <div className='flex gap-2 items-center'>
+                  <div>
+                    <img src={prof} alt="" className='w-6'/>
+                  </div>
+                  <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-xs'>Amadi John</h2>
+                  <p className='2xl:text-xs xl:text-xs lg:text-xs text-[9px]  text-cyan-400 mycolor'>5pm</p>
+                </div>
 
 
 
-            <div className='ml-auto flex '>
-              <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1'>View <MdArrowOutward /></button>
-            </div>
-          </div>
-
-
-          <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-white hover:bg-neutral-200'  onClick={()=>document.getElementById('my_modal_2').showModal()}>
-            <div className='flex gap-2 items-center'>
-              <div>
-                <img src={prof} alt="" className='w-6'/>
+                <div className='ml-auto flex '>
+                  <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1'>View <MdArrowOutward /></button>
+                </div>
               </div>
-              <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-xs'>Amadi John</h2>
-              <p className='2xl:text-xs xl:text-xs lg:text-xs text-[9px]  text-cyan-400 mycolor'>5pm</p>
+
+
+              <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-neutral-50'  onClick={()=>document.getElementById('my_modal_2').showModal()}>
+                <div className='flex gap-2 items-center'>
+                  <div>
+                    <img src={prof} alt="" className='w-6'/>
+                  </div>
+                  <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-xs'>Amadi John</h2>
+                  <p className='2xl:text-xs xl:text-xs lg:text-xs text-[9px]  text-cyan-400 mycolor'>5pm</p>
+                </div>
+
+
+
+                <div className='ml-auto flex '>
+                  <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1'>View <MdArrowOutward /></button>
+                </div>
+              </div>
+
+
+              <Link to={'/creative-dashboard-bookingsAll'}>
+                <button className='bg-black text-xs px-5 py-3 text-white rounded-md w-full 2xl:w-fit lg:w-fit'>See All</button>
+              </Link>
+
             </div>
+          </>)}
 
 
 
-            <div className='ml-auto flex '>
-              <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1'>View <MdArrowOutward /></button>
-            </div>
-          </div>
-
-          <Link to={'/creative-dashboard-bookingsAll'}>
-            <button className='bg-black text-xs px-5 py-3 text-white rounded-md w-full 2xl:w-fit lg:w-fit'>See All</button>
-          </Link>
 
         </div>
 
 
         <div className=' 2xl:w-[23%] w-full'>
-          <div className='bg-neutral-100 p-5 w-full rounded-xl '>
-            <p className='text-xs'>Notifications</p>  
 
-            <div className=''>
-            <div className='my-3 hover:bg-neutral-200 flex items-center gap-3 p-3 rounded-md'>
-                <p className='text-cyan-500 mycolor text-4xl'><IoNotificationsCircle /></p>
-                <div>
-                  <h2 className='text-sm flex items-center gap-2 2xl:text-xs'>Your account is verified</h2>
-                  <p className='text-xs text-neutral-400'>2 days ago</p>
+
+
+            <div className='bg-neutral-100 p-5 w-full rounded-xl '>
+              <p className='text-xs'>Notifications</p>  
+              
+              {notification === null ? 
+              
+              (
+
+                <div className='p-5  '>
+                  <div className='flex items-center justify-center p-5 my-3 bg-white m-auto w-fit rounded-full'>
+                    <p className='mycolor text-5xl'><IoNotificationsOffOutline /></p>
+                  </div>
+                    <h2 className='text-lg  text-center text-neutral-300'>No Notification Yet</h2>
                 </div>
-                
-              </div>
+              ) : 
 
-              <div className='my-3 hover:bg-neutral-200 flex items-center gap-3 p-3 rounded-md'>
-                <p className='text-cyan-500 mycolor text-4xl'><IoNotificationsCircle /></p>
-                <div>
-                  <h2 className='text-sm flex items-center gap-2 2xl:text-xs'>Login Successful</h2>
-                  <p className='text-xs text-neutral-400'>2 days ago</p>
+              (
+
+                <div className=''>
+                <div className='my-3 hover:bg-neutral-200 flex items-center gap-3 p-3 rounded-md'>
+                    <p className='text-cyan-500 mycolor text-4xl'><IoNotificationsCircle /></p>
+                    <div>
+                      <h2 className='text-sm flex items-center gap-2 2xl:text-xs'>Your account is verified</h2>
+                      <p className='text-xs text-neutral-400'>2 days ago</p>
+                    </div>
+                    
+                  </div>
+
+                  <div className='my-3 hover:bg-neutral-200 flex items-center gap-3 p-3 rounded-md'>
+                    <p className='text-cyan-500 mycolor text-4xl'><IoNotificationsCircle /></p>
+                    <div>
+                      <h2 className='text-sm flex items-center gap-2 2xl:text-xs'>Login Successful</h2>
+                      <p className='text-xs text-neutral-400'>2 days ago</p>
+                    </div>
+                    
+                  </div>
+
+                  <div className='my-3 hover:bg-neutral-200 flex items-center gap-3 p-3 rounded-md'>
+                    <p className='text-cyan-500 mycolor text-4xl'><IoNotificationsCircle /></p>
+                    <div>
+                      <h2 className='text-sm flex items-center gap-2 2xl:text-xs'>Login Successful</h2>
+                      <p className='text-xs text-neutral-400'>2 days ago</p>
+                    </div>
+                    
+                  </div>
+
+                  <Link to={'/creative-dashboard-notificationAll'}>
+                    <button className='bg-black text-xs px-5 py-3 text-white 2xl:w-full w-full lg:w-fit rounded-md'>See All</button>
+                  </Link>
+
                 </div>
-                
-              </div>
-
-              <div className='my-3 hover:bg-neutral-200 flex items-center gap-3 p-3 rounded-md'>
-                <p className='text-cyan-500 mycolor text-4xl'><IoNotificationsCircle /></p>
-                <div>
-                  <h2 className='text-sm flex items-center gap-2 2xl:text-xs'>Login Successful</h2>
-                  <p className='text-xs text-neutral-400'>2 days ago</p>
-                </div>
-                
-              </div>
-
-              <Link to={'/creative-dashboard-notificationAll'}>
-                <button className='bg-black text-xs px-5 py-3 text-white 2xl:w-full w-full lg:w-fit rounded-md'>See All</button>
-              </Link>
-
+              )}
             </div>
-          </div>
+
 
           <div className='bg-neutral-100 p-5 w-full rounded-xl mt-3 flex flex-col gap-5'>
             <p className='text-xs flex items-center gap-5 cursor-pointe text-neutral-400'>Upgrade to pro <FaUnlockKeyhole /></p>

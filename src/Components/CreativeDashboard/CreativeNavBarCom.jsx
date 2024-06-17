@@ -5,10 +5,11 @@ import prof from '../Images/Avatars.png'
 import { MdMenu } from "react-icons/md";
 import { RiCloseLargeLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
-
+import { IoNotificationsOutline } from "react-icons/io5";
+import { IoBookmarkOutline } from "react-icons/io5";
 const CreativeNavBarCom = ({handleShow, show}) => {
   return (
-    <div className='flex flex-row items-center shadow-md fixed right-0 left-0 bg-white py-3 px-5 lg:pl-[17rem] lg:z-10 z-50'>
+    <div className='flex flex-row items-center shadow-md fixed right-0 left-0 bg-white py-3 lg:px-20 px-5  z-50'>
 
       <div onClick={handleShow}>
         {show === false ? <p className='text-xl block lg:hidden mr-3'><MdMenu /></p> : <p className='text-xl block lg:hidden mr-3'><RiCloseLargeLine /></p>}
@@ -19,8 +20,9 @@ const CreativeNavBarCom = ({handleShow, show}) => {
         </Link>
       </div>
 
-      <div className='flex flex-row gap-3 ml-auto items-center'>
-        <p className='text-3xl cursor-pointer text-cyan-600 mycolor'><IoNotificationsCircle /></p>
+      <div className='flex flex-row gap-5 ml-auto items-center'>
+        <p className='text-2xl cursor-pointer text-neutral-700'><IoNotificationsOutline /></p>
+        <p className='text-2xl cursor-pointer text-neutral-700'><IoBookmarkOutline /></p>
         <div >
           <Link to={'/creative-dashboard-profile'}>
             <img src={prof} alt="" className='w-7 cursor-pointer'/>
