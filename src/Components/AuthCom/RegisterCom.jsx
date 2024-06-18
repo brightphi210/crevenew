@@ -14,6 +14,7 @@ const RegisterCom = () => {
   const [role, setRole] = useState('')
 
   const [error, setError] = useState('')
+  const [error2, setError2] = useState('')
 
   const [isLoading, setIsLoading] = useState(false)
   const [show, setShow] = useState(false)
@@ -51,6 +52,7 @@ const RegisterCom = () => {
         const data = await response.json()
         console.log(data);
         setError(data.password)
+        setError2(data.email)
         console.log('There was an error');
       }
     } catch (error) {
@@ -149,6 +151,7 @@ const RegisterCom = () => {
 
 
         <p className='text-xs text-red-500'>{error}</p>
+        <p className='text-xs text-red-500'>{error2}</p>
 
         <div className='flex'>
           <button type='submit' 

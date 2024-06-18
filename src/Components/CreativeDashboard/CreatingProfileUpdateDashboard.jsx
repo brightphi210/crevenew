@@ -60,7 +60,7 @@ export const CreatingProfileUpdateHome = () => {
     const [coverImage, setCoverImage] = useState(null) 
 
 
-    const [selectedOption, setSelectedOption] = useState('DigitalSkills')
+    const [selectedOption, setSelectedOption] = useState('')
 
     const handleShowDigital = (e) =>{
         setSelectedOption(e.target.value)
@@ -96,11 +96,12 @@ export const CreatingProfileUpdateHome = () => {
     const addSkill = () => {
       if (newSkill.trim() !== '') {
         setSkills([...skills, newSkill]);
-        setNewSkill('');
+        // setNewSkill('');
       }
 
       if (skills.length + 1 === 4) {
         setIsDisabled(true);
+        
       }
     };
 
@@ -119,13 +120,13 @@ export const CreatingProfileUpdateHome = () => {
     };
 
     
-    const [digital_skills, setDigitalSkills] = useState('BackendDevelopment')
-    const [work_type, setWorkType] = useState('Remote')
+    const [digital_skills, setDigitalSkills] = useState('')
+    const [work_type, setWorkType] = useState('')
     const [cover_image, setCover_Image] = useState(null)
     const [summary_of_profile, setSummary_Of_Profile] = useState('')
     const [starting_price, setStarting_Price] = useState('')
     const [about, setAbout] = useState('')
-    const [nondigital_skills, setNondigital_Skills] = useState('Plumbing')
+    const [nondigital_skills, setNondigital_Skills] = useState('')
     const [display_name, setDisplay_Name] = useState('')
     const [location, setLocation] = useState('')
     const [language, setLanguage] = useState('')
@@ -266,6 +267,7 @@ export const CreatingProfileUpdateHome = () => {
                             <p className="text-xs pb-3">Work Type</p>
                             <select className="select text-xs select-bordered w-full max-w-full" 
                                 value={work_type} onChange={(e) =>{setWorkType(e.target.value)}} required>
+                                <option className='text-xs'required >Select Work Type</option>
                                 <option className='text-xs'required value={'Remote'}>Remote</option>
                                 <option className='text-xs' value={'Hybrid'}>Hybrid</option>
                                 <option className='text-xs' value={'On-site'}>On-site</option>
@@ -298,7 +300,8 @@ export const CreatingProfileUpdateHome = () => {
                         <div>
                             <p className="text-xs pb-3">Category</p>
                             <select className="select text-xs  select-bordered w-full max-w-full"  value={selectedOption} onChange={handleShowDigital}>
-                                <option className='text-xs'required value={'DigitalSkills'}>Digital Skills</option>
+                                <option className='text-xs'>Select Category</option>
+                                <option className='text-xs' value={'DigitalSkills'}>Digital Skills</option>
                                 <option className='text-xs' value={'Non-DigitalSkills'}>Non-Digital Skills</option>
                             </select>
                         </div>
@@ -309,6 +312,7 @@ export const CreatingProfileUpdateHome = () => {
                             <div>
                                 <p className="text-xs pb-3">Digital</p>
                                 <select className="select text-xs select-bordered w-full max-w-full" required value={digital_skills} onChange={(e)=>setDigitalSkills(e.target.value)}>
+                                    <option className='text-xs'>Select Digital Skill</option>
                                     <option className='text-xs' value={'BackendDevelopment'}>Backend Development</option>
                                     <option className='text-xs' value={'MobileDevelopment'}>Mobile Development</option>
                                     <option className='text-xs' value={'UI/UX_Design'}>UI/UX</option>
@@ -324,6 +328,7 @@ export const CreatingProfileUpdateHome = () => {
                             <div>
                                 <p className="text-xs pb-3">Non-Digital</p>
                                 <select className="select text-xs select-bordered w-full max-w-full" value={nondigital_skills} onChange={(e)=>setNondigital_Skills(e.target.value)}>
+                                    <option className='text-xs'>Select Non-Digital Skill</option>
                                     <option className='text-xs' value={'Plumbing'}>Plumbing</option>
                                     <option className='text-xs' value={'Catering'}>Catering</option>   
                                     <option className='text-xs' value={'Hair_Stylist'}>Hair Stylist</option>
@@ -343,7 +348,7 @@ export const CreatingProfileUpdateHome = () => {
                             <p className="text-xs pb-3">Whatsapp</p>
                             <input 
                                 type="text" 
-                                placeholder="whatsapp e.g 08094422807" 
+                                placeholder="whatsapp e.g https://example.com" 
                                 value={whatsapp_link}
                                 required
                                 onChange={(e)=>setWhatsapp_Link(e.target.value)}
