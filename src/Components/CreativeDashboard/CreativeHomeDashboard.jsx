@@ -208,7 +208,7 @@ export const CreativeHome = () => {
       </div>
 
       <div className='mt-10 flex 2xl:flex-row flex-col  w-full gap-10'>
-        <div className='border border-neutral-100 2xl:w-[77%] lg:p-5 py-5 px-2 rounded-xl'>
+        <div className=' bg-neutral-100 2xl:w-[77%] lg:p-5 py-5 px-2 rounded-xl'>
           <h2 className='text-xs '>Messages</h2>
 
           {messages === null ? (
