@@ -12,6 +12,11 @@ import CreativeProfileUpdataDash from './Pages/CreativeDash/CreativeProfileUpdat
 import CreativeNotificationDashboard from './Components/CreativeDashboard/CreativeNotificationDashboard';
 import CreativeBookingsDash from './Pages/CreativeDash/CreativeBookingsDash';
 
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
+
 function App() {
 
   

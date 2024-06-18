@@ -37,44 +37,44 @@ const HomeComThree = () => {
         <h2 className='text-center text-lg pb-6'>Choose Different Category </h2>
 
         <div className='grid lg:grid-cols-4 grid-cols-2 gap-5'>
-            <div className='relative  m-auto items-center'>
+            <div className='relative  m-auto items-center' data-aos="fade-up" data-aos-duration="1000">
                 <img src={img1} alt="" />
                 <h2 className='absolute flex m-auto top-1/2 left-0 text-center justify-center right-0 text-neutral-200 text-sm '>Graphic Design</h2>
             </div>
 
-            <div className='relative  m-auto items-center'>
+            <div className='relative  m-auto items-center' data-aos="fade-up" data-aos-duration="1000">
                 <img src={img2} alt="" />
                 <h2 className='absolute flex m-auto top-1/2 left-0 text-center justify-center right-0 text-neutral-200 text-sm '>Cartoon Animations</h2>
             </div>
 
-            <div className='relative  m-auto items-center'>
+            <div className='relative  m-auto items-center' data-aos="fade-up" data-aos-duration="1000">
                 <img src={img3} alt="" />
                 <h2 className='absolute flex m-auto top-1/2 left-0 text-center justify-center right-0 text-neutral-200 text-sm '>Illustrations</h2>
             </div>
 
-            <div className='relative  m-auto items-center'>
+            <div className='relative  m-auto items-center' data-aos="fade-up" data-aos-duration="1000">
                 <img src={img4} alt="" />
                 <h2 className='absolute flex m-auto top-1/2 left-0 text-center justify-center right-0 text-neutral-200 text-sm '>Flyers Dsigns</h2>
             </div>
 
-            <div className='relative  m-auto items-center'>
+            <div className='relative  m-auto items-center' data-aos="fade-up" data-aos-duration="1000">
                 <img src={img5} alt="" />
                 <h2 className='absolute flex m-auto top-1/2 left-0 text-center justify-center right-0 text-neutral-200 text-sm '>Videography</h2>
             </div>
 
 
-            <div className='relative  m-auto items-center'>
+            <div className='relative  m-auto items-center' data-aos="fade-up" data-aos-duration="1000">
                 <img src={img6} alt="" />
                 <h2 className='absolute flex m-auto top-1/2 left-0 text-center justify-center right-0 text-neutral-200 text-sm '>Social Design</h2>
             </div>
 
 
-            <div className='relative  m-auto items-center'>
+            <div className='relative  m-auto items-center' data-aos="fade-up" data-aos-duration="1000">
                 <img src={img7} alt="" />
                 <h2 className='absolute flex m-auto top-1/2 left-0 text-center justify-center right-0 text-neutral-200 text-sm '>Article Writting</h2>
             </div>
 
-            <div className='relative  m-auto items-center'>
+            <div className='relative  m-auto items-center' data-aos="fade-up" data-aos-duration="1000">
                 <img src={img8} alt="" />
                 <h2 className='absolute flex m-auto top-1/2 left-0 text-center justify-center right-0 text-neutral-200 text-sm '>Logo Design </h2>
             </div>
@@ -98,7 +98,7 @@ const HomeComThree = () => {
         <div className='relative mt-10 block lg:hidden'>
             <img src={bg2} alt="" className='w-full rounded-3xl'/>
             <div className='absolute flex justify-center items-center top-1/3 m-auto left-0 right-0 text-white'>
-                <div className='px-5'>
+                <div className='px-5' data-aos="fade-up" data-aos-duration="1000">
                     <h2 className='text-xl text-center'>Ready to Get Started ?</h2>
                     <p className='text-center py-5 text-xs'>
                         Sign Up or Login to Explore Various Features that our Sellers &
