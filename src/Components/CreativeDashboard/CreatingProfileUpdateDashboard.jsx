@@ -140,8 +140,6 @@ export const CreatingProfileUpdateHome = () => {
     const [isLoading2, setIsLoading2] = useState(false)
 
     const [success, setSuccess] = useState(false)
-
-
     const [message, setMessage] = useState(false)
 
     const fetchProfile = async () => {
@@ -176,6 +174,11 @@ export const CreatingProfileUpdateHome = () => {
         setWebsite_Link(data.website_link)
         setSelectedOption(data.category)
         setPhoneNumber(data.phone_number)
+        setNewSkill(data.dskills[0].skill)
+
+        
+        console.log(data.dskills[0].skill);
+        console.log(data);
 
 
         } catch (error) {
@@ -184,6 +187,8 @@ export const CreatingProfileUpdateHome = () => {
         setIsLoading2(false);
         }
     };
+
+    // console.log(cover_image);
 
 
     useEffect(() => {
@@ -424,9 +429,15 @@ export const CreatingProfileUpdateHome = () => {
                                     }}
                                 />
 
-                                {image ? 
-                                    <div className='w-full h-[20rem] overflow-hidden rounded-xl'>
-                                        <img src={image} alt='' className='w-full'/> 
+                                {image || cover_image ? 
+                                    <div className='w-full h-[20rem] overflow-hidden rounded-xl bg-neutral-50'>
+                                        {image && (
+                                            <img src={image} alt='' className='w-full cursor-pointer'/> 
+                                        )}
+
+                                        {cover_image && (
+                                             <img src={cover_image} alt='' className='w-full cursor-pointer'/>
+                                        )}
                                     </div>
 
                                     : 
@@ -442,7 +453,7 @@ export const CreatingProfileUpdateHome = () => {
 
 
                             {image && (
-                                <p onClick={()=>{
+                                <p onClick={()=>{   
                                     setFileName("No Selected File Name")
                                     setImage(null)
                                 }} className=' absolute ml-auto cursor-pointer top-10 right-5 bg-white border border-neutral-100 w-fit flex items-center justify-center p-3 rounded-full text-red-500 shadow-md'>
