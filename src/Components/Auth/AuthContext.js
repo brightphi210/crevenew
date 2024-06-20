@@ -1,22 +1,33 @@
+import { jwtDecode } from 'jwt-decode';
+import React, { createContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { Outlet, Navigate } from "react-router-dom";
-import { useState, useContext, createContext } from "react";
-import { jwtDecode } from "jwt-decode";
+const AuthContext = createContext();
 
+const AuthProvider = ({ children }) => {
+    const navigate = useNavigate();
+    
+    const [authToken, setAuthToken] = useState(null);
+    const userToken = authToken?.access ? jwtDecode(authToken.access) : null;
 
+    useEffect(() => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        setAuthToken(JSON.parse(token));
+      }
+    }, []);
 
-const PrivateRoute = ({role}) => {
-    let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
-    const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
+    const logout = () => {
+        localStorage.removeItem('token');
+        setAuthToken(null); 
+        navigate('/');
+    };
 
-    console.log(userToken);
+    return (
+        <AuthContext.Provider value={{ authToken,userToken, setAuthToken, logout }}>
+            {children}
+        </AuthContext.Provider>
+    );
+};
 
-    if (!userToken) {
-        return <Navigate to="/login" />;
-    }
-    return userToken.role === role ? <Outlet /> : <Navigate to={'/login'}/>
-}
-
-export default PrivateRoute; 
-
-
+export { AuthContext, AuthProvider };

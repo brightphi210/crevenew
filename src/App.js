@@ -4,7 +4,7 @@ import Homepage from './Pages/Homepage';
 import Login from './Pages/AuthPage/Login';
 import Register from './Pages/AuthPage/Register';
 import OTP from './Pages/AuthPage/OTP';
-import PrivateRoute from './Components/Auth/AuthContext';
+import PrivateRoute from './Components/Auth/PrivateRoute';
 import UserHomeDash from './Pages/UserDash/UserHomeDash';
 import CreaiveHomeDash from './Pages/CreativeDash/CreaiveHomeDash';
 import CreativeProfileDash from './Pages/CreativeDash/CreativeProfileDash';

@@ -50,31 +50,57 @@ export default CreatingProfileUpdateDashboard
 
 export const CreatingProfileUpdateHome = () => {
     
-
     let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
     const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
 
-    const url =`${BASE_URL}/creativeprofile/${userToken.profile_id}/`
 
+    const [selectedOption, setSelectedOption] = useState('')
+    const [digital_skills, setDigitalSkills] = useState('')
+    const [work_type, setWorkType] = useState('')
+    const [cover_image, setCover_Image] = useState(null)
+    const [summary_of_profile, setSummary_Of_Profile] = useState('')
+    const [starting_price, setStarting_Price] = useState('')
+    const [about, setAbout] = useState('')
+    const [nondigital_skills, setNondigital_Skills] = useState('')
+    const [display_name, setDisplay_Name] = useState('')
+    const [location, setLocation] = useState('')
+    const [language, setLanguage] = useState('')
+    const [whatsapp_link, setWhatsapp_Link] = useState('')
+    const [phone_number, setPhoneNumber] = useState('')
+    const [website_link, setWebsite_Link] = useState('')
+    const [image, setImage] = useState(null) 
+
+
+    const [skills, setSkills] = useState([]);
+    const [newSkill, setNewSkill] = useState('');
+    const [isDisabled, setIsDisabled] = useState(false);
+    const [isDisabled1, setIsDisabled1] = useState(false);
+    const [images_list, setImage_list] = useState([]) 
+    const [previewUrls, setPreviewUrls] = useState([]);
+    
+    
     const [fileName, setFileName] = useState('') 
     const [coverImage, setCoverImage] = useState(null) 
 
+    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading2, setIsLoading2] = useState(false)
 
-    const [selectedOption, setSelectedOption] = useState('')
+    const [success, setSuccess] = useState(false)
+    const [message, setMessage] = useState(false)
 
-    const handleShowDigital = (e) =>{
+
+
+
+    const handleShowDigital = (e) =>{ 
         setSelectedOption(e.target.value)
     }
-
- 
-    const [images_list, setImage_list] = useState([]) 
-    const [previewUrls, setPreviewUrls] = useState([]);
   
     const handlePostImage = (event) => {
       const files = Array.from(event.target.files);
 
       if (images_list.length + files.length > 4) {
         alert('Max of four images')
+        setIsDisabled1()
         return;
       }
 
@@ -82,12 +108,6 @@ export const CreatingProfileUpdateHome = () => {
       const newPreviewUrls = files.map((file) => URL.createObjectURL(file));
       setPreviewUrls((prevUrls) => [...prevUrls, ...newPreviewUrls]);
     };
-
-
-
-    const [skills, setSkills] = useState([]);
-    const [newSkill, setNewSkill] = useState('');
-    const [isDisabled, setIsDisabled] = useState(false);
   
     const handleInputChange = (e) => {
       setNewSkill(e.target.value);
@@ -110,42 +130,18 @@ export const CreatingProfileUpdateHome = () => {
         setSkills(skills.filter((_, i) => i !== index));
     };
 
-    // console.log(skills);
-
-
-
     const handleDeleteImage = (index) => {
         setImage_list((prevImages) => prevImages.filter((_, i) => i !== index));
         setPreviewUrls((prevUrls) => prevUrls.filter((_, i) => i !== index));
     };
 
-    
-    const [digital_skills, setDigitalSkills] = useState('')
-    const [work_type, setWorkType] = useState('')
-    const [cover_image, setCover_Image] = useState(null)
-    const [summary_of_profile, setSummary_Of_Profile] = useState('')
-    const [starting_price, setStarting_Price] = useState('')
-    const [about, setAbout] = useState('')
-    const [nondigital_skills, setNondigital_Skills] = useState('')
-    const [display_name, setDisplay_Name] = useState('')
-    const [location, setLocation] = useState('')
-    const [language, setLanguage] = useState('')
-    const [whatsapp_link, setWhatsapp_Link] = useState('')
-    const [phone_number, setPhoneNumber] = useState('')
-    const [website_link, setWebsite_Link] = useState('')
-    const [image, setImage] = useState(null) 
 
 
-    const [isLoading, setIsLoading] = useState(false)
-    const [isLoading2, setIsLoading2] = useState(false)
+    // ==================== GETTING DATA FROM PROFILE ========================
 
-    const [success, setSuccess] = useState(false)
-    const [message, setMessage] = useState(false)
-
+    const url =`${BASE_URL}/creativeprofile/${userToken.profile_id}/`
     const fetchProfile = async () => {
-
         setIsLoading2(true);
-
         try {
 
         const respose = await fetch(url, {
@@ -175,6 +171,7 @@ export const CreatingProfileUpdateHome = () => {
         setSelectedOption(data.category)
         setPhoneNumber(data.phone_number)
         setNewSkill(data.dskills[0].skill)
+        setImage_list(data.images)
 
         
         console.log(data.dskills[0].skill);
@@ -188,14 +185,15 @@ export const CreatingProfileUpdateHome = () => {
         }
     };
 
-    // console.log(cover_image);
-
-
     useEffect(() => {
         fetchProfile();
     }, []);
     
 
+    console.log(images_list);
+
+
+    // ================= HANDLE UPDATE ===================
     const handleProfileUpdate = async (e) =>{
         setIsLoading(true)
         e.preventDefault() 
@@ -230,7 +228,6 @@ export const CreatingProfileUpdateHome = () => {
                 },
                 body: formData
             })
-            
             
             if(respose.status === 200 || respose.ok){
                 setSuccess(true)
@@ -430,7 +427,7 @@ export const CreatingProfileUpdateHome = () => {
                                 />
 
                                 {image || cover_image ? 
-                                    <div className='w-full h-[20rem] overflow-hidden rounded-xl bg-neutral-50'>
+                                    <div className='w-full h-[20rem] overflow-hidden rounded-xl bg-neutral-50 '>
                                         {image && (
                                             <img src={image} alt='' className='w-full cursor-pointer'/> 
                                         )}
@@ -438,6 +435,14 @@ export const CreatingProfileUpdateHome = () => {
                                         {cover_image && (
                                              <img src={cover_image} alt='' className='w-full cursor-pointer'/>
                                         )}
+
+
+                                        <div className='text-white z-50 absolute top-[45%] right-[40%] cursor-pointer text-5xl'>
+                                            <p className='flex justify-center'><AiOutlineCloudUpload /></p>
+                                            <p className='text-sm'>Edith Cover Image </p>
+                                        </div>
+
+                                        
                                     </div>
 
                                     : 
@@ -490,7 +495,7 @@ export const CreatingProfileUpdateHome = () => {
 
                         <div>
                             <p className="text-xs pb-3">Images - (Maximum 4 Images)</p>
-                            <input type="file" required multiple className="file-input file-input-bordered w-full text-xs" onChange={handlePostImage}/>
+                            <input type="file" disabled ={isDisabled}required multiple className="file-input file-input-bordered w-full text-xs" onChange={handlePostImage}/>
                 
                             <div className='mt-4 lg:flex grid grid-cols-2 gap-2 '>
                                 {previewUrls.map((url, index) => (
@@ -500,6 +505,19 @@ export const CreatingProfileUpdateHome = () => {
                                     </div>
                                 ))}
                             </div>
+
+
+                            <div className='mt-4 lg:flex grid grid-cols-2 gap-2 '>
+                                {images_list.map((url, index) => (
+                                    <div className='2xl:w-[6rem] w-full 2xl:h-[4rem] xl:h-[4rem]  lg:h-[4rem]  h-[8rem] bg-slate-200 overflow-hidden relative rounded-lg '>
+                                        <img key={index} src={url.image} alt={`Preview ${index}`} className='rounded-sm 2xl:w-full w-full 2xl:h-[4rem] xl:h-[4rem] lg:h-[4rem]   object-cover' />
+                                        {/* <p onClick={() => handleDeleteImage(index)} className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer lg:text-md text-xs text-red-700'/></p> */}
+                                    </div>
+                                ))}
+                            </div>
+
+
+                            
                         </div>
 
                         <div>
