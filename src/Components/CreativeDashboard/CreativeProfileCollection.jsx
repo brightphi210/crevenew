@@ -123,6 +123,22 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
 
 
 
+    const deleteImage = async (id) => {
+        try {
+          const response = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Authorization' : `Bearer ${authUser.access}`,
+            },
+          });
+          if (!response.ok) throw new Error('Network response was not ok');
+          setImage_list(images_list.filter(image => image.id !== id));
+        } catch (error) {
+          console.error('Error deleting image:', error);
+        }
+      };
+
+
   return (
     <div>
         <div className='2xl:w-1/2 xl:w-1/2 lg:w-1/2 md:w-full'>
@@ -147,9 +163,10 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
 
 
             <div className='mt-4 lg:grid 2xl:grid-cols-2 grid grid-cols-2 gap-2  border border-neutral-200 rounded-md'>
-                {images_list.map((url, index) => (
+                {checkdata.map((url, index) => (
                     <div className='2xl:w-full w-full 2xl:h-60 xl:h-40 lg:h-20 md:h-20  h-40 bg-slate-100 border border-neutral-200 overflow-hidden relative rounded-sm '>
                         <img key={index} src={url.image} alt={`Preview ${index}`} className='rounded-sm w-full h-full object-cover' />
+                        {/* <p onClick={() => deleteImage(index)} className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer lg:text-md text-xs text-red-700'/></p> */}
                     </div>
                 ))}
             </div>
