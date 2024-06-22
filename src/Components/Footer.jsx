@@ -7,7 +7,7 @@ import { CiFacebook } from "react-icons/ci";
 
 const Footer = () => {
   return (
-    <div className='flex lg:flex-row flex-col justify-between lg:gap-0 gap-8 lg:px-[10rem] px-5 bg-neutral-100 py-10'>
+    <div className='flex lg:flex-row flex-col justify-between lg:gap-0 gap-8 lg:px-[10rem] 2xl:px-[20rem] xl:px-[10rem] px-5 bg-neutral-100 py-10'>
         <div className=''>
             <img src={logo} alt="" className='w-14'/>
             <p className='pt-2 lg:text-sm text-xs'>Home of best talents</p>

@@ -7,9 +7,11 @@ import { CgProfile } from "react-icons/cg";
 import { IoSettingsSharp } from "react-icons/io5";
 import { FaLock } from "react-icons/fa6";
 import { BiLogOutCircle } from "react-icons/bi";
-import { FaBlog } from "react-icons/fa6";
+import { CiUser } from "react-icons/ci";
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
+import { FaQuestion } from "react-icons/fa6";
+import { BsAppIndicator } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 
 const CreativeSideBarCom = ({show}) => {
@@ -30,7 +32,7 @@ const CreativeSideBarCom = ({show}) => {
 
   return (
     <div className={show === false ? 'hidden bg-neutral-50 lg:w-[15rem] w-full fixed h-screen lg:block  text-black ' : 'block bg-neutral-50 lg:w-[15rem] w-full fixed h-screen lg:block  text-black z-50'}>
-      <div className='pt-24 flex flex-col'>
+      <div className='pt-24 flex flex-col overflow-y-scroll h-screen'>
         <div>
             <p className='text-xs text-neutral-400 p-6 lg:pt-0 lg:p-6 pb-3 border-b-neutral-200 border-b flex items-center gap-3 '>Menu <FaLongArrowAltRight /></p>
             <ul className='flex flex-col gap-8 2xl:gap-8 xl:gap-5 lg:gap-3 md:gap-3 p-6 pb-10 2xl:pb-10 xl:pb-3 lg:pb-2'>
@@ -47,11 +49,15 @@ const CreativeSideBarCom = ({show}) => {
                 </Link>
 
                 <Link to={'/creative-dashboard-profile'}>
-                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><CgProfile className=''/> Profile</li>
+                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><CiUser className='text-lg'/> Profile</li>
                 </Link>
 
                 <Link to={'/creative-dashboard-notificationAll'}>
-                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><FaBlog className=''/> Creve Blog</li>
+                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><FaQuestion className=''/>FAQ</li>
+                </Link>
+
+                <Link to={'/creative-dashboard-notificationAll'}>
+                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><BsAppIndicator className=''/> Creve Blog</li>
                 </Link>
             </ul>
         </div>
