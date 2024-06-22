@@ -226,8 +226,8 @@ export const CreativeProfile= () => {
                                 <PhotoProvider>
 
                                     <PhotoView src={profileData.cover_image}>
-                                        <div className='w-full 2xl:h-[20rem] xl:h-[15rem] lg-[15rem] overflow-hidden  lg:rounded-2xl rounded-md cursor-pointer bg-black'>
-                                            <img src={profileData.cover_image} alt="" className='w-full object-contain hover:transform hover:scale-105 transition-all ease-linear'/>
+                                        <div className='w-full 2xl:h-[20rem] xl:h-[15rem] lg-[15rem] overflow-hidden  lg:rounded-lg rounded-md cursor-pointer bg-neutral-200'>
+                                            <img src={profileData.cover_image} alt="" className='w-full h-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
                                         </div>
                                     </PhotoView>
 
@@ -239,8 +239,8 @@ export const CreativeProfile= () => {
                                             {profileData.images.map((image)=>(
                                                 // console.log(image.image)
                                                 <PhotoView  src={image.image}>
-                                                    <div className='2xl:h-[5rem] xl:h-[4rem] lg:h-[4rem] h-[4rem] overflow-hidden 2xl:w-[100%] w-full cursor-pointer rounded-lg bg-black'>
-                                                        <img src={image.image} alt="" className='2xl:w-[120%] hover:transform hover:scale-105 transition-all ease-linear'/>
+                                                    <div className='2xl:h-[8rem] xl:h-[8rem] lg:h-[8rem] h-[8rem] overflow-hidden w-full cursor-pointer rounded-md bg-neutral-200'>
+                                                        <img src={image.image} alt="" className='w-full h-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
                                                     </div>
                                                 </PhotoView>
                                             ))}

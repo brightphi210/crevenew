@@ -144,7 +144,7 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
         <div className='2xl:w-1/2 xl:w-1/2 lg:w-1/2 md:w-full'>
 
 
-            {checkdata === null || checkdata === '' && (
+            {checkdata === null || checkdata === '' || checkdata.length === 0 && (
                 <>
                 <p className="text-xs pb-3">Images - (Maximum 4 Images)</p>
                 <input type="file" disabled={isDisabled} multiple className="file-input file-input-bordered w-fit text-xs" onChange={handlePostImage}/>
