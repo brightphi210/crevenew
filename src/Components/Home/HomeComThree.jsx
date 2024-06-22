@@ -16,6 +16,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Link } from 'react-router-dom';
 
 
 const HomeComThree = () => {
@@ -27,27 +28,29 @@ const HomeComThree = () => {
             <img src={bg} alt="" className='w-full rounded-3xl'/>
             <div className='absolute flex justify-center items-center top-1/3 m-auto left-0 right-0 text-white'>
                 <div>
-                    <h2 className='text-2xl text-center'>Ready to Get Started ?</h2>
+                    <h2 className='text-4xl text-center font-bold'>Ready to Get Started ?</h2>
                     <p className='text-center py-5'>
                         Sign Up or Login to Explore Various Features that our Sellers & <br /> 
                         Freelancers Experience . It’s Just Free
                     </p>
-                    <button className='bg-neutral-800 m-auto flex py-3 px-10 rounded-md border-none'>Get Started for free</button>
+                    <Link to={'/register'}>
+                        <button className='bg-accent font-bold  m-auto flex py-3 px-10 rounded-md border-none'>Get Started for free</button>
+                    </Link>
                 </div>
             </div>
         </div>
 
 
-        <div className='relative mt-10 block lg:hidden'>
-            <img src={bg2} alt="" className='w-full rounded-3xl'/>
+        <div className='relative mt-0 block lg:hidden'>
+            <img src={bg2} alt="" className='w-full rounded-xl'/>
             <div className='absolute flex justify-center items-center top-1/3 m-auto left-0 right-0 text-white'>
                 <div className='px-5' data-aos="fade-up" data-aos-duration="1000">
-                    <h2 className='text-xl text-center'>Ready to Get Started ?</h2>
+                    <h2 className='text-xl text-center font-bold'>Ready to Get Started ?</h2>
                     <p className='text-center py-5 text-xs'>
                         Sign Up or Login to Explore Various Features that our Sellers &
                         Freelancers Experience . It’s Just Free
                     </p>
-                    <button className='bg-neutral-800 m-auto flex py-4 px-10 text-sm rounded-md border-none'>Get Started for free</button>
+                    <button className='bg-accent font-bold m-auto flex py-4 px-10 text-sm rounded-md border-none'>Get Started for free</button>
                 </div>
             </div>
         </div>
@@ -57,11 +60,11 @@ const HomeComThree = () => {
 
 
         <div className='pt-20'>
-            <h2 className='pb-8'>Thousands of people are getting <br /> their job done with Creve</h2>
+            <h2 className='pb-8 lg:text-3xl text-xl'>Thousands of people are getting <br className='lg:block hidden'/> their job done with Creve</h2>
 
             <Swiper
                 slidesPerView={1}
-                spaceBetween={10}
+                spaceBetween={40}
                 navigation={true}
                 loop={true}
                 // pagination={{
@@ -100,7 +103,7 @@ const HomeComThree = () => {
                             exercitation ullamco laboris
                         </p>
 
-                        <div className='flex gap-2 items-center justify-center'>
+                        <div className='flex gap-2 '>
                             <div className='w-10 h-10 xl:w-8 lg:w-8 xl:h-8 lg:h-8 flex overflow-hidden items-center rounded-full'>
                                 <img src={avatar} alt="" className='w-10'/>
                             </div>
@@ -128,7 +131,7 @@ const HomeComThree = () => {
                             exercitation ullamco laboris
                         </p>
 
-                        <div className='flex gap-2 items-center justify-center'>
+                        <div className='flex gap-2 '>
                             <div className='w-10 h-10 xl:w-8 lg:w-8 xl:h-8 lg:h-8 flex overflow-hidden items-center rounded-full'>
                                 <img src={avatar} alt="" className='w-10'/>
                             </div>
@@ -157,7 +160,7 @@ const HomeComThree = () => {
                             exercitation ullamco laboris
                         </p>
 
-                        <div className='flex gap-2 items-center justify-center'>
+                        <div className='flex gap-2 '>
                             <div className='w-10 h-10 xl:w-8 lg:w-8 xl:h-8 lg:h-8 flex overflow-hidden items-center rounded-full'>
                                 <img src={avatar} alt="" className='w-10'/>
                             </div>
@@ -185,7 +188,7 @@ const HomeComThree = () => {
                             exercitation ullamco laboris
                         </p>
 
-                        <div className='flex gap-2 items-center justify-center'>
+                        <div className='flex gap-2'>
                             <div className='w-10 h-10 xl:w-8 lg:w-8 xl:h-8 lg:h-8 flex overflow-hidden items-center rounded-full'>
                                 <img src={avatar} alt="" className='w-10'/>
                             </div>
@@ -213,7 +216,7 @@ const HomeComThree = () => {
                             exercitation ullamco laboris
                         </p>
 
-                        <div className='flex gap-2 items-center justify-center'>
+                        <div className='flex gap-2 '>
                             <div className='w-10 h-10 xl:w-8 lg:w-8 xl:h-8 lg:h-8 flex overflow-hidden items-center rounded-full'>
                                 <img src={avatar} alt="" className='w-10'/>
                             </div>

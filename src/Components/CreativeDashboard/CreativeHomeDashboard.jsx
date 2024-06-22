@@ -125,9 +125,9 @@ export const CreativeHome = () => {
 
 
     <div className='lg:p-16  lg:pl-[18rem] p-5 pt-20 lg:pt-28'>
-      <div className='flex 2xl:flex-row flex-col gap-10'>
+      <div className='flex 2xl:flex-row flex-col xl:flex-row lg:flex-col gap-10'>
 
-        <div className='2xl:w-9/12 w-full bg-neutral-100   rounded-xl text-black'>
+        <div className='2xl:w-9/12 xl:w-[70%] lg:w-full w-full bg-neutral-100   rounded-xl text-black'>
 
           <Swiper
             cssMode={true}
@@ -149,11 +149,11 @@ export const CreativeHome = () => {
             <SwiperSlide>
               <div className='p-10 lg:px-20 px-8 flex 2xl:flex-row lg:flex-row flex-col items-center'>
                 <div className=''>
-                  <p className='lg:text-sm text-xs'>
+                  <p className='2xl:text-sm lg:text-sm xl:text-[12px] text-xs'>
                     Join Freelancer Plus now to unlock new features to help you <br className='lg:block hidden'/>
                     grow your network and market your skills.
                   </p>
-                  <h2 className='lg:text-2xl text-lg py-3'>Get 80 Connects each month</h2>
+                  <h2 className='2xl:text-2xl lg:text-2xl xl:text-xl text-lg py-3'>Get 80 Connects each month</h2>
                   <button className=' mycolor2 text-white py-3 px-10 rounded-md text-xs'>Learn More</button>
                 </div>
 
@@ -166,10 +166,10 @@ export const CreativeHome = () => {
             <SwiperSlide>
               <div className='p-10 lg:px-20 px-8 flex lg:flex-row flex-col items-center'>
                 <div className=''>
-                  <p className='lg:text-sm text-xs'>
+                  <p className='2xl:text-sm lg:text-sm text-xs xl:text-[12px]'>
                   Creve 101 will guide you through the basics of our platform.
                   </p>
-                  <h2 className='lg:text-2xl text-lg py-3'>Learn how to get started on Creve</h2>
+                  <h2 className='2xl:text-2xl lg:text-2xl xl:text-xl text-lg py-3'>Learn how to get started on Creve</h2>
                   <button className='mycolor2 text-white py-3 px-10 rounded-md text-xs'>Learn More</button>
                 </div>
 
@@ -182,7 +182,7 @@ export const CreativeHome = () => {
           </Swiper>
         </div>
 
-        <div className='bg-neutral-100  w-full p-5 rounded-xl flex justify-center items-center'>
+        <div className='bg-neutral-100  w-full xl:w-[30%] lg:w-full p-5 rounded-xl flex justify-center items-center'>
 
           <div className=''>
             <div className='border-2 border-white w-20 rounded-full overflow-hidden flex m-auto'>
@@ -207,8 +207,8 @@ export const CreativeHome = () => {
 
       </div>
 
-      <div className='mt-10 flex 2xl:flex-row flex-col  w-full gap-10'>
-        <div className=' bg-neutral-100 2xl:w-[77%] lg:p-5 py-5 px-2 rounded-xl'>
+      <div className='mt-10 flex 2xl:flex-row xl:flex-row lg:flex-col flex-col  w-full gap-10'>
+        <div className=' bg-neutral-100 2xl:w-[77%] xl:w-[70%] lg:w-full lg:p-5 py-5 px-2 rounded-xl'>
           <h2 className='text-xs '>Messages</h2>
 
           {messages === null ? (
@@ -301,7 +301,7 @@ export const CreativeHome = () => {
         </div>
 
 
-        <div className=' 2xl:w-[23%] w-full'>
+        <div className=' 2xl:w-[23%] xl:w-[30%] lg:w-full w-full'>
 
 
 

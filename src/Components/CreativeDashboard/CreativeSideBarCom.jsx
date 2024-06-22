@@ -35,29 +35,29 @@ const CreativeSideBarCom = ({show}) => {
       <div className='pt-24 flex flex-col overflow-y-scroll h-screen'>
         <div>
             <p className='text-xs text-neutral-400 p-6 lg:pt-0 lg:p-6 pb-3 border-b-neutral-200 border-b flex items-center gap-3 '>Menu <FaLongArrowAltRight /></p>
-            <ul className='flex flex-col gap-8 2xl:gap-8 xl:gap-5 lg:gap-3 md:gap-3 p-6 pb-10 2xl:pb-10 xl:pb-3 lg:pb-2'>
+            <ul className='flex flex-col gap-8 2xl:gap-8 xl:gap-6 lg:gap-6 md:gap-3 p-6 pb-10 2xl:pb-10 xl:pb-3 lg:pb-2'>
                 <Link to={'/creative-dashboard-home'}>
-                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm text-black hover:text-accent cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
+                  <li className='2xl:text-sm xl:text-xs lg:text-xs text-sm text-black hover:text-accent cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
                 </Link>
 
                 <Link to={'/creative-dashboard-bookingsAll'} >
-                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoBookmarkOutline className=''/> Messages</li>
+                  <li className='2xl:text-sm xl:text-xs lg:text-xs text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoBookmarkOutline className=''/> Messages</li>
                 </Link>
                 
                 <Link to={'/creative-dashboard-notificationAll'}>
-                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoNotificationsOutline className=''/> Notifications</li>
+                  <li className='2xl:text-sm xl:text-xs lg:text-xs text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoNotificationsOutline className=''/> Notifications</li>
                 </Link>
 
                 <Link to={'/creative-dashboard-profile'}>
-                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><CiUser className='text-lg'/> Profile</li>
+                  <li className='2xl:text-sm xl:text-xs lg:text-xs text-sm hover:text-accent cursor-pointer flex items-center gap-3'><CiUser className=''/> Profile</li>
                 </Link>
 
                 <Link to={'/creative-dashboard-notificationAll'}>
-                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><FaQuestion className=''/>FAQ</li>
+                  <li className='2xl:text-sm xl:text-xs lg:text-xs text-sm hover:text-accent cursor-pointer flex items-center gap-3'><FaQuestion className=''/>FAQ</li>
                 </Link>
 
                 <Link to={'/creative-dashboard-notificationAll'}>
-                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><BsAppIndicator className=''/> Creve Blog</li>
+                  <li className='2xl:text-sm xl:text-xs lg:text-xs text-sm hover:text-accent cursor-pointer flex items-center gap-3'><BsAppIndicator className=''/> Creve Blog</li>
                 </Link>
             </ul>
         </div>
