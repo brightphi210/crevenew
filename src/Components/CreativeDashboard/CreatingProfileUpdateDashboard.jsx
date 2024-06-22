@@ -194,10 +194,6 @@ export const CreatingProfileUpdateHome = () => {
         formData.append('website_link', website_link)
         formData.append('skills_list', skills)
 
-        images_list.forEach((image, index) => {
-            formData.append(`images_list[${index}]`, image);
-        });
-
         try {
             
             const respose = await fetch(url, {
