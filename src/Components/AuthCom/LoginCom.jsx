@@ -120,7 +120,7 @@ const LoginCom = () => {
 
         <p className='text-xs text-red-500'>{error}</p>
         <div className='flex'>
-          <button className="btn hover:bg-neutral-900 bg-black text-white w-full">{isLoading === true ? 'Loading . . ' : 'Login'}</button>
+          <button className="btn hover:bg-neutral-900 bg-black text-white w-full">{isLoading === true ? <span class="loader"></span> : 'Login'}</button>
         </div>
 
           <button className='mr-auto text-sm pt-5'>Dont have account? <Link to={'/register'}><span className='text-accent'> Register</span></Link> </button>

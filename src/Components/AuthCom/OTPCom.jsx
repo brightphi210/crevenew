@@ -108,7 +108,7 @@ const OTPCom = () => {
                                 <div className="flex flex-col space-y-5">
                                     <div>
                                         <button type="submit" className="flex flex-row items-center justify-center text-center w-full border rounded-md outline-none py-4 bg-black border-none text-white text-sm shadow-sm">
-                                            {isLoading === true ? 'Loading . . .' : 'Verify Account'}
+                                            {isLoading === true ? <span class="loader"></span> : 'Verify Account'}
                                         </button>
                                     </div>
 

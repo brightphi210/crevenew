@@ -156,7 +156,7 @@ const RegisterCom = () => {
         <div className='flex'>
           <button type='submit' 
             className="btn hover:bg-neutral-900 bg-black text-white w-full">
-              {isLoading === true ? 'Loading . . .' : 'Register'}
+              {isLoading === true ? <span class="loader"></span> : 'Register'}
           </button>
         </div>
 
