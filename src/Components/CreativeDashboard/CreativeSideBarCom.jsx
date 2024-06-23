@@ -41,7 +41,7 @@ const CreativeSideBarCom = ({show}) => {
                 </Link>
 
                 <Link to={'/creative-dashboard-bookingsAll'} >
-                  <li className='2xl:text-sm xl:text-xs lg:text-xs text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoBookmarkOutline className=''/> Messages</li>
+                  <li className='2xl:text-sm xl:text-xs lg:text-xs text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoBookmarkOutline className=''/> Bookings</li>
                 </Link>
                 
                 <Link to={'/creative-dashboard-notificationAll'}>
@@ -56,7 +56,7 @@ const CreativeSideBarCom = ({show}) => {
                   <li className='2xl:text-sm xl:text-xs lg:text-xs text-sm hover:text-accent cursor-pointer flex items-center gap-3'><FaQuestion className=''/>FAQ</li>
                 </Link>
 
-                <Link to={'/creative-dashboard-notificationAll'}>
+                <Link to={'/blog'}>
                   <li className='2xl:text-sm xl:text-xs lg:text-xs text-sm hover:text-accent cursor-pointer flex items-center gap-3'><BsAppIndicator className=''/> Creve Blog</li>
                 </Link>
             </ul>

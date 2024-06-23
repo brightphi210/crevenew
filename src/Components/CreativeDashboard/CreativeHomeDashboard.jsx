@@ -182,23 +182,22 @@ export const CreativeHome = () => {
           </Swiper>
         </div>
 
-        <div className='bg-neutral-100  w-full xl:w-[30%] lg:w-full p-5 rounded-xl flex justify-center items-center'>
+        <div className='color text-white  w-full xl:w-[30%] lg:w-full p-5 rounded-xl flex justify-center items-center'>
 
           <div className=''>
-            <div className='border-2 border-white w-20 rounded-full overflow-hidden flex m-auto'>
-              <img src={profileData.profile_pics} alt="" className='lg:w-24 w-24'/>
+            <div className='border-2 border-white bg-white w-20 h-20 rounded-full overflow-hidden flex m-auto'>
+              <img src={profileData.profile_pics} alt="" className='w-full h-full object-cover'/>
             </div>
 
             <div className='text-center pt-2'>
-              <h2 className='lg:text-sm text-sm'>{userToken.name} <span className='text-xs text-neutral-500'>({userToken.role})</span></h2>
+              <h2 className='lg:text-sm text-sm'>{userToken.name} <span className='text-xs text-neutral-300'>({userToken.role})</span></h2>
               <p className='text-xs py-2'>{profileData.display_name}</p>
               <div className='flex items-center gap-2'>
-                <progress className="progress progress-success " value="70" max="100"></progress>
-                <p className='text-xs'>70%</p>
+                <progress className="progress progress-accent bg-white " value="70" max="100"></progress>
               </div>
 
               <Link to={'/creative-dashboard-profile-update'}>
-                <button className='bg-black text-white rounded-md text-[0.6rem] py-2 px-3 flex justify-center m-auto    mt-2 gap-2'><MdModeEditOutline className='text-md'/>Edith Profile</button>
+                <button className=' text-black rounded-full bg-white text-sm py-2 px-3 flex justify-center m-auto  mt-2 gap-2'><MdModeEditOutline className='text-lg'/>Edit</button>
               </Link>
             </div>
 
@@ -359,10 +358,10 @@ export const CreativeHome = () => {
             </div>
 
 
-          <div className='bg-neutral-100 p-5 w-full rounded-xl mt-3 flex flex-col gap-5'>
-            <p className='text-xs flex items-center gap-5 cursor-pointe text-neutral-400'>Upgrade to pro <FaUnlockKeyhole /></p>
-            <p className='text-xs flex items-center gap-5 cursor-pointer'>Help Center <MdHelpCenter /></p>
-            <p className='text-xs flex items-center gap-5 cursor-pointer' onClick={()=>document.getElementById('my_modal_3').showModal()}>Join Community <GrUpgrade /></p>
+          <div className='color p-5 w-full text-white rounded-xl mt-3 flex flex-col gap-5'>
+            <p className='text-sm flex items-center gap-5 cursor-pointe text-neutral-400'>Upgrade to pro <FaUnlockKeyhole /></p>
+            <p className='text-sm flex items-center gap-5 cursor-pointer'>Help Center <MdHelpCenter /></p>
+            <p className='text-sm flex items-center gap-5 cursor-pointer' onClick={()=>document.getElementById('my_modal_3').showModal()}>Join Community <GrUpgrade /></p>
           </div>
         </div>
 

@@ -138,7 +138,7 @@ export const CreativeProfile= () => {
                     </Link>
                 </div>
 
-                <div className='bg-black lg:p-8 p-5 rounded-lg text-white'>
+                <div className='color lg:p-8 p-5 rounded-lg text-white'>
 
                     <div className='flex items-center gap-6'>
                         <div className='border-2 border-white rounded-full w-24 overflow-hidden'>
