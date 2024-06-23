@@ -15,6 +15,7 @@ import CreativeBookingsDash from './Pages/CreativeDash/CreativeBookingsDash';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import HomeTalentPage from './Pages/HomeTalentPage';
 AOS.init();
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
           <Route path='/login' element={<Login />}/>
           <Route path='/register' element={<Register />}/>
           <Route path='/otp' element={<OTP />}/>
+
+          <Route path='/allTalents' element={<HomeTalentPage />}/>
 
 
           <Route element={<PrivateRoute role="Client"/>}>

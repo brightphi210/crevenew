@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     
-    <div className=' lg:my-10 lg:rounded-lg text-white lg:p-20 p-10  lg:gap-0 gap-8 lg:mx-[10rem] 2xl:mx-[20rem] xl:mx-[10rem] bg-black'>
+    <div className=' lg:my-10 lg:rounded-lg text-white lg:p-20 p-10  lg:gap-0 gap-8 lg:mx-[10rem] 2xl:mx-[10rem] xl:mx-[10rem] bg-black'>
         
 
         <div className='flex lg:flex-row flex-col gap-8 justify-between pb-10'>

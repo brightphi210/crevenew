@@ -16,6 +16,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa";
 
 import hero5 from '../Images/nnb.png'
+import { Link } from 'react-router-dom'
 
 const HomeCompoTwo = () => {
   return (
@@ -63,7 +64,7 @@ const HomeCompoTwo = () => {
 
         <div className='lg:pt-36 lg:pb-16 py-5 lg:px-[10rem] 2xl:px-[20rem] xl:px-[10rem] px-5'>
             <h2 className='2xl:text-4xl text-xl'>Browse talent by category</h2>
-            <p>Looking for work? <span className='text-green-500 underline'>Join Now</span></p>
+            <p>Looking for work? <Link to={'/register'}><span className='text-green-500 underline'>Join Now</span></Link></p>
 
             <div className='grid 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 lg:gap-10 gap-5 pt-6'>
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer'>
@@ -200,7 +201,10 @@ const HomeCompoTwo = () => {
 
                 </div>
             </div>
-            <button className='bg-black lg:mt-10 2xl:py-4 2xl:px-20 xl:px-10 lg:px-10 text-sm  py-3 xl:py-2 lg:py-2 px-14 rounded-md border-none flex m-auto  mt-2 text-white items-center gap-2'>View More <FaArrowRightLong /></button>
+
+            <Link to={'/talents'}>
+                <button className='bg-black lg:mt-10 2xl:py-4 2xl:px-20 xl:px-10 lg:px-10 text-sm  py-3 xl:py-2 lg:py-2 px-14 rounded-md border-none flex m-auto  mt-2 text-white items-center gap-2'>View More <FaArrowRightLong /></button>
+            </Link>
         </div>
 
         <div className='grid lg:grid-cols-2 grid-cols-1 mt-28 2xl:mx-[20rem] lg:mx-[10rem] xl:mx-[10rem] color lg:rounded-md '>
