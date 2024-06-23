@@ -45,7 +45,7 @@ const Navbar = () => {
                 </Link>
             </div>
 
-            <p className='lg:hidden block text-xl' onClick={toggle}> {!show ? <RxDashboard /> : <BsDashSquare />}</p>
+            <p className='lg:hidden block text-xl text-green-600' onClick={toggle}> {!show ? <RxDashboard /> : <BsDashSquare />}</p>
 
             {show && (
                 <ul data-aos="fade-up" data-aos-duration="600" className='lg:hidden text-base font-bold rounded-lg drop-shadow-xl flex flex-col w-[10rem] m-auto left-10  absolute color text-white top-20 p-10 items-left ml-auto lg:gap-10 gap-5 '>
