@@ -17,6 +17,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import HomeTalentPage from './Pages/HomeTalentPage';
 import AboutPage from './Pages/AboutPage';
+import BlogPage from './Pages/BlogPage';
 AOS.init();
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
 
           <Route path='/allTalents' element={<HomeTalentPage />}/>
           <Route path='/about' element={<AboutPage />}/>
+          <Route path='/blog' element={<BlogPage />}/>
 
 
           <Route element={<PrivateRoute role="Client"/>}>

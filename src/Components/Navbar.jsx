@@ -47,7 +47,7 @@ const Navbar = () => {
                 </Link>
 
 
-                <Link to={'/about'}>
+                <Link to={'/blog'}>
                     <li className='cursor-pointer'>Blog</li>
                 </Link>
             </ul>

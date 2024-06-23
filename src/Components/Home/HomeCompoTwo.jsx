@@ -67,6 +67,8 @@ const HomeCompoTwo = () => {
             <p>Looking for work? <Link to={'/register'}><span className='text-green-500 underline'>Join Now</span></Link></p>
 
             <div className='grid 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 lg:gap-10 gap-5 pt-6'>
+                
+                <Link to={'/allTalents'}>
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer'>
                     <h2 className='text-xl'>Furniture Making</h2>
                     <div className='flex gap-10 pt-5'>
@@ -74,7 +76,9 @@ const HomeCompoTwo = () => {
                         <p className=''>1657 skills</p>
                     </div>
                 </div>
+                </Link>
 
+                <Link to={'/allTalents'}>
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer'>
                     <h2 className='text-xl'>Fashion Desing</h2>
                     <div className='flex gap-10 pt-5'>
@@ -82,8 +86,9 @@ const HomeCompoTwo = () => {
                         <p className=''>1657 skills</p>
                     </div>
                 </div>
+                </Link>
 
-
+                <Link to={'/allTalents'}>
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer'>
                     <h2 className='text-xl'>Web Development</h2>
                     <div className='flex gap-10 pt-5'>
@@ -91,8 +96,9 @@ const HomeCompoTwo = () => {
                         <p className=''>1657 skills</p>
                     </div>
                 </div>
+                </Link>
 
-
+                <Link to={'/allTalents'}>
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer'>
                     <h2 className='text-xl'>Mobile dev</h2>
                     <div className='flex gap-10 pt-5'>
@@ -100,7 +106,10 @@ const HomeCompoTwo = () => {
                         <p className=''>1657 skills</p>
                     </div>
                 </div>
+                </Link>
 
+
+                <Link to={'/allTalents'}>
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer'>
                     <h2 className='text-xl'>Cobbling Making</h2>
                     <div className='flex gap-10 pt-5'>
@@ -108,8 +117,9 @@ const HomeCompoTwo = () => {
                         <p className=''>1657 skills</p>
                     </div>
                 </div>
+                </Link>
 
-
+                <Link to={'/allTalents'}>
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer'>
                     <h2 className='text-xl'>Electricals</h2>
                     <div className='flex gap-10 pt-5'>
@@ -117,6 +127,7 @@ const HomeCompoTwo = () => {
                         <p className=''>1657 skills</p>
                     </div>
                 </div>
+                </Link>
             </div>
         </div>
 
@@ -202,7 +213,7 @@ const HomeCompoTwo = () => {
                 </div>
             </div>
 
-            <Link to={'/talents'}>
+            <Link to={'/allTalents'}>
                 <button className='bg-black lg:mt-10 2xl:py-4 2xl:px-20 xl:px-10 lg:px-10 text-sm  py-3 xl:py-2 lg:py-2 px-14 rounded-md border-none flex m-auto  mt-2 text-white items-center gap-2'>View More <FaArrowRightLong /></button>
             </Link>
         </div>
@@ -227,8 +238,9 @@ const HomeCompoTwo = () => {
                         <p>Explore different <br className=''/> ways to earn</p>
                     </div>
 
-
-                    <button className='mt-10 py-3 px-10 text-sm bg-white rounded-sm text-black hover:bg-neutral-200'>Get Started</button>
+                    <Link to={'/register'}>
+                        <button className='mt-10 py-3 px-10 text-sm bg-white rounded-sm text-black hover:bg-neutral-200'>Get Started</button>
+                    </Link>
                 </div>
             </div>
         </div>

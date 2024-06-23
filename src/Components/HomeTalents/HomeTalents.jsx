@@ -13,10 +13,10 @@ import { IoArrowForwardSharp } from "react-icons/io5";
 
 const HomeTalents = () => {
   return (
-    <div className='pt-40 lg:px-[10rem] text-ce 2xl:px-[10rem] xl:px-[10rem] px-5'>
+    <div className='lg:pt-40 pt-32 lg:px-[10rem] text-ce 2xl:px-[10rem] xl:px-[10rem] px-5'>
         <div className='flex justify-center'>
             <div>
-                <h2 className='text-center lg:text-6xl text-4xl font-bold text-black'>Hire the best <br /> <span className='bg-gradient-to-r from-sky-500 to-teal-500 bg-clip-text text-transparent'>Talents</span> Around you</h2>
+                <h2 className='text-center lg:text-6xl text-3xl font-bold text-black'>Hire the best <br /> <span className='bg-gradient-to-r from-sky-500 to-teal-500 bg-clip-text text-transparent'>Talents</span> Around you</h2>
                 <p className='text-center text-lg text-black py-5'>Discover the best talents around you and beyound by just few clicks</p>
 
                 <div className='relative'>
