@@ -26,12 +26,12 @@ const HomeTalents = () => {
 
 
                 <div className='flex gap-3 mt-10 flex-wrap'>
-                    <button className='bg-neutral-100 py-2 px-5 rounded-lg text-sm'>Furniture</button>
-                    <button className='bg-neutral-100 py-2 px-5 rounded-lg text-sm'>Graphics</button>
-                    <button className='bg-neutral-100 py-2 px-5 rounded-lg text-sm'>Web Dev</button>
-                    <button className='bg-neutral-100 py-2 px-5 rounded-lg text-sm'>Mobile Dev</button>
-                    <button className='bg-neutral-100 py-2 px-5 rounded-lg text-sm'>Backend De</button>
-                    <button className='bg-neutral-100 py-2 px-5 rounded-lg text-sm'>Fashion Design</button>
+                    <button className='bg-neutral-100 py-2 px-5 rounded-lg text-sm hover:bg-neutral-200 hover:transition-all hover:ease-in-out hover:delay-75'>Furniture</button>
+                    <button className='bg-neutral-100 py-2 px-5 rounded-lg text-sm hover:bg-neutral-200 hover:transition-all hover:ease-in-out hover:delay-75'>Graphics</button>
+                    <button className='bg-neutral-100 py-2 px-5 rounded-lg text-sm hover:bg-neutral-200 hover:transition-all hover:ease-in-out hover:delay-75'>Web Dev</button>
+                    <button className='bg-neutral-100 py-2 px-5 rounded-lg text-sm hover:bg-neutral-200 hover:transition-all hover:ease-in-out hover:delay-75'>Mobile Dev</button>
+                    <button className='bg-neutral-100 py-2 px-5 rounded-lg text-sm hover:bg-neutral-200 hover:transition-all hover:ease-in-out hover:delay-75'>Backend De</button>
+                    <button className='bg-neutral-100 py-2 px-5 rounded-lg text-sm hover:bg-neutral-200 hover:transition-all hover:ease-in-out hover:delay-75'>Fashion Design</button>
                 </div>
             </div>
 
@@ -43,8 +43,8 @@ const HomeTalents = () => {
 
         <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 grid-cols-1 lg:gap-10 gap-5 py-32'>
             <div className=''>
-                <div className='w-full'>
-                    <img src={m1} alt="" className='w-full'/>
+                <div className='w-full  overflow-hidden rounded-2xl'>
+                    <img src={m1} alt="" className='w-full h-full object-cover'/>
                 </div>
                 <div className='flex items-center gap-3 pt-5'>
                     <div className='w-8 overflow-hidden rounded-full'>

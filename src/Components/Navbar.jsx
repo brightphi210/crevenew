@@ -37,8 +37,22 @@ const Navbar = () => {
                 </Link>
             </div>
 
-            <ul className='flex items-center ml-auto lg:gap-10 gap-3 text-xs'>
-                <li className='cursor-pointer'>About</li>
+            <ul className='flex items-center ml-auto lg:gap-10 gap-3 text-sm'>
+                <Link to={'/allTalents'}>
+                    <li className='cursor-pointer'>All Talent</li>
+                </Link>
+
+                <Link to={'/about'}>
+                    <li className='cursor-pointer'>About</li>
+                </Link>
+
+
+                <Link to={'/about'}>
+                    <li className='cursor-pointer'>Blog</li>
+                </Link>
+            </ul>
+
+            <ul className='flex items-center ml-auto lg:gap-10 gap-3 text-sm'>
 
                 {userToken ? 
                 
