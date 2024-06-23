@@ -23,6 +23,8 @@ import item4 from '../Images/item4.jpg'
 import item5 from '../Images/item5.jpg'
 import item6 from '../Images/item6.jpg'
 
+import comm from '../Images/hero.svg'
+
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
@@ -138,7 +140,7 @@ export const CreativeProfile= () => {
                     </Link>
                 </div>
 
-                <div className='color lg:p-8 p-5 rounded-lg text-white'>
+                <div className='color flex lg:p-8 p-5 rounded-lg text-white'>
 
                     <div className='flex items-center gap-6'>
                         <div className='border-2 border-white rounded-full w-24 overflow-hidden'>
@@ -156,6 +158,10 @@ export const CreativeProfile= () => {
                                 <button className='bg-accent text-xs py-2 px-4 rounded-full flex items-center gap-2'><GoUnverified className='font-bold' />Unverified</button>
                             )}
                         </div>
+                    </div>
+
+                    <div className='ml-auto w-40 lg:block hidden'>
+                        <img src={comm} alt="" />
                     </div>
 
                 </div>
