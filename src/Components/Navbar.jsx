@@ -5,6 +5,7 @@ import { MdPeople } from "react-icons/md";
 import { Link, useNavigate } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
 import { RxDashboard } from "react-icons/rx";
+import { BsDashCircle } from "react-icons/bs";
 import { BsDashSquare } from "react-icons/bs";
 
 const Navbar = () => {
@@ -45,7 +46,7 @@ const Navbar = () => {
                 </Link>
             </div>
 
-            <p className='lg:hidden block text-xl text-green-600' onClick={toggle}> {!show ? <RxDashboard /> : <BsDashSquare />}</p>
+            <p className='lg:hidden block text-2xl text-green-700' onClick={toggle}> {!show ? <RxDashboard /> : <BsDashCircle />}</p>
 
             {show && (
                 <ul data-aos="fade-up" data-aos-duration="600" className='lg:hidden text-base font-bold rounded-lg drop-shadow-xl flex flex-col w-[10rem] m-auto left-10  absolute color text-white top-20 p-10 items-left ml-auto lg:gap-10 gap-5 '>
