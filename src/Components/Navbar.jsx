@@ -48,18 +48,18 @@ const Navbar = () => {
             <p className='lg:hidden block text-xl' onClick={toggle}> {!show ? <RxDashboard /> : <BsDashSquare />}</p>
 
             {show && (
-                <ul data-aos="fade-up" data-aos-duration="600" className='lg:hidden text-base font-bold rounded-lg drop-shadow-xl flex flex-col w-11/12 m-auto right-0 left-0  absolute color text-white top-20 p-10 items-center ml-auto lg:gap-10 gap-3 '>
+                <ul data-aos="fade-up" data-aos-duration="600" className='lg:hidden text-base font-bold rounded-lg drop-shadow-xl flex flex-col w-[10rem] m-auto left-10  absolute color text-white top-20 p-10 items-left ml-auto lg:gap-10 gap-5 '>
                     <Link to={'/allTalents'}>
-                        <li className='cursor-pointer'>Talent</li>
+                        <li className='cursor-pointer'>TALENT</li>
                     </Link>
 
                     <Link to={'/about'}>
-                        <li className='cursor-pointer'>About</li>
+                        <li className='cursor-pointer'>ABOUT</li>
                     </Link>
 
 
                     <Link to={'/blog'}>
-                        <li className='cursor-pointer'>Blog</li>
+                        <li className='cursor-pointer'>BLOG</li>
                     </Link>
                 </ul>
             )}
