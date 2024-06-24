@@ -38,6 +38,9 @@ import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
 
 
+import Footer from '../Footer'
+
+
 
 const CreativeHomeDashboard = () => {
   const [token, setToken] = useState(() => localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
@@ -58,6 +61,7 @@ const CreativeHomeDashboard = () => {
         <CreativeNavBarCom show={show} handleShow={handleShow}/>
         <CreativeHome />
         <ProfileModal showModal={showModal}/>
+        
       </div>
     </div>
   )
@@ -70,7 +74,7 @@ export default CreativeHomeDashboard
 
 export const CreativeHome = () => {
 
-  const [messages, setMessages] = useState(null)
+  const [messages, setMessages] = useState('a')
   const [notification, setNotification] = useState(null)
 
 
@@ -127,7 +131,7 @@ export const CreativeHome = () => {
     <div className='lg:p-16  lg:pl-[18rem] p-5 pt-20 lg:pt-28'>
       <div className='flex 2xl:flex-row flex-col xl:flex-row lg:flex-col gap-10'>
 
-        <div className='2xl:w-9/12 xl:w-[70%] lg:w-full w-full bg-neutral-100   rounded-xl text-black'>
+        <div className='2xl:w-9/12 xl:w-[70%] lg:w-full w-full color   rounded-xl text-white'>
 
           <Swiper
             cssMode={true}
@@ -182,7 +186,7 @@ export const CreativeHome = () => {
           </Swiper>
         </div>
 
-        <div className='color text-white  w-full xl:w-[30%] lg:w-full p-5 rounded-xl flex justify-center items-center'>
+        <div className='bg-neutral-100 text-black  w-full xl:w-[30%] lg:w-full p-5 rounded-xl flex justify-center items-center'>
 
           <div className=''>
             <div className='border-2 border-white bg-white w-20 h-20 rounded-full overflow-hidden flex m-auto'>
@@ -190,14 +194,14 @@ export const CreativeHome = () => {
             </div>
 
             <div className='text-center pt-2'>
-              <h2 className='lg:text-sm text-sm'>{userToken.name} <span className='text-xs text-neutral-300'>({userToken.role})</span></h2>
+              <h2 className='lg:text-sm text-sm'>{userToken.name} <span className='text-xs text-neutral-500'>({userToken.role})</span></h2>
               <p className='text-xs py-2'>{profileData.display_name}</p>
               <div className='flex items-center gap-2'>
                 <progress className="progress progress-accent bg-white " value="70" max="100"></progress>
               </div>
 
               <Link to={'/creative-dashboard-profile-update'}>
-                <button className=' text-black rounded-full bg-white text-sm py-2 px-3 flex justify-center m-auto  mt-2 gap-2'><MdModeEditOutline className='text-lg'/>Edit</button>
+                <button className=' text-white rounded-full color text-sm py-2 px-3 flex justify-center m-auto  mt-2 gap-2'><MdModeEditOutline className='text-lg'/>Edit</button>
               </Link>
             </div>
 
@@ -365,7 +369,6 @@ export const CreativeHome = () => {
           </div>
         </div>
 
-
           <dialog id="my_modal_2" className="modal">
             <div className="modal-box 2xl:w-[25rem] lx:w-[25rem]  lg:w-[25rem] w-[90%] absolute 2xl:right-10 2xl:top-20 xl:right-10 xl:top-20 lg:right-10 lg:top-20 2xl:h-[55vh] 2xl:max-h-[h-55vh] xl:h-[70vh] xl:max-h-[h-70vh] lg:max-h-[h-70vh] lg:h-[70vh] rounded-lg z-auto overflow-y-scroll">
               <button onClick={()=>{document.getElementById('my_modal_2').close()}} 
@@ -392,8 +395,6 @@ export const CreativeHome = () => {
               <button>close</button>
             </form>
           </dialog>
-
-
 
           <dialog id="my_modal_3" className="modal">
             <div className="modal-box 2xl:w-[25rem] lx:w-[25rem] p-0 lg:w-[25rem] w-[90%]  2xl:h-[50vh] xl:h-[50vh]  lg:max-h-[h-50vh] lg:h-[50vh] rounded-lg">
@@ -423,7 +424,7 @@ export const CreativeHome = () => {
               <button>close</button>
             </form>
           </dialog>
-      </div>
+      </div> 
     </div>
   )
 }
