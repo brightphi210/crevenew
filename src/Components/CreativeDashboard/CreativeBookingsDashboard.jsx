@@ -122,7 +122,9 @@ export const CreativeBookings = () => {
                   </div>
 
                   <div className='mt-5 flex justify-center lg:gap-5 gap-3 lg:px-10 px-5 w-full'>
-                    <button className="btn lg:w-1/2 w-full btn-neutral text-xs  text-white min-h-[2.6rem] max-h-[2.6rem] ">Contact</button>
+                    <button className="btn lg:w-1/2 w-full btn-neutral text-xs  text-white min-h-[2.6rem] max-h-[2.6rem] ">
+                      <a href={`tel:${8094422807}`}>Call Now</a>
+                    </button>
                   </div>
               </div>
             </div>
