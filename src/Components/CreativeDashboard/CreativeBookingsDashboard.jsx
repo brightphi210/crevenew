@@ -3,11 +3,9 @@ import CreativeSideBarCom from './CreativeSideBarCom'
 import CreativeNavBarCom from './CreativeNavBarCom'
 import { MdModeEditOutline } from 'react-icons/md'
 import { Link } from 'react-router-dom'
-import prof from '../Images/Avatars.png'
-import { TbClick } from "react-icons/tb";
-import { BsThreeDots } from "react-icons/bs";
+import { FaRegCopy } from "react-icons/fa6";
 import { LuSearch } from "react-icons/lu";
-import { BiMessageSquareDots } from "react-icons/bi";
+import { BsWhatsapp } from "react-icons/bs";
 
 import data from '../Mock/data.json'
 
@@ -122,9 +120,8 @@ export const CreativeBookings = () => {
                   </div>
 
                   <div className='mt-5 flex justify-center lg:gap-5 gap-3 lg:px-10 px-5 w-full'>
-                    <button className="btn lg:w-1/2 w-full btn-neutral text-xs  text-white min-h-[2.6rem] max-h-[2.6rem] ">
-                      <a href={`tel:${8094422807}`}>Call Now</a>
-                    </button>
+                    <button className="btn lg:w-1/2 w-fit hover:bg-accent border-none   min-h-[2.6rem] max-h-[2.6rem] mycolor2 text-xs text-white flex items-center gap-2"><BsWhatsapp />Whatsapp</button>
+                    <button className="btn lg:w-1/2 w-fit btn-neutral text-xs  text-white min-h-[2.6rem] max-h-[2.6rem] flex items-center gap-2"><FaRegCopy />Copy Number</button>
                   </div>
               </div>
             </div>
