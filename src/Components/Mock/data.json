@@ -6,7 +6,8 @@
         "name": "John Doe",
         "pics": "https://img.daisyui.com/tailwind-css-component-profile-2@56w.png",
         "message": "I will love to work with you, are you free now ???",
-        "time" : "10:00am"
+        "time" : "10:00am",
+        "phone" : "08094422807"
     },
 
     {
@@ -14,7 +15,8 @@
         "name": "Emeka Praise",
         "pics": "https://img.daisyui.com/tailwind-css-component-profile-3@56w.png",
         "message": "Good day bro, i saw your work and its nice can me work with you?",
-        "time" : "8:00am"
+        "time" : "8:00am",
+        "phone" : "08094422807"
     },
 
 
@@ -23,7 +25,8 @@
         "name": "Gabriel Stone",
         "pics": "https://img.daisyui.com/tailwind-css-component-profile-4@56w.png",
         "message": "Garbriel your profile looks nice please send me an email",
-        "time" : "5:30pm"
+        "time" : "5:30pm",
+        "phone" : "08094422807"
     },
 
     {
@@ -31,8 +34,48 @@
         "name": "Prince Anwasi",
         "pics": "https://img.daisyui.com/tailwind-css-component-profile-5@56w.png",
         "message": "I will love to work with you, are you free now ???",
-        "time" : "12:01pm"
+        "time" : "12:01pm",
+        "phone" : "08094422807"
+    },
+
+    {
+        "id": 2,
+        "name": "Emeka Praise",
+        "pics": "https://img.daisyui.com/tailwind-css-component-profile-3@56w.png",
+        "message": "Good day bro, i saw your work and its nice can me work with you?",
+        "time" : "8:00am",
+        "phone" : "08094422807"
+    },
+
+    {
+        "id": 1,
+        "name": "John Doe",
+        "pics": "https://img.daisyui.com/tailwind-css-component-profile-2@56w.png",
+        "message": "I will love to work with you, are you free now ???",
+        "time" : "10:00am",
+        "phone" : "08094422807"
+    },
+
+    {
+        "id": 4,
+        "name": "Prince Anwasi",
+        "pics": "https://img.daisyui.com/tailwind-css-component-profile-5@56w.png",
+        "message": "I will love to work with you, are you free now ???",
+        "time" : "12:01pm",
+        "phone" : "08094422807"
+    },
+
+    {
+        "id": 3,
+        "name": "Gabriel Stone",
+        "pics": "https://img.daisyui.com/tailwind-css-component-profile-4@56w.png",
+        "message": "Garbriel your profile looks nice please send me an email",
+        "time" : "5:30pm",
+        "phone" : "08094422807"
     }
+
+
+    
 
 
 ]
