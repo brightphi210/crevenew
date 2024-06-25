@@ -53,7 +53,7 @@ const CreativeHomeDashboard = () => {
   }
 
   return (
-    <div className='flex flex-row w-full'>
+    <div className='flex flex-row w-full bg-neutral-100'>
       <div className='w-full'>
         <CreativeSideBarCom show={show} />
       </div>
@@ -186,7 +186,7 @@ export const CreativeHome = () => {
           </Swiper>
         </div>
 
-        <div className='bg-neutral-100 text-black  w-full xl:w-[30%] lg:w-full p-5 rounded-xl flex justify-center items-center'>
+        <div className='bg-white text-black  w-full xl:w-[30%] lg:w-full p-5 rounded-xl flex justify-center items-center'>
 
           <div className=''>
             <div className='border-2 border-white bg-white w-20 h-20 rounded-full overflow-hidden flex m-auto'>
@@ -211,7 +211,7 @@ export const CreativeHome = () => {
       </div>
 
       <div className='mt-10 flex 2xl:flex-row xl:flex-row lg:flex-col flex-col  w-full gap-10'>
-        <div className=' bg-neutral-100 2xl:w-[77%] xl:w-[70%] lg:w-full lg:p-5 py-5 px-2 rounded-xl'>
+        <div className=' bg-white 2xl:w-[77%] xl:w-[70%] lg:w-full lg:p-5 py-5 px-2 rounded-xl'>
           <h2 className='text-xs '>Messages</h2>
 
           {messages === null ? (
@@ -292,7 +292,7 @@ export const CreativeHome = () => {
 
 
               <Link to={'/creative-dashboard-bookingsAll'}>
-                <button className='bg-black text-xs px-5 py-3 text-white rounded-md w-full 2xl:w-fit lg:w-fit'>See All</button>
+                <button className='bg-white text-xs px-5 py-3 text-black rounded-md w-full 2xl:w-fit lg:w-fit'>See All</button>
               </Link>
 
             </div>
@@ -308,7 +308,7 @@ export const CreativeHome = () => {
 
 
 
-            <div className='bg-neutral-100 p-5 w-full rounded-xl '>
+            <div className='bg-white p-5 w-full rounded-xl '>
               <p className='text-xs'>Notifications</p>  
               
               {notification === null ? 
@@ -431,7 +431,6 @@ export const CreativeHome = () => {
 
 
 export const ProfileModal = ({showModal}) => {
-
 
   useEffect(() => {
     if(showModal){
