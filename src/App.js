@@ -18,6 +18,8 @@ import 'aos/dist/aos.css';
 import HomeTalentPage from './Pages/HomeTalentPage';
 import AboutPage from './Pages/AboutPage';
 import BlogPage from './Pages/BlogPage';
+import CreativeSettingDash from './Pages/CreativeDash/CreativeSettingDash';
+import CreativeFAQsDash from './Pages/CreativeDash/CreativeFAQsDash';
 AOS.init();
 
 function App() {
@@ -48,6 +50,8 @@ function App() {
             <Route path='/creative-dashboard-profile-update' element={<CreativeProfileUpdataDash />}/>
             <Route path='/creative-dashboard-notificationAll' element={<CreativeNotificationDashboard />}/>
             <Route path='/creative-dashboard-bookingsAll' element={<CreativeBookingsDash />}/>
+            <Route path='/creative-dashboard-settings' element={<CreativeSettingDash />}/>
+            <Route path='/creative-dashboard-FAQs' element={<CreativeFAQsDash />}/>
           </Route>
           
         </Routes>

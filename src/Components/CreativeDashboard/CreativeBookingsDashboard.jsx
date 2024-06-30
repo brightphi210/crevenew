@@ -20,7 +20,7 @@ const CreativeBookingsDashboard = () => {
 
 
   return (
-    <div className='flex flex-row w-full bg-neutral-100 2xl:h-[100vh] xl:h-full lg:h-full'>
+  <div className='flex flex-row w-full bg-neutral-100 2xl:h-[100vh] xl:h-full lg:h-full'>
     <div className=''>
       <CreativeSideBarCom show={show} />
     </div>

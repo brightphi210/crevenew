@@ -49,15 +49,11 @@ const CreativeSideBarCom = ({show}) => {
                 </Link>
 
                 <Link to={'/creative-dashboard-profile'}>
-                  <li className='2xl:text-sm xl:text-xs lg:text-xs text-sm hover:text-accent cursor-pointer flex items-center gap-3'><CiUser className=''/> Profile</li>
+                  <li className='2xl:text-sm xl:text-xs lg:text-xs text-sm hover:text-accent cursor-pointer flex items-center gap-3'><CiUser className=''/> Account</li>
                 </Link>
 
-                <Link to={'/creative-dashboard-notificationAll'}>
+                <Link to={'/creative-dashboard-FAQs'}>
                   <li className='2xl:text-sm xl:text-xs lg:text-xs text-sm hover:text-accent cursor-pointer flex items-center gap-3'><FaQuestion className=''/>FAQ</li>
-                </Link>
-
-                <Link to={'/blog'}>
-                  <li className='2xl:text-sm xl:text-xs lg:text-xs text-sm hover:text-accent cursor-pointer flex items-center gap-3'><BsAppIndicator className=''/> Creve Blog</li>
                 </Link>
             </ul>
         </div>
@@ -65,7 +61,10 @@ const CreativeSideBarCom = ({show}) => {
         <div>
             <p className='text-xs text-neutral-400 p-6 pb-3 border-b-neutral-600 border-b flex items-center gap-3'>Preference <FaLongArrowAltRight /></p>
             <ul className='flex flex-col gap-5 2xl:gap-8 xl:gap-5 lg:gap-3 md:gap-3 p-6'>
-                <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoSettingsSharp className=''/> Settings</li>
+
+                <Link to={'/' + 'creative-dashboard-settings'}>
+                  <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoSettingsSharp className=''/> Settings</li>
+                </Link>
                 <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm text-neutral-400 cursor-default flex items-center gap-3'><FaLock className=''/> Creve Pro</li>
                 <li className='2xl:text-sm xl:text-[10px] lg:text-[10px] text-sm hover:text-accent cursor-pointer flex items-center gap-3' onClick={logout}><BiLogOutCircle className=''/> Logout</li>
             </ul>

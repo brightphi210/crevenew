@@ -97,6 +97,11 @@ $large-Two : 1200px; */
   background-color: rgb(2, 114, 93);
 }
 
+
+.mycolor2:hover{
+  background-color: rgb(2, 114, 93);
+}
+
 .height{
   height: 75vh;
   max-width: 28%;

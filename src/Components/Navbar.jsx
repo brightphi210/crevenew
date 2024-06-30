@@ -50,6 +50,10 @@ const Navbar = () => {
 
             {show && (
                 <ul data-aos="fade-up" data-aos-duration="600" className='lg:hidden text-base font-bold rounded-lg drop-shadow-xl flex flex-col w-[10rem] m-auto left-10  absolute color text-white top-20 p-10 items-left ml-auto lg:gap-10 gap-5 '>
+                    <Link to={'/'}>
+                        <li className='cursor-pointer'>HOME</li>
+                    </Link>
+
                     <Link to={'/allTalents'}>
                         <li className='cursor-pointer'>TALENT</li>
                     </Link>
@@ -68,8 +72,13 @@ const Navbar = () => {
 
 
             <ul className='lg:flex items-center hidden  ml-auto lg:gap-10 gap-3 text-sm'>
+                <Link to={'/'}>
+                    <li className='cursor-pointer'>Home</li>
+                </Link>
+
+
                 <Link to={'/allTalents'}>
-                    <li className='cursor-pointer'>All Talent</li>
+                    <li className='cursor-pointer'>Talents</li>
                 </Link>
 
                 <Link to={'/about'}>

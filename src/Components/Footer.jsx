@@ -16,7 +16,7 @@ const Footer = () => {
             <div className=''>
 
                 <h2 className='font-semibold text-sm text-neutral-500'>Categories</h2>
-                <ul className='flex flex-col gap-3 pt-7 text-sm'>
+                <ul className='flex flex-col gap-3 pt-7 2xl:text-sm xl:text-xs lg:text-xs text-xs'>
                     <li>Mobile Dev</li>
                     <li>Backend Dev</li>
                     <li>Furniture Making</li>
@@ -29,7 +29,7 @@ const Footer = () => {
 
             <div className=''>
                 <h2 className='font-semibold text-sm text-neutral-500'>Client</h2>
-                <ul className='flex flex-col gap-3 pt-7 text-sm'>
+                <ul className='flex flex-col gap-3 pt-7 2xl:text-sm xl:text-xs lg:text-xs text-xs'>
                     <li>Hire with ease</li>
                     <li>Report Talent</li>
                     <li>Become a talent</li>
@@ -39,7 +39,7 @@ const Footer = () => {
 
             <div className=''>
                 <h2 className='font-semibold text-sm text-neutral-500'>Resources</h2>
-                <ul className='flex flex-col gap-3 pt-7 text-sm'>
+                <ul className='flex flex-col gap-3 pt-7 2xl:text-sm xl:text-xs lg:text-xs text-xs'>
                     <li>Help & Support</li>
                     <li>Blog</li>
                     <li>Community</li>
@@ -49,7 +49,7 @@ const Footer = () => {
 
             <div className=''>
                 <h2 className='font-semibold text-sm text-neutral-500'>Company</h2>
-                <ul className='flex flex-col gap-3 pt-7 text-sm'>
+                <ul className='flex flex-col gap-3 pt-7 2xl:text-sm xl:text-xs lg:text-xs text-xs'>
                     <li>About us</li>
                     <li>Leadership</li>
                     <li>Careers</li>
@@ -59,14 +59,14 @@ const Footer = () => {
         </div>
 
         <div className='flex lg:flex-row flex-col lg:items-center gap-10'>
-            <p>Follow Us</p>
-            <ul className='flex gap-5'>
-                <li className='border border-neutral-200 p-3 cursor-pointer flex justify-center items-center rounded-full'><FaXTwitter className='text-xl'/></li>
-                <li className='border border-neutral-200 p-3 cursor-pointer flex justify-center items-center rounded-full'><FaLinkedin className='text-xl'/></li>
-                <li className='border border-neutral-200 p-3 cursor-pointer flex justify-center items-center rounded-full'><CiFacebook className='text-xl'/></li>
+            <p className='2xl:text-sm xl:text-xs lg:text-xs text-xs'>Follow Us</p>
+            <ul className='flex gap-5 '>
+                <li className='border border-neutral-200 p-3 cursor-pointer flex justify-center items-center rounded-full'><FaXTwitter className='2xl:text-sm xl:text-xs lg:text-xs text-xs'/></li>
+                <li className='border border-neutral-200 p-3 cursor-pointer flex justify-center items-center rounded-full'><FaLinkedin className='2xl:text-sm xl:text-xs lg:text-xs text-xs'/></li>
+                <li className='border border-neutral-200 p-3 cursor-pointer flex justify-center items-center rounded-full'><CiFacebook className='2xl:text-sm xl:text-xs lg:text-xs text-xs'/></li>
             </ul>
 
-            <p className='lg:ml-auto'>© Creve International Ltd. 2024</p>
+            <p className='lg:ml-auto 2xl:text-sm xl:text-xs lg:text-xs text-xs'>© Creve International Ltd. 2024</p>
         </div>
 
         
