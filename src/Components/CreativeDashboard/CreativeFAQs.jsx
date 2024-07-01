@@ -39,6 +39,8 @@ export const CreativeFAQsDashboard = () => {
     const [success, setSuccess] = useState(false)
 
     const [faqs, setFaqs] = useState([])
+
+    const newFAQs = [...faqs].reverse()
     const [question, setQuestion] = useState('');
     const [answer, setAnswer] = useState('');
     const handleQuestionChange = (e) => setQuestion(e.target.value);
@@ -109,24 +111,32 @@ export const CreativeFAQsDashboard = () => {
 
     };
 
-
-
-
     useEffect(() => {
         fetchFAQs();
     }, []);
 
 
+    useEffect(() => {
+      if(success){
+      const timer = setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+      }
+    }, [success]);
+
+
   return (
     <div className='2xl:p-20 2xl:pt-28 2xl:pl-[18rem] lg:pl-[18rem] p-5 pt-20'>
 
-      <div className='bg-white  h-[75vh] rounded-lg p-10 overflow-y-scroll relative'>
-      {success === false && (
+      <div className='bg-white  h-[75vh] rounded-lg lg:p-10 p-3 overflow-y-scroll relative'>
+      {success === true && (
         <div
           role="alert"
           data-aos="fade-up"
           data-aos-duration="800"
-          className="alert rounded-lg bg-green-100 border border-green-600 absolute  text-green-600 h-[3rem] right-0 left-0 top-[20px] flex justify-center m-auto text-xs lg:w-fit w-full"
+          className="alert rounded-lg bg-green-100 border border-green-600 absolute  text-green-600 h-[3rem] right-0 left-0 top-0 flex justify-center m-auto text-xs lg:w-fit w-[80%]"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -166,13 +176,13 @@ export const CreativeFAQsDashboard = () => {
 
             <div>
                 
-                {faqs.map((faq, index) =>(
+                {newFAQs.map((faq, index) =>(
                     <div className="collapse bg-neutral-100 collapse-arrow rounded-md  mb-5" key={index}>
                         <input type="checkbox" />
 
-                        <div className="collapse-title text-base font-medium bg-neutral-50">{faq.question}</div>
+                        <div className="collapse-title lg:text-base text-base font-medium bg-neutral-50">{faq.question}</div>
                         <div className="collapse-content">
-                            <p className='w-1/2 text-justify text-sm pt-5'>{faq.answer}</p>
+                            <p className='lg:w-1/2 w-full text-justify text-sm pt-5'>{faq.answer}</p>
                         </div>
                     </div>
                 ))}
@@ -188,18 +198,18 @@ export const CreativeFAQsDashboard = () => {
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onClick={()=>document.getElementById('my_modal_3').close()}>✕</button>
 
             <h3 className="font-bold text-lg pb-3">Add FAQ</h3>
-            <p>Please and frequently ask Questions below</p>
+            <p className='text-xs'>Please and frequently ask Questions below</p>
             <form action="" className='flex flex-col gap-3 pt-5' onSubmit={handleSubmit}>
                 <input type="text" 
                     placeholder="Add FAQ Question" 
                     required 
                     value={question}
-                    className="input input-bordered w-full rounded-md text-sm" 
+                    className="input input-bordered w-full rounded-md text-xs" 
                     onChange={handleQuestionChange}
 
                 />
                 <textarea 
-                    className="textarea textarea-bordered min-h-[8rem] max-h-[8rem]" 
+                    className="textarea textarea-bordered text-xs min-h-[8rem] max-h-[8rem]" 
                     required 
                     value={answer}
                     placeholder="Add FAQ Answer"
