@@ -46,7 +46,6 @@ const CreativeHomeDashboard = () => {
   const [token, setToken] = useState(() => localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
 
   const [show, setShow] = useState(false)
-  const [showModal, setShowModal] = useState(true)
 
   const handleShow = () => {
     setShow(!show)
@@ -60,7 +59,6 @@ const CreativeHomeDashboard = () => {
       <div className='w-full'>
         <CreativeNavBarCom show={show} handleShow={handleShow}/>
         <CreativeHome />
-        <ProfileModal showModal={showModal}/>
         
       </div>
     </div>
@@ -86,35 +84,35 @@ export const CreativeHome = () => {
   const [isLoading, setIsLoading] = useState(false)
   const url =`${BASE_URL}/creativeprofile/${userToken.profile_id}/`
 
+  const [showModal, setShowModal] = useState(false)
+
 
   const fetchProfile = async () => {
-
       setIsLoading(true);
 
       try {
+        const respose = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Authorization' : `Bearer ${authUser.access}`,
+            },
+        })
+        if (!respose.ok) {
+            setIsLoading(false);
+            throw new Error('Network response was not ok');
+        }
+        const data = await respose.json();
 
-      const respose = await fetch(url, {
-          method: 'GET',
-          headers: {
-              'Authorization' : `Bearer ${authUser.access}`,
-          },
-      })
-      if (!respose.ok) {
-          setIsLoading(false);
-          throw new Error('Network response was not ok');
-      }
-      const data = await respose.json();
+        if (data.display_name === null || data.phone_number === null) {
+          setShowModal(true);
+        }
 
-      console.log(data);
-      setProfileData(data)
-
-
-
-
+        console.log(data);
+        setProfileData(data)
       } catch (error) {
           console.log(error);
       } finally {
-      setIsLoading(false);
+        setIsLoading(false);
       }
   };
 
@@ -124,7 +122,6 @@ export const CreativeHome = () => {
   }, []);
 
   
-
   return (
 
 
@@ -425,6 +422,9 @@ export const CreativeHome = () => {
             </form>
           </dialog>
       </div> 
+
+      <ProfileModal showModal={showModal}/>
+
     </div>
   )
 }
@@ -433,23 +433,29 @@ export const CreativeHome = () => {
 export const ProfileModal = ({showModal}) => {
 
   useEffect(() => {
-    if(showModal){
-      // document.getElementById('my_modal_1').showModal();
-    }else{
-      // document.getElementById('my_modal_2').close();
-    }
-  },[])
+    const timer = setTimeout(() => {
+      if (showModal === true) {
+        document.getElementById('my_modal_1').showModal();
+      } else {
+        document.getElementById('my_modal_2').close();
+      }
+    }, 3000); 
+
+
+    return () => clearTimeout(timer);
+  }, [showModal]);
+
   return (
     <div>
 
 
       <dialog id="my_modal_1" className="modal">
-        <div className="modal-box  p-0 rounded-md height " >
+        <div className="modal-box  p-0 rounded-md " >
           <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕</button>
 
 
-          <div className='mycolor4 h-[15rem] overflow-hidden'>
+          <div className='mycolor4 2xl:h-[15rem] xl:h-[10rem] lg:h-[10rem] md:h-[10rem] overflow-hidden'>
             <img src={completeImage} alt="" />
           </div>
 
@@ -469,7 +475,7 @@ export const ProfileModal = ({showModal}) => {
 
             <p className="pt-10 text-center text-xs ">Once the steps above is done your good to go 😊</p>
 
-            <button className='mt-3 mycolor2 text-white w-full p-3 rounded-md lg:text-sm text-xs'>Complete your profile</button>
+            <Link to={'/creative-dashboard-profile-update'}><button className='mt-3 mycolor2 text-white w-full p-3 rounded-md lg:text-sm text-xs'>Complete your profile</button></Link>
           </div>
         </div>
       </dialog>

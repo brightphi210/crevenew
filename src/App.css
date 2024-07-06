@@ -14,6 +14,71 @@
 }
 
 
+.sect{
+  background-image: url('./Components/Images/first-step-card-pattern-2.svg');
+  background-size: cover;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+.sect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  background: plum;
+  z-index: 1;
+}
+
+.sect1{
+  background-image: url('./Components/Images/first-step-card-pattern-3.svg');
+  background-size: cover;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.sect1::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  background: orange;
+  z-index: 1;
+}
+
+
+.sect2{
+  background-image: url('./Components/Images/first-step-card-pattern-1.svg');
+  background-size: cover;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+
+.sect2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+  background: lemonchiffon;
+  z-index: 1;
+}
+
+
 .bgUrl{
   background-image: url('./Components/Images/bdf.png');
   background-size: contain;

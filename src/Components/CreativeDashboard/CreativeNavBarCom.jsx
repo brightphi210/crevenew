@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { IoNotificationsCircle } from "react-icons/io5";
 import logo from '../Images/Creve1.png'
-import prof from '../Images/Avatars.png'
-import { MdMenu } from "react-icons/md";
-import { RiCloseLargeLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 import { IoNotificationsOutline } from "react-icons/io5";
 import { IoBookmarkOutline } from "react-icons/io5";
@@ -42,9 +38,6 @@ const CreativeNavBarCom = ({handleShow, show}) => {
 
       console.log(data);
       setProfileData(data)
-
-
-
 
       } catch (error) {
           console.log(error);
