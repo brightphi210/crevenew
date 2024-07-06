@@ -143,8 +143,8 @@ export const CreativeProfile= () => {
                 <div className='color flex lg:p-8 p-5 rounded-lg text-white'>
 
                     <div className='flex items-center gap-6'>
-                        <div className='border-2 border-white rounded-full w-24 overflow-hidden'>
-                            <img src={profileData.profile_pics} alt="" className='lg:w-28  w-28'/>
+                        <div className='border-2 border-white rounded-full w-24 h-24 overflow-hidden'>
+                            <img src={profileData.profile_pics} alt="" className='lg:w-full h-full  w-full object-cover'/>
                         </div>
 
                         <div>
