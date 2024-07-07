@@ -165,7 +165,7 @@ const LoginCom = () => {
           <input 
             type="text" 
             placeholder="Enter Email" 
-            className="input input-bordered w-full text-xs py-6 rounded-md" 
+            className="input input-bordered w-full text-sm py-6 rounded-md" 
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -179,7 +179,7 @@ const LoginCom = () => {
           <input 
             type={show === true ? "text" : "password"} 
             placeholder="Enter Password" 
-            className="input input-bordered w-full text-xs py-6 rounded-md" 
+            className="input input-bordered w-full text-sm py-6 rounded-md" 
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}

@@ -23,8 +23,10 @@ const UserHomeDashboard = () => {
     <div>
       <UserNavbar show={show} handleShow={handleShow}/>
 
-      <div className='flex lg:pt-24 bg-neutral-100 h-screen'>
-        <UserSideBar show={show} />
+      <div className='flex bg-neutral-100 h-screen'>
+        <div className='z-40'>
+          <UserSideBar show={show} />
+        </div>
         <UserHomeDashboardHome />
       </div>
     </div>
@@ -105,7 +107,7 @@ export const UserHomeDashboardHome = () => {
   console.log('this is ', allTalents);
 
   return (
-    <div className='2xl:pl-[25rem] xl:pl-[18rem] lg:pl-[18rem] 2xl:pr-[10rem] xl:pr-[5rem] lg:pr-[5rem] 2xl:py-10 lg:py-5 pt-28 w-full overflow-y-scroll'>
+    <div className='2xl:pl-[20rem] xl:pl-[13rem] lg:pl-[13rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full overflow-y-scroll'>
 
       <div className='lg:flex items-center block px-5'>
         <h2 className='text-2xl pb-3 lg:p-0'>Hi, Bright!</h2>
@@ -119,7 +121,7 @@ export const UserHomeDashboardHome = () => {
       </div>
 
       {showModal === true &&
-        <div role="alert" className="alert z-50 alert-success text-green-700 lg:w-fit w-[80%] m-auto right-0 left-0  top-24 h-[3rem] flex justify-center items-center rounded-full bg-green-100 border border-green-500 absolute">
+        <div role="alert" data-aos="fade-up" data-aos-duration="500"  className="alert z-50 alert-success text-green-700 lg:w-fit w-[80%] m-auto right-0 left-0  top-24 h-[3rem] flex justify-center items-center rounded-full bg-green-100 border border-green-500 absolute">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 shrink-0 stroke-current"
@@ -137,7 +139,7 @@ export const UserHomeDashboardHome = () => {
         } 
 
         { showModal === false &&
-        <div role="alert" className="alert z-50 alert-success text-green-700 lg:w-fit w-[80%] m-auto right-0 left-0  top-24 h-[3rem] flex justify-center items-center rounded-full bg-green-100 border border-green-500 absolute">
+        <div role="alert" data-aos="fade-up" data-aos-duration="500"  className="alert z-50 alert-success text-green-700 lg:w-fit w-[80%] m-auto right-0 left-0  top-24 h-[3rem] flex justify-center items-center rounded-full bg-green-100 border border-green-500 absolute">
         <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 shrink-0 stroke-current"
@@ -154,7 +156,7 @@ export const UserHomeDashboardHome = () => {
         </div>
       }
 
-      <div className='bg-white lg:p-10 p-5 mt-5 lg:w-full w-[95%] m-auto grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 2xl:gap-10 lg:gap-5 gap-5 items-center lg:rounded-3xl rounded-md'>
+      <div className='bg-white 2xl:p-10 xl:p-5 lg:p-5 p-5 mt-5 lg:w-full w-[95%] m-auto grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 grid-cols-1 2xl:gap-10 lg:gap-5 gap-5 items-center 2xl:rounded-3xl xl:rounded-xl lg:rounded-xl rounded-md'>
 
         <div className='bg-neutral-50 p-5 rounded-xl'>
           <p className='text-sm'>Welcome to </p>
@@ -166,16 +168,16 @@ export const UserHomeDashboardHome = () => {
         </div>
 
         <div className='lg:bg-white sect p-5 rounded-xl relative w-full h-full overflow-hidden' >
-          <div className='relative isolate'>
+          <div className='relative isolate z-20'>
             <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg text-purple-800 font-bold'>Become a Talent</h2>
             <p className='py-3 text-sm'>Become a talent and earn</p>
-            <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-purple-200 text-xs'>Get Started</button>
+            <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-purple-200 text-xs '>Get Started</button>
           </div>
         </div>
 
         
         <div className='bg-white sect1 p-5 rounded-xl relative w-full h-full overflow-hidden' >
-          <div className='relative isolate '>
+          <div className='relative isolate z-20 '>
             <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg text-orange-700 font-bold'>Our  Blog</h2>
             <p className='py-3 text-sm '>Browse our and get latest update</p>
             <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-orange-200 text-xs'>Browser</button>
@@ -184,7 +186,7 @@ export const UserHomeDashboardHome = () => {
 
         
         <div className='bg-white sect2 p-5 rounded-xl relative w-full h-full overflow-hidden' >
-          <div className='relative isolate'>
+          <div className='relative isolate z-20'>
             <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg text-lime-800 font-bold'>Community</h2>
             <p className='py-3 text-sm '>Join  community of like minds </p>
             <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-lime-200 text-xs'>Join Now</button>
@@ -192,7 +194,7 @@ export const UserHomeDashboardHome = () => {
         </div>
       </div>
 
-      <div className='pt-10 lg:px-0 px-5'>
+      <div className='pt-10 lg:px-0 px-7 pb-20'>
 
         <div className='py-5 flex items-center'>
           <h2 className='text-2xl '>Top Creatives</h2>
@@ -201,7 +203,7 @@ export const UserHomeDashboardHome = () => {
 
 
         {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto mt-20"></span> : 
-          <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 gap-8'>
+          <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-8 xl:gap-5 lg:gap-4 gap-5'>
 
             {allTalents.map((talent) =>(
 
@@ -213,24 +215,24 @@ export const UserHomeDashboardHome = () => {
                   : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
                 </div>
 
-                <div className='2xl:h-[18rem] xl-h-[15rem] lg:h-[20rem] h-[20rem] overflow-hidden rounded-xl'>
+                <div className='2xl:h-[20rem] xl-h-[15rem] lg:h-[12rem] h-[20rem] overflow-hidden rounded-xl'>
                   <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
                 </div>
 
                 <div className='flex items-center pt-3 p-3'>
 
-                  <div className='flex items-center gap-3'>
-                    <div className='w-8 h-8 overflow-hidden rounded-full'>
-                      <img src={talent.profile_pics} alt="" className='w-8 h-8 object-cover'/>
+                  <div className='flex items-center gap-2'>
+                    <div className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 overflow-hidden w-7 h-7 rounded-full'>
+                      <img src={talent.profile_pics} alt="" className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 w-7 h-7 object-cover'/>
                     </div>
 
                     <div>
-                      <h3 className='text-sm font-semibold'>{talent.name}</h3>
-                      <p className='text-xs'>{talent.display_name}</p>
+                      <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] font-semibold'>{talent.name}</h3>
+                      <p className='2xl:text-xs xl:text-xs lg:text-[10px]'>{talent.display_name}</p>
                     </div>
                   </div>
 
-                  <button className='ml-auto bg-black p-2 rounded-md text-white text-lg'><IoArrowForwardOutline /></button>
+                  <button className='ml-auto bg-black p-2 rounded-md text-white 2xl:text-lg xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
                 </div>
 
               </div>
