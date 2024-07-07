@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import logo from '../Images/Creve1.png'
 import { Link } from 'react-router-dom';
 import { IoNotificationsOutline } from "react-icons/io5";
-import { IoBookmarkOutline } from "react-icons/io5";
+import { MdFavoriteBorder } from "react-icons/md";
 
 import { RxDashboard } from "react-icons/rx";
 import { BsDashCircle } from "react-icons/bs";
@@ -54,7 +54,7 @@ const UserNavbar = ({handleShow, show}) => {
     
   return (
     <div>
-        <div className='flex flex-row items-center shadow-sm fixed right-0 left-0 bg-white py-4 lg:px-20 px-5  z-50'>
+        <div className={'flex flex-row items-center shadow-sm fixed right-0 left-0 bg-white py-4 lg:px-20 px-5  z-50'}>
 
             <div className='cursor-pointer'>
             <Link to={'/'}>
@@ -73,7 +73,7 @@ const UserNavbar = ({handleShow, show}) => {
             </Link>
 
             <Link to={'/creative-dashboard-bookingsAll'}>
-                <p className='text-2xl cursor-pointer text-neutral-700'><IoBookmarkOutline /></p>
+                <p className='text-2xl cursor-pointer text-neutral-700'><MdFavoriteBorder /></p>
             </Link>
 
 
