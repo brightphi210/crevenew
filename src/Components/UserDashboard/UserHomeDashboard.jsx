@@ -227,7 +227,7 @@ export const UserHomeDashboardHome = () => {
                 </div>
 
                 <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
-                  <div className='2xl:h-[18rem] xl-h-[15rem] lg:h-[12rem] h-[20rem] overflow-hidden rounded-xl'>
+                  <div className='2xl:h-[18rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-xl'>
                     <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
                   </div>
                 </Link>

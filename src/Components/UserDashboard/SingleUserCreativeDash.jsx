@@ -33,7 +33,8 @@ import 'swiper/css/pagination';
 import prof from '../Images/Avatars.png'
 import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useNavigation, useParams } from 'react-router-dom';
+import { HiOutlineArrowLeft } from 'react-icons/hi2';
 
 const SingleUserCreativeDash = () => {
 
@@ -82,213 +83,207 @@ const SingleUserCreativeDash = () => {
     console.log('This is creative data', creativeData);
 
 
+    const navigate = useNavigate()
+
+    const goBack = () =>{
+      navigate(-1);
+    }
+  
+
   return (
-    <div className='bg-neutral-100 pb-10 h-full 2xl:px-[15rem] px-0'>
+    <div className={isLoading === true ? 'bg-neutral-100 pb-10 h-screen flex justify-center 2xl:px-[15rem] px-0' : 'bg-neutral-100 pb-10 h-full 2xl:px-[15rem] px-0'}>
         
-        <p className='text-lg flex bg-neutral-200 p-2 rounded-full absolute lg:right-[15rem] right-5 top-5 lg:top-20 cursor-pointer '><IoClose /></p>
-        <div className='flex relative lg:pt-[8rem] pt-20 px-5'>
-            <div className=''>
-                <div className='flex items-center gap-3'>
-                    <div className='w-10 h-10 overflow-hidden'>
-                        <img src={img} alt="" className='h-10 w-10 object-cover'/>
-                    </div>
+        <p onClick={goBack} className='text-lg flex bg-neutral-200 p-2 rounded-full absolute lg:right-[15rem] right-5 z-40  top-5 lg:top-20 cursor-pointer'><IoClose className='cursor-pointer'/></p>
 
-                    <div>
-                        <h2 className='text-sm'>Bright Philip</h2>
-                        <p className='text-xs'>Senior Developer</p>
-                    </div>
 
-                    {/* <button className='mycolor2 rounded-full text-white font-bold text-sm p-1'> <GoUnverified className=''/></button> */}
-                </div>
-            </div>
-
-            <div className='ml-auto flex items-center gap-2'>
-                <p className='bg-white border border-neutral-200 lg:p-3 p-3 cursor-pointer rounded-full lg:text-xl text-base'><MdFavoriteBorder /></p>
-                <p className='bg-white border 2xl:hidden block border-neutral-200 lg:p-3 p-3 cursor-pointer rounded-full lg:text-xl text-base'><MdOutlineMarkEmailUnread /></p>
-                <button className='bg-black 2xl:block hidden text-white py-3 px-5 rounded-full text-sm border border-neutral-200'>Get in touch</button>
-            </div>
-        </div>
-
-        <div>
-            <div className='grid lg:grid-cols-3 grid-cols-1 gap-10 pt-10'>
-
-                <div className='lg:col-span-2 '>
-                    <div className='lg:h-[30rem] h-[18rem] overflow-hidden lg:rounded-xl'>
-                        <PhotoProvider>
-                            <PhotoView src={img2}>
-                                <img src={img2} alt="" className='w-full cursor-pointer hover:transform hover:scale-105 transition-all ease-linear h-full object-cover'/>
-                            </PhotoView>
-                        </PhotoProvider>
-                    </div>
-
-                    <div className='lg:flex grid grid-cols-2 items-center gap-4 pt-6 lg:px-0 px-5'>
-                        <PhotoProvider>
-                        <div className='h-[7rem] w-full overflow-hidden rounded-lg'>
-                            <PhotoView src={img3}>
-                                <img src={img3} alt="" className='cursor-pointer h-[7rem] w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
-                            </PhotoView>
+        {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto "></span> : <>
+            <div className='flex relative lg:pt-[8rem] pt-20 px-5'>
+                <div className=''>
+                    <div className='flex items-center gap-3'>
+                        <div className='w-10 h-10 rounded-full overflow-hidden'>
+                            <img src={creativeData.profile_pics} alt="" className='h-10 w-10 object-cover'/>
                         </div>
-                        </PhotoProvider>
 
-                        <PhotoProvider>
-                        <div className='h-[7rem] w-full overflow-hidden rounded-lg'>
-                            <PhotoView src={img4}>
-                                <img src={img4} alt="" className='cursor-pointer h-[7rem] w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
-                            </PhotoView>
-                        </div>
-                        </PhotoProvider>
+                        {creativeData.user && (
 
-
-                        <PhotoProvider>
-                        <div className='h-[7rem] w-full overflow-hidden rounded-lg'>
-                            <PhotoView src={img5}>
-                                <img src={img5} alt="" className='cursor-pointer h-[7rem] w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
-                            </PhotoView>
-                        </div>
-                        </PhotoProvider>
-
-
-                        <PhotoProvider>
-                        <div className='h-[7rem] w-full overflow-hidden rounded-lg'>
-                            <PhotoView src={img6}>
-                                <img src={img6} alt="" className='cursor-pointer h-[7rem] w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
-                            </PhotoView>
-                        </div>
-                        </PhotoProvider>
-                    </div>
-                </div>
-
-                <div className='bg-white  w-full lg:rounded-xl lg:p-10 p-5'>
-
-                    <div className='flex items-center '>
-                        <h2 className='font-bold text-sm'>Details</h2>
-                        <p className='text-sm font-semibold ml-auto'><span className='font-normal'>Starting Price </span>: 10,000</p>
-                    </div>
-
-
-
-                    
-                    <div className='pt-5 '>
-                        <p className='text-sm text-justify'>
-                            Hi, I’m Cassie, Lorem ipsum dolor sit amet, consectetur 
-                            adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                    </div>
-
-                    <div className='flex items-center gap-2 pt-5'>
-                        <p className='bg-neutral-200  p-2 rounded-full'><PiPhoneCallFill /></p>
-                        <button className='font-semibold '>08094422807</button>
-                    </div>
-
-
-                    <div className='flex flex-wrap gap-3 items-center pt-5'>
-                        <button className='py-2 px-3 text-xs border border-neutral-300 rounded-md flex items-center gap-2'><GoDotFill className='mycolor'/>Python</button>
-                        <button className='py-2 px-3 text-xs border border-neutral-300 rounded-md flex items-center gap-2'><GoDotFill className='mycolor'/>Java</button>
-                        <button className='py-2 px-3 text-xs border border-neutral-300 rounded-md flex items-center gap-2'><GoDotFill className='mycolor'/>JS</button>
-                        <button className='py-2 px-3 text-xs border border-neutral-300 rounded-md flex items-center gap-2'><GoDotFill className='mycolor'/>React</button>
-                    </div>
-
-
-
-                    <div className='pt-5'>
-                        <p className='text-xs '>Work Type</p>
-                        <p className='text-sm flex gap-2 items-center pt-2'><MdWorkOutline className='mycolor text-base'/>Remote</p>
-                    </div>
-
-                    <div className='pt-5'>
-                        <p className='text-xs '>Language</p>
-                        <p className='text-sm flex gap-2 items-center pt-2'><IoLanguage className='mycolor text-base'/>English</p>
-                    </div>
-
-                    
-                    <div className='pt-5'>
-                        <p className='text-xs '>Location</p>
-                        <p className='text-sm flex gap-2 items-center pt-2'><GrLocation className='mycolor text-base'/>#64 Nanka street</p>
-                    </div>
-
-                    <div className='pt-5'>
-                        <p className='text-xs '>Contact</p>
-                        <p className='text-sm flex gap-2 items-center pt-2'><MdOutlineWhatsapp className='mycolor text-base'/>Whatsapp</p>
-                        <p className='text-sm flex gap-2 items-center pt-2'><GrLanguage className='mycolor text-base'/>Website</p>
-                    </div>
-
-                    <div>
-                        <button className='bg-accent py-3 px-5 mt-5 text-sm text-white rounded-md w-full'>Drop Reviews</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div className='lg:w-[65%] w-[95%] lg:m-0 m-auto rounded-2xl  pt-5 lg:p-10 p-5 mt-5 bg-white'>
-            <h2 className='text-base py-3 text-center pb-8'> - Reviews -</h2>
-
-            <div className='w-full'>
-                <Swiper
-                    cssMode={true}
-                    navigation={true}
-                    pagination={true}
-                    mousewheel={true}
-                    loop={true}
-                    keyboard={true}
-                    modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-                    className="mySwiper"
-                >
-                    <SwiperSlide>
-                        <div>
-                            <div className='flex flex-row items-center gap-3 m-auto justify-center'>
-                                <div className='border border-neutral-300 w-10 rounded-full'>
-                                    <img src={prof} alt="" className='w-10'/>
-                                </div>
-                                <h2>Jane Doe</h2>
+                            <div>
+                                <h2 className='text-sm'>{creativeData.user.fullname}</h2>
+                                <p className='text-xs'>{creativeData.display_name}</p>
                             </div>
+                        )}
 
-                            <p className='text-xs text-center w-9/12 flex m-auto pt-4 mb-10'>
-                                Hi, I’m Cassie, Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            </p>
+                        {/* <button className='mycolor2 rounded-full text-white font-bold text-sm p-1'> <GoUnverified className=''/></button> */}
+                    </div>
+                </div>
+
+                <div className='ml-auto flex items-center gap-2'>
+                    <p className='bg-white border border-neutral-200 lg:p-3 p-3 cursor-pointer rounded-full lg:text-xl text-base'><MdFavoriteBorder /></p>
+                    <p className='bg-white border 2xl:hidden block border-neutral-200 lg:p-3 p-3 cursor-pointer rounded-full lg:text-xl text-base'><MdOutlineMarkEmailUnread /></p>
+                    <button className='bg-black 2xl:block hidden text-white py-3 px-5 rounded-full text-sm border border-neutral-200'>Get in touch</button>
+                </div>
+            </div>
+
+            <div>
+                <div className='grid lg:grid-cols-3 grid-cols-1 gap-10 pt-10'>
+
+                    <div className='lg:col-span-2 '>
+                        <div className='lg:h-[30rem] h-[18rem] bg-white overflow-hidden lg:rounded-xl'>
+                            <PhotoProvider>
+                                <PhotoView src={creativeData.cover_image}>
+                                    <img src={creativeData.cover_image} alt="" className='w-full cursor-pointer hover:transform hover:scale-105 transition-all ease-linear h-full object-cover'/>
+                                </PhotoView>
+                            </PhotoProvider>
                         </div>
-                    </SwiperSlide>
-                    
 
-                    <SwiperSlide>
-                        <div>
-                            <div className='flex flex-row items-center gap-3 m-auto justify-center'>
-                                <div className='border border-neutral-300 w-10 rounded-full'>
-                                    <img src={prof} alt="" className='w-10'/>
+                        {creativeData.images && (
+
+                        <div className='lg:flex grid grid-cols-2 items-center gap-4 pt-6 lg:px-0 px-5'>
+                            {creativeData.images.map((Image)=>(
+
+                                <PhotoProvider>
+                                <div className='h-[7rem] bg-white lg:w-[10rem] w-full overflow-hidden rounded-lg'>
+                                    <PhotoView src={Image.image}>
+                                        <img src={Image.image} alt="" className='cursor-pointer h-[7rem] w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
+                                    </PhotoView>
                                 </div>
-                                <h2>Jane Doe</h2>
-                            </div>
-
-                            <p className='text-xs text-center w-9/12 flex m-auto pt-4 mb-10'>
-                                Hi, I’m Cassie, Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            </p>
+                                </PhotoProvider>
+                            ))}
                         </div>
-                    </SwiperSlide>
+
+                        )}
+                    </div>
+
+                    <div className='bg-white  w-full lg:rounded-xl lg:p-10 p-5'>
+
+                        <div className='flex items-center '>
+                            <h2 className='font-bold text-sm'>Details</h2>
+                            <p className='text-sm font-semibold ml-auto'><span className='font-normal'>Starting Price </span>: {creativeData.starting_price}</p>
+                        </div>
 
 
+
+                        
+                        <div className='pt-5 '>
+                            <p className='text-sm text-justify'>{creativeData.about}</p>
+                        </div>
+
+                        <div className='flex items-center gap-2 pt-5'>
+                            <p className='bg-neutral-200  p-2 rounded-full'><PiPhoneCallFill /></p>
+                            <button className='font-semibold '>{creativeData.phone_number}</button>
+                        </div>
+
+
+                        <div className='py-5'>
+                            {creativeData.dskills &&
+                                creativeData.dskills.map((skill, index) => (
+                                <button className=' flex flex-row flex-wrap items-center gap-2  ' key={index}>
+                                    {skill.skill.split(',').map((item, idx) => (
+                                    <span className='border border-neutral-300 py-2 px-4 text-xs rounded-md flex gap-1 items-center' key={idx}><GoDotFill className='mycolor'/>{item.trim()}</span>
+                                    ))}
+                                </button>
+                            ))}
+                        </div>
+
+
+
+                        <div className='pt-5'>
+                            <p className='text-xs '>Work Type</p>
+                            <p className='text-sm flex gap-2 items-center pt-2'><MdWorkOutline className='mycolor text-base'/>Remote</p>
+                        </div>
+
+                        <div className='pt-5'>
+                            <p className='text-xs '>Language</p>
+                            <p className='text-sm flex gap-2 items-center pt-2'><IoLanguage className='mycolor text-base'/>English</p>
+                        </div>
+
+                        
+                        <div className='pt-5'>
+                            <p className='text-xs '>Location</p>
+                            <p className='text-sm flex gap-2 items-center pt-2'><GrLocation className='mycolor text-base'/>#64 Nanka street</p>
+                        </div>
+
+                        <div className='pt-5'>
+                            <p className='text-xs '>Contact</p>
+                            <p className='text-sm flex gap-2 items-center pt-2'><MdOutlineWhatsapp className='mycolor text-base'/>Whatsapp</p>
+                            <p className='text-sm flex gap-2 items-center pt-2'><GrLanguage className='mycolor text-base'/>Website</p>
+                        </div>
+
+                        <div>
+                            <button className='bg-accent py-3 px-5 mt-5 text-sm text-white rounded-md w-full'>Drop Reviews</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div className='lg:w-[65%] w-[95%] lg:m-0 lg:mt-10 m-auto rounded-2xl  pt-5 lg:p-10 p-5 mt-5 bg-white'>
+                <h2 className='text-base py-3 text-center pb-8'> - Reviews -</h2>
+
+                <div className='w-full'>
+                    <Swiper
+                        cssMode={true}
+                        navigation={true}
+                        pagination={true}
+                        mousewheel={true}
+                        loop={true}
+                        keyboard={true}
+                        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+                        className="mySwiper"
+                    >
+                        <SwiperSlide>
+                            <div>
+                                <div className='flex flex-row items-center gap-3 m-auto justify-center'>
+                                    <div className='border border-neutral-300 w-10 rounded-full'>
+                                        <img src={prof} alt="" className='w-10'/>
+                                    </div>
+                                    <h2>Jane Doe</h2>
+                                </div>
+
+                                <p className='text-xs text-center w-9/12 flex m-auto pt-4 mb-10'>
+                                    Hi, I’m Cassie, Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                            </div>
+                        </SwiperSlide>
+                        
 
                         <SwiperSlide>
-                        <div>
-                            <div className='flex flex-row items-center gap-3 m-auto justify-center'>
-                                <div className='border border-neutral-300 w-10 rounded-full'>
-                                    <img src={prof} alt="" className='w-10'/>
+                            <div>
+                                <div className='flex flex-row items-center gap-3 m-auto justify-center'>
+                                    <div className='border border-neutral-300 w-10 rounded-full'>
+                                        <img src={prof} alt="" className='w-10'/>
+                                    </div>
+                                    <h2>Jane Doe</h2>
                                 </div>
-                                <h2>Jane Doe</h2>
-                            </div>
 
-                            <p className='text-xs text-center w-9/12 flex m-auto pt-4 mb-10'>
-                                Hi, I’m Cassie, Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            </p>
-                        </div>
-                    </SwiperSlide>
-                </Swiper>
+                                <p className='text-xs text-center w-9/12 flex m-auto pt-4 mb-10'>
+                                    Hi, I’m Cassie, Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                            </div>
+                        </SwiperSlide>
+
+
+
+                            <SwiperSlide>
+                            <div>
+                                <div className='flex flex-row items-center gap-3 m-auto justify-center'>
+                                    <div className='border border-neutral-300 w-10 rounded-full'>
+                                        <img src={prof} alt="" className='w-10'/>
+                                    </div>
+                                    <h2>Jane Doe</h2>
+                                </div>
+
+                                <p className='text-xs text-center w-9/12 flex m-auto pt-4 mb-10'>
+                                    Hi, I’m Cassie, Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                            </div>
+                        </SwiperSlide>
+                    </Swiper>
+                </div>
             </div>
-        </div>
+        </>}
     </div>
   )
 }
