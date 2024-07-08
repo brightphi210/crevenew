@@ -286,7 +286,7 @@ const SingleUserCreativeDash = () => {
 
 
         <dialog id="my_modal_3" className="modal">
-            <div className="modal-box rounded-md p-10 lg:w-full w-[96%]">
+            <div className="modal-box rounded-md lg:p-10 p-6 lg:w-full w-[96%]">
                 <form method="dialog">
                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                 </form>
@@ -316,7 +316,7 @@ const SingleUserCreativeDash = () => {
 
 
         <dialog id="my_modal_2" className="modal">
-            <div className="modal-box rounded-md p-10 lg:w-full w-[96%]">
+            <div className="modal-box rounded-md lg:p-10 p-6 lg:w-full w-[96%]">
                 <form method="dialog">
                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                 </form>

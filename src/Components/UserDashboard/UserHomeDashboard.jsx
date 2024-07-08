@@ -3,7 +3,7 @@ import UserNavbar from './UserNavbar';
 import UserSideBar from './UserSideBar';
 import logo from '../Images/Creve1.png'
 
-import { talentsData } from '../Mock/allTalents';
+import { FaLocationDot } from "react-icons/fa6";
 import { IoArrowForwardOutline } from "react-icons/io5";
 import { IoMdArrowForward } from "react-icons/io";
 import { MdFavoriteBorder } from "react-icons/md";
@@ -102,16 +102,13 @@ export const UserHomeDashboardHome = () => {
       }
   }
 
-
   useEffect(() => {
     fetchTalents();
   }, []);
 
 
-  console.log('this is ', allTalents);
-
   return (
-    <div className='2xl:pl-[20rem] xl:pl-[13rem] lg:pl-[13rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full overflow-y-scroll'>
+    <div className='2xl:pl-[20rem] xl:pl-[13rem] lg:pl-[13rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full overflow-y-auto'>
 
       <div className='lg:flex items-center block px-5'>
         <h2 className='text-2xl pb-3 lg:p-0'>Hi, Bright!</h2>
@@ -247,6 +244,8 @@ export const UserHomeDashboardHome = () => {
 
                   <button className='ml-auto bg-neutral-200 p-2 rounded-full text-black 2xl:text-md xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
                 </div>
+
+                <p className='p-3 text-xs flex items-center gap-2'><FaLocationDot className='text-accent'/>{talent.location}</p>
 
               </div>
             ))}
