@@ -33,21 +33,19 @@ import 'swiper/css/pagination';
 import prof from '../Images/Avatars.png'
 import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
-import { useNavigate, useNavigation, useParams } from 'react-router-dom';
+import { Link, useNavigate, useNavigation, useParams } from 'react-router-dom';
 import { HiOutlineArrowLeft } from 'react-icons/hi2';
+import { RiSendPlane2Line } from "react-icons/ri";
 
 const SingleUserCreativeDash = () => {
 
-    // https://creve.store/creativeprofile/11/
 
     const {id} = useParams()
-
     let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
     const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
     const [isLoading, setIsLoading] = useState(false)
 
     const [creativeData, setCreativeData] = useState({})
-
 
     const url =`${BASE_URL}/creativeprofile/${id}/`
     const fetchProfile = async () => {
@@ -80,19 +78,14 @@ const SingleUserCreativeDash = () => {
     }, []);
 
 
-    console.log('This is creative data', creativeData);
-
-
     const navigate = useNavigate()
-
     const goBack = () =>{
       navigate(-1);
     }
   
 
   return (
-    <div className={isLoading === true ? 'bg-neutral-100 pb-10 h-screen flex justify-center 2xl:px-[15rem] px-0' : 'bg-neutral-100 pb-10 h-full 2xl:px-[15rem] px-0'}>
-        
+    <div className={isLoading === true ? 'bg-neutral-100 pb-10 h-screen flex justify-center  px-0' : 'bg-neutral-100 pb-10 2xl:px-[15rem] xl:px-[5rem] lg:px-[5rem] h-full px-0'}>
         <p onClick={goBack} className='text-lg flex bg-neutral-200 p-2 rounded-full absolute lg:right-[15rem] right-5 z-40  top-5 lg:top-20 cursor-pointer'><IoClose className='cursor-pointer'/></p>
 
 
@@ -117,9 +110,10 @@ const SingleUserCreativeDash = () => {
                 </div>
 
                 <div className='ml-auto flex items-center gap-2'>
-                    <p className='bg-white border border-neutral-200 lg:p-3 p-3 cursor-pointer rounded-full lg:text-xl text-base'><MdFavoriteBorder /></p>
-                    <p className='bg-white border 2xl:hidden block border-neutral-200 lg:p-3 p-3 cursor-pointer rounded-full lg:text-xl text-base'><MdOutlineMarkEmailUnread /></p>
-                    <button className='bg-black 2xl:block hidden text-white py-3 px-5 rounded-full text-sm border border-neutral-200'>Get in touch</button>
+                    <p className='bg-white border border-neutral-200 lg:p-3 p-2 cursor-pointer rounded-full lg:text-xl text-base'><MdFavoriteBorder /></p>
+                    <p className='bg-white border 2xl:hidden block border-neutral-200 lg:p-3 p-2 cursor-pointer rounded-full lg:text-xl text-base'><MdOutlineMarkEmailUnread /></p>
+                    <p onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-white border 2xl:hidden block border-neutral-200 lg:p-3 p-2 cursor-pointer rounded-full lg:text-xl text-base'><RiSendPlane2Line /></p>
+                    <button onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-black 2xl:block hidden text-white py-3 px-5 rounded-full text-sm border border-neutral-200'>Get in touch</button>
                 </div>
             </div>
 
@@ -127,7 +121,7 @@ const SingleUserCreativeDash = () => {
                 <div className='grid lg:grid-cols-3 grid-cols-1 gap-10 pt-10'>
 
                     <div className='lg:col-span-2 '>
-                        <div className='lg:h-[30rem] h-[18rem] bg-white overflow-hidden lg:rounded-xl'>
+                        <div className='lg:h-[30rem] h-[18rem] bg-white overflow-hidden lg:rounded-md'>
                             <PhotoProvider>
                                 <PhotoView src={creativeData.cover_image}>
                                     <img src={creativeData.cover_image} alt="" className='w-full cursor-pointer hover:transform hover:scale-105 transition-all ease-linear h-full object-cover'/>
@@ -141,9 +135,9 @@ const SingleUserCreativeDash = () => {
                             {creativeData.images.map((Image)=>(
 
                                 <PhotoProvider>
-                                <div className='h-[7rem] bg-white lg:w-[10rem] w-full overflow-hidden rounded-lg'>
+                                <div className='h-[9rem] bg-white lg:w-[15rem] w-full overflow-hidden rounded-md'>
                                     <PhotoView src={Image.image}>
-                                        <img src={Image.image} alt="" className='cursor-pointer h-[7rem] w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
+                                        <img src={Image.image} alt="" className='cursor-pointer h-[9rem] w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
                                     </PhotoView>
                                 </div>
                                 </PhotoProvider>
@@ -156,15 +150,15 @@ const SingleUserCreativeDash = () => {
                     <div className='bg-white  w-full lg:rounded-xl lg:p-10 p-5'>
 
                         <div className='flex items-center '>
-                            <h2 className='font-bold text-sm'>Details</h2>
-                            <p className='text-sm font-semibold ml-auto'><span className='font-normal'>Starting Price </span>: {creativeData.starting_price}</p>
+                            <h2 className='font-bold 2xl:text-sm xl:text-xs lg:text-xs text-sm '>Details</h2>
+                            <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm  font-semibold ml-auto'><span className='font-normal'>Starting Price </span>: {creativeData.starting_price}</p>
                         </div>
 
 
 
                         
                         <div className='pt-5 '>
-                            <p className='text-sm text-justify'>{creativeData.about}</p>
+                            <p className='text-sm text-justify 2xl:text-sm xl:text-xs lg:text-xs'>{creativeData.about}</p>
                         </div>
 
                         <div className='flex items-center gap-2 pt-5'>
@@ -188,28 +182,33 @@ const SingleUserCreativeDash = () => {
 
                         <div className='pt-5'>
                             <p className='text-xs '>Work Type</p>
-                            <p className='text-sm flex gap-2 items-center pt-2'><MdWorkOutline className='mycolor text-base'/>Remote</p>
+                            <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'><MdWorkOutline className='mycolor text-base'/>{creativeData.work_type}</p>
                         </div>
 
                         <div className='pt-5'>
                             <p className='text-xs '>Language</p>
-                            <p className='text-sm flex gap-2 items-center pt-2'><IoLanguage className='mycolor text-base'/>English</p>
+                            <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'><IoLanguage className='mycolor text-base'/>{creativeData.language}</p>
                         </div>
 
                         
                         <div className='pt-5'>
                             <p className='text-xs '>Location</p>
-                            <p className='text-sm flex gap-2 items-center pt-2'><GrLocation className='mycolor text-base'/>#64 Nanka street</p>
+                            <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'><GrLocation className='mycolor text-base'/>{creativeData.location}</p>
                         </div>
 
                         <div className='pt-5'>
                             <p className='text-xs '>Contact</p>
-                            <p className='text-sm flex gap-2 items-center pt-2'><MdOutlineWhatsapp className='mycolor text-base'/>Whatsapp</p>
-                            <p className='text-sm flex gap-2 items-center pt-2'><GrLanguage className='mycolor text-base'/>Website</p>
+                            <Link to={creativeData.whatsapp_link}>
+                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm pt-4 flex gap-2 items-center'><MdOutlineWhatsapp className='mycolor text-base'/>Whatsapp</p>
+                            </Link>
+
+                            <Link to={creativeData.website_link}>
+                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm pt-4 flex gap-2 items-center'><GrLanguage className='mycolor text-base'/>Website</p>
+                            </Link>
                         </div>
 
                         <div>
-                            <button className='bg-accent py-3 px-5 mt-5 text-sm text-white rounded-md w-full'>Drop Reviews</button>
+                            <button onClick={()=>document.getElementById('my_modal_2').showModal()} className='bg-accent py-3 px-5 mt-5 text-sm text-white rounded-md w-full'>Drop Reviews</button>
                         </div>
 
                     </div>
@@ -284,6 +283,60 @@ const SingleUserCreativeDash = () => {
                 </div>
             </div>
         </>}
+
+
+        <dialog id="my_modal_3" className="modal">
+            <div className="modal-box rounded-md p-10 lg:w-full w-[96%]">
+                <form method="dialog">
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                </form>
+                <h3 className="font-bold text-lg pb-5">Let's get your request ready to send</h3>
+
+                <form action="">
+
+                    <div>
+                        <p className="py-4 pb-2 text-sm">What are you looking to work on...</p>
+                        <input type="text"  required placeholder="e.g Funiture design, repairs, websites etc." className="input text-sm input-bordered w-full" />
+                    </div>
+
+                    <div>
+                        <p className="py-6 pb-2 text-sm">Tell us more about the project</p>
+                        <textarea required className="textarea textarea-bordered w-full min-w-full h-[13rem]" placeholder="I want to repair my car, or i need a site"></textarea>
+                    </div>
+
+                    <div className='flex items-center text-sm pt-5'>
+                        <button className='underline' onClick={()=>document.getElementById('my_modal_3').close()}>Nevermind</button>
+                        <button className='ml-auto py-2 px-4 color text-white rounded-full' >Send Request</button>
+                    </div>
+
+                </form>
+            </div>
+        </dialog>
+
+
+
+        <dialog id="my_modal_2" className="modal">
+            <div className="modal-box rounded-md p-10 lg:w-full w-[96%]">
+                <form method="dialog">
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                </form>
+                <h3 className="font-bold text-lg pb-5">Leave a review</h3>
+
+                <form action="">
+
+                    <div>
+                        <p className="py-1 pb-2 text-sm">Kindly leave a review for this creative</p>
+                        <textarea required className="textarea textarea-bordered w-full min-w-full h-[13rem]" placeholder="He did a nice job for me"></textarea>
+                    </div>
+
+                    <div className='flex items-center text-sm pt-5'>
+                        <button className='underline' onClick={()=>document.getElementById('my_modal_2').close()}>Nevermind</button>
+                        <button className='ml-auto py-2 px-4 color text-white rounded-full'>Send Review</button>
+                    </div>
+
+                </form>
+            </div>
+        </dialog>
     </div>
   )
 }

@@ -214,7 +214,7 @@ export const UserHomeDashboardHome = () => {
 
 
         {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto mt-20"></span> : 
-          <div className='grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5'>
+          <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5'>
 
             {allTalents.map((talent) =>(
 
@@ -227,7 +227,7 @@ export const UserHomeDashboardHome = () => {
                 </div>
 
                 <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
-                  <div className='2xl:h-[18rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-xl'>
+                  <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
                     <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
                   </div>
                 </Link>
@@ -240,8 +240,8 @@ export const UserHomeDashboardHome = () => {
                     </div>
 
                     <div>
-                      <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] font-semibold'>{talent.user.fullname}</h3>
-                      <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] flex items-center gap-2'>{talent.display_name} <GoTools /></p>
+                      <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm font-semibold'>{talent.user.fullname}</h3>
+                      <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] text-xs flex items-center gap-2'>{talent.display_name} <GoTools /></p>
                     </div>
                   </div>
 
