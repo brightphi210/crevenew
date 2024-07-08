@@ -8,8 +8,10 @@ import { IoArrowForwardOutline } from "react-icons/io5";
 import { IoMdArrowForward } from "react-icons/io";
 import { MdFavoriteBorder } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
+import { GoTools } from "react-icons/go";
 import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
+import { Link } from 'react-router-dom';
 
 const UserHomeDashboard = () => {
 
@@ -74,7 +76,9 @@ export const UserHomeDashboardHome = () => {
   const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
   const [isLoading, setIsLoading] = useState(false)
   const url =`${BASE_URL}/creativeprofile/`
+
   const fetchTalents = async() => {
+    setIsLoading(true);
     try {
       const response = await fetch(url, {
         method: 'GET',
@@ -196,14 +200,21 @@ export const UserHomeDashboardHome = () => {
 
       <div className='pt-10 lg:px-0 px-7 pb-20'>
 
-        <div className='py-5 flex items-center'>
-          <h2 className='text-2xl '>Top Creatives</h2>
-          <button className='ml-auto flex items-center gap-2 underline'>Browse All <IoMdArrowForward /></button>
+        <div className='py-5 pb-10 flex items-center'>
+          <h2 className='text-xl '>Top Creatives</h2>
+
+          <div className='ml-auto flex items-center gap-10'>
+            {/* <div className='flex items-center gap-2'>
+              <button className='bg-white py-2 px-5 rounded-full border border-neutral-300 text-xs '>Digital</button>
+              <button className='bg-white py-2 px-5 rounded-full border border-neutral-300 text-xs '>Non-Digital</button>
+            </div> */}
+            <button className='flex items-center gap-2 underline'>Browse All <IoMdArrowForward /></button>
+          </div>
         </div>
 
 
         {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto mt-20"></span> : 
-          <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-8 xl:gap-5 lg:gap-4 gap-5'>
+          <div className='grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5'>
 
             {allTalents.map((talent) =>(
 
@@ -215,9 +226,11 @@ export const UserHomeDashboardHome = () => {
                   : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
                 </div>
 
-                <div className='2xl:h-[20rem] xl-h-[15rem] lg:h-[12rem] h-[20rem] overflow-hidden rounded-xl'>
-                  <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
-                </div>
+                <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
+                  <div className='2xl:h-[18rem] xl-h-[15rem] lg:h-[12rem] h-[20rem] overflow-hidden rounded-xl'>
+                    <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
+                  </div>
+                </Link>
 
                 <div className='flex items-center pt-3 p-3'>
 
@@ -227,12 +240,12 @@ export const UserHomeDashboardHome = () => {
                     </div>
 
                     <div>
-                      <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] font-semibold'>{talent.name}</h3>
-                      <p className='2xl:text-xs xl:text-xs lg:text-[10px]'>{talent.display_name}</p>
+                      <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] font-semibold'>{talent.user.fullname}</h3>
+                      <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] flex items-center gap-2'>{talent.display_name} <GoTools /></p>
                     </div>
                   </div>
 
-                  <button className='ml-auto bg-black p-2 rounded-md text-white 2xl:text-lg xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
+                  <button className='ml-auto bg-neutral-200 p-2 rounded-full text-black 2xl:text-md xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
                 </div>
 
               </div>

@@ -20,6 +20,7 @@ import AboutPage from './Pages/AboutPage';
 import BlogPage from './Pages/BlogPage';
 import CreativeSettingDash from './Pages/CreativeDash/CreativeSettingDash';
 import CreativeFAQsDash from './Pages/CreativeDash/CreativeFAQsDash';
+import SingleUserCreative from './Pages/UserDash/SingleUserCreative';
 AOS.init();
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
 
           <Route element={<PrivateRoute role="Client"/>}>
             <Route path='/user-dashboard-home' element={<UserHomeDash />}/>
+            <Route path='/user-dashboard-single-creative/:id/' element={<SingleUserCreative />}/>
           </Route>
 
           <Route element={<PrivateRoute role="Creative"/>}>
