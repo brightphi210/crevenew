@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { GrHomeRounded } from "react-icons/gr";
 import { FiBookmark } from "react-icons/fi";
 import { MdOutlineMarkEmailUnread } from "react-icons/md";
@@ -9,6 +9,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import { BiLogOutCircle } from 'react-icons/bi';
 
+
+const menuItems = [
+  { label: 'Home', icon: <GrHomeRounded />, path: 'user-dashboard-home' },
+  { label: 'Creatives', icon: <MdOutlineCallMissedOutgoing />, path: 'user-dashboard-creative' },
+  { label: 'Request', icon: <FiBookmark />, path: 'user-dashboard-home' },
+  { label: 'Messages', icon: <MdOutlineMarkEmailUnread />, path: 'user-dashboard-home' },
+  { label: 'Saved', icon: <MdOutlineFavoriteBorder />, path: 'user-dashboard-creative' },
+  { label: 'Settings', icon: <FiSettings />, path: 'user-dashboard-home' },
+];
 
 const UserSideBar = ({show}) => {
 
@@ -25,22 +34,29 @@ const UserSideBar = ({show}) => {
         navigate('/')
     }
 
+
+
+    const [activeIndex, setActiveIndex] = useState('');
+
+    const handleItemClick = (index) => {
+        setActiveIndex(index);
+        navigate(`/${menuItems[index].path}`);
+    };
+
+
+
   return (
 
-    <div className={ show === false ? 'fixed lg:block hidden pt-28  h-[100vh] z-10 p-10 px-5 text-white  left-0 color 2xl:w-[15rem] xl:w-[10rem] lg:w-[10rem]  w-full  rounded-none' : 'fixed block pt-28  h-[100vh] z-10 p-10 px-5 text-white  left-0 color 2xl:w-[15rem] xl:w-[10rem] lg:w-[10rem] w-full lg:rounded-2xl rounded-none'}>
-        <ul className='flex flex-col 2xl:gap-10 xl:gap-7 lg:gap-7 gap-8 z-50 2xl:text-base xl:text-xs lg:text-[10px] text-lg'>
-            
-            <Link to={'/' + 'user-dashboard-home'}>
-              <li className='flex gap-2 items-center cursor-pointer font-bold bg-accent p-3 px-5 text-black rounded-3xl '><GrHomeRounded />Home</li>
-            </Link>
+    <div className={show ? 'fixed block pt-28 h-[100vh] z-10 p-10 px-5 text-white left-0 color 2xl:w-[15rem] xl:w-[10rem] lg:w-[10rem] w-full lg:rounded-2xl rounded-none' : 'fixed lg:block hidden pt-28 h-[100vh] z-10 p-10 px-5 text-white left-0 color 2xl:w-[15rem] xl:w-[10rem] lg:w-[10rem] w-full rounded-none'}>
+        <ul className='UserSideBar flex flex-col 2xl:gap-5 xl:gap-7 lg:gap-7 gap-5 z-50 2xl:text-base xl:text-xs lg:text-[10px] text-base'>
+            {menuItems.map((item, index) => (
 
-            <Link to={'/' + 'user-dashboard-creative'}>
-              <li className='flex gap-2 items-center cursor-pointer font-bold px-3'><MdOutlineCallMissedOutgoing />Creatives</li>
-            </Link>
-            <li className='flex gap-2 items-center cursor-pointer font-bold px-3'><FiBookmark />Request</li>
-            <li className='flex gap-2 items-center cursor-pointer font-bold px-3'><MdOutlineMarkEmailUnread />Messages</li>
-            <li className='flex gap-2 items-center cursor-pointer font-bold px-3'><MdOutlineFavoriteBorder />Saved</li>
-            <li className='flex gap-2 items-center cursor-pointer font-bold px-3'><FiSettings />Settings</li>
+              <div key={index} onClick={() => handleItemClick(index)}>
+                    <li className={'flex gap-2 items-center cursor-pointer font-bold p-3 px-5'}>
+                      {item.icon}{item.label}
+                    </li>
+              </div>
+            ))}
             <li className='flex gap-2 items-center cursor-pointer font-bold px-3 mt-10' onClick={logout}><BiLogOutCircle />Logout</li>
         </ul>
     </div>
