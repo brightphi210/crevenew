@@ -126,7 +126,7 @@ export const CreativeSettingDashboard = () => {
     return (
         <div className='2xl:p-20 2xl:pt-28 2xl:pl-[18rem] lg:pl-[18rem] p-5 pt-20  '>
 
-            <h2>Settings</h2>
+            <h2 className='text-2xl font-bold pb-10'>Settings</h2>
 
             <div className='bg-white lg:p-10 p-5 rounded-xl'>
 

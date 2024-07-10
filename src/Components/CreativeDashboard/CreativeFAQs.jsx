@@ -157,7 +157,7 @@ export const CreativeFAQsDashboard = () => {
       )}
         
         <div className='flex items-center mb-5'>
-            <h2 className='lg:block hidden'>Frequently Asked Questions</h2>
+            <h2 className='lg:block hidden text-2xl font-bold'>Frequently Asked Questions</h2>
             <h2 className='block lg:hidden text-sm font-bold'>FAQs</h2>
             <button className="btn btn-active btn-neutral ml-auto flex items-center gap-2 text-xs p-2 py-2 max-h-[2rem] min-h-[2rem]" onClick={()=>document.getElementById('my_modal_3').showModal()}>Add <FaPlus /></button>
         </div>

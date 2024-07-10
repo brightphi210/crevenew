@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import img from '../Images/Avatars.png'
 import { IoClose } from "react-icons/io5";
-import img2 from '../Images/Group 25.png'
-import img3 from '../Images/Group 22.png'
-import img4 from '../Images/Group 21.png'
-import img5 from '../Images/Group 26.png'
-import img6 from '../Images/Group 23.png'
 
 
 import { MdWorkOutline } from "react-icons/md";
@@ -18,7 +13,6 @@ import { MdOutlineWhatsapp } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
 import { PiPhoneCallFill } from "react-icons/pi";
 import { MdFavoriteBorder } from "react-icons/md";
-import { MdOutlineMarkEmailUnread } from "react-icons/md";
 
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
@@ -36,10 +30,11 @@ import { jwtDecode } from 'jwt-decode';
 import { Link, useNavigate, useNavigation, useParams } from 'react-router-dom';
 import { HiOutlineArrowLeft } from 'react-icons/hi2';
 import { RiSendPlane2Line } from "react-icons/ri";
+import { IoShareSocialSharp } from "react-icons/io5";
+
+import successImg from '../Images/gif1.gif'
 
 const SingleUserCreativeDash = () => {
-
-
     const {id} = useParams()
     let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
     const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
@@ -83,6 +78,63 @@ const SingleUserCreativeDash = () => {
       navigate(-1);
     }
 
+    const url2 =`${BASE_URL}/bookcreatives/${id}/`
+
+    const [booked, setBooked] = useState(false)
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
+    const [phone, setPhone] = useState('')
+    const [isLoading2, setIsLoading2] = useState(false)
+    const makeRequest = async (e) =>{
+        e.preventDefault();
+        setIsLoading2(true);
+        try {
+            const response = await fetch(url2, {
+                method: 'POST',
+                headers: {
+                    'Authorization' : `Bearer ${authUser.access}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    "title": title,
+                    "description": description,
+                    "phone": phone,
+                }),
+            })
+    
+            if (response.ok || response.status === 200 || response.status === 2001) {
+                console.log('Booked successfully');
+                setBooked(true);
+                setTitle('');
+                setDescription('');
+                setPhone('');
+                document.getElementById('my_modal_1').showModal()
+                document.getElementById('my_modal_3').close()
+                setIsLoading2(false);
+            } else {
+                console.log('Failed to book');
+                setIsLoading2(false);
+            }
+        } catch (error) {
+            console.log(error);
+            setIsLoading2(false);
+        }
+    }
+
+
+    const [copySuccess, setCopySuccess] = useState('');
+
+    const copyToClipboard = (text) => {
+        navigator.clipboard.writeText(text).then(
+          () => setCopySuccess('Copied!'),
+          (err) => setCopySuccess('Failed to copy!')
+        );
+    };
+
+
+
+
+
 
   return (
     <div className={isLoading === true ? 'bg-neutral-100 pb-10 h-screen flex justify-center  px-0' : 'bg-neutral-100 pb-10 2xl:px-[15rem] xl:px-[5rem] lg:px-[5rem] h-full px-0'}>
@@ -111,9 +163,9 @@ const SingleUserCreativeDash = () => {
 
                 <div className='ml-auto flex items-center gap-2'>
                     <p className='bg-white border border-neutral-200 lg:p-3 p-2 cursor-pointer rounded-full lg:text-xl text-base'><MdFavoriteBorder /></p>
-                    <p className='bg-white border 2xl:hidden block border-neutral-200 lg:p-3 p-2 cursor-pointer rounded-full lg:text-xl text-base'><MdOutlineMarkEmailUnread /></p>
-                    <p onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-white border 2xl:hidden block border-neutral-200 lg:p-3 p-2 cursor-pointer rounded-full lg:text-xl text-base'><RiSendPlane2Line /></p>
-                    <button onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-black 2xl:block hidden text-white py-3 px-5 rounded-full text-sm border border-neutral-200'>Get in touch</button>
+                    {/* <p className='bg-white border 2xl:hidden block border-neutral-200 lg:p-3 p-2 cursor-pointer rounded-full lg:text-xl text-base'><MdOutlineMarkEmailUnread /></p> */}
+                    {/* <p onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-white border 2xl:hidden block border-neutral-200 lg:p-3 p-2 cursor-pointer rounded-full lg:text-xl text-base'><RiSendPlane2Line /></p> */}
+                    <button onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-black text-white py-3 px-5 rounded-full lg:text-sm text-xs border border-neutral-200'>Get in touch</button>
                 </div>
             </div>
 
@@ -207,8 +259,9 @@ const SingleUserCreativeDash = () => {
                             </Link>
                         </div>
 
-                        <div>
+                        <div className='flex gap-3'>
                             <button onClick={()=>document.getElementById('my_modal_2').showModal()} className='bg-accent py-3 px-5 mt-5 text-sm text-white rounded-md w-full'>Drop Reviews</button>
+                            <button className='bg-black py-3 px-5 mt-5 text-sm text-white flex justify-center items-center m-auto gap-3 rounded-md w-full'>Share <IoShareSocialSharp /></button>
                         </div>
 
                     </div>
@@ -292,21 +345,44 @@ const SingleUserCreativeDash = () => {
                 </form>
                 <h3 className="font-bold text-lg pb-5">Let's get your request ready to send</h3>
 
-                <form action="">
+                <form action="" onSubmit={makeRequest}>
 
                     <div>
                         <p className="py-4 pb-2 text-sm">What are you looking to work on...</p>
-                        <input type="text"  required placeholder="e.g Funiture design, repairs, websites etc." className="input text-sm input-bordered w-full" />
+                        <input 
+                            type="text"  
+                            required placeholder="e.g Funiture design, repairs, websites etc." 
+                            className="input text-sm input-bordered w-full" 
+                            value={title}
+                            onChange={(e)=>setTitle(e.target.value)}
+                        />
+                    </div>
+
+                    <div>
+                        <p className="py-4 pb-2 text-sm">Provide you phone number...</p>
+                        <input 
+                            type="number"  
+                            required placeholder="Phone Number e.g 09086655698" 
+                            className="input text-sm input-bordered w-full" 
+                            value={phone}
+                            onChange={(e)=>setPhone(e.target.value)}
+                        />
                     </div>
 
                     <div>
                         <p className="py-6 pb-2 text-sm">Tell us more about the project</p>
-                        <textarea required className="textarea textarea-bordered w-full min-w-full h-[13rem]" placeholder="I want to repair my car, or i need a site"></textarea>
+                        <textarea 
+                            required 
+                            className="textarea textarea-bordered w-full min-w-full h-[13rem]" 
+                            placeholder="I want to repair my car, or i need a site"
+                            value={description}
+                            onChange={(e)=>setDescription(e.target.value)}
+                        ></textarea>
                     </div>
 
                     <div className='flex items-center text-sm pt-5'>
                         <button className='underline' onClick={()=>document.getElementById('my_modal_3').close()}>Nevermind</button>
-                        <button className='ml-auto py-2 px-4 color text-white rounded-full' >Send Request</button>
+                        <button type='submit' className='ml-auto py-2 px-4 color text-white rounded-full' >{isLoading2 === true ? <span className="loading loading-spinner loading-md"></span> : 'Send Request' }</button>
                     </div>
 
                 </form>
@@ -335,6 +411,24 @@ const SingleUserCreativeDash = () => {
                     </div>
 
                 </form>
+            </div>
+        </dialog>
+
+
+
+        <dialog id="my_modal_1" className="modal">
+            <div className="modal-box rounded-2xl lg:p-10 p-6 py-10 lg:w-full w-[96%]">
+                <form method="dialog">
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                </form>
+                <div className='text-center'>
+                    <div className='flex m-auto justify-center'>
+                        <img src={successImg} alt="" className='w-28'/>
+                    </div>
+                    <h3 className="font-medium text-lg">Your message was Sent!</h3>
+                    <h2 className='text-2xl py-3 pb-6 font-bold'>{creativeData.phone_number}</h2>
+                    <button className='text-white bg-black w-full rounded-full py-3 text-sm' onClick={()=>copyToClipboard(creativeData.phone_number)}>{copySuccess ? copySuccess : 'Copy Number to call'}</button>
+                </div>
             </div>
         </dialog>
     </div>

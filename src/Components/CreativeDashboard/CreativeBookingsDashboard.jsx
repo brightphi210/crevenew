@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CreativeSideBarCom from './CreativeSideBarCom'
 import CreativeNavBarCom from './CreativeNavBarCom'
 import { MdModeEditOutline } from 'react-icons/md'
@@ -8,6 +8,11 @@ import { LuSearch } from "react-icons/lu";
 import { BsWhatsapp } from "react-icons/bs";
 
 import data from '../Mock/data.json'
+import { BASE_URL } from '../Auth/BaseUrl'
+import { jwtDecode } from 'jwt-decode'
+
+import noData from '../Images/nodata2.png'
+
 
 const CreativeBookingsDashboard = () => {
 
@@ -39,13 +44,65 @@ export default CreativeBookingsDashboard
 
 export const CreativeBookings = () => {
 
+  const [profileData, setProfileData] = useState([])
+  let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
+  const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
+  const [isLoading, setIsLoading] = useState(false)
+  const url =`${BASE_URL}/creativeprofile/${userToken.profile_id}/`
 
-  const [showBoookingsDesc, setShowBoookingsDesc] = useState(false)
+
+  const fetchProfile = async () => {
+      setIsLoading(true);
+      try {
+          const respose = await fetch(url, {
+              method: 'GET',
+              headers: {
+                  'Authorization' : `Bearer ${authUser.access}`,
+              },
+          })
+          if (!respose.ok) {
+            setIsLoading(false);
+            throw new Error('Network response was not ok');
+          }
+          const data = await respose.json();
+          setIsLoading(false);
+          // console.log(data);
+          setProfileData(data.books)
+        }
+        
+        catch (error) {
+            console.log(error);
+        } 
+        
+        finally {
+          setIsLoading(false);
+        }
+  };
 
 
-  const handleShowBoookingsDesc = () => {
-    setShowBoookingsDesc(true)
-  }
+  useEffect(() => {
+      fetchProfile();
+  }, []);
+
+
+  const [selectedRequest, setSelectedRequest] = useState(null);
+  const [copySuccess, setCopySuccess] = useState('');
+
+  const handleClick = (eachData) => {
+    setSelectedRequest(eachData);
+    setCopySuccess('')
+  };
+
+
+
+
+  const copyToClipboard = (text) => {
+      navigator.clipboard.writeText(text).then(
+        () => setCopySuccess('Copied!'),
+        (err) => setCopySuccess('Failed to copy!')
+      );
+  };
+
 
 
   return (
@@ -53,8 +110,8 @@ export const CreativeBookings = () => {
       <div>
         <div className='flex lg:flex-row flex-col gap-4 items-center'>
           <div className='w-full'>
-            <h2>My Bookings</h2>
-            <p className='text-xs pt-2'>List of all bookings from clients</p>
+            <h2 className='text-2xl font-bold'>Request</h2>
+            <p className='text-xs pt-2'>List of all Request from clients</p>
           </div>
 
           <div className='relative lg:w-1/2 w-full ml-auto'>
@@ -65,32 +122,49 @@ export const CreativeBookings = () => {
 
         <div className='w-full lg:mt-10 mt-5 pt-5 gap-10 overflow-y-scroll h-[70vh]'>
 
+          {isLoading === false ? (
+            <>
+              <div className='2xl:w-full grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 lg:gap-10 gap-4 w-full rounded-lg'>
+                {profileData && <>
+                  {profileData.map((eachData) =>(
 
-          <div className='2xl:w-full grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 lg:gap-10 gap-4 w-full rounded-lg'>
-            
-            {data.map((eachData) =>(
+                    <label onClick={() => handleClick(eachData)} className='bg-white p-5 rounded-md cursor-pointer' drawer-conten  htmlFor="my-drawer-4">
+                      <div className='flex gap-3 items-center'>
+                        <div className='rounded-full w-10 h-10 flex items-center justify-center bg-neutral-200 overflow-hidden'>
+                          {/* <img src={eachData.client_profile.profile_pics} className='w-full h-full ' alt="" /> */}
+                          <p className='font-bold '>{eachData.client_profile.user.fullname.slice(0,2).toUpperCase()}</p>
+                        </div>
 
-              <label className='bg-white p-5 rounded-md cursor-pointer' drawer-conten  htmlFor="my-drawer-4">
-                <div className='flex gap-3 items-center'>
-                  <div className='rounded-full w-10 h-10 overflow-hidden'>
-                    <img src={eachData.pics} className='w-full h-full ' alt="" />
-                  </div>
+                        <div>
+                          <h2 className='text-sm'>{eachData.client_profile.user.fullname}</h2>
+                          <p className='text-xs'>{eachData.phone}</p>
+                        </div>
 
-                  <div>
-                    <h2 className='text-sm'>{eachData.name}</h2>
-                    <p className='text-xs'>{eachData.phone}</p>
-                  </div>
+                        <div className="drawer-content ml-auto">
+                          <label htmlFor="my-drawer-4" className="drawer-button hover:bg-accent btn  btn-primary min-h-[2rem] max-h-[2rem] mycolor2 border-none text-[10px] px-5  font-medium rounded-md text-white">View</label>
+                        </div>
+                      </div>
 
-                  <div className="drawer-content ml-auto">
-                    <label htmlFor="my-drawer-4" className="drawer-button hover:bg-accent btn  btn-primary min-h-[2rem] max-h-[2rem] mycolor2 border-none text-[10px] px-5  font-medium rounded-md text-white">View</label>
+                      <p className='text-xs pt-3'>{eachData.title.slice(0, 20)} . . .</p>
+                    </label>
+                  ))}
+                </>}
+              </div>
+
+              {profileData.length <= 0 && <>
+                <div className='flex items-center w-fit justify-center m-auto h-[50vh] text-center'>
+                  <div className=''>
+                    <img src={noData} alt="" className='w-[15rem] flex m-auto opacity-70'/>
+                    <h2 className='text-xl font-bold'>No Request found</h2>
                   </div>
                 </div>
-
-                <p className='text-xs pt-3'>{eachData.message.slice(0, 20)} . . .</p>
-              </label>
-            ))}
-
-          </div>
+              </>}
+            </>
+          ) : (
+            <div className='flex justify-center items-center pt-20'>
+              <span className="loading loading-spinner loading-lg"></span>
+            </div>
+          )}
         </div>
       </div>
 
@@ -102,28 +176,28 @@ export const CreativeBookings = () => {
           <ul className="menu bg-base-200 text-base-content min-h-full lg:w-[25%] w-[85%] p-6 pt-32">
             <div className='flex justify-center'>
 
+              {selectedRequest && 
               <div className='text-center'>
-                  <div className='rounded-full flex justify-center m-auto w-20 h-20 overflow-hidden'>
-                    <img src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png" className='w-full h-full ' alt="" />
+                  <div className='rounded-full flex justify-center bg-neutral-200 items-center m-auto w-20 h-20 overflow-hidden'>
+                    {/* <img src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png" className='w-full h-full ' alt="" /> */}
+                    <p className='font-bold text-3xl'>{selectedRequest.client_profile.user.fullname.slice(0,2).toUpperCase()}</p>
                   </div>
 
                   <div>
-                    <h2 className='text-sm font-bold pt-5'>John Doe</h2>
-                    <p className='text-xl font-bold text-neutral-500 py-3'>08094422799</p>
-
-                    <p className='lg:text-sm text-xs text-center lg:leading-[30px] leading-[28px] font-light'>
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                      Neque earum impedit atque molestias vitae deserunt aliquid sint, 
-                      reiciendis ut ipsa, assumenda perferendis praesentium nostrum 
-                      fugit accusantium. Cupiditate, quae. Architecto, accusamus.
-                    </p>
+                    <h2 className='text-sm font-bold pt-5'>{selectedRequest.client_profile.user.fullname}</h2>
+                    <p className='text-xl font-bold text-neutral-500 py-3'>{selectedRequest.phone}</p>
+                    
+                    <p className='text-xs pt-3'>{selectedRequest.title}</p>
+                    <p className='lg:text-sm text-xs text-center lg:leading-[30px] leading-[28px] font-light'>{selectedRequest.description}</p>
                   </div>
 
                   <div className='mt-5 flex justify-center lg:gap-5 gap-3 lg:px-10 px-5 w-full'>
-                    <button className="btn lg:w-1/2 w-fit hover:bg-accent border-none   min-h-[2.6rem] max-h-[2.6rem] mycolor2 text-xs text-white flex items-center gap-2"><BsWhatsapp />Whatsapp</button>
-                    <button className="btn lg:w-1/2 w-fit btn-neutral text-xs  text-white min-h-[2.6rem] max-h-[2.6rem] flex items-center gap-2"><FaRegCopy />Copy Number</button>
+                    <button onClick={()=>copyToClipboard(selectedRequest.phone)} className="btn lg:w-full w-full btn-neutral text-xs  text-white min-h-[2.6rem] max-h-[2.6rem] flex items-center gap-2">
+                      {copySuccess ? copySuccess : <><FaRegCopy />Copy Number</> }
+                    </button>
                   </div>
               </div>
+              }
             </div>
           </ul>
         </div>

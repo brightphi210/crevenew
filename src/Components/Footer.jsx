@@ -16,7 +16,7 @@ const Footer = () => {
             <div className=''>
 
                 <h2 className='font-semibold text-sm text-neutral-500'>Categories</h2>
-                <ul className='flex flex-col gap-3 pt-7 2xl:text-sm xl:text-xs lg:text-xs text-xs'>
+                <ul className='flex flex-col gap-3 pt-7 2xl:text-sm xl:text-xs lg:text-xs text-sm'>
                     <li>Mobile Dev</li>
                     <li>Backend Dev</li>
                     <li>Furniture Making</li>
@@ -29,7 +29,7 @@ const Footer = () => {
 
             <div className=''>
                 <h2 className='font-semibold text-sm text-neutral-500'>Client</h2>
-                <ul className='flex flex-col gap-3 pt-7 2xl:text-sm xl:text-xs lg:text-xs text-xs'>
+                <ul className='flex flex-col gap-3 pt-7 2xl:text-sm xl:text-xs lg:text-xs text-sm'>
                     <li>Hire with ease</li>
                     <li>Report Talent</li>
                     <li>Become a talent</li>
@@ -39,7 +39,7 @@ const Footer = () => {
 
             <div className=''>
                 <h2 className='font-semibold text-sm text-neutral-500'>Resources</h2>
-                <ul className='flex flex-col gap-3 pt-7 2xl:text-sm xl:text-xs lg:text-xs text-xs'>
+                <ul className='flex flex-col gap-3 pt-7 2xl:text-sm xl:text-xs lg:text-xs text-sm'>
                     <li>Help & Support</li>
                     <li>Blog</li>
                     <li>Community</li>
@@ -49,7 +49,7 @@ const Footer = () => {
 
             <div className=''>
                 <h2 className='font-semibold text-sm text-neutral-500'>Company</h2>
-                <ul className='flex flex-col gap-3 pt-7 2xl:text-sm xl:text-xs lg:text-xs text-xs'>
+                <ul className='flex flex-col gap-3 pt-7 2xl:text-sm xl:text-xs lg:text-xs text-sm'>
                     <li>About us</li>
                     <li>Leadership</li>
                     <li>Careers</li>

@@ -94,9 +94,6 @@ export const CreativeProfile= () => {
         console.log(data);
         setProfileData(data)
 
-
-
-
         } catch (error) {
             console.log(error);
         } finally {
@@ -132,7 +129,7 @@ export const CreativeProfile= () => {
             <div className='lg:p-20 pt-20 lg:pl-[18rem] p-5'>
             <div>
                 <div className='flex items-center py-5'>
-                    <h2>My Profile</h2>
+                    <h2 className='text-2xl font-bold'>My Profile</h2>
                     <Link to={'/creative-dashboard-profile-update'} className='ml-auto'>
                             <button className='ml-auto flex items-center text-sm gap-2 underline'>
                             <MdModeEditOutline />Edit

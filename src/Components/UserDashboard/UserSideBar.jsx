@@ -47,7 +47,7 @@ const UserSideBar = ({show}) => {
 
   return (
 
-    <div className={show ? 'fixed block pt-28 h-[100vh] z-10 p-10 px-5 text-white left-0 color 2xl:w-[15rem] xl:w-[10rem] lg:w-[10rem] w-full lg:rounded-2xl rounded-none' : 'fixed lg:block hidden pt-28 h-[100vh] z-10 p-10 px-5 text-white left-0 color 2xl:w-[15rem] xl:w-[10rem] lg:w-[10rem] w-full rounded-none'}>
+    <div className={show ? 'fixed block pt-28 h-[100vh] z-10 p-10 px-5 text-black left-0 bg-white 2xl:w-[15rem] xl:w-[10rem] lg:w-[10rem] w-full lg:rounded-2xl rounded-none' : 'fixed lg:block hidden pt-28 h-[100vh] z-10 p-10 px-5 text-black left-0 bg-white 2xl:w-[15rem] xl:w-[10rem] lg:w-[10rem] w-full rounded-none'}>
         <ul className='UserSideBar flex flex-col 2xl:gap-5 xl:gap-7 lg:gap-7 gap-5 z-50 2xl:text-base xl:text-xs lg:text-[10px] text-base'>
             {menuItems.map((item, index) => (
 

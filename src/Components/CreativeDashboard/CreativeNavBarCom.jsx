@@ -54,7 +54,7 @@ const CreativeNavBarCom = ({handleShow, show}) => {
 
 
   return (
-    <div className='flex flex-row items-center shadow-md fixed right-0 left-0 bg-white py-3 lg:px-20 px-5  z-50'>
+    <div className='flex flex-row items-center shadow-md fixed right-0 left-0 bg-white py-3 lg:px-20 px-5  z-50 backdrop-filter backdrop-blur-3xl bg-opacity-80'>
 
       <div className='cursor-pointer'>
         <Link to={'/'}>

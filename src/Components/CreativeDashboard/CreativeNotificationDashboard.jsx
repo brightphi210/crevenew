@@ -37,7 +37,7 @@ export default CreativeNotificationDashboard
 export const CreativeNotificationHome = () => {
   return (
     <div className='lg:p-20 lg:pt-28 lg:pl-[18rem] p-5 pt-20'>
-      <h2 className='flex items items-center gap-3ctext-lg font-semibold'><IoNotifications />List Notification</h2>
+      <h2 className='flex items items-center gap-3 text-2xl font-semibold'><IoNotifications />Notification</h2>
 
       <div className='flex lg:flex-row flex-col gap-2 lg:items-center py-5'>
         <p className='lg:text-sm text-xs '>180 Notifications</p>
