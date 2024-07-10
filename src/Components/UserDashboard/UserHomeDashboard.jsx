@@ -236,7 +236,10 @@ export const UserHomeDashboardHome = () => {
               <button className='bg-white py-2 px-5 rounded-full border border-neutral-300 text-xs '>Digital</button>
               <button className='bg-white py-2 px-5 rounded-full border border-neutral-300 text-xs '>Non-Digital</button>
             </div> */}
-            <button className='flex items-center gap-2 underline'>Browse All <IoMdArrowForward /></button>
+
+            <Link to={'/' + 'user-dashboard-creative'}>
+              <button className='flex items-center gap-2 underline'>Browse All <IoMdArrowForward /></button>
+            </Link>
           </div>
         </div>
 
