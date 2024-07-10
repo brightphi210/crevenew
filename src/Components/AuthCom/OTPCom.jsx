@@ -4,21 +4,11 @@ import { useNavigate } from 'react-router-dom';
 
 const OTPCom = () => {
     const [user, setUser] = useState(() => localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')) : null);
-    const [otp, setOtp] = useState(new Array(5).fill(""));
+    const [otp, setOtp] = useState('');
     const [message, setMessage] = useState("");
 
 
     const url = `${BASE_URL}/auth/activation/`
-
-    const handleChange = (element, index) => {
-        if (isNaN(element.value)) return false;
-        
-        setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))]);
-        
-        if (element.nextSibling) {
-            element.nextSibling.focus();
-        }
-    };
 
 
     const [isLoading, setIsLoading] = useState(false)
@@ -27,13 +17,12 @@ const OTPCom = () => {
     const handleSubmit = async (event) => {
         setIsLoading(true);
         event.preventDefault();
-        const otpCode = otp.join('');
         const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ otp: otpCode, email: user.email }),
+            body: JSON.stringify({ otp: otp, email: user.email }),
         });
         
         
@@ -74,9 +63,9 @@ const OTPCom = () => {
 
 
     return (
-        <div className="relative flex lg:h-screen pt-[5rem] flex-col justify-center overflow-hidden bg-gray-50 py-12">
-            <div className="relative bg-white px-6 pt-10 pb-9 shadow-xl mx-auto lg:w-full w-11/12 max-w-lg rounded-2xl">
-                <div className="mx-auto flex w-full max-w-md flex-col space-y-16">
+        <div className="relative flex h-screen pt-[5rem] flex-col justify-center overflow-hidden bg-neutral-200 py-12">
+            <div className="relative bg-white px-6 py-14 mx-auto lg:w-full w-11/12 max-w-lg rounded-xl">
+                <div className="mx-auto flex w-full max-w-md flex-col space-y-6">
                     <div className="flex flex-col items-center justify-center text-center space-y-2">
                         <div className="font-semibold text-3xl">
                             <p className='text-2xl'>Email Verification</p>
@@ -88,26 +77,25 @@ const OTPCom = () => {
 
                     <div>
                         <form onSubmit={handleSubmit}>
-                            <div className="flex flex-col space-y-16">
+                            <div className="flex flex-col space-y-8">
                                 <div className="flex flex-row items-center gap-2 justify-between mx-auto w-full max-w-xs">
-                                    {otp.map((data, index) => (
-                                        <div className="w-16 h-16" key={index}>
-                                            <input
-                                                className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-md border border-gray-300 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
-                                                type="text"
-                                                name="otp"
-                                                maxLength="1"
-                                                value={data}
-                                                onChange={e => handleChange(e.target, index)}
-                                                onFocus={e => e.target.select()}
-                                            />
-                                        </div>
-                                    ))}
+                            
+                                    <input
+                                        className="input input-bordered w-full text-sm py-6 rounded-md"
+                                        type="number"
+                                        name="otp"
+                                        maxLength="4"
+                                        value={otp}
+                                        onChange={(e) => setOtp(e.target.value)}
+                                        placeholder='Enter OTP Code...'
+                                        required
+                                    />
+                                    
                                 </div>
 
                                 <div className="flex flex-col space-y-5">
                                     <div>
-                                        <button type="submit" className="flex flex-row items-center justify-center text-center w-full border rounded-md outline-none py-4 bg-black border-none text-white text-sm shadow-sm">
+                                        <button type="submit" className="flex flex-row items-center justify-center text-center w-full border rounded-full outline-none py-3 bg-black border-none text-white text-sm shadow-sm">
                                             {isLoading === true ? <span class="loader"></span> : 'Verify Account'}
                                         </button>
                                     </div>
