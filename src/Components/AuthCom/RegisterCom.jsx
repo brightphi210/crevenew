@@ -19,11 +19,7 @@ const RegisterCom = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [show, setShow] = useState(false)
 
-  // console.log('This is role', role);
-
   const url = `${BASE_URL}/auth/`
-
-  
   const handleRegister = async (e) => {
     e.preventDefault();
     setIsLoading(true)
@@ -61,10 +57,20 @@ const RegisterCom = () => {
     }
   }
 
+
+
+  const handleClick1 = () => {
+    setRole('Creative');
+  };
+
+  const handleClick2 = () => {
+    setRole('Client');
+  };
+
   return (
     <div class="bg-white flex lg:flex-row flex-col justify-center items-center lg:h-screen lg:pt-0 ">
 
-    <div class="lg:w-1/2 w-full lg:h-screen h-[45vh] lg:block">
+    <div class="lg:w-1/2 w-full lg:h-screen h-[30vh] lg:block">
       <video 
           src={vd1}
           autoPlay 
@@ -77,18 +83,18 @@ const RegisterCom = () => {
     </div>
 
     <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
-      <h1 class="text-xl font-semibold mb-4">Register</h1>
+      <h1 class="text-2xl font-semibold mb-4">Register</h1>
       
       <form action="" className=' flex flex-col gap-5 w-full' onSubmit={handleRegister}>
 
-        <div className='flex gap-3 items-end'>
+        <div className='flex lg:flex-row flex-col gap-3 items-end'>
 
-          <span className='flex lg:w-full w-full text-sm cursor-pointer items-center gap-3 border border-neutral-200 py-3 px-3 rounded-md text-black'>
-            Creative 
+          <span onClick={handleClick1} className='flex lg:w-full w-full lg:text-lg text-sm cursor-pointer bg-neutral-100 items-center gap-3 border border-neutral-200 py-3 px-3 rounded-md text-black'>
+            Join to Provide a Service
             <input 
               type="radio" 
               name="radio-2" 
-              className="radio radio-accent w-[1.1rem] ml-auto h-[1.1rem] " 
+              className="radio radio-accent w-[1.5rem] ml-auto h-[1.5rem] " 
               value="Creative"
               checked={role === 'Creative'}
               onChange={(e)=>setRole(e.target.value)}
@@ -97,12 +103,12 @@ const RegisterCom = () => {
           </span>
 
 
-          <span className='flex lg:w-full w-full text-sm cursor-pointer items-center gap-2 border border-neutral-200 py-3 px-3 rounded-md text-black'>
-            Client 
+          <span onClick={handleClick2} className='flex lg:w-full w-full lg:text-lg text-sm cursor-pointer bg-neutral-100 items-center gap-2 border border-neutral-200 py-3 px-3 rounded-md text-black'>
+            Join to Hire Someone 
             <input 
               type="radio" 
               name="radio-2" 
-              className="radio radio-accent w-[1.1rem] ml-auto h-[1.1rem] " 
+              className="radio radio-accent w-[1.5rem] ml-auto h-[1.5rem] " 
               value="Client"
               checked={role === 'Client'}
               onChange={(e)=>setRole(e.target.value)}
@@ -117,7 +123,7 @@ const RegisterCom = () => {
           <input 
             type="text" 
             placeholder="Enter Fullname" 
-            className="input input-bordered w-full text-xs py-6 rounded-md" required
+            className="input input-bordered w-full text-sm py-6 rounded-md" required
             value={fullname}
             onChange={(e)=>setfullName(e.target.value)}
           />
@@ -127,7 +133,7 @@ const RegisterCom = () => {
           <input 
             type="email" 
             placeholder="Enter Email" 
-            className="input input-bordered w-full text-xs py-6 rounded-md" required
+            className="input input-bordered w-full text-sm py-6 rounded-md" required
             value={email}
             onChange={(e)=>setEmail(e.target.value)}
           />
@@ -137,7 +143,7 @@ const RegisterCom = () => {
           <input 
             type={show === true ? "text" : "password"} 
             placeholder="Enter Password" 
-            className="input input-bordered w-full text-xs py-6 rounded-md" 
+            className="input input-bordered w-full text-sm py-6 rounded-md" 
             required
             value={password}
             onChange={(e)=>setPassword(e.target.value)}

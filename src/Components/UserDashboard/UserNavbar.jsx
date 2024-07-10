@@ -68,17 +68,17 @@ const UserNavbar = ({handleShow, show}) => {
             </div>
 
             <div className='flex flex-row gap-5 ml-auto items-center'>
-            <Link to={'/creative-dashboard-notificationAll'}>
+            <Link to={'/user-dashboard-home'}>
                 <p className='text-2xl cursor-pointer text-neutral-700'><IoNotificationsOutline /></p>
             </Link>
 
-            <Link to={'/creative-dashboard-bookingsAll'}>
+            <Link to={'/user-dashboard-home'}>
                 <p className='text-2xl cursor-pointer text-neutral-700'><MdFavoriteBorder /></p>
             </Link>
 
 
             <div >
-                <Link to={'/creative-dashboard-profile'}>
+                <Link to={'/user-dashboard-home'}>
                 <div className='bg-neutral-200 rounded-full w-8 h-8 overflow-hidden'>
                     <img src={profileData.profile_pics} alt="" className='w-full h-full object-cover cursor-pointer'/>
                 </div>
