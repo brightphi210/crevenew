@@ -13,6 +13,8 @@ import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
 import { Link } from 'react-router-dom';
 
+import noData from '../Images/nodata2.png'
+
 const UserHomeDashboard = () => {
 
   const [show, setShow] = useState(false)
@@ -107,6 +109,35 @@ export const UserHomeDashboardHome = () => {
   }, []);
 
 
+
+  const [searchTermInput, setSearchTermInput] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearchInput = (event) => {
+    setSearchTermInput(event.target.value);
+  };
+
+
+  const [showSide, setShowSide] = useState(true);
+  const handleButtonClick = (e) => {
+    e.preventDefault();
+    setSearchTerm(searchTermInput); 
+    // setShowSide(false)
+  };
+
+  const filteredItems = allTalents.filter(item => {
+    const searchTermLower = searchTerm.toLowerCase();
+    return (
+      (item.location && item.location.toLowerCase().includes(searchTermLower)) ||
+      (item.category && item.category.toLowerCase().includes(searchTermLower)) ||
+      (item.digital_skills && item.digital_skills.toLowerCase().includes(searchTermLower)) ||
+      (item.work_type && item.work_type.toLowerCase().includes(searchTermLower)) ||
+      (item.display_name && item.display_name.toLowerCase().includes(searchTermLower))||
+      (item.user.fullname && item.user.fullname.toLowerCase().includes(searchTermLower))
+    );
+  });
+
+
   return (
     <div className='2xl:pl-[20rem] xl:pl-[13rem] lg:pl-[13rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full overflow-y-auto'>
 
@@ -115,8 +146,8 @@ export const UserHomeDashboardHome = () => {
 
         <div className='relative 2xl:w-4/12  xl:w-1/2  lg:w-1/2 w-full flex ml-auto'>
             <>
-            <input type="text" placeholder="Search here . . ." className="input rounded-full text-sm input-bordered 2xl:p-7 xl:p-5 lg:p-5 w-full flex m-auto " />
-            <button className='absolute lg:top-2 top-1.5 right-3 text-xs bg-black text-white 2xl:py-3 xl:py-2 lg:py-2 px-4 py-2.5 rounded-full '>Search</button>
+            <input onChange={handleSearchInput} value={searchTermInput} type="text" placeholder="Search here . . ." className="input rounded-full text-sm input-bordered 2xl:p-7 xl:p-5 lg:p-5 w-full flex m-auto " />
+            <button onClick={handleButtonClick} className='absolute lg:top-2 top-1.5 right-3 text-xs bg-black text-white 2xl:py-3 xl:py-2 lg:py-2 px-4 py-2.5 rounded-full '>Search</button>
             </>
         </div>
       </div>
@@ -211,45 +242,66 @@ export const UserHomeDashboardHome = () => {
 
 
         {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto mt-20"></span> : 
-          <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5'>
+        <>
+          {filteredItems.length > 0 && 
+            <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5'>
 
-            {allTalents.map((talent) =>(
+              {filteredItems.map((talent) =>(
 
-              <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
+                <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
 
-                <div  className='absolute right-5 top-5 bg-white p-2 flex justify-center items-center rounded-full text-lg hover:bg-neutral-200 hover:transition-all hover:ease-linear'>
-                  {show[talent.id] ? 
-                  <p onClick={() => handleShow1(talent.id)}><MdFavorite className='text-green-700'/></p> 
-                  : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
-                </div>
-
-                <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
-                  <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
-                    <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
-                  </div>
-                </Link>
-
-                <div className='flex items-center pt-3 p-3'>
-
-                  <div className='flex items-center gap-2'>
-                    <div className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 overflow-hidden w-7 h-7 rounded-full'>
-                      <img src={talent.profile_pics} alt="" className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 w-7 h-7 object-cover'/>
-                    </div>
-
-                    <div>
-                      <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm font-semibold'>{talent.user.fullname}</h3>
-                      <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] text-xs flex items-center gap-2'>{talent.display_name} <GoTools /></p>
-                    </div>
+                  <div  className='absolute right-5 top-5 bg-white p-2 flex justify-center items-center rounded-full text-lg hover:bg-neutral-200 hover:transition-all hover:ease-linear'>
+                    {show[talent.id] ? 
+                    <p onClick={() => handleShow1(talent.id)}><MdFavorite className='text-green-700'/></p> 
+                    : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
                   </div>
 
-                  <button className='ml-auto bg-neutral-200 p-2 rounded-full text-black 2xl:text-md xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
+                  <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
+                    <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
+                      <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
+                    </div>
+                  </Link>
+
+                  <div className='flex items-center pt-3 p-3'>
+
+                    <div className='flex items-center gap-2'>
+                      <div className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 overflow-hidden w-7 h-7 rounded-full'>
+                        <img src={talent.profile_pics} alt="" className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 w-7 h-7 object-cover'/>
+                      </div>
+
+                      <div>
+                        <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm font-semibold'>{talent.user.fullname}</h3>
+                        <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] text-xs flex items-center gap-2'>{talent.display_name} <GoTools /></p>
+                      </div>
+                    </div>
+
+                    <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`} className='ml-auto'>
+                      <button className=' bg-neutral-200 p-2 rounded-full text-black 2xl:text-md xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
+                    </Link>
+                  </div>
+
+                  <div className='flex items-center p-3 '>
+                    <p className='text-xs flex items-center gap-2'><FaLocationDot className='text-accent'/>{talent.location.slice(0, 35)}. . .</p>
+                    <p className='ml-auto text-xs '>{talent.work_type}</p>
+                  </div>
+
                 </div>
+              ))}
+            </div>
+          }
 
-                <p className='p-3 text-xs flex items-center gap-2'><FaLocationDot className='text-accent'/>{talent.location}</p>
 
+          {filteredItems.length <= 0 && (
+              <div className='flex items-center w-fit justify-center m-auto h-[50vh] text-center'>
+                <div className=''>
+                  <img src={noData} alt="" className='w-[15rem] flex m-auto opacity-70'/>
+                  <h2 className='text-xl font-bold'>No results found</h2>
+                  <p className='text-xs'>It seems we can’t find any results <br /> based on your search.</p>
+                </div>
               </div>
-            ))}
-          </div>
+            )}
+
+        </>
         }
 
       </div>
