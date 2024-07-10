@@ -16,6 +16,8 @@ import { Link } from 'react-router-dom';
 import { IoFilter } from "react-icons/io5";
 import { RiSearch2Line } from "react-icons/ri";
 
+import noData from '../Images/nodata2.png'
+
 const UserCreativeDashboard = () => {
 
     const [show, setShow] = useState(false)
@@ -144,7 +146,7 @@ export const UserCreativeDashboardCom = () => {
   const handleButtonClick = (e) => {
     e.preventDefault();
     setSearchTerm(searchTermInput); 
-    setShowSide(false)
+    // setShowSide(false)
   };
 
   const filteredItems = allTalents.filter(item => {
@@ -264,150 +266,155 @@ export const UserCreativeDashboardCom = () => {
         </div>
       </div>
 
-      {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto mt-20 m"></span> : 
-          <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5 pt-10 lg:px-0 px-5'>
-            
-            {filteredItems.length > 0 ? 
-            <>
-              {filteredItems.map((talent) =>(
+      {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto mt-20 m"></span> :
+      
+          <>
+            <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5 pt-10 lg:px-0 px-5'>
+              {filteredItems.length > 0 &&
                 <>
-                  {showOne === true && (
-                    <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
+                  {filteredItems.map((talent) =>(
+                    <>
+                      {showOne === true && (
+                        <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
 
-                      <div  className='absolute right-5 top-5 bg-white p-2 flex justify-center items-center rounded-full text-lg hover:bg-neutral-200 hover:transition-all hover:ease-linear'>
-                        {show[talent.id] ? 
-                        <p onClick={() => handleShow1(talent.id)}><MdFavorite className='text-green-700'/></p> 
-                        : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
-                      </div>
-
-                      <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
-                        <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
-                          <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
-                        </div>
-                      </Link>
-
-                      <div className='flex items-center pt-3 p-3'>
-
-                        <div className='flex items-center gap-2'>
-                          <div className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 overflow-hidden w-7 h-7 rounded-full'>
-                            <img src={talent.profile_pics} alt="" className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 w-7 h-7 object-cover'/>
+                          <div  className='absolute right-5 top-5 bg-white p-2 flex justify-center items-center rounded-full text-lg hover:bg-neutral-200 hover:transition-all hover:ease-linear'>
+                            {show[talent.id] ? 
+                            <p onClick={() => handleShow1(talent.id)}><MdFavorite className='text-green-700'/></p> 
+                            : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
                           </div>
 
-                          <div>
-                            <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm font-semibold'>{talent.user.fullname}</h3>
-                            <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] text-xs flex items-center gap-2'>{talent.display_name} <GoTools /></p>
-                          </div>
-                        </div>
-
-                        <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`} className='ml-auto'>
-                          <button className=' bg-neutral-200 p-2 rounded-full text-black 2xl:text-md xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
-                        </Link>
-                      </div>
-                      
-                      <div className='flex items-center p-3 '>
-                        <p className='text-xs flex items-center gap-2'><FaLocationDot className='text-accent'/>{talent.location.slice(0, 35)}. . .</p>
-                        <p className='ml-auto text-xs '>{talent.work_type}</p>
-                      </div>
-
-                    </div>
-                  )}
-
-                  <>
-                    {talent.category === 'DigitalSkills' && showTwo === true && (
-                      <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
-
-                        <div  className='absolute right-5 top-5 bg-white p-2 flex justify-center items-center rounded-full text-lg hover:bg-neutral-200 hover:transition-all hover:ease-linear'>
-                          {show[talent.id] ? 
-                          <p onClick={() => handleShow1(talent.id)}><MdFavorite className='text-green-700'/></p> 
-                          : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
-                        </div>
-      
-                        <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
-                          <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
-                            <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
-                          </div>
-                        </Link>
-      
-                        <div className='flex items-center pt-3 p-3'>
-      
-                          <div className='flex items-center gap-2'>
-                            <div className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 overflow-hidden w-7 h-7 rounded-full'>
-                              <img src={talent.profile_pics} alt="" className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 w-7 h-7 object-cover'/>
+                          <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
+                            <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
+                              <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
                             </div>
-      
-                            <div>
-                              <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm font-semibold'>{talent.user.fullname}</h3>
-                              <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] text-xs flex items-center gap-2'>{talent.display_name} <GoTools /></p>
-                            </div>
-                          </div>
-      
-                          <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`} className='ml-auto'>
-                            <button className=' bg-neutral-200 p-2 rounded-full text-black 2xl:text-md xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
                           </Link>
-                        </div>
-      
-                        <div className='flex items-center p-3 '>
-                          <p className='text-xs flex items-center gap-2'><FaLocationDot className='text-accent'/>{talent.location.slice(0, 35)}. . .</p>
-                          <p className='ml-auto text-xs '>{talent.work_type}</p>
-                        </div>
-      
-                      </div>
-                    )}
-                  </>
 
+                          <div className='flex items-center pt-3 p-3'>
 
-                  <>
-                    {talent.category === 'Non-DigitalSkills' && showThree === true && (
-                      <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
+                            <div className='flex items-center gap-2'>
+                              <div className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 overflow-hidden w-7 h-7 rounded-full'>
+                                <img src={talent.profile_pics} alt="" className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 w-7 h-7 object-cover'/>
+                              </div>
 
-                        <div  className='absolute right-5 top-5 bg-white p-2 flex justify-center items-center rounded-full text-lg hover:bg-neutral-200 hover:transition-all hover:ease-linear'>
-                          {show[talent.id] ? 
-                          <p onClick={() => handleShow1(talent.id)}><MdFavorite className='text-green-700'/></p> 
-                          : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
-                        </div>
-      
-                        <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
-                          <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
-                            <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
-                          </div>
-                        </Link>
-      
-                        <div className='flex items-center pt-3 p-3'>
-      
-                          <div className='flex items-center gap-2'>
-                            <div className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 overflow-hidden w-7 h-7 rounded-full'>
-                              <img src={talent.profile_pics} alt="" className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 w-7 h-7 object-cover'/>
+                              <div>
+                                <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm font-semibold'>{talent.user.fullname}</h3>
+                                <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] text-xs flex items-center gap-2'>{talent.display_name} <GoTools /></p>
+                              </div>
                             </div>
-      
-                            <div>
-                              <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm font-semibold'>{talent.user.fullname}</h3>
-                              <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] text-xs flex items-center gap-2'>{talent.display_name} <GoTools /></p>
-                            </div>
+
+                            <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`} className='ml-auto'>
+                              <button className=' bg-neutral-200 p-2 rounded-full text-black 2xl:text-md xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
+                            </Link>
                           </div>
-      
-                          <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`} className='ml-auto'>
-                            <button className=' bg-neutral-200 p-2 rounded-full text-black 2xl:text-md xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
-                          </Link>
+                          
+                          <div className='flex items-center p-3 '>
+                            <p className='text-xs flex items-center gap-2'><FaLocationDot className='text-accent'/>{talent.location.slice(0, 35)}. . .</p>
+                            <p className='ml-auto text-xs '>{talent.work_type}</p>
+                          </div>
+
                         </div>
-      
-                        <div className='flex items-center p-3 '>
-                          <p className='text-xs flex items-center gap-2'><FaLocationDot className='text-accent'/>{talent.location.slice(0, 35)}. . .</p>
-                          <p className='ml-auto text-xs '>{talent.work_type}</p>
-                        </div>
-      
-                      </div>
-                    )}
-                  </>
-                </>
-              ))}
-            </> : 
-            <div>
-              <p>No data found</p>
+                      )}
+
+                      <>
+                        {talent.category === 'DigitalSkills' && showTwo === true && (
+                          <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
+
+                            <div  className='absolute right-5 top-5 bg-white p-2 flex justify-center items-center rounded-full text-lg hover:bg-neutral-200 hover:transition-all hover:ease-linear'>
+                              {show[talent.id] ? 
+                              <p onClick={() => handleShow1(talent.id)}><MdFavorite className='text-green-700'/></p> 
+                              : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
+                            </div>
+          
+                            <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
+                              <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
+                                <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
+                              </div>
+                            </Link>
+          
+                            <div className='flex items-center pt-3 p-3'>
+          
+                              <div className='flex items-center gap-2'>
+                                <div className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 overflow-hidden w-7 h-7 rounded-full'>
+                                  <img src={talent.profile_pics} alt="" className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 w-7 h-7 object-cover'/>
+                                </div>
+          
+                                <div>
+                                  <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm font-semibold'>{talent.user.fullname}</h3>
+                                  <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] text-xs flex items-center gap-2'>{talent.display_name} <GoTools /></p>
+                                </div>
+                              </div>
+          
+                              <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`} className='ml-auto'>
+                                <button className=' bg-neutral-200 p-2 rounded-full text-black 2xl:text-md xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
+                              </Link>
+                            </div>
+          
+                            <div className='flex items-center p-3 '>
+                              <p className='text-xs flex items-center gap-2'><FaLocationDot className='text-accent'/>{talent.location.slice(0, 35)}. . .</p>
+                              <p className='ml-auto text-xs '>{talent.work_type}</p>
+                            </div>
+          
+                          </div>
+                        )}
+                      </>
+                      <>
+                        {talent.category === 'Non-DigitalSkills' && showThree === true && (
+                          <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
+
+                            <div  className='absolute right-5 top-5 bg-white p-2 flex justify-center items-center rounded-full text-lg hover:bg-neutral-200 hover:transition-all hover:ease-linear'>
+                              {show[talent.id] ? 
+                              <p onClick={() => handleShow1(talent.id)}><MdFavorite className='text-green-700'/></p> 
+                              : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
+                            </div>
+          
+                            <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
+                              <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
+                                <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
+                              </div>
+                            </Link>
+          
+                            <div className='flex items-center pt-3 p-3'>
+          
+                              <div className='flex items-center gap-2'>
+                                <div className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 overflow-hidden w-7 h-7 rounded-full'>
+                                  <img src={talent.profile_pics} alt="" className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 w-7 h-7 object-cover'/>
+                                </div>
+          
+                                <div>
+                                  <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm font-semibold'>{talent.user.fullname}</h3>
+                                  <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] text-xs flex items-center gap-2'>{talent.display_name} <GoTools /></p>
+                                </div>
+                              </div>
+          
+                              <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`} className='ml-auto'>
+                                <button className=' bg-neutral-200 p-2 rounded-full text-black 2xl:text-md xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
+                              </Link>
+                            </div>
+          
+                            <div className='flex items-center p-3 '>
+                              <p className='text-xs flex items-center gap-2'><FaLocationDot className='text-accent'/>{talent.location.slice(0, 35)}. . .</p>
+                              <p className='ml-auto text-xs '>{talent.work_type}</p>
+                            </div>
+          
+                          </div>
+                        )}
+                      </>
+                    </>
+                  ))}
+                </> 
+              }
             </div>
-            }
 
-            
-          </div>
+            {filteredItems.length <= 0 && (
+              <div className='flex items-center w-fit justify-center m-auto h-[50vh] text-center'>
+                <div className=''>
+                  <img src={noData} alt="" className='w-[15rem] flex m-auto opacity-70'/>
+                  <h2 className='text-xl font-bold'>No results found</h2>
+                  <p className='text-xs'>It seems we can’t find any results <br /> based on your search.</p>
+                </div>
+              </div>
+            )}
+          </>
         }
 
 
@@ -441,7 +448,7 @@ export const UserCreativeDashboardCom = () => {
                     value={address}
                     checked={selectedOption === address}
                     onChange={handleRadioChange}
-                    className="radio h-[1.1rem] w-[1.1rem] rounded-md border border-neutral-400 ml-auto" />
+                    className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
                 </div>
 
                 <div className='flex items-center gap-4'>
@@ -451,7 +458,7 @@ export const UserCreativeDashboardCom = () => {
                     value="Hybrid"
                     checked={selectedOption === 'Hybrid'}
                     onChange={handleRadioChange}
-                    className="radio h-[1.1rem] w-[1.1rem] rounded-md border border-neutral-400 ml-auto" />
+                    className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
                 </div>
 
                 <div className='flex items-center gap-4'>
@@ -461,7 +468,7 @@ export const UserCreativeDashboardCom = () => {
                     value="On-site"
                     checked={selectedOption === 'On-site'}
                     onChange={handleRadioChange}
-                    className="radio h-[1.1rem] w-[1.1rem] rounded-md border border-neutral-400 ml-auto" />
+                    className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
                 </div>
 
                 <div className='flex items-center gap-4'>
