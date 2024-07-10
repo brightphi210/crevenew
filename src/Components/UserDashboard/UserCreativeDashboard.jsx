@@ -87,8 +87,6 @@ export const UserCreativeDashboardCom = () => {
   }, []);
 
 
-
-  
   const handleShow1 = (id) => {
     setShow((prev) => ({
       ...prev,
@@ -115,10 +113,6 @@ export const UserCreativeDashboardCom = () => {
   };
 
 
-
-
-
-
   const handleShowOne = () => {
     setShowOne(true);
     setShowTwo(false);
@@ -131,15 +125,115 @@ export const UserCreativeDashboardCom = () => {
     setShowThree(false);
   }
 
-
   const handleShowThree = () => {
     setShowOne(false);
     setShowTwo(false);
     setShowThree(true);
   }
 
+
+  const [searchTermInput, setSearchTermInput] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearchInput = (event) => {
+    setSearchTermInput(event.target.value);
+  };
+
+
+  const [showSide, setShowSide] = useState(true);
+  const handleButtonClick = (e) => {
+    e.preventDefault();
+    setSearchTerm(searchTermInput); 
+    setShowSide(false)
+  };
+
+  const filteredItems = allTalents.filter(item => {
+    const searchTermLower = searchTerm.toLowerCase();
+    return (
+      (item.location && item.location.toLowerCase().includes(searchTermLower)) ||
+      (item.category && item.category.toLowerCase().includes(searchTermLower)) ||
+      (item.digital_skills && item.digital_skills.toLowerCase().includes(searchTermLower)) ||
+      (item.work_type && item.work_type.toLowerCase().includes(searchTermLower)) ||
+      (item.display_name && item.display_name.toLowerCase().includes(searchTermLower))||
+      (item.user.fullname && item.user.fullname.toLowerCase().includes(searchTermLower))
+    );
+  });
+
+
+
+  const [location, setLocation] = useState({ lat: null, lng: null });
+  const [error, setError] = useState(null);
+  const [places, setPlaces] = useState([]);
+
+
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          });
+        },
+        (error) => {
+          setError(error.message);
+        }
+      );
+    } else {
+      setError('Geolocation is not supported by this browser.');
+    }
+  }, []);
+
+
+  const apiKey = 'bdc_82430c2e13ed42838148a7bf2b145370';
+
+  const [address, setAddress] = useState('');
+
+  const getAddress = async () => {
+    try {
+      const response = await fetch(
+        `https://api-bdc.net/data/reverse-geocode-client?latitude=${location.lat}&longitude=${location.lng}&localityLanguage=en&key=${apiKey}`
+      );
+      const data = await response.json();
+      setAddress(data.city)
+      console.log(data);
+      
+    } catch (error) {
+      console.error('Error getting address: ', error);
+    }
+  };
+
+
+  useEffect(() => {
+    getAddress();
+  }, []);
+  
+
+
+  // const concatenatedNames = address.map((i) => i.name).join(' ');
+  
+  console.log(address);
+
+  const [selectedOption, setSelectedOption] = useState('');
+
+
+  const handleRadioChange = (event) => {
+    const newOption = event.target.value;
+    setSelectedOption(newOption);
+    setSearchTerm(newOption);
+  };
+
+  const data = [
+    { id: 1, type: 'Hybrid', name: 'Item 1' },
+    { id: 2, type: 'On-site', name: 'Item 2' },
+    { id: 3, type: 'Remote', name: 'Item 3' },
+    { id: 4, type: 'Hybrid', name: 'Item 4' },
+  ];
+
+
   return (
-    <div className='2xl:pl-[20rem] xl:pl-[13rem] lg:pl-[13rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full overflow-y-auto'>
+    <div className='2xl:pl-[20rem] xl:pl-[13rem] lg:pl-[13rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  py-28 w-full overflow-y-auto'>
       <div className='flex items-center px-4'>
 
         <div className='flex items-center gap-3 lg:w-full'>
@@ -151,10 +245,14 @@ export const UserCreativeDashboardCom = () => {
 
         <div className='ml-auto flex items-center lg:w-full lg:gap-4 gap-2'>
           <div className='relative 2xl:w-1/2  xl:w-3/4  lg:w-3/4 w-full lg:flex hidden ml-auto'>
-              <>
-              <input type="text" placeholder="Search here . . ." className="input rounded-full text-sm input-bordered 2xl:p-6 xl:p-5 lg:p-5 w-full flex m-auto " />
-              <button className='absolute lg:top-2 top-1.5 right-3 text-xs bg-black text-white 2xl:py-2 xl:py-2 lg:py-2 px-4 py-2.5 rounded-full '>Search</button>
-              </>
+              <form onSubmit={handleButtonClick} className='relative w-full'>
+                <input type="text" 
+                  value={searchTermInput}
+                  onChange={handleSearchInput}
+                  placeholder="Search here . . ." 
+                  className="input rounded-full text-sm input-bordered 2xl:p-6 xl:p-5 lg:p-5 w-full flex m-auto " />
+                  <button type='submit' className='absolute lg:top-2 top-1.5 right-3 text-xs bg-black text-white 2xl:py-2 xl:py-2 lg:py-2 px-4 py-2.5 rounded-full '>Search</button>
+              </form>
           </div>
 
           <label htmlFor="my-drawer-4" className='cursor-pointer drawer-content lg:flex hidden items-center gap-3 border border-neutral-300 bg-white text-sm py-3 px-5 rounded-full'>
@@ -162,55 +260,18 @@ export const UserCreativeDashboardCom = () => {
             <p>Filter</p>
           </label>
 
-          <label htmlFor="my-drawer-4" className='drawer-content text-sm flex lg:hidden items-center justify-center p-3 rounded-full bg-white border border-neutral-300'><IoFilter /></label>
+          <label onClick={()=>setShowSide(true)} htmlFor="my-drawer-4" className='drawer-content text-sm flex lg:hidden items-center justify-center p-3 rounded-full bg-white border border-neutral-300'><IoFilter /></label>
         </div>
       </div>
 
-
-
-      {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto mt-20"></span> : 
+      {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto mt-20 m"></span> : 
           <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5 pt-10 lg:px-0 px-5'>
-
-            {allTalents.map((talent) =>(
-              <>
-                {showOne === true && (
-                  <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
-
-                    <div  className='absolute right-5 top-5 bg-white p-2 flex justify-center items-center rounded-full text-lg hover:bg-neutral-200 hover:transition-all hover:ease-linear'>
-                      {show[talent.id] ? 
-                      <p onClick={() => handleShow1(talent.id)}><MdFavorite className='text-green-700'/></p> 
-                      : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
-                    </div>
-
-                    <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
-                      <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
-                        <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
-                      </div>
-                    </Link>
-
-                    <div className='flex items-center pt-3 p-3'>
-
-                      <div className='flex items-center gap-2'>
-                        <div className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 overflow-hidden w-7 h-7 rounded-full'>
-                          <img src={talent.profile_pics} alt="" className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 w-7 h-7 object-cover'/>
-                        </div>
-
-                        <div>
-                          <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm font-semibold'>{talent.user.fullname}</h3>
-                          <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] text-xs flex items-center gap-2'>{talent.display_name} <GoTools /></p>
-                        </div>
-                      </div>
-
-                      <button className='ml-auto bg-neutral-200 p-2 rounded-full text-black 2xl:text-md xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
-                    </div>
-
-                    <p className='p-3 text-xs flex items-center gap-2'><FaLocationDot className='text-accent'/>{talent.location}</p>
-
-                  </div>
-                )}
-
+            
+            {filteredItems.length > 0 ? 
+            <>
+              {filteredItems.map((talent) =>(
                 <>
-                  {talent.category === 'DigitalSkills' && showTwo === true && (
+                  {showOne === true && (
                     <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
 
                       <div  className='absolute right-5 top-5 bg-white p-2 flex justify-center items-center rounded-full text-lg hover:bg-neutral-200 hover:transition-all hover:ease-linear'>
@@ -218,123 +279,207 @@ export const UserCreativeDashboardCom = () => {
                         <p onClick={() => handleShow1(talent.id)}><MdFavorite className='text-green-700'/></p> 
                         : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
                       </div>
-    
+
                       <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
                         <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
                           <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
                         </div>
                       </Link>
-    
+
                       <div className='flex items-center pt-3 p-3'>
-    
+
                         <div className='flex items-center gap-2'>
                           <div className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 overflow-hidden w-7 h-7 rounded-full'>
                             <img src={talent.profile_pics} alt="" className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 w-7 h-7 object-cover'/>
                           </div>
-    
+
                           <div>
                             <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm font-semibold'>{talent.user.fullname}</h3>
                             <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] text-xs flex items-center gap-2'>{talent.display_name} <GoTools /></p>
                           </div>
                         </div>
-    
-                        <button className='ml-auto bg-neutral-200 p-2 rounded-full text-black 2xl:text-md xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
+
+                        <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`} className='ml-auto'>
+                          <button className=' bg-neutral-200 p-2 rounded-full text-black 2xl:text-md xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
+                        </Link>
                       </div>
-    
-                      <p className='p-3 text-xs flex items-center gap-2'><FaLocationDot className='text-accent'/>{talent.location}</p>
-    
+                      
+                      <div className='flex items-center p-3 '>
+                        <p className='text-xs flex items-center gap-2'><FaLocationDot className='text-accent'/>{talent.location.slice(0, 35)}. . .</p>
+                        <p className='ml-auto text-xs '>{talent.work_type}</p>
+                      </div>
+
                     </div>
                   )}
-                </>
 
+                  <>
+                    {talent.category === 'DigitalSkills' && showTwo === true && (
+                      <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
 
-                <>
-                  {talent.category === 'Non-DigitalSkills' && showThree === true && (
-                    <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
-
-                      <div  className='absolute right-5 top-5 bg-white p-2 flex justify-center items-center rounded-full text-lg hover:bg-neutral-200 hover:transition-all hover:ease-linear'>
-                        {show[talent.id] ? 
-                        <p onClick={() => handleShow1(talent.id)}><MdFavorite className='text-green-700'/></p> 
-                        : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
-                      </div>
-    
-                      <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
-                        <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
-                          <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
+                        <div  className='absolute right-5 top-5 bg-white p-2 flex justify-center items-center rounded-full text-lg hover:bg-neutral-200 hover:transition-all hover:ease-linear'>
+                          {show[talent.id] ? 
+                          <p onClick={() => handleShow1(talent.id)}><MdFavorite className='text-green-700'/></p> 
+                          : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
                         </div>
-                      </Link>
-    
-                      <div className='flex items-center pt-3 p-3'>
-    
-                        <div className='flex items-center gap-2'>
-                          <div className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 overflow-hidden w-7 h-7 rounded-full'>
-                            <img src={talent.profile_pics} alt="" className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 w-7 h-7 object-cover'/>
+      
+                        <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
+                          <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
+                            <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
                           </div>
-    
-                          <div>
-                            <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm font-semibold'>{talent.user.fullname}</h3>
-                            <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] text-xs flex items-center gap-2'>{talent.display_name} <GoTools /></p>
+                        </Link>
+      
+                        <div className='flex items-center pt-3 p-3'>
+      
+                          <div className='flex items-center gap-2'>
+                            <div className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 overflow-hidden w-7 h-7 rounded-full'>
+                              <img src={talent.profile_pics} alt="" className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 w-7 h-7 object-cover'/>
+                            </div>
+      
+                            <div>
+                              <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm font-semibold'>{talent.user.fullname}</h3>
+                              <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] text-xs flex items-center gap-2'>{talent.display_name} <GoTools /></p>
+                            </div>
                           </div>
+      
+                          <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`} className='ml-auto'>
+                            <button className=' bg-neutral-200 p-2 rounded-full text-black 2xl:text-md xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
+                          </Link>
                         </div>
-    
-                        <button className='ml-auto bg-neutral-200 p-2 rounded-full text-black 2xl:text-md xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
+      
+                        <div className='flex items-center p-3 '>
+                          <p className='text-xs flex items-center gap-2'><FaLocationDot className='text-accent'/>{talent.location.slice(0, 35)}. . .</p>
+                          <p className='ml-auto text-xs '>{talent.work_type}</p>
+                        </div>
+      
                       </div>
-    
-                      <p className='p-3 text-xs flex items-center gap-2'><FaLocationDot className='text-accent'/>{talent.location}</p>
-    
-                    </div>
-                  )}
+                    )}
+                  </>
+
+
+                  <>
+                    {talent.category === 'Non-DigitalSkills' && showThree === true && (
+                      <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
+
+                        <div  className='absolute right-5 top-5 bg-white p-2 flex justify-center items-center rounded-full text-lg hover:bg-neutral-200 hover:transition-all hover:ease-linear'>
+                          {show[talent.id] ? 
+                          <p onClick={() => handleShow1(talent.id)}><MdFavorite className='text-green-700'/></p> 
+                          : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
+                        </div>
+      
+                        <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
+                          <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
+                            <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
+                          </div>
+                        </Link>
+      
+                        <div className='flex items-center pt-3 p-3'>
+      
+                          <div className='flex items-center gap-2'>
+                            <div className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 overflow-hidden w-7 h-7 rounded-full'>
+                              <img src={talent.profile_pics} alt="" className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 w-7 h-7 object-cover'/>
+                            </div>
+      
+                            <div>
+                              <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm font-semibold'>{talent.user.fullname}</h3>
+                              <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] text-xs flex items-center gap-2'>{talent.display_name} <GoTools /></p>
+                            </div>
+                          </div>
+      
+                          <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`} className='ml-auto'>
+                            <button className=' bg-neutral-200 p-2 rounded-full text-black 2xl:text-md xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
+                          </Link>
+                        </div>
+      
+                        <div className='flex items-center p-3 '>
+                          <p className='text-xs flex items-center gap-2'><FaLocationDot className='text-accent'/>{talent.location.slice(0, 35)}. . .</p>
+                          <p className='ml-auto text-xs '>{talent.work_type}</p>
+                        </div>
+      
+                      </div>
+                    )}
+                  </>
                 </>
-              </>
-            ))}
+              ))}
+            </> : 
+            <div>
+              <p>No data found</p>
+            </div>
+            }
+
+            
           </div>
         }
 
 
+      {showSide === true ? (
+        <div className="drawer drawer-end">
+          <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+          <div className="drawer-side">
+            <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+            <ul className="menu bg-base-200 text-base-content min-h-full lg:w-[25rem] w-[19rem] lg:p-10 lg:pt-28 p-5 pt-28">
 
+              <li className='lg:pb-8 pb-3 lg:text-lg text-md font-semibold'>Filter Creatives with options below</li>
 
-
-      <div className="drawer drawer-end">
-        <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-side">
-          <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-          <ul className="menu bg-base-200 text-base-content min-h-full lg:w-[25rem] w-[19rem] lg:p-10 lg:pt-28 p-5 pt-28">
-
-            <li className='lg:pb-8 pb-3 lg:text-lg text-md font-semibold'>Filter Creatives the options below</li>
-
-            <div className='relative 2xl:w-full  xl:w-1/2  lg:w-1/2 w-full lg:hidden flex ml-auto'>
-                <>
-                <input type="text" placeholder="Search here . . ." className="input rounded-full text-xs input-bordered  w-full flex m-auto " />
-                <button className='absolute lg:top-2 top-2 right-3 text-sm bg-black text-white  p-2 rounded-full '><RiSearch2Line /></button>
-                </>
-            </div>
-
-            <ul className='flex flex-col gap-4 lg:pt-0 pt-5'>
-
-              <div className='flex items-center gap-4'>
-                <li>Location </li>
-                <input type="checkbox" defaultChecked className="checkbox h-[1.1rem] w-[1.1rem] rounded-md border border-neutral-400 ml-auto" />
+              <div className='relative 2xl:w-full  xl:w-1/2  lg:w-1/2 w-full lg:hidden flex ml-auto'>
+                  <>
+                    <input 
+                      type="text" 
+                      value={searchTermInput}
+                      onChange={handleSearchInput}
+                      placeholder="Search here . . ." 
+                      className="input rounded-full text-xs input-bordered  w-full flex m-auto " />
+                    <button onClick={handleButtonClick} className='absolute lg:top-2 top-2 right-3 text-sm bg-black text-white  p-2 rounded-full '><RiSearch2Line /></button>
+                  </>
               </div>
 
-              <div className='flex items-center gap-4'>
-                <li>Hybrid </li>
-                <input type="checkbox" defaultChecked className="checkbox h-[1.1rem] w-[1.1rem] rounded-md border border-neutral-400 ml-auto" />
-              </div>
+              <ul className='flex flex-col gap-4 lg:pt-0 pt-5'>
 
-              <div className='flex items-center gap-4'>
-                <li>Onsite </li>
-                <input type="checkbox" defaultChecked className="checkbox h-[1.1rem] w-[1.1rem] rounded-md border border-neutral-400 ml-auto" />
-              </div>
+                <div className='flex items-center gap-4'>
+                  <li>Location </li>
+                  <input 
+                    type="radio" 
+                    value={address}
+                    checked={selectedOption === address}
+                    onChange={handleRadioChange}
+                    className="radio h-[1.1rem] w-[1.1rem] rounded-md border border-neutral-400 ml-auto" />
+                </div>
 
-              <div className='flex items-center gap-4'>
-                <li>Remote </li>
-                <input type="checkbox" defaultChecked className="checkbox h-[1.2rem] w-[1.2rem] rounded-md border border-neutral-400 ml-auto" />
-              </div>
+                <div className='flex items-center gap-4'>
+                  <li>Hybrid </li>
+                  <input 
+                    type="radio" 
+                    value="Hybrid"
+                    checked={selectedOption === 'Hybrid'}
+                    onChange={handleRadioChange}
+                    className="radio h-[1.1rem] w-[1.1rem] rounded-md border border-neutral-400 ml-auto" />
+                </div>
 
+                <div className='flex items-center gap-4'>
+                  <li>Onsite </li>
+                  <input 
+                    type="radio" 
+                    value="On-site"
+                    checked={selectedOption === 'On-site'}
+                    onChange={handleRadioChange}
+                    className="radio h-[1.1rem] w-[1.1rem] rounded-md border border-neutral-400 ml-auto" />
+                </div>
+
+                <div className='flex items-center gap-4'>
+                  <li>Remote </li>
+                  <input 
+                    type="radio" 
+                    value="Remote"
+                    checked={selectedOption === 'Remote'}
+                    onChange={handleRadioChange}
+                    className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
+                </div>
+
+              </ul>
             </ul>
-          </ul>
+          </div>
         </div>
-      </div>
+      ) : ''}
+
     </div>
   )
 }

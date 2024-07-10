@@ -111,12 +111,12 @@ const CreativeProfileCoverUpdate = ({MdDelete, AiOutlineCloudUpload}) => {
                 />
 
                 {image || cover_image? 
-                    <div className='2xl:w-full xl:w-full lg:w-full md:w-full 2xl:h-[25rem] xl:h-[20rem] lg:h-[20rem] h-[20rem] overflow-hidden rounded-xl bg-neutral-50 border border-neutral-300'>
+                    <div className='2xl:w-full xl:w-full lg:w-full md:w-full 2xl:h-[30rem] xl:h-[20rem] lg:h-[20rem] h-[20rem] overflow-hidden rounded-xl bg-neutral-50 border border-neutral-300'>
                         {image && (
                             <img src={image} alt='' className='w-full h-full object-cover cursor-pointer'/> 
                         )}
 
-                        <div className='relative 2xl:h-[25rem] xl:h-[20rem] lg:h-[20rem] h-[20rem]'>
+                        <div className='relative 2xl:h-[30rem] xl:h-[20rem] lg:h-[20rem] h-[20rem]'>
 
                             {cover_image && (
                                 <img src={cover_image} alt='' className='w-full h-full object-cover cursor-pointer'/> 

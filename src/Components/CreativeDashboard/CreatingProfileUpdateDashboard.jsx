@@ -25,6 +25,8 @@ import Loader from '../Loader';
 import CreativeProfileCoverUpdate from './CreativeProfileCoverUpdate';
 import CreativeProfileCollection from './CreativeProfileCollection';
 
+import GooglePlacesAutocomplete from 'react-google-autocomplete';
+
 const CreatingProfileUpdateDashboard = () => {
 
     const [show, setShow] = useState(false)
@@ -95,8 +97,6 @@ export const CreatingProfileUpdateHome = () => {
         setSelectedOption(e.target.value)
     }
   
-
-  
     const handleInputChange = (e) => {
       setNewSkill(e.target.value);
     };
@@ -113,12 +113,18 @@ export const CreatingProfileUpdateHome = () => {
       }
     };
 
-
     const handleDeleteSkill = (index) => {
         setSkills(skills.filter((_, i) => i !== index));
     };
 
 
+
+    const [address, setAddress] = useState('');
+
+    const handlePlaceSelected = (place) => {
+      const address = place.formatted_address;
+      setAddress(address);
+    };
 
 
     // ==================== GETTING DATA FROM PROFILE ========================
@@ -147,7 +153,7 @@ export const CreatingProfileUpdateHome = () => {
         setAbout(data.about);
         setNondigital_Skills(data.nondigital_skills);
         setDisplay_Name(data.display_name);
-        setLocation(data.location);
+        setAddress(data.location);
         setLanguage(data.language);
         setWhatsapp_Link(data.whatsapp_link)
         setWebsite_Link(data.website_link)
@@ -171,8 +177,6 @@ export const CreatingProfileUpdateHome = () => {
         fetchProfile();
     }, []);
     
-
-
     // ================= HANDLE UPDATE ===================
     const handleProfileUpdate = async (e) =>{
         setIsLoading(true)
@@ -187,7 +191,7 @@ export const CreatingProfileUpdateHome = () => {
         formData.append('nondigital_skills', nondigital_skills)
         formData.append('display_name', display_name)
         formData.append('category', selectedOption)
-        formData.append('location', location)
+        formData.append('location', address)
         formData.append('language', language)
         formData.append('whatsapp_link', whatsapp_link)
         formData.append('phone_number', phone_number)
@@ -224,26 +228,20 @@ export const CreatingProfileUpdateHome = () => {
         }
     }
 
-
-
-
     const [showEachState, setEachState] = useState(1)
 
     const showOne = () => {
         setEachState(1)
     }
-
-
     const showTwo = () => {
         setEachState(2)
     }
-
     const showThree = () => {
         setEachState(3)
     }
 
-  return (
 
+  return (
     <div>
 
         {isLoading2 === true ? 
@@ -279,14 +277,27 @@ export const CreatingProfileUpdateHome = () => {
 
                             <div>
                                 <p className="text-xs pb-3">Location</p>
-                                <input type="text" 
+                                {/* <input type="text" 
                                     placeholder="Location e.g #64, grace lane, port harcourt" 
                                     className="input text-xs input-bordered border-neutral-500 w-full max-w-full" 
                                     value={location}
                                     required
                                     onChange={(e)=>setLocation(e.target.value)}
+                                /> */}
+                                <GooglePlacesAutocomplete
+                                    apiKey="AIzaSyA_HnIpk-nlGgMh-G1Evi-WX2T_wwqTmGs"
+                                    onPlaceSelected={handlePlaceSelected}
+                                    value={address}
+                                    required
+                                    onChange={(e)=>setAddress(e.target.value)}
+                                    options={{
+                                    types: ['address'],
+                                    }}
+                                    className="input text-xs input-bordered border-neutral-500 w-full max-w-full" 
+                                    defaultValue={address}
                                 />
                             </div>
+
 
                             <div>
                                 <p className="text-xs pb-3">Language</p>
@@ -302,7 +313,7 @@ export const CreatingProfileUpdateHome = () => {
                             <div>
                                 <p className="text-xs pb-3">Category</p>
                                 <select className="select text-xs  select-bordered w-full border-neutral-500 max-w-full"  value={selectedOption} onChange={handleShowDigital}>
-                                    <option className='text-xs'>Select Category</option>
+                                    <option className='text-xs' value={''}>Select Category</option>
                                     <option className='text-xs' value={'DigitalSkills'}>Digital Skills</option>
                                     <option className='text-xs' value={'Non-DigitalSkills'}>Non-Digital Skills</option>
                                 </select>
@@ -314,7 +325,7 @@ export const CreatingProfileUpdateHome = () => {
                                 <div>
                                     <p className="text-xs pb-3">Digital</p>
                                     <select className="select text-xs select-bordered w-full border-neutral-500 max-w-full" required value={digital_skills} onChange={(e)=>setDigitalSkills(e.target.value)}>
-                                        <option className='text-xs'>Select Digital Skill</option>
+                                        <option className='text-xs' value={''}>Select Digital Skill</option>
                                         <option className='text-xs' value={'BackendDevelopment'}>Backend Development</option>
                                         <option className='text-xs' value={'MobileDevelopment'}>Mobile Development</option>
                                         <option className='text-xs' value={'UI/UX_Design'}>UI/UX</option>
@@ -330,7 +341,7 @@ export const CreatingProfileUpdateHome = () => {
                                 <div>
                                     <p className="text-xs pb-3">Non-Digital</p>
                                     <select className="select text-xs select-bordered w-full max-w-full border-neutral-500" value={nondigital_skills} onChange={(e)=>setNondigital_Skills(e.target.value)}>
-                                        <option className='text-xs'>Select Non-Digital Skill</option>
+                                        <option className='text-xs' value={''}>Select Non-Digital Skill</option>
                                         <option className='text-xs' value={'Plumbing'}>Plumbing</option>
                                         <option className='text-xs' value={'Catering'}>Catering</option>   
                                         <option className='text-xs' value={'Hair_Stylist'}>Hair Stylist</option>
@@ -347,7 +358,7 @@ export const CreatingProfileUpdateHome = () => {
 
 
                             <div>
-                                <p className="text-xs pb-3">Whatsapp</p>
+                                <p className="text-xs pb-3">Whatsapp Link</p>
                                 <input 
                                     type="text" 
                                     placeholder="whatsapp e.g https://example.com" 
