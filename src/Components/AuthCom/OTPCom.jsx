@@ -78,7 +78,7 @@ const OTPCom = () => {
                     <div>
                         <form onSubmit={handleSubmit}>
                             <div className="flex flex-col space-y-8">
-                                <div className="flex flex-row items-center gap-2 justify-between mx-auto w-full max-w-xs">
+                                <div className="flex flex-row items-center gap-2 justify-between mx-auto w-full px-5">
                             
                                     <input
                                         className="input input-bordered w-full text-sm py-6 rounded-md"
@@ -93,19 +93,19 @@ const OTPCom = () => {
                                     
                                 </div>
 
-                                <div className="flex flex-col space-y-5">
+                                <div className="flex flex-col space-y-5 px-5">
                                     <div>
-                                        <button type="submit" className="flex flex-row items-center justify-center text-center w-full border rounded-full outline-none py-3 bg-black border-none text-white text-sm shadow-sm">
+                                        <button type="submit" className="flex flex-row items-center justify-center text-center lg:w-[70%] w-full m-auto border rounded-full outline-none py-3 bg-black border-none text-white text-sm shadow-sm">
                                             {isLoading === true ? <span class="loader"></span> : 'Verify Account'}
                                         </button>
                                     </div>
 
-                                    <div className="flex flex-row items-center justify-center text-center text-sm font-medium space-x-1 text-gray-500">
+                                    {/* <div className="flex flex-row items-center justify-center text-center text-sm font-medium space-x-1 text-gray-500">
                                         <p>Didn't receive code?</p>
                                         <button type="button"  className="flex flex-row items-center text-blue-600">
                                             Resend
                                         </button>
-                                    </div>
+                                    </div> */}
                                 </div>
 
                                 {message && <div className="text-center text-red-500">{message}</div>}
