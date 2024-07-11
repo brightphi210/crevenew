@@ -357,11 +357,11 @@ const SingleUserCreativeDash = () => {
 
 
         <dialog id="my_modal_3" className="modal">
-            <div className="modal-box rounded-md lg:p-10 p-6 lg:w-full w-[96%]">
+            <div className="modal-box rounded-md lg:p-10 p-8 lg:w-full w-[96%] lg:h-fit h-screen">
                 <form method="dialog">
                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                 </form>
-                <h3 className="font-bold text-lg pb-5">Let's get your request ready to send</h3>
+                <h3 className="font-bold text-lg pb-5 pt-10">Let's get your <br className='lg:hidden block'/> request  ready to send</h3>
 
                 <form action="" onSubmit={makeRequest}>
 
