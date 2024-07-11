@@ -89,12 +89,12 @@ const RegisterCom = () => {
 
         <div className='flex lg:flex-row flex-col gap-3 items-end'>
 
-          <span onClick={handleClick1} className='flex lg:w-full w-full lg:text-lg text-sm cursor-pointer bg-neutral-100 items-center gap-3 border border-neutral-200 py-3 px-3 rounded-md text-black'>
+          <span onClick={handleClick1} className='flex lg:w-full w-full 2xl:text-lg xl:text-xs lg:text-xs  text-sm cursor-pointer bg-neutral-100 items-center gap-3 border border-neutral-200 py-3 px-3 rounded-md text-black'>
             Join to Provide a Service
             <input 
               type="radio" 
               name="radio-2" 
-              className="radio radio-accent w-[1.5rem] ml-auto h-[1.5rem] " 
+              className="radio radio-accent 2xl:w-[1.5rem] xl:w-[1.2rem] lg:w-[1.1rem] w-[1.rem] ml-auto 2xl:h-[1.5rem] xl:h-[1.2rem] lg:h-[1.1rem] h-[1.5rem] " 
               value="Creative"
               checked={role === 'Creative'}
               onChange={(e)=>setRole(e.target.value)}
@@ -103,12 +103,12 @@ const RegisterCom = () => {
           </span>
 
 
-          <span onClick={handleClick2} className='flex lg:w-full w-full lg:text-lg text-sm cursor-pointer bg-neutral-100 items-center gap-2 border border-neutral-200 py-3 px-3 rounded-md text-black'>
+          <span onClick={handleClick2} className='flex lg:w-full w-full 2xl:text-lg xl:text-xs lg:text-xs text-sm cursor-pointer bg-neutral-100 items-center gap-2 border border-neutral-200 py-3 px-3 rounded-md text-black'>
             Join to Hire Someone 
             <input 
               type="radio" 
               name="radio-2" 
-              className="radio radio-accent w-[1.5rem] ml-auto h-[1.5rem] " 
+              className="radio radio-accent 2xl:w-[1.5rem] xl:w-[1.2rem] lg:w-[1.1rem] w-[1.rem] ml-auto 2xl:h-[1.5rem] xl:h-[1.2rem] lg:h-[1.1rem] h-[1.5rem] " 
               value="Client"
               checked={role === 'Client'}
               onChange={(e)=>setRole(e.target.value)}

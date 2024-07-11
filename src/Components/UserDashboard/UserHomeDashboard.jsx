@@ -27,7 +27,7 @@ const UserHomeDashboard = () => {
     <div>
       <UserNavbar show={show} handleShow={handleShow}/>
 
-      <div className='flex bg-neutral-100 h-screen'>
+      <div className='flex bg-neutral-100 h-full'>
         <div className='z-40'>
           <UserSideBar show={show} />
         </div>
@@ -139,7 +139,7 @@ export const UserHomeDashboardHome = () => {
 
 
   return (
-    <div className='2xl:pl-[20rem] xl:pl-[13rem] lg:pl-[13rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full overflow-y-auto'>
+    <div className='2xl:pl-[20rem] xl:pl-[13rem] lg:pl-[13rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full '>
 
       <div className='lg:flex items-center block px-5'>
         <h2 className='text-2xl pb-3 lg:p-0'>Hi, Bright!</h2>
