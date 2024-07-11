@@ -82,7 +82,7 @@ const RegisterCom = () => {
         />
     </div>
 
-    <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
+    <div class="2xl:p-36 xl:p-36 lg:p-36  p-8 w-full 2xl:w-1/2 xl:w-3/4 lg:w-full">
       <h1 class="text-2xl font-semibold mb-4">Register</h1>
       
       <form action="" className=' flex flex-col gap-5 w-full' onSubmit={handleRegister}>

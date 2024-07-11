@@ -85,6 +85,8 @@ const SingleUserCreativeDash = () => {
     const [description, setDescription] = useState('')
     const [phone, setPhone] = useState('')
     const [isLoading2, setIsLoading2] = useState(false)
+
+
     const makeRequest = async (e) =>{
         e.preventDefault();
         setIsLoading2(true);
@@ -131,6 +133,41 @@ const SingleUserCreativeDash = () => {
         );
     };
 
+
+
+    const [content, setContent] = useState('')
+    const url3 =`${BASE_URL}/reviews/${id}/`
+    const dropReview = async (e) =>{
+        e.preventDefault();
+        setIsLoading2(true);
+        try {
+            const response = await fetch(url3, {
+                method: 'POST',
+                headers: {
+                    'Authorization' : `Bearer ${authUser.access}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    "content": content,
+                }),
+            })
+    
+            if (response.ok || response.status === 200 || response.status === 2001) {
+                console.log('Booked successfully');
+                setBooked(true);
+                setContent('');
+                document.getElementById('my_modal_1').showModal()
+                document.getElementById('my_modal_3').close()
+                setIsLoading2(false);
+            } else {
+                console.log('Failed to book');
+                setIsLoading2(false);
+            }
+        } catch (error) {
+            console.log(error);
+            setIsLoading2(false);
+        }
+    }
 
 
 
@@ -382,7 +419,7 @@ const SingleUserCreativeDash = () => {
 
                     <div className='flex items-center text-sm pt-5'>
                         <button className='underline' onClick={()=>document.getElementById('my_modal_3').close()}>Nevermind</button>
-                        <button type='submit' className='ml-auto py-2 px-4 color text-white rounded-full' >{isLoading2 === true ? <span className="loading loading-spinner loading-md"></span> : 'Send Request' }</button>
+                        <button type='submit' className='ml-auto py-2 px-4 color text-white rounded-full' >{isLoading2 === true ? <span className="loading loading-spinner loading-sd"></span> : 'Send Request' }</button>
                     </div>
 
                 </form>
@@ -392,22 +429,28 @@ const SingleUserCreativeDash = () => {
 
 
         <dialog id="my_modal_2" className="modal">
-            <div className="modal-box rounded-md lg:p-10 p-6 lg:w-full w-[96%]">
+            <div className="modal-box rounded-md lg:p-10 p-6 lg:w-full w-[96%] py-10">
                 <form method="dialog">
                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                 </form>
                 <h3 className="font-bold text-lg pb-5">Leave a review</h3>
 
-                <form action="">
+                <form action="" onSubmit={dropReview}>
 
                     <div>
                         <p className="py-1 pb-2 text-sm">Kindly leave a review for this creative</p>
-                        <textarea required className="textarea textarea-bordered w-full min-w-full h-[13rem]" placeholder="He did a nice job for me"></textarea>
+                        <textarea 
+                            required 
+                            className="textarea textarea-bordered w-full min-w-full h-[13rem]" 
+                            placeholder="He did a nice job for me"
+                            value={content}
+                            onChange={(e)=>setContent(e.target.value)}
+                        ></textarea>
                     </div>
 
                     <div className='flex items-center text-sm pt-5'>
                         <button className='underline' onClick={()=>document.getElementById('my_modal_2').close()}>Nevermind</button>
-                        <button className='ml-auto py-2 px-4 color text-white rounded-full'>Send Review</button>
+                        <button className='ml-auto py-2 px-4 color text-white rounded-full'>{isLoading2 === true ? <span className="loading loading-spinner loading-sd"></span> : 'Send Review'}</button>
                     </div>
 
                 </form>
@@ -428,6 +471,22 @@ const SingleUserCreativeDash = () => {
                     <h3 className="font-medium text-lg">Your message was Sent!</h3>
                     <h2 className='text-2xl py-3 pb-6 font-bold'>{creativeData.phone_number}</h2>
                     <button className='text-white bg-black w-full rounded-full py-3 text-sm' onClick={()=>copyToClipboard(creativeData.phone_number)}>{copySuccess ? copySuccess : 'Copy Number to call'}</button>
+                </div>
+            </div>
+        </dialog>
+
+
+        <dialog id="my_modal_1" className="modal">
+            <div className="modal-box rounded-2xl lg:p-10 p-6 py-10 lg:w-full w-[96%]">
+                <form method="dialog">
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                </form>
+                <div className='text-center'>
+                    <div className='flex m-auto justify-center'>
+                        <img src={successImg} alt="" className='w-28'/>
+                    </div>
+                    <h3 className="font-medium text-lg">Your Review was Sent!</h3>
+                    <button className='text-white bg-black w-full rounded-full py-3 text-sm' onClick={()=>document.getElementById('my_modal_2').close()}>Close</button>
                 </div>
             </div>
         </dialog>

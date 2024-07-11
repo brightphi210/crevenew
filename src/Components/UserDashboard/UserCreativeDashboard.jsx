@@ -83,7 +83,6 @@ export const UserCreativeDashboardCom = () => {
       setIsLoading(false);
       }
   }
-
   useEffect(() => {
     fetchTalents();
   }, []);
@@ -136,7 +135,6 @@ export const UserCreativeDashboardCom = () => {
 
   const [searchTermInput, setSearchTermInput] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-
   const handleSearchInput = (event) => {
     setSearchTermInput(event.target.value);
   };
@@ -165,9 +163,6 @@ export const UserCreativeDashboardCom = () => {
 
   const [location, setLocation] = useState({ lat: null, lng: null });
   const [error, setError] = useState(null);
-  const [places, setPlaces] = useState([]);
-
-
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -189,9 +184,7 @@ export const UserCreativeDashboardCom = () => {
 
 
   const apiKey = 'bdc_82430c2e13ed42838148a7bf2b145370';
-
   const [address, setAddress] = useState('');
-
   const getAddress = async () => {
     try {
       const response = await fetch(
@@ -206,20 +199,13 @@ export const UserCreativeDashboardCom = () => {
     }
   };
 
-
   useEffect(() => {
     getAddress();
   }, []);
   
 
 
-  // const concatenatedNames = address.map((i) => i.name).join(' ');
-  
-  console.log(address);
-
   const [selectedOption, setSelectedOption] = useState('');
-
-
   const handleRadioChange = (event) => {
     const newOption = event.target.value;
     setSelectedOption(newOption);
