@@ -73,6 +73,9 @@ const SingleUserCreativeDash = () => {
     }, []);
 
 
+    console.log(creativeData);
+
+
     const navigate = useNavigate()
     const goBack = () =>{
       navigate(-1);
@@ -149,6 +152,7 @@ const SingleUserCreativeDash = () => {
                 },
                 body: JSON.stringify({
                     "content": content,
+                    "rating": 5,
                 }),
             })
     
@@ -156,8 +160,8 @@ const SingleUserCreativeDash = () => {
                 console.log('Booked successfully');
                 setBooked(true);
                 setContent('');
-                document.getElementById('my_modal_1').showModal()
-                document.getElementById('my_modal_3').close()
+                document.getElementById('my_modal_4').showModal()
+                document.getElementById('my_modal_2').close()
                 setIsLoading2(false);
             } else {
                 console.log('Failed to book');
@@ -308,68 +312,45 @@ const SingleUserCreativeDash = () => {
             <div className='lg:w-[65%] w-[95%] lg:m-0 lg:mt-10 m-auto rounded-2xl  pt-5 lg:p-10 p-5 mt-5 bg-white'>
                 <h2 className='text-base py-3 text-center pb-8'> - Reviews -</h2>
 
+
                 <div className='w-full'>
-                    <Swiper
-                        cssMode={true}
-                        navigation={true}
-                        pagination={true}
-                        mousewheel={true}
-                        loop={true}
-                        keyboard={true}
-                        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-                        className="mySwiper"
-                    >
-                        <SwiperSlide>
-                            <div>
-                                <div className='flex flex-row items-center gap-3 m-auto justify-center'>
-                                    <div className='border border-neutral-300 w-10 rounded-full'>
-                                        <img src={prof} alt="" className='w-10'/>
+
+                    {creativeData.reviewed && 
+                        <>
+                            <Swiper
+                                cssMode={true}
+                                navigation={true}
+                                pagination={true}
+                                mousewheel={true}
+                                loop={true}
+                                keyboard={true}
+                                modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+                                className="mySwiper"
+                                >
+                                {creativeData.reviewed.map((review)=> <>
+                                <SwiperSlide>
+                                    <div>
+                                        <div className='flex flex-row items-center gap-3 m-auto justify-center'>
+                                            <div className='border border-neutral-300 w-8 rounded-full'>
+                                                <img src={review.reviewer.profile_pics} alt="" className='w-10'/>
+                                            </div>
+                                            <h2>{review.reviewer.user.fullname}</h2>
+                                        </div>
+
+                                        <p className='text-xs text-center w-9/12 flex justify-center m-auto pt-4 mb-10'>{review.content}</p>
                                     </div>
-                                    <h2>Jane Doe</h2>
-                                </div>
+                                </SwiperSlide>
+                                </>)}
 
-                                <p className='text-xs text-center w-9/12 flex m-auto pt-4 mb-10'>
-                                    Hi, I’m Cassie, Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                </p>
-                            </div>
-                        </SwiperSlide>
-                        
+                            </Swiper>
 
-                        <SwiperSlide>
-                            <div>
-                                <div className='flex flex-row items-center gap-3 m-auto justify-center'>
-                                    <div className='border border-neutral-300 w-10 rounded-full'>
-                                        <img src={prof} alt="" className='w-10'/>
-                                    </div>
-                                    <h2>Jane Doe</h2>
-                                </div>
+                        </>
+                    }
 
-                                <p className='text-xs text-center w-9/12 flex m-auto pt-4 mb-10'>
-                                    Hi, I’m Cassie, Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                </p>
-                            </div>
-                        </SwiperSlide>
-
-
-
-                            <SwiperSlide>
-                            <div>
-                                <div className='flex flex-row items-center gap-3 m-auto justify-center'>
-                                    <div className='border border-neutral-300 w-10 rounded-full'>
-                                        <img src={prof} alt="" className='w-10'/>
-                                    </div>
-                                    <h2>Jane Doe</h2>
-                                </div>
-
-                                <p className='text-xs text-center w-9/12 flex m-auto pt-4 mb-10'>
-                                    Hi, I’m Cassie, Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                </p>
-                            </div>
-                        </SwiperSlide>
-                    </Swiper>
+                    
+                    <>
+                        {creativeData.reviewed && creativeData.reviewed.length <= 0 && <p className='text-center text-sm'>No Review Found</p>}
+                    </>
                 </div>
             </div>
         </>}
@@ -476,7 +457,7 @@ const SingleUserCreativeDash = () => {
         </dialog>
 
 
-        <dialog id="my_modal_1" className="modal">
+        <dialog id="my_modal_4" className="modal">
             <div className="modal-box rounded-2xl lg:p-10 p-6 py-10 lg:w-full w-[96%]">
                 <form method="dialog">
                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -486,7 +467,7 @@ const SingleUserCreativeDash = () => {
                         <img src={successImg} alt="" className='w-28'/>
                     </div>
                     <h3 className="font-medium text-lg">Your Review was Sent!</h3>
-                    <button className='text-white bg-black w-full rounded-full py-3 text-sm' onClick={()=>document.getElementById('my_modal_2').close()}>Close</button>
+                    <button className='text-black bg-white border border-neutral-200 mt-5 w-full rounded-full py-3 text-sm' onClick={()=>document.getElementById('my_modal_4').close()}>Close</button>
                 </div>
             </div>
         </dialog>

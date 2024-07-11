@@ -255,7 +255,7 @@ export const CreativeProfile= () => {
 
                             <div className='w-full max-w-full pt-5'>
                                 <h2 className='text-sm py-3'>Reviews</h2>
-
+                                {profileData.reviewed && <>
                                 <div className='w-full'>
                                     <Swiper
                                         cssMode={true}
@@ -267,59 +267,29 @@ export const CreativeProfile= () => {
                                         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
                                         className="mySwiper"
                                     >
+
+                                    {profileData.reviewed.map((review)=> <>
                                         <SwiperSlide>
                                             <div>
                                                 <div className='flex flex-row items-center gap-3 m-auto justify-center'>
                                                     <div className='border border-neutral-300 w-10 rounded-full'>
-                                                        <img src={prof} alt="" className='w-10'/>
+                                                        <img src={review.reviewer.profile_pics} alt="" className='w-10'/>
                                                     </div>
-                                                    <h2>Jane Doe</h2>
+                                                    <h2>{review.reviewer.user.fullname}</h2>
                                                 </div>
 
-                                                <p className='text-xs text-center w-9/12 flex m-auto pt-4 mb-10'>
-                                                    Hi, I’m Cassie, Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                </p>
+                                                <p className='text-xs text-center w-9/12 flex m-auto justify-center pt-4 mb-10'>{review.content}</p>
                                             </div>
                                         </SwiperSlide>
-                                        
-
-                                        <SwiperSlide>
-                                            <div>
-                                                <div className='flex flex-row items-center gap-3 m-auto justify-center'>
-                                                    <div className='border border-neutral-300 w-10 rounded-full'>
-                                                        <img src={prof} alt="" className='w-10'/>
-                                                    </div>
-                                                    <h2>Jane Doe</h2>
-                                                </div>
-
-                                                <p className='text-xs text-center w-9/12 flex m-auto pt-4 mb-10'>
-                                                    Hi, I’m Cassie, Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                </p>
-                                            </div>
-                                        </SwiperSlide>
-
-
-
-                                            <SwiperSlide>
-                                            <div>
-                                                <div className='flex flex-row items-center gap-3 m-auto justify-center'>
-                                                    <div className='border border-neutral-300 w-10 rounded-full'>
-                                                        <img src={prof} alt="" className='w-10'/>
-                                                    </div>
-                                                    <h2>Jane Doe</h2>
-                                                </div>
-
-                                                <p className='text-xs text-center w-9/12 flex m-auto pt-4 mb-10'>
-                                                    Hi, I’m Cassie, Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                </p>
-                                            </div>
-                                        </SwiperSlide>
+                                    </>)}
                                     </Swiper>
                                 </div>
+                                </>}
                             </div>
+
+                            <>
+                                {profileData.reviewed && profileData.reviewed.length <= 0 && <p className='text-center text-sm'>No Review Found</p>}
+                            </>
                         </div>
                     </div>
             </div>
