@@ -40,8 +40,8 @@ const CreativeSkills = () => {
     const url =`${BASE_URL}/skills/`
 
     const handleSkillPost = (e) => {
-        e.preventDefault();
         setIsLoading(true);
+        e.preventDefault();
 
         try {
             const response = fetch(url, {
@@ -66,8 +66,7 @@ const CreativeSkills = () => {
         }
     }
 
-
-    console.log(skills);
+;
 
   return (
     <div className=''>
@@ -100,7 +99,7 @@ const CreativeSkills = () => {
                             disabled={isDisabled}
                         />
 
-                        <p onClick={addSkill}  className='bg-black text-white absolute right-3 top-2 py-2 px-2 rounded-full cursor-pointer text-sm'><FaPlus /></p>
+                        <p onClick={addSkill}  className='bg-black text-white absolute  top-0 h-full right-0 flex justify-center items-center px-4 rounded-md cursor-pointer text-sm'><FaPlus /></p>
                     </div>
 
 
@@ -110,7 +109,9 @@ const CreativeSkills = () => {
                         ))}
                     </ul>
 
-                    <button disabled={skills.length === 0} className="btn w-full mt-5 bg-black text-sm rounded-full hover:bg-neutral-800 text-white ">{isLoading === true ? <span class="loader"></span> : 'Submit' }</button>
+                    <button disabled={skills.length === 0} className={`py-3 w-full mt-5 bg-black text-sm rounded-full hover:bg-neutral-800 ${skills.length === 0 ? 'opacity-50 cursor-not-allowed' : ''} text-white `}>
+                        {isLoading === true ? <span className="loading loading-spinner loading-xs"></span> : 'Submit' }
+                    </button>
                 </form>
             </div>
         </dialog>
