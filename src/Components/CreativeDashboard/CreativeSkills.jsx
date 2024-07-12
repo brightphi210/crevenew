@@ -95,7 +95,6 @@ const CreativeSkills = () => {
                             type="text" 
                             placeholder="skills e.g Finishing, Javascript, etc"  
                             className="input text-xs input-bordered w-full max-w-full border-neutral-500" 
-                            required
                             value={newSkill}
                             onChange={handleInputChange}
                             disabled={isDisabled}
