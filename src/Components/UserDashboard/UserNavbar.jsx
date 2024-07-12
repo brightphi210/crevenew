@@ -36,7 +36,6 @@ const UserNavbar = ({handleShow, show}) => {
         }
         const data = await respose.json();
   
-        console.log(data);
         setProfileData(data)
   
         } catch (error) {

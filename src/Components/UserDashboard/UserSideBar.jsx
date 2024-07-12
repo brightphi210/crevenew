@@ -15,7 +15,7 @@ const menuItems = [
   { label: 'Creatives', icon: <MdOutlineCallMissedOutgoing />, path: 'user-dashboard-creative' },
   { label: 'Request', icon: <FiBookmark />, path: 'user-dashboard-books' },
   { label: 'Messages', icon: <MdOutlineMarkEmailUnread />, path: 'user-dashboard-home' },
-  { label: 'Saved', icon: <MdOutlineFavoriteBorder />, path: 'user-dashboard-creative' },
+  { label: 'Saved', icon: <MdOutlineFavoriteBorder />, path: 'user-dashboard-favourites' },
   { label: 'Settings', icon: <FiSettings />, path: 'user-dashboard-home' },
 ];
 
@@ -25,7 +25,6 @@ const UserSideBar = ({show}) => {
     const [token, setToken] = useState(() => localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
   
     const userToken = token?.access ? jwtDecode(token.access) : null;
-    console.log('This is the token', userToken);
   
     const logout = async (e) => {
         e.preventDefault()

@@ -220,6 +220,8 @@ export const UserCreativeDashboardCom = () => {
   ];
 
 
+
+
   return (
     <div className='2xl:pl-[20rem] xl:pl-[13rem] lg:pl-[13rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  py-28 w-full'>
       <div className='flex items-center px-4'>
@@ -262,13 +264,6 @@ export const UserCreativeDashboardCom = () => {
                     <>
                       {showOne === true && (
                         <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
-
-                          <div  className='absolute right-5 top-5 bg-white p-2 flex justify-center items-center rounded-full text-lg hover:bg-neutral-200 hover:transition-all hover:ease-linear'>
-                            {show[talent.id] ? 
-                            <p onClick={() => handleShow1(talent.id)}><MdFavorite className='text-green-700'/></p> 
-                            : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
-                          </div>
-
                           <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
                             <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
                               <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
@@ -304,12 +299,6 @@ export const UserCreativeDashboardCom = () => {
                       <>
                         {talent.category === 'DigitalSkills' && showTwo === true && (
                           <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
-
-                            <div  className='absolute right-5 top-5 bg-white p-2 flex justify-center items-center rounded-full text-lg hover:bg-neutral-200 hover:transition-all hover:ease-linear'>
-                              {show[talent.id] ? 
-                              <p onClick={() => handleShow1(talent.id)}><MdFavorite className='text-green-700'/></p> 
-                              : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
-                            </div>
           
                             <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
                               <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
@@ -346,13 +335,6 @@ export const UserCreativeDashboardCom = () => {
                       <>
                         {talent.category === 'Non-DigitalSkills' && showThree === true && (
                           <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
-
-                            <div  className='absolute right-5 top-5 bg-white p-2 flex justify-center items-center rounded-full text-lg hover:bg-neutral-200 hover:transition-all hover:ease-linear'>
-                              {show[talent.id] ? 
-                              <p onClick={() => handleShow1(talent.id)}><MdFavorite className='text-green-700'/></p> 
-                              : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
-                            </div>
-          
                             <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
                               <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
                                 <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>

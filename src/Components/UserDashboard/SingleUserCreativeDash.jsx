@@ -173,19 +173,83 @@ const SingleUserCreativeDash = () => {
         }
     }
 
+    const [showModal, setShowModal] = useState('')
+  
+    const [isFavorite, setIsFavorite] = useState(false);
 
+    useEffect(() => {
+      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      setIsFavorite(favorites.includes(creativeData.id));
+    }, [creativeData.id]);
+    
+    const handleFavoritemClick = () => {
+      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      
+      // Remove or add the id from the favorites array based on the current favorite status.
+      const updatedFavorites = isFavorite
+        ? favorites.filter((id) => id !== creativeData.id)
+        : [...favorites, creativeData.id];
+    
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      setIsFavorite(!isFavorite);
+      setShowModal(isFavorite ? false : true);
 
+      setTimeout(() => {
+        setShowModal('');
+      }, 3000);
 
+    };
 
+    
+
+    console.log('this is modal', showModal);
   return (
     <div className={isLoading === true ? 'bg-neutral-100 pb-10 h-screen flex justify-center  px-0' : 'bg-neutral-100 pb-10 2xl:px-[15rem] xl:px-[5rem] lg:px-[5rem] h-full px-0'}>
         <p onClick={goBack} className='text-lg flex bg-neutral-200 p-2 rounded-full absolute lg:right-[15rem] right-5 z-40  top-5 lg:top-20 cursor-pointer'><IoClose className='cursor-pointer'/></p>
 
 
+        {showModal === true &&
+        <div role="alert" data-aos="fade-up" data-aos-duration="500"  className="alert z-50 alert-success fixed text-green-700 lg:w-fit w-[80%] m-auto right-0 left-0  top-24 h-[3rem] flex justify-center items-center rounded-full bg-green-100 border border-green-500">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 shrink-0 stroke-current"
+            fill="none"
+            viewBox="0 0 24 24">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          
+          <span>Saved Succesfully</span>
+        </div>
+        } 
+
+        { showModal === false &&
+        <div role="alert" data-aos="fade-up" data-aos-duration="500"  className="alert z-50 alert-success fixed text-green-700 lg:w-fit w-[80%] m-auto right-0 left-0  top-24 h-[3rem] flex justify-center items-center rounded-full bg-green-100 border border-green-500">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 shrink-0 stroke-current"
+            fill="none"
+            viewBox="0 0 24 24">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+
+          <span>Removed Succesfully</span>
+        </div>
+        }
+
+
+
         {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto "></span> : <>
-            <div className='flex relative lg:pt-[8rem] pt-20 px-5'>
+            <div className='flex  relative lg:pt-[8rem] pt-20 px-3'>
                 <div className=''>
-                    <div className='flex items-center gap-3'>
+                    <div className='flex  items-center gap-5'>
                         <div className='w-10 h-10 rounded-full overflow-hidden'>
                             <img src={creativeData.profile_pics} alt="" className='h-10 w-10 object-cover'/>
                         </div>
@@ -198,15 +262,15 @@ const SingleUserCreativeDash = () => {
                             </div>
                         )}
 
-                        {/* <button className='mycolor2 rounded-full text-white font-bold text-sm p-1'> <GoUnverified className=''/></button> */}
+                        {/* <button className='mycolor2 rounded-full text-white font-bold text-sm gap-3 ml-auto w-fit flex items-center py-2 px-5'> <GoUnverified className=''/></button> */}
                     </div>
                 </div>
 
-                <div className='ml-auto flex items-center gap-2'>
-                    <p className='bg-white border border-neutral-200 lg:p-3 p-2 cursor-pointer rounded-full lg:text-xl text-base'><MdFavoriteBorder /></p>
+                <div className='ml-auto flex items-center gap-1 '>
+                    <p onClick={handleFavoritemClick} className='bg-white border border-neutral-300 py-3 lg:px-5 px-4 cursor-pointer rounded-full lg:text-sm text-xs  w-fit flex items-center gap-2'>{isFavorite ? 'remove' : 'Save'}</p>
                     {/* <p className='bg-white border 2xl:hidden block border-neutral-200 lg:p-3 p-2 cursor-pointer rounded-full lg:text-xl text-base'><MdOutlineMarkEmailUnread /></p> */}
                     {/* <p onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-white border 2xl:hidden block border-neutral-200 lg:p-3 p-2 cursor-pointer rounded-full lg:text-xl text-base'><RiSendPlane2Line /></p> */}
-                    <button onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-black text-white py-3 px-5 rounded-full lg:text-sm text-xs border border-neutral-200'>Get in touch</button>
+                    <button onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-black text-white py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-200'>Get in touch</button>
                 </div>
             </div>
 
@@ -214,7 +278,7 @@ const SingleUserCreativeDash = () => {
                 <div className='grid lg:grid-cols-3 grid-cols-1 gap-10 pt-10'>
 
                     <div className='lg:col-span-2'>
-                        <div className='2xl:h-[40rem] xl:h-[30rem] lg:h-[25rem] h-[18rem] bg-white overflow-hidden lg:rounded-md'>
+                        <div className='2xl:h-[40rem] xl:h-[30rem] lg:h-[25rem] h-[20rem] bg-white overflow-hidden lg:rounded-md'>
                             <PhotoProvider>
                                 <PhotoView src={creativeData.cover_image}>
                                     <img src={creativeData.cover_image} alt="" className='w-full cursor-pointer hover:transform hover:scale-105 transition-all ease-linear h-full object-cover'/>

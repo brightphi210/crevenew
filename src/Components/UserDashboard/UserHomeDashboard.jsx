@@ -27,7 +27,7 @@ const UserHomeDashboard = () => {
     <div>
       <UserNavbar show={show} handleShow={handleShow}/>
 
-      <div className='flex bg-neutral-100 h-full'>
+      <div className='flex bg-neutral-100 h-screen'>
         <div className='z-40'>
           <UserSideBar show={show} />
         </div>
@@ -46,31 +46,6 @@ export const UserHomeDashboardHome = () => {
 
   const [show, setShow] = useState(false)
   const [showModal, setShowModal] = useState('')
-  
-  const handleShow1 = (id) => {
-    setShow((prev) => ({
-      ...prev,
-      [id]: false,
-    }));
-
-    setShowModal(false);
-    setTimeout(() => {
-      setShowModal('');
-    }, 3000);
-  };
-
-
-  const handleShow2 = (id) => {
-    setShow((prev) => ({
-      ...prev,
-      [id]: true,
-    }));
-
-    setShowModal(true);
-    setTimeout(() => {
-      setShowModal('');
-    }, 3000);
-  };
 
 
   const [allTalents, setAllTalents] = useState([])
@@ -94,7 +69,6 @@ export const UserHomeDashboardHome = () => {
       }
       const data = await response.json();
 
-      console.log(data);
       setAllTalents(data)
 
       } catch (error) {
@@ -139,7 +113,7 @@ export const UserHomeDashboardHome = () => {
 
 
   return (
-    <div className='2xl:pl-[20rem] xl:pl-[13rem] lg:pl-[13rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full '>
+    <div className='2xl:pl-[20rem] xl:pl-[13rem] lg:pl-[13rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full'>
 
       <div className='lg:flex items-center block px-5'>
         <h2 className='text-2xl pb-3 lg:p-0'>Hi, Bright!</h2>
@@ -153,7 +127,7 @@ export const UserHomeDashboardHome = () => {
       </div>
 
       {showModal === true &&
-        <div role="alert" data-aos="fade-up" data-aos-duration="500"  className="alert z-50 alert-success fixed text-green-700 lg:w-fit w-[80%] m-auto right-0 left-0  top-24 h-[3rem] flex justify-center items-center rounded-full bg-green-100 border border-green-500">
+        <div role="alert" data-aos="fade-up" data-aos-duration="500"  className="alert z-50 alert-success text-green-700 lg:w-fit w-[80%] m-auto right-0 left-0  top-24 h-[3rem] flex justify-center items-center rounded-full bg-green-100 border border-green-500 absolute">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 shrink-0 stroke-current"
@@ -171,7 +145,7 @@ export const UserHomeDashboardHome = () => {
         } 
 
         { showModal === false &&
-        <div role="alert" data-aos="fade-up" data-aos-duration="500"  className="alert z-50 alert-success fixed text-green-700 lg:w-fit w-[80%] m-auto right-0 left-0  top-24 h-[3rem] flex justify-center items-center rounded-full bg-green-100 border border-green-500">
+        <div role="alert" data-aos="fade-up" data-aos-duration="500"  className="alert z-50 alert-success text-green-700 lg:w-fit w-[80%] m-auto right-0 left-0  top-24 h-[3rem] flex justify-center items-center rounded-full bg-green-100 border border-green-500 absolute">
         <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 shrink-0 stroke-current"
@@ -232,11 +206,6 @@ export const UserHomeDashboardHome = () => {
           <h2 className='text-xl '>Top Creatives</h2>
 
           <div className='ml-auto flex items-center gap-10'>
-            {/* <div className='flex items-center gap-2'>
-              <button className='bg-white py-2 px-5 rounded-full border border-neutral-300 text-xs '>Digital</button>
-              <button className='bg-white py-2 px-5 rounded-full border border-neutral-300 text-xs '>Non-Digital</button>
-            </div> */}
-
             <Link to={'/' + 'user-dashboard-creative'}>
               <button className='flex items-center gap-2 underline'>Browse All <IoMdArrowForward /></button>
             </Link>
@@ -252,12 +221,6 @@ export const UserHomeDashboardHome = () => {
               {filteredItems.map((talent) =>(
 
                 <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
-
-                  <div  className='absolute right-5 top-5 bg-white p-2 flex justify-center items-center rounded-full text-lg hover:bg-neutral-200 hover:transition-all hover:ease-linear'>
-                    {show[talent.id] ? 
-                    <p onClick={() => handleShow1(talent.id)}><MdFavorite className='text-green-700'/></p> 
-                    : <p onClick={() => handleShow2(talent.id)} className='text-green-700'><MdFavoriteBorder /></p>}
-                  </div>
 
                   <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
                     <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>

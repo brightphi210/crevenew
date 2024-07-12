@@ -23,6 +23,7 @@ import CreativeFAQsDash from './Pages/CreativeDash/CreativeFAQsDash';
 import SingleUserCreative from './Pages/UserDash/SingleUserCreative';
 import UserCreativeDash from './Pages/UserDash/UserCreativeDash';
 import UserRequestBookings from './Components/UserDashboard/UserRequestBookings';
+import UserFavoriteDash from './Pages/UserDash/UserFavoriteDash';
 AOS.init();
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
             <Route path='/user-dashboard-single-creative/:id/' element={<SingleUserCreative />}/>
             <Route path='/user-dashboard-creative/' element={<UserCreativeDash />}/>
             <Route path='/user-dashboard-books/' element={<UserRequestBookings />}/>
+            <Route path='/user-dashboard-favourites/' element={<UserFavoriteDash />}/>
           </Route>
 
           <Route element={<PrivateRoute role="Creative"/>}>
