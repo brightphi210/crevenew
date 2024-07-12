@@ -67,10 +67,12 @@ const CreativeSkills = () => {
     }
 
 
+    console.log(skills);
+
   return (
     <div className=''>
 
-        <h2 className='text-2xl'>My Skills</h2>
+        <h2 className='text-xl'>My Skills</h2>
         <div className='flex justify-center items-center h-[50vh]'>
             <div>
                 <p className='text-sm pb-3'>No Skill Please add skills</p>
@@ -86,7 +88,7 @@ const CreativeSkills = () => {
 
                 <h3 className="font-bold text-2xl pt-10">Add your skill</h3>
                 <form  onSubmit={handleSkillPost} className='w-full'>
-                    <p className="text-xs pb-3">Maximum of 8 skills</p>
+                    <p className="text-xs py-3">Maximum of 8 skills</p>
 
                     <div className='relative'>
                         <input 
@@ -105,7 +107,7 @@ const CreativeSkills = () => {
 
                     <ul className='flex flex-row flex-wrap gap-2 py-2 mt-5'>
                         {skills.map((skill, index)=>(
-                            <li key={index} className='bg-neutral-200 w-fit rounded-md py-2 px-4 text-sm flex items-center lg:gap-3 gap-2'>{skill} <IoCloseSharp onClick={() => handleDeleteSkill(index)} className='cursor-pointer text-red-700 ml-auto'/></li>
+                            <li key={index} className='bg-neutral-200 w-fit rounded-md py-2 px-4 lg:text-sm text-xs flex items-center lg:gap-3 gap-2'>{skill} <IoCloseSharp onClick={() => handleDeleteSkill(index)} className='cursor-pointer text-red-700 ml-auto'/></li>
                         ))}
                     </ul>
 
