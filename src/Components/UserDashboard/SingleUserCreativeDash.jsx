@@ -32,6 +32,8 @@ import { HiOutlineArrowLeft } from 'react-icons/hi2';
 import { RiSendPlane2Line } from "react-icons/ri";
 import { IoShareSocialSharp } from "react-icons/io5";
 
+import validator from 'validator' 
+
 import successImg from '../Images/gif1.gif'
 
 const SingleUserCreativeDash = () => {
@@ -83,16 +85,33 @@ const SingleUserCreativeDash = () => {
 
     const url2 =`${BASE_URL}/bookcreatives/${id}/`
 
-    const [booked, setBooked] = useState(false)
+    const [isBooked, setIsBooked] = useState(false)
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [phone, setPhone] = useState('')
     const [isLoading2, setIsLoading2] = useState(false)
+    const [phoneErr, setPhoneErr] = useState('')
+
+    const validatePhone = (e) => {
+        setPhone(e.target.value)
+      
+        if (validator.isMobilePhone(phone)) {
+           setPhoneErr('')
+           setIsBooked(true)
+        } else {
+            setIsBooked(false)
+           setPhoneErr('Enter valid Phone Number !')
+        }
+    }
+
+    console.log(isBooked);
+
 
 
     const makeRequest = async (e) =>{
         e.preventDefault();
         setIsLoading2(true);
+
         try {
             const response = await fetch(url2, {
                 method: 'POST',
@@ -109,7 +128,6 @@ const SingleUserCreativeDash = () => {
     
             if (response.ok || response.status === 200 || response.status === 2001) {
                 console.log('Booked successfully');
-                setBooked(true);
                 setTitle('');
                 setDescription('');
                 setPhone('');
@@ -125,8 +143,6 @@ const SingleUserCreativeDash = () => {
             setIsLoading2(false);
         }
     }
-
-
     const [copySuccess, setCopySuccess] = useState('');
 
     const copyToClipboard = (text) => {
@@ -158,7 +174,6 @@ const SingleUserCreativeDash = () => {
     
             if (response.ok || response.status === 200 || response.status === 2001) {
                 console.log('Booked successfully');
-                setBooked(true);
                 setContent('');
                 document.getElementById('my_modal_4').showModal()
                 document.getElementById('my_modal_2').close()
@@ -174,8 +189,7 @@ const SingleUserCreativeDash = () => {
     }
 
     const [showModal, setShowModal] = useState('')
-  
-    const [isFavorite, setIsFavorite] = useState(false);
+      const [isFavorite, setIsFavorite] = useState(false);
 
     useEffect(() => {
       const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
@@ -443,12 +457,13 @@ const SingleUserCreativeDash = () => {
                     <div>
                         <p className="py-4 pb-2 text-sm">Provide you phone number...</p>
                         <input 
-                            type="number"  
+                            type="tel"  
                             required placeholder="Phone Number e.g 09086655698" 
                             className="input text-sm input-bordered w-full" 
                             value={phone}
-                            onChange={(e)=>setPhone(e.target.value)}
+                            onChange={validatePhone}
                         />
+                        <p className='text-red-500 text-sm pt-3'>{phoneErr}</p>
                     </div>
 
                     <div>
@@ -464,7 +479,9 @@ const SingleUserCreativeDash = () => {
 
                     <div className='flex items-center text-sm pt-5'>
                         <button className='underline' onClick={()=>document.getElementById('my_modal_3').close()}>Nevermind</button>
-                        <button type='submit' className='ml-auto py-2 px-4 color text-white rounded-full' >{isLoading2 === true ? <span className="loading loading-spinner loading-sd"></span> : 'Send Request' }</button>
+                        <button disabled={!isBooked} type='submit' className={`ml-auto py-2 px-4 color text-white rounded-full ${!isBooked ? 'opacity-50 cursor-not-allowed' : ''}`} >
+                            {isLoading2 === true ? <span className="loading loading-spinner loading-sd"></span> : 'Send Request' }
+                        </button>
                     </div>
 
                 </form>

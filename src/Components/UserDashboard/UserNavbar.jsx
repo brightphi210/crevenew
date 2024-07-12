@@ -70,7 +70,7 @@ const UserNavbar = ({handleShow, show}) => {
                 <p className='text-xl cursor-pointer p-2 border border-neutral-200 rounded-full  text-neutral-700'><IoNotificationsOutline /></p>
             </Link>
 
-            <Link to={'/user-dashboard-home'}>
+            <Link to={'/user-dashboard-favourites'}>
                 <p className='text-xl cursor-pointer p-2 border border-neutral-200 rounded-full  text-neutral-700'><MdFavoriteBorder /></p>
             </Link>
 

@@ -87,8 +87,8 @@ export const UserFavoriteDashboard = () => {
     );
 
   return (
-    <div className='2xl:pl-[20rem] xl:pl-[13rem] lg:pl-[13rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full overflow-y-auto'>
-      <h2>Favorites Talents</h2>
+    <div className='2xl:pl-[20rem] xl:pl-[13rem] lg:pl-[13rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 px-5 w-full overflow-y-auto'>
+      <h2 className='text-2xl pb-5'>Favorites Talents</h2>
 
 
       {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto mt-20"></span> : 
