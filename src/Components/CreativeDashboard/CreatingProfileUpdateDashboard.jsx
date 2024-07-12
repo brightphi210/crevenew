@@ -12,12 +12,7 @@ import { AiOutlineCloudUpload } from 'react-icons/ai';
 import { MdDelete } from 'react-icons/md';
 import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
-import MultipleImageUpload from './Upload/MutilpleImageUpload';
-import { FaPlus } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa6";
-import { FaUser } from "react-icons/fa";
-import { BsFillCollectionFill } from "react-icons/bs";
-import { ImFilePicture } from "react-icons/im";
 
 import successImg from '../Images/gif1.gif'
 import { Link } from 'react-router-dom';
@@ -26,6 +21,7 @@ import CreativeProfileCoverUpdate from './CreativeProfileCoverUpdate';
 import CreativeProfileCollection from './CreativeProfileCollection';
 
 import GooglePlacesAutocomplete from 'react-google-autocomplete';
+import CreativeSkills from './CreativeSkills';
 
 const CreatingProfileUpdateDashboard = () => {
 
@@ -79,14 +75,9 @@ export const CreatingProfileUpdateHome = () => {
     const [image, setImage] = useState(null) 
 
 
-    const [skills, setSkills] = useState([]);
-    const [newSkill, setNewSkill] = useState('');
-    const [isDisabled, setIsDisabled] = useState(false);
     const [images_list, setImage_list] = useState([]) 
-
     const [isLoading, setIsLoading] = useState(false)
     const [isLoading2, setIsLoading2] = useState(false)
-
     const [success, setSuccess] = useState(false)
     const [message, setMessage] = useState(false)
 
@@ -97,27 +88,6 @@ export const CreatingProfileUpdateHome = () => {
         setSelectedOption(e.target.value)
     }
   
-    const handleInputChange = (e) => {
-      setNewSkill(e.target.value);
-    };
-  
-    const addSkill = () => {
-      if (newSkill.trim() !== '') {
-        setSkills([...skills, newSkill]);
-        // setNewSkill('');
-      }
-
-      if (skills.length + 1 === 4) {
-        setIsDisabled(true);
-        
-      }
-    };
-
-    const handleDeleteSkill = (index) => {
-        setSkills(skills.filter((_, i) => i !== index));
-    };
-
-
 
     const [address, setAddress] = useState('');
 
@@ -159,7 +129,6 @@ export const CreatingProfileUpdateHome = () => {
         setWebsite_Link(data.website_link)
         setSelectedOption(data.category)
         setPhoneNumber(data.phone_number)
-        setNewSkill(data.dskills[0].skill)
         setImage_list(data.images)        
         
         console.log(data.dskills[0].skill);
@@ -196,7 +165,6 @@ export const CreatingProfileUpdateHome = () => {
         formData.append('whatsapp_link', whatsapp_link)
         formData.append('phone_number', phone_number)
         formData.append('website_link', website_link)
-        formData.append('skills_list', skills)
 
         try {
             
@@ -240,6 +208,10 @@ export const CreatingProfileUpdateHome = () => {
         setEachState(3)
     }
 
+    const showFour = () => {
+        setEachState(4)
+    }
+
 
   return (
     <div>
@@ -251,10 +223,27 @@ export const CreatingProfileUpdateHome = () => {
 
             <div className='lg:p-20 lg:pt-28 lg:pl-[18rem] p-5 pt-20'>
 
-                <div className='flex 2xl:gap-10 gap-5 pb-10'>
-                    <button onClick={showOne} className={showEachState === 1 ?'border-b-2 border-b-accent 2xl:text-sm text-xs flex items-center 2xl:gap-3 gap-2 text-accent pb-1' : '2xl:text-sm text-xs flex items-center 2xl:gap-1 gap-2 pb-1'}><FaUser className='2xl:text-lg'/>Basic</button>
-                    <button onClick={showTwo} className={showEachState === 2 ?'border-b-2 border-b-accent 2xl:text-sm text-xs flex items-center 2xl:gap-3 gap-2 text-accent pb-1' : '2xl:text-sm text-xs flex items-center 2xl:gap-1 gap-2 pb-1'}><ImFilePicture className='2xl:text-lg '/>Cover</button>
-                    <button onClick={showThree} className={showEachState === 3 ?'border-b-2 border-b-accent 2xl:text-sm text-xs flex items-center 2xl:gap-3 gap-2 text-accent pb-1' : '2xl:text-sm text-xs flex items-center 2xl:gap-1 gap-2 pb-1'}><BsFillCollectionFill className='2xl:text-lg'/>Collections</button>
+                <div className='flex lg:gap-2 gap-2 pb-10'>
+                    <button onClick={showOne} 
+                        className={showEachState === 1 ? 'bg-black py-2.5 px-5 rounded-full text-white lg:text-sm text-xs' : ' text-sm px-2 py-2.5'}>
+                        Basic
+                    </button>
+
+                    <button onClick={showFour} 
+                        className={showEachState === 4 ? 'bg-black py-2.5 px-5 rounded-full text-white lg:text-sm text-xs' : ' text-sm px-2 py-2.5'}>
+                        Skills
+                    </button>
+
+
+                    <button onClick={showTwo} 
+                        className={showEachState === 2 ? 'bg-black py-2.5 px-5 rounded-full text-white lg:text-sm text-xs' : ' text-sm px-2 py-2.5'}>
+                        Cover
+                    </button>
+
+                    <button onClick={showThree} 
+                        className={showEachState === 3 ? 'bg-black py-2.5 px-5 rounded-full text-white lg:text-sm text-xs' : ' text-sm px-2 py-2.5'}>
+                        Collections
+                    </button>
                 </div>
 
 
@@ -418,34 +407,11 @@ export const CreatingProfileUpdateHome = () => {
                                     className="input text-xs input-bordered w-full max-w-full border-neutral-500" />
                             </div>
 
-                            <div>
-                                <p className="text-xs pb-3">Skills - (Maximum 4 skills)</p>
-                                <div className='relative'>
-                                    <input 
-                                        type="text" 
-                                        placeholder="skills e.g Finishing, Javascript, etc"  
-                                        className="input text-xs input-bordered w-full max-w-full border-neutral-500" 
-                                        required
-                                        value={newSkill}
-                                        onChange={handleInputChange}
-                                        disabled={isDisabled}
-                                    />
-                                    
-                                    <p onClick={addSkill}  className='bg-black text-white absolute right-3 top-2 py-2 px-2 rounded-md cursor-pointer text-sm'><FaPlus /></p>
-                                    
-                                </div>
-
-                                <ul className='flex flex-row flex-wrap gap-2 py-2'>
-                                    {skills.map((skill, index)=>(
-                                        <li key={index} className='bg-neutral-200 w-fit rounded-md py-2 px-4 text-xs flex items-center lg:gap-3 gap-2'>{skill} <IoCloseSharp onClick={() => handleDeleteSkill(index)} className='cursor-pointer text-red-700 ml-auto'/></li>
-                                    ))}
-                                </ul>
-                            </div>
 
                             <div>
                                 <p className="text-xs pb-3">Bio</p>
                                 <textarea 
-                                    className="textarea textarea-bordered w-full border-neutral-500 max-w-full min-h-[6rem] max-h-[6rem] h-[6rem]" 
+                                    className="textarea textarea-bordered w-full border-neutral-500 max-w-full min-h-[15rem] max-h-[15rem] h-[15rem]" 
                                     placeholder="Bio"
                                     value={about}
                                     required
@@ -453,7 +419,7 @@ export const CreatingProfileUpdateHome = () => {
                                 ></textarea>
                             </div>
 
-                            <button className="btn 2xl:w-fit xl:w-fit lg:w-fit md:w-fit w-full mt-5 px-20 bg-black hover:bg-neutral-800 text-white ">{isLoading === true ? <span class="loader"></span> : 'Submit' }</button>
+                            <button className="btn 2xl:w-fit xl:w-fit lg:w-fit md:w-fit w-full mt-5 px-20 bg-black rounded-full hover:bg-neutral-800 text-white ">{isLoading === true ? <span class="loader"></span> : 'Submit' }</button>
 
                         </div>
 
@@ -481,6 +447,10 @@ export const CreatingProfileUpdateHome = () => {
                     <CreativeProfileCollection 
                         IoCloseSharp={IoCloseSharp}
                     />
+                )}
+
+                {showEachState === 4 && (
+                    <CreativeSkills />
                 )}
 
 

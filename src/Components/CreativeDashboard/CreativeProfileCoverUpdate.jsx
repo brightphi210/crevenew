@@ -154,7 +154,7 @@ const CreativeProfileCoverUpdate = ({MdDelete, AiOutlineCloudUpload}) => {
 
             </div>
 
-            <button onClick={handleProfileUpdate} className="btn 2xl:w-fit xl:w-fit lg:w-fit md:w-fit w-full mt-5 px-20 xl:text-xs lg:text-xs md:text-xs  bg-black hover:bg-neutral-800 text-white ">{isLoading === true ? <span class="loader"></span> : 'Submit' }</button>
+            <button onClick={handleProfileUpdate} className="py-3 rounded-full 2xl:w-fit xl:w-fit lg:w-fit md:w-fit w-full mt-5 px-20 xl:text-xs lg:text-xs md:text-xs text-sm  bg-white border border-neutral-200 hover:bg-white-800 text-black ">{isLoading === true ? <span class="loader"></span> : 'Submit' }</button>
         </div>
 
         <dialog id="my_modal_1" className="modal">
