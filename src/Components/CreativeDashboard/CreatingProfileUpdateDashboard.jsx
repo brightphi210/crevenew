@@ -130,10 +130,6 @@ export const CreatingProfileUpdateHome = () => {
         setSelectedOption(data.category)
         setPhoneNumber(data.phone_number)
         setImage_list(data.images)        
-        
-        console.log(data.dskills[0].skill);
-        console.log(data);
-
 
         } catch (error) {
             console.log(error);
