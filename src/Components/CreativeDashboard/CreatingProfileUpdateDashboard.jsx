@@ -76,6 +76,7 @@ export const CreatingProfileUpdateHome = () => {
     const [isLoading2, setIsLoading2] = useState(false)
     const [success, setSuccess] = useState(false)
     const [message, setMessage] = useState(false)
+    const [error1, setError1] = useState('')
 
 
 
@@ -176,7 +177,7 @@ export const CreatingProfileUpdateHome = () => {
 
             else{
                 const data = await respose.json()
-                console.log(data);
+                setError1(data.website_link[0])
                 setIsLoading(false)
                 setMessage(true)
             }
@@ -187,6 +188,11 @@ export const CreatingProfileUpdateHome = () => {
             setIsLoading(false)
         }
     }
+
+
+    console.log('This is error', error1);
+
+
 
     const [showEachState, setEachState] = useState(1)
 

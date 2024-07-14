@@ -137,7 +137,7 @@ const CreativeSkills = () => {
                     </button>
 
                     {allSkills.length >= 6 ? '' : 
-                    <button className="bg-black py-2.5 px-3.5 text-white rounded-full text-xs flex gap-2 items-center " 
+                    <button className="bg-neutral-500 py-2.5 px-3.5 text-white rounded-full text-xs flex gap-2 items-center " 
                         onClick={()=>document.getElementById('my_modal_3').showModal()}>Add Skill<MdAdd className='text-sm'/>
                     </button>
                     }
