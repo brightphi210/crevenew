@@ -118,6 +118,17 @@ export const CreativeProfile= () => {
     }, [inputString]);
 
 
+    const chatmessage = 'Hello, I would like to inquire about your services.'
+    // const phoneNumber = '09041204694'
+
+    
+    const formattedPhoneNumber = profileData.whatsapp_link && profileData.whatsapp_link.replace(/\D/g, ''); // Remove non-numeric characters
+    const encodedMessage = encodeURIComponent(chatmessage || '');
+  
+    const whatsappURL = `https://wa.me/${formattedPhoneNumber}${encodedMessage ? `?text=${encodedMessage}` : ''}`;
+  
+
+
   return (
 
     <div>
@@ -166,34 +177,43 @@ export const CreativeProfile= () => {
 
             <div className='flex gap-10 2xl:flex-row xl:flex-col flex-col-reverse mt-10'>
                     <div className='2xl:w-1/2 xl:w-full w-full border border-neutral-200 lg:p-10 p-5 rounded-md'>
-                        <h2 className='lg:text-lg text-sm pb-3'>General Informations</h2>
+                        <h2 className='lg:text-lg text-base pb-3'>General Informations</h2>
                         <hr />
 
                         <div className='py-4'>
-                            <h2 className='text-sm'>Work Type</h2>
-                            <p className='text-xs pt-4 flex items-center gap-2'><TbSmartHome className='text-accent text-sm'/>{profileData.work_type}</p>
+                            <h2 className='text-sm font-semibold'>Work Type</h2>
+                            <p className='text-sm pt-4 flex items-center gap-2'><TbSmartHome className='text-accent text-sm'/>{profileData.work_type}</p>
                         </div>
 
                         <div className='py-4'>
-                            <h2 className='text-sm'>Location</h2>
-                            <p className='flex pt-4 items-center gap-2 text-xs'><FaLocationDot className='text-accent text-sm'/>{profileData.location}</p>
+                            <h2 className='text-sm font-semibold'>Location</h2>
+                            <p className='flex pt-4 items-center gap-2 text-sm'><FaLocationDot className='text-accent text-sm'/>{profileData.location}</p>
                         </div>
 
                         <div className='py-4'>
-                            <h2 className='text-sm'>Language</h2>
-                            <p className='text-xs pt-4 flex items-center gap-2'> <HiLanguage className='text-accent text-sm'/>{profileData.language}</p>
+                            <h2 className='text-sm font-semibold'>Language</h2>
+                            <p className='text-sm pt-4 flex items-center gap-2'> <HiLanguage className='text-accent text-sm'/>{profileData.language}</p>
                         </div>
 
                         <div className='py-4'>
-                            <h2 className='text-sm'>Contact</h2>
+                            <h2 className='text-sm pb-4 font-semibold'>Contact</h2>
 
-                            <Link to={profileData.whatsapp_link}>
-                                <p className='text-xs pt-4 flex items-center gap-2'><TbBrandWhatsapp className='text-accent text-sm'/>whatsapp</p>
-                            </Link>
-                            <p className='text-xs pt-4 flex items-center gap-2'><MdOutlinePhoneInTalk className='text-accent text-sm'/>{profileData.phone_number}</p>
+                            {/* <a href={whatsappURL} target="_blank" rel="noopener noreferrer"> */}
+                                <p className='text-sm mb-2 flex items-center gap-2'><TbBrandWhatsapp className='text-accent text-sm'/>whatsapp</p>
+                            {/* </a> */}
+
+                            {/* <Link to={profileData.whatsapp_link}>
+                                <p className='text-sm mb-2 flex items-center gap-2'><TbBrandWhatsapp className='text-accent text-sm'/>whatsapp</p>
+                            </Link> */}
+
+                            <a href={`tel:${profileData.phone_number}`}>
+                                <p className='text-sm py-2 flex items-center gap-2'><MdOutlinePhoneInTalk className='text-accent text-sm'/>
+                                {profileData.phone_number}
+                                </p>
+                            </a>
 
                             <Link to={profileData.website_link}>
-                                <p className='text-xs pt-4 flex items-center gap-2'><FaGlobe className='text-accent text-sm'/>website</p>
+                                <p className='text-sm mt-2 flex items-center gap-2'><FaGlobe className='text-accent text-sm'/>website</p>
                             </Link>
                         </div>
 
@@ -207,7 +227,7 @@ export const CreativeProfile= () => {
 
                             <div className='flex lg:flex-row gap-3 flex-col lg:items-center'>
                                 <h2 className='text-xl flex items-center gap-3'><FaToolbox />{profileData.display_name}</h2>
-                                <p className='lg:ml-auto text-xs'>Starting Price : <strong>N{profileData.starting_price}</strong></p>
+                                <p className='lg:ml-auto text-sm'>Starting Price : <strong>N{profileData.starting_price}</strong></p>
                             </div>
 
                             <div className='py-5 flex flex-wrap gap-3'>

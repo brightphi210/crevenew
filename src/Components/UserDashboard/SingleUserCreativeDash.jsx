@@ -530,7 +530,10 @@ const SingleUserCreativeDash = () => {
                     </div>
                     <h3 className="font-medium text-lg">Your message was Sent!</h3>
                     <h2 className='text-2xl py-3 pb-6 font-bold'>{creativeData.phone_number}</h2>
-                    <button className='text-white bg-black w-full rounded-full py-3 text-sm' onClick={()=>copyToClipboard(creativeData.phone_number)}>{copySuccess ? copySuccess : 'Copy Number to call'}</button>
+                    <a href={`tel:${creativeData.phone_number}`}>
+                        <p className='text-white bg-black w-full rounded-full py-3 text-sm'>Call Now</p>
+                    </a>
+                    {/* <button className='text-white bg-black w-full rounded-full py-3 text-sm' onClick={()=>copyToClipboard(creativeData.phone_number)}>{copySuccess ? copySuccess : 'Copy Number to call'}</button> */}
                 </div>
             </div>
         </dialog>

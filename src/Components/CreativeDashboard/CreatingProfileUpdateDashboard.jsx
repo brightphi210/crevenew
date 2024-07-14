@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react'
 import CreativeSideBarCom from './CreativeSideBarCom'
 import CreativeNavBarCom from './CreativeNavBarCom'
 
-import { IoMdArrowRoundForward } from "react-icons/io";
 import { IoCloseSharp } from "react-icons/io5";
 
+import validator from 'validator' 
 
-import img1 from '../Images/item6.jpg'
-import img2 from '../Images/item5.jpg'
 import { AiOutlineCloudUpload } from 'react-icons/ai';
 import { MdDelete } from 'react-icons/md';
 import { BASE_URL } from '../Auth/BaseUrl';
@@ -209,6 +207,44 @@ export const CreatingProfileUpdateHome = () => {
     }
 
 
+    const [phoneErr, setPhoneErr] = useState('')
+    const [whatsAppErr, setWhatsAppErr] = useState('')
+    const [isPhoneValid, setIsPhoneValid] = useState(true)
+    const validatePhoneNumber = (e) => {
+        setPhoneNumber(e.target.value)
+      
+        if (validator.isMobilePhone(phone_number)) {
+           setPhoneErr('')
+            setIsPhoneValid(true)
+        } else {
+           setPhoneErr('Enter valid phone number !')
+            setIsPhoneValid(false)
+        }
+    }
+
+    const validateWhatsappNumber = (e) => {
+        setWhatsapp_Link(e.target.value)
+      
+        if (validator.isMobilePhone(whatsapp_link)) {
+            setWhatsAppErr('')
+            setIsPhoneValid(true)
+        } else {
+           setWhatsAppErr('Enter valid whatsApp number !')
+            setIsPhoneValid(false)
+        }
+    }
+
+
+    const chatmessage = 'Hello, I would like to inquire about your services.'
+    const phoneNumber = '09041204694'
+
+    const formattedPhoneNumber = phoneNumber.replace(/\D/g, ''); // Remove non-numeric characters
+    const encodedMessage = encodeURIComponent(chatmessage || '');
+  
+    const whatsappURL = `https://wa.me/${formattedPhoneNumber}${encodedMessage ? `?text=${encodedMessage}` : ''}`;
+  
+
+
   return (
     <div>
 
@@ -224,6 +260,12 @@ export const CreatingProfileUpdateHome = () => {
                         className={showEachState === 1 ? 'bg-black py-2.5 px-5 rounded-full text-white lg:text-sm text-xs' : ' text-sm px-2 py-2.5'}>
                         Basic
                     </button>
+
+                    {/* <a href={whatsappURL} target="_blank" rel="noopener noreferrer">
+                        Chat on WhatsApp
+                    </a>
+
+                    <a href="tel:09038752194">Call +1 (234) 567-890</a> */}
 
                     <button onClick={showFour} 
                         className={showEachState === 4 ? 'bg-black py-2.5 px-5 rounded-full text-white lg:text-sm text-xs' : ' text-sm px-2 py-2.5'}>
@@ -339,30 +381,31 @@ export const CreatingProfileUpdateHome = () => {
                                 </div>
                             )}
 
-
-
-
                             <div>
-                                <p className="text-xs pb-3">Whatsapp Link</p>
+                                <p className="text-xs pb-3">Whatsapp Number</p>
                                 <input 
                                     type="text" 
                                     placeholder="whatsapp e.g https://example.com" 
                                     value={whatsapp_link}
                                     required
-                                    onChange={(e)=>setWhatsapp_Link(e.target.value)}
-                                    className="input text-xs input-bordered w-full max-w-full border-neutral-500" />
+                                    onChange={validateWhatsappNumber}
+                                    className="input text-xs input-bordered w-full max-w-full border-neutral-500" 
+                                />
+                                <p className='text-red-600 text-xs pt-3'>{whatsAppErr}</p>
                             </div>
 
 
                             <div>
-                                <p className="text-xs pb-3">Phone</p>
+                                <p className="text-xs pb-3">Phone Number</p>
                                 <input 
-                                    type="number" 
+                                    type="text" 
                                     placeholder="phone e.g 08094422807" 
                                     required
                                     value={phone_number}
-                                    onChange={(e)=>setPhoneNumber(e.target.value)}
-                                    className="input text-xs input-bordered w-full max-w-full border-neutral-500" />
+                                    onChange={validatePhoneNumber}
+                                    className="input text-xs input-bordered w-full max-w-full border-neutral-500" 
+                                />
+                                <p className='text-red-600 text-xs pt-3'>{phoneErr}</p>
                             </div>
                     
                         </div>
@@ -415,7 +458,7 @@ export const CreatingProfileUpdateHome = () => {
                                 ></textarea>
                             </div>
 
-                            <button className="btn 2xl:w-fit xl:w-fit lg:w-fit md:w-fit w-full mt-5 px-20 bg-black rounded-full hover:bg-neutral-800 text-white ">{isLoading === true ? <span class="loader"></span> : 'Submit' }</button>
+                            <button disabled={!isPhoneValid} className="btn 2xl:w-fit xl:w-fit lg:w-fit md:w-fit w-full mt-5 px-20 bg-black rounded-full hover:bg-neutral-800 text-white ">{isLoading === true ? <span class="loader"></span> : 'Submit' }</button>
 
                         </div>
 
