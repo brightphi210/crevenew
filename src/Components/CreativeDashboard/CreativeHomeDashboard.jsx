@@ -450,13 +450,13 @@ export const ProfileModal = ({showModal}) => {
 
 
       <dialog id="my_modal_1" className="modal">
-        <div className="modal-box  p-0 rounded-md " >
+        <div className="modal-box  p-0 rounded-md lg:h-fit" >
           <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕</button>
 
 
-          <div className='mycolor4 2xl:h-[15rem] xl:h-[10rem] lg:h-[10rem] md:h-[10rem] overflow-hidden'>
-            <img src={completeImage} alt="" />
+          <div className='bg-black 2xl:h-[15rem] xl:h-[10rem] lg:h-[10rem] md:h-[10rem] h-[20rem] overflow-hidden'>
+            <img src={completeImage} alt="" className='w-full h-full object-cover'/>
           </div>
 
           <div className='p-5'>
@@ -475,7 +475,7 @@ export const ProfileModal = ({showModal}) => {
 
             <p className="pt-10 text-center text-xs ">Once the steps above is done your good to go 😊</p>
 
-            <Link to={'/creative-dashboard-profile-update'}><button className='mt-3 mycolor2 text-white w-full p-3 rounded-md lg:text-sm text-xs'>Complete your profile</button></Link>
+            <Link to={'/creative-dashboard-profile-update'}><button className='mt-3 mycolor2 text-white w-full p-3 py-3 lg:text-sm text-lg rounded-full'>Complete profile</button></Link>
           </div>
         </div>
       </dialog>

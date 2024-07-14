@@ -60,11 +60,11 @@ const RegisterCom = () => {
 
 
   const handleClick1 = () => {
-    setRole('Creative');
+    setRole('Client');
   };
 
   const handleClick2 = () => {
-    setRole('Client');
+    setRole('Creative');
   };
 
   return (
@@ -95,8 +95,8 @@ const RegisterCom = () => {
               type="radio" 
               name="radio-2" 
               className="radio radio-accent 2xl:w-[1.5rem] xl:w-[1.2rem] lg:w-[1.1rem] w-[1.5rem] ml-auto 2xl:h-[1.5rem] xl:h-[1.2rem] lg:h-[1.1rem] h-[1.5rem] " 
-              value="Creative"
-              checked={role === 'Creative'}
+              value="Client"
+              checked={role === 'Client'}
               onChange={(e)=>setRole(e.target.value)}
               required
             />
@@ -109,8 +109,8 @@ const RegisterCom = () => {
               type="radio" 
               name="radio-2" 
               className="radio radio-accent 2xl:w-[1.5rem] xl:w-[1.2rem] lg:w-[1.1rem] w-[1.5rem] ml-auto 2xl:h-[1.5rem] xl:h-[1.2rem] lg:h-[1.1rem] h-[1.5rem] " 
-              value="Client"
-              checked={role === 'Client'}
+              value="Creative"
+              checked={role === 'Creative'}
               onChange={(e)=>setRole(e.target.value)}
               required
             />

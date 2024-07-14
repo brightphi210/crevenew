@@ -65,12 +65,10 @@ export const CreatingProfileUpdateHome = () => {
     const [about, setAbout] = useState('')
     const [nondigital_skills, setNondigital_Skills] = useState('')
     const [display_name, setDisplay_Name] = useState('')
-    const [location, setLocation] = useState('')
     const [language, setLanguage] = useState('')
     const [whatsapp_link, setWhatsapp_Link] = useState('')
     const [phone_number, setPhoneNumber] = useState('')
     const [website_link, setWebsite_Link] = useState('')
-    const [image, setImage] = useState(null) 
 
 
     const [images_list, setImage_list] = useState([]) 
@@ -222,10 +220,11 @@ export const CreatingProfileUpdateHome = () => {
         }
     }
 
+    
     const validateWhatsappNumber = (e) => {
         setWhatsapp_Link(e.target.value)
       
-        if (validator.isMobilePhone(whatsapp_link)) {
+        if (validator.isMobilePhone( whatsapp_link)) {
             setWhatsAppErr('')
             setIsPhoneValid(true)
         } else {
@@ -235,14 +234,8 @@ export const CreatingProfileUpdateHome = () => {
     }
 
 
-    const chatmessage = 'Hello, I would like to inquire about your services.'
-    const phoneNumber = '09041204694'
-
-    const formattedPhoneNumber = phoneNumber.replace(/\D/g, ''); // Remove non-numeric characters
-    const encodedMessage = encodeURIComponent(chatmessage || '');
-  
-    const whatsappURL = `https://wa.me/${formattedPhoneNumber}${encodedMessage ? `?text=${encodedMessage}` : ''}`;
-  
+    console.log(phone_number);
+    console.log(whatsapp_link);
 
 
   return (
