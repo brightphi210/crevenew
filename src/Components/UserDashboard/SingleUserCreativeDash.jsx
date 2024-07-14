@@ -338,13 +338,11 @@ const SingleUserCreativeDash = () => {
                         </div>
 
 
-                        <div className='py-5'>
+                        <div className='py-5 flex flex-wrap gap-3'>
                             {creativeData.dskills &&
                                 creativeData.dskills.map((skill, index) => (
-                                <button className=' flex flex-row flex-wrap items-center gap-2  ' key={index}>
-                                    {skill.skill.split(',').map((item, idx) => (
-                                    <span className='border border-neutral-300 py-2 px-4 text-xs rounded-md flex gap-1 items-center' key={idx}><GoDotFill className='mycolor'/>{item.trim()}</span>
-                                    ))}
+                                <button className='border border-neutral-300 py-2 px-4 text-xs rounded-md flex gap-1 items-center' key={index}>
+                                    <GoDotFill className='mycolor'/>{skill.skill}
                                 </button>
                             ))}
                         </div>

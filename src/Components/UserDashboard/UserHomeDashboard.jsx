@@ -27,7 +27,7 @@ const UserHomeDashboard = () => {
     <div>
       <UserNavbar show={show} handleShow={handleShow}/>
 
-      <div className='flex bg-neutral-100 h-screen'>
+      <div className='flex bg-neutral-100 h-full'>
         <div className='z-40'>
           <UserSideBar show={show} />
         </div>
