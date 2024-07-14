@@ -133,7 +133,7 @@ const CreativeProfileCoverUpdate = ({ MdDelete, AiOutlineCloudUpload }) => {
                         }
                     </div>
 
-                    <div className='relative'>
+                    {/* <div className='relative'>
                         {image && (
                             <p onClick={() => {
                                 setFileName("No Selected File Name")
@@ -142,7 +142,7 @@ const CreativeProfileCoverUpdate = ({ MdDelete, AiOutlineCloudUpload }) => {
                                 <MdDelete className='text-xl' />
                             </p>
                         )}
-                    </div>
+                    </div> */}
 
                     <button onClick={handleProfileUpdate} className="py-3 rounded-full 2xl:w-fit xl:w-fit lg:w-fit md:w-fit w-full mt-5 px-20 xl:text-xs lg:text-xs md:text-xs text-sm  bg-black border text-white ">
                         {isLoading2 ? <span className="loader"></span> : 'Submit'}

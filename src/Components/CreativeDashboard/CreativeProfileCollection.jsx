@@ -15,6 +15,7 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
 
 
     const [previewUrls, setPreviewUrls] = useState([]);
+    const [isLoading2, setIsLoading2] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [isDisabled, setIsDisabled] = useState(false)
     
@@ -61,7 +62,7 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
     const url2 =`${BASE_URL}/gallery/`
 
     const handleProfileUpdate = async (e) =>{
-        setIsLoading(true)
+        setIsLoading2(true)
         e.preventDefault() 
 
         const formData = new FormData()
@@ -80,20 +81,21 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
             })
             
             if(respose.status === 200 || respose.ok){
-                setIsLoading(false)
+                setIsLoading2(false)
+                document.getElementById('my_modal_2').close()
                 document.getElementById('my_modal_1').showModal();
             }   
 
             else{
                 const data = await respose.json()
                 console.log(data);
-                setIsLoading(false)
+                setIsLoading2(false)
             }
 
 
         } catch (error) {
             console.log('There was an error', error);
-            setIsLoading(false)
+            setIsLoading2(false)
         }
     }
 
@@ -155,7 +157,7 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
     <div>  
 
 
-        {images_list.length <= 0 ? 
+        {isLoading ? 
 
             <div className='pt-32 flex justify-center'>
                 <span className="loading loading-spinner loading-lg"></span>
@@ -169,7 +171,7 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
                     <p className="text-xs pb-3">Upload Maximum of 6 collections</p>
                 </div>
 
-                {images_list.length >=8 &&
+                {images_list.length >= 6 ? '' :
                     <button className="lg:m-0 ml-auto bg-neutral-500 py-2.5 px-3.5 text-white rounded-full text-xs flex gap-2 items-center " 
                         onClick={()=>document.getElementById('my_modal_2').showModal()}>Add<MdAdd className='text-sm'/>
                     </button>
@@ -181,7 +183,7 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
                 {images_list.length > 0 && 
                     <div className='mt-4 lg:grid 2xl:grid-cols-3 xl:grid-cols-3 grid grid-cols-2 gap-2  border border-neutral-200 rounded-md'>
                         {checkdata.map((url, index) => (
-                            <div className=' w-full 2xl:h-[18rem] xl:h-40 lg:h-[10rem] md:h-20  h-[12rem] bg-slate-100 border border-neutral-200 overflow-hidden relative rounded-sm '>
+                            <div className=' w-full 2xl:h-[18rem] xl:h-40 lg:h-[10rem] md:h-20  h-[10rem] bg-slate-100 border border-neutral-200 overflow-hidden relative rounded-sm '>
                                 <img key={index} src={url.image} alt={`Preview ${index}`} className='rounded-sm w-full h-full object-cover' />
                             </div>
                         ))}
@@ -200,7 +202,7 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
 
 
             <dialog id="my_modal_2" className="modal">
-                <div className="modal-box  p-5 rounded-md  h-[100vh] max-w-[35%]" >
+                <div className="modal-box  p-5 rounded-md  h-[100vh] lg:max-w-[35%] w-[95%]" >
                     <button onClick={()=>{document.getElementById('my_modal_2').close()}} 
                         className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕
                     </button>
@@ -220,7 +222,7 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
                         </div>
 
                         {images.length > 0 &&
-                            <button onClick={handleProfileUpdate} className="btn 2xl:w-fit xl:w-fit lg:w-fit md:w-fit w-full mt-5 px-20 xl:text-xs lg:text-xs md:text-xs  bg-black hover:bg-neutral-800 text-white ">{isLoading === true ? <span class="loader"></span> : 'Submit' }</button>
+                            <button onClick={handleProfileUpdate} className="btn 2xl:w-fit xl:w-fit lg:w-fit md:w-fit w-full mt-5 px-20 xl:text-xs lg:text-xs md:text-xs  bg-black hover:bg-neutral-800 text-white ">{isLoading2 === true ? <span class="loader"></span> : 'Submit' }</button>
                         }
                     </div>
                 </div>

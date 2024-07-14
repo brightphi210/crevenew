@@ -247,7 +247,7 @@ export const CreativeProfile= () => {
                                 <PhotoProvider>
 
                                     <PhotoView src={profileData.cover_image}>
-                                        <div className='w-full 2xl:h-[20rem] xl:h-[15rem] lg-[15rem] overflow-hidden  lg:rounded-lg rounded-md cursor-pointer bg-neutral-200'>
+                                        <div className='w-full 2xl:h-[30rem] xl:h-[15rem] lg-[15rem] overflow-hidden  lg:rounded-lg rounded-md cursor-pointer bg-neutral-200'>
                                             <img src={profileData.cover_image} alt="" className='w-full h-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
                                         </div>
                                     </PhotoView>
