@@ -27,7 +27,7 @@ const HomeComThree = () => {
         <div className='relative mt-10 lg:block hidden'>
             <img src={bg} alt="" className='w-full rounded-3xl'/>
             <div className='absolute flex justify-center items-center top-1/3 m-auto left-0 right-0 text-white'>
-                <div>
+                <div data-aos="fade-up" data-aos-duration="1000">
                     <h2 className='text-4xl text-center font-bold'>Ready to Get Started ?</h2>
                     <p className='text-center py-5'>
                         Sign Up or Login to Explore Various Features that our Sellers & <br /> 
@@ -43,7 +43,7 @@ const HomeComThree = () => {
 
         <div className='relative mt-0 block lg:hidden'>
             <img src={bg2} alt="" className='w-full rounded-xl'/>
-            <div className='absolute flex justify-center items-center top-1/3 m-auto left-0 right-0 text-white'>
+            <div className='absolute flex justify-center items-center top-1/3 m-auto left-0 right-0 text-white' data-aos="fade-up" data-aos-duration="1000">
                 <div className='px-5' data-aos="fade-up" data-aos-duration="1000">
                     <h2 className='text-xl text-center font-bold'>Ready to Get Started ?</h2>
                     <p className='text-center py-5 text-xs'>

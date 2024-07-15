@@ -69,7 +69,7 @@ const HomeCompoTwo = () => {
             <div className='grid 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 lg:gap-10 gap-5 pt-6'>
                 
                 <Link to={'/allTalents'}>
-                <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer'>
+                <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
                     <h2 className='text-xl'>Furniture Making</h2>
                     <div className='flex gap-10 pt-5'>
                         <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.58/5</p>
@@ -79,7 +79,7 @@ const HomeCompoTwo = () => {
                 </Link>
 
                 <Link to={'/allTalents'}>
-                <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer'>
+                <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
                     <h2 className='text-xl'>Fashion Desing</h2>
                     <div className='flex gap-10 pt-5'>
                         <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.58/5</p>
@@ -89,7 +89,7 @@ const HomeCompoTwo = () => {
                 </Link>
 
                 <Link to={'/allTalents'}>
-                <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer'>
+                <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
                     <h2 className='text-xl'>Web Development</h2>
                     <div className='flex gap-10 pt-5'>
                         <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.58/5</p>
@@ -99,7 +99,7 @@ const HomeCompoTwo = () => {
                 </Link>
 
                 <Link to={'/allTalents'}>
-                <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer'>
+                <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
                     <h2 className='text-xl'>Mobile dev</h2>
                     <div className='flex gap-10 pt-5'>
                         <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.58/5</p>
@@ -110,7 +110,7 @@ const HomeCompoTwo = () => {
 
 
                 <Link to={'/allTalents'}>
-                <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer'>
+                <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
                     <h2 className='text-xl'>Cobbling Making</h2>
                     <div className='flex gap-10 pt-5'>
                         <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.58/5</p>
@@ -120,7 +120,7 @@ const HomeCompoTwo = () => {
                 </Link>
 
                 <Link to={'/allTalents'}>
-                <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer'>
+                <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
                     <h2 className='text-xl'>Electricals</h2>
                     <div className='flex gap-10 pt-5'>
                         <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.58/5</p>
@@ -132,7 +132,7 @@ const HomeCompoTwo = () => {
         </div>
 
 
-        <div className='lg:py-20 lg:px-[10rem] 2xl:px-[20rem] xl:px-[10rem] px-5'>
+        {/* <div className='lg:py-20 lg:px-[10rem] 2xl:px-[20rem] xl:px-[10rem] px-5'>
             <h2 className='py-5 text-center 2xl:text-3xl pb-5 text-xl'>Top Creatives</h2>
 
             <div className='grid lg:grid-cols-3 grid-cols-1 lg:gap-10 gap-10 2xl:mb-0 xl:mb-0 lg:mb-0 mb-10'>
@@ -216,13 +216,13 @@ const HomeCompoTwo = () => {
             <Link to={'/allTalents'}>
                 <button className='bg-black lg:mt-10 2xl:py-4 2xl:px-20 xl:px-10 lg:px-10 text-sm  py-3 xl:py-2 lg:py-2 px-14 rounded-md border-none flex m-auto  mt-2 text-white items-center gap-2'>View More <FaArrowRightLong /></button>
             </Link>
-        </div>
+        </div> */}
 
         <div className='grid lg:grid-cols-2 grid-cols-1 mt-28 2xl:mx-[20rem] lg:mx-[10rem] xl:mx-[10rem] color lg:rounded-md '>
             <div>
                 <img src={person} alt="" className='lg:rounded-md w-full h-full object-cover'/>
             </div>
-            <div className='text-white py-14 px-10 w-full'>
+            <div className='text-white py-14 px-10 w-full' data-aos="fade-up" data-aos-duration="1000">
                 <p>For talent</p>
                 <h2 className='text-6xl font-semibold py-10'>Find great <br /> work</h2>
                 <p>
@@ -231,7 +231,7 @@ const HomeCompoTwo = () => {
                 </p>
 
 
-                <div className='2xl:pt-40 xl:pt-10 lg:pt-10 pt-10'>
+                <div className='2xl:pt-40 xl:pt-10 lg:pt-10 pt-10' data-aos="fade-up" data-aos-duration="1000">
                     <div className='flex gap-5 flex-wrap text-neutral-300 text-sm pt-3 border-t border-neutral-t-100'>
                         <p>Find opportunities for every <br className=''/> stage of your freelance career</p>
                         <p>Control when, where, <br className=''/> and how you work</p>

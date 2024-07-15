@@ -40,9 +40,9 @@ function App() {
           <Route path='/register' element={<Register />}/>
           <Route path='/otp' element={<OTP />}/>
 
-          <Route path='/allTalents' element={<HomeTalentPage />}/>
           <Route path='/about' element={<AboutPage />}/>
           <Route path='/blog' element={<BlogPage />}/>
+          <Route path='/allTalents' element={<HomeTalentPage />}/>
 
 
           <Route element={<PrivateRoute role="Client"/>}>

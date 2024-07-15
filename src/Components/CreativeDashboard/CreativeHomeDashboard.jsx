@@ -234,8 +234,8 @@ export const CreativeHome = () => {
 
                   <div className='flex items-center'>
                   <div className='flex gap-2 items-center'>
-                    <div className='w-8 h-8 justify-center items-center flex rounded-full'>
-                      <img src={book.client_profile.profile_pics} alt="" className='w-8'/>
+                    <div className='w-8 h-8 justify-center items-center flex rounded-full overflow-hidden'>
+                      <img src={book.client_profile.profile_pics} alt="" className='w-8 h-8 object-cover'/>
                     </div>
                     <h2 className='2xl:text-sm xl:text-sm lg:text-sm text-sm'>{book.client_profile.user.fullname}</h2>
                   </div>

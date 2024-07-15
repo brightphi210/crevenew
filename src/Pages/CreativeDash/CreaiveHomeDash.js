@@ -17,11 +17,7 @@ const CreaiveHomeDash = () => {
 
   return (
     <div>
-        {loadind ===true ? (
-            <Loader />
-        ) : (
-          <CreativeHomeDashboard />
-        )}
+        <CreativeHomeDashboard />
     </div>
   )
 }
