@@ -213,7 +213,7 @@ export const CreativeHome = () => {
 
           {isLoading === true ?
           <div className='pt-20 flex justify-center items-center'>
-            <span className="loading loading-spinner loading-sm"></span>
+            <span className="loading loading-spinner loading-sm"></span>  
           </div>
            : <>
 
@@ -365,7 +365,9 @@ export const CreativeHome = () => {
 
                 <div className='flex gap-3 mt-4'>
                   <button className='mycolor3 py-3 px-5 text-xs rounded-md w-full' onClick={()=>{document.getElementById('my_modal_3').close()}}>Close</button>
-                  <button className='mycolor2 text-white py-3 px-5 text-xs rounded-md w-full'>Join Now</button>
+                  <Link to={'https://t.me/+nflgbLBXe5xlMjI8'} className='w-full'>
+                    <p className='mycolor2 text-white py-3 px-5 text-xs rounded-md text-center'>Join Now</p>
+                  </Link>
                 </div>
               </div>
               

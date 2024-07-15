@@ -135,17 +135,22 @@ export const UserCreativeDashboardCom = () => {
 
   const [searchTermInput, setSearchTermInput] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+
+
   const handleSearchInput = (event) => {
-    setSearchTermInput(event.target.value);
+    setSearchTerm(event.target.value);
+    
   };
 
 
   const [showSide, setShowSide] = useState(true);
-  const handleButtonClick = (e) => {
-    e.preventDefault();
-    setSearchTerm(searchTermInput); 
-    // setShowSide(false)
-  };
+  // const handleButtonClick = (e) => {
+  //   e.preventDefault();
+  //   setSearchTerm(searchTermInput); 
+  // };
+
+
+
 
   const filteredItems = allTalents.filter(item => {
     const searchTermLower = searchTerm.toLowerCase();
@@ -235,9 +240,9 @@ export const UserCreativeDashboardCom = () => {
 
         <div className='ml-auto flex items-center lg:w-full lg:gap-4 gap-2'>
           <div className='relative 2xl:w-1/2  xl:w-3/4  lg:w-3/4 w-full lg:flex hidden ml-auto'>
-              <form onSubmit={handleButtonClick} className='relative w-full'>
+              <form className='relative w-full'>
                 <input type="text" 
-                  value={searchTermInput}
+                  value={searchTerm}
                   onChange={handleSearchInput}
                   placeholder="Search here . . ." 
                   className="input rounded-full text-sm input-bordered 2xl:p-6 xl:p-5 lg:p-5 w-full flex m-auto " />
@@ -254,6 +259,18 @@ export const UserCreativeDashboardCom = () => {
         </div>
       </div>
 
+      <div className='relative  w-[95%] lg:hidden flex m-auto mt-5'>
+          <>
+            <input 
+              type="text" 
+              value={searchTerm}
+              onChange={handleSearchInput}
+              placeholder="Search here . . ." 
+              className="input rounded-full text-xs input-bordered  w-full flex m-auto " />
+            {/* <button onClick={handleButtonClick} className='absolute lg:top-2 top-1.5 right-2 text-sm flex items-center gap-2 bg-black text-white  p-2 px-4 rounded-full '>search</button> */}
+          </>
+      </div>
+
       {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto mt-20 m"></span> :
       
           <>
@@ -263,7 +280,7 @@ export const UserCreativeDashboardCom = () => {
                   {filteredItems.map((talent) =>(
                     <>
                       {showOne === true && (
-                        <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
+                        <div className='bg-white  rounded-xl cursor-pointer relative shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]' key={talent.id}>
                           <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
                             <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
                               <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
@@ -391,24 +408,12 @@ export const UserCreativeDashboardCom = () => {
           <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
           <div className="drawer-side">
             <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-            <ul className="menu bg-base-200 text-base-content min-h-full lg:w-[25rem] w-[19rem] lg:p-10 lg:pt-28 p-5 pt-28">
+            <ul className="menu bg-base-200 text-base-content min-h-full overflow-y-scroll lg:w-[25rem] w-[20rem] lg:p-10 lg:pt-28 p-5 pt-28">
 
-              <li className='lg:pb-8 pb-3 lg:text-lg text-md font-semibold'>Filter Creatives with options below</li>
-
-              <div className='relative 2xl:w-full  xl:w-1/2  lg:w-1/2 w-full lg:hidden flex ml-auto'>
-                  <>
-                    <input 
-                      type="text" 
-                      value={searchTermInput}
-                      onChange={handleSearchInput}
-                      placeholder="Search here . . ." 
-                      className="input rounded-full text-xs input-bordered  w-full flex m-auto " />
-                    <button onClick={handleButtonClick} className='absolute lg:top-2 top-2 right-3 text-sm bg-black text-white  p-2 rounded-full '><RiSearch2Line /></button>
-                  </>
-              </div>
+              <li className='lg:pb-8 pb-3 lg:text-lg text-xl font-semibold'>Filter Creatives with options below</li>
 
               <ul className='flex flex-col gap-4 lg:pt-0 pt-5'>
-
+                <h2 className='p-2 bg-neutral-200 border border-neutral-300'>My Location</h2>
                 <div className='flex items-center gap-4'>
                   <li>Location </li>
                   <input 
@@ -419,6 +424,8 @@ export const UserCreativeDashboardCom = () => {
                     className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
                 </div>
 
+
+                <h2 className='p-2 bg-neutral-200 border border-neutral-300'>Work Type</h2>
                 <div className='flex items-center gap-4'>
                   <li>Hybrid </li>
                   <input 
@@ -448,6 +455,73 @@ export const UserCreativeDashboardCom = () => {
                     onChange={handleRadioChange}
                     className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
                 </div>
+
+
+                <h2 className='p-2 bg-neutral-200 border border-neutral-300'>Popular Non-Digital Services</h2>
+                <div className='flex items-center gap-4'>
+                  <li>Furniture Makers </li>
+                  <input 
+                    type="radio" 
+                    value="Furniture"
+                    checked={selectedOption === 'Furniture'}
+                    onChange={handleRadioChange}
+                    className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
+                </div>
+
+                <div className='flex items-center gap-4'>
+                  <li>Cobblers </li>
+                  <input 
+                    type="radio" 
+                    value="cobblers"
+                    checked={selectedOption === 'cobblers'}
+                    onChange={handleRadioChange}
+                    className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
+                </div>
+
+                <div className='flex items-center gap-4'>
+                  <li>Hair Stylist </li>
+                  <input 
+                    type="radio" 
+                    value="hair"
+                    checked={selectedOption === 'hair'}
+                    onChange={handleRadioChange}
+                    className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
+                </div>
+
+
+
+                <h2 className='p-2 bg-neutral-200 border border-neutral-300'>Popular Digital Services</h2>
+                <div className='flex items-center gap-4'>
+                  <li>Web Developers </li>
+                  <input 
+                    type="radio" 
+                    value="web"
+                    checked={selectedOption === 'web'}
+                    onChange={handleRadioChange}
+                    className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
+                </div>
+
+                <div className='flex items-center gap-4'>
+                  <li>Mobile Developers </li>
+                  <input 
+                    type="radio" 
+                    value="mobile"
+                    checked={selectedOption === 'mobile'}
+                    onChange={handleRadioChange}
+                    className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
+                </div>
+
+                <div className='flex items-center gap-4'>
+                  <li>Block Chain Developer</li>
+                  <input 
+                    type="radio" 
+                    value="block"
+                    checked={selectedOption === 'block'}
+                    onChange={handleRadioChange}
+                    className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
+                </div>
+
+
 
               </ul>
             </ul>

@@ -76,7 +76,7 @@ const UserNavbar = ({handleShow, show}) => {
 
 
             <div >
-                <Link to={'/user-dashboard-home'}>
+                <Link to={'/user-dashboard-profile'}>
                 <div className='bg-neutral-200 rounded-full w-8 h-8 overflow-hidden'>
                     <img src={profileData.profile_pics} alt="" className='w-full h-full object-cover cursor-pointer'/>
                 </div>

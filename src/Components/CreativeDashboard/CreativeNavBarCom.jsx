@@ -77,13 +77,13 @@ const CreativeNavBarCom = ({handleShow, show}) => {
           <p className='text-xl cursor-pointer text-neutral-700 border border-neutral-300 flex rounded-full p-2 items-center justify-center '><BiMessageSquare /></p>
         </Link>
 
-        <Link to={'/creative-dashboard-settings'}>
+        <Link to={'/creative-dashboard-profile'}>
           <p className='text-xl cursor-pointer text-neutral-700 border border-neutral-300 flex rounded-full p-2 items-center justify-center '><FiSettings /></p>
         </Link>
 
 
         <div >
-          <Link to={'/creative-dashboard-profile'}>
+          <Link to={'/creative-dashboard-settings'}>
             <div className='bg-neutral-200 rounded-full w-8 h-8 overflow-hidden'>
               <img src={profileData.profile_pics} alt="" className='w-full h-full object-cover cursor-pointer'/>
             </div>

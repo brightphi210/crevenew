@@ -12,7 +12,7 @@ const Homepage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 500);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, []);

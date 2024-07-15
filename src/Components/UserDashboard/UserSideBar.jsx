@@ -7,16 +7,16 @@ import { FiSettings } from "react-icons/fi";
 import { MdOutlineCallMissedOutgoing } from "react-icons/md";
 import { Link, useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
-import { BiLogOutCircle } from 'react-icons/bi';
+import { BiLogOutCircle, BiMessageSquare } from 'react-icons/bi';
 
 
 const menuItems = [
   { label: 'Home', icon: <GrHomeRounded />, path: 'user-dashboard-home' },
   { label: 'Creatives', icon: <MdOutlineCallMissedOutgoing />, path: 'user-dashboard-creative' },
-  { label: 'Request', icon: <FiBookmark />, path: 'user-dashboard-books' },
+  { label: 'Request', icon: <BiMessageSquare />, path: 'user-dashboard-books' },
   { label: 'Messages', icon: <MdOutlineMarkEmailUnread />, path: 'user-dashboard-home' },
   { label: 'Saved', icon: <MdOutlineFavoriteBorder />, path: 'user-dashboard-favourites' },
-  { label: 'Settings', icon: <FiSettings />, path: 'user-dashboard-home' },
+  { label: 'Settings', icon: <FiSettings />, path: 'user-dashboard-profile' },
 ];
 
 const UserSideBar = ({show}) => {

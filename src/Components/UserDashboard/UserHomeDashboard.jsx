@@ -84,6 +84,41 @@ export const UserHomeDashboardHome = () => {
 
 
 
+  const [profileData, setProfileData] = useState({})
+  const url2 =`${BASE_URL}/userprofile/${userToken.profile_id}/`
+  
+   const fetchProfile = async () => {
+  
+        setIsLoading(true);
+  
+        try {
+  
+        const respose = await fetch(url2, {
+            method: 'GET',
+            headers: {
+                'Authorization' : `Bearer ${authUser.access}`,
+            },
+        })
+        if (!respose.ok) {
+            setIsLoading(false);
+            throw new Error('Network response was not ok');
+        }
+        const data = await respose.json();
+  
+        setProfileData(data)
+  
+        } catch (error) {
+            console.log(error);
+        } finally {
+        setIsLoading(false);
+        }
+    };
+  
+    useEffect(() => {
+        fetchProfile();
+    }, []);
+
+
   const [searchTermInput, setSearchTermInput] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -116,14 +151,14 @@ export const UserHomeDashboardHome = () => {
     <div className='2xl:pl-[20rem] xl:pl-[13rem] lg:pl-[13rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full'>
 
       <div className='lg:flex items-center block px-5'>
-        <h2 className='text-2xl pb-3 lg:p-0'>Hi, Bright!</h2>
+        <h2 className='text-2xl pb-3 lg:p-0'>Hi, {isLoading === true ? '- - - - -' : <>{profileData.user && profileData.user.fullname}! </>} </h2>
 
-        <div className='relative 2xl:w-4/12  xl:w-1/2  lg:w-1/2 w-full flex ml-auto'>
+        {/* <div className='relative 2xl:w-4/12  xl:w-1/2  lg:w-1/2 w-full flex ml-auto'>
             <>
             <input onChange={handleSearchInput} value={searchTermInput} type="text" placeholder="Search here . . ." className="input rounded-full text-sm input-bordered 2xl:p-7 xl:p-5 lg:p-5 w-full flex m-auto " />
             <button onClick={handleButtonClick} className='absolute lg:top-2 top-1.5 right-3 text-xs bg-black text-white 2xl:py-3 xl:py-2 lg:py-2 px-4 py-2.5 rounded-full '>Search</button>
             </>
-        </div>
+        </div> */}
       </div>
 
       {showModal === true &&
@@ -177,7 +212,9 @@ export const UserHomeDashboardHome = () => {
           <div className='relative isolate z-20'>
             <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg text-purple-800 font-bold'>Become a Talent</h2>
             <p className='py-3 text-sm'>Become a talent and earn</p>
-            <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-purple-200 text-xs '>Get Started</button>
+            <Link to={'/register'}>
+              <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-purple-200 text-xs '>Get Started</button>
+            </Link>
           </div>
         </div>
 
@@ -186,7 +223,9 @@ export const UserHomeDashboardHome = () => {
           <div className='relative isolate z-20 '>
             <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg text-orange-700 font-bold'>Our  Blog</h2>
             <p className='py-3 text-sm '>Browse our and get latest update</p>
-            <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-orange-200 text-xs'>Browser</button>
+            <Link to={'/' + 'blog'}>
+              <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-orange-200 text-xs'>Browser</button>
+            </Link>
         </div>
         </div>
 
@@ -195,7 +234,10 @@ export const UserHomeDashboardHome = () => {
           <div className='relative isolate z-20'>
             <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg text-lime-800 font-bold'>Community</h2>
             <p className='py-3 text-sm '>Join  community of like minds </p>
-            <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-lime-200 text-xs'>Join Now</button>
+
+            <Link to={'https://t.me/+nflgbLBXe5xlMjI8'}>
+              <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-lime-200 text-xs'>Join Now</button>
+            </Link>
         </div>
         </div>
       </div>
