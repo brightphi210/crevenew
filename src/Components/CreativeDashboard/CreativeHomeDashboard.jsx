@@ -227,8 +227,9 @@ export const CreativeHome = () => {
             <div>
               {profileData.books && 
               <Link to={'/creative-dashboard-bookingsAll'}>
-              <div className='p-4 my-5 rounded-md lg:flex-row items-center gap-3 bg-neutral-50' >
-                {profileData.books.map((book)=><>
+              <div className='lg:flex-row items-center gap-3 ' >
+                {profileData.books.slice(0, 4).map((book)=>
+                <div className='bg-neutral-100 p-4 my-5 rounded-md '>
                   <h2 className='text-lg font-semibold pb-2 mb-4 border-b border-b-neutral-200'>{book.title.slice(0, 25)}. .</h2>
 
                   <div className='flex items-center'>
@@ -242,7 +243,7 @@ export const CreativeHome = () => {
                     <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1' onClick={()=>document.getElementById('my_modal_2').showModal()}>View <MdArrowOutward /></button>
                   </div>
                   </div>
-                </>)}
+                </div>)}
               </div>
               </Link>
               }
