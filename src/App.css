@@ -156,6 +156,10 @@ $large-Two : 1200px; */
   background-color: rgb(2, 185, 152);
 }
 
+.bgNew{
+  background-color: rgb(2, 114, 93);
+}
+
 .mycolor3{
   border: 1px solid rgb(2, 185, 152);
 }

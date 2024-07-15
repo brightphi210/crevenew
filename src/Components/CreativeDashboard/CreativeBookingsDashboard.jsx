@@ -131,8 +131,8 @@ export const CreativeBookings = () => {
                     <label onClick={() => handleClick(eachData)} className='bg-white p-5 rounded-md cursor-pointer' drawer-conten  htmlFor="my-drawer-4">
                       <div className='flex gap-3 items-center'>
                         <div className='rounded-full w-10 h-10 flex items-center justify-center bg-neutral-200 overflow-hidden'>
-                          {/* <img src={eachData.client_profile.profile_pics} className='w-full h-full ' alt="" /> */}
-                          <p className='font-bold '>{eachData.client_profile.user.fullname.slice(0,2).toUpperCase()}</p>
+                          <img src={eachData.client_profile.profile_pics} className='w-full h-full ' alt="" />
+                          {/* <p className='font-bold '>{eachData.client_profile.user.fullname.slice(0,2).toUpperCase()}</p> */}
                         </div>
 
                         <div>
@@ -179,8 +179,8 @@ export const CreativeBookings = () => {
               {selectedRequest && 
               <div className='text-center'>
                   <div className='rounded-full flex justify-center bg-neutral-200 items-center m-auto w-20 h-20 overflow-hidden'>
-                    {/* <img src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png" className='w-full h-full ' alt="" /> */}
-                    <p className='font-bold text-3xl'>{selectedRequest.client_profile.user.fullname.slice(0,2).toUpperCase()}</p>
+                    <img src={selectedRequest.client_profile.profile_pics} className='w-full h-full ' alt="" />
+                    {/* <p className='font-bold text-3xl'>{selectedRequest.client_profile.user.fullname.slice(0,2).toUpperCase()}</p> */}
                   </div>
 
                   <div>

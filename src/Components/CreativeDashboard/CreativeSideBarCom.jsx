@@ -6,7 +6,7 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { IoSettingsSharp } from "react-icons/io5";
 import { FaLock } from "react-icons/fa6";
-import { BiLogOutCircle } from "react-icons/bi";
+import { BiLogOutCircle, BiMessageSquare } from "react-icons/bi";
 import { CiUser } from "react-icons/ci";
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
@@ -31,17 +31,17 @@ const CreativeSideBarCom = ({show}) => {
 
 
   return (
-    <div className={show === false ? 'hidden color lg:w-[15rem] w-full fixed h-screen lg:block  text-white ' : 'block color lg:w-[15rem] w-full fixed h-screen lg:block  text-white z-50'}>
+    <div className={show === false ? 'hidden bg-white lg:w-[15rem] w-full fixed h-screen lg:block  text-black ' : 'block bg-white lg:w-[15rem] w-full fixed h-screen lg:block  text-black z-50'}>
       <div className='pt-24 flex flex-col overflow-y-scroll h-screen'>
         <div>
-            <p className='text-xs text-neutral-400 p-6 lg:pt-0 lg:p-6 pb-3 border-b-neutral-600 border-b flex items-center gap-3 '>Menu <FaLongArrowAltRight /></p>
+            <p className='text-xs text-neutral-400 p-6 lg:pt-0 lg:p-6 pb-3 border-b-neutral-200 border-b flex items-center gap-3 '>Menu <FaLongArrowAltRight /></p>
             <ul className='flex flex-col gap-8 2xl:gap-8 xl:gap-6 lg:gap-6 md:gap-3 p-6 pb-10 2xl:pb-10 xl:pb-3 lg:pb-2'>
                 <Link to={'/creative-dashboard-home'}>
-                  <li className='2xl:text-base xl:text-xs lg:text-xs text-base text-white hover:text-accent cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
+                  <li className='2xl:text-base xl:text-xs lg:text-xs text-base hover:text-accent cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
                 </Link>
 
                 <Link to={'/creative-dashboard-bookingsAll'} >
-                  <li className='2xl:text-base xl:text-xs lg:text-xs text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoBookmarkOutline className=''/> Requests</li>
+                  <li className='2xl:text-base xl:text-xs lg:text-xs text-base hover:text-accent cursor-pointer flex items-center gap-3'><BiMessageSquare className=''/> Requests</li>
                 </Link>
                 
                 <Link to={'/creative-dashboard-notificationAll'}>
@@ -59,7 +59,7 @@ const CreativeSideBarCom = ({show}) => {
         </div>
 
         <div>
-            <p className='text-xs text-neutral-400 p-6 pb-3 border-b-neutral-600 border-b flex items-center gap-3'>Preference <FaLongArrowAltRight /></p>
+            <p className='text-xs text-neutral-400 p-6 pb-3 border-b-neutral-200 border-b flex items-center gap-3'>Preference <FaLongArrowAltRight /></p>
             <ul className='flex flex-col gap-5 2xl:gap-8 xl:gap-5 lg:gap-3 md:gap-3 p-6'>
 
                 <Link to={'/' + 'creative-dashboard-settings'}>

@@ -90,7 +90,7 @@ const RegisterCom = () => {
         <div className='flex lg:flex-row flex-col gap-3 items-end'>
 
           <span onClick={handleClick1} className='flex lg:w-full w-full 2xl:text-lg xl:text-xs lg:text-xs  text-sm cursor-pointer bg-neutral-100 items-center gap-3 border border-neutral-200 py-3 px-3 rounded-md text-black'>
-            Join to Provide a Service
+            Join to Hire Someone 
             <input 
               type="radio" 
               name="radio-2" 
@@ -104,7 +104,7 @@ const RegisterCom = () => {
 
 
           <span onClick={handleClick2} className='flex lg:w-full w-full 2xl:text-lg xl:text-xs lg:text-xs text-sm cursor-pointer bg-neutral-100 items-center gap-2 border border-neutral-200 py-3 px-3 rounded-md text-black'>
-            Join to Hire Someone 
+            Join to Provide a Service
             <input 
               type="radio" 
               name="radio-2" 

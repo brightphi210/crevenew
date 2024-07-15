@@ -128,7 +128,7 @@ export const CreativeHome = () => {
     <div className='lg:p-16  lg:pl-[18rem] p-5 pt-20 lg:pt-28'>
       <div className='flex 2xl:flex-row flex-col xl:flex-row lg:flex-col gap-10'>
 
-        <div className='2xl:w-9/12 xl:w-[70%] lg:w-full w-full color   rounded-xl text-white'>
+        <div className='2xl:w-9/12 xl:w-[70%] lg:w-full w-full bgNew  rounded-xl text-white'>
 
           <Swiper
             cssMode={true}
@@ -186,7 +186,7 @@ export const CreativeHome = () => {
         <div className='bg-white text-black  w-full xl:w-[30%] lg:w-full p-5 rounded-xl flex justify-center items-center'>
 
           <div className=''>
-            <div className='border-2 border-white bg-white w-20 h-20 rounded-full overflow-hidden flex m-auto'>
+            <div className='border-2 border-neutral-200 bg-neutral-200 w-20 h-20 rounded-full overflow-hidden flex m-auto'>
               <img src={profileData.profile_pics} alt="" className='w-full h-full object-cover'/>
             </div>
 
@@ -209,94 +209,51 @@ export const CreativeHome = () => {
 
       <div className='mt-10 flex 2xl:flex-row xl:flex-row lg:flex-col flex-col  w-full gap-10'>
         <div className=' bg-white 2xl:w-[77%] xl:w-[70%] lg:w-full lg:p-5 py-5 px-2 rounded-xl'>
-          <h2 className='text-xs '>Messages</h2>
+          <h2 className='text-sm font-semibold'>Messages</h2>
 
-          {messages === null ? (
+          {isLoading === true ?
+          <div className='pt-20 flex justify-center items-center'>
+            <span className="loading loading-spinner loading-sm"></span>
+          </div>
+           : <>
+
+          {profileData.books && profileData.books.length <= 0 ? 
             <div className='flex justify-center items-center h-full'>
               <div className='p-5'>
                 <img src={empty1} alt="" className='w-[8rem] 2xl:w-[15rem] flex m-auto '/>
                 <h2 className='text-lg  text-center text-neutral-300'>No Messages Yet</h2>
               </div>
-            </div>
-            ) : (<>
-          
+            </div> :
             <div>
+              {profileData.books && 
+              <Link to={'/creative-dashboard-bookingsAll'}>
+              <div className='p-4 my-5 rounded-md lg:flex-row items-center gap-3 bg-neutral-50' >
+                {profileData.books.map((book)=><>
+                  <h2 className='text-lg font-semibold pb-2 mb-4 border-b border-b-neutral-200'>{book.title.slice(0, 25)}. .</h2>
 
-              <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-neutral-50' >
-                <div className='flex gap-2 items-center'>
-                  <div>
-                    <img src={prof} alt="" className='w-6'/>
+                  <div className='flex items-center'>
+                  <div className='flex gap-2 items-center'>
+                    <div className='w-8 h-8 justify-center items-center flex rounded-full'>
+                      <img src={book.client_profile.profile_pics} alt="" className='w-8'/>
+                    </div>
+                    <h2 className='2xl:text-sm xl:text-sm lg:text-sm text-sm'>{book.client_profile.user.fullname}</h2>
                   </div>
-                  <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-xs'>Amadi John</h2>
-                  <p className='2xl:text-xs xl:text-xs lg:text-xs text-[9px]  text-cyan-400 mycolor'>5pm</p>
-                </div>
-
-
-
-                <div className='ml-auto flex '>
-                  <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1' onClick={()=>document.getElementById('my_modal_2').showModal()}>View <MdArrowOutward /></button>
-                </div>
-              </div>
-
-              <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-neutral-50'  onClick={()=>document.getElementById('my_modal_2').showModal()}>
-                <div className='flex gap-2 items-center'>
-                  <div>
-                    <img src={prof} alt="" className='w-6'/>
+                  <div className='ml-auto flex '>
+                    <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1' onClick={()=>document.getElementById('my_modal_2').showModal()}>View <MdArrowOutward /></button>
                   </div>
-                  <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-xs'>Amadi John</h2>
-                  <p className='2xl:text-xs xl:text-xs lg:text-xs text-[9px]  text-cyan-400 mycolor'>5pm</p>
-                </div>
-
-
-
-                <div className='ml-auto flex '>
-                  <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1'>View <MdArrowOutward /></button>
-                </div>
-              </div>
-
-              <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-neutral-50'  onClick={()=>document.getElementById('my_modal_2').showModal()}>
-                <div className='flex gap-2 items-center'>
-                  <div>
-                    <img src={prof} alt="" className='w-6'/>
                   </div>
-                  <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-xs'>Amadi John</h2>
-                  <p className='2xl:text-xs xl:text-xs lg:text-xs text-[9px]  text-cyan-400 mycolor'>5pm</p>
-                </div>
-
-
-
-                <div className='ml-auto flex '>
-                  <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1'>View <MdArrowOutward /></button>
-                </div>
+                </>)}
               </div>
-
-
-              <div className='p-4 my-5 rounded-md flex lg:flex-row items-center gap-3 bg-neutral-50'  onClick={()=>document.getElementById('my_modal_2').showModal()}>
-                <div className='flex gap-2 items-center'>
-                  <div>
-                    <img src={prof} alt="" className='w-6'/>
-                  </div>
-                  <h2 className='2xl:text-xs xl:text-xs lg:text-xs text-xs'>Amadi John</h2>
-                  <p className='2xl:text-xs xl:text-xs lg:text-xs text-[9px]  text-cyan-400 mycolor'>5pm</p>
-                </div>
-
-
-
-                <div className='ml-auto flex '>
-                  <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1'>View <MdArrowOutward /></button>
-                </div>
-              </div>
-
+              </Link>
+              }
 
               <Link to={'/creative-dashboard-bookingsAll'}>
-                <button className='bg-white text-xs px-5 py-3 text-black rounded-md w-full 2xl:w-fit lg:w-fit'>See All</button>
+                <button className='bg-white text-xs px-5 py-3 text-black border border-neutral-300 rounded-md w-full 2xl:w-fit lg:w-fit'>See All</button>
               </Link>
 
             </div>
-          </>)}
-
-
-
+          }
+          </>}
 
         </div>
 
@@ -306,7 +263,7 @@ export const CreativeHome = () => {
 
 
             <div className='bg-white p-5 w-full rounded-xl '>
-              <p className='text-xs'>Notifications</p>  
+              <p className='text-sm font-semibold'>Notifications</p>  
               
               {notification === null ? 
               
@@ -394,11 +351,11 @@ export const CreativeHome = () => {
           </dialog>
 
           <dialog id="my_modal_3" className="modal">
-            <div className="modal-box 2xl:w-[25rem] lx:w-[25rem] p-0 lg:w-[25rem] w-[90%]  2xl:h-[50vh] xl:h-[50vh]  lg:max-h-[h-50vh] lg:h-[50vh] rounded-lg">
+            <div className="modal-box 2xl:w-[25rem] lx:w-[25rem] p-0 lg:w-[25rem] w-[90%]  2xl:h-[50vh] xl:h-[50vh] lg:h-[50vh] h-fit rounded-lg">
               
 
-              <div className='w-full'>
-                <img src={community} alt="" className='w-full'/>
+              <div className='w-full 2xl:block xl:hidden lg:hidden '>
+                <img src={community} alt="" className='w-full 2xl:h-fit h-[15rem] object-cover' />
               </div>
 
               <div className='p-5 pt-10'>
@@ -450,32 +407,36 @@ export const ProfileModal = ({showModal}) => {
 
 
       <dialog id="my_modal_1" className="modal">
-        <div className="modal-box  p-0 rounded-md lg:h-fit" >
+        <div className="modal-box  p-0 rounded-md 2xl:h-fit lg:max-w-[50%] w-[95%]" >
           <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕</button>
 
 
-          <div className='bg-black 2xl:h-[15rem] xl:h-[10rem] lg:h-[10rem] md:h-[10rem] h-[20rem] overflow-hidden'>
-            <img src={completeImage} alt="" className='w-full h-full object-cover'/>
-          </div>
+          <div className='flex lg:flex-row flex-col'>
 
-          <div className='p-5'>
-            <h3 className="font-medium lg:text-2xl text-xl pb-3">Complete Your Profile</h3>
-            <p className='text-xs lg:pb-10 pb-5'>
-              Completing your profile boosts visibility, and networking opportunities. 
-              It ensures you can be easily found.
-            </p>
+            <div className='bg-neutral-100 2xl:block xl:hidden lg:hidden w-full lg:h-full h-[20rem] overflow-hidden'>
+              <img src={completeImage} alt="" className='w-full h-full object-cover'/>
+            </div>
 
-            <hr />
-            <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>Upload a stricking cover image </p>
-            <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>Upload previous works, to get hired quickly </p>
-            <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>upload a clear profile picture </p>
-            <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>Fill your profile details</p>
+            <div className='p-5'>
+              <h3 className="font-medium lg:text-2xl text-xl pb-3">Complete Your Profile</h3>
+              <p className='text-xs lg:pb-10 pb-5'>
+                Completing your profile boosts visibility, and networking opportunities. 
+                It ensures you can be easily found.
+              </p>
+
+              <hr />
+              <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>Upload a stricking cover image </p>
+              <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>Upload previous works, to get hired quickly </p>
+              <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>upload a clear profile picture </p>
+              <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>Fill your profile details</p>
 
 
-            <p className="pt-10 text-center text-xs ">Once the steps above is done your good to go 😊</p>
+              <p className="pt-10 text-center text-xs ">Once the steps above is done your good to go 😊</p>
 
-            <Link to={'/creative-dashboard-profile-update'}><button className='mt-3 mycolor2 text-white w-full p-3 py-3 lg:text-sm text-lg rounded-full'>Complete profile</button></Link>
+              <Link to={'/creative-dashboard-profile-update'}><button className='mt-3 mycolor2 text-white w-full p-3 py-3 lg:text-sm text-lg rounded-full'>Complete profile</button></Link>
+            </div>
+
           </div>
         </div>
       </dialog>
