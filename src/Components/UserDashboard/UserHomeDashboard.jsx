@@ -260,7 +260,7 @@ export const UserHomeDashboardHome = () => {
           {filteredItems.length > 0 && 
             <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5'>
 
-              {filteredItems.map((talent) =>(
+              {filteredItems.slice(0, 20).map((talent) =>(
 
                 <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
 
@@ -289,7 +289,9 @@ export const UserHomeDashboardHome = () => {
                   </div>
 
                   <div className='flex items-center p-3 '>
-                    <p className='text-xs flex items-center gap-2'><FaLocationDot className='text-accent'/>{talent.location.slice(0, 35)}. . .</p>
+                    {talent.location &&
+                      <p className='text-xs flex items-center gap-2'><FaLocationDot className='text-accent'/>{talent.location.slice(0, 35)}. . .</p>
+                    }
                     <p className='ml-auto text-xs '>{talent.work_type}</p>
                   </div>
 

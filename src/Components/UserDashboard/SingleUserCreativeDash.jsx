@@ -350,23 +350,30 @@ const SingleUserCreativeDash = () => {
 
 
                         <div className='pt-5'>
-                            <p className='text-xs '>Work Type</p>
+                            <p className='text-sm font-semibold'>Category</p>
+                            <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.digital_skills}</p>
+                            <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.nondigital_skills}</p>
+                        </div>
+
+
+                        <div className='pt-5'>
+                            <p className='text-sm font-semibold '>Work Type</p>
                             <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'><MdWorkOutline className='mycolor text-base'/>{creativeData.work_type}</p>
                         </div>
 
                         <div className='pt-5'>
-                            <p className='text-xs '>Language</p>
+                            <p className='text-sm font-semibold '>Language</p>
                             <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'><IoLanguage className='mycolor text-base'/>{creativeData.language}</p>
                         </div>
 
                         
                         <div className='pt-5'>
-                            <p className='text-xs '>Location</p>
+                            <p className='text-sm font-semibold '>Location</p>
                             <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'><GrLocation className='mycolor text-base'/>{creativeData.location}</p>
                         </div>
 
                         <div className='pt-5'>
-                            <p className='text-xs '>Contact</p>
+                            <p className='text-sm font-semibold '>Contact</p>
                             <Link to={creativeData.whatsapp_link}>
                                 <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm pt-4 flex gap-2 items-center'><MdOutlineWhatsapp className='mycolor text-base'/>Whatsapp</p>
                             </Link>
