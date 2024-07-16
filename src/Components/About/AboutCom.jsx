@@ -3,6 +3,7 @@ import me from '../Images/CEO/CEO.jpg'
 import me1 from '../Images/CEO/CTO.jpg'
 import { FaLinkedin, FaXTwitter } from 'react-icons/fa6'
 import { CiFacebook } from 'react-icons/ci'
+import { Link } from 'react-router-dom'
 
 const AboutCom = () => {
   return (
@@ -57,12 +58,17 @@ const AboutCom = () => {
                         </div>
                         <div className='flex items-center pt-4'>
                             <div>
-                                <h2 className='text-sm'>Bright Philip</h2>
-                                <p className='text-[11px]'>Co-Founder & CEO</p>
+                                <h2 className='text-base'>Bright Philip</h2>
+                                <p className='text-sm'>Co-Founder & CEO</p>
                             </div>
                             <ul className='flex gap-2 ml-auto '>
-                                <li className='border border-neutral-200 p-1 cursor-pointer flex justify-center items-center rounded-full'><FaXTwitter className='text-md'/></li>
-                                <li className='border border-neutral-200 p-1 cursor-pointer flex justify-center items-center rounded-full'><FaLinkedin className='text-md'/></li>
+                                <Link to={'https://x.com/chibuzorphilip7'}>
+                                    <li className='border border-neutral-200 p-2 cursor-pointer flex justify-center items-center rounded-full'><FaXTwitter className='text-lg'/></li>
+                                </Link>
+                                
+                                <Link to={'https://www.linkedin.com/in/chibuzor-philip12/'}>
+                                    <li className='border border-neutral-200 p-2 cursor-pointer flex justify-center items-center rounded-full'><FaLinkedin className='text-lg'/></li>
+                                </Link>
                             </ul>
                         </div>
                     </div>
@@ -74,12 +80,17 @@ const AboutCom = () => {
                         </div>
                         <div className='flex items-center pt-4'>
                             <div>
-                                <h2 className='text-sm'>Emeka Awa</h2>
-                                <p className='text-[11px]'>Co-Founder & CTO </p>
+                                <h2 className='text-base'>Emeka Awa</h2>
+                                <p className='text-sm'>Co-Founder & CTO</p>
                             </div>
                             <ul className='flex gap-2 ml-auto '>
-                                <li className='border border-neutral-200 p-1 cursor-pointer flex justify-center items-center rounded-full'><FaXTwitter className='text-md'/></li>
-                                <li className='border border-neutral-200 p-1 cursor-pointer flex justify-center items-center rounded-full'><FaLinkedin className='text-md'/></li>
+                                <Link to={'https://x.com/Mictovic'}>
+                                    <li className='border border-neutral-200 p-2 cursor-pointer flex justify-center items-center rounded-full'><FaXTwitter className='text-lg'/></li>
+                                </Link>
+                                
+                                <Link to={'https://www.linkedin.com/in/awa-michael-2059a3230'}>
+                                    <li className='border border-neutral-200 p-2 cursor-pointer flex justify-center items-center rounded-full'><FaLinkedin className='text-lg'/></li>
+                                </Link>
                             </ul>
                         </div>
                     </div>
@@ -91,12 +102,17 @@ const AboutCom = () => {
                         </div>
                         <div className='flex items-center pt-4'>
                             <div>
-                                <h2 className='text-sm'>Bright Philip</h2>
-                                <p className='text-[11px]'>Co-Founder & CEO</p>
+                                <h2 className='text-base'>Bright Philip</h2>
+                                <p className='text-sm'>Co-Founder & CEO</p>
                             </div>
                             <ul className='flex gap-2 ml-auto '>
-                                <li className='border border-neutral-200 p-1 cursor-pointer flex justify-center items-center rounded-full'><FaXTwitter className='text-md'/></li>
-                                <li className='border border-neutral-200 p-1 cursor-pointer flex justify-center items-center rounded-full'><FaLinkedin className='text-md'/></li>
+                                <Link to={'https://x.com/chibuzorphilip7'}>
+                                    <li className='border border-neutral-200 p-2 cursor-pointer flex justify-center items-center rounded-full'><FaXTwitter className='text-lg'/></li>
+                                </Link>
+                                
+                                <Link to={'https://www.linkedin.com/in/chibuzor-philip12/'}>
+                                    <li className='border border-neutral-200 p-2 cursor-pointer flex justify-center items-center rounded-full'><FaLinkedin className='text-lg'/></li>
+                                </Link>
                             </ul>
                         </div>
                     </div>

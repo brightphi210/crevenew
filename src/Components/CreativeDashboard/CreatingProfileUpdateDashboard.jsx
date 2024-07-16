@@ -352,12 +352,16 @@ export const CreatingProfileUpdateHome = () => {
                                     <p className="text-xs pb-3">Digital</p>
                                     <select className="select text-xs select-bordered w-full border-neutral-500 max-w-full" required value={digital_skills} onChange={(e)=>setDigitalSkills(e.target.value)}>
                                         <option className='text-xs' value={''}>Select Digital Skill</option>
-                                        <option className='text-xs' value={'BackendDevelopment'}>Backend Development</option>
-                                        <option className='text-xs' value={'MobileDevelopment'}>Mobile Development</option>
+                                        <option className='text-xs' value={'BackendDevelopment'}>Backend Developement</option>
+                                        <option className='text-xs' value={'MobileDevelopment'}>Mobile Developement</option>
                                         <option className='text-xs' value={'UI/UX_Design'}>UI/UX</option>
                                         <option className='text-xs' value={'Graphics_Design'}>Graphic Design</option>
                                         <option className='text-xs' value={'Content_Creation'}>Content Creation</option>
-                                        <option className='text-xs' value={'Frontend_Development'}>Frontend Development</option>
+                                        <option className='text-xs' value={'Frontend_Development'}>Frontend Developement</option>
+                                        <option className='text-xs' value={'Photography'}>Photography</option>
+                                        <option className='text-xs' value={'WebsiteDevelopment'}>Website Developement</option>
+                                        <option className='text-xs' value={'Blockchain Developement'}>Blockchain Developement</option>
+                                        <option className='text-xs' value={'Video_editing'}>Video Editing</option>
                                     </select>
                                 </div>
                             ) }
@@ -376,6 +380,8 @@ export const CreatingProfileUpdateHome = () => {
                                         <option className='text-xs' value={'Cobbling'}>Cobbling</option>
                                         <option className='text-xs' value={'Mechanic'}>Mechanic</option>
                                         <option className='text-xs' value={'Fashion-Designer'}>Fashion Designing</option>
+                                        <option className='text-xs' value={'Fashion-Designer'}>Cleaning</option>
+                                        <option className='text-xs' value={'Fashion-Designer'}>Barbing</option>
                                     </select>
                                 </div>
                             )}

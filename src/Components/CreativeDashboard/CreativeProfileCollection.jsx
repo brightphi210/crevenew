@@ -38,8 +38,9 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
             }
         }
     
-        if (images.length + validFiles.length > 4) {
+        if (images.length + validFiles.length > 6) {
             setIsDisabled(true);
+            alert('Collections Exceeds 6 images')
             return;
         }
     

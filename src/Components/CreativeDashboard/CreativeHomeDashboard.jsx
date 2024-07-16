@@ -399,7 +399,7 @@ export const ProfileModal = ({showModal}) => {
       } else {
         document.getElementById('my_modal_2').close();
       }
-    }, 3000); 
+    }, 2000); 
 
 
     return () => clearTimeout(timer);
