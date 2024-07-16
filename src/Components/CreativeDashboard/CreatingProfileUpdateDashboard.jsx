@@ -379,9 +379,9 @@ export const CreatingProfileUpdateHome = () => {
                                         <option className='text-xs' value={'Furniture-Making'}>Furniture Making</option>
                                         <option className='text-xs' value={'Cobbling'}>Cobbling</option>
                                         <option className='text-xs' value={'Mechanic'}>Mechanic</option>
-                                        <option className='text-xs' value={'Fashion-Designer'}>Fashion Designing</option>
-                                        <option className='text-xs' value={'Fashion-Designer'}>Cleaning</option>
-                                        <option className='text-xs' value={'Fashion-Designer'}>Barbing</option>
+                                        <option className='text-xs' value={'Fashion-Designning'}>Fashion Designing</option>
+                                        <option className='text-xs' value={'Cleaning'}>Cleaning</option>
+                                        <option className='text-xs' value={'Barbing'}>Barbing</option>
                                     </select>
                                 </div>
                             )}
