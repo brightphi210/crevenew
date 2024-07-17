@@ -1,8 +1,8 @@
 import React from 'react'
-import me from '../Images/CEO/CEO.jpg'
-import me1 from '../Images/CEO/CTO.jpg'
+import me from '../Images/CEO/c (1).png'
+import me1 from '../Images/CEO/c (2).png'
+import me2 from '../Images/CEO/c (3).png'
 import { FaLinkedin, FaXTwitter } from 'react-icons/fa6'
-import { CiFacebook } from 'react-icons/ci'
 import { Link } from 'react-router-dom'
 
 const AboutCom = () => {
@@ -98,19 +98,19 @@ const AboutCom = () => {
 
                     <div>
                         <div className='rounded-lg h-[20rem] w-full overflow-hidden'>
-                            <img src={me} alt="" className='rounded-lg w-full h-full object-cover'/>
+                            <img src={me2} alt="" className='rounded-lg w-full h-full object-cover'/>
                         </div>
                         <div className='flex items-center pt-4'>
                             <div>
-                                <h2 className='text-base'>Bright Philip</h2>
+                                <h2 className='text-base'>Richard Kenneth</h2>
                                 <p className='text-sm'>Co-Founder & CEO</p>
                             </div>
                             <ul className='flex gap-2 ml-auto '>
-                                <Link to={'https://x.com/chibuzorphilip7'}>
+                                <Link to={''}>
                                     <li className='border border-neutral-200 p-2 cursor-pointer flex justify-center items-center rounded-full'><FaXTwitter className='text-lg'/></li>
                                 </Link>
                                 
-                                <Link to={'https://www.linkedin.com/in/chibuzor-philip12/'}>
+                                <Link to={'https://www.linkedin.com/in/richard-kenneth-17b058302/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'}>
                                     <li className='border border-neutral-200 p-2 cursor-pointer flex justify-center items-center rounded-full'><FaLinkedin className='text-lg'/></li>
                                 </Link>
                             </ul>

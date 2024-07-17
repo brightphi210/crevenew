@@ -292,7 +292,7 @@ const SingleUserCreativeDash = () => {
                 <div className='grid lg:grid-cols-3 grid-cols-1 gap-10 pt-10'>
 
                     <div className='lg:col-span-2'>
-                        <div className='2xl:h-[40rem] xl:h-[30rem] lg:h-[25rem] h-[20rem] bg-white overflow-hidden lg:rounded-md'>
+                        <div className='2xl:h-[40rem] xl:h-[30rem] lg:h-[25rem] h-[20rem] bg-white overflow-hidden lg:rounded-2xl'>
                             <PhotoProvider>
                                 <PhotoView src={creativeData.cover_image}>
                                     <img src={creativeData.cover_image} alt="" className='w-full cursor-pointer hover:transform hover:scale-105 transition-all ease-linear h-full object-cover'/>
@@ -318,7 +318,7 @@ const SingleUserCreativeDash = () => {
                         )}
                     </div>
 
-                    <div className='bg-white  w-full lg:rounded-xl lg:p-10 p-5 h-fit'>
+                    <div className='bg-white border border-neutral-200  w-full lg:rounded-xl lg:p-10 p-5 h-fit'>
 
                         <div className='flex items-center '>
                             <h2 className='font-bold 2xl:text-sm xl:text-xs lg:text-xs text-sm '>Details</h2>
