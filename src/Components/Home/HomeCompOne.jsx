@@ -1,5 +1,5 @@
 import React from 'react'
-import hero from '../Images/hero.png'
+import hero from '../Images/hero1.jpg'
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 // import { MdMoving } from "react-icons/md";
@@ -47,8 +47,8 @@ const HomeCompOne = () => {
                 </div>
             </div>
 
-            <div className='w-full 2xl:hidden xl:hidden lg:hidden md:hidden pt-5'>
-                <img src={hero} alt="" className='w-full'/>
+            <div className='w-full 2xl:hidden xl:hidden lg:hidden md:hidden pt-5 '>
+                <img src={hero} alt="" className='w-full rounded-lg'/>
             </div>
         </div>
     </div>

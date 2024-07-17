@@ -116,7 +116,6 @@ const AboutCom = () => {
                             </ul>
                         </div>
                     </div>
-
                 </div>
             </div>
 
