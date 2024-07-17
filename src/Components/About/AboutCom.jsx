@@ -2,6 +2,7 @@ import React from 'react'
 import me from '../Images/CEO/c (1).png'
 import me1 from '../Images/CEO/c (2).png'
 import me2 from '../Images/CEO/c (3).png'
+import me3 from '../Images/CEO/c4.png'
 import { FaLinkedin, FaXTwitter } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 
@@ -49,7 +50,7 @@ const AboutCom = () => {
 
 
             <div className='lg:py-20 py-10'>
-                <h2 className='border-b border-green-500 pb-2 mb-3 w-fit text-2xl'>Meet Team</h2>
+                <h2 className='border-b border-green-500 pb-2 mb-3 w-fit text-2xl'>Meet Our Team</h2>
                 <div className='pt-5 grid lg:grid-cols-3 grid-cols-1 lg:gap-6 gap-5'>
 
                     <div>
@@ -104,6 +105,29 @@ const AboutCom = () => {
                             <div>
                                 <h2 className='text-base'>Richard Kenneth</h2>
                                 <p className='text-sm'>Co-Founder & CEO</p>
+                            </div>
+                            <ul className='flex gap-2 ml-auto '>
+                                <Link to={''}>
+                                    <li className='border border-neutral-200 p-2 cursor-pointer flex justify-center items-center rounded-full'><FaXTwitter className='text-lg'/></li>
+                                </Link>
+                                
+                                <Link to={'https://www.linkedin.com/in/richard-kenneth-17b058302/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'}>
+                                    <li className='border border-neutral-200 p-2 cursor-pointer flex justify-center items-center rounded-full'><FaLinkedin className='text-lg'/></li>
+                                </Link>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    <div>
+                        <div className='rounded-lg h-[20rem] w-full overflow-hidden'>
+                            <img src={me3} alt="" className='rounded-lg w-full h-full object-cover'/>
+                        </div>
+                        <div className='flex items-center pt-4'>
+                            <div>
+                                <h2 className='text-base'>Iyowuna Jaja</h2>
+                                <p className='text-sm'>Graphic/Content Designer</p>
                             </div>
                             <ul className='flex gap-2 ml-auto '>
                                 <Link to={''}>
