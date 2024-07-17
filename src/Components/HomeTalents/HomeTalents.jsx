@@ -119,7 +119,7 @@ const HomeTalents = () => {
                         {filteredItems.map((talents)=> (
                             <Link to={'/user-dashboard-creative/'}>
                             <div className='bg-white rounded-xl border border-neutral-200'>
-                                <div className='w-full 2xl:h-[20rem] xl:h-[15rem] lg:h-[15rem]  overflow-hidden rounded-xl'>
+                                <div className='w-full 2xl:h-[20rem] xl:h-[15rem] lg:h-[15rem] h-[20rem]  overflow-hidden rounded-xl'>
                                     <img src={talents.cover_image} alt="" className='w-full h-full object-cover'/>
                                 </div>
                                 <div className='flex items-center gap-3 p-5' >
