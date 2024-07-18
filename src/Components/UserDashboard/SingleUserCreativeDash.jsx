@@ -230,7 +230,7 @@ const SingleUserCreativeDash = () => {
   return (
 
     <div className=''>
-        <div className='fixed z-50 w-full 2xl:px-[15rem] xl:px-[5rem] lg:px-[5rem] flex bg-black items-center text-white p-5'>
+        <div className='fixed z-50 w-full 2xl:px-[15rem] xl:px-[5rem] lg:px-[5rem] flex bg-black items-center text-white p-5 py-3'>
             <h2 className='lg:text-2xl text-lg'>Candidates Profile</h2>
             <p onClick={goBack} className='ml-auto items-center text-lg flex justify-center text-black bg-neutral-200 lg:p-3 p-2 rounded-full w-fit cursor-pointer'><IoClose className='cursor-pointer'/></p>
         </div>
