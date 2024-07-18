@@ -76,7 +76,7 @@ const SingleUserCreativeDash = () => {
     }, []);
 
 
-    console.log(creativeData);
+    // console.log(creativeData);
 
 
     const navigate = useNavigate()
@@ -174,8 +174,10 @@ const SingleUserCreativeDash = () => {
             })
     
             if (response.ok || response.status === 200 || response.status === 2001) {
-                console.log('Booked successfully');
+                // console.log('Booked successfully');
+
                 setContent('');
+                const review = await response.json();
                 document.getElementById('my_modal_4').showModal()
                 document.getElementById('my_modal_2').close()
                 setIsLoading2(false);
