@@ -307,13 +307,13 @@ const SingleUserCreativeDash = () => {
 
                             {creativeData.images && (
 
-                            <div className='lg:flex grid grid-cols-2 items-center gap-4 pt-6 lg:px-0 px-5'>
+                            <div className='lg:grid lg:grid-cols-4 grid grid-cols-2 items-center gap-4 pt-6 lg:px-0 px-5'>
                                 {creativeData.images.map((Image)=>(
 
                                     <PhotoProvider>
-                                    <div className='h-[9rem] bg-white lg:w-[15rem] w-full overflow-hidden rounded-md'>
+                                    <div className='h-[13rem] bg-white lg:w-full w-full overflow-hidden rounded-md'>
                                         <PhotoView src={Image.image}>
-                                            <img src={Image.image} alt="" className='cursor-pointer h-[9rem] w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
+                                            <img src={Image.image} alt="" className='cursor-pointer h-[13rem] w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
                                         </PhotoView>
                                     </div>
                                     </PhotoProvider>
@@ -419,8 +419,8 @@ const SingleUserCreativeDash = () => {
                                     <SwiperSlide>
                                         <div>
                                             <div className='flex flex-row items-center gap-3 m-auto justify-center'>
-                                                <div className='border border-neutral-300 w-8 rounded-full'>
-                                                    <img src={review.reviewer.profile_pics} alt="" className='w-10'/>
+                                                <div className='border border-neutral-300 w-8 h-8 overflow-hidden rounded-full'>
+                                                    <img src={review.reviewer.profile_pics} alt="" className='w-8 h-8 object-cover'/>
                                                 </div>
                                                 <h2>{review.reviewer.user.fullname}</h2>
                                             </div>
