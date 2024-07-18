@@ -5,6 +5,7 @@ import voucher from '../Images/vouvher.png'
 import laptop from '../Images/laptop.png'
 import prof from '../Images/Avatars.png'
 import community from '../Images/community2.png'
+import logo from '../Images/Creve1.png'
 
 
 import { MdModeEditOutline } from "react-icons/md";
@@ -126,6 +127,40 @@ export const CreativeHome = () => {
 
 
     <div className='lg:p-16  lg:pl-[18rem] p-5 pt-20 lg:pt-28'>
+
+    <div className='bg-white 2xl:p-10 xl:p-5 lg:p-5 p-5 mt-5 mb-10 lg:w-full w-[95%] m-auto grid 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 grid-cols-1 2xl:gap-10 lg:gap-5 gap-5 items-center 2xl:rounded-3xl xl:rounded-xl lg:rounded-xl rounded-md'>
+
+    <div className='bg-neutral-50 p-5 rounded-xl'>
+      <p className='text-sm'>Welcome to </p>
+      <div className='flex items-center gap-2 py-3'>
+        <img src={logo} alt="" className='w-5 h-5'/>
+        <h2 className='text-xl font-semibold'>Creve</h2>
+      </div>
+      <p className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm'>You are highly welcome to creve, you can now browse creatives/talents around your locaton and hire at ease</p>
+    </div>
+
+    <div className='bg-white sect1 p-5 rounded-xl relative w-full h-full overflow-hidden' >
+      <div className='relative isolate z-20 '>
+        <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg text-orange-700 font-bold'>Our  Blog</h2>
+        <p className='py-3 text-sm '>Browse our and get latest update</p>
+        <Link to={'/' + 'blog'}>
+          <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-orange-200 text-xs'>Browser</button>
+        </Link>
+    </div>
+    </div>
+
+
+    <div className='bg-white sect2 p-5 rounded-xl relative w-full h-full overflow-hidden' >
+      <div className='relative isolate z-20'>
+        <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg text-lime-800 font-bold'>Community</h2>
+        <p className='py-3 text-sm '>Join  community of like minds </p>
+
+        <Link to={'https://t.me/+nflgbLBXe5xlMjI8'}>
+          <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-lime-200 text-xs'>Join Now</button>
+        </Link>
+    </div>
+    </div>
+    </div>
       <div className='flex 2xl:flex-row flex-col xl:flex-row lg:flex-col gap-10'>
 
         <div className='2xl:w-9/12 xl:w-[70%] lg:w-full w-full bg-black  rounded-xl text-white'>
