@@ -119,7 +119,7 @@ const AboutCom = () => {
                         <div className='flex items-center pt-4'>
                             <div>
                                 <h2 className='text-base'>Richard Kenneth</h2>
-                                <p className='text-sm'>Co-Founder & CEO</p>
+                                <p className='text-sm'>Co-Founder & COO</p>
                             </div>
                             <ul className='flex gap-2 ml-auto '>
                                 <Link to={''}>
