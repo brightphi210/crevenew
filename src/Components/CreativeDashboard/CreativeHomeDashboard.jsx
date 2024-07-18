@@ -128,7 +128,7 @@ export const CreativeHome = () => {
     <div className='lg:p-16  lg:pl-[18rem] p-5 pt-20 lg:pt-28'>
       <div className='flex 2xl:flex-row flex-col xl:flex-row lg:flex-col gap-10'>
 
-        <div className='2xl:w-9/12 xl:w-[70%] lg:w-full w-full bgNew  rounded-xl text-white'>
+        <div className='2xl:w-9/12 xl:w-[70%] lg:w-full w-full bg-black  rounded-xl text-white'>
 
           <Swiper
             cssMode={true}
@@ -443,8 +443,6 @@ export const ProfileModal = ({showModal}) => {
           </div>
         </div>
       </dialog>
-
-
     </div>
   )
 }
