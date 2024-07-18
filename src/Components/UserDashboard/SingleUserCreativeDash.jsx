@@ -31,9 +31,10 @@ import { Link, useNavigate, useNavigation, useParams } from 'react-router-dom';
 import { HiOutlineArrowLeft } from 'react-icons/hi2';
 import { RiSendPlane2Line } from "react-icons/ri";
 import { IoShareSocialSharp } from "react-icons/io5";
+import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import { useMemo } from "react";
 
 import validator from 'validator' 
-
 import successImg from '../Images/gif1.gif'
 
 const SingleUserCreativeDash = () => {
@@ -217,6 +218,15 @@ const SingleUserCreativeDash = () => {
     
 
     console.log('this is modal', showModal);
+
+    const { isLoaded } = useLoadScript({
+        googleMapsApiKey: 'bdc_82430c2e13ed42838148a7bf2b145370',
+    });
+    const center = useMemo(() => ({ lat: 5.420000076293945, lng: 73.856743 }), []);
+
+
+
+    
   return (
 
     <div className=''>
@@ -266,6 +276,7 @@ const SingleUserCreativeDash = () => {
 
 
             {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto "></span> : <>
+            
                 <div className='flex  relative lg:pt-[10rem] pt-[8rem] px-3'>
                     <div className=''>
                         <div className='flex  items-center gap-5'>
@@ -297,7 +308,7 @@ const SingleUserCreativeDash = () => {
                     <div className='grid lg:grid-cols-3 grid-cols-1 gap-10 pt-10'>
 
                         <div className='lg:col-span-2'>
-                            <div className='2xl:h-[40rem] xl:h-[30rem] lg:h-[25rem] h-[20rem] bg-white overflow-hidden lg:rounded-2xl'>
+                            <div className='2xl:h-[40rem] xl:h-[30rem] lg:h-[25rem] h-[20rem] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-white overflow-hidden lg:rounded-2xl'>
                                 <PhotoProvider>
                                     <PhotoView src={creativeData.cover_image}>
                                         <img src={creativeData.cover_image} alt="" className='w-full cursor-pointer hover:transform hover:scale-105 transition-all ease-linear h-full object-cover'/>
@@ -311,7 +322,7 @@ const SingleUserCreativeDash = () => {
                                 {creativeData.images.map((Image)=>(
 
                                     <PhotoProvider>
-                                    <div className='h-[13rem] bg-white lg:w-full w-full overflow-hidden rounded-md'>
+                                    <div className='h-[13rem] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-white lg:w-full w-full overflow-hidden rounded-md'>
                                         <PhotoView src={Image.image}>
                                             <img src={Image.image} alt="" className='cursor-pointer h-[13rem] w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
                                         </PhotoView>
@@ -330,9 +341,6 @@ const SingleUserCreativeDash = () => {
                                 <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm  font-semibold ml-auto'><span className='font-normal'>Starting Price </span>: {creativeData.starting_price}</p>
                             </div>
 
-
-
-                            
                             <div className='pt-5 '>
                                 <p className='text-sm text-justify 2xl:text-sm xl:text-xs lg:text-xs'>{creativeData.about}</p>
                             </div>

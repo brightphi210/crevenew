@@ -17,10 +17,25 @@ const AboutCom = () => {
         <div className='2xl:px-[15rem] xl:px-[1rem] lg:px-[1rem] px-5 lg:pt-20 pt-10'>
             <p className='border-b border-green-500 pb-2 mb-3 w-fit text-2xl'>About Us</p>
             <h2 className='text-justify 2xl:text-xk xl:text-lg lg:text-lg text-sm'>
-                Creve was born out of a simple idea: to create a space where talents of 
-                all kinds could thrive. Our founders envisioned a platform that would break 
-                down barriers and provide equal opportunities for individuals to showcase 
-                their skills and for clients to discover exceptional talent.
+                Creve was born out of a simple idea: to create a 
+                space where talents of all kinds could thrive. Our founders 
+                envisioned a platform that would break down barriers and provide 
+                equal opportunities for individuals to showcase their skills and 
+                for clients to discover exceptional talent.
+    
+                <br />
+                <br />
+                Our mission is to empower talent by providing the tools and resources they 
+                need to succeed. Whether you are an artist, a developer, a writer, or any 
+                other type of professional, Creve is here to support you on your journey. 
+                We believe that by connecting talented individuals with the right opportunities, 
+                we can drive innovation and creativity across industries.
+                <br />
+                <br />
+                At Creve, we are constantly evolving to meet the needs of our community. 
+                We listen to feedback and continuously improve our platform to ensure it 
+                remains the best place for talent and clients to connect. Join us and be 
+                a part of a community where your skills and potential are truly valued.
             </h2>
 
 

@@ -227,6 +227,8 @@ export const UserCreativeDashboardCom = () => {
     { id: 4, type: 'Hybrid', name: 'Item 4' },
   ];
 
+  console.log('This is my location', location);
+
 
 
 
