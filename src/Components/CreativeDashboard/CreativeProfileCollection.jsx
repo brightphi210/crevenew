@@ -172,7 +172,7 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
                     <p className="text-xs pb-3">Upload Maximum of 6 collections</p>
                 </div>
 
-                {images_list.length >= 6 ? '' :
+                {images_list.length >= 6 || images_list.length === 0 ? '' :
                     <button className="lg:m-0 ml-auto bg-neutral-500 py-2.5 px-3.5 text-white rounded-full text-xs flex gap-2 items-center " 
                         onClick={()=>document.getElementById('my_modal_2').showModal()}>Add<MdAdd className='text-sm'/>
                     </button>

@@ -132,11 +132,8 @@ const CreativeSkills = () => {
                 <h2 className='text-xl'>My Skills</h2>
 
                 <div className='flex ml-auto gap-2'>
-                    <button className="bg-white py-2.5 px-3.5 text-black border border-neutral-400 rounded-full text-xs flex gap-2 items-center " 
-                        onClick={()=>document.getElementById('my_modal_3').showModal()}>Edit Skills<AiOutlineEdit className='text-sm'/>
-                    </button>
 
-                    {allSkills.length >= 6 ? '' : 
+                    {allSkills.length >= 6 || allSkills.length === 0 ? '' : 
                     <button className="bg-neutral-500 py-2.5 px-3.5 text-white rounded-full text-xs flex gap-2 items-center " 
                         onClick={()=>document.getElementById('my_modal_3').showModal()}>Add Skill<MdAdd className='text-sm'/>
                     </button>
