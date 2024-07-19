@@ -62,7 +62,7 @@ export const CreativeFAQsDashboard = () => {
               'Authorization' : `Bearer ${authUser.access}`,
             },
             body: JSON.stringify(newFAQ),
-          });
+          });   
     
           if (response.ok || response.status === 200 || response.status === 2001) {
             const createdFAQ = await response.json();

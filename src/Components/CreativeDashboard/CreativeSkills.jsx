@@ -5,9 +5,9 @@ import { FaArrowRight, FaPlus } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
 import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
-import { FaEdit } from "react-icons/fa";
+import { LuAlertTriangle } from "react-icons/lu";
 import { MdAdd } from "react-icons/md";
-import { AiOutlineEdit } from "react-icons/ai";
+import { VscChromeClose } from "react-icons/vsc";
 import { Link } from 'react-router-dom';
 import successImg from '../Images/gif1.gif'
 
@@ -58,31 +58,30 @@ const CreativeSkills = () => {
                 },
                 body: JSON.stringify({'skills_list': skills}),
             })
+            
+                if(!response.ok) {
+                    console.error('Failed to add skills');
+                    setIsLoading(false);
+                }
+                console.log(response);
 
-            console.log(response);
+                const responseData = await response.json();
+                console.log('Skills added successfully:', responseData);
+            
 
-            if (response.ok) {
-                console.log('Skills added successfully');
                 setIsLoading(false);
                 document.getElementById('my_modal_3').close()
                 document.getElementById('my_modal_1').showModal()
-            } 
-            else {
-                console.error('Failed to add skills');
-                setIsLoading(false);
-            }
+                // setAllSkills([...allSkills, skill])
         } catch (error) {
             console.log('There was an error');
         }
     }
 
 
-    
-
     const [isLoading2, setIsLoading2] = useState(false)
     const [allSkills, setAllSkills] = useState([])
-
-    const url2 =`${BASE_URL}/creativeprofile/${userToken.profile_id}/`
+    const url2 =`${BASE_URL}/skills/`
     const fetchProfile = async () => {
         setIsLoading2(true);
         try {
@@ -99,8 +98,8 @@ const CreativeSkills = () => {
             throw new Error('Network response was not ok');
         }
         const data = await respose.json(); 
-        setAllSkills(data.dskills)       
-        // console.log(data);
+        setAllSkills(data)  
+        // console.log('The skills data',data);     
 
         } catch (error) {
             console.log(error);
@@ -114,7 +113,49 @@ const CreativeSkills = () => {
     }, []);
 
 
-    console.log(allSkills);
+    const [selectedRequest, setSelectedRequest] = useState(null);
+
+    const handleClick = (id) => {
+        setSelectedRequest(id);
+        document.getElementById('my_modal_4').showModal()
+
+    };
+
+    const [isLoading3, setIsLoading3] = useState(false);
+    const handleDelete = async () => {
+        setIsLoading3(true);
+        try {
+            const response = await fetch(`${BASE_URL}/skills/${selectedRequest}/`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${authUser.access}`,
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response);
+            }
+
+            if (response.status === 200 || response.ok) {
+                console.log('Delete successful, no content returned');
+                setAllSkills(prevSkills => prevSkills.filter(allSkills => allSkills.id !== selectedRequest));
+                setSelectedRequest(null);
+                setIsLoading3(false);
+                document.getElementById('my_modal_4').close()
+                return;
+            }
+
+            const data = await response.json();
+            console.log('Delete successful', data);
+            setAllSkills(prevSkills => prevSkills.filter(allSkills => allSkills.id !== selectedRequest));
+            setSelectedRequest(null);
+        } catch (error) {
+            console.error('There was a problem with the delete request:', error);
+        }
+    };
+
+    
 
   return (
     <div className=''>
@@ -144,13 +185,17 @@ const CreativeSkills = () => {
             
             {allSkills && allSkills.length > 0 ? (
                 <div>
-                    <ul className='flex flex-row flex-wrap gap-2 py-2 mt-5'>
+                    <ul className='flex flex-row flex-wrap gap-5 py-2 mt-5'>
                         {allSkills.map((skill, index)=>(
-                            <li key={index} className='border bg-neutral-100 border-neutral-400 w-fit rounded-md py-2.5 px-6 lg:text-sm text-xs flex items-center lg:gap-3 gap-2'>{skill.skill} 
-                            </li>
+
+                            <div className='flex items-center gap-3 py-2 px-5 border bg-neutral-50 border-neutral-300 rounded-md'>
+                                <li  key={index} className=' w-fit   lg:text-sm text-sm flex items-center'>
+                                    {skill.skill} 
+                                </li>
+                                <p className='flex p-2 text-red-600 text-xl cursor-pointer items-center justify-center rounded-full' onClick={() => handleClick(skill.id)} ><VscChromeClose /></p>
+                            </div>
                         ))}
                     </ul>
-
                 </div>
             ): 
             
@@ -194,10 +239,30 @@ const CreativeSkills = () => {
                         ))}
                     </ul>
 
-                    <button type='submit' disabled={skills.length < 2 || skills.length > 6} className={`py-3 w-full mt-5 bg-black text-sm rounded-full hover:bg-neutral-800 ${skills.length < 2 || skills.length > 6 ? 'opacity-50 cursor-not-allowed' : ''} text-white `}>
+                    <button type='submit' disabled={skills.length < 1 || skills.length > 6} className={`py-3 w-full mt-5 bg-black text-sm rounded-full hover:bg-neutral-800 ${skills.length < 1 || skills.length > 6 ? 'opacity-50 cursor-not-allowed' : ''} text-white `}>
                         {isLoading === true ? <span className="loading loading-spinner loading-xs"></span> : 'Submit' }
                     </button>
                 </form>
+            </div>
+        </dialog>
+
+
+        <dialog id="my_modal_4" className="modal">
+            <div className="modal-box  p-0 rounded-xl flex justify-center items-center h-[25rem]" >
+                <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
+                    className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕
+                </button>
+
+
+                <div className=''>
+                    <p className='text-red-600 text-4xl flex m-auto justify-center'><LuAlertTriangle /></p>
+                    <h2 className='text-center text-xl pt-2'>Delete</h2>
+                    <p className='text-center text-sm'>Are you sure u want to delete skill</p>
+                    <div className='flex items-center gap-3 mt-5'>
+                        <button onClick={handleDelete} className="py-3 w-full bg-black text-sm rounded-full hover:bg-neutral-800 text-white">{isLoading3 === true ? <span className="loading loading-spinner loading-sm"></span> : 'Delete'}</button>
+                        <button onClick={()=>{document.getElementById('my_modal_4').close()}} className="py-3 w-full mt-2 bg-white text-sm rounded-full border border-neutral-300 text-black">Cancel</button>
+                    </div>
+                </div>
             </div>
         </dialog>
 
