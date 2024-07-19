@@ -5,7 +5,8 @@ import { BASE_URL } from '../Auth/BaseUrl';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 import successImg from '../Images/gif1.gif'
-import { MdAdd } from 'react-icons/md';
+import { MdAdd, MdDelete } from 'react-icons/md';
+import { LuAlertTriangle } from 'react-icons/lu';
 
 const CreativeProfileCollection = ({IoCloseSharp}) => {
 
@@ -56,9 +57,7 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
     };
 
 
-
-
-    const url =`${BASE_URL}/creativeprofile/${userToken.profile_id}/`
+    const url =`${BASE_URL}/gallery/`
 
     const url2 =`${BASE_URL}/gallery/`
 
@@ -92,8 +91,6 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
                 console.log(data);
                 setIsLoading2(false)
             }
-
-
         } catch (error) {
             console.log('There was an error', error);
             setIsLoading2(false)
@@ -117,8 +114,10 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
         }
         const data = await respose.json();
 
-        setImage_list(data.images)
-        setCheckdata(data.images)
+        // console.log('This is collecton', data);
+
+        setImage_list(data)
+        setCheckdata(data)
         
 
 
@@ -134,65 +133,89 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
     }, []);
 
 
+    const [selectedRequest, setSelectedRequest] = useState(null);
 
-    const deleteImage = async (id) => {
+    const handleClick = (id) => {
+        setSelectedRequest(id);
+        document.getElementById('my_modal_4').showModal()
+
+    };
+
+    const [isLoading3, setIsLoading3] = useState(false);
+    const handleDelete = async () => {
+        setIsLoading3(true);
         try {
-          const response = await fetch(url, {
-            method: 'DELETE',
-            headers: {
-                'Authorization' : `Bearer ${authUser.access}`,
-            },
-          });
-          if (!response.ok) throw new Error('Network response was not ok');
-          setImage_list(images_list.filter(image => image.id !== id));
+            const response = await fetch(`${BASE_URL}/gallery/${selectedRequest}/`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${authUser.access}`,
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response);
+            }
+
+            if (response.status === 200 || response.ok) {
+                console.log('Delete successful, no content returned');
+                setCheckdata(prevSkills => prevSkills.filter(checkdata => checkdata.id !== selectedRequest));
+                setSelectedRequest(null);
+                setIsLoading3(false);
+                document.getElementById('my_modal_4').close()
+                return;
+            }
+
+            const data = await response.json();
+            console.log('Delete successful', data);
+            setCheckdata(prevSkills => prevSkills.filter(checkdata => checkdata.id !== selectedRequest));
+            setSelectedRequest(null);
         } catch (error) {
-          console.error('Error deleting image:', error);
+            console.error('There was a problem with the delete request:', error);
         }
     };
 
 
-    console.log(images.length);
+    console.log(checkdata);
 
 
   return (
-    <div>  
-
-
+    <div className=''>  
         {isLoading ? 
-
             <div className='pt-32 flex justify-center'>
                 <span className="loading loading-spinner loading-lg"></span>
             </div>
-        
         : <>
-
-            <div className='flex items-center gap-10'>
+            <div className='flex w-full items-center gap-10'>
                 <div >
                     <h2 className='text-2xl'>Collections</h2>
                     <p className="text-xs pb-3">Upload Maximum of 6 collections</p>
                 </div>
 
-                {images_list.length >= 6 || images_list.length === 0 ? '' :
-                    <button className="lg:m-0 ml-auto bg-neutral-500 py-2.5 px-3.5 text-white rounded-full text-xs flex gap-2 items-center " 
+                {images_list && images_list.length >= 6 || images_list && images_list.length === 0 ? '' :
+                    <button className="lg:ml-auto ml-auto bg-neutral-500 py-2.5 px-3.5 text-white rounded-full text-xs flex gap-2 items-center " 
                         onClick={()=>document.getElementById('my_modal_2').showModal()}>Add<MdAdd className='text-sm'/>
                     </button>
                 }
             </div>
 
-
-            <div className='2xl:w-2/3 xl:w-2/3 lg:w-2/3 md:w-full'>
-                {images_list.length > 0 && 
-                    <div className='mt-4 lg:grid 2xl:grid-cols-3 xl:grid-cols-3 grid grid-cols-2 gap-2  border border-neutral-200 rounded-md'>
+            <div className='2xl:w-full xl:w-full lg:w-full md:w-full'>
+                {images_list && images_list.length > 0 && 
+                    <div className='mt-4 lg:grid 2xl:grid-cols-6 xl:grid-cols-4 grid grid-cols-2 gap-2  border border-neutral-200 rounded-md'>
                         {checkdata.map((url, index) => (
-                            <div className=' w-full 2xl:h-[18rem] xl:h-40 lg:h-[10rem] md:h-20  h-[10rem] bg-slate-100 border border-neutral-200 overflow-hidden relative rounded-sm '>
+                            <div className=' w-full 2xl:h-[18rem] xl:h-[14rem] lg:h-[10rem] md:h-20  h-[10rem] bg-slate-100 border border-neutral-200 overflow-hidden relative rounded-sm '>
                                 <img key={index} src={url.image} alt={`Preview ${index}`} className='rounded-sm w-full h-full object-cover' />
+
+                                <button className='absolute top-2 right-2 p-2 rounded-full bg-neutral-200 text-red-600  text-base' onClick={() => handleClick(url.id)}>
+                                    <MdDelete />
+                                </button>
                             </div>
                         ))}
                     </div>
                 }
             </div>
         
-            {images_list.length <= 0 &&
+            {images_list && images_list.length <= 0 &&
                 <div className='flex justify-center items-center h-[50vh]'>
                     <div>
                         <p className='text-sm pb-3'>No Collections, added</p>
@@ -200,6 +223,26 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
                     </div>
                 </div>
             }
+
+
+            <dialog id="my_modal_4" className="modal">
+                <div className="modal-box  p-0 rounded-xl flex justify-center items-center h-[25rem]" >
+                    <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
+                        className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕
+                    </button>
+
+
+                    <div className=''>
+                        <p className='text-red-600 text-4xl flex m-auto justify-center'><LuAlertTriangle /></p>
+                        <h2 className='text-center text-xl pt-2'>Delete</h2>
+                        <p className='text-center text-sm'>Are you sure u want to delete skill</p>
+                        <div className='flex items-center gap-3 mt-5'>
+                            <button onClick={handleDelete} className="py-3 w-full bg-black text-sm rounded-full hover:bg-neutral-800 text-white">{isLoading3 === true ? <span className="loading loading-spinner loading-sm"></span> : 'Delete'}</button>
+                            <button onClick={()=>{document.getElementById('my_modal_4').close()}} className="py-3 w-full mt-2 bg-white text-sm rounded-full border border-neutral-300 text-black">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </dialog>
 
 
             <dialog id="my_modal_2" className="modal">
