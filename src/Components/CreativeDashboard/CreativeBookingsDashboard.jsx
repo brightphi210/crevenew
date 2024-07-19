@@ -12,6 +12,7 @@ import { BASE_URL } from '../Auth/BaseUrl'
 import { jwtDecode } from 'jwt-decode'
 
 import noData from '../Images/nodata2.png'
+import { TbAlertTriangle } from 'react-icons/tb'
 
 
 const CreativeBookingsDashboard = () => {
@@ -173,7 +174,7 @@ export const CreativeBookings = () => {
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
         <div className="drawer-side">
           <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-          <ul className="menu bg-base-200 text-base-content min-h-full lg:w-[25%] w-[85%] p-6 pt-32">
+          <ul className="menu bg-base-200 text-base-content min-h-full lg:w-[25%] w-[90%] p-6 pt-32">
             <div className='flex justify-center'>
 
               {selectedRequest && 
@@ -192,10 +193,14 @@ export const CreativeBookings = () => {
                   </div>
 
                   <div className='mt-5 flex justify-center lg:gap-5 gap-3 lg:px-10 px-5 w-full'>
-                    <button onClick={()=>copyToClipboard(selectedRequest.phone)} className="btn lg:w-full w-full btn-neutral text-xs  text-white min-h-[2.6rem] max-h-[2.6rem] flex items-center gap-2">
-                      {copySuccess ? copySuccess : <><FaRegCopy />Copy Number</> }
+                    <button onClick={()=>copyToClipboard(selectedRequest.phone)} className="btn lg:w-full w-full btn-neutral text-base  text-white min-h-[2.6rem] max-h-[2.6rem] flex items-center gap-2">
+                      {copySuccess ? copySuccess : <><FaRegCopy />Contact</> }
                     </button>
                   </div>
+
+                  <p className='text-green-600 bg-green-50 flex items-center mt-5 p-3 rounded-lg gap-3 border border-green-600'><TbAlertTriangle />Copy clients number to call </p>
+                  <p className='absolute bottom-20 m-auto right-0 left-0 flex justify-center w-fit text-xs gap-2'>Need any help ? <span className='text-blue-500 underline cursor-pointer'>Contact us</span></p>
+
               </div>
               }
             </div>

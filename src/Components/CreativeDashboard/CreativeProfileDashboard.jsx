@@ -112,23 +112,18 @@ export const CreativeProfile= () => {
     const [stringArray, setStringArray] = useState([]);
   
     useEffect(() => {
-      // Split the input string by commas and trim whitespace
       const array = inputString.split(',').map(item => item.trim());
       setStringArray(array);
     }, [inputString]);
 
 
     const chatmessage = 'Hello, I would like to inquire about your services.'
-    // const phoneNumber = '09041204694'
-
-    
     const formattedPhoneNumber = profileData.whatsapp_link && profileData.whatsapp_link.replace(/\D/g, ''); // Remove non-numeric characters
     const encodedMessage = encodeURIComponent(chatmessage || '');
-  
     const whatsappURL = `https://wa.me/${formattedPhoneNumber}${encodedMessage ? `?text=${encodedMessage}` : ''}`;
   
 
-
+    console.log(profileData);
   return (
 
     <div>
@@ -157,7 +152,7 @@ export const CreativeProfile= () => {
 
                         <div>
                             <h2 className='text-sm'>{userToken.name} <span className='text-xs text-neutral-300'>({userToken.role})</span></h2>
-                            <p className='flex items-center gap-2 py-2 lg:text-sm text-xs'>12 Reviews <FaStar /><FaStar /><FaStar /></p>
+                            <p className='flex items-center gap-2 py-2 lg:text-sm text-xs'>{profileData.reviewed && profileData.reviewed.length} Reviews</p>
 
                             {profileData.verified === true ? (
                                 <button className='bg-accent text-xs py-2 px-4 rounded-full flex items-center gap-2'><RiVerifiedBadgeFill />verified</button>

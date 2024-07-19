@@ -15,7 +15,7 @@ import { IoNotificationsCircle } from "react-icons/io5";
 import { GrUpgrade } from "react-icons/gr";
 import { MdHelpCenter } from "react-icons/md";
 import { FaUnlockKeyhole } from "react-icons/fa6";
-import { FaCheckCircle } from "react-icons/fa";
+import { FaCheckCircle, FaRegCopy } from "react-icons/fa";
 
 import { RiNotificationOffLine } from "react-icons/ri";
 import { IoNotificationsOffOutline } from "react-icons/io5";
@@ -37,6 +37,7 @@ import empty1 from '../Images/No data-cuate.png'
 import empty2 from '../Images/No data-rafiki.png'
 import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
+import { TbAlertTriangle } from "react-icons/tb";
 
 
 import Footer from '../Footer'
@@ -117,11 +118,27 @@ export const CreativeHome = () => {
       }
   };
 
-
   useEffect(() => {
       fetchProfile();
   }, []);
 
+
+  const [selectedRequest, setSelectedRequest] = useState(null);
+  const [copySuccess, setCopySuccess] = useState('');
+
+  const handleClick = (book) => {
+    setSelectedRequest(book);
+    setCopySuccess('')
+    // document.getElementById('my_modal_2').showModal()
+  };
+
+
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(
+      () => setCopySuccess('Copied!'),
+      (err) => setCopySuccess('Failed to copy!')
+    );
+};
   
   return (
 
@@ -191,7 +208,7 @@ export const CreativeHome = () => {
       </div>
 
 
-      <div className='bg-white 2xl:p-10 xl:p-5 lg:p-5 p-3 mt-5 mb-10 lg:w-full w-[95%] m-auto grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 grid-cols-1 2xl:gap-10 lg:gap-5 gap-5  2xl:rounded-3xl xl:rounded-xl lg:rounded-xl rounded-md'>
+      <div className='bg-white 2xl:p-10 xl:p-5 lg:p-5 p-3 mt-5 mb-10 lg:w-full w-[95%] m-auto grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-2 grid-cols-1 2xl:gap-10 lg:gap-5 gap-5  2xl:rounded-3xl xl:rounded-xl lg:rounded-xl rounded-md'>
 
         <div className='bg-neutral-100 p-5 rounded-xl'>
           <p className='text-sm'>Welcome to </p>
@@ -268,7 +285,6 @@ export const CreativeHome = () => {
             </div> :
             <div>
               {profileData.books && 
-              <Link to={'/creative-dashboard-bookingsAll'}>
               <div className='lg:flex-row items-center gap-3 ' >
                 {profileData.books.slice(0, 4).map((book)=>
                 <div className='bg-neutral-100 p-4 my-5 rounded-md '>
@@ -282,17 +298,17 @@ export const CreativeHome = () => {
                     <h2 className='2xl:text-sm xl:text-sm lg:text-sm text-sm'>{book.client_profile.user.fullname}</h2>
                   </div>
                   <div className='ml-auto flex '>
-                    <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1' onClick={()=>document.getElementById('my_modal_2').showModal()}>View <MdArrowOutward /></button>
+                    <label onClick={() => handleClick(book)} className='bg-accent text-white p-3 px-5 text-sm  rounded-md cursor-pointer' drawer-conten  htmlFor="my-drawer-4">View</label>
+                    {/* <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1' onClick={() => handleClick(book)}>View <MdArrowOutward /></button> */}
                   </div>
                   </div>
                 </div>)}
-              </div>
-              </Link>
-              }
 
-              <Link to={'/creative-dashboard-bookingsAll'}>
-                <button className='bg-white text-xs px-5 py-3 text-black border border-neutral-300 rounded-md w-full 2xl:w-fit lg:w-fit'>See All</button>
+                <Link to={'/creative-dashboard-bookingsAll'}>
+                <button className='bg-black text-xs px-20 py-3 text-white border border-neutral-300 rounded-md w-full 2xl:w-fit lg:w-fit'>See All</button>
               </Link>
+              </div>
+              }
 
             </div>
           }
@@ -366,32 +382,36 @@ export const CreativeHome = () => {
           </div>
         </div>
 
-          <dialog id="my_modal_2" className="modal">
-            <div className="modal-box 2xl:w-[25rem] lx:w-[25rem]  lg:w-[25rem] w-[90%] absolute 2xl:right-10 2xl:top-20 xl:right-10 xl:top-20 lg:right-10 lg:top-20 2xl:h-[55vh] 2xl:max-h-[h-55vh] xl:h-[70vh] xl:max-h-[h-70vh] lg:max-h-[h-70vh] lg:h-[70vh] rounded-lg z-auto overflow-y-scroll">
+          {/* <dialog id="my_modal_2" className="modal">
+            <div className="modal-box 2xl:w-[25rem] lx:w-[25rem]  lg:w-[25rem] w-[95%] h-full absolute 2xl:right-10 2xl:top-20 xl:right-10 xl:top-20 lg:right-10 lg:top-20 2xl:h-[55vh] 2xl:max-h-[h-55vh] xl:h-[70vh] xl:max-h-[h-70vh] lg:max-h-[h-70vh] lg:h-[70vh] rounded-lg z-auto overflow-y-scroll">
               <button onClick={()=>{document.getElementById('my_modal_2').close()}} 
                 className="btn btn-sm btn-circle btn-ghost absolute right-5 top-5 bg-white text-black hover:text-white">✕
               </button>
 
+              {selectedRequest && 
               <div className=' py-5 px-3'>
-                <div className='w-24 flex justify-center m-auto'>
-                  <img src={prof} alt="" />
+                <div className='w-20 h-20 flex rounded-full overflow-hidden justify-center m-auto'>
+                  <img src={selectedRequest.client_profile.profile_pics} className='h-full object-cover w-full' alt="" />
+                  {console.log({selectedRequest})}
                 </div>
 
                 <div className='text-center'>
-                  <h2 className='text-sm'>John Doe</h2>
-                  <p className='text-xs py-2'>john@gmail.com</p>
-                  <p className='text-xs'>Time: 5pm</p>
-
-
-                  <p className='bg-neutral-100 p-5 text-xs mt-3 text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus nisi sint asperiores, quibusdam, natus sequi rerum qui architecto est repellat incidunt facilis magnam eligendi aut eos laudantium earum, quidem deleniti?</p>
+                  <h2 className='text-base pt-3'>{selectedRequest.client_profile.user.fullname}</h2>
+                  <p className='text-xl py-2'>{selectedRequest.phone}</p>
+                  <div className='pt-2 border-t border-t-neutral-200 mt-5'>
+                    <h2 className='text-xl'>{selectedRequest.title}</h2>
+                    <p className='text-sm mt-3 text'>{selectedRequest.description}</p>
+                  </div>
                   <button className="btn btn-active hover:bg-black bg-black w-full text-xs px-5 py-3 rounded-md mt-5 text-white ">Contact</button>
+                  <p className='text-red-500 pt-5 text-xs'>Copy the above Number of client to call</p>
                 </div>
               </div>
+              }
             </div>
             <form method="dialog" className="modal-backdrop">
               <button>close</button>
             </form>
-          </dialog>
+          </dialog> */}
 
           <dialog id="my_modal_3" className="modal">
             <div className="modal-box 2xl:w-[25rem] lx:w-[25rem] p-0 lg:w-[25rem] w-[90%]  2xl:h-[50vh] xl:h-[50vh] lg:h-[50vh] h-fit rounded-lg">
@@ -427,6 +447,45 @@ export const CreativeHome = () => {
 
       <ProfileModal showModal={showModal}/>
 
+      <div className="drawer drawer-end">
+        <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+        <div className="drawer-side">
+          <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+          <ul className="menu bg-base-200 text-base-content min-h-full lg:w-[25%] w-[90%] p-6 pt-32">
+            <div className='flex justify-center'>
+
+              {selectedRequest && 
+              <div className='text-center'>
+                  <div className='rounded-full flex justify-center bg-neutral-200 items-center m-auto w-20 h-20 overflow-hidden'>
+                    <img src={selectedRequest.client_profile.profile_pics} className='w-full h-full ' alt="" />
+                    {/* <p className='font-bold text-3xl'>{selectedRequest.client_profile.user.fullname.slice(0,2).toUpperCase()}</p> */}
+                  </div>
+
+                  <div>
+                    <h2 className='text-sm font-bold pt-5'>{selectedRequest.client_profile.user.fullname}</h2>
+                    <p className='text-xl font-bold text-neutral-500 py-3'>{selectedRequest.phone}</p>
+                    
+                    <p className='text-xs pt-3'>{selectedRequest.title}</p>
+                    <p className='lg:text-sm text-xs text-center lg:leading-[30px] leading-[28px] font-light'>{selectedRequest.description}</p>
+                  </div>
+
+                  <div className='mt-5 flex justify-center lg:gap-5 gap-3 lg:px-10 px-5 w-full'>
+                    <button onClick={()=>copyToClipboard(selectedRequest.phone)} className="btn lg:w-full w-full btn-neutral text-base  text-white min-h-[2.6rem] max-h-[2.6rem] flex items-center gap-2">
+                      {copySuccess ? copySuccess : <><FaRegCopy />Contact</> }
+                    </button>
+                  </div>
+
+                  <p className='text-green-600 bg-green-50 flex items-center mt-5 p-3 rounded-lg gap-3 border border-green-600'><TbAlertTriangle />Copy clients number to call </p>
+
+
+                  <p className='absolute bottom-20 m-auto right-0 left-0 flex justify-center w-fit text-xs gap-2'>Need any help ? <span className='text-blue-500 underline'>Contact us</span></p>
+              </div>
+              }
+            </div>
+          </ul>
+        </div>
+      </div>
+
     </div>
   )
 }
@@ -439,7 +498,7 @@ export const ProfileModal = ({showModal}) => {
       if (showModal === true) {
         document.getElementById('my_modal_1').showModal();
       } else {
-        document.getElementById('my_modal_2').close();
+        document.getElementById('my_modal_1').close();
       }
     }, 2000); 
 
