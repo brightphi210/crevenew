@@ -197,21 +197,21 @@ export const UserHomeDashboardHome = () => {
         </div>
       }
 
-      <div className='bg-white 2xl:p-10 xl:p-5 lg:p-5 p-5 mt-5 lg:w-full w-[95%] m-auto grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 grid-cols-1 2xl:gap-10 lg:gap-5 gap-5 items-center 2xl:rounded-3xl xl:rounded-xl lg:rounded-xl rounded-md'>
+      <div className='shadow-[rgba(7,_65,_210,_0.03)_0px_9px_30px] bg-white 2xl:p-10 xl:p-5 lg:p-5 p-5 mt-5 lg:w-full w-[95%] m-auto grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 grid-cols-1 2xl:gap-10 lg:gap-5 gap-5 items-center 2xl:rounded-3xl xl:rounded-xl lg:rounded-xl rounded-md'>
 
-        <div className='bg-neutral-50 p-5 rounded-xl'>
+        <div className='bg-neutral-50 p-5 rounded-xl border border-neutral-200'>
           <p className='text-sm'>Welcome to </p>
           <div className='flex items-center gap-2 py-3'>
             <img src={logo} alt="" className='w-5 h-5'/>
             <h2 className='text-xl font-semibold'>Creve</h2>
           </div>
-          <p className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm'>You are highly welcome to creve, you can now browse creatives/talents around your locaton and hire at ease</p>
+          <p className='2xl:text-sm xl:text-sm lg:text-[10px] text-sm'>You are highly welcome to creve, you can now browse creatives/talents around your locaton and hire at ease</p>
         </div>
 
-        <div className='lg:bg-white sect p-5 rounded-xl relative w-full h-full overflow-hidden' >
+        <div className='lg:bg-white sect p-5 rounded-xl relative w-full h-full overflow-hidden border border-l-purple-200' >
           <div className='relative isolate z-20'>
             <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg text-purple-800 font-bold'>Become a Talent</h2>
-            <p className='py-3 text-sm'>Become a talent and earn</p>
+            <p className='py-3 lg:text-sm text-base'>Become a talent and earn</p>
             <Link to={'/register'}>
               <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-purple-200 text-xs '>Get Started</button>
             </Link>
@@ -219,10 +219,10 @@ export const UserHomeDashboardHome = () => {
         </div>
 
         
-        <div className='bg-white sect1 p-5 rounded-xl relative w-full h-full overflow-hidden' >
+        <div className='bg-white sect1 p-5 rounded-xl relative w-full h-full overflow-hidden border border-orange-200' >
           <div className='relative isolate z-20 '>
             <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg text-orange-700 font-bold'>Our  Blog</h2>
-            <p className='py-3 text-sm '>Browse our and get latest update</p>
+            <p className='py-3 lg:text-sm text-base '>Browse our and get latest update</p>
             <Link to={'/' + 'blog'}>
               <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-orange-200 text-xs'>Browser</button>
             </Link>
@@ -230,10 +230,10 @@ export const UserHomeDashboardHome = () => {
         </div>
 
         
-        <div className='bg-white sect2 p-5 rounded-xl relative w-full h-full overflow-hidden' >
+        <div className='bg-white sect2 p-5 rounded-xl relative w-full h-full overflow-hidden border border-lime-200' >
           <div className='relative isolate z-20'>
             <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg text-lime-800 font-bold'>Community</h2>
-            <p className='py-3 text-sm '>Join  community of like minds </p>
+            <p className='py-3 lg:text-sm text-base '>Join  community of like minds </p>
 
             <Link to={'https://t.me/+nflgbLBXe5xlMjI8'}>
               <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-lime-200 text-xs'>Join Now</button>
@@ -242,7 +242,7 @@ export const UserHomeDashboardHome = () => {
         </div>
       </div>
 
-      <div className='pt-10 lg:px-0 px-7 pb-20'>
+      <div className='pt-10 lg:px-0 px-7 pb-20 '>
 
         <div className='py-5 pb-10 flex items-center'>
           <h2 className='text-xl '>Top Creatives</h2>
