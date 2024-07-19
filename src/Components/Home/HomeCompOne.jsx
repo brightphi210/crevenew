@@ -9,10 +9,10 @@ const HomeCompOne = () => {
         
         <div className='w-full lg:px-0 px-6 lg:pt-0 lg:pb-0 pt-[8rem] pb-10'>
             <div className=' text-black text-center' data-aos="fade-up" data-aos-duration="1000">
-                <h2 className='2xl:text-6xl xl:text-3xl lg:text-3xl text-4xl font-bold 2xl:leading-[80px] leading-snug'>Discover Best <br className='lg:block'/>  <span className='bg-gradient-to-r from-sky-500 to-teal-500 bg-clip-text text-transparent'>Talents</span>  Around You</h2>
-                <p className='2xl:text-lg xl:text-xs lg:text-xs text-xs text-slate-700 py-5  w-full'> 
-                    In the ever-evolving landscape of skills and knowledge, the choice between  <br className='lg:block hidden'/>
-                    hiring an expert or becoming one yourself is a pivotal decision.
+                <h2 className='2xl:text-6xl xl:text-3xl lg:text-3xl text-4xl font-bold 2xl:leading-[80px] leading-snug uppercase'>Discover Top <br className='lg:block'/>  <span className='bg-gradient-to-r from-sky-500 to-teal-500 bg-clip-text text-transparent'>Talent</span>  Near You</h2>
+                <p className='2xl:text-lg xl:text-sm lg:text-sm text-sm text-slate-700 py-5  w-full'> 
+                    Creve is a revolutionary platform designed for everyone,  <br className='lg:block hidden'/>
+                    bridging the gap between clients and talents seamlessly. 
                 </p>
                 
                 <form action="" className='relative lg:w-1/3 w-full m-auto' >
