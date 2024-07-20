@@ -25,7 +25,7 @@ const Homepage = () => {
         <Loader />
       ) : (
         
-      <div>
+      <div >
         <Navbar />
         <HomeCompOne />
         <HomeCompoTwo />

@@ -7,6 +7,10 @@ import { FaArrowRight } from 'react-icons/fa';
 import successImg from '../Images/gif1.gif'
 import { MdAdd, MdDelete } from 'react-icons/md';
 import { LuAlertTriangle } from 'react-icons/lu';
+import noData from '../Images/nodata2.png'
+import { RiUploadCloudLine } from "react-icons/ri";
+import { MdArrowForward } from "react-icons/md";
+
 
 const CreativeProfileCollection = ({IoCloseSharp}) => {
 
@@ -200,8 +204,8 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
             </div>
 
             <div className='2xl:w-full xl:w-full lg:w-full md:w-full'>
-                {images_list && images_list.length > 0 && 
-                    <div className='mt-4 lg:grid 2xl:grid-cols-6 xl:grid-cols-4 grid grid-cols-2 gap-2  border border-neutral-200 rounded-md'>
+                {images_list && images_list.length >= 0 && 
+                    <div className='mt-4 lg:grid 2xl:grid-cols-6 xl:grid-cols-4 grid grid-cols-2 gap-2   rounded-md'>
                         {checkdata.map((url, index) => (
                             <div className=' w-full 2xl:h-[18rem] xl:h-[14rem] lg:h-[10rem] md:h-20  h-[10rem] bg-slate-100 border border-neutral-200 overflow-hidden relative rounded-sm '>
                                 <img key={index} src={url.image} alt={`Preview ${index}`} className='rounded-sm w-full h-full object-cover' />
@@ -215,11 +219,11 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
                 }
             </div>
         
-            {images_list && images_list.length <= 0 &&
+            {images_list && images_list.length === 0 &&
                 <div className='flex justify-center items-center h-[50vh]'>
                     <div>
                         <p className='text-sm pb-3'>No Collections, added</p>
-                        <button className="bg-black py-3 px-8 text-white rounded-full text-sm flex m-auto" onClick={()=>document.getElementById('my_modal_2').showModal()}>Add Skill</button>
+                        <button className="bg-black py-3 px-8 text-white rounded-full text-sm flex m-auto" onClick={()=>document.getElementById('my_modal_2').showModal()}>Add Collections</button>
                     </div>
                 </div>
             }
@@ -252,11 +256,32 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
                     </button>
 
                     <div className='pt-10'>
-                        <h2 className='text-xl pb-5'>Upload Collections</h2>
+                        <h2 className='text-xl pb-3 border-b border-b-neutral-100'>Upload Collections</h2>
 
-                        <input type="file" disabled={isDisabled} multiple className="file-input w-full max-w-xs text-xs" onChange={handlePostImage}/>
+                        {images.length > 0 &&
+                            <label htmlFor="" for="dropzone" className='cursor-pointer'>
+                                <input type="file" id='dropzone' disabled={isDisabled} multiple className="hidden m-auto mt-3 file-input w-fit rounded-full text-xs bg-neutral-100" onChange={handlePostImage}/>
+                                <p className='flex bg-white border border-neutral-300 text-sm w-fit p-3 px-8 text-black gap-3 items-center mt-5 rounded-full'>Upload More Items<RiUploadCloudLine className='text-lg'/></p>
+                            </label>
+                        }
 
-                        <div className='mt-4 lg:grid 2xl:grid-cols-2 grid grid-cols-2 gap-2 border border-neutral-100 rounded-md '>
+
+                        {images.length === 0 && 
+                        <div className='flex flex-col justify-center gap-20 pt-[15rem] m-auto'>
+                            <div className='flex justify-center m-auto items-center h-0 pb-0 '>
+                                <img src={noData} alt="" className='w-[15rem]'/>
+                            </div>
+
+                            <label htmlFor="" for="dropzone" className='cursor-pointer text-center'>
+                                <input type="file" id='dropzone' disabled={isDisabled} multiple className="hidden m-auto mt-3 file-input w-fit rounded-full text-xs bg-neutral-100" onChange={handlePostImage}/>
+                                <p className='text-sm pt-6'>Click to upload Maximum of 6 items and Minimum of 3</p>
+                                <p className='text-sm pt-2'>Image should not be greater than 3mb</p>
+                                <p className='flex bg-white border border-neutral-300 text-sm w-fit p-3 px-8 text-black gap-3 items-center m-auto mt-5 rounded-full'>Upload <RiUploadCloudLine className='text-lg'/></p>
+                            </label>
+                        </div>
+                        }
+
+                        <div className='mt-4 lg:grid 2xl:grid-cols-2 grid grid-cols-2 gap-2 rounded-md '>
                             {previewUrls.map((url, index) => (
                                 <div className='2xl:w-full w-full 2xl:h-60 xl:h-40 lg:h-20 md:h-20  h-40 bg-slate-200 border border-neutral-100 overflow-hidden relative rounded-lg '>
                                     <img key={index} src={url} alt={`Preview ${index}`} className='rounded-sm w-full h-full object-cover' />
@@ -264,11 +289,13 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
                                 </div>
                             ))}
                         </div>
-
-                        {images.length > 0 &&
-                            <button onClick={handleProfileUpdate} className="btn 2xl:w-fit xl:w-fit lg:w-fit md:w-fit w-full mt-5 px-20 xl:text-xs lg:text-xs md:text-xs  bg-black hover:bg-neutral-800 text-white ">{isLoading2 === true ? <span class="loader"></span> : 'Submit' }</button>
-                        }
                     </div>
+
+                    {images.length > 0 &&
+                        <button disabled={images.length < 3} onClick={handleProfileUpdate} className=" btn 2xl:w-fit mt-5 xl:w-fit lg:w-fit md:w-fit w-full flex items-center gap-2 px-10 xl:text-xs lg:text-xs md:text-xs rounded-full bg-black hover:bg-neutral-800 text-white">
+                            {isLoading2 === true ? <span class="loader"></span> : <>Submit<MdArrowForward /></> }
+                        </button>
+                    }
                 </div>
             </dialog>
 

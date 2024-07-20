@@ -132,7 +132,7 @@ export const CreativeBookings = () => {
                     <label onClick={() => handleClick(eachData)} className='bg-white p-5 rounded-md cursor-pointer' drawer-conten  htmlFor="my-drawer-4">
                       <div className='flex gap-3 items-center'>
                         <div className='rounded-full w-10 h-10 flex items-center justify-center bg-neutral-200 overflow-hidden'>
-                          <img src={eachData.client_profile.profile_pics} className='w-full h-full ' alt="" />
+                          <img src={eachData.client_profile.profile_pics} className='w-full h-full object-cover' alt="" />
                           {/* <p className='font-bold '>{eachData.client_profile.user.fullname.slice(0,2).toUpperCase()}</p> */}
                         </div>
 
@@ -180,7 +180,7 @@ export const CreativeBookings = () => {
               {selectedRequest && 
               <div className='text-center'>
                   <div className='rounded-full flex justify-center bg-neutral-200 items-center m-auto w-20 h-20 overflow-hidden'>
-                    <img src={selectedRequest.client_profile.profile_pics} className='w-full h-full ' alt="" />
+                    <img src={selectedRequest.client_profile.profile_pics} className='w-full h-full object-cover' alt="" />
                     {/* <p className='font-bold text-3xl'>{selectedRequest.client_profile.user.fullname.slice(0,2).toUpperCase()}</p> */}
                   </div>
 
@@ -193,8 +193,8 @@ export const CreativeBookings = () => {
                   </div>
 
                   <div className='mt-5 flex justify-center lg:gap-5 gap-3 lg:px-10 px-5 w-full'>
-                    <button onClick={()=>copyToClipboard(selectedRequest.phone)} className="btn lg:w-full w-full btn-neutral text-base  text-white min-h-[2.6rem] max-h-[2.6rem] flex items-center gap-2">
-                      {copySuccess ? copySuccess : <><FaRegCopy />Contact</> }
+                    <button onClick={()=>copyToClipboard(selectedRequest.phone)} className="btn lg:w-full w-full btn-neutral text-sm  text-white min-h-[2.6rem] max-h-[2.6rem] flex items-center gap-2">
+                      {copySuccess ? copySuccess : <><FaRegCopy />Copy Contact</> }
                     </button>
                   </div>
 

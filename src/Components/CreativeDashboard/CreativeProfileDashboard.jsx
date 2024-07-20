@@ -284,12 +284,11 @@ export const CreativeProfile= () => {
                                         <SwiperSlide>
                                             <div>
                                                 <div className='flex flex-row items-center gap-3 m-auto justify-center'>
-                                                    <div className='border border-neutral-300 w-10 rounded-full'>
-                                                        <img src={review.reviewer.profile_pics} alt="" className='w-10'/>
+                                                    <div className='border border-neutral-300 w-10 h-10 overflow-hidden rounded-full'>
+                                                        <img src={review.reviewer.profile_pics} alt="" className='w-full h-full object-cover'/>
                                                     </div>
                                                     <h2>{review.reviewer.user.fullname}</h2>
                                                 </div>
-
                                                 <p className='text-xs text-center w-9/12 flex m-auto justify-center pt-4 mb-10'>{review.content}</p>
                                             </div>
                                         </SwiperSlide>
