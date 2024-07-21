@@ -229,7 +229,7 @@ const SingleUserCreativeDash = () => {
 
 
     const baseUrl = window.location.origin;
-    const profileUrl = `${baseUrl}/creativeprofile/${id}`;
+    const profileUrl = `${baseUrl}/user-dashboard-single-creative/${id}/`;
     const handleShare = async () => {
         if (navigator.share) {
           try {
