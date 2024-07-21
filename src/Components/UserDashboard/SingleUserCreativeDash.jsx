@@ -280,21 +280,6 @@ const SingleUserCreativeDash = () => {
         fetchTalents();
     }, []);
 
-
-    const [searchTerm, setSearchTerm] = useState('');
-    const filteredItems = allTalents.filter(item => {
-        const searchTermLower = searchTerm.toLowerCase();
-        return (
-          (item.location && item.location.toLowerCase().includes(searchTermLower)) ||
-          (item.category && item.category.toLowerCase().includes(searchTermLower)) ||
-          (item.digital_skills && item.digital_skills.toLowerCase().includes(searchTermLower)) ||
-          (item.work_type && item.work_type.toLowerCase().includes(searchTermLower)) ||
-          (item.display_name && item.display_name.toLowerCase().includes(searchTermLower))||
-          (item.user.fullname && item.user.fullname.toLowerCase().includes(searchTermLower))
-        );
-    });
-
-
   return (
 
     <div className='bg-neutral-100 h-full'>
@@ -654,59 +639,6 @@ const SingleUserCreativeDash = () => {
                 </div>
             </dialog>
         </div>
-
-
-        {isLoading === true ? <span className="loading loading-spinner  loading-sm flex justify-center items-center m-auto lg:my-20 my-10"></span> :
-          <div className='2xl:px-[15rem] xl:px-[5rem] lg:px-[5rem] lg:pt-20 py-0 pb-10'>
-
-            <div>
-                <h2 className='text-xl lg:pl-0 pl-3'>Similar Profiles</h2>
-            </div>
-            <div className='grid 2xl:grid-cols-5 xl:grid-cols-5 lg:grid-cols-5 grid-cols-2 px-3 2xl:gap-8 xl:gap-5 lg:gap-4 gap-3 pt-3'>
-              {filteredItems.length > 0 &&
-                <>
-                  {filteredItems.map((talent) =>(
-                    <div className='bg-white  rounded-md cursor-pointer relative shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]' key={talent.id}>
-                        <div onClick={()=>(navigate(`/user-dashboard-single-creative/${talent.id}/`, { replace: true }), window.location.reload())} className='2xl:h-[13rem] xl-h-[10rem] bg-neutral-50 lg:h-[12rem] h-[9rem] overflow-hidden rounded-md'>
-                          <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
-                        </div>
-
-                      <div className='flex flex-row items-center pt-3 p-3'>
-
-                        <div className='flex items-center gap-2'>
-                          <div className='2xl:w-6 xl:w-6 lg:w-6 2xl:h-6 xl:h-6 lg:h-6 overflow-hidden w-5 h-5 rounded-full'>
-                            <img src={talent.profile_pics} alt="" className='2xl:w-6 xl:w-6 lg:w-6 2xl:h-6 xl:h-6 lg:h-6 w-5 h-5 object-cover'/>
-                          </div>
-
-                          <div>
-                            <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] text-xs font-semibold'>{talent.user.fullname}</h3>
-                            <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] text-[10px] flex items-center gap-2'>{talent.display_name} <GoTools /></p>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className='flex lg:flex-row flex-col lg:gap-0 gap-2 p-3 pt-0'>
-                        <p className='text-xs flex gap-2 items-center'><FaLocationDot className='text-accent'/>{talent.location.slice(0, 10)}. . .</p>
-                        <p className='text-xs lg:ml-auto'>{talent.work_type}</p>
-                      </div>
-
-                    </div>
-                  ))}
-                </> 
-              }
-            </div>
-
-            {filteredItems.length <= 0 && (
-              <div className='flex items-center w-fit justify-center m-auto h-[50vh] text-center'>
-                <div className=''>
-                  <img src={noData} alt="" className='w-[15rem] flex m-auto opacity-70'/>
-                  <h2 className='text-xl font-bold'>No results found</h2>
-                  <p className='text-xs'>It seems we can’t find any results <br /> based on your search.</p>
-                </div>
-              </div>
-            )}
-          </div>
-        }
 
     </div>
   )
