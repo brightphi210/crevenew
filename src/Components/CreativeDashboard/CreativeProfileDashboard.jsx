@@ -130,180 +130,180 @@ export const CreativeProfile= () => {
 
         {isLoading === true ? (
             <Loader />
-        ) : (
+            ) : (
 
             <div className='lg:p-20 pt-20 lg:pl-[18rem] p-5'>
-            <div>
-                <div className='flex items-center py-5'>
-                    <h2 className='text-2xl font-bold'>My Profile</h2>
-                    <Link to={'/creative-dashboard-profile-update'} className='ml-auto'>
-                            <button className='ml-auto flex items-center text-sm gap-2 underline'>
-                            <MdModeEditOutline />Edit
-                        </button>
-                    </Link>
-                </div>
-
-                <div className='color flex lg:p-8 p-5 rounded-lg text-white'>
-
-                    <div className='flex items-center gap-6'>
-                        <div className='border-2 border-white rounded-full w-24 h-24 overflow-hidden'>
-                            <img src={profileData.profile_pics} alt="" className='lg:w-full h-full  w-full object-cover'/>
-                        </div>
-
-                        <div>
-                            <h2 className='text-sm'>{userToken.name} <span className='text-xs text-neutral-300'>({userToken.role})</span></h2>
-                            <p className='flex items-center gap-2 py-2 lg:text-sm text-xs'>{profileData.reviewed && profileData.reviewed.length} Reviews</p>
-
-                            {profileData.verified === true ? (
-                                <button className='bg-accent text-xs py-2 px-4 rounded-full flex items-center gap-2'><RiVerifiedBadgeFill />verified</button>
-                            ) : (
-                                
-                                <button className='bg-accent text-xs py-2 px-4 rounded-full flex items-center gap-2'><GoUnverified className='font-bold' />Unverified</button>
-                            )}
-                        </div>
+                <div>
+                    <div className='flex items-center py-5'>
+                        <h2 className='text-2xl font-bold'>My Profile</h2>
+                        <Link to={'/creative-dashboard-profile-update'} className='ml-auto'>
+                                <button className='ml-auto flex items-center text-sm gap-2 underline'>
+                                <MdModeEditOutline />Edit
+                            </button>
+                        </Link>
                     </div>
 
-                    <div className='ml-auto w-40 lg:block hidden'>
-                        <img src={comm} alt="" />
-                    </div>
+                    <div className='color flex lg:p-8 p-5 rounded-lg text-white'>
 
-                </div>
-            </div>
-
-            <div className='flex gap-10 2xl:flex-row xl:flex-col flex-col-reverse mt-10'>
-                    <div className='2xl:w-1/2 xl:w-full w-full border border-neutral-200 lg:p-10 p-5 rounded-md'>
-                        <h2 className='lg:text-lg text-base pb-3'>General Informations</h2>
-                        <hr />
-
-                        <div className='py-4'>
-                            <h2 className='text-sm font-semibold'>Work Type</h2>
-                            <p className='text-sm pt-4 flex items-center gap-2'><TbSmartHome className='text-accent text-sm'/>{profileData.work_type}</p>
-                        </div>
-
-                        <div className='py-4'>
-                            <h2 className='text-sm font-semibold'>Location</h2>
-                            <p className='flex pt-4 items-center gap-2 text-sm'><FaLocationDot className='text-accent text-sm'/>{profileData.location}</p>
-                        </div>
-
-                        <div className='py-4'>
-                            <h2 className='text-sm font-semibold'>Language</h2>
-                            <p className='text-sm pt-4 flex items-center gap-2'> <HiLanguage className='text-accent text-sm'/>{profileData.language}</p>
-                        </div>
-
-                        <div className='py-4'>
-                            <h2 className='text-sm pb-4 font-semibold'>Contact</h2>
-
-                            {/* <a href={whatsappURL} target="_blank" rel="noopener noreferrer"> */}
-                                <p className='text-sm mb-2 flex items-center gap-2'><TbBrandWhatsapp className='text-accent text-sm'/>whatsapp</p>
-                            {/* </a> */}
-
-                            {/* <Link to={profileData.whatsapp_link}>
-                                <p className='text-sm mb-2 flex items-center gap-2'><TbBrandWhatsapp className='text-accent text-sm'/>whatsapp</p>
-                            </Link> */}
-
-                            <a href={`tel:${profileData.phone_number}`}>
-                                <p className='text-sm py-2 flex items-center gap-2'><MdOutlinePhoneInTalk className='text-accent text-sm'/>
-                                {profileData.phone_number}
-                                </p>
-                            </a>
-
-                            <Link to={profileData.website_link}>
-                                <p className='text-sm mt-2 flex items-center gap-2'><FaGlobe className='text-accent text-sm'/>website</p>
-                            </Link>
-                        </div>
-
-                    </div>
-
-                    <div className='2xl:w-3/5 xl:w-full w-full border border-neutral-200 lg:p-10 p-5 rounded-md'>
-                        <h2 className=''>Details</h2>
-                        <hr />
-
-                        <div className='pt-5'>
-
-                            <div className='flex lg:flex-row gap-3 flex-col lg:items-center'>
-                                <h2 className='text-xl flex items-center gap-3'><FaToolbox />{profileData.display_name}</h2>
-                                <p className='lg:ml-auto text-sm'>Starting Price : <strong>N{profileData.starting_price}</strong></p>
+                        <div className='flex items-center gap-6'>
+                            <div className='border-2 border-white rounded-full w-24 h-24 overflow-hidden'>
+                                <img src={profileData.profile_pics} alt="" className='lg:w-full h-full  w-full object-cover'/>
                             </div>
-
-                            <div className='py-5 flex flex-wrap gap-3'>
-                                {profileData.dskills &&
-                                    profileData.dskills.map((skill, index) => (
-                                    <button className='border border-neutral-300 py-2 px-4 text-xs rounded-md flex gap-1 items-center' key={index}>
-                                        <GoDotFill className='mycolor'/>{skill.skill}
-                                    </button>
-                                ))}
-                            </div>
-
-                            <p className='text-xs pb-5 text-justify'>
-                                {profileData.about}
-                            </p>
 
                             <div>
-                                <PhotoProvider>
+                                <h2 className='text-sm'>{userToken.name} <span className='text-xs text-neutral-300'>({userToken.role})</span></h2>
+                                <p className='flex items-center gap-2 py-2 lg:text-sm text-xs'>{profileData.reviewed && profileData.reviewed.length} Reviews</p>
 
-                                    <PhotoView src={profileData.cover_image}>
-                                        <div className='w-full 2xl:h-[30rem] xl:h-[15rem] lg-[15rem] overflow-hidden  lg:rounded-lg rounded-md cursor-pointer bg-neutral-200'>
-                                            <img src={profileData.cover_image} alt="" className='w-full h-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
-                                        </div>
-                                    </PhotoView>
-
-
-                                    <div className="2xl:grid 2xl:grid-cols-4 xl:grid xl:grid-cols-3 lg:grid lg:grid-cols-3 gap-5 w-full mt-5 grid grid-cols-2 ">
-                                        {profileData.images && (
-                                            <>
-                                            
-                                            {profileData.images.map((image)=>(
-                                                <PhotoView  src={image.image}>
-                                                    <div className='2xl:h-[8rem] xl:h-[8rem] lg:h-[8rem] h-[8rem] overflow-hidden w-full cursor-pointer rounded-md bg-neutral-200'>
-                                                        <img src={image.image} alt="" className='w-full h-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
-                                                    </div>
-                                                </PhotoView>
-                                            ))}
-                                            </>
-                                        )}
-                                    </div>
-                                </PhotoProvider>
+                                {profileData.verified === true ? (
+                                    <button className='bg-accent text-xs py-2 px-4 rounded-full flex items-center gap-2'><RiVerifiedBadgeFill />verified</button>
+                                ) : (
+                                    
+                                    <button className='bg-accent text-xs py-2 px-4 rounded-full flex items-center gap-2'><GoUnverified className='font-bold' />Unverified</button>
+                                )}
                             </div>
-
-                            <div className='w-full max-w-full pt-5'>
-                                <h2 className='text-sm py-3'>Reviews</h2>
-                                {profileData.reviewed && <>
-                                <div className='w-full'>
-                                    <Swiper
-                                        cssMode={true}
-                                        navigation={true}
-                                        pagination={true}
-                                        mousewheel={true}
-                                        loop={true}
-                                        keyboard={true}
-                                        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-                                        className="mySwiper"
-                                    >
-
-                                    {profileData.reviewed.map((review)=> <>
-                                        <SwiperSlide>
-                                            <div>
-                                                <div className='flex flex-row items-center gap-3 m-auto justify-center'>
-                                                    <div className='border border-neutral-300 w-10 h-10 overflow-hidden rounded-full'>
-                                                        <img src={review.reviewer.profile_pics} alt="" className='w-full h-full object-cover'/>
-                                                    </div>
-                                                    <h2>{review.reviewer.user.fullname}</h2>
-                                                </div>
-                                                <p className='text-xs text-center w-9/12 flex m-auto justify-center pt-4 mb-10'>{review.content}</p>
-                                            </div>
-                                        </SwiperSlide>
-                                    </>)}
-                                    </Swiper>
-                                </div>
-                                </>}
-                            </div>
-
-                            <>
-                                {profileData.reviewed && profileData.reviewed.length <= 0 && <p className='text-center text-sm'>No Review Found</p>}
-                            </>
                         </div>
+
+                        <div className='ml-auto w-40 lg:block hidden'>
+                            <img src={comm} alt="" />
+                        </div>
+
                     </div>
-            </div>
+                </div>
+
+                <div className='flex gap-10 2xl:flex-row xl:flex-col flex-col-reverse mt-10'>
+                        <div className='2xl:w-1/2 xl:w-full w-full border border-neutral-200 lg:p-10 p-5 rounded-md'>
+                            <h2 className='lg:text-lg text-base pb-3'>General Informations</h2>
+                            <hr />
+
+                            <div className='py-4'>
+                                <h2 className='text-sm font-semibold'>Work Type</h2>
+                                <p className='text-sm pt-4 flex items-center gap-2'><TbSmartHome className='text-accent text-sm'/>{profileData.work_type}</p>
+                            </div>
+
+                            <div className='py-4'>
+                                <h2 className='text-sm font-semibold'>Location</h2>
+                                <p className='flex pt-4 items-center gap-2 text-sm'><FaLocationDot className='text-accent text-sm'/>{profileData.location}</p>
+                            </div>
+
+                            <div className='py-4'>
+                                <h2 className='text-sm font-semibold'>Language</h2>
+                                <p className='text-sm pt-4 flex items-center gap-2'> <HiLanguage className='text-accent text-sm'/>{profileData.language}</p>
+                            </div>
+
+                            <div className='py-4'>
+                                <h2 className='text-sm pb-4 font-semibold'>Contact</h2>
+
+                                {/* <a href={whatsappURL} target="_blank" rel="noopener noreferrer"> */}
+                                    <p className='text-sm mb-2 flex items-center gap-2'><TbBrandWhatsapp className='text-accent text-sm'/>whatsapp</p>
+                                {/* </a> */}
+
+                                {/* <Link to={profileData.whatsapp_link}>
+                                    <p className='text-sm mb-2 flex items-center gap-2'><TbBrandWhatsapp className='text-accent text-sm'/>whatsapp</p>
+                                </Link> */}
+
+                                <a href={`tel:${profileData.phone_number}`}>
+                                    <p className='text-sm py-2 flex items-center gap-2'><MdOutlinePhoneInTalk className='text-accent text-sm'/>
+                                    {profileData.phone_number}
+                                    </p>
+                                </a>
+
+                                <Link to={profileData.website_link}>
+                                    <p className='text-sm mt-2 flex items-center gap-2'><FaGlobe className='text-accent text-sm'/>website</p>
+                                </Link>
+                            </div>
+
+                        </div>
+
+                        <div className='2xl:w-3/5 xl:w-full w-full border border-neutral-200 lg:p-10 p-5 rounded-md'>
+                            <h2 className=''>Details</h2>
+                            <hr />
+
+                            <div className='pt-5'>
+
+                                <div className='flex lg:flex-row gap-3 flex-col lg:items-center'>
+                                    <h2 className='text-xl flex items-center gap-3'><FaToolbox />{profileData.display_name}</h2>
+                                    <p className='lg:ml-auto text-sm'>Starting Price : <strong>N{profileData.starting_price}</strong></p>
+                                </div>
+
+                                <div className='py-5 flex flex-wrap gap-3'>
+                                    {profileData.dskills &&
+                                        profileData.dskills.map((skill, index) => (
+                                        <button className='border border-neutral-300 py-2 px-4 text-xs rounded-md flex gap-1 items-center' key={index}>
+                                            <GoDotFill className='mycolor'/>{skill.skill}
+                                        </button>
+                                    ))}
+                                </div>
+
+                                <p className='text-xs pb-5 text-justify'>
+                                    {profileData.about}
+                                </p>
+
+                                <div>
+                                    <PhotoProvider>
+
+                                        <PhotoView src={profileData.cover_image}>
+                                            <div className='w-full 2xl:h-[30rem] xl:h-[15rem] lg-[15rem] overflow-hidden  lg:rounded-lg rounded-md cursor-pointer bg-neutral-200'>
+                                                <img src={profileData.cover_image} alt="" className='w-full h-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
+                                            </div>
+                                        </PhotoView>
+
+
+                                        <div className="2xl:grid 2xl:grid-cols-4 xl:grid xl:grid-cols-3 lg:grid lg:grid-cols-3 gap-5 w-full mt-5 grid grid-cols-2 ">
+                                            {profileData.images && (
+                                                <>
+                                                
+                                                {profileData.images.map((image)=>(
+                                                    <PhotoView  src={image.image}>
+                                                        <div className='2xl:h-[8rem] xl:h-[8rem] lg:h-[8rem] h-[8rem] overflow-hidden w-full cursor-pointer rounded-md bg-neutral-200'>
+                                                            <img src={image.image} alt="" className='w-full h-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
+                                                        </div>
+                                                    </PhotoView>
+                                                ))}
+                                                </>
+                                            )}
+                                        </div>
+                                    </PhotoProvider>
+                                </div>
+
+                                <div className='w-full max-w-full pt-5'>
+                                    <h2 className='text-sm py-3'>Reviews</h2>
+                                    {profileData.reviewed && <>
+                                    <div className='w-full'>
+                                        <Swiper
+                                            cssMode={true}
+                                            navigation={true}
+                                            pagination={true}
+                                            mousewheel={true}
+                                            loop={true}
+                                            keyboard={true}
+                                            modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+                                            className="mySwiper"
+                                        >
+
+                                        {profileData.reviewed.map((review)=> <>
+                                            <SwiperSlide>
+                                                <div>
+                                                    <div className='flex flex-row items-center gap-3 m-auto justify-center'>
+                                                        <div className='border border-neutral-300 w-10 h-10 overflow-hidden rounded-full'>
+                                                            <img src={review.reviewer.profile_pics} alt="" className='w-full h-full object-cover'/>
+                                                        </div>
+                                                        <h2>{review.reviewer.user.fullname}</h2>
+                                                    </div>
+                                                    <p className='text-xs text-center w-9/12 flex m-auto justify-center pt-4 mb-10'>{review.content}</p>
+                                                </div>
+                                            </SwiperSlide>
+                                        </>)}
+                                        </Swiper>
+                                    </div>
+                                    </>}
+                                </div>
+
+                                <>
+                                    {profileData.reviewed && profileData.reviewed.length <= 0 && <p className='text-center text-sm'>No Review Found</p>}
+                                </>
+                            </div>
+                        </div>
+                </div>
             </div>
         )}
     </div>

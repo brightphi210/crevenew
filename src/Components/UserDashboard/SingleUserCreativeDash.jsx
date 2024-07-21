@@ -38,6 +38,8 @@ import { useMemo } from "react";
 import validator from 'validator' 
 import successImg from '../Images/gif1.gif'
 import UserNavbar from './UserNavbar';
+import UserSideBar from './UserSideBar';
+import { TbAlertTriangle } from 'react-icons/tb';
 
 const SingleUserCreativeDash = () => {
     const {id} = useParams()
@@ -227,59 +229,83 @@ const SingleUserCreativeDash = () => {
 
 
 
+    const handleShare = async () => {
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: 'Check out this Talent on creve',
+              text: 'This Talent is good and reliable to work with',
+              url: url3
+            });
+            console.log('Content shared successfully');
+          } catch (error) {
+            console.error('Error sharing content:', error);
+          }
+        } else {
+          console.error('Web Share API not supported in this browser');
+        }
+      };
+    
+
+
     
   return (
 
     <div className=''>
-      <UserNavbar />
+        <div>
+            <UserNavbar show={show} handleShow={handleShow}/>
+            <div className='z-40 lg:hidden'>
+                <UserSideBar show={show} />
+            </div>
+        </div>
+
+
         <div className={isLoading === true ? 'bg-neutral-100 pb-10 h-screen flex justify-center  px-0' : 'bg-neutral-100 pb-10 2xl:px-[15rem] xl:px-[5rem] lg:px-[5rem] h-full px-0'}>
 
             {showModal === true &&
-            <div role="alert" data-aos="fade-up" data-aos-duration="500"  className="alert z-50 alert-success fixed text-green-700 lg:w-fit w-[80%] m-auto right-0 left-0  top-24 h-[3rem] flex justify-center items-center rounded-full bg-green-100 border border-green-500">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 shrink-0 stroke-current"
-                fill="none"
-                viewBox="0 0 24 24">
-                <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            
-            <span>Saved Succesfully</span>
-            </div>
+                <div role="alert" data-aos="fade-up" data-aos-duration="500"  className="alert z-50 alert-success fixed text-green-700 lg:w-fit w-[80%] m-auto right-0 left-0  top-24 h-[3rem] flex justify-center items-center rounded-full bg-green-100 border border-green-500">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 shrink-0 stroke-current"
+                    fill="none"
+                    viewBox="0 0 24 24">
+                    <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                
+                <span>Saved Succesfully</span>
+                </div>
             } 
 
             { showModal === false &&
-            <div role="alert" data-aos="fade-up" data-aos-duration="500"  className="alert z-50 alert-success fixed text-green-700 lg:w-fit w-[80%] m-auto right-0 left-0  top-24 h-[3rem] flex justify-center items-center rounded-full bg-green-100 border border-green-500">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 shrink-0 stroke-current"
-                fill="none"
-                viewBox="0 0 24 24">
-                <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+                <div role="alert" data-aos="fade-up" data-aos-duration="500"  className="alert z-50 alert-success fixed text-green-700 lg:w-fit w-[80%] m-auto right-0 left-0  top-24 h-[3rem] flex justify-center items-center rounded-full bg-green-100 border border-green-500">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 shrink-0 stroke-current"
+                        fill="none"
+                        viewBox="0 0 24 24">
+                        <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
 
-            <span>Removed Succesfully</span>
-            </div>
+                    <span>Removed Succesfully</span>
+                </div>
             }
 
 
 
             {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto "></span> : <>
+                <div className='w-full flex lg:pt-[7rem] px-3 pt-[6rem] items-center py-3  '>
+                    <p onClick={goBack} className='items-center text-lg flex justify-center text-black bg-neutral-200 lg:p-3 p-2 rounded-full w-fit cursor-pointer'><FaArrowLeft className='cursor-pointer'/></p>
+                    <button onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-black text-white py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-200 ml-auto'>Get in touch</button>
 
-
-            <div className='w-full flex lg:pt-[7rem] px-3 pt-[6rem] items-center py-3  '>
-                <p onClick={goBack} className='items-center text-lg flex justify-center text-black bg-neutral-200 lg:p-3 p-2 rounded-full w-fit cursor-pointer'><FaArrowLeft className='cursor-pointer'/></p>
-                <button onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-black text-white py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-200 ml-auto'>Get in touch</button>
-
-            </div>
+                </div>
             
                 <div className='flex  relative lg:pt-[2rem] pt-[1rem] px-3'>
                     <div className=''>
@@ -400,7 +426,7 @@ const SingleUserCreativeDash = () => {
 
                             <div className='flex gap-3'>
                                 <button onClick={()=>document.getElementById('my_modal_2').showModal()} className='bg-accent py-3 px-5 mt-5 text-sm text-white rounded-md w-full'>Drop Reviews</button>
-                                <button className='bg-black py-3 px-5 mt-5 text-sm text-white flex justify-center items-center m-auto gap-3 rounded-md w-full'>Share <IoShareSocialSharp /></button>
+                                <button onClick={handleShare} className='bg-black py-3 px-5 mt-5 text-sm text-white flex justify-center items-center m-auto gap-3 rounded-md w-full'>Share <IoShareSocialSharp /></button>
                             </div>
 
                         </div>
@@ -455,31 +481,31 @@ const SingleUserCreativeDash = () => {
 
 
             <dialog id="my_modal_3" className="modal">
-                <div className="modal-box rounded-md lg:p-10 p-8 lg:w-full w-[96%] lg:h-fit h-screen">
+                <div className="modal-box rounded-md lg:p-10 p-5 lg:w-full w-[96%] lg:h-fit h-screen">
                     <form method="dialog">
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
-                    <h3 className="font-bold text-lg pb-5 pt-10">Let's get your <br className='lg:hidden block'/> request  ready to send</h3>
+                    <h3 className="font-bold text-xl pb-5 pt-10">Let's get your request ready to send</h3>
 
                     <form action="" onSubmit={makeRequest}>
 
                         <div>
-                            <p className="py-4 pb-2 text-sm">What are you looking to work on...</p>
+                            <p className="py-4 pb-2 text-sm font-semibold">What are you looking to work on...</p>
                             <input 
                                 type="text"  
                                 required placeholder="e.g Funiture design, repairs, websites etc." 
-                                className="input text-sm input-bordered w-full" 
+                                className="input text-sm py-7 input-bordered w-full" 
                                 value={title}
                                 onChange={(e)=>setTitle(e.target.value)}
                             />
                         </div>
 
                         <div>
-                            <p className="py-4 pb-2 text-sm">Provide you phone number...</p>
+                            <p className="py-4 pb-2 text-sm font-semibold">Provide you phone number...</p>
                             <input 
                                 type="tel"  
                                 required placeholder="Phone Number e.g 09086655698" 
-                                className="input text-sm input-bordered w-full" 
+                                className="input text-sm py-7 input-bordered w-full" 
                                 value={phone}
                                 onChange={validatePhone}
                             />
@@ -487,7 +513,7 @@ const SingleUserCreativeDash = () => {
                         </div>
 
                         <div>
-                            <p className="py-6 pb-2 text-sm">Tell us more about the project</p>
+                            <p className="py-3 pb-2 text-sm font-semibold">Tell us more about the project</p>
                             <textarea 
                                 required 
                                 className="textarea textarea-bordered w-full min-w-full h-[13rem]" 
@@ -499,7 +525,7 @@ const SingleUserCreativeDash = () => {
 
                         <div className='flex items-center text-sm pt-5'>
                             <button className='underline' onClick={()=>document.getElementById('my_modal_3').close()}>Nevermind</button>
-                            <button disabled={!isBooked} type='submit' className={`ml-auto py-2 px-4 color text-white rounded-full ${!isBooked ? 'opacity-50 cursor-not-allowed' : ''}`} >
+                            <button disabled={!isBooked} type='submit' className={`ml-auto py-3 px-4 color text-white rounded-full ${!isBooked ? 'opacity-50 cursor-not-allowed' : ''}`} >
                                 {isLoading2 === true ? <span className="loading loading-spinner loading-sd"></span> : 'Send Request' }
                             </button>
                         </div>
@@ -511,16 +537,16 @@ const SingleUserCreativeDash = () => {
 
 
             <dialog id="my_modal_2" className="modal">
-                <div className="modal-box rounded-md lg:p-10 p-6 lg:w-full w-[96%] py-10">
+                <div className="modal-box rounded-md lg:p-10 p-5 lg:w-full w-[96%] py-10">
                     <form method="dialog">
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
-                    <h3 className="font-bold text-lg pb-5">Leave a review</h3>
+                    <h3 className="font-bold text-2xl pb-3">Leave a review</h3>
 
                     <form action="" onSubmit={dropReview}>
 
                         <div>
-                            <p className="py-1 pb-2 text-sm">Kindly leave a review for this creative</p>
+                            <p className="py-1 pb-2 text-sm font-semibold">Kindly leave a review for this creative</p>
                             <textarea 
                                 required 
                                 className="textarea textarea-bordered w-full min-w-full h-[13rem]" 
@@ -532,7 +558,7 @@ const SingleUserCreativeDash = () => {
 
                         <div className='flex items-center text-sm pt-5'>
                             <button className='underline' onClick={()=>document.getElementById('my_modal_2').close()}>Nevermind</button>
-                            <button className='ml-auto py-2 px-4 color text-white rounded-full'>{isLoading2 === true ? <span className="loading loading-spinner loading-sd"></span> : 'Send Review'}</button>
+                            <button className='ml-auto py-3 px-5 color text-xs text-white rounded-full'>{isLoading2 === true ? <span className="loading loading-spinner loading-sd"></span> : 'Send Review'}</button>
                         </div>
 
                     </form>
@@ -542,20 +568,26 @@ const SingleUserCreativeDash = () => {
 
 
             <dialog id="my_modal_1" className="modal">
-                <div className="modal-box rounded-2xl lg:p-10 p-6 py-10 lg:w-full w-[96%]">
+                <div className="modal-box rounded-2xl lg:p-10 py-10 lg:w-full w-[96%]">
                     <form method="dialog">
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
-                    <div className='text-center'>
+                    <div className='text-center px-4'>
                         <div className='flex m-auto justify-center'>
                             <img src={successImg} alt="" className='w-28'/>
                         </div>
-                        <h3 className="font-medium text-lg">Your message was Sent!</h3>
-                        <h2 className='text-2xl py-3 pb-6 font-bold'>{creativeData.phone_number}</h2>
-                        <a href={`tel:${creativeData.phone_number}`}>
-                            <p className='text-white bg-black w-full rounded-full py-3 text-sm'>Call Now</p>
-                        </a>
-                        {/* <button className='text-white bg-black w-full rounded-full py-3 text-sm' onClick={()=>copyToClipboard(creativeData.phone_number)}>{copySuccess ? copySuccess : 'Copy Number to call'}</button> */}
+                        <h2 className='text-2xl py-3 pb-2 font-bold'>{creativeData.phone_number}</h2>
+                        <h3 className="font-medium text-lg pb-6">Your message was Sent!</h3>
+
+                        <div className='flex gap-3'>
+                            <Link to={`tel:${creativeData.phone_number}`} className='w-full'>
+                                <p className='text-white bg-black  rounded-full py-2.5 text-sm'>Call Now</p>
+                            </Link>
+                            <button className='text-black bg-white border border-neutral-400 w-full rounded-full py-2 text-sm' onClick={()=>copyToClipboard(creativeData.phone_number)}>{copySuccess ? copySuccess : 'Copy'}</button>
+                        </div>
+
+                        <p className='text-green-600 bg-green-50 flex justify-center m-auto items-center mt-10 p-2.5 text-sm rounded-lg gap-3 border border-green-600'><TbAlertTriangle />Copy Talents number to call </p>
+                        <p className='m-auto flex justify-center w-fit text-xs gap-2 pt-6'>Need any help ? <span className='text-blue-500 underline cursor-pointer'>Contact us</span></p>
                     </div>
                 </div>
             </dialog>
