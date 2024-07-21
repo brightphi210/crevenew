@@ -16,20 +16,16 @@ const Footer = () => {
             <div className=''>
 
                 <h2 className='font-semibold text-sm text-neutral-500'>Categories</h2>
-                <ul className='flex flex-col gap-3 pt-7 2xl:text-lg xl:text-sm lg:text-sm text-lg'>
-                    <Link to={'/' + 'allTalents'}><li>Mobile Dev</li></Link>
-                    <Link to={'/' + 'allTalents'}><li>Furniture Making</li></Link>
-                    <Link to={'/' + 'allTalents'}><li>Backend Dev</li></Link>
-                    <Link to={'/' + 'allTalents'}><li>Cobbling</li></Link>
-                    <Link to={'/' + 'allTalents'}><li>UI/UX</li></Link>
-                    <Link to={'/' + 'allTalents'}><li>Photography</li></Link>
+                <ul className='flex flex-col gap-3 pt-7 2xl:text-lg xl:text-sm lg:text-sm text-sm'>
+                    <Link to={'/' + 'allTalents'}><li>Digital</li></Link>
+                    <Link to={'/' + 'allTalents'}><li>Non-DIgital</li></Link>
                 </ul>
             </div>
 
 
             <div className=''>
                 <h2 className='font-semibold text-sm text-neutral-500'>Client</h2>
-                <ul className='flex flex-col gap-3 pt-7 2xl:text-lg xl:text-xs lg:text-xs text-lg'>
+                <ul className='flex flex-col gap-3 pt-7 2xl:text-lg xl:text-xs lg:text-xs text-sm'>
                     <li>Hire with ease</li>
                     <li>Report Talent</li>
                     <li>Become a talent</li>
@@ -39,7 +35,7 @@ const Footer = () => {
 
             <div className=''>
                 <h2 className='font-semibold text-sm text-neutral-500'>Resources</h2>
-                <ul className='flex flex-col gap-3 pt-7 2xl:text-lg xl:text-xs lg:text-xs text-lg'>
+                <ul className='flex flex-col gap-3 pt-7 2xl:text-lg xl:text-xs lg:text-xs text-sm'>
                     <Link to={'/'}><li>Help & Support</li></Link>
                     <Link to={'/' + 'blog'}><li>Blog</li></Link>
                     <Link to={''}><li>Community</li></Link>
@@ -49,7 +45,7 @@ const Footer = () => {
 
             <div className=''>
                 <h2 className='font-semibold text-sm text-neutral-500'>Company</h2>
-                <ul className='flex flex-col gap-3 pt-7 2xl:text-lg xl:text-xs lg:text-xs text-lg'>
+                <ul className='flex flex-col gap-3 pt-7 2xl:text-lg xl:text-xs lg:text-xs text-sm'>
                     <Link to={'/' + 'about'}><li>About us</li></Link>
                     <li>Careers</li>
                     <li>Contact us</li>
