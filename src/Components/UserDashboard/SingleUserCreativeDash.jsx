@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import img from '../Images/Avatars.png'
-import { IoClose } from "react-icons/io5";
+import { FaArrowLeft } from "react-icons/fa6";
 
 
 import { MdWorkOutline } from "react-icons/md";
-
 import { GoUnverified } from "react-icons/go";
 import { GoDotFill } from "react-icons/go";
 import { IoLanguage } from "react-icons/io5";
@@ -13,6 +12,8 @@ import { MdOutlineWhatsapp } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
 import { PiPhoneCallFill } from "react-icons/pi";
 import { MdFavoriteBorder } from "react-icons/md";
+import { MdOutlineFavorite } from "react-icons/md";
+import { IoMailUnread } from "react-icons/io5";
 
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
@@ -36,6 +37,7 @@ import { useMemo } from "react";
 
 import validator from 'validator' 
 import successImg from '../Images/gif1.gif'
+import UserNavbar from './UserNavbar';
 
 const SingleUserCreativeDash = () => {
     const {id} = useParams()
@@ -76,8 +78,11 @@ const SingleUserCreativeDash = () => {
     }, []);
 
 
-    // console.log(creativeData);
+    const [show, setShow] = useState(false)
 
+    const handleShow = () => {
+      setShow(!show)
+    }
 
     const navigate = useNavigate()
     const goBack = () =>{
@@ -104,10 +109,6 @@ const SingleUserCreativeDash = () => {
            setPhoneErr('Enter valid Phone Number !')
         }
     }
-
-    console.log(isBooked);
-
-
 
     const makeRequest = async (e) =>{
         e.preventDefault();
@@ -152,8 +153,6 @@ const SingleUserCreativeDash = () => {
           (err) => setCopySuccess('Failed to copy!')
         );
     };
-
-
 
     const [content, setContent] = useState('')
     const url3 =`${BASE_URL}/reviews/${id}/`
@@ -232,11 +231,7 @@ const SingleUserCreativeDash = () => {
   return (
 
     <div className=''>
-        <div className='fixed z-50 w-full 2xl:px-[15rem] xl:px-[5rem] lg:px-[5rem] flex bg-black items-center text-white p-5 py-3'>
-            <h2 className='lg:text-2xl text-lg'>Candidates Profile</h2>
-            <p onClick={goBack} className='ml-auto items-center text-lg flex justify-center text-black bg-neutral-200 lg:p-3 p-2 rounded-full w-fit cursor-pointer'><IoClose className='cursor-pointer'/></p>
-        </div>
-
+      <UserNavbar />
         <div className={isLoading === true ? 'bg-neutral-100 pb-10 h-screen flex justify-center  px-0' : 'bg-neutral-100 pb-10 2xl:px-[15rem] xl:px-[5rem] lg:px-[5rem] h-full px-0'}>
 
             {showModal === true &&
@@ -278,8 +273,15 @@ const SingleUserCreativeDash = () => {
 
 
             {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto "></span> : <>
+
+
+            <div className='w-full flex lg:pt-[7rem] px-3 pt-[6rem] items-center py-3  '>
+                <p onClick={goBack} className='items-center text-lg flex justify-center text-black bg-neutral-200 lg:p-3 p-2 rounded-full w-fit cursor-pointer'><FaArrowLeft className='cursor-pointer'/></p>
+                <button onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-black text-white py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-200 ml-auto'>Get in touch</button>
+
+            </div>
             
-                <div className='flex  relative lg:pt-[10rem] pt-[8rem] px-3'>
+                <div className='flex  relative lg:pt-[2rem] pt-[1rem] px-3'>
                     <div className=''>
                         <div className='flex  items-center gap-5'>
                             <div className='w-10 h-10 rounded-full overflow-hidden'>
@@ -289,8 +291,8 @@ const SingleUserCreativeDash = () => {
                             {creativeData.user && (
 
                                 <div>
-                                    <h2 className='text-sm'>{creativeData.user.fullname}</h2>
-                                    <p className='text-xs'>{creativeData.display_name}</p>
+                                    <h2 className='text-base'>{creativeData.user.fullname}</h2>
+                                    <p className='text-sm'>{creativeData.display_name}</p>
                                 </div>
                             )}
 
@@ -298,11 +300,9 @@ const SingleUserCreativeDash = () => {
                         </div>
                     </div>
 
-                    <div className='ml-auto flex items-center gap-1 '>
-                        <p onClick={handleFavoritemClick} className='bg-white border border-neutral-300 py-3 lg:px-5 px-4 cursor-pointer rounded-full lg:text-sm text-xs  w-fit flex items-center gap-2'>{isFavorite ? 'remove' : 'Save'}</p>
-                        {/* <p className='bg-white border 2xl:hidden block border-neutral-200 lg:p-3 p-2 cursor-pointer rounded-full lg:text-xl text-base'><MdOutlineMarkEmailUnread /></p> */}
-                        {/* <p onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-white border 2xl:hidden block border-neutral-200 lg:p-3 p-2 cursor-pointer rounded-full lg:text-xl text-base'><RiSendPlane2Line /></p> */}
-                        <button onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-black text-white py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-200'>Get in touch</button>
+                    <div className='ml-auto flex items-center gap-2 '>
+                        <p onClick={handleFavoritemClick} className='bg-white border border-green-900 py-2 lg:px-2 px-2 cursor-pointer rounded-full lg:text-sm text-xs  w-fit flex items-center gap-2'>{isFavorite ? <MdOutlineFavorite className='text-lg text-green-900'/> : <MdFavoriteBorder className='text-lg text-green-900'/>}</p>
+                        <button onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-white text-black py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-200'>Request</button>
                     </div>
                 </div>
 
@@ -324,11 +324,11 @@ const SingleUserCreativeDash = () => {
                                 {creativeData.images.map((Image)=>(
 
                                     <PhotoProvider>
-                                    <div className='h-[13rem] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-white lg:w-full w-full overflow-hidden rounded-md'>
-                                        <PhotoView src={Image.image}>
-                                            <img src={Image.image} alt="" className='cursor-pointer h-[13rem] w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
-                                        </PhotoView>
-                                    </div>
+                                        <div className='lg:h-[13rem] h-[11rem] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-white lg:w-full w-full overflow-hidden rounded-md'>
+                                            <PhotoView src={Image.image}>
+                                                <img src={Image.image} alt="" className='cursor-pointer lg:h-[13rem] h-[11rem] w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
+                                            </PhotoView>
+                                        </div>
                                     </PhotoProvider>
                                 ))}
                             </div>
