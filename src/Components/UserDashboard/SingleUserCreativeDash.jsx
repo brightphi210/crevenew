@@ -228,14 +228,15 @@ const SingleUserCreativeDash = () => {
     const center = useMemo(() => ({ lat: 5.420000076293945, lng: 73.856743 }), []);
 
 
-
+    const baseUrl = window.location.origin;
+    const profileUrl = `${baseUrl}/creativeprofile/${id}`;
     const handleShare = async () => {
         if (navigator.share) {
           try {
             await navigator.share({
               title: 'Check out this Talent on creve',
               text: 'This Talent is good and reliable to work with',
-              url: url3
+              url: profileUrl
             });
             console.log('Content shared successfully');
           } catch (error) {
