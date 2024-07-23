@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import logo from '../Images/Creve1.png'
 import { Link } from 'react-router-dom';
-import { IoNotificationsOutline } from "react-icons/io5";
+import { IoMailUnread, IoNotificationsOutline } from "react-icons/io5";
 import { BiMessageSquare } from "react-icons/bi";
 
 import { RxDashboard } from "react-icons/rx";
@@ -73,8 +73,8 @@ const CreativeNavBarCom = ({handleShow, show}) => {
           <p className='text-xl cursor-pointer text-neutral-700 border border-neutral-300 flex rounded-full p-2 items-center justify-center '><IoNotificationsOutline /></p>
         </Link>
 
-        <Link to={'/creative-dashboard-bookingsAll'}>
-          <p className='text-xl cursor-pointer text-neutral-700 border border-neutral-300 flex rounded-full p-2 items-center justify-center '><BiMessageSquare /></p>
+        <Link to={'/creative-dashboard-chat'}>
+          <p className='text-xl cursor-pointer text-neutral-700 border border-neutral-300 flex rounded-full p-2 items-center justify-center '><IoMailUnread /></p>
         </Link>
 
         <Link to={'/creative-dashboard-profile'}>
