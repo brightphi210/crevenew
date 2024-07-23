@@ -25,6 +25,7 @@ import UserCreativeDash from './Pages/UserDash/UserCreativeDash';
 import UserRequestBookings from './Components/UserDashboard/UserRequestBookings';
 import UserFavoriteDash from './Pages/UserDash/UserFavoriteDash';
 import UserProfile from './Pages/UserDash/UserProfile';
+import CreativeChatDash from './Pages/CreativeDash/CreativeChatDash';
 AOS.init();
 
 function App() {
@@ -62,6 +63,7 @@ function App() {
             <Route path='/creative-dashboard-bookingsAll' element={<CreativeBookingsDash />}/>
             <Route path='/creative-dashboard-settings' element={<CreativeSettingDash />}/>
             <Route path='/creative-dashboard-FAQs' element={<CreativeFAQsDash />}/>
+            <Route path='/creative-dashboard-chat' element={<CreativeChatDash />}/>
           </Route>
           
         </Routes>

@@ -12,6 +12,7 @@ import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import { FaQuestion } from "react-icons/fa6";
 import { BsAppIndicator } from "react-icons/bs";
+import { IoMailUnread } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 
 const CreativeSideBarCom = ({show}) => {
@@ -40,9 +41,15 @@ const CreativeSideBarCom = ({show}) => {
                   <li className='2xl:text-base xl:text-xs lg:text-xs text-base hover:text-accent cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
                 </Link>
 
+                <Link to={'/creative-dashboard-chat'}>
+                  <li className='2xl:text-base xl:text-xs lg:text-xs text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoMailUnread className=''/> Messages</li>
+                </Link>
+
+
                 <Link to={'/creative-dashboard-bookingsAll'} >
                   <li className='2xl:text-base xl:text-xs lg:text-xs text-base hover:text-accent cursor-pointer flex items-center gap-3'><BiMessageSquare className=''/> Requests</li>
                 </Link>
+
                 
                 <Link to={'/creative-dashboard-notificationAll'}>
                   <li className='2xl:text-base xl:text-xs lg:text-xs text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoNotificationsOutline className=''/> Notifications</li>
