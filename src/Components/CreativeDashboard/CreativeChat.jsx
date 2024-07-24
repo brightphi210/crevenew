@@ -60,18 +60,6 @@ export const CreativeChatDashboard = () => {
                     sender: 2,
                     text: 'I am doing well, thank you! How about you?'
                 },
-
-                {
-                    sender: 1,
-                    text: 'Hello there, how are you?'
-                },
-                
-        
-                {
-                    sender: 1,
-                    text: 'Same here, I am enjoying the new design. Do you have any recommendations?'
-                },
-
                 {
                     sender: 1,
                     text: 'How is Mumsi'
@@ -92,60 +80,6 @@ export const CreativeChatDashboard = () => {
                     sender: 1,
                     text: 'Same here, I am enjoying the new design. Do you have any recommendations?'
                 },
-
-                {
-                    sender: 1,
-                    text: 'How is Mumsi'
-                },
-
-                {
-                    sender: 2,
-                    text: 'I am doing well, thank you! How about you?'
-                },
-
-
-                {
-                    sender: 1,
-                    text: 'Hello there, how are you?'
-                },
-                
-        
-                {
-                    sender: 1,
-                    text: 'Same here, I am enjoying the new design. Do you have any recommendations?'
-                },
-
-                {
-                    sender: 1,
-                    text: 'How is Mumsi'
-                },
-
-                {
-                    sender: 2,
-                    text: 'I am doing well, thank you! How about you?'
-                },
-
-                {
-                    sender: 1,
-                    text: 'Hello there, how are you?'
-                },
-                
-        
-                {
-                    sender: 1,
-                    text: 'Same here, I am enjoying the new design. Do you have any recommendations?'
-                },
-
-                {
-                    sender: 1,
-                    text: 'How is Mumsi'
-                },
-
-                {
-                    sender: 2,
-                    text: 'I am doing well, thank you! How about you?'
-                },
-
                 
             ]
         },
