@@ -31,8 +31,8 @@ const CreativeSideBarCom = ({show}) => {
   }
 
 
-  return (
-    <div className={show === false ? 'hidden bg-black lg:w-[15rem] w-full fixed h-screen lg:block  text-white ' : 'block bg-black lg:w-[15rem] w-full fixed h-screen lg:block  text-white z-50'}>
+  return ( 
+    <div className={show === false ? 'hidden z-30 bg-black lg:w-[13rem] w-full fixed h-screen lg:block  text-white ' : 'block bg-black lg:w-[13rem] w-full fixed h-screen lg:block  text-white z-50'}>
       <div className='pt-24 flex flex-col overflow-y-scroll h-screen'>
         <div>
             <p className='text-xs text-neutral-400 p-6 lg:pt-0 lg:p-6 pb-3 border-b-neutral-600 border-b flex items-center gap-3 '>Menu <FaLongArrowAltRight /></p>

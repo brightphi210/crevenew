@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import logo from '../Images/Creve1.png'
 import { Link } from 'react-router-dom';
-import { IoNotificationsOutline } from "react-icons/io5";
+import { IoMailUnread, IoNotificationsOutline } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
 
 import { RxDashboard } from "react-icons/rx";
@@ -68,6 +68,10 @@ const UserNavbar = ({handleShow, show}) => {
             <div className='flex flex-row gap-5 ml-auto items-center'>
             <Link to={'/user-dashboard-home'}>
                 <p className='text-xl cursor-pointer p-2 border border-neutral-200 rounded-full  text-neutral-700'><IoNotificationsOutline /></p>
+            </Link>
+
+            <Link to={'/user-dashboard-chat'}>
+                <p className='text-xl cursor-pointer text-neutral-700 border border-neutral-300 flex rounded-full p-2 items-center justify-center '><IoMailUnread /></p>
             </Link>
 
             <Link to={'/user-dashboard-favourites'}>

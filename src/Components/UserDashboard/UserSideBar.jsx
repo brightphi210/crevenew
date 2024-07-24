@@ -8,13 +8,14 @@ import { MdOutlineCallMissedOutgoing } from "react-icons/md";
 import { Link, useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import { BiLogOutCircle, BiMessageSquare } from 'react-icons/bi';
+import { FaLongArrowAltRight } from 'react-icons/fa';
 
 
 const menuItems = [
   { label: 'Home', icon: <GrHomeRounded />, path: 'user-dashboard-home' },
   { label: 'Creatives', icon: <MdOutlineCallMissedOutgoing />, path: 'user-dashboard-creative' },
   { label: 'Request', icon: <BiMessageSquare />, path: 'user-dashboard-books' },
-  { label: 'Messages', icon: <MdOutlineMarkEmailUnread />, path: 'user-dashboard-home' },
+  { label: 'Messages', icon: <MdOutlineMarkEmailUnread />, path: 'user-dashboard-chat' },
   { label: 'Saved', icon: <MdOutlineFavoriteBorder />, path: 'user-dashboard-favourites' },
   { label: 'Settings', icon: <FiSettings />, path: 'user-dashboard-profile' },
 ];
@@ -48,8 +49,9 @@ const UserSideBar = ({show}) => {
 
 
     
-    <div  className={show ? 'fixed block pt-28 h-[100vh] z-10 p-10 px-5 text-white left-0 color 2xl:w-[15rem] xl:w-[10rem] lg:w-[10rem] w-full lg:rounded-2xl rounded-none' : 'fixed lg:block hidden pt-28 h-[100vh] z-10 p-10 px-5 text-white left-0 color 2xl:w-[15rem] xl:w-[10rem] lg:w-[10rem] w-full rounded-none'}>
-        <ul data-aos="fade-up" data-aos-duration="1000" className='UserSideBar flex flex-col 2xl:gap-5 xl:gap-7 lg:gap-7 gap-5 z-50 2xl:text-base xl:text-xs lg:text-[10px] text-base'>
+    <div  className={show === false ? 'hidden z-30 bg-black lg:w-[13rem] w-full fixed h-screen lg:block  text-white pt-28' : 'pt-28 block bg-black lg:w-[13rem] w-full fixed h-screen lg:block  text-white z-50'}>
+        <ul  className='UserSideBar flex flex-col 2xl:gap-5 xl:gap-7 lg:gap-7 gap-5 z-50 2xl:text-base xl:text-xs lg:text-[10px] text-base'>
+        <p className='text-xs text-neutral-400 p-6 lg:pt-0 lg:p-6 pb-3 border-b-neutral-600 border-b flex items-center gap-3 '>Menu <FaLongArrowAltRight /></p>
             {menuItems.map((item, index) => (
 
               <div key={index} onClick={() => handleItemClick(index)}>
@@ -58,7 +60,7 @@ const UserSideBar = ({show}) => {
                     </li>
               </div>
             ))}
-            <li className='flex gap-2 items-center cursor-pointer font-bold px-3 mt-10' onClick={logout}><BiLogOutCircle />Logout</li>
+            <li className='flex gap-2 items-center cursor-pointer font-bold px-5 mt-10' onClick={logout}><BiLogOutCircle />Logout</li>
         </ul>
     </div>
 
