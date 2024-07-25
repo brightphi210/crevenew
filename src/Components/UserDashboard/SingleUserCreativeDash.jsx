@@ -40,13 +40,17 @@ import successImg from '../Images/gif1.gif'
 import UserNavbar from './UserNavbar';
 import UserSideBar from './UserSideBar';
 import { TbAlertTriangle } from 'react-icons/tb';
-import Footer from '../Footer';
+import Pusher from "pusher-js";
+
 
 const SingleUserCreativeDash = () => {
     const {id} = useParams()
     let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
     const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
     const [isLoading, setIsLoading] = useState(false)
+
+
+    console.log('this is auth user', authUser);
 
     const [creativeData, setCreativeData] = useState({})
 
@@ -93,7 +97,6 @@ const SingleUserCreativeDash = () => {
     }
 
     const url2 =`${BASE_URL}/bookcreatives/${id}/`
-
     const [isBooked, setIsBooked] = useState(false)
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -176,15 +179,13 @@ const SingleUserCreativeDash = () => {
             })
     
             if (response.ok || response.status === 200 || response.status === 2001) {
-                // console.log('Booked successfully');
-
                 setContent('');
                 const review = await response.json();
                 document.getElementById('my_modal_4').showModal()
                 document.getElementById('my_modal_2').close()
                 setIsLoading2(false);
             } else {
-                console.log('Failed to book');
+                console.log('Failed to Review');
                 setIsLoading2(false);
             }
         } catch (error) {
@@ -194,7 +195,7 @@ const SingleUserCreativeDash = () => {
     }
 
     const [showModal, setShowModal] = useState('')
-      const [isFavorite, setIsFavorite] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(false);
 
     useEffect(() => {
       const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
@@ -280,6 +281,41 @@ const SingleUserCreativeDash = () => {
         fetchTalents();
     }, []);
 
+
+    // ================================= MESAAGES ====================================
+
+    const [username, setUsername] = useState('username');
+    const [messages, setMessages] = useState([]);
+    const [message, setMessage] = useState('');
+    let allMessages = [];
+
+    useEffect(() => {
+        Pusher.logToConsole = true;
+
+        const pusher = new Pusher('', {
+            cluster: ''
+        });
+
+        const channel = pusher.subscribe(`Chat_between_${sender_id}and${reciver_id}`);
+        channel.bind('connected', function (data) {
+            allMessages.push(data);
+            setMessages(allMessages);
+        });
+    }, []);
+
+    const submit = async e => {
+        e.preventDefault();
+
+        await fetch('https://creve.store/chat/33/', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                message
+            })
+        });
+
+        setMessage('');
+    }
   return (
 
     <div className='bg-neutral-100 h-full'>
@@ -289,7 +325,6 @@ const SingleUserCreativeDash = () => {
                 <UserSideBar show={show} />
             </div>
         </div>
-
 
         <div className={isLoading === true ? 'bg-neutral-100 pb-10 h-screen flex justify-center  px-0' : ' pb-10 2xl:px-[15rem] xl:px-[5rem] lg:px-[5rem] px-0'}>
 
@@ -334,7 +369,7 @@ const SingleUserCreativeDash = () => {
             {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto "></span> : <>
                 <div className='w-full flex lg:pt-[7rem] px-3 pt-[6rem] items-center py-3  '>
                     <p onClick={goBack} className='items-center text-lg flex justify-center text-black bg-neutral-200 lg:p-3 p-2 rounded-full w-fit cursor-pointer'><FaArrowLeft className='cursor-pointer'/></p>
-                    <button onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-black text-white py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-200 ml-auto'>Get in touch</button>
+                    <button onClick={()=>document.getElementById('my_modal_5').showModal()} className='bg-black text-white py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-200 ml-auto'>Get in touch</button>
 
                 </div>
             
@@ -482,7 +517,7 @@ const SingleUserCreativeDash = () => {
                                     modules={[Navigation, Pagination, Mousewheel, Keyboard]}
                                     className="mySwiper"
                                     >
-                                    {creativeData.reviewed.map((review)=> <>
+                                    {creativeData?.reviewed.map((review)=> <>
                                     <SwiperSlide>
                                         <div>
                                             <div className='flex flex-row items-center gap-3 m-auto justify-center'>
@@ -504,7 +539,7 @@ const SingleUserCreativeDash = () => {
 
                         
                         <>
-                            {creativeData.reviewed && creativeData.reviewed.length <= 0 && <p className='text-center text-sm'>No Review Found</p>}
+                            {creativeData?.reviewed && creativeData?.reviewed.length <= 0 && <p className='text-center text-sm'>No Review Found</p>}
                         </>
                     </div>
                 </div>
@@ -591,12 +626,9 @@ const SingleUserCreativeDash = () => {
                             <button className='underline' onClick={()=>document.getElementById('my_modal_2').close()}>Nevermind</button>
                             <button className='ml-auto py-3 px-5 color text-xs text-white rounded-full'>{isLoading2 === true ? <span className="loading loading-spinner loading-sd"></span> : 'Send Review'}</button>
                         </div>
-
                     </form>
                 </div>
             </dialog>
-
-
 
             <dialog id="my_modal_1" className="modal">
                 <div className="modal-box rounded-2xl lg:p-10 py-10 lg:w-full w-[96%]">
@@ -638,8 +670,35 @@ const SingleUserCreativeDash = () => {
                     </div>
                 </div>
             </dialog>
-        </div>
 
+
+            
+            <dialog id="my_modal_5" className="modal">
+                <div className="modal-box rounded-md lg:p-10 p-5 lg:w-full w-[96%] lg:h-fit h-screen">
+                    <form method="dialog">
+                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+                    <h3 className="font-bold text-xl pb-3 pt-5">Start chatting with talent</h3>
+                    <p className='pb-5'>Send talent a message and await response or send them a request and await a call</p>
+                    <form action="">
+                        <div>
+                            <input 
+                                type="text"  
+                                required placeholder="e.g Funiture design, repairs, websites etc." 
+                                className="input h-[5rem] text-sm py-7 input-bordered w-full" 
+                                value={message}
+                                onChange={e => setMessage(e.target.value)}
+                            />
+                        </div>
+                        <div className='flex items-center text-sm pt-5'>
+                            <button type='submit' className={`w-full py-3 px-4 color text-white rounded-full }`} >
+                                {isLoading2 === true ? <span className="loading loading-spinner loading-sd"></span> : 'Send Request' }
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </dialog>
+        </div>
     </div>
   )
 }

@@ -9,6 +9,8 @@ import { TbMessageCircleOff } from 'react-icons/tb'
 import { BiArrowBack } from "react-icons/bi";
 import Picker from '@emoji-mart/react'
 import data  from '@emoji-mart/data'
+import Pusher from "pusher-js";
+
 
 const CreativeChat = () => {
 
@@ -40,9 +42,26 @@ export default CreativeChat
 // ====================== INNNER DASHBOARD ==============================
 export const CreativeChatDashboard = () => {
 
-    const [message, setMessage] = useState('');
-
+    
     const [messages, setMessages] = useState([]);
+    const [message, setMessage] = useState('');
+    let allMessages = [];
+
+
+    useEffect(() => {
+        Pusher.logToConsole = true;
+
+        const pusher = new Pusher('', {
+            cluster: ''
+        });
+
+        const channel = pusher.subscribe('chat');
+        channel.bind('message', function (data) {
+            allMessages.push(data);
+            setMessages(allMessages);
+        });
+    }, []);
+
 
 
     const users = [
@@ -103,8 +122,6 @@ export const CreativeChatDashboard = () => {
         },
     ]
 
-
-
     const [selectedChat, setSelectedChat] = useState(null);
     const [messageSide, setMessageSide] = useState(true);
 
@@ -115,11 +132,6 @@ export const CreativeChatDashboard = () => {
     };
 
     console.log('This is my selected chat', selectedChat);
-
-
-
-
-
     const [isLoading, setIsLoading] = useState(false)
     const chatContainerRef = useRef(null);
 
