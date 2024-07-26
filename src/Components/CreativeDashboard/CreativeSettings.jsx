@@ -128,7 +128,7 @@ export const CreativeSettingDashboard = () => {
 
             <h2 className='text-2xl font-bold pb-10'>Settings</h2>
 
-            <div className='bg-white lg:p-10 p-5 rounded-xl'>
+            <div className=''>
 
                 <div onClick={()=> document.querySelector(".input-field").click()} className='2xl:w-fit xl:w-fit lg:w-fit md:w-fit lg:block flex justify-center '>
                     <input  type="file" accept='image/*' className='input-field' hidden

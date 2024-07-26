@@ -97,9 +97,10 @@ const UserNavbar = ({handleShow, show}) => {
                     <div tabIndex={0} role="button" className='bg-neutral-200 rounded-full w-9 h-9 overflow-hidden'>
                         <img src={profileData.profile_pics} alt="" className='w-full h-full object-cover cursor-pointer'/>
                     </div>
-                    {/* <div   className="btn m-1 ">Click</div> */}
                     <ul tabIndex={0} className="dropdown-content flex flex-col gap-4 absolute right-0 mt-4 bottom-[10rem] menu bg-base-100 rounded-lg z-[1] w-52 p-5 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                        <p className='p-3 flex m-auto justify-center gap-3 items-center py-3 px-5 text-sm bg-neutral-100 border border-neutral-300 rounded-full text-black cursor-pointer'>Edit Pics <AiTwotoneEdit /></p>
+                        <Link to={'/user-dashboard-profile'} className='w-fit flex m-auto'>
+                            <p className='p-3 flex m-auto justify-center gap-3 items-center py-3 px-5 text-sm bg-neutral-100 border border-neutral-300 rounded-full text-black cursor-pointer'>Edit Pics <AiTwotoneEdit /></p>
+                        </Link>
                         <p onClick={logout} className='p-3 flex m-auto justify-center gap-3 items-center py-3 px-5 text-sm bg-neutral-900 border border-neutral-200 rounded-full text-white cursor-pointer'>Logout <IoLogOutOutline /></p>
                     </ul>
                 </div>

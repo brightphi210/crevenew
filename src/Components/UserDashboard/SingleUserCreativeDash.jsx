@@ -41,6 +41,7 @@ import UserNavbar from './UserNavbar';
 import UserSideBar from './UserSideBar';
 import { TbAlertTriangle } from 'react-icons/tb';
 import Pusher from "pusher-js";
+import MyLoader from '../allLoadingState/MyLoader';
 
 
 const SingleUserCreativeDash = () => {
@@ -366,7 +367,7 @@ const SingleUserCreativeDash = () => {
                 </div>
             }
 
-            {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto "></span> : <>
+            {isLoading === true ? <MyLoader /> : <>
                 <div className='w-full flex lg:pt-[7rem] px-3 pt-[6rem] items-center py-3  '>
                     <p onClick={goBack} className='items-center text-lg flex justify-center text-black bg-neutral-200 lg:p-3 p-2 rounded-full w-fit cursor-pointer'><FaArrowLeft className='cursor-pointer'/></p>
                     <button onClick={()=>document.getElementById('my_modal_5').showModal()} className='bg-black text-white py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-200 ml-auto'>Get in touch</button>

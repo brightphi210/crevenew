@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import logo from '../Images/Creve1.png'
-import { Link } from 'react-router-dom';
-import { IoMailUnread, IoNotificationsOutline } from "react-icons/io5";
+import { Link, useNavigate } from 'react-router-dom';
+import { IoLogOutOutline, IoMailUnread, IoNotificationsOutline } from "react-icons/io5";
 import { BiMessageSquare } from "react-icons/bi";
 
 import { RxDashboard } from "react-icons/rx";
@@ -9,6 +9,7 @@ import { BsDashCircle } from "react-icons/bs";
 import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
 import { FiSettings } from "react-icons/fi";
+import { AiTwotoneEdit } from 'react-icons/ai';
 const CreativeNavBarCom = ({handleShow, show}) => {
 
 
@@ -53,6 +54,17 @@ const CreativeNavBarCom = ({handleShow, show}) => {
   }, []);
 
 
+  const navigate = useNavigate()
+  const [token, setToken] = useState(() => localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
+
+  const logout = async (e) => {
+      e.preventDefault()
+      setToken(null)
+      localStorage.removeItem('token')
+      navigate('/')
+  }
+
+
 
   return (
     <div className='flex flex-row items-center shadow-md fixed right-0 left-0 bg-white py-3 lg:px-20 px-5  z-50 backdrop-filter backdrop-blur-3xl bg-opacity-80'>
@@ -77,17 +89,20 @@ const CreativeNavBarCom = ({handleShow, show}) => {
           <p className='text-xl cursor-pointer text-neutral-700 border border-neutral-300 flex rounded-full p-2 items-center justify-center '><IoMailUnread /></p>
         </Link>
 
-        <Link to={'/creative-dashboard-profile'}>
-          <p className='text-xl cursor-pointer text-neutral-700 border border-neutral-300 flex rounded-full p-2 items-center justify-center '><FiSettings /></p>
-        </Link>
-
-
-        <div >
-          <Link to={'/creative-dashboard-settings'}>
-            <div className='bg-neutral-200 rounded-full w-8 h-8 overflow-hidden'>
-              <img src={profileData.profile_pics} alt="" className='w-full h-full object-cover cursor-pointer'/>
+        <div className="dropdown dropdown-bottom">
+            <div tabIndex={0} role="button" className='bg-neutral-200 rounded-full w-9 h-9 overflow-hidden'>
+                <img src={profileData.profile_pics} alt="" className='w-full h-full object-cover cursor-pointer'/>
             </div>
-          </Link>
+            <ul tabIndex={0} className="dropdown-content flex flex-col gap-4 absolute right-0 mt-4 bottom-[10rem] menu bg-base-100 rounded-lg z-[1] w-64 p-5 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                <Link to={'/creative-dashboard-profile-update'} className='w-fit flex m-auto'>
+                    <p className='p-3 flex m-auto justify-center gap-3 items-center py-3 px-5 text-sm bg-neutral-100 border border-neutral-300 rounded-full text-black cursor-pointer'>Account <AiTwotoneEdit /></p>
+                </Link>
+                
+                <Link to={'/creative-dashboard-settings'} className='w-fit flex m-auto'>
+                    <p className='p-3 flex m-auto justify-center gap-3 items-center py-3 px-5 text-sm bg-neutral-100 border border-neutral-300 rounded-full text-black cursor-pointer'>Edit Pics <AiTwotoneEdit /></p>
+                </Link>
+                <p onClick={logout} className='p-3 flex m-auto justify-center gap-3 items-center py-3 px-5 text-sm bg-neutral-900 border border-neutral-200 rounded-full text-white cursor-pointer'>Logout <IoLogOutOutline /></p>
+            </ul>
         </div>
       </div>
     </div>

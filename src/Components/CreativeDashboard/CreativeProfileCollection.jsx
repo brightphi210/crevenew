@@ -10,6 +10,7 @@ import { LuAlertTriangle } from 'react-icons/lu';
 import noData from '../Images/nodata2.png'
 import { RiUploadCloudLine } from "react-icons/ri";
 import { MdArrowForward } from "react-icons/md";
+import MyLoader from '../allLoadingState/MyLoader';
 
 
 const CreativeProfileCollection = ({IoCloseSharp}) => {
@@ -186,9 +187,7 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
   return (
     <div className=''>  
         {isLoading ? 
-            <div className='pt-32 flex justify-center'>
-                <span className="loading loading-spinner loading-lg"></span>
-            </div>
+            <MyLoader />
         : <>
             <div className='flex w-full items-center gap-10'>
                 <div >

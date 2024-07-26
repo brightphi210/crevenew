@@ -13,6 +13,8 @@ import { jwtDecode } from 'jwt-decode'
 
 import noData from '../Images/nodata2.png'
 import { TbAlertTriangle } from 'react-icons/tb'
+import MyLoader from '../allLoadingState/MyLoader'
+import NoData from '../allLoadingState/NoData'
 
 
 const CreativeBookingsDashboard = () => {
@@ -153,18 +155,11 @@ export const CreativeBookings = () => {
               </div>
 
               {profileData.length <= 0 && <>
-                <div className='flex items-center w-fit justify-center m-auto h-[50vh] text-center'>
-                  <div className=''>
-                    <img src={noData} alt="" className='w-[15rem] flex m-auto opacity-70'/>
-                    <h2 className='text-xl font-bold'>No Request found</h2>
-                  </div>
-                </div>
+                <NoData />
               </>}
             </>
           ) : (
-            <div className='flex justify-center items-center pt-20'>
-              <span className="loading loading-spinner loading-lg"></span>
-            </div>
+            <MyLoader />
           )}
         </div>
       </div>

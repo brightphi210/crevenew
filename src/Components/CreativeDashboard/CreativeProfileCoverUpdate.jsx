@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 import successImg from '../Images/gif1.gif'
 import { FiEdit } from "react-icons/fi";
+import MyLoader from '../allLoadingState/MyLoader';
 
 const CreativeProfileCoverUpdate = ({ MdDelete, AiOutlineCloudUpload }) => {
 
@@ -84,9 +85,7 @@ const CreativeProfileCoverUpdate = ({ MdDelete, AiOutlineCloudUpload }) => {
         <div>
 
             {isLoading ? 
-                <div className='flex justify-center pt-32'>
-                    <span className="loading loading-spinner loading-lg"></span>
-                </div> :
+                <MyLoader /> :
                 <div >
                     <p className="text-xs pb-3">Cover Image</p>
 

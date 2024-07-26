@@ -36,6 +36,7 @@ import { jwtDecode } from 'jwt-decode';
 import { BASE_URL } from '../Auth/BaseUrl';
 import Loader from '../Loader';
 import { GoDotFill } from "react-icons/go";
+import MyLoader from '../allLoadingState/MyLoader';
 
 
 const CreativeProfileDashboard = () => {
@@ -129,7 +130,7 @@ export const CreativeProfile= () => {
     <div>
 
         {isLoading === true ? (
-            <Loader />
+            <MyLoader />
             ) : (
 
             <div className='lg:p-20 pt-20 lg:pl-[18rem] p-5'>

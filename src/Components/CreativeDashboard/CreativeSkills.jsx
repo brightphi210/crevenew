@@ -10,6 +10,7 @@ import { MdAdd } from "react-icons/md";
 import { VscChromeClose } from "react-icons/vsc";
 import { Link } from 'react-router-dom';
 import successImg from '../Images/gif1.gif'
+import MyLoader from '../allLoadingState/MyLoader';
 
 const CreativeSkills = () => {
 
@@ -161,9 +162,7 @@ const CreativeSkills = () => {
 
         {isLoading2 === true ? 
         <>
-            <div className='pt-32 flex justify-center'>
-                <span className="loading loading-spinner loading-lg"></span>
-            </div>
+          <MyLoader />
         </> : 
         <>
 

@@ -4,6 +4,8 @@ import CreativeNavBarCom from './CreativeNavBarCom'
 import { FaPlus } from "react-icons/fa6";
 import { IoNotificationsOff } from "react-icons/io5";
 import { BASE_URL } from '../Auth/BaseUrl';
+import NoData from '../allLoadingState/NoData';
+import MyLoader from '../allLoadingState/MyLoader';
 
 const CreativeFAQs = () => {
 
@@ -15,7 +17,7 @@ const CreativeFAQs = () => {
   
   
   return (
-    <div className='flex flex-row w-full bg-neutral-100 2xl:h-[100vh] xl:h-full lg:h-full h-screen'>
+    <div className='flex flex-row w-full 2xl:h-[100vh] xl:h-full lg:h-full h-screen'>
     <div className=''>
       <CreativeSideBarCom show={show} />
     </div>
@@ -48,6 +50,7 @@ export const CreativeFAQsDashboard = () => {
     
 
     const [isLoading, setIsLoading] = useState(false);
+    const [isLoading2, setIsLoading2] = useState(false);
 
     const handleSubmit = async (e) => {
         setIsLoading(true);
@@ -86,7 +89,7 @@ export const CreativeFAQsDashboard = () => {
 
 
       const fetchFAQs = async () => {
-        setIsLoading(true);
+        setIsLoading2(true);
         try {
           const response = await fetch(`${BASE_URL}/questions/`, {
             headers: {
@@ -101,12 +104,12 @@ export const CreativeFAQsDashboard = () => {
           }
           const faqData = await response.json();
           setFaqs(faqData);
-          setIsLoading(false);
+          setIsLoading2(false);
 
 
         } catch (error) {
             console.error('Error:', error);
-            setIsLoading(false);
+            setIsLoading2(false);
         }
 
     };
@@ -157,38 +160,33 @@ export const CreativeFAQsDashboard = () => {
       )}
         
         <div className='flex items-center mb-5'>
-            <h2 className='lg:block hidden text-2xl font-bold'>Frequently Asked Questions</h2>
+            <h2 className='lg:block hidden text-xl font-bold'>Frequently Asked Questions</h2>
             <h2 className='block lg:hidden text-sm font-bold'>FAQs</h2>
-            <button className="btn btn-active btn-neutral ml-auto flex items-center gap-2 text-xs p-2 py-2 max-h-[2rem] min-h-[2rem]" onClick={()=>document.getElementById('my_modal_3').showModal()}>Add <FaPlus /></button>
+            <button className="btn btn-active btn-neutral ml-auto flex items-center gap-2 text-xs p-2 py-2 px-5 rounded-full max-h-[2.3rem] min-h-[2.3rem]" onClick={()=>document.getElementById('my_modal_3').showModal()}>Add <FaPlus /></button>
         </div>
 
 
+        {isLoading2 === true ? <MyLoader /> : 
+        <>
+          {faqs.length === 0 ? (
 
-        {faqs.length === 0 ? (
-
-            <div className='flex justify-center items-center h-[30rem]'>
-                <div className='text-center text-neutral-300 '>
-                    <p>No Data</p>
-                    <p className='text-6xl'><IoNotificationsOff /></p>
-                </div>
-            </div>
-        ) : (
+            <NoData />
+          ) : (
 
             <div>
-                
                 {newFAQs.map((faq, index) =>(
                     <div className="collapse bg-neutral-100 collapse-arrow rounded-md  mb-5" key={index}>
                         <input type="checkbox" />
 
-                        <div className="collapse-title lg:text-base text-base font-medium bg-neutral-50">{faq.question}</div>
-                        <div className="collapse-content">
+                        <div className="collapse-title lg:text-base text-base font-medium bg-neutral-10">{faq.question}</div>
+                        <div className="collapse-content bg-neutral-50">
                             <p className='lg:w-1/2 w-full text-justify text-sm pt-5'>{faq.answer}</p>
                         </div>
                     </div>
                 ))}
             </div>
-
-        )}
+          )}
+        </>}
 
       </div>
 

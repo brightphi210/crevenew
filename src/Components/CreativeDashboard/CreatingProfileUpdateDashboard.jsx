@@ -20,6 +20,7 @@ import CreativeProfileCollection from './CreativeProfileCollection';
 
 import GooglePlacesAutocomplete from 'react-google-autocomplete';
 import CreativeSkills from './CreativeSkills';
+import MyLoader from '../allLoadingState/MyLoader';
 
 const CreatingProfileUpdateDashboard = () => {
 
@@ -249,7 +250,7 @@ export const CreatingProfileUpdateHome = () => {
 
         {isLoading2 === true ? 
       
-            (<Loader />) : (
+            (<MyLoader />) : (
 
 
             <div className='lg:p-20 lg:pt-28 lg:pl-[18rem] p-5 pt-20'>
