@@ -94,7 +94,7 @@ const CreativeNavBarCom = ({handleShow, show}) => {
                 <img src={profileData.profile_pics} alt="" className='w-full h-full object-cover cursor-pointer'/>
             </div>
             <ul tabIndex={0} className="dropdown-content flex flex-col gap-4 absolute right-0 mt-4 bottom-[10rem] menu bg-base-100 rounded-lg z-[1] w-64 p-5 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                <Link to={'/creative-dashboard-profile-update'} className='w-fit flex m-auto'>
+                <Link to={'/creative-dashboard-profile'} className='w-fit flex m-auto'>
                     <p className='p-3 flex m-auto justify-center gap-3 items-center py-3 px-5 text-sm bg-neutral-100 border border-neutral-300 rounded-full text-black cursor-pointer'>Account <AiTwotoneEdit /></p>
                 </Link>
                 

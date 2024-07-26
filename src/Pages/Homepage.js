@@ -5,6 +5,7 @@ import HomeCompoTwo from '../Components/Home/HomeCompoTwo'
 import HomeComThree from '../Components/Home/HomeComThree'
 import Footer from '../Components/Footer'
 import Loader from '../Components/Loader'
+import MyLoader from '../Components/allLoadingState/MyLoader'
 const Homepage = () => {
 
   const [loadind, setLoading] = useState(true)
@@ -21,8 +22,7 @@ const Homepage = () => {
     <div className=''>
 
       {loadind === true ? (
-
-        <Loader />
+        <MyLoader />
       ) : (
         
       <div >
