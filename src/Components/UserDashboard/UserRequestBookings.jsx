@@ -3,6 +3,8 @@ import UserSideBar from './UserSideBar'
 import UserNavbar from './UserNavbar'
 import { jwtDecode } from 'jwt-decode'
 import { BASE_URL } from '../Auth/BaseUrl'
+import MyLoader from '../allLoadingState/MyLoader'
+import NoData from '../allLoadingState/NoData'
 
 const UserRequestBookings = () => {
 
@@ -71,10 +73,10 @@ export const UserRequestBookingsDashboard = () => {
 
     
   return (
-    <div className='2xl:pl-[20rem] xl:pl-[13rem] lg:pl-[13rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  py-28 w-full px-5'>
+    <div className='2xl:pl-[20rem] xl:pl-[15rem] lg:pl-[15rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  py-28 w-full px-5'>
         <h2 className='text-2xl'>All Request</h2>
 
-        {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto mt-20 m"></span>  : <>
+        {isLoading === true ? <MyLoader />  : <>
             {allRequest.length > 0 && <>
                 <div className='bg-white h-[70vh] lg:p-20 p-5 w-full mt-5 rounded-2xl overflow-y-scroll'>
                     {allRequest.map((request)=>(
@@ -100,7 +102,7 @@ export const UserRequestBookingsDashboard = () => {
             </>}
 
             {allRequest.length <= 0 && <>
-                <p className='flex justify-center items-center pt-40'>No Request Found</p>
+                <NoData />
             </>}
         </>}
     </div>

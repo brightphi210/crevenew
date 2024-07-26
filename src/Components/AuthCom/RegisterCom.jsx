@@ -122,8 +122,8 @@ const RegisterCom = () => {
         <div>
           <input 
             type="text" 
-            placeholder="Enter Fullname" 
-            className="input input-bordered w-full text-sm py-6 rounded-md" required
+            placeholder="Enter Fullname e.g Chidi Obi" 
+            className="input input-bordered w-full text-sm py-7 rounded-md" required
             value={fullname}
             onChange={(e)=>setfullName(e.target.value)}
           />
@@ -132,8 +132,8 @@ const RegisterCom = () => {
         <div>
           <input 
             type="email" 
-            placeholder="Enter Email" 
-            className="input input-bordered w-full text-sm py-6 rounded-md" required
+            placeholder="Enter Email e.g joe@gmail.com"  
+            className="input input-bordered w-full text-sm py-7 rounded-md" required
             value={email}
             onChange={(e)=>setEmail(e.target.value)}
           />
@@ -142,8 +142,8 @@ const RegisterCom = () => {
         <div className='relative'>
           <input 
             type={show === true ? "text" : "password"} 
-            placeholder="Enter Password" 
-            className="input input-bordered w-full text-sm py-6 rounded-md" 
+            placeholder="Enter Password e.g @John6431" 
+            className="input input-bordered w-full text-sm py-7 rounded-md" 
             required
             value={password}
             onChange={(e)=>setPassword(e.target.value)}
@@ -166,7 +166,7 @@ const RegisterCom = () => {
           </button>
         </div>
 
-        <button className='mr-auto text-sm'>Dont have account? <Link to={'/login'}><span className='text-accent'> Login</span></Link> </button>
+        <button className='mr-auto lg:text-lg text-sm'>Dont have account? <Link to={'/login'}><span className='text-accent'> Login</span></Link> </button>
 
       </form>
     </div>

@@ -50,7 +50,7 @@ const UserSideBar = ({show}) => {
 
     
     <div  className={show === false ? 'hidden z-30 bg-black lg:w-[13rem] w-full fixed h-screen lg:block  text-white pt-28' : 'pt-28 block bg-black lg:w-[13rem] w-full fixed h-screen lg:block  text-white z-50'}>
-        <ul  className='UserSideBar flex flex-col 2xl:gap-5 xl:gap-7 lg:gap-7 gap-5 z-50 2xl:text-base xl:text-xs lg:text-[10px] text-base'>
+        <ul  className='UserSideBar flex flex-col 2xl:gap-5 xl:gap-7 lg:gap-7 gap-5 z-50 2xl:text-base xl:text-sm lg:text-sm text-base'>
         <p className='text-xs text-neutral-400 p-6 lg:pt-0 lg:p-6 pb-3 border-b-neutral-600 border-b flex items-center gap-3 '>Menu <FaLongArrowAltRight /></p>
             {menuItems.map((item, index) => (
 

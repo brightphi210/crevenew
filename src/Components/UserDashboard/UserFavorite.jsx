@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import UserNavbar from './UserNavbar'
 import UserSideBar from './UserSideBar'
-import noData from '../Images/nodata2.png'
-
-
 import { FaLocationDot } from "react-icons/fa6";
 import { IoArrowForwardOutline } from "react-icons/io5";
-import { IoMdArrowForward } from "react-icons/io";
-import { MdFavoriteBorder } from "react-icons/md";
-import { MdFavorite } from "react-icons/md";
 import { GoTools } from "react-icons/go";
 import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
 import { Link } from 'react-router-dom';
+import MyLoader from '../allLoadingState/MyLoader';
+import NoData from '../allLoadingState/NoData';
 
 const UserFavorite = () => {
 
@@ -87,11 +83,11 @@ export const UserFavoriteDashboard = () => {
     );
 
   return (
-    <div className='2xl:pl-[20rem] xl:pl-[13rem] lg:pl-[13rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 px-5 w-full overflow-y-auto'>
+    <div className='2xl:pl-[20rem] xl:pl-[15rem] lg:pl-[15rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 px-5 w-full overflow-y-auto'>
       <h2 className='text-2xl pb-5'>Favorites Talents</h2>
 
 
-      {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto mt-20"></span> : 
+      {isLoading === true ? <MyLoader /> : 
         <>
           {favoriteProfiles.length > 0 && 
             <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5'>
@@ -136,13 +132,7 @@ export const UserFavoriteDashboard = () => {
 
 
           {favoriteProfiles.length <= 0 && (
-              <div className='flex items-center w-fit justify-center m-auto h-[50vh] text-center'>
-                <div className=''>
-                  <img src={noData} alt="" className='w-[15rem] flex m-auto opacity-70'/>
-                  <h2 className='text-xl font-bold'>No results found</h2>
-                  <p className='text-xs'>It seems we can’t find any results <br /> based on your search.</p>
-                </div>
-              </div>
+              <NoData />
             )}
 
         </>

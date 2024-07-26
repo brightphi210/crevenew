@@ -172,7 +172,7 @@ const LoginCom = () => {
             name='email'
 
           />
-          {errors.email && <p className="text-red-400 pt-3 text-xs font-normal">{errors.email}</p>}
+          {errors.email && <p className="text-red-400 pt-3 lg:text-lg text-sm font-normal">{errors.email}</p>}
         </div>
 
         <div className='relative'>
@@ -190,7 +190,7 @@ const LoginCom = () => {
             {show === true ? <p onClick={()=>setShow(false)}><FaEyeSlash /></p> : <p onClick={()=>setShow(true)}><FaEye /></p>}
           
           </div>
-          {errors.password && <p className="text-red-400 pt-3 text-xs font-normal">{errors.password}</p>}
+          {errors.password && <p className="text-red-400 pt-3 lg:text-lg text-sm font-normal">{errors.password}</p>}
         </div>
 
         
@@ -200,7 +200,7 @@ const LoginCom = () => {
           <button type="submit" className="btn hover:bg-neutral-900 bg-black text-white w-full">{isLoading === true ? <span class="loader"></span> : 'Login'}</button>
         </div>
 
-          <button className='mr-auto text-sm pt-5' >Dont have account? <Link to={'/register'}><span className='text-accent'> Register</span></Link> </button>
+          <button className='mr-auto lg:text-lg text-sm pt-5' >Dont have account? <Link to={'/register'}><span className='text-accent'> Register</span></Link> </button>
         </form>
 
       </div>

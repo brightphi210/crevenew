@@ -19,7 +19,7 @@ const UserProfileDasboard = () => {
   return (
     <div>
         <UserNavbar show={show} handleShow={handleShow}/>
-        <div className='flex bg-neutral-100 h-full w-full'>
+        <div className='flex w-full'>
             <div className='z-40 w-full'>
                 <UserSideBar show={show} />
                 <UserProfileDash />
@@ -122,7 +122,7 @@ export const UserProfileDash = () => {
 
     <h2 className='text-2xl font-bold pb-10'>Settings</h2>
 
-    <div className='bg-white lg:p-10 p-5 rounded-xl'>
+    <div className='bg-white'>
 
         <div onClick={()=> document.querySelector(".input-field").click()} className='2xl:w-fit xl:w-fit lg:w-fit md:w-fit lg:block flex justify-center '>
             <input  type="file" accept='image/*' className='input-field' hidden

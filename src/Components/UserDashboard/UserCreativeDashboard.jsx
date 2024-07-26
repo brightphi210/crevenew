@@ -17,6 +17,7 @@ import { IoFilter } from "react-icons/io5";
 import { RiSearch2Line } from "react-icons/ri";
 
 import noData from '../Images/nodata2.png'
+import MyLoader from '../allLoadingState/MyLoader';
 
 const UserCreativeDashboard = () => {
 
@@ -30,7 +31,7 @@ const UserCreativeDashboard = () => {
   return (
     <div>
         <UserNavbar show={show} handleShow={handleShow}/>
-        <div className='flex bg-neutral-100 h-full'>
+        <div className='flex bg-white'>
             <div className='z-40'>
                 <UserSideBar show={show} />
             </div>
@@ -233,7 +234,7 @@ export const UserCreativeDashboardCom = () => {
 
 
   return (
-    <div className='2xl:pl-[20rem] xl:pl-[13rem] lg:pl-[13rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  py-28 w-full'>
+    <div className='2xl:pl-[20rem] xl:pl-[15rem] lg:pl-[15rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  py-28 w-full'>
       <div className='flex items-center px-4'>
 
         <div className='flex items-center gap-3 lg:w-full'>
@@ -276,7 +277,7 @@ export const UserCreativeDashboardCom = () => {
           </>
       </div>
 
-      {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto mt-20 m"></span> :
+      {isLoading === true ? <MyLoader /> :
           <>
             <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5 pt-10 lg:px-0 px-5'>
               {filteredItems.length > 0 &&

@@ -14,6 +14,7 @@ import { jwtDecode } from 'jwt-decode';
 import { Link } from 'react-router-dom';
 
 import noData from '../Images/nodata2.png'
+import MyLoader from '../allLoadingState/MyLoader';
 
 const UserHomeDashboard = () => {
 
@@ -148,7 +149,7 @@ export const UserHomeDashboardHome = () => {
 
 
   return (
-    <div className='2xl:pl-[20rem] xl:pl-[13rem] lg:pl-[13rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full'>
+    <div className='2xl:pl-[20rem] xl:pl-[15rem] lg:pl-[15rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full'>
 
       <div className='lg:flex items-center block px-5'>
         <h2 className='text-2xl pb-3 lg:p-0'>Hi, {isLoading === true ? '- - - - -' : <>{profileData.user && profileData.user.fullname}! </>} </h2>
@@ -255,7 +256,7 @@ export const UserHomeDashboardHome = () => {
         </div>
 
 
-        {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto mt-20"></span> : 
+        {isLoading === true ? <MyLoader /> : 
         <>
           {filteredItems.length > 0 && 
             <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5'>
