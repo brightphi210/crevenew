@@ -48,12 +48,7 @@ const SingleUserCreativeDash = () => {
     let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
     const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
     const [isLoading, setIsLoading] = useState(false)
-
-
-    console.log('this is auth user', authUser);
-
     const [creativeData, setCreativeData] = useState({})
-
     const url =`${BASE_URL}/creativeprofile/${id}/`
     const fetchProfile = async () => {
         setIsLoading(true);
@@ -220,9 +215,6 @@ const SingleUserCreativeDash = () => {
 
     };
 
-    
-
-    console.log('this is modal', showModal);
 
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: 'bdc_82430c2e13ed42838148a7bf2b145370',
@@ -248,8 +240,6 @@ const SingleUserCreativeDash = () => {
           console.error('Web Share API not supported in this browser');
         }
     };
-    
-
 
     const [allTalents, setAllTalents] = useState([])
     const url5 =`${BASE_URL}/creativeprofile/`
@@ -284,38 +274,50 @@ const SingleUserCreativeDash = () => {
 
     // ================================= MESAAGES ====================================
 
-    const [username, setUsername] = useState('username');
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
-    let allMessages = [];
 
     useEffect(() => {
         Pusher.logToConsole = true;
 
-        const pusher = new Pusher('', {
-            cluster: ''
+        const pusher = new Pusher('ffd0f41c2f813018fb0d', {
+            cluster: 'mt1'
         });
 
-        const channel = pusher.subscribe(`Chat_between_${sender_id}and${reciver_id}`);
+        const channel = pusher.subscribe(`Chat_between_${userToken?.profile_id}_and_${id}`);
         channel.bind('connected', function (data) {
-            allMessages.push(data);
-            setMessages(allMessages);
+            console.log('Received message:', data.message);
         });
     }, []);
 
-    const submit = async e => {
+    const submit = async (e) => {
         e.preventDefault();
 
-        await fetch('https://creve.store/chat/33/', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                message
-            })
-        });
+        try {
+            const response = await fetch(`https://creve.store/chat/${id}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${authUser.access}`,
+                },
+                body: JSON.stringify({
+                    'body':message
+                })
+            });
 
-        setMessage('');
-    }
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+            console.log('Sent message response: ', data);
+            setMessage('');
+        } catch (error) {
+            console.error('There was a problem with the fetch operation:', error);
+        }
+    };
+
+
   return (
 
     <div className='bg-neutral-100 h-full'>
@@ -363,8 +365,6 @@ const SingleUserCreativeDash = () => {
                     <span>Removed Succesfully</span>
                 </div>
             }
-
-
 
             {isLoading === true ? <span className="loading loading-spinner loading-lg flex justify-center items-center m-auto "></span> : <>
                 <div className='w-full flex lg:pt-[7rem] px-3 pt-[6rem] items-center py-3  '>
@@ -545,7 +545,6 @@ const SingleUserCreativeDash = () => {
                 </div>
             </>}
 
-
             <dialog id="my_modal_3" className="modal">
                 <div className="modal-box rounded-md lg:p-10 p-5 lg:w-full w-[96%] lg:h-fit h-screen">
                     <form method="dialog">
@@ -599,8 +598,6 @@ const SingleUserCreativeDash = () => {
                     </form>
                 </div>
             </dialog>
-
-
 
             <dialog id="my_modal_2" className="modal">
                 <div className="modal-box rounded-md lg:p-10 p-5 lg:w-full w-[96%] py-10">
@@ -680,7 +677,7 @@ const SingleUserCreativeDash = () => {
                     </form>
                     <h3 className="font-bold text-xl pb-3 pt-5">Start chatting with talent</h3>
                     <p className='pb-5'>Send talent a message and await response or send them a request and await a call</p>
-                    <form action="">
+                    <form action="" onSubmit={submit}>
                         <div>
                             <input 
                                 type="text"  
@@ -692,8 +689,14 @@ const SingleUserCreativeDash = () => {
                         </div>
                         <div className='flex items-center text-sm pt-5'>
                             <button type='submit' className={`w-full py-3 px-4 color text-white rounded-full }`} >
-                                {isLoading2 === true ? <span className="loading loading-spinner loading-sd"></span> : 'Send Request' }
+                                {isLoading2 === true ? <span className="loading loading-spinner loading-sd"></span> : 'Send Message' }
                             </button>
+                        </div>
+
+                        <div>
+                            {messages.map((msg, index) => (
+                                <div key={index}>{msg.body}</div>
+                            ))}
                         </div>
                     </form>
                 </div>
