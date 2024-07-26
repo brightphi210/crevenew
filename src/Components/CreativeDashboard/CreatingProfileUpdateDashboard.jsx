@@ -23,9 +23,7 @@ import CreativeSkills from './CreativeSkills';
 import MyLoader from '../allLoadingState/MyLoader';
 
 const CreatingProfileUpdateDashboard = () => {
-
     const [show, setShow] = useState(false)
-  
     const handleShow = () => {
       setShow(!show)
     }
@@ -37,7 +35,6 @@ const CreatingProfileUpdateDashboard = () => {
       <div className=''>
         <CreativeSideBarCom show={show} />
       </div>
-      
         <div className='w-full'>
             <CreativeNavBarCom show={show} handleShow={handleShow}/>
             <CreatingProfileUpdateHome/>
@@ -49,18 +46,14 @@ const CreatingProfileUpdateDashboard = () => {
 export default CreatingProfileUpdateDashboard
 
 
-
-
 export const CreatingProfileUpdateHome = () => {
     
     let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
     const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
 
-
     const [selectedOption, setSelectedOption] = useState('')
     const [digital_skills, setDigitalSkills] = useState('')
     const [work_type, setWorkType] = useState('')
-    
     const [summary_of_profile, setSummary_Of_Profile] = useState('')
     const [starting_price, setStarting_Price] = useState('')
     const [about, setAbout] = useState('')
@@ -70,8 +63,6 @@ export const CreatingProfileUpdateHome = () => {
     const [whatsapp_link, setWhatsapp_Link] = useState('')
     const [phone_number, setPhoneNumber] = useState('')
     const [website_link, setWebsite_Link] = useState('')
-
-
     const [images_list, setImage_list] = useState([]) 
     const [isLoading, setIsLoading] = useState(false)
     const [isLoading2, setIsLoading2] = useState(false)
@@ -88,7 +79,6 @@ export const CreatingProfileUpdateHome = () => {
   
 
     const [address, setAddress] = useState('');
-
     const handlePlaceSelected = (place) => {
       const address = place.formatted_address;
       setAddress(address);
@@ -189,8 +179,6 @@ export const CreatingProfileUpdateHome = () => {
             setIsLoading(false)
         }
     }
-
-
     console.log('This is error', error1);
 
 
@@ -211,13 +199,11 @@ export const CreatingProfileUpdateHome = () => {
         setEachState(4)
     }
 
-
     const [phoneErr, setPhoneErr] = useState('')
     const [whatsAppErr, setWhatsAppErr] = useState('')
     const [isPhoneValid, setIsPhoneValid] = useState(true)
     const validatePhoneNumber = (e) => {
         setPhoneNumber(e.target.value)
-      
         if (validator.isMobilePhone(phone_number)) {
            setPhoneErr('')
             setIsPhoneValid(true)
@@ -230,7 +216,6 @@ export const CreatingProfileUpdateHome = () => {
     
     const validateWhatsappNumber = (e) => {
         setWhatsapp_Link(e.target.value)
-      
         if (validator.isMobilePhone( whatsapp_link)) {
             setWhatsAppErr('')
             setIsPhoneValid(true)
@@ -241,18 +226,11 @@ export const CreatingProfileUpdateHome = () => {
     }
 
 
-    console.log(phone_number);
-    console.log(whatsapp_link);
-
-
   return (
     <div>
 
         {isLoading2 === true ? 
-      
             (<MyLoader />) : (
-
-
             <div className='lg:p-20 lg:pt-28 lg:pl-[18rem] p-5 pt-20'>
 
                 <div className='flex lg:gap-2 gap-2 pb-10'>
