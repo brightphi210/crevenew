@@ -61,6 +61,12 @@ const HomeCompoTwo = () => {
 
         </div>
 
+        <div>
+            <h2></h2>
+            <div>
+                <img src="https://res.cloudinary.com/dphb7gqus/image/upload/v1722103238/mypics/workplace-with-headphones-laptop-evening-copy-space_zcxlnv.jpg" alt="" />
+            </div>
+        </div>
 
         <div className='lg:pt-36 lg:pb-16 py-5 lg:px-[10rem] 2xl:px-[20rem] xl:px-[10rem] px-5'>
             <h2 className='2xl:text-4xl text-xl'>Browse talent by category</h2>
@@ -68,7 +74,6 @@ const HomeCompoTwo = () => {
 
             <div className='grid 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 lg:gap-10 gap-5 pt-6'>
                 
-                <Link to={'/allTalents'}>
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
                     <h2 className='text-xl'>Furniture Making</h2>
                     <div className='flex gap-10 pt-5'>
@@ -76,9 +81,7 @@ const HomeCompoTwo = () => {
                         <p className=''>1657 skills</p>
                     </div>
                 </div>
-                </Link>
 
-                <Link to={'/allTalents'}>
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
                     <h2 className='text-xl'>Fashion Desing</h2>
                     <div className='flex gap-10 pt-5'>
@@ -86,9 +89,7 @@ const HomeCompoTwo = () => {
                         <p className=''>1657 skills</p>
                     </div>
                 </div>
-                </Link>
 
-                <Link to={'/allTalents'}>
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
                     <h2 className='text-xl'>Web Development</h2>
                     <div className='flex gap-10 pt-5'>
@@ -96,9 +97,7 @@ const HomeCompoTwo = () => {
                         <p className=''>1657 skills</p>
                     </div>
                 </div>
-                </Link>
 
-                <Link to={'/allTalents'}>
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
                     <h2 className='text-xl'>Mobile dev</h2>
                     <div className='flex gap-10 pt-5'>
@@ -106,10 +105,8 @@ const HomeCompoTwo = () => {
                         <p className=''>1657 skills</p>
                     </div>
                 </div>
-                </Link>
 
 
-                <Link to={'/allTalents'}>
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
                     <h2 className='text-xl'>Cobbling Making</h2>
                     <div className='flex gap-10 pt-5'>
@@ -117,9 +114,7 @@ const HomeCompoTwo = () => {
                         <p className=''>1657 skills</p>
                     </div>
                 </div>
-                </Link>
 
-                <Link to={'/allTalents'}>
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
                     <h2 className='text-xl'>Electricals</h2>
                     <div className='flex gap-10 pt-5'>
@@ -127,7 +122,6 @@ const HomeCompoTwo = () => {
                         <p className=''>1657 skills</p>
                     </div>
                 </div>
-                </Link>
             </div>
         </div>
 
@@ -220,7 +214,7 @@ const HomeCompoTwo = () => {
 
         <div className='grid lg:grid-cols-2 grid-cols-1 mt-28 2xl:mx-[20rem] lg:mx-[10rem] xl:mx-[10rem] color lg:rounded-md '>
             <div>
-                <img src={person} alt="" className='lg:rounded-md w-full h-full object-cover'/>
+                <img src={'https://res.cloudinary.com/dphb7gqus/image/upload/v1722103452/mypics/person_dksyle.webp'} alt="" className='lg:rounded-md w-full h-full object-cover'/>
             </div>
             <div className='text-white py-14 px-10 w-full' data-aos="fade-up" data-aos-duration="1000">
                 <p>For talent</p>
