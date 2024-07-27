@@ -106,9 +106,9 @@ const LoginCom = () => {
   return (
     <div class="bg-white flex lg:flex-row flex-col justify-center items-center lg:h-screen lg:pt-0 ">
 
-      <div class="lg:w-1/2 w-full lg:h-screen h-[35vh]  lg:block">
+      <div class="lg:w-1/2 w-full bg-neutral-100 lg:h-screen h-[35vh]  lg:block">
         <video 
-            src={vd1}
+            src={'https://res.cloudinary.com/dphb7gqus/video/upload/v1722106113/mypics/integrations_y0s1td.mp4'}
             autoPlay 
             controls={false} 
             muted loop
@@ -172,7 +172,7 @@ const LoginCom = () => {
             name='email'
 
           />
-          {errors.email && <p className="text-red-400 pt-3 lg:text-lg text-sm font-normal">{errors.email}</p>}
+          {errors.email && <p className="text-red-400 pt-3 lg:text-base text-sm font-normal">{errors.email}</p>}
         </div>
 
         <div className='relative'>
@@ -190,7 +190,7 @@ const LoginCom = () => {
             {show === true ? <p onClick={()=>setShow(false)}><FaEyeSlash /></p> : <p onClick={()=>setShow(true)}><FaEye /></p>}
           
           </div>
-          {errors.password && <p className="text-red-400 pt-3 lg:text-lg text-sm font-normal">{errors.password}</p>}
+          {errors.password && <p className="text-red-400 pt-3 lg:text-base text-sm font-normal">{errors.password}</p>}
         </div>
 
         

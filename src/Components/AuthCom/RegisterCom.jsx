@@ -70,9 +70,9 @@ const RegisterCom = () => {
   return (
     <div class="bg-white flex lg:flex-row flex-col justify-center items-center lg:h-screen lg:pt-0 ">
 
-    <div class="lg:w-1/2 w-full lg:h-screen h-[30vh] lg:block">
+    <div class="lg:w-1/2 w-full bg-neutral-100 lg:h-screen h-[30vh] lg:block">
       <video 
-          src={vd1}
+          src={'https://res.cloudinary.com/dphb7gqus/video/upload/v1722106065/mypics/dribbble_lfe49k.mp4'}
           autoPlay 
           controls={false} 
           muted loop

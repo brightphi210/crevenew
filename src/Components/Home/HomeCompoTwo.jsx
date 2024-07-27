@@ -4,18 +4,13 @@ import icon2 from '../Images/icon1.png'
 import icon3 from '../Images/icon2.png'
 import hero2 from '../Images//hero2.png'
 
-import prof1 from '../Images/prof1.png'
-import prof2 from '../Images/prof2.png'
-import prof3 from '../Images/prof3.jpg'
-import prof4 from '../Images/prof4.jpg'
-
-import person from '../Images/person.webp'
-
-import avatar from '../Images/Avatars.png'
+import { PiHandshakeLight } from "react-icons/pi";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa";
+import { IoFlashOutline } from "react-icons/io5";
+import { GoTasklist } from "react-icons/go";
+import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 
-import hero5 from '../Images/nnb.png'
 import { Link } from 'react-router-dom'
 
 const HomeCompoTwo = () => {
@@ -23,11 +18,34 @@ const HomeCompoTwo = () => {
     <div className=''>
 
 
-        <h2 className='text-center 2xl:text-4xl text-xl pb-4' data-aos="fade-up" data-aos-duration="1000">A whole world of  <br /> <span className='mycolor font-bold'>talent</span> at your fingertips</h2>
-        <div className='flex lg:py-10 py-5 2xl:grid 2xl:grid-cols-3 rounded-2xl xl:grid xl:grid-cols-3 lg:grid lg:grid-cols-2 flex-col lg:px-[10rem] 2xl:px-[20rem] xl:px-[10rem]  justify-between px-5 lg:gap-5 gap-5'>
+        <h2 className='text-center 2xl:text-4xl text-2xl pb-4 ' data-aos="fade-up" data-aos-duration="1000">A whole world of  <br /> <span className='mycolor font-bold'>talent</span> at your fingertips</h2>
+        <div className='flex lg:py-10 py-5 2xl:grid 2xl:grid-cols-3 rounded-2xl xl:grid xl:grid-cols-3 lg:grid lg:grid-cols-2 flex-col lg:px-[10rem] 2xl:px-[20rem] xl:px-[10rem]  justify-between px-5 lg:gap-10 gap-5'>
            
+           <div className='bg-neutral-100 p-5 rounded-lg' data-aos="fade-up" data-aos-duration="1000">
+                <p className='text-3xl mb-5 flex items-center justify-center h-fit rounded-full p-3 bg-neutral-200 w-fit'><GoTasklist /></p>
+                <h2 className='text-2xl pb-5'>Over 10 categories</h2>
+                <p className='text-sm'>Get results from skilled freelancers from all over the world, for every task, at any price point.</p>
+           </div>
+
+           <div className='bg-neutral-100 p-5 rounded-lg' data-aos="fade-up" data-aos-duration="1000">
+                <p className='text-3xl mb-5 flex items-center justify-center h-fit rounded-full p-3 bg-neutral-200 w-fit'><PiHandshakeLight /></p>
+                <h2 className='text-2xl pb-5'>Quality work done faster</h2>
+                <p className='text-sm'>Filter to find the right freelancers quickly and get great work delivered in no time, every time.</p>
+           </div>
+
+           <div className='bg-neutral-100 p-5 rounded-lg' data-aos="fade-up" data-aos-duration="1000">
+                <p className='text-3xl mb-5 flex items-center justify-center h-fit rounded-full p-3 bg-neutral-200 w-fit'><IoFlashOutline /></p>
+                <h2 className='text-2xl pb-5'>24/7 support system</h2>
+                <p className='text-sm'>Chat with our team to get your questions answered or resolve any issues with your challenges</p>
+           </div>
+
+           <div className='bg-neutral-100 p-5 rounded-lg' data-aos="fade-up" data-aos-duration="1000">
+                <p className='text-3xl mb-5 flex items-center justify-center h-fit rounded-full p-3 bg-neutral-200 w-fit'><IoCheckmarkDoneCircleOutline /></p>
+                <h2 className='text-2xl pb-5'>Easy Hiring Process</h2>
+                <p className='text-sm'>Hire approved talnets as easy as posible, send request and get your job done.</p>
+           </div>
            
-            <div data-aos="fade-up" data-aos-duration="1000" className='text-center bg-white rounded-xl border border-neutral-200 w-full py-5 pb-10 flex justify-center items-center'>
+            {/* <div data-aos="fade-up" data-aos-duration="1000" className='text-center bg-white rounded-xl border border-neutral-200 w-full py-5 pb-10 flex justify-center items-center'>
                 <div>
                     <div className='bg-neutral-100 p-5 mb-4 m-auto flex justify-center items-center w-fit rounded-full'>
                         <img src={icon2} alt="" className='2xl:w-10 xl:w-10 lg:w-10 w-10'/>
@@ -57,18 +75,59 @@ const HomeCompoTwo = () => {
                     <h2 className='py-2 2xl:text-sm lg:text-xl text-lg font-semibold'>Hire Creative</h2>
                     <p className='text-neutral-800 2xl:text-xs lg:text-sm text-xs '>Book a creative, call, and hire</p>
                 </div>
-            </div>
+            </div> */}
 
         </div>
 
-        <div>
+        <div className='lg:pt-20 lg:pb-16 py-5 lg:px-[10rem] 2xl:px-[20rem] w-full xl:px-[10rem] '>
             <h2></h2>
-            <div>
-                <img src="https://res.cloudinary.com/dphb7gqus/image/upload/v1722103238/mypics/workplace-with-headphones-laptop-evening-copy-space_zcxlnv.jpg" alt="" />
+            <div className='lg:h-[40rem] h-[43rem] w-full overflow-hidden relative bg-black lg:rounded-2xl'>
+                <div className='absolute top-[5rem] lg:left-10 px-5 z-10 lg:w-[90%] w-full'>
+                    <p className='text-lg text-white pb-5'>For Client</p>
+                    <h2 className=' lg:text-6xl text-5xl text-white font-bold pt-[2rem]'>Find talent <br className='lg:block hidden'/> your way</h2>
+                    <p className='text-white lg:text-lg text-sm pt-5'>
+                        Work with the largest network of <br /> 
+                        independent  professionals and get things done—from <br className='lg:block hidden'/>
+                        quick turnarounds to big transformations.
+                    </p>
+
+                    <div className='grid lg:grid-cols-4 grid-cols-2 lg:gap-4 gap-2 pt-10 w-full'>
+
+                        <Link to={'' + '/user-dashboard-creative/'}>
+                        <div className='bg-accent text-white lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
+                            <h2 className='lg:text-2xl text-lg font-semibold'>Browse  talent <br className='lg:block hidden'/> of your choice</h2>
+                            <p className='lg:pt-3 pt-2 flex items-center text-sm gap-3'>Continue <FaArrowRightLong /></p>
+                        </div>
+                        </Link>
+
+                        <Link to={'' + '/user-dashboard-creative/'}>
+                        <div className='bg-accent text-white lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
+                            <h2 className='lg:text-2xl text-lg font-semibold'>Send Request/ <br className='lg:block hidden'/>chat talent</h2>
+                            <p className='lg:pt-3 pt-2 flex items-center text-sm gap-3'>Continue <FaArrowRightLong /></p>
+                        </div>
+                        </Link>
+
+                        <Link to={'' + '/user-dashboard-creative/'}>
+                        <div className='bg-accent text-white lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
+                            <h2 className='lg:text-2xl text-lg font-semibold'>Call talent/ <br className='lg:block hidden'/>await response</h2>
+                            <p className='lg:pt-3 pt-2 flex items-center text-sm gap-3'>Continue <FaArrowRightLong /></p>
+                        </div>
+                        </Link>
+
+
+                        <Link to={'' + '/user-dashboard-creative/'}>
+                        <div className='bg-accent text-white lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
+                            <h2 className='lg:text-2xl text-lg font-semibold'>Hire talent & <br className='lg:block hidden'/> get your job done</h2>
+                            <p className='lg:pt-3 pt-2 flex items-center text-sm gap-3'>Continue <FaArrowRightLong /></p>
+                        </div>
+                        </Link>
+                    </div>
+                </div>
+                <img className='h-full object-cover w-full lg:rounded-2xl lg:opacity-55 opacity-30' src="https://res.cloudinary.com/dphb7gqus/image/upload/v1722104850/mypics/african-american-young-woman-sitting-restaurant-using-laptop_1_swvfpn.jpg" alt="" />
             </div>
         </div>
 
-        <div className='lg:pt-36 lg:pb-16 py-5 lg:px-[10rem] 2xl:px-[20rem] xl:px-[10rem] px-5'>
+        <div className='lg:pt-16 lg:pb-16 py-5 lg:px-[10rem] 2xl:px-[20rem] xl:px-[10rem] px-5'>
             <h2 className='2xl:text-4xl text-xl'>Browse talent by category</h2>
             <p>Looking for work? <Link to={'/register'}><span className='text-green-500 underline'>Join Now</span></Link></p>
 
@@ -212,9 +271,9 @@ const HomeCompoTwo = () => {
             </Link>
         </div> */}
 
-        <div className='grid lg:grid-cols-2 grid-cols-1 mt-28 2xl:mx-[20rem] lg:mx-[10rem] xl:mx-[10rem] color lg:rounded-md '>
-            <div>
-                <img src={'https://res.cloudinary.com/dphb7gqus/image/upload/v1722103452/mypics/person_dksyle.webp'} alt="" className='lg:rounded-md w-full h-full object-cover'/>
+        <div className='grid lg:grid-cols-2 grid-cols-1 mt-16 2xl:mx-[20rem] lg:mx-[10rem] xl:mx-[10rem] color lg:rounded-md overflow-hidden'>
+            <div className='lg:h-full h-[20rem] overflow-hidden'>
+                <img  src={'https://res.cloudinary.com/dphb7gqus/image/upload/v1722103452/mypics/person_dksyle.webp'} alt="" className='lg:rounded-md w-full h-full object-cover'/>
             </div>
             <div className='text-white py-14 px-10 w-full' data-aos="fade-up" data-aos-duration="1000">
                 <p>For talent</p>
