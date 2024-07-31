@@ -85,7 +85,7 @@ const CreativeNavBarCom = ({handleShow, show}) => {
           <p className='text-xl cursor-pointer text-neutral-700 border border-neutral-300 flex rounded-full p-2 items-center justify-center '><IoNotificationsOutline /></p>
         </Link>
 
-        <Link to={'/creative-dashboard-chat'}>
+        <Link to={'/user-dashboard-chat'}>
           <p className='text-xl cursor-pointer text-neutral-700 border border-neutral-300 flex rounded-full p-2 items-center justify-center '><IoMailUnread /></p>
         </Link>
 

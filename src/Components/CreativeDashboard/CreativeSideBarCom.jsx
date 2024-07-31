@@ -41,7 +41,7 @@ const CreativeSideBarCom = ({show}) => {
                   <li className='2xl:text-base xl:text-xs lg:text-xs text-base hover:text-accent cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
                 </Link>
 
-                <Link to={'/creative-dashboard-chat'}>
+                <Link to={'/user-dashboard-chat'}>
                   <li className='2xl:text-base xl:text-xs lg:text-xs text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoMailUnread className=''/> Messages</li>
                 </Link>
 

@@ -277,6 +277,7 @@ const SingleUserCreativeDash = () => {
 
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
+    const [isSending, setIsSending] = useState(false);
 
     useEffect(() => {
         Pusher.logToConsole = true;
@@ -293,6 +294,7 @@ const SingleUserCreativeDash = () => {
 
     const submit = async (e) => {
         e.preventDefault();
+        setIsSending(true);
 
         try {
             const response = await fetch(`${BASE_URL}/chat/${id}/`, {
@@ -308,13 +310,22 @@ const SingleUserCreativeDash = () => {
 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
+                setIsSending(false);
             }
 
             const data = await response.json();
-            console.log('Sent message response: ', data);
+
+            if(response.ok || response.status === 200) {
+                document.getElementById('my_modal_6').showModal()
+                document.getElementById('my_modal_5').close()
+                console.log('Sent message response: ', data);
+                setIsSending(false);
+            }
+
             setMessage('');
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);
+            setIsSending(false);
         }
     };
 
@@ -672,6 +683,23 @@ const SingleUserCreativeDash = () => {
             </dialog>
 
 
+            <dialog id="my_modal_6" className="modal">
+                <div className="modal-box rounded-2xl lg:p-10 p-6 py-10 lg:w-full w-[96%]">
+                    <form method="dialog">
+                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+                    <div className='text-center'>
+                        <div className='flex m-auto justify-center'>
+                            <img src={successImg} alt="" className='w-28'/>
+                        </div>
+                        <h3 className="font-medium text-lg">Your Review was Sent!</h3>
+                        <Link to={'/user-dashboard-chat'}>
+                            <button className='text-black bg-white border border-neutral-200 mt-5 w-full rounded-full py-3 text-sm'>Continue Chat</button>
+                        </Link>
+                    </div>
+                </div>
+            </dialog>
+
             
             <dialog id="my_modal_5" className="modal">
                 <div className="modal-box rounded-md lg:p-10 p-5 lg:w-full w-[96%] lg:h-fit h-screen">
@@ -692,7 +720,7 @@ const SingleUserCreativeDash = () => {
                         </div>
                         <div className='flex items-center text-sm pt-5'>
                             <button type='submit' className={`w-full py-3 px-4 color text-white rounded-full }`} >
-                                {isLoading2 === true ? <span className="loading loading-spinner loading-sd"></span> : 'Send Message' }
+                                {isSending === true ? <span className="loading loading-spinner loading-sd"></span> : 'Send Message' }
                             </button>
                         </div>
 
