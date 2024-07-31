@@ -30,7 +30,7 @@ import UserChatDash from './Pages/UserDash/UserChatDash';
 AOS.init();
 
 function App() {
-
+  
   
   return (
     <div className="App">
@@ -45,16 +45,17 @@ function App() {
           <Route path='/about' element={<AboutPage />}/>
           <Route path='/blog' element={<BlogPage />}/>
           <Route path='/allTalents' element={<HomeTalentPage />}/>
+          <Route path='/user-dashboard-chat' element={<UserChatDash />}/>
 
 
           <Route element={<PrivateRoute role="Client"/>}>
+            <Route path='/users-dashboard-chat' element={<UserChatDash />}/>
             <Route path='/user-dashboard-home' element={<UserHomeDash />}/>
             <Route path='/user-dashboard-single-creative/:id/' element={<SingleUserCreative />}/>
             <Route path='/user-dashboard-creative/' element={<UserCreativeDash />}/>
             <Route path='/user-dashboard-books/' element={<UserRequestBookings />}/>
-            <Route path='/user-dashboard-favourites/' element={<UserFavoriteDash />}/>
             <Route path='/user-dashboard-profile/' element={<UserProfile />}/>
-            <Route path='/user-dashboard-chat' element={<UserChatDash />}/>
+            <Route path='/user-dashboard-favourites/' element={<UserFavoriteDash />}/>
           </Route>
 
           <Route element={<PrivateRoute role="Creative"/>}>
@@ -65,7 +66,6 @@ function App() {
             <Route path='/creative-dashboard-bookingsAll' element={<CreativeBookingsDash />}/>
             <Route path='/creative-dashboard-settings' element={<CreativeSettingDash />}/>
             <Route path='/creative-dashboard-FAQs' element={<CreativeFAQsDash />}/>
-            <Route path='/creative-dashboard-chat' element={<CreativeChatDash />}/>
           </Route>
           
         </Routes>

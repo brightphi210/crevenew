@@ -60,9 +60,6 @@ const UserNavbar = ({handleShow, show}) => {
         localStorage.removeItem('token')
         navigate('/')
     }
-
-
-    console.log('this is profile data', profileData);
     
   return (
     <div>

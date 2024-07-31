@@ -295,7 +295,7 @@ const SingleUserCreativeDash = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch(`https://creve.store/chat/${id}/`, {
+            const response = await fetch(`${BASE_URL}/chat/${id}/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -318,6 +318,8 @@ const SingleUserCreativeDash = () => {
         }
     };
 
+
+    
 
   return (
 
