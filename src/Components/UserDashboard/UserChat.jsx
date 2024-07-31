@@ -11,6 +11,7 @@ import { jwtDecode } from 'jwt-decode';
 import Pusher from "pusher-js";
 import prof from '../Images/Avatars.png'
 import { BASE_URL } from '../Auth/BaseUrl'
+import { FaRegCircleUser } from "react-icons/fa6";
 
 const UserChat = () => {
     
@@ -145,7 +146,11 @@ export const UserChatDashboard = ({users, userToken, authUser}) => {
             <div className='bg-white flex items-center fixed w-full lg:p-10 lg:py-5 px-5 py-3 z-50 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]'>
                 
                 <button className='color rounded-full py-2 px-5 text-white text-xs'>Leave chat</button>
-                <h2 className='text-xs ml-auto'>{userToken?.name}</h2>
+
+                <div className='flex items-center gap-3 ml-auto'>
+                    <p><FaRegCircleUser /></p>
+                    <h2 className='text-xs '>{userToken?.name}</h2>
+                </div>
             </div>
 
             <div className='lg:flex relative w-full'>
