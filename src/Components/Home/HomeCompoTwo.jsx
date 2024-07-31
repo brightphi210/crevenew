@@ -81,7 +81,7 @@ const HomeCompoTwo = () => {
 
         <div className='lg:pt-20 lg:pb-16 py-5 lg:px-[10rem] 2xl:px-[20rem] w-full xl:px-[10rem] '>
             <h2></h2>
-            <div className='lg:h-[40rem] h-[43rem] w-full overflow-hidden relative bg-black lg:rounded-2xl'>
+            <div className='2xl:h-[40rem] xl:h-[45rem] lg:h-[50rem] h-[43rem] w-full overflow-hidden relative bg-black lg:rounded-2xl'>
                 <div className='absolute top-[5rem] lg:left-10 px-5 z-10 lg:w-[90%] w-full'>
                     <p className='text-lg text-white pb-5'>For Client</p>
                     <h2 className=' lg:text-6xl text-5xl text-white font-bold pt-[2rem]'>Find talent <br className='lg:block hidden'/> your way</h2>
@@ -91,25 +91,25 @@ const HomeCompoTwo = () => {
                         quick turnarounds to big transformations.
                     </p>
 
-                    <div className='grid lg:grid-cols-4 grid-cols-2 lg:gap-4 gap-2 pt-10 w-full'>
+                    <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 grid-cols-2 lg:gap-4 gap-2 pt-10 w-full'>
 
                         <Link to={'' + '/user-dashboard-creative/'}>
                         <div className='bg-accent text-white lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
-                            <h2 className='lg:text-2xl text-lg font-semibold'>Browse  talent <br className='lg:block hidden'/> of your choice</h2>
+                            <h2 className='2xl:text-xl xl:text-lg lg:text-lg text-lg font-semibold'>Browse  talent <br className='lg:block hidden'/> of your choice</h2>
                             <p className='lg:pt-3 pt-2 flex items-center text-sm gap-3'>Continue <FaArrowRightLong /></p>
                         </div>
                         </Link>
 
                         <Link to={'' + '/user-dashboard-creative/'}>
                         <div className='bg-accent text-white lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
-                            <h2 className='lg:text-2xl text-lg font-semibold'>Send Request/ <br className='lg:block hidden'/>chat talent</h2>
+                            <h2 className='2xl:text-xl xl:text-lg lg:text-lg text-lg font-semibold'>Send Request/ <br className='lg:block hidden'/>chat talent</h2>
                             <p className='lg:pt-3 pt-2 flex items-center text-sm gap-3'>Continue <FaArrowRightLong /></p>
                         </div>
                         </Link>
 
                         <Link to={'' + '/user-dashboard-creative/'}>
                         <div className='bg-accent text-white lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
-                            <h2 className='lg:text-2xl text-lg font-semibold'>Call talent/ <br className='lg:block hidden'/>await response</h2>
+                            <h2 className='2xl:text-xl xl:text-lg lg:text-lg text-lg font-semibold'>Call talent/ <br className='lg:block hidden'/>await response</h2>
                             <p className='lg:pt-3 pt-2 flex items-center text-sm gap-3'>Continue <FaArrowRightLong /></p>
                         </div>
                         </Link>
@@ -117,7 +117,7 @@ const HomeCompoTwo = () => {
 
                         <Link to={'' + '/user-dashboard-creative/'}>
                         <div className='bg-accent text-white lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
-                            <h2 className='lg:text-2xl text-lg font-semibold'>Hire talent & <br className='lg:block hidden'/> get your job done</h2>
+                            <h2 className='2xl:text-xl xl:text-lg lg:text-lg text-lg font-semibold'>Hire talent & <br className='lg:block hidden'/> get your job done</h2>
                             <p className='lg:pt-3 pt-2 flex items-center text-sm gap-3'>Continue <FaArrowRightLong /></p>
                         </div>
                         </Link>
