@@ -106,7 +106,7 @@ const LoginCom = () => {
   return (
     <div class="bg-white flex lg:flex-row flex-col justify-center items-center lg:h-screen lg:pt-0 ">
 
-      <div class="lg:w-1/2 w-full bg-neutral-100 lg:h-screen h-[35vh]  lg:block">
+      <div class="lg:w-1/2 w-full bg-neutral-300 lg:h-screen h-[35vh]  lg:block">
         <video 
             src={'https://res.cloudinary.com/dphb7gqus/video/upload/v1722106113/mypics/integrations_y0s1td.mp4'}
             autoPlay 
