@@ -13,6 +13,7 @@ import prof from '../Images/Avatars.png'
 import { BASE_URL } from '../Auth/BaseUrl'
 import { FaRegCircleUser } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom'
+import MyLoader from '../allLoadingState/MyLoader'
 
 const UserChat = () => {
     
@@ -21,11 +22,11 @@ const UserChat = () => {
 
 
     const [users, setUsers] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoadinga, setIsLoadinga] = useState(false);
 
     const url5 =`${BASE_URL}/chat/`
     const fetchMessages = async () => {
-        setIsLoading(true);
+        setIsLoadinga(true);
         try {
         const response = await fetch(url5, {
             method: 'GET',
@@ -34,7 +35,7 @@ const UserChat = () => {
             },
         })
         if (!response.ok) {
-            setIsLoading(false);
+            setIsLoadinga(false);
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
@@ -43,7 +44,7 @@ const UserChat = () => {
         } catch (error) {
             console.log(error);
         } finally {
-        setIsLoading(false);
+        setIsLoadinga(false);
         }
     }
     useEffect(() => {
@@ -53,7 +54,7 @@ const UserChat = () => {
 
   return (
     <div className=''>
-        <UserChatDashboard users={users} userToken={userToken} authUser={authUser}/>
+        <UserChatDashboard users={users} userToken={userToken} authUser={authUser} isLoadinga={isLoadinga}/>
     </div>
   )
 }
@@ -64,7 +65,7 @@ export default UserChat
 
 
 
-export const UserChatDashboard = ({users, userToken, authUser}) => {
+export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
     const [selectedChat, setSelectedChat] = useState('');
     const [messageSide, setMessageSide] = useState(true);
     const [isLoading, setIsLoading] = useState(false)
@@ -97,8 +98,11 @@ export const UserChatDashboard = ({users, userToken, authUser}) => {
         };
     }, [selectedChat]);
 
+
+    const [chatLoading, setChatLoading] = useState(false)
     const submit = async (e) => {
         e.preventDefault();
+        setChatLoading(true);
         if (message.trim() === '') return;
         try {
             const response = await fetch(`${BASE_URL}/chat/messages/${selectedChat.room_name}/`, {
@@ -113,14 +117,17 @@ export const UserChatDashboard = ({users, userToken, authUser}) => {
             });
 
             if (!response.ok) {
+                setChatLoading(false);
                 throw new Error('Network response was not ok');
             }
 
             const data = await response.json();
             // setMessages((prevMessages) => [...prevMessages, data]);
             console.log('This is messages', messages);
+            setChatLoading(false);
             setMessage('');
         } catch (error) {
+            setChatLoading(false);
             console.error('There was a problem with the fetch operation:', error);
         }
     };
@@ -153,7 +160,7 @@ export const UserChatDashboard = ({users, userToken, authUser}) => {
         <div>
             <div className='bg-white flex items-center fixed w-full lg:p-10 lg:py-5 px-5 py-3 z-50 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]'>
                 
-                <button onClick={goBack} className='color rounded-full py-2 px-5 text-white text-xs'>Leave chat</button>
+                <button onClick={goBack} className='color rounded-full py-2 px-5 text-white text-xs'>Back</button>
 
                 <div className='flex items-center gap-3 ml-auto'>
                     <p><FaRegCircleUser /></p>
@@ -166,36 +173,45 @@ export const UserChatDashboard = ({users, userToken, authUser}) => {
                     <div className=''>
                         <h2 className='pl-5 pb-4'>Messages</h2>
 
-                        {users.map((user)=>(
-                            
-                        <div className=''>
 
-                            {console.log('THis is auth email', userToken.email)}
-                            {console.log('THis is auth selectchat', user?.reciever?.user?.email)}
-                            {user?.reciever?.user?.email !== userToken?.email ?
-                            <div onClick={() => handleClick(user)} className={`flex gap-3 border-y border-y-neutral-200 p-5 items-center  cursor-pointer hover:bg-neutral-200 hover:transition-all hover:ease-linear`}>
-                                <div className='bg-neutral-200 w-8 h-8 flex overflow-hidden items-center rounded-full'>
-                                    <img src={user?.reciever?.profile_pics} alt="" className='w-8 h-8 object-cover'/>
-                                </div>
-                                <div className=''>
-                                    <h2 className='text-sm'>{user?.reciever?.user?.fullname}</h2>
-                                    {/* <p className='text-xs'>You: {user?.messages[0]?.body.slice(0, 5)} . .</p> */}
-                                </div>
-                            </div> : 
+                        {isLoadinga === true ? <><MyLoader /></> : <>
+                            {users.length === 0 ? 
+                            <div className='pt-[5rem]'>
+                                <p className='flex m-auto justify-center text-3xl opacity-35'><TbMessageCircleOff /></p>
+                                <h2 className='text-center text-sm'>No Chat Yet</h2>
+                            </div>   : 
+                                <>
+                                    {users.map((user)=>(
+                                        
+                                        <div className=''>
+
+                                            {user?.reciever?.user?.email !== userToken?.email ?
+                                            <div onClick={() => handleClick(user)} className={`flex gap-3 border-y border-y-neutral-200 p-5 items-center  cursor-pointer hover:bg-neutral-200 hover:transition-all hover:ease-linear`}>
+                                                <div className='bg-neutral-200 w-8 h-8 flex overflow-hidden items-center rounded-full'>
+                                                    <img src={user?.reciever?.profile_pics} alt="" className='w-8 h-8 object-cover'/>
+                                                </div>
+                                                <div className=''>
+                                                    <h2 className='text-sm'>{user?.reciever?.user?.fullname}</h2>
+                                                    {/* <p className='text-xs'>You: {user?.messages[0]?.body.slice(0, 5)} . .</p> */}
+                                                </div>
+                                            </div> : 
 
 
-                            <div onClick={() => handleClick(user)} className={`flex gap-3 border-y border-y-neutral-200 p-5 items-center  cursor-pointer hover:bg-neutral-200 hover:transition-all hover:ease-linear`}>
-                                <div className='bg-neutral-200 w-8 h-8 flex overflow-hidden items-center rounded-full'>
-                                    <img src={user?.sender?.profile_pics} alt="" className='w-8 h-8 object-cover'/>
-                                </div>
-                                <div className=''>
-                                    <h2 className='text-sm'>{user?.sender?.user?.fullname}</h2>
-                                    {/* <p className='text-xs'>You: {user?.messages[0]?.body.slice(0, 5)} . .</p> */}
-                                </div>
-                            </div>
+                                            <div onClick={() => handleClick(user)} className={`flex gap-3 border-y border-y-neutral-200 p-5 items-center  cursor-pointer hover:bg-neutral-200 hover:transition-all hover:ease-linear`}>
+                                                <div className='bg-neutral-200 w-8 h-8 flex overflow-hidden items-center rounded-full'>
+                                                    <img src={user?.sender?.profile_pics} alt="" className='w-8 h-8 object-cover'/>
+                                                </div>
+                                                <div className=''>
+                                                    <h2 className='text-sm'>{user?.sender?.user?.fullname}</h2>
+                                                    {/* <p className='text-xs'>You: {user?.messages[0]?.body.slice(0, 5)} . .</p> */}
+                                                </div>
+                                            </div>
+                                            }
+                                        </div>
+                                    ))}
+                                </>
                             }
-                        </div>
-                        ))}
+                        </>}
                     </div>
                 </div>
 
@@ -295,6 +311,7 @@ export const UserChatDashboard = ({users, userToken, authUser}) => {
                                 autoComplete="on" 
                                 required
                                 value={message}
+                                disabled={chatLoading === true}
                                 onChange={e => setMessage(e.target.value)}
                             />
                             <div onClick={() => setShowPicker((val) => !val)} className='absolute right-3 lg:ml-5 ml-16 lg:bottom-1 bottom-2 top-3 lg:p-3 p-3  bg-white flex justify-center items-center  rounded-full cursor-pointer' >
@@ -313,7 +330,7 @@ export const UserChatDashboard = ({users, userToken, authUser}) => {
                         )}
 
                             <button disabled={message.trim() === ''} type='submit'  className="border-none mycolor4 text-white text-base flex gap-3 items-center p-3 rounded-full justify-center ">
-                                {isLoading === false ?  <IoSend /> : <span className="loading loading-spinner loading-sm"></span>}
+                                {chatLoading === false ?  <IoSend /> : <span className="loading loading-spinner loading-sm"></span>}
                             </button>
                         </form>
                     </div> 
