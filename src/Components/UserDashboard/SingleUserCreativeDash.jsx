@@ -42,6 +42,7 @@ import UserSideBar from './UserSideBar';
 import { TbAlertTriangle } from 'react-icons/tb';
 import Pusher from "pusher-js";
 import MyLoader from '../allLoadingState/MyLoader';
+import { MdVerified } from "react-icons/md";
 
 
 const SingleUserCreativeDash = () => {
@@ -383,13 +384,13 @@ const SingleUserCreativeDash = () => {
             {isLoading === true ? <MyLoader /> : <>
                 <div className='w-full flex lg:pt-[7rem] px-3 pt-[6rem] items-center py-3  '>
                     <p onClick={goBack} className='items-center text-lg flex justify-center text-black bg-neutral-200 lg:p-3 p-2 rounded-full w-fit cursor-pointer'><FaArrowLeft className='cursor-pointer'/></p>
-                    <button onClick={()=>document.getElementById('my_modal_5').showModal()} className='bg-black text-white py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-200 ml-auto'>Get in touch</button>
+                    <button onClick={()=>document.getElementById('my_modal_5').showModal()} className='bg-black text-white py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-200 ml-auto'>Chat Talent</button>
 
                 </div>
             
                 <div className='flex  relative lg:pt-[2rem] pt-[1rem] px-3'>
                     <div className=''>
-                        <div className='flex  items-center gap-5'>
+                        <div className='flex  items-center gap-2'>
                             <div className='w-10 h-10 rounded-full overflow-hidden'>
                                 <img src={creativeData.profile_pics} alt="" className='h-10 w-10 object-cover'/>
                             </div>
@@ -397,8 +398,10 @@ const SingleUserCreativeDash = () => {
                             {creativeData.user && (
 
                                 <div>
-                                    <h2 className='text-base'>{creativeData.user.fullname}</h2>
-                                    <p className='text-sm'>{creativeData.display_name}</p>
+                                    <h2 className='text-lg font-bold flex gap-2 items-center'>{creativeData.user.fullname}
+                                        {creativeData?.verified === true ? <MdVerified className='text-green-500'/>  : <GoUnverified className='text-red-500 font-bold'/> }
+                                    </h2>
+                                    <p className='text-sm'>{creativeData.display_name} <span className='text-xs text-neutral-400'>reviews({creativeData?.reviewed?.length})</span></p>
                                 </div>
                             )}
 
@@ -692,7 +695,7 @@ const SingleUserCreativeDash = () => {
                         <div className='flex m-auto justify-center'>
                             <img src={successImg} alt="" className='w-28'/>
                         </div>
-                        <h3 className="font-medium text-lg">Your Review was Sent!</h3>
+                        <h3 className="font-medium text-lg">Your Message was Sent!</h3>
                         <Link to={'/user-dashboard-chat'}>
                             <button className='text-black bg-white border border-neutral-200 mt-5 w-full rounded-full py-3 text-sm'>Continue Chat</button>
                         </Link>

@@ -237,11 +237,50 @@ export const UserCreativeDashboardCom = () => {
     <div className='2xl:pl-[20rem] xl:pl-[15rem] lg:pl-[15rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  py-28 w-full'>
       <div className='flex items-center px-4'>
 
-        <div className='flex items-center gap-3 lg:w-full'>
-          <button onClick={() => handleFilter('')} className={showOne === true ? 'py-2 lg:px-4 px-3 border rounded-full lg:text-sm text-xs  color text-white' : 'py-2 lg:text-sm text-sm px-2 lg:px-4'}>Discover</button>
-          <button onClick={() => handleFilter('Digital')} className={showTwo === true ? 'py-2 lg:px-4 px-3 border rounded-full lg:text-sm text-xs color  text-white' : 'py-2 lg:text-sm text-sm px-2 lg:px-4'}>Digital</button>
-          <button onClick={() => handleFilter('Non-Digital')} className={showThree === true ? 'py-2 lg:px-4 px-3 border rounded-full lg:text-sm text-xs  color text-white' : 'py-2 lg:text-sm text-sm px-2 lg:px-4'}>Non-Digital</button>
-        </div>
+      <div className="flex items-center gap-3 lg:w-full">
+        <button
+          onClick={() => {
+            handleFilter('')
+            setShowOne(true);
+            setShowTwo(false);
+            setShowThree(false);
+          }}
+          className={`${
+            showOne ? 'bg-black text-white' : 'bg-neutral-100 text-black'
+          } py-2 lg:px-4 px-3 border rounded-full lg:text-sm text-xs`}
+        >
+          Discover
+        </button>
+
+        <button
+          onClick={() => {
+            handleFilter('Digital');
+            setShowOne(false);
+            setShowTwo(true);
+            setShowThree(false);
+          }}
+          className={`${
+            showTwo ? 'bg-black text-white' : 'bg-neutral-100 text-black'
+          } py-2 lg:px-4 px-3 border rounded-full lg:text-sm text-xs`}
+        >
+          Digital
+        </button>
+        
+        <button
+          onClick={() => {
+            handleFilter('Non-Digital');
+            setShowOne(false);
+            setShowTwo(false);
+            setShowThree(true);
+          }}
+          className={`${
+            showThree ? 'bg-black text-white' : 'bg-neutral-100 text-black'
+          } py-2 lg:px-4 px-3 border rounded-full lg:text-sm text-xs`}
+        >
+          Non-Digital
+        </button>
+      </div>
+
         
 
         <div className='ml-auto flex items-center lg:w-full lg:gap-4 gap-2'>

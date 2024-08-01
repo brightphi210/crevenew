@@ -16,7 +16,7 @@ const HomeTalents = () => {
         setLoading(true)
 
         try {
-            const response  = await fetch('https://creve.store/creative/', {
+            const response  = await fetch('https://creve.store/tcreativeprofile/', {
                 method: 'GET',
             })
 
