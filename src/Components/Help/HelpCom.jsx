@@ -64,6 +64,13 @@ const HelpCom = () => {
             </div>
         </div>
 
+        <h2 className='text-center lg:text-5xl text-3xl font-bold text-black pt-20'>Quick guide</h2>
+        <ul className="steps steps-vertical">
+            <li className="step step-primary">Register</li>
+            <li className="step step-primary">Choose plan</li>
+            <li className="step">Purchase</li>
+            <li className="step">Receive Product</li>
+        </ul>
     </div>
   )
 }

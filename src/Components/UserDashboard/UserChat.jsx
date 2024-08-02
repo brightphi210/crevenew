@@ -242,8 +242,8 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
                                                 <div class="chat chat-end my-2">
                                                     <div className='flex items-center gap-3'>
                                                         <div class="chat-bubble mycolor4  text-white max-w-xs break-words">
-                                                            <p className='text-[10px] opacity-70 text-left'>You</p>
-                                                            <p className='lg:text-sm text-xs'>{msg?.body}</p>
+                                                            <p className='text-xs opacity-70 text-left'>You</p>
+                                                            <p className='lg:text-base text-sm'>{msg?.body}</p>
                                                         </div>
                                                         {/* <p className='bg-neutral-200 p-2 px-3 flex justify-center items-center rounded-full text-xs'>{msg?.sender?.fullname?.slice(0, 1)}</p> */}
                                                     </div>
@@ -254,8 +254,8 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
                                                     <div className='flex items-center gap-3'>
                                                     {/* <p className='bg-neutral-200 p-2 px-3 flex justify-center items-center rounded-full text-xs'>{msg?.sender?.fullname?.slice(0, 1)}</p> */}
                                                     <div className="chat-bubble bg-neutral-100  text-black max-w-xs break-words">
-                                                        <p className='text-[10px] opacity-70 text-left'>{msg?.sender?.fullname}</p>
-                                                        <p className='lg:text-sm text-xs'>{msg?.body}</p>
+                                                        <p className='text-xs opacity-70 text-left'>{msg?.sender?.fullname}</p>
+                                                        <p className='lg:text-base text-sm'>{msg?.body}</p>
                                                     </div>
                                                 </div>
                                             </div>                    
@@ -273,8 +273,8 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
                                                 <div class="chat chat-end my-2">
                                                     <div className='flex items-center gap-3'>
                                                         <div class="chat-bubble mycolor4  text-white max-w-xs break-words">
-                                                            <p className='text-[10px] opacity-70 text-left'>You</p>
-                                                            <p className='lg:text-sm text-xs'>{msg?.message?.body}</p>
+                                                            <p className='text-xs opacity-70 text-left'>You</p>
+                                                            <p className='lg:text-base text-sm'>{msg?.message?.body}</p>
                                                         </div>
                                                         {/* <p className='bg-neutral-200 p-2 px-3 flex justify-center items-center rounded-full text-xs'>{msg?.message?.fullname?.slice(0, 1)}</p> */}
                                                     </div>
@@ -285,8 +285,8 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
                                                     <div className='flex items-center gap-3'>
                                                     {/* <p className='bg-neutral-200 p-2 px-3 flex justify-center items-center rounded-full text-xs'>{msg?.message?.fullname?.slice(0, 1)}</p> */}
                                                     <div className="chat-bubble bg-neutral-100  text-black max-w-xs break-words">
-                                                        <p className='text-[10px] opacity-70 text-left'>{msg?.message?.fullname}</p>
-                                                        <p className='lg:text-sm text-xs'>{msg?.message?.body}</p>
+                                                        <p className='text-xs opacity-70 text-left'>{msg?.message?.fullname}</p>
+                                                        <p className='lg:text-base text-sm'>{msg?.message?.body}</p>
                                                     </div>
                                                 </div>
                                             </div>                    
