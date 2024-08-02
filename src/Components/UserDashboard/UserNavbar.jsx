@@ -101,6 +101,7 @@ const UserNavbar = ({handleShow, show}) => {
                         <p onClick={logout} className='p-3 flex m-auto justify-center gap-3 items-center py-3 px-5 text-sm bg-neutral-900 border border-neutral-200 rounded-full text-white cursor-pointer'>Logout <IoLogOutOutline /></p>
                     </ul>
                 </div>
+                
             </div>
         </div>
     </div>

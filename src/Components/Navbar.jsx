@@ -66,6 +66,10 @@ const Navbar = () => {
                     <Link to={'/blog'}>
                         <li className='cursor-pointer'>BLOG</li>
                     </Link>
+
+                    <Link to={'/help'}>
+                        <li className='cursor-pointer'>Help/Support</li>
+                    </Link>
                 </ul>
             )}
 
@@ -89,6 +93,12 @@ const Navbar = () => {
                 <Link to={'/blog'}>
                     <li className='cursor-pointer'>Blog</li>
                 </Link>
+
+
+                <Link to={'/help'}>
+                    <li className='cursor-pointer'>Help/Support</li>
+                </Link>
+                
             </ul>
 
             <ul className='flex items-center ml-auto lg:gap-10 gap-3 text-sm'>
@@ -106,7 +116,7 @@ const Navbar = () => {
 
                 {!userToken && 
                 <Link to={'/register'}>
-                    <li className='cursor-pointer bg-black flex gap-2 items-center lg:py-3 lg:px-5 px-3 py-2 rounded-md text-white'>Join <MdPeople /></li>
+                    <li className='cursor-pointer bg-black flex gap-2 items-center lg:py-3 lg:px-5 px-5 py-2 rounded-full text-white'>Join <MdPeople /></li>
                 </Link>
                 }
 
@@ -117,14 +127,14 @@ const Navbar = () => {
                 <>
                 {userToken.role === 'Creative' && 
                     <Link to={'/creative-dashboard-home'}>
-                        <li className='cursor-pointer bg-black flex gap-2 items-center lg:py-3 lg:px-5 px-3 py-2 rounded-md text-white'>Dashboard</li>
+                        <li className='cursor-pointer bg-black flex gap-2 items-center lg:py-3 lg:px-5 px-5 py-2 rounded-full text-white'>Dashboard</li>
                     </Link>
                 }
 
 
                 {userToken.role === 'Client' && 
                     <Link to={'/user-dashboard-home'}>
-                        <li className='cursor-pointer bg-black flex gap-2 items-center lg:py-3 lg:px-5 px-3 py-2 rounded-md text-white'>Dashboard</li>
+                        <li className='cursor-pointer bg-black flex gap-2 items-center lg:py-3 lg:px-5 px-5 py-2 rounded-full text-white'>Dashboard</li>
                     </Link>
                 }
                 </> 

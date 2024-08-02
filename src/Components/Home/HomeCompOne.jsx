@@ -17,12 +17,12 @@ const HomeCompOne = () => {
                 
                 <form action="" className='relative lg:w-1/3 w-full m-auto' >
                     <input type="text" placeholder='Search here' 
-                        className='2xl:py-4 xl:py-3 lg:py-3 px-5 py-4 border border-slate-300  mt-0 w-full text-xs  outline-none rounded-lg'
+                        className='2xl:py-4 xl:py-3 lg:py-3 px-5 py-4 border border-slate-300  mt-0 w-full text-xs  outline-none rounded-full'
                         required
                     />
 
 
-                    <button className='rounde-lg 2xl:py-3 xl:py-2 lg:py-2 py-3 border-none bg-neutral-700 text-white px-4 absolute right-1 top-1 rounded-lg'>
+                    <button className='rounde-lg 2xl:py-3 xl:py-2 lg:py-2 py-3 border-none bg-neutral-700 text-white px-4 absolute right-1 top-1 rounded-full'>
                         <FaArrowRightLong />
                     </button>
 
@@ -31,7 +31,7 @@ const HomeCompOne = () => {
                 <div className='flex gap-2 justify-center m-auto lg:mt-3 mt-0'>
                     
                     <Link to={'/allTalents'}>
-                        <button className='bg-gradient-to-r from-sky-500 to-teal-500 shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] text-xs  text-white py-4 2xl:text-lg xl:py-3 lg:py-3 cursor-pointer px-8 lg:mt-3 mt-6 rounded-md flex items-center gap-3'>
+                        <button className='bg-gradient-to-r from-sky-500 to-teal-500 shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] text-xs  text-white py-4 2xl:text-lg xl:py-3 lg:py-3 cursor-pointer px-8 lg:mt-3 mt-6 rounded-full flex items-center gap-3'>
                             Hire Now <FaArrowRightLong />
                         </button>
                     </Link>
@@ -39,7 +39,7 @@ const HomeCompOne = () => {
 
                     <Link to={'/register'}>
                     
-                        <button className='bg-white shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] border text-xs border-neutral-800 2xl:text-lg text-black py-4 xl:py-3 lg:py-3 cursor-pointer px-8 lg:mt-3 mt-6 rounded-md flex items-center gap-3'>
+                        <button className='bg-white shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] border text-xs border-neutral-800 2xl:text-lg text-black py-4 xl:py-3 lg:py-3 cursor-pointer px-8 lg:mt-3 mt-6 rounded-full flex items-center gap-3'>
                             Join for free <FaArrowRightLong />
                         </button>
                     </Link>

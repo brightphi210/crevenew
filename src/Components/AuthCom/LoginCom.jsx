@@ -197,7 +197,7 @@ const LoginCom = () => {
 
 
         <div className='flex'>
-          <button type="submit" className="btn hover:bg-neutral-900 bg-black text-white w-full">{isLoading === true ? <span class="loader"></span> : 'Login'}</button>
+          <button type="submit" className="btn rounded-full hover:bg-neutral-900 bg-black text-white w-full">{isLoading === true ? <span class="loader"></span> : 'Login'}</button>
         </div>
 
           <button className='mr-auto lg:text-lg text-sm pt-5' >Dont have account? <Link to={'/register'}><span className='text-green-500 font-bold pl-5 underline'> Register</span></Link> </button>

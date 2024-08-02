@@ -27,6 +27,7 @@ import UserFavoriteDash from './Pages/UserDash/UserFavoriteDash';
 import UserProfile from './Pages/UserDash/UserProfile';
 import CreativeChatDash from './Pages/CreativeDash/CreativeChatDash';
 import UserChatDash from './Pages/UserDash/UserChatDash';
+import Help from './Pages/Help';
 AOS.init();
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
 
           <Route path='/about' element={<AboutPage />}/>
           <Route path='/blog' element={<BlogPage />}/>
+          <Route path='/help' element={<Help />}/>
           <Route path='/allTalents' element={<HomeTalentPage />}/>
           <Route path='/user-dashboard-chat' element={<UserChatDash />}/>
 
