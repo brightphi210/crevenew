@@ -118,7 +118,7 @@ const LoginCom = () => {
           />
       </div>
 
-      <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2 relative">
+      <div class="lg:p-36 md:p-52 sm:20 p-8 px-5 w-full lg:w-1/2 relative">
         <h1 class="text-2xl font-semibold mb-4">Login</h1>
         <div>
 
@@ -200,7 +200,7 @@ const LoginCom = () => {
           <button type="submit" className="btn hover:bg-neutral-900 bg-black text-white w-full">{isLoading === true ? <span class="loader"></span> : 'Login'}</button>
         </div>
 
-          <button className='mr-auto lg:text-lg text-sm pt-5' >Dont have account? <Link to={'/register'}><span className='text-accent'> Register</span></Link> </button>
+          <button className='mr-auto lg:text-lg text-sm pt-5' >Dont have account? <Link to={'/register'}><span className='text-green-500 font-bold pl-5 underline'> Register</span></Link> </button>
         </form>
 
       </div>

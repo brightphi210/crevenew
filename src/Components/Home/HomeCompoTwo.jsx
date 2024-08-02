@@ -1,8 +1,5 @@
 import React from 'react'
-import icon1 from '../Images/icon.png'
-import icon2 from '../Images/icon1.png'
-import icon3 from '../Images/icon2.png'
-import hero2 from '../Images//hero2.png'
+import hero2 from '../Images/img.jpg'
 
 import { PiHandshakeLight } from "react-icons/pi";
 import { FaArrowRightLong } from "react-icons/fa6";
@@ -42,7 +39,7 @@ const HomeCompoTwo = () => {
            <div className='bg-neutral-100 p-5 rounded-lg' data-aos="fade-up" data-aos-duration="1000">
                 <p className='text-3xl mb-5 flex items-center justify-center h-fit rounded-full p-3 bg-neutral-200 w-fit'><IoCheckmarkDoneCircleOutline /></p>
                 <h2 className='text-2xl pb-5'>Easy Hiring Process</h2>
-                <p className='text-sm'>Hire approved talnets as easy as posible, send request and get your job done.</p>
+                <p className='text-sm'>Hire Verified talents as easy as posible, send request and get your job done.</p>
            </div>
            
             {/* <div data-aos="fade-up" data-aos-duration="1000" className='text-center bg-white rounded-xl border border-neutral-200 w-full py-5 pb-10 flex justify-center items-center'>
@@ -128,8 +125,8 @@ const HomeCompoTwo = () => {
         </div>
 
         <div className='lg:pt-16 lg:pb-16 py-5 lg:px-[10rem] 2xl:px-[20rem] xl:px-[10rem] px-5'>
-            <h2 className='2xl:text-4xl text-xl'>Browse talent by category</h2>
-            <p>Looking for work? <Link to={'/register'}><span className='text-green-500 underline'>Join Now</span></Link></p>
+            <h2 className='2xl:text-4xl text-xl'>Categories</h2>
+            <p className='pt-5'>Looking for work? <Link to={'/creative-dashboard-home'}><span className='text-green-500 underline'>Join Now</span></Link></p>
 
             <div className='grid 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 lg:gap-10 gap-5 pt-6'>
                 
@@ -137,48 +134,48 @@ const HomeCompoTwo = () => {
                     <h2 className='text-xl'>Furniture Making</h2>
                     <div className='flex gap-10 pt-5'>
                         <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.58/5</p>
-                        <p className=''>1657 skills</p>
+                        <p className=''>20 skills</p>
                     </div>
                 </div>
 
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
-                    <h2 className='text-xl'>Fashion Desing</h2>
+                    <h2 className='text-xl'>Fashion Designing</h2>
                     <div className='flex gap-10 pt-5'>
-                        <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.58/5</p>
-                        <p className=''>1657 skills</p>
+                        <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.00/5</p>
+                        <p className=''>35 skills</p>
                     </div>
                 </div>
 
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
                     <h2 className='text-xl'>Web Development</h2>
                     <div className='flex gap-10 pt-5'>
-                        <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.58/5</p>
-                        <p className=''>1657 skills</p>
+                        <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.45/5</p>
+                        <p className=''>40 skills</p>
                     </div>
                 </div>
 
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
                     <h2 className='text-xl'>Mobile dev</h2>
                     <div className='flex gap-10 pt-5'>
-                        <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.58/5</p>
-                        <p className=''>1657 skills</p>
+                        <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.10/5</p>
+                        <p className=''>10 skills</p>
                     </div>
                 </div>
 
 
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
-                    <h2 className='text-xl'>Cobbling Making</h2>
+                    <h2 className='text-xl'>Cobbling</h2>
                     <div className='flex gap-10 pt-5'>
-                        <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.58/5</p>
-                        <p className=''>1657 skills</p>
+                        <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.20/5</p>
+                        <p className=''>30 skills</p>
                     </div>
                 </div>
 
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
-                    <h2 className='text-xl'>Electricals</h2>
+                    <h2 className='text-xl'>Electronics/Repairs</h2>
                     <div className='flex gap-10 pt-5'>
-                        <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.58/5</p>
-                        <p className=''>1657 skills</p>
+                        <p className='flex items-center gap-3'><FaStar className='text-green-600'/>3.5/5</p>
+                        <p className=''>20 skills</p>
                     </div>
                 </div>
             </div>
@@ -292,70 +289,77 @@ const HomeCompoTwo = () => {
                     </div>
 
                     <Link to={'/register'}>
-                        <button className='mt-10 py-3 px-10 text-sm bg-white rounded-sm text-black hover:bg-neutral-200'>Get Started</button>
+                        <button className='mt-10 py-3 px-10 text-sm bg-white rounded-full text-black hover:bg-neutral-200'>Get Started</button>
                     </Link>
                 </div>
             </div>
         </div>
 
+        <div className='flex lg:flex-row w-fit flex-col py-14 gap-5 mt-5  2xl:mx-[20rem] lg:mx-[10rem] xl:mx-[10rem] items-center'>
 
-        <div className='flex lg:flex-row  rounded-lg w-fit flex-col-reverse py-14 gap-10 mt-20  2xl:mx-[20rem] lg:mx-[10rem] xl:mx-[10rem] 2xl:px-10 lg:px-10 xl:px-10 px-5 items-center bg-neutral-100'>
+            <div className="join join-vertical w-full border-l border-l-neutral-200 px-5">
+                <h2 className='mb-10 text-2xl'>WHY CHOOSE US</h2> 
 
-            <div className="join join-vertical lg:w-1/2 w-full">
-                <h2 className='mb-10 text-3xl'>WHY CHOOSE US</h2> 
-                <div data-aos="fade-right" data-aos-duration="1000" className="collapse collapse-arrow join-item border border-base-300">
-                    <input type="radio" name="my-accordion-4" defaultChecked /> 
+                <div data-aos="fade-up" data-aos-duration="1000" className="collapse collapse-arrow join-item bg-neutral-100 mb-5">
+                    <input type="radio" name="my-accordion-4" /> 
                     <div className="collapse-title 2xl:text-lg xl:text-base lg:text-sm text-md font-medium">
-                        Quick and easy hiring of creatives
+                        Free plan
                     </div>
                     <div className="collapse-content"> 
-                        <p className='text-xs 2xl:text-xs xl:text-[10px] lg:text-[10px] leading-loose'>
-                            Looking for a quick and easy hiring process? Our platform 
-                            simplifies candidate sourcing, saving you time and resources. 
-                            Find the right talent swiftly and seamlessly, ensuring a smooth 
-                            hiring experience from start 
-                            to finish. Get started today and make hiring hassle-free!
+                    <p className='text-xs 2xl:text-sm xl:text-xs lg:text-xs text-justify leading-loose'>
+                        Creve is a free platform designed to empower creative professionals by connecting them with 
+                        opportunities and resources to enhance their careers. It offers a user-friendly interface where artists, 
+                        designers, cobblers, and other creatives can showcase their portfolios, skills, and get hired.
+                    </p>
+                    </div>
+                </div>
+
+
+
+                <div data-aos="fade-up" data-aos-duration="1000" className="collapse collapse-arrow join-item bg-neutral-100 mb-5">
+                    <input type="radio" name="my-accordion-4" defaultChecked /> 
+                    <div className="collapse-title 2xl:text-lg xl:text-base lg:text-sm text-md font-medium">
+                        Quick and easy hiring of Creatives
+                    </div>
+                    <div className="collapse-content"> 
+                        <p className='text-xs 2xl:text-sm xl:text-xs lg:text-xs text-justify leading-loose'>
+                         Creve makes it easy for you to get your job done quickly,
+                         with our expert talent pool. No need to worry about finding the right person for your job.
                         </p>
                     </div>
                 </div>
                 
-                <div data-aos="fade-right" data-aos-duration="1000" className="collapse collapse-arrow join-item border border-base-300">
+                <div data-aos="fade-up" data-aos-duration="1000" className="collapse collapse-arrow join-item bg-neutral-100 mb-5">
                     <input type="radio" name="my-accordion-4" /> 
                     <div className="collapse-title 2xl:text-lg xl:text-base lg:text-sm text-md font-medium">
-                        Reviews/Ratings on clients
+                        Reviews/Ratings from clients
                     </div>
                     <div className="collapse-content"> 
-                        <p className='text-xs 2xl:text-xs xl:text-[10px] lg:text-[10px] leading-loose'>
-                            Choosing us means partnering with a team dedicated to your success. 
-                            Our commitment to excellence and customer satisfaction sets us apart. 
-                            Here are some reasons why our clients trust us:
+                        <p className='text-xs 2xl:text-sm xl:text-xs lg:text-xs text-justify leading-loose'>
+                            We make it easy for our customers to drop reviews for any creatives they have worked with,
+                            and we also value every reviews coming from them.
                         </p>
                     </div>
                 </div>
 
-                <div data-aos="fade-right" data-aos-duration="1000" className="collapse collapse-arrow join-item border border-base-300">
+                <div data-aos="fade-up" data-aos-duration="1000" className="collapse collapse-arrow join-item bg-neutral-100 mb-5">
                     <input type="radio" name="my-accordion-4" /> 
                     <div className="collapse-title 2xl:text-lg xl:text-base lg:text-sm text-md font-medium">
-                        Free onboarding as a Creative
+                        Real time chat system
                     </div>
                     <div className="collapse-content"> 
-                    <p className='text-xs 2xl:text-xs xl:text-[10px] lg:text-[10px] leading-loose'>
-                            Looking for a quick and easy hiring process? Our platform 
-                            simplifies candidate sourcing, saving you time and resources. 
-                            Find the right talent swiftly and seamlessly, ensuring a smooth 
-                            hiring experience from start 
-                            to finish. Get started today and make hiring hassle-free!
-                        </p>
+                    <p className='text-xs 2xl:text-sm xl:text-xs lg:text-xs text-justify leading-loose'>
+                        we provide a real time chat system for our customers to engage with creatives of any field and 
+                        get their job done easily and faster.
+                    </p>
                     </div>
                 </div>
             </div>
 
-            <div className='lg:w-2/5 ml-auto w-full' data-aos="fade-up" data-aos-duration="1000">
-                <img src={hero2} alt="" className='w-full'/>
+            <div className='lg:w-full ml-auto w-full lg:h-[30rem] h-[25rem] rounded-2xl overflow-hidden px-5' data-aos="fade-up" data-aos-duration="1000">
+                <img src={hero2} alt="" className='w-full rounded-2xl h-full object-cover'/>
             </div>
         </div>
-
-
     </div>
   )
 }

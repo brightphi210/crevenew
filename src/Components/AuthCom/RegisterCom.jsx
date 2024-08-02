@@ -82,15 +82,15 @@ const RegisterCom = () => {
         />
     </div>
 
-    <div class="2xl:p-36 xl:p-36 lg:p-36  p-8 w-full 2xl:w-1/2 xl:w-3/4 lg:w-full">
+    <div class="2xl:p-36 xl:p-36 lg:p-36  p-8 px-5 w-full 2xl:w-1/2 xl:w-3/4 lg:w-full">
       <h1 class="text-2xl font-semibold mb-4">Register</h1>
       
       <form action="" className=' flex flex-col gap-5 w-full' onSubmit={handleRegister}>
 
         <div className='flex lg:flex-row flex-col gap-3 items-end'>
 
-          <span onClick={handleClick1} className='flex lg:w-full w-full 2xl:text-lg xl:text-xs lg:text-xs  text-sm cursor-pointer bg-neutral-100 items-center gap-3 border border-neutral-200 py-3 px-3 rounded-md text-black'>
-            Join to Hire Someone 
+          <span onClick={handleClick1} className='flex lg:w-full w-full 2xl:text-xl xl:text-lg lg:text-lg font-bold  text-lg cursor-pointer bg-green-50 items-center gap-3 border border-green-200 py-3 px-3 rounded-md text-black'>
+            Hire a Skilled Talent 
             <input 
               type="radio" 
               name="radio-2" 
@@ -103,8 +103,8 @@ const RegisterCom = () => {
           </span>
 
 
-          <span onClick={handleClick2} className='flex lg:w-full w-full 2xl:text-lg xl:text-xs lg:text-xs text-sm cursor-pointer bg-neutral-100 items-center gap-2 border border-neutral-200 py-3 px-3 rounded-md text-black'>
-            Join to Provide a Service
+          <span onClick={handleClick2} className='flex lg:w-full w-full 2xl:text-xl xl:text-lg lg:text-lg font-bold  text-lg cursor-pointer bg-red-50 items-center gap-2 border border-red-200 py-3 px-3 rounded-md text-black'>
+            Become a Freelancer
             <input 
               type="radio" 
               name="radio-2" 
@@ -166,7 +166,7 @@ const RegisterCom = () => {
           </button>
         </div>
 
-        <button className='mr-auto lg:text-lg text-sm'>Dont have account? <Link to={'/login'}><span className='text-accent'> Login</span></Link> </button>
+        <button className='mr-auto lg:text-lg text-sm'>Dont have account? <Link to={'/login'}><span className='text-green-500 font-bold pl-5 underline'> Login</span></Link> </button>
 
       </form>
     </div>
