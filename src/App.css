@@ -312,7 +312,9 @@ $large-Two : 1200px; */
 
 }
 
-
+.steps .step {
+  text-align: left !important;
+}
 
 
 .loader {
