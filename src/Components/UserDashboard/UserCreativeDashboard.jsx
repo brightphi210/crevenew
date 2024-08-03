@@ -18,6 +18,7 @@ import { RiSearch2Line } from "react-icons/ri";
 
 import noData from '../Images/nodata2.png'
 import MyLoader from '../allLoadingState/MyLoader';
+import { LuSearch } from 'react-icons/lu';
 
 const UserCreativeDashboard = () => {
 
@@ -162,6 +163,7 @@ export const UserCreativeDashboardCom = () => {
       (item.location && item.location.toLowerCase().includes(searchTermLower)) ||
       (item.category && item.category.toLowerCase().includes(searchTermLower)) ||
       (item.digital_skills && item.digital_skills.toLowerCase().includes(searchTermLower)) ||
+      (item.nondigital_skills && item.nondigital_skills.toLowerCase().includes(searchTermLower)) ||
       (item.work_type && item.work_type.toLowerCase().includes(searchTermLower)) ||
       (item.display_name && item.display_name.toLowerCase().includes(searchTermLower))||
       (item.user.fullname && item.user.fullname.toLowerCase().includes(searchTermLower))
@@ -170,7 +172,7 @@ export const UserCreativeDashboardCom = () => {
 
 
 
-  const [location, setLocation] = useState({ lat: null, lng: null });
+  const [location, setLocation] = useState({ lat : null, lng:null});
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -192,16 +194,32 @@ export const UserCreativeDashboardCom = () => {
   }, []);
 
 
-  const apiKey = 'bdc_82430c2e13ed42838148a7bf2b145370';
+  // const apiKey = 'bdc_82430c2e13ed42838148a7bf2b145370';
+  const apiKey1 = 'AIzaSyA_HnIpk-nlGgMh-G1Evi-WX2T_wwqTmGs';
+
+  // console.log('This is address', `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${apiKey1}`);
+  
+
   const [address, setAddress] = useState('');
   const getAddress = async () => {
     try {
       const response = await fetch(
-        `https://api-bdc.net/data/reverse-geocode-client?latitude=${location.lat}&longitude=${location.lng}&localityLanguage=en&key=${apiKey}`
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${apiKey1}`
       );
       const data = await response.json();
+      
       setAddress(data.city)
       console.log(data);
+
+
+      if (data.results && data.results.length > 0) {
+        const formattedAddress = data.results[5]?.formatted_address;
+        setAddress(formattedAddress);
+        console.log('Formatted Address:', formattedAddress);
+      } else {
+        console.warn('No results found in geocode response.');
+      }
+      
       
     } catch (error) {
       console.error('Error getting address: ', error);
@@ -209,8 +227,10 @@ export const UserCreativeDashboardCom = () => {
   };
 
   useEffect(() => {
-    getAddress();
-  }, []);
+    if (location.lat !== null && location.lng !== null) {
+      getAddress();
+    }
+  }, [location]);
   
 
 
@@ -284,14 +304,14 @@ export const UserCreativeDashboardCom = () => {
         
 
         <div className='ml-auto flex items-center lg:w-full lg:gap-4 gap-2'>
-          <div className='relative 2xl:w-1/2  xl:w-3/4  lg:w-3/4 w-full lg:flex hidden ml-auto'>
+          <div className='relative 2xl:w-full  xl:w-full  lg:w-full w-full lg:flex hidden ml-auto'>
               <form className='relative w-full'>
                 <input type="text" 
                   value={searchTerm}
                   onChange={handleSearchInput}
-                  placeholder="Search here . . ." 
-                  className="input rounded-full text-sm input-bordered 2xl:p-6 xl:p-5 lg:p-5 w-full flex m-auto " />
-                  <button type='submit' className='absolute lg:top-2 top-1.5 right-3 text-xs bg-black text-white 2xl:py-2 xl:py-2 lg:py-2 px-4 py-2.5 rounded-full '>Search</button>
+                  placeholder="Search Talent by Category, Location, Service etc . ." 
+                  className="input rounded-full text-sm input-bordered pl-14 w-full flex m-auto " />
+                  <p className='absolute top-4 left-7'><LuSearch /></p>
               </form>
           </div>
 
@@ -376,24 +396,14 @@ export const UserCreativeDashboardCom = () => {
           <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
           <div className="drawer-side">
             <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-            <ul className="menu bg-base-200 text-base-content min-h-full overflow-y-scroll lg:w-[25rem] w-[20rem] lg:p-10 lg:pt-28 p-5 pt-28">
+            <ul className="menu bg-white text-base-content min-h-full overflow-y-scroll lg:w-[25rem] w-[20rem] lg:p-10 lg:pt-28 p-5 pt-28">
 
               <li className='lg:pb-8 pb-3 lg:text-lg text-xl font-semibold'>Filter Creatives with options below</li>
 
               <ul className='flex flex-col gap-4 lg:pt-0 pt-5'>
-                <h2 className='p-2 bg-neutral-200 border border-neutral-300'>My Location</h2>
-                <div className='flex items-center gap-4'>
-                  <li>Location </li>
-                  <input 
-                    type="radio" 
-                    value={address}
-                    checked={selectedOption === address}
-                    onChange={handleRadioChange}
-                    className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
-                </div>
+             
 
-
-                <h2 className='p-2 bg-neutral-200 border border-neutral-300'>Work Type</h2>
+                <h2 className='p-2 pl-5 bg-green-50 border border-green-300 rounded-full'>Work Type</h2>
                 <div className='flex items-center gap-4'>
                   <li>Hybrid </li>
                   <input 
@@ -425,13 +435,24 @@ export const UserCreativeDashboardCom = () => {
                 </div>
 
 
-                <h2 className='p-2 bg-neutral-200 border border-neutral-300'>Popular Non-Digital Services</h2>
+                <h2 className='p-2 bg-red-50 border border-red-300 rounded-full pl-5'>Popular Non-Digital Services</h2>
                 <div className='flex items-center gap-4'>
                   <li>Furniture Makers </li>
                   <input 
                     type="radio" 
                     value="Furniture"
                     checked={selectedOption === 'Furniture'}
+                    onChange={handleRadioChange}
+                    className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
+                </div>
+
+
+                <div className='flex items-center gap-4'>
+                  <li>Hair Barbers </li>
+                  <input 
+                    type="radio" 
+                    value="bar"
+                    checked={selectedOption === 'bar'}
                     onChange={handleRadioChange}
                     className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
                 </div>
@@ -458,13 +479,24 @@ export const UserCreativeDashboardCom = () => {
 
 
 
-                <h2 className='p-2 bg-neutral-200 border border-neutral-300'>Popular Digital Services</h2>
+                <h2 className='p-2 bg-blue-50 border border-blue-300 rounded-full pl-5'>Popular Digital Services</h2>
                 <div className='flex items-center gap-4'>
                   <li>Web Developers </li>
                   <input 
                     type="radio" 
                     value="web"
                     checked={selectedOption === 'web'}
+                    onChange={handleRadioChange}
+                    className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
+                </div>
+
+
+                <div className='flex items-center gap-4'>
+                  <li>Content Creator </li>
+                  <input 
+                    type="radio" 
+                    value="content"
+                    checked={selectedOption === 'content'}
                     onChange={handleRadioChange}
                     className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
                 </div>
@@ -489,7 +521,15 @@ export const UserCreativeDashboardCom = () => {
                     className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
                 </div>
 
-
+                <div className='flex items-center gap-4'>
+                  <li>Photographers</li>
+                  <input 
+                    type="radio" 
+                    value="photo"
+                    checked={selectedOption === 'photo'}
+                    onChange={handleRadioChange}
+                    className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
+                </div>
 
               </ul>
             </ul>

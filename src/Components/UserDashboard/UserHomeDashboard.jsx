@@ -148,12 +148,82 @@ export const UserHomeDashboardHome = () => {
   });
 
 
+  const [location, setLocation] = useState({ lat : null, lng:null});
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          });
+        },
+        (error) => {
+          setError(error.message);
+        }
+      );
+    } else {
+      setError('Geolocation is not supported by this browser.');
+    }
+  }, []);
+
+
+  // const apiKey = 'bdc_82430c2e13ed42838148a7bf2b145370';
+  const apiKey1 = 'AIzaSyA_HnIpk-nlGgMh-G1Evi-WX2T_wwqTmGs';
+
+  // console.log('This is address', `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${apiKey1}`);
+  
+
+  const [address, setAddress] = useState('');
+  const getAddress = async () => {
+    try {
+      const response = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${apiKey1}`
+      );
+      const data = await response.json();
+      
+      setAddress(data.city)
+      console.log(data);
+
+
+      if (data.results && data.results.length > 0) {
+        const formattedAddress = data.results[5]?.formatted_address;
+        setAddress(formattedAddress);
+        console.log('Formatted Address:', formattedAddress);
+      } else {
+        console.warn('No results found in geocode response.');
+      }
+      
+      
+    } catch (error) {
+      console.error('Error getting address: ', error);
+    }
+  };
+
+  useEffect(() => {
+    if (location.lat !== null && location.lng !== null) {
+      getAddress();
+    }
+  }, [location]);
+  
+
+
   return (
     <div className='2xl:pl-[20rem] xl:pl-[15rem] lg:pl-[15rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full'>
 
       <div className='lg:flex items-center block px-5'>
-        <h2 className='text-2xl pb-3 lg:p-0'>Hi, {isLoading === true ? '- - - - -' : <>{profileData.user && profileData.user.fullname}! </>} </h2>
 
+        <div className='flex items-center'>
+          <h2 className='text-2xl pb-3 lg:p-0'>Hi, {isLoading === true ? '- - - - -' : <>{profileData.user && profileData.user.fullname}! </>} </h2>
+       
+        </div>
+
+        <div className='flex items-center gap-3 ml-auto'>
+            <FaLocationDot size={18} className='text-green-600'/>
+            <span className='text-sm'>{isLoading === true ? '- - -' : <>{address}</>}</span>
+          </div>
         {/* <div className='relative 2xl:w-4/12  xl:w-1/2  lg:w-1/2 w-full flex ml-auto'>
             <>
             <input onChange={handleSearchInput} value={searchTermInput} type="text" placeholder="Search here . . ." className="input rounded-full text-sm input-bordered 2xl:p-7 xl:p-5 lg:p-5 w-full flex m-auto " />

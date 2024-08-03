@@ -419,7 +419,7 @@ const SingleUserCreativeDash = () => {
                     <div className='grid lg:grid-cols-3 grid-cols-1 gap-10 pt-10'>
 
                         <div className='lg:col-span-2'>
-                            <div className='2xl:h-[40rem] xl:h-[30rem] lg:h-[25rem] h-[20rem] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-white overflow-hidden lg:rounded-2xl'>
+                            <div className='2xl:h-[40rem] xl:h-[30rem] lg:h-[25rem] md:h-[35rem] h-[20rem] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-white overflow-hidden lg:rounded-2xl'>
                                 <PhotoProvider>
                                     <PhotoView src={creativeData.cover_image}>
                                         <img src={creativeData.cover_image} alt="" className='w-full cursor-pointer hover:transform hover:scale-105 transition-all ease-linear h-full object-cover'/>
@@ -433,7 +433,7 @@ const SingleUserCreativeDash = () => {
                                 {creativeData.images.map((Image)=>(
 
                                     <PhotoProvider>
-                                        <div className='lg:h-[13rem] h-[11rem] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-white lg:w-full w-full overflow-hidden rounded-md'>
+                                        <div className='lg:h-[13rem] h-[11rem]  shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-white lg:w-full w-full overflow-hidden rounded-md'>
                                             <PhotoView src={Image.image}>
                                                 <img src={Image.image} alt="" className='cursor-pointer lg:h-[13rem] h-[11rem] w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
                                             </PhotoView>
