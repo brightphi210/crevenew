@@ -170,11 +170,7 @@ export const UserHomeDashboardHome = () => {
   }, []);
 
 
-  // const apiKey = 'bdc_82430c2e13ed42838148a7bf2b145370';
   const apiKey1 = 'AIzaSyA_HnIpk-nlGgMh-G1Evi-WX2T_wwqTmGs';
-
-  // console.log('This is address', `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${apiKey1}`);
-  
 
   const [address, setAddress] = useState('');
   const getAddress = async () => {
@@ -184,14 +180,10 @@ export const UserHomeDashboardHome = () => {
       );
       const data = await response.json();
       
-      setAddress(data.city)
-      console.log(data);
-
-
       if (data.results && data.results.length > 0) {
         const formattedAddress = data.results[5]?.formatted_address;
         setAddress(formattedAddress);
-        console.log('Formatted Address:', formattedAddress);
+        // console.log('Formatted Address:', formattedAddress);
       } else {
         console.warn('No results found in geocode response.');
       }
@@ -208,8 +200,6 @@ export const UserHomeDashboardHome = () => {
     }
   }, [location]);
   
-
-
   return (
     <div className='2xl:pl-[20rem] xl:pl-[15rem] lg:pl-[15rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full'>
 
@@ -217,7 +207,6 @@ export const UserHomeDashboardHome = () => {
 
         <div className='flex items-center'>
           <h2 className='text-2xl pb-3 lg:p-0'>Hi, {isLoading === true ? '- - - - -' : <>{profileData.user && profileData.user.fullname}! </>} </h2>
-       
         </div>
 
         <div className='flex items-center gap-3 ml-auto'>

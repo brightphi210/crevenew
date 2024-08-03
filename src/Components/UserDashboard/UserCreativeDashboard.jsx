@@ -76,7 +76,6 @@ export const UserCreativeDashboardCom = () => {
       }
       const data = await response.json();
 
-      console.log(data);
       setAllTalents(data)
 
       } catch (error) {
@@ -90,30 +89,30 @@ export const UserCreativeDashboardCom = () => {
   }, []);
 
 
-  const handleShow1 = (id) => {
-    setShow((prev) => ({
-      ...prev,
-      [id]: false,
-    }));
+  // const handleShow1 = (id) => {
+  //   setShow((prev) => ({
+  //     ...prev,
+  //     [id]: false,
+  //   }));
 
-    setShowModal(false);
-    setTimeout(() => {
-      setShowModal('');
-    }, 3000);
-  };
+  //   setShowModal(false);
+  //   setTimeout(() => {
+  //     setShowModal('');
+  //   }, 3000);
+  // };
 
 
-  const handleShow2 = (id) => {
-    setShow((prev) => ({
-      ...prev,
-      [id]: true,
-    }));
+  // const handleShow2 = (id) => {
+  //   setShow((prev) => ({
+  //     ...prev,
+  //     [id]: true,
+  //   }));
 
-    setShowModal(true);
-    setTimeout(() => {
-      setShowModal('');
-    }, 3000);
-  };
+  //   setShowModal(true);
+  //   setTimeout(() => {
+  //     setShowModal('');
+  //   }, 3000);
+  // };
 
 
   const handleShowOne = () => {
@@ -122,17 +121,17 @@ export const UserCreativeDashboardCom = () => {
     setShowThree(false);
   }
 
-  const handleShowTwo = () => {
-    setShowOne(false);
-    setShowTwo(true);
-    setShowThree(false);
-  }
+  // const handleShowTwo = () => {
+  //   setShowOne(false);
+  //   setShowTwo(true);
+  //   setShowThree(false);
+  // }
 
-  const handleShowThree = () => {
-    setShowOne(false);
-    setShowTwo(false);
-    setShowThree(true);
-  }
+  // const handleShowThree = () => {
+  //   setShowOne(false);
+  //   setShowTwo(false);
+  //   setShowThree(true);
+  // }
 
 
   const [searchTermInput, setSearchTermInput] = useState('');
@@ -194,11 +193,7 @@ export const UserCreativeDashboardCom = () => {
   }, []);
 
 
-  // const apiKey = 'bdc_82430c2e13ed42838148a7bf2b145370';
   const apiKey1 = 'AIzaSyA_HnIpk-nlGgMh-G1Evi-WX2T_wwqTmGs';
-
-  // console.log('This is address', `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${apiKey1}`);
-  
 
   const [address, setAddress] = useState('');
   const getAddress = async () => {
@@ -209,9 +204,6 @@ export const UserCreativeDashboardCom = () => {
       const data = await response.json();
       
       setAddress(data.city)
-      console.log(data);
-
-
       if (data.results && data.results.length > 0) {
         const formattedAddress = data.results[5]?.formatted_address;
         setAddress(formattedAddress);
@@ -247,10 +239,6 @@ export const UserCreativeDashboardCom = () => {
     { id: 3, type: 'Remote', name: 'Item 3' },
     { id: 4, type: 'Hybrid', name: 'Item 4' },
   ];
-
-  console.log('This is my location', location);
-
-
 
 
   return (
