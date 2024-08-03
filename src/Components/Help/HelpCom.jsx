@@ -6,7 +6,7 @@ const HelpCom = () => {
         <h2 className='text-center lg:text-4xl text-3xl font-bold text-black'>Frequently asked questions</h2>
         <p className='text-center lg:text-lg text-sm text-black py-5'>Below are Frequently asked questions </p>
 
-        <div className='bg-white lg:p-10 p-5 shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] rounded-xl lg:my-10 mt-0 mb-10'>
+        <div className='bg-white lg:p-10 p-3 px-0 shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] rounded-xl lg:my-10 mt-0 mb-10'>
             <div className="collapse collapse-arrow bg-white rounded-none border-b border-b-neutral-200 mt-5">
                 <input type="radio" name="my-accordion-2" defaultChecked />
                 <div className="collapse-title text-base font-medium">What is Creve ?</div>
@@ -67,10 +67,10 @@ const HelpCom = () => {
         <h2 className='text-center lg:text-4xl text-3xl font-bold text-black pt-20'>Quick guide</h2>
         <p className='text-center  lg:text-lg text-sm text-black py-5'>Follow these steps to get your service done </p>
         <ul className="steps steps-vertical lg:text-lg text-sm text-left">
-            <li className="step step-primary text-left mb-5">Register or signin</li>
-            <li className="step step-primary text-left mb-5">On your dashboard, search for the service you need, E.g Hair Dressing, Cobbling, Web Developer etc.</li>
-            <li className="step step-primary text-left mb-5">Select a service provider(Creative) and send a request to the creative, or chat with him/her</li>
-            <li className="step step-primary text-left mb-5">Wait for creative to accepts your request and reply, either by the chat or by call</li>
+            <li className="step step-accent text-left mb-5">Register or signin</li>
+            <li className="step step-accent text-left mb-5">On your dashboard, search for the service you need, E.g Hair Dressing, Cobbling, Web Developer etc.</li>
+            <li className="step step-accent text-left mb-5">Select a service provider(Creative) and send a request to the creative, or chat with him/her</li>
+            <li className="step step-accent text-left mb-5">Wait for creative to accepts your request and reply, either by the chat or by call</li>
             <li className="step step-neutral text-left mb-5">Creative attends to your job, and your service is completed</li>
         </ul>
     </div>
