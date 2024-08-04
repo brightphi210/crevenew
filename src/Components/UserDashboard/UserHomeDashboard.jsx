@@ -179,6 +179,9 @@ export const UserHomeDashboardHome = () => {
         `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${apiKey1}`
       );
       const data = await response.json();
+
+      console.log('This is the datas', data);
+      
       
       if (data.results && data.results.length > 0) {
         const formattedAddress = data.results[5]?.formatted_address;
