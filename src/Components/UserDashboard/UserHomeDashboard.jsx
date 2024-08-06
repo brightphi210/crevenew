@@ -212,10 +212,10 @@ export const UserHomeDashboardHome = () => {
           <h2 className='text-2xl pb-3 lg:p-0'>Hi, {isLoading === true ? '- - - - -' : <>{profileData.user && profileData.user.fullname}! </>} </h2>
         </div>
 
-        <div className='flex items-center gap-3 ml-auto'>
+        {/* <div className='flex items-center gap-3 ml-auto'>
             <FaLocationDot size={18} className='text-green-600'/>
             <span className='text-sm'>{isLoading === true ? '- - -' : <>{address}</>}</span>
-          </div>
+        </div> */}
         {/* <div className='relative 2xl:w-4/12  xl:w-1/2  lg:w-1/2 w-full flex ml-auto'>
             <>
             <input onChange={handleSearchInput} value={searchTermInput} type="text" placeholder="Search here . . ." className="input rounded-full text-sm input-bordered 2xl:p-7 xl:p-5 lg:p-5 w-full flex m-auto " />
@@ -260,7 +260,7 @@ export const UserHomeDashboardHome = () => {
         </div>
       }
 
-      <div className='shadow-[rgba(7,_65,_210,_0.03)_0px_9px_30px] bg-white 2xl:p-10 xl:p-5 lg:p-5 p-5 mt-5 lg:w-full w-[95%] m-auto grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 grid-cols-1 2xl:gap-10 lg:gap-5 gap-5 items-center 2xl:rounded-3xl xl:rounded-xl lg:rounded-xl rounded-md'>
+      <div className='shadow-[rgba(7,_65,_210,_0.03)_0px_9px_30px] bg-white 2xl:p-10 xl:p-5 lg:p-5 p-5 mt-5 lg:w-full w-[95%] m-auto grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 grid-cols-1 2xl:gap-10 lg:gap-5 gap-5 items-center 2xl:rounded-3xl xl:rounded-xl lg:rounded-xl rounded-md'>
 
         <div className='bg-neutral-50 p-5 rounded-xl border border-neutral-200'>
           <p className='text-sm'>Welcome to </p>
@@ -321,7 +321,7 @@ export const UserHomeDashboardHome = () => {
         {isLoading === true ? <MyLoader /> : 
         <>
           {filteredItems.length > 0 && 
-            <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5'>
+            <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5'>
 
               {filteredItems.slice(0, 20).map((talent) =>(
 
