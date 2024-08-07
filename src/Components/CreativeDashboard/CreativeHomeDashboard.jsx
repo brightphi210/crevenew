@@ -86,6 +86,7 @@ export const CreativeHome = () => {
   const url =`${BASE_URL}/creativeprofile/${userToken.profile_id}/`
 
   const [showModal, setShowModal] = useState(false)
+  const [showModal2, setShowModal2] = useState(false)
 
 
   const fetchProfile = async () => {
@@ -104,8 +105,12 @@ export const CreativeHome = () => {
         }
         const data = await respose.json();
 
-        if (data.display_name === null || data.phone_number === null) {
+        if (data.display_name === null || data.phone_number === null || data?.dskills.length === 0 || data?.images.length === 0) {
           setShowModal(true);
+        }
+
+        else if (data.display_name === null || data.phone_number === null || data?.dskills.length === 0 || data?.images.length === 0) {
+          setShowModal2(true);
         }
 
         console.log(data);
@@ -120,6 +125,9 @@ export const CreativeHome = () => {
   useEffect(() => {
       fetchProfile();
   }, []);
+
+  console.log('This is profileData', profileData);
+  
 
 
   const [selectedRequest, setSelectedRequest] = useState(null);
@@ -138,19 +146,39 @@ export const CreativeHome = () => {
       (err) => setCopySuccess('Failed to copy!')
     );
 };
+
+const [completeMessage, setCompleteMessage] = useState(true)
+
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    if (showModal === true) {
+      setCompleteMessage(true);
+    } else {
+      setCompleteMessage(false);
+    }
+  }, 2000); 
+
+
+  return () => clearTimeout(timer);
+}, [showModal]);
   
   return (
 
 
     <div className='lg:p-16  lg:pl-[18rem] p-5 px-3 pt-20 lg:pt-28'>
 
-      <div className='bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg items-center p-3 lg:px-10 px-5 flex mb-5'>
-          <div>
-            <h2 className='underline text-green-600 cursor-pointer pb-2 flex items-center gap-3 text-sm'>Complete your profile <GoArrowRight /></h2>
-            <p className='text-xs'>Please do well to complete your profile</p>
-          </div>
-          <p className='ml-auto flex items-center justify-center cursor-pointer bg-neutral-100  rounded-full w-8 h-8 text-xl'><MdOutlineClose /></p>
-      </div>
+      {completeMessage === true ?
+      
+        <div className='bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] gap-4 rounded-lg items-center p-3 lg:px-10 px-5 flex mb-5'>
+            <div>
+              <h2 className='underline text-green-600 cursor-pointer pb-2 flex items-center gap-3 text-sm'>Complete your profile <GoArrowRight /></h2>
+              <p className='text-xs'>Please complete you profile, Upload NIN Document, add collections</p>
+            </div>
+            <p className='ml-auto flex items-center justify-center cursor-pointer bg-neutral-100  rounded-full w-10 lg:h-10 h-8 text-xl'><MdOutlineClose /></p>
+        </div>
+
+      : ''}
  
       <div className='flex 2xl:flex-row flex-col xl:flex-row lg:flex-col gap-10'>
 
@@ -181,7 +209,7 @@ export const CreativeHome = () => {
                     grow your network and market your skills.
                   </p>
                   <h2 className='2xl:text-2xl lg:text-2xl xl:text-xl text-lg py-3'>Get 80 Connects each month</h2>
-                  <button className=' mycolor2 text-white py-3 px-10 rounded-md text-xs'>Learn More</button>
+                  <button onClick={()=>document.getElementById('my_modal_5').showModal()} className=' mycolor2 text-white py-3 px-10 rounded-md text-xs'>Learn More</button>
                 </div>
 
                 <div className='lg:ml-auto'>
@@ -194,10 +222,10 @@ export const CreativeHome = () => {
               <div className='p-10 lg:px-20 px-8 flex lg:flex-row flex-col items-center'>
                 <div className=''>
                   <p className='2xl:text-sm lg:text-sm text-xs xl:text-[12px]'>
-                  Creve 101 will guide you through the basics of our platform.
+                    Creve 101 will guide you through the basics of our platform.
                   </p>
                   <h2 className='2xl:text-2xl lg:text-2xl xl:text-xl text-lg py-3'>Learn how to get started on Creve</h2>
-                  <button className='mycolor2 text-white py-3 px-10 rounded-md text-xs'>Learn More</button>
+                  <button onClick={()=>document.getElementById('my_modal_6').showModal()} className='mycolor2 text-white py-3 px-10 rounded-md text-xs'>Learn More</button>
                 </div>
 
                 <div className='lg:ml-auto'>
@@ -208,9 +236,6 @@ export const CreativeHome = () => {
 
           </Swiper>
         </div>
-
-        
-
       </div>
 
 
@@ -488,6 +513,77 @@ export const CreativeHome = () => {
         </div>
       </div>
 
+
+      <dialog id="my_modal_5" className="modal">
+          <div className="modal-box h-[20rem] flex justify-center items-center">
+
+            <form method="dialog">
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+
+
+            <div>
+                <div className='flex justify-center items-center m-auto mb-5'>
+                  <img src={logo} alt=""  className='w-14 h-14'/>
+                </div>
+                <h3 className="font-light lg:text-base text-sm text-center">Hello👋 Creve Pro Feature is coming soon, <br className='lg:block hidden'/> do well to stay updated</h3>
+                <p className="py-4 2xl:text-2xl text-lg text-center font-bold">Comming Soon</p>
+                <button onClick={()=>document.getElementById('my_modal_5').close()} className='bg-green-950 lg:w-fit w-full flex m-auto justify-center px-10 py-3 rounded-full text-white text-xs'>Close</button>
+            </div>
+          </div>
+
+          <form method="dialog" className="modal-backdrop">
+            <button>close</button>
+          </form>
+
+        </dialog>
+
+
+
+        <dialog id="my_modal_6" className="modal">
+          <div className="modal-box max-w-[70%] h-[90%] flex rounded-md">
+
+            <form method="dialog">
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+
+
+            <div className='overflow-y-scroll h-[90%] w-full mt-10 p-10 pt-5 px-[20rem]'>
+                <h2 className="py-4 2xl:text-3xl text-lg font-bold pb-3 border-b border-neutral-200">101 Guide for New Creative</h2>
+
+                <div className='pt-5'>
+                  <h2 className='text-lg '>Why Complete Your Profile?</h2>
+                  <p className='pt-3'>
+                    A complete profile is your digital resume. It increases your visibility, 
+                    helps you connect with others, and makes it easier for potential clients 
+                    or employers to find you.
+                  </p>
+
+
+                  <div>
+                    <h2>How to Optimize Your Profile</h2>
+
+                    <ol className='list-item'>
+                      <li>
+                        <span className='font-bold'>Complete Basic Information:</span> Fill out all required 
+                        fields in the basic information section of your profile. This includes your name, 
+                        location, and any relevant contact details.
+                      </li>
+                    </ol>
+
+Upload a Striking Cover Image: Choose a visually appealing image that represents your professional brand or the type of work you do. This is the first thing people will see, so make it count.
+Showcase Your Work: Use the "Collection" tab to upload examples of your previous work. This demonstrates your skills and abilities to potential clients.
+Upload a Clear Profile Picture: A professional headshot is essential for building trust. Make sure your profile picture is clear and high-quality.
+Highlight Your Skills: Use the "Skills" tab to list your expertise and areas of knowledge. This helps people find you when searching for specific skills.
+Get Verified: Upload your National Identification Number (NIN) document to verify your identity. This adds credibility to your profile.
+                  </div>
+                </div>
+
+            </div>
+          </div>
+
+        </dialog>
+
     </div>
   )
 }
@@ -510,32 +606,36 @@ export const ProfileModal = ({showModal}) => {
 
   return (
     <div>
-
-
       <dialog id="my_modal_1" className="modal">
-        <div className="modal-box  p-0 rounded-md 2xl:h-fit lg:max-w-[50%] w-[95%]" >
+        <div className="modal-box  p-0 rounded-md 2xl:h-fit lg:max-w-[60%] w-[95%]" >
           {/* <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕</button> */}
 
 
           <div className='flex lg:flex-row flex-col'>
 
-            <div className='bg-neutral-100 2xl:block xl:hidden lg:hidden w-full lg:h-full h-[20rem] overflow-hidden'> 
+            <div className='bg-neutral-100 2xl:block xl:block lg:hidden w-full lg:h-full h-[20rem] overflow-hidden'> 
               <img src={completeImage} alt="" className='w-full h-full object-cover'/>
             </div>
 
-            <div className='p-5'>
+            <div className='p-5 pt-10'>
               <h3 className="font-medium lg:text-2xl text-xl pb-3">Complete Your Profile</h3>
-              <p className='text-xs lg:pb-10 pb-5'>
+              <p className='lg:text-sm text-xs lg:pb-10 pb-5'>
                 Completing your profile boosts visibility, and networking opportunities. 
                 It ensures you can be easily found.
               </p>
 
               <hr />
+              <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>
+                Complete Neccessary Details in the Basic Tabs
+              </p>
               <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>Upload a stricking cover image </p>
-              <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>Upload previous works, to get hired quickly </p>
+              <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>
+                Upload previous works, on Collection Tab to get hired quickly 
+              </p>
               <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>upload a clear profile picture </p>
-              <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>Fill your profile details</p>
+              <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>Add your skills in the skills Tabs</p>
+              <p className="py-2 lg:text-sm text-xs flex items-center gap-3 "><FaCheckCircle className='text-accent'/>Upload NIN Document, to get verified</p>
 
 
               <p className="pt-10 text-center text-xs ">Once the steps above is done your good to go 😊</p>

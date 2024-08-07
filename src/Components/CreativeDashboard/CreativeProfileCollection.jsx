@@ -206,7 +206,7 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
                 {images_list && images_list.length >= 0 && 
                     <div className='mt-4 lg:grid 2xl:grid-cols-6 xl:grid-cols-4 grid grid-cols-2 gap-2   rounded-md'>
                         {checkdata.map((url, index) => (
-                            <div className=' w-full 2xl:h-[18rem] xl:h-[14rem] lg:h-[10rem] md:h-20  h-[10rem] bg-slate-100 border border-neutral-200 overflow-hidden relative rounded-sm '>
+                            <div className=' w-full 2xl:h-[18rem] xl:h-[14rem] lg:h-[15rem] md:h-[20rem]  h-[10rem] bg-slate-100 border border-neutral-200 overflow-hidden relative rounded-sm '>
                                 <img key={index} src={url.image} alt={`Preview ${index}`} className='rounded-sm w-full h-full object-cover' />
 
                                 <button className='absolute top-2 right-2 p-2 rounded-full bg-neutral-200 text-red-600  text-base' onClick={() => handleClick(url.id)}>

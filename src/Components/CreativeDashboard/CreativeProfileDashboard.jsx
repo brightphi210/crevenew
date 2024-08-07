@@ -195,7 +195,7 @@ export const CreativeProfile= () => {
                                 <h2 className='text-sm pb-4 font-semibold'>Contact</h2>
 
                                 {/* <a href={whatsappURL} target="_blank" rel="noopener noreferrer"> */}
-                                    <p className='text-sm mb-2 flex items-center gap-2'><TbBrandWhatsapp className='text-accent text-sm'/>whatsapp</p>
+                                    <p className='text-sm mb-2 flex items-center gap-2'><TbBrandWhatsapp className='text-accent text-lg'/>{profileData.whatsapp_link}</p>
                                 {/* </a> */}
 
                                 {/* <Link to={profileData.whatsapp_link}>
@@ -203,13 +203,13 @@ export const CreativeProfile= () => {
                                 </Link> */}
 
                                 <a href={`tel:${profileData.phone_number}`}>
-                                    <p className='text-sm py-2 flex items-center gap-2'><MdOutlinePhoneInTalk className='text-accent text-sm'/>
+                                    <p className='text-sm py-2 flex items-center gap-2'><MdOutlinePhoneInTalk className='text-accent text-lg'/>
                                     {profileData.phone_number}
                                     </p>
                                 </a>
 
                                 <Link to={profileData.website_link}>
-                                    <p className='text-sm mt-2 flex items-center gap-2'><FaGlobe className='text-accent text-sm'/>website</p>
+                                    <p className='text-sm mt-2 flex items-center gap-2'><FaGlobe className='text-accent text-lg'/>website</p>
                                 </Link>
                             </div>
 

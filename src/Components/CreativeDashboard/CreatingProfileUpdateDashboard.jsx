@@ -369,7 +369,7 @@ export const CreatingProfileUpdateHome = () => {
                                 <p className="text-xs pb-3">Whatsapp Number</p>
                                 <input 
                                     type="text" 
-                                    placeholder="whatsapp e.g https://example.com" 
+                                    placeholder="whatsapp number e.g 07098822807" 
                                     value={whatsapp_link}
                                     required
                                     onChange={validateWhatsappNumber}
@@ -383,7 +383,7 @@ export const CreatingProfileUpdateHome = () => {
                                 <p className="text-xs pb-3">Phone Number</p>
                                 <input 
                                     type="text" 
-                                    placeholder="phone e.g 08094422807" 
+                                    placeholder="phone number e.g 09044338996" 
                                     required
                                     value={phone_number}
                                     onChange={validatePhoneNumber}
