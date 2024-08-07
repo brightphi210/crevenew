@@ -3,6 +3,8 @@ import { BASE_URL } from '../Auth/BaseUrl'
 import { IoArrowForwardSharp } from "react-icons/io5";
 import { RxDotsHorizontal } from "react-icons/rx";
 import a from '../Images/blogImg/a1.jpg'
+import { PiEmpty } from "react-icons/pi";
+
 import MyLoader from '../allLoadingState/MyLoader';
 
 
@@ -10,6 +12,7 @@ const BlogCom = () => {
 
     const [blogData, setBlogData] = useState([])
     const [eachBlog, setEachBlog] = useState({})
+    const [selectedCategory, setSelectedCategory] = useState('')
     const [isLoading, setIsLoading] = useState(false)
 
 
@@ -39,6 +42,13 @@ const BlogCom = () => {
     }, [])
 
 
+    const filteredBlogs = blogData.filter((blog) => {
+        const categoryTitle = blog?.category?.title?.toLowerCase() || '';
+        return categoryTitle.includes(selectedCategory.toLowerCase());
+    });
+    
+
+
     console.log('This is blog data', blogData);
     console.log('This is each blog data', eachBlog);
   return (
@@ -46,51 +56,62 @@ const BlogCom = () => {
       <div className=''>
         <h2 className='text-center lg:text-6xl text-3xl font-bold text-black'> Creve Blog</h2>
         <p className='text-center py-5'>Read updates on Creve's products, corporate initiatives, and <br className='lg:block hidden'/> partnerships to get insight into the world’s work marketplace.</p>
-        <div className='relative lg:w-1/2 w-full flex m-auto'>
+        {/* <div className='relative lg:w-1/2 w-full flex m-auto'>
             <>
             <input type="text" placeholder="Search here . . ." className="input rounded-full text-sm input-bordered p-7 w-full flex m-auto " />
             <button className='absolute top-2 right-3 text-xs bg-black text-white py-3 px-5 rounded-full '>Search</button>
             </>
-        </div>
+        </div> */}
 
       </div>
 
 
-        <div className='grid lg:grid-cols-3 md:grid-cols-1 grid-cols-1 gap-20 items-start 2xl:pt-28 pt-10'>
+        <div className='lg:grid lg:grid-cols-3 md:grid-cols-1 flex flex-col gap-20 items-start 2xl:pt-28 pt-10'>
                 <div>
                     <h2 className='text-xl font-bold lg:pb-10 pb-5'>Choose what to read</h2>
-                    <ul className='flex lg:flex-col flex-row flex-wrap  gap-3 pt-0 pl-5 border-l border-neutral-300'>
-                        <li className='text-sm cursor-pointer pr-3 border-r border-neutral-300'>Company News</li>
-                        <li className='text-sm cursor-pointer pr-3 border-r border-neutral-300'>Career & Success</li>
-                        <li className='text-sm cursor-pointer pr-3 border-r border-neutral-300'>Community</li>
-                        <li className='text-sm cursor-pointer pr-3 border-r border-neutral-300'>Product & Inovations</li>
+
+                    <ul className='flex lg:flex-col flex-row flex-wrap gap-3 pt-0 pl-5 border-l border-neutral-300'>
+                        <li onClick={() => setSelectedCategory('')} className='text-sm cursor-pointer pr-3 border-r border-neutral-300'>All</li>
+                        <li onClick={() => setSelectedCategory('Company News')} className='text-sm cursor-pointer pr-3 border-r border-neutral-300'>Company News</li>
+                        <li onClick={() => setSelectedCategory('Career & Success')} className='text-sm cursor-pointer pr-3 border-r border-neutral-300'>Career & Success</li>
+                        <li onClick={() => setSelectedCategory('Community')} className='text-sm cursor-pointer pr-3 border-r border-neutral-300'>Community</li>
+                        <li onClick={() => setSelectedCategory('Product & Innovations')} className='text-sm cursor-pointer pr-3 border-r border-neutral-300'>Product & Innovations</li>
                     </ul>
                 </div>
 
             {isLoading === true ? 
-                <div className='text-center  pb-10'>
+                <div className='text-center justify-center items-center flex m-auto flex-col pb-10'>
                     <span class="loader3"></span>
                 </div>
             : 
-                <div className='col-span-2 lg:ml-auto cursor-pointer'>
-                    {blogData.map((blog)=>(
-                        <div className='flex lg:flex-row flex-col  lg:gap-10 gap-4 pb-5 mb-20' onClick={()=>{document.getElementById('my_modal_3').showModal(); setEachBlog(blog)}}>
-                            <div className='w-full  border border-neutral-200 2xl:h-[18rem] xl:h-[18rem] lg:h-[18rem]  h-[15rem] md:h-[30rem] overflow-hidden rounded-xl'>
-                                <img src={blog?.image} alt="" className='w-full h-full rounded-xl object-cover'/>
-                            </div>
+            <>  
 
-                            <div className='lg:w-[80%] w-full'>
-                                <p className='text-xs text-neutral-400 pb-3'>29.Jun.2021</p>
-                                <h2 className='2xl:text-xl xl:text-base font-semibold'>{blog?.title}</h2>
-                                <p className='text-sm py-5 text-justify'>{blog?.description.slice(0, 150)}   .  .  .</p>
-                                <p className='text-sm text-neutral-600'>By: {blog?.author}</p>
-                                <button onClick={()=>{document.getElementById('my_modal_3').showModal(); setEachBlog(blog)}} className='bg-white-800 text-black border border-neutral-300 lg:w-fit w-full lg:py-3 py-3 lg:px-6 mt-5 rounded-full text-sm flex justify-center gap-2 items-center'>
-                                    View Blog <IoArrowForwardSharp />
-                                </button>
+                {filteredBlogs.length <= 0 && (
+                    <div className='justify-center items-center flex m-auto flex-col text-center'>
+                        <p className='text-4xl text-center'><PiEmpty /></p>
+                        <p className='text-left text-sm text-neutral-600'>No blog found.</p>
+                    </div>
+                )}
+                <div className='col-span-2 lg:ml-auto cursor-pointer mg-20'>
+                        {filteredBlogs.map((blog)=>(
+                            <div className='flex lg:flex-row flex-col  lg:gap-10 gap-4 pb-5 mb-5' onClick={()=>{document.getElementById('my_modal_3').showModal(); setEachBlog(blog)}}>
+                                <div className='w-full  border border-neutral-200 bg-neutral-200 2xl:h-[18rem] xl:h-[18rem] lg:h-[18rem]  h-[15rem] md:h-[30rem] overflow-hidden rounded-xl'>
+                                    <img src={blog?.image} alt="" className='w-full h-full rounded-xl object-cover'/>
+                                </div>
+
+                                <div className='lg:w-[80%] w-full'>
+                                    <p className='text-xs text-neutral-400 pb-3'>29.Jun.2021</p>
+                                    <h2 className='2xl:text-xl xl:text-base font-semibold'>{blog?.title}</h2>
+                                    <p className='text-sm py-5 text-justify'>{blog?.description.slice(0, 150)}   .  .  .</p>
+                                    <p className='text-sm text-neutral-600'>By: {blog?.author}</p>
+                                    <button onClick={()=>{document.getElementById('my_modal_3').showModal(); setEachBlog(blog)}} className='bg-white-800 text-black border border-neutral-300 lg:w-fit w-full lg:py-3 py-3 lg:px-6 mt-5 rounded-full text-sm flex justify-center gap-2 items-center'>
+                                        View Blog <IoArrowForwardSharp />
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
                 </div>
+            </>
             }
         </div>
 
