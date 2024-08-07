@@ -40,10 +40,7 @@ import empty2 from '../Images/No data-rafiki.png'
 import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
 import { TbAlertTriangle } from "react-icons/tb";
-
-
-import Footer from '../Footer'
-
+import { GoArrowRight } from "react-icons/go";
 
 
 const CreativeHomeDashboard = () => {
@@ -147,9 +144,9 @@ export const CreativeHome = () => {
 
     <div className='lg:p-16  lg:pl-[18rem] p-5 px-3 pt-20 lg:pt-28'>
 
-      <div className='bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg items-center p-3 px-10 flex mb-5'>
+      <div className='bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg items-center p-3 lg:px-10 px-5 flex mb-5'>
           <div>
-            <h2 className='underline text-green-600 cursor-pointer pb-2'>Complete your profile</h2>
+            <h2 className='underline text-green-600 cursor-pointer pb-2 flex items-center gap-3 text-sm'>Complete your profile <GoArrowRight /></h2>
             <p className='text-xs'>Please do well to complete your profile</p>
           </div>
           <p className='ml-auto flex items-center justify-center cursor-pointer bg-neutral-100  rounded-full w-8 h-8 text-xl'><MdOutlineClose /></p>
