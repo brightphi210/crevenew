@@ -541,18 +541,18 @@ useEffect(() => {
 
 
         <dialog id="my_modal_6" className="modal">
-          <div className="modal-box max-w-[70%] h-[90%] flex rounded-md">
+          <div className="modal-box max-w-[40%] h-[90%] flex rounded-md">
 
             <form method="dialog">
                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
             </form>
 
 
-            <div className='overflow-y-scroll h-[90%] w-full mt-10 p-10 pt-5 px-[20rem]'>
+            <div className='overflow-y-scroll h-[90%] w-full mt-5 p-10 pt-5'>
                 <h2 className="py-4 2xl:text-3xl text-lg font-bold pb-3 border-b border-neutral-200">101 Guide for New Creative</h2>
 
                 <div className='pt-5'>
-                  <h2 className='text-lg '>Why Complete Your Profile?</h2>
+                  <h2 className='text-xl font-bold'>Why Complete Your Profile?</h2>
                   <p className='pt-3'>
                     A complete profile is your digital resume. It increases your visibility, 
                     helps you connect with others, and makes it easier for potential clients 
@@ -560,22 +560,54 @@ useEffect(() => {
                   </p>
 
 
-                  <div>
-                    <h2>How to Optimize Your Profile</h2>
+                  <div className='pt-3 mt-5 border-t border-neutral-200 '>
+                    <h2 className='text-lg font-semibold pb-5'>How to Optimize Your Profile</h2>
 
-                    <ol className='list-item'>
+                    <ol className='list-decimal flex flex-col gap-8'>
                       <li>
-                        <span className='font-bold'>Complete Basic Information:</span> Fill out all required 
+                        <span className='font-bold'>Complete Basic Information: </span> 
+                        Fill out all required 
                         fields in the basic information section of your profile. This includes your name, 
                         location, and any relevant contact details.
                       </li>
+
+                      <li>
+                        <span className='font-bold'>Upload a Striking Cover Image: </span>
+                        Choose a visually appealing image that represents your 
+                        professional brand or the type of work you do. This is the 
+                        first thing people will see, so make it count.
+                      </li>
+
+                      <li>
+                        <span className='font-bold'>Showcase Your Work: </span>  
+                        Use the "Collection" tab to upload examples 
+                        of your previous work. This demonstrates your skills and abilities to potential clients.
+                      </li>
+
+                      <li>
+                        <span className='font-bold'>Upload a Clear Profile Picture: </span>  
+                        A professional headshot is essential 
+                        for building trust. Make sure your profile picture is clear and high-quality.
+                      </li>
+
+                      <li>
+                        <span className='font-bold'>Highlight Your Skills: </span>  
+                        Use the "Skills" tab to list your expertise and areas of knowledge. 
+                        This helps people find you when searching for specific skills.
+                      </li>
+
+                      <li>
+                        <span className='font-bold'>Get Verified: </span>  
+                        Upload your National Identification Number (NIN) 
+                        document to verify your identity. This adds credibility to your profile.
+                      </li>
                     </ol>
 
-Upload a Striking Cover Image: Choose a visually appealing image that represents your professional brand or the type of work you do. This is the first thing people will see, so make it count.
-Showcase Your Work: Use the "Collection" tab to upload examples of your previous work. This demonstrates your skills and abilities to potential clients.
-Upload a Clear Profile Picture: A professional headshot is essential for building trust. Make sure your profile picture is clear and high-quality.
-Highlight Your Skills: Use the "Skills" tab to list your expertise and areas of knowledge. This helps people find you when searching for specific skills.
-Get Verified: Upload your National Identification Number (NIN) document to verify your identity. This adds credibility to your profile.
+
+
+ 
+ 
+ 
                   </div>
                 </div>
 
