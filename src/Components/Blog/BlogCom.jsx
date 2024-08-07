@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { BASE_URL } from '../Auth/BaseUrl'
 import { IoArrowForwardSharp } from "react-icons/io5";
 import { RxDotsHorizontal } from "react-icons/rx";
-import a from '../Images/blogImg/a1.jpg'
 import { PiEmpty } from "react-icons/pi";
 
-import MyLoader from '../allLoadingState/MyLoader';
 
 
 const BlogCom = () => { 

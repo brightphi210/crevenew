@@ -19,6 +19,8 @@ import { FaCheckCircle, FaRegCopy } from "react-icons/fa";
 
 import { RiNotificationOffLine } from "react-icons/ri";
 import { IoNotificationsOffOutline } from "react-icons/io5";
+import { MdOutlineClose } from "react-icons/md";
+
 
 
 import completeImage from '../Images/Buffer-bro.png'
@@ -145,6 +147,13 @@ export const CreativeHome = () => {
 
     <div className='lg:p-16  lg:pl-[18rem] p-5 px-3 pt-20 lg:pt-28'>
 
+      <div className='bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-lg items-center p-3 px-10 flex mb-5'>
+          <div>
+            <h2 className='underline text-green-600 cursor-pointer pb-2'>Complete your profile</h2>
+            <p className='text-xs'>Please do well to complete your profile</p>
+          </div>
+          <p className='ml-auto flex items-center justify-center cursor-pointer bg-neutral-100  rounded-full w-8 h-8 text-xl'><MdOutlineClose /></p>
+      </div>
  
       <div className='flex 2xl:flex-row flex-col xl:flex-row lg:flex-col gap-10'>
 
@@ -243,7 +252,7 @@ export const CreativeHome = () => {
         </div>
 
 
-      <div className='bg-neutral-100 text-black  w-full p-5 rounded-xl flex justify-center items-center'>
+      <div className='bg-lime-50 border border-lime-300 text-black  w-full p-5 rounded-xl flex justify-center items-center'>
           <div className=''>
             <div className='border-2 border-neutral-200 bg-neutral-200 w-20 h-20 rounded-full overflow-hidden flex m-auto'>
               <img src={profileData.profile_pics} alt="" className='w-full h-full object-cover'/>
@@ -251,12 +260,8 @@ export const CreativeHome = () => {
             <div className='text-center pt-2'>
               <h2 className='lg:text-sm text-sm'>{userToken.name} <span className='text-xs text-neutral-500'>({userToken.role})</span></h2>
               <p className='text-xs py-2'>{profileData.display_name}</p>
-              <div className='flex items-center gap-2'>
-                <progress className="progress progress-accent bg-white " value="70" max="100"></progress>
-              </div>
-
               <Link to={'/creative-dashboard-profile-update'}>
-                <button className=' text-white rounded-full color text-sm py-2 px-3 flex justify-center m-auto  mt-2 gap-2'><MdModeEditOutline className='text-lg'/>Edit</button>
+                <button className=' text-white rounded-full w-fit color text-sm py-3 px-3 flex justify-center m-auto  mt-2 gap-2'><MdModeEditOutline className='text-lg'/>Edit Profile</button>
               </Link>
             </div>
           </div>
