@@ -42,6 +42,8 @@ import { jwtDecode } from 'jwt-decode';
 import { TbAlertTriangle } from "react-icons/tb";
 import { GoArrowRight } from "react-icons/go";
 
+import shss from '../Images/find-talent-2x.jpg'
+
 
 const CreativeHomeDashboard = () => {
   const [token, setToken] = useState(() => localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
@@ -541,16 +543,20 @@ useEffect(() => {
 
 
         <dialog id="my_modal_6" className="modal">
-          <div className="modal-box max-w-[40%] h-[90%] flex rounded-md">
+          <div className="modal-box lg:max-w-[40%] w-[95%] p-0 h-[90%] flex rounded-md">
 
             <form method="dialog">
                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
             </form>
 
 
-            <div className='overflow-y-scroll h-[90%] w-full mt-5 p-10 pt-5'>
-                <h2 className="py-4 2xl:text-3xl text-lg font-bold pb-3 border-b border-neutral-200">101 Guide for New Creative</h2>
+            <div className='overflow-y-scroll h-[90%] w-full lg:mt-5 p-7 lg:pt-5 mt-8'>
 
+                <div className='w-full rounded-lg'>
+                  <img src={shss} alt="" className='w-full rounded-lg'/>
+                </div>
+
+                <h2 className="py-4 pt-8 2xl:text-3xl text-lg font-bold pb-3 border-b border-neutral-200">101 Guide for New Creative</h2>
                 <div className='pt-5'>
                   <h2 className='text-xl font-bold'>Why Complete Your Profile?</h2>
                   <p className='pt-3'>
