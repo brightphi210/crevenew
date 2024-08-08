@@ -314,7 +314,7 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
                         <p className='text-center text-xs'>Your profile has been updated, continue </p>
 
                         <Link to={'/creative-dashboard-profile'}>
-                            <button className="btn btn-active text-xs btn-neutral w-9/12 justify-center m-auto mt-8 flex items-center gap-4">Continue <FaArrowRight /></button>
+                            <button className="btn btn-active text-xs btn-neutral w-9/12 justify-center m-auto mt-8 flex items-center gap-4">Account <FaArrowRight /></button>
                         </Link>
                     </div>
                 </div>

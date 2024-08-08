@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import successImg from '../Images/gif1.gif'
 import MyLoader from '../allLoadingState/MyLoader';
 
-const CreativeSkills = () => {
+const CreativeSkills = ({setEachState}) => {
 
     let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
     const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
@@ -279,9 +279,12 @@ const CreativeSkills = () => {
                     <h2 className='text-center'>Skills Added </h2>
                     <p className='text-center text-xs'>Your skills has been added, continue </p>
 
-                    <Link to={'/creative-dashboard-profile'}>
+                    {/* <Link to={'/creative-dashboard-profile'}>
                         <button className="btn btn-active text-xs btn-neutral w-9/12 h-0 py-3 px-6 justify-center m-auto mt-8 flex items-center gap-4">Continue <FaArrowRight /></button>
-                    </Link>
+                    </Link> */}
+
+                    <button onClick={()=>{setEachState(2); document.getElementById('my_modal_1').close()}} className="btn btn-active text-xs btn-neutral w-9/12 justify-center m-auto mt-8 flex items-center gap-4">Continue <FaArrowRight /></button>
+
                 </div>
             </div>
         </dialog>

@@ -22,6 +22,9 @@ import GooglePlacesAutocomplete from 'react-google-autocomplete';
 import CreativeSkills from './CreativeSkills';
 import MyLoader from '../allLoadingState/MyLoader';
 
+
+import { MdArrowRightAlt } from "react-icons/md";
+
 const CreatingProfileUpdateDashboard = () => {
     const [show, setShow] = useState(false)
     const handleShow = () => {
@@ -233,31 +236,29 @@ export const CreatingProfileUpdateHome = () => {
             (<MyLoader />) : (
             <div className='lg:p-20 lg:pt-28 lg:pl-[18rem] p-5 pt-20'>
 
-                <div className='flex lg:gap-2 gap-2 pb-10'>
+                <div className='flex lg:gap-1 items-center gap-1 pb-10'>
                     <button onClick={showOne} 
-                        className={showEachState === 1 ? 'bg-black py-2.5 px-5 rounded-full text-white lg:text-sm text-xs' : ' text-sm px-2 py-2.5'}>
+                        className={showEachState === 1 ? 'bg-black py-2.5 px-3 rounded-full text-white lg:text-sm text-xs' : ' text-sm px-1 py-2.5'}>
                         Basic
                     </button>
 
-                    {/* <a href={whatsappURL} target="_blank" rel="noopener noreferrer">
-                        Chat on WhatsApp
-                    </a>
-
-                    <a href="tel:09038752194">Call +1 (234) 567-890</a> */}
+                    <p><MdArrowRightAlt /></p>
 
                     <button onClick={showFour} 
-                        className={showEachState === 4 ? 'bg-black py-2.5 px-5 rounded-full text-white lg:text-sm text-xs' : ' text-sm px-2 py-2.5'}>
+                        className={showEachState === 4 ? 'bg-black py-2.5 px-3 rounded-full text-white lg:text-sm text-xs' : ' text-sm px-1 py-2.5'}>
                         Skills
                     </button>
 
+                    <p><MdArrowRightAlt /></p>
 
                     <button onClick={showTwo} 
-                        className={showEachState === 2 ? 'bg-black py-2.5 px-5 rounded-full text-white lg:text-sm text-xs' : ' text-sm px-2 py-2.5'}>
+                        className={showEachState === 2 ? 'bg-black py-2.5 px-3 rounded-full text-white lg:text-sm text-xs' : ' text-sm px-1 py-2.5'}>
                         Cover
                     </button>
 
+                    <p><MdArrowRightAlt /></p>
                     <button onClick={showThree} 
-                        className={showEachState === 3 ? 'bg-black py-2.5 px-5 rounded-full text-white lg:text-sm text-xs' : ' text-sm px-2 py-2.5'}>
+                        className={showEachState === 3 ? 'bg-black py-2.5 px-3 rounded-full text-white lg:text-sm text-xs' : ' text-sm px-1 py-2.5'}>
                         Collections
                     </button>
                 </div>
@@ -462,6 +463,7 @@ export const CreatingProfileUpdateHome = () => {
                     <CreativeProfileCoverUpdate 
                         MdDelete={MdDelete}
                         AiOutlineCloudUpload={AiOutlineCloudUpload}
+                        setEachState={setEachState}
                     />
                 )}
 
@@ -473,7 +475,7 @@ export const CreatingProfileUpdateHome = () => {
                 )}
 
                 {showEachState === 4 && (
-                    <CreativeSkills />
+                    <CreativeSkills setEachState={setEachState}/>
                 )}
 
 
@@ -492,9 +494,9 @@ export const CreatingProfileUpdateHome = () => {
                             <h2 className='text-center'>Profile Updated</h2>
                             <p className='text-center text-xs'>Your profile has been updated, continue </p>
 
-                            <Link to={'/creative-dashboard-profile'}>
-                                <button className="btn btn-active text-xs btn-neutral w-9/12 justify-center m-auto mt-8 flex items-center gap-4">Continue <FaArrowRight /></button>
-                            </Link>
+                            {/* <Link to={'/creative-dashboard-profile'}> */}
+                                <button onClick={()=>{setEachState(4); document.getElementById('my_modal_1').close()}} className="btn btn-active text-xs btn-neutral w-9/12 justify-center m-auto mt-8 flex items-center gap-4">Continue <FaArrowRight /></button>
+                            {/* </Link> */}
                         </div>
                     </div>
                 </dialog>
