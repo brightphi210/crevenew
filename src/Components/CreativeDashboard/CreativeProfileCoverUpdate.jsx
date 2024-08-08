@@ -82,7 +82,7 @@ const CreativeProfileCoverUpdate = ({ MdDelete, AiOutlineCloudUpload, setEachSta
     // console.log(cover_image);
 
     return (
-        <div>
+        <div className='px-5'>
 
             {isLoading ? 
                 <MyLoader /> :
@@ -106,7 +106,7 @@ const CreativeProfileCoverUpdate = ({ MdDelete, AiOutlineCloudUpload, setEachSta
                         />
 
                         {image || cover_image ?
-                            <div className='2xl:w-full xl:w-full lg:w-full md:w-full 2xl:h-[35rem] xl:h-[25rem] lg:h-[25rem] h-[25rem] overflow-hidden rounded-md bg-neutral-50 border border-neutral-300'>
+                            <div className='2xl:w-full xl:w-full lg:w-full md:w-full 2xl:h-[35rem] xl:h-[25rem] lg:h-[25rem] h-[20rem] overflow-hidden rounded-md bg-neutral-50 border border-neutral-300'>
                                 {image && (
                                     <img src={image} alt='' className='w-full h-full object-cover cursor-pointer' />
                                 )}

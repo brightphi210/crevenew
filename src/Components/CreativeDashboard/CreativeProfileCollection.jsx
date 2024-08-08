@@ -185,7 +185,7 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
 
 
   return (
-    <div className=''>  
+    <div className='px-5'>  
         {isLoading ? 
             <MyLoader />
         : <>

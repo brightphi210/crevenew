@@ -158,7 +158,7 @@ const CreativeSkills = ({setEachState}) => {
     
 
   return (
-    <div className=''>
+    <div className='px-5'>
 
         {isLoading2 === true ? 
         <>
@@ -183,14 +183,14 @@ const CreativeSkills = ({setEachState}) => {
             
             {allSkills && allSkills.length > 0 ? (
                 <div>
-                    <ul className='flex flex-row flex-wrap gap-5 py-2 mt-5'>
+                    <ul className='flex flex-row flex-wrap gap-3 py-2 mt-5'>
                         {allSkills.map((skill, index)=>(
 
-                            <div className='flex items-center gap-3 py-2 px-5 border bg-neutral-50 border-neutral-300 rounded-md'>
-                                <li  key={index} className=' w-fit   lg:text-sm text-sm flex items-center'>
+                            <div className='flex items-center gap-0 py-1 px-3 border bg-neutral-50 border-neutral-300 rounded-md'>
+                                <li  key={index} className=' w-fit lg:text-sm text-sm flex items-center'>
                                     {skill.skill} 
                                 </li>
-                                <p className='flex p-2 text-red-600 text-xl cursor-pointer items-center justify-center rounded-full' onClick={() => handleClick(skill.id)} ><VscChromeClose /></p>
+                                <p className='flex p-2 text-red-600 text-sm cursor-pointer items-center justify-center rounded-full' onClick={() => handleClick(skill.id)} ><VscChromeClose /></p>
                             </div>
                         ))}
                     </ul>

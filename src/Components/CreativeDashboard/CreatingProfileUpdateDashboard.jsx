@@ -24,6 +24,7 @@ import MyLoader from '../allLoadingState/MyLoader';
 
 
 import { MdArrowRightAlt } from "react-icons/md";
+import UploadNIN from './UploadNIN';
 
 const CreatingProfileUpdateDashboard = () => {
     const [show, setShow] = useState(false)
@@ -202,6 +203,11 @@ export const CreatingProfileUpdateHome = () => {
         setEachState(4)
     }
 
+
+    const showFive = () => {
+        setEachState(5)
+    }
+
     const [phoneErr, setPhoneErr] = useState('')
     const [whatsAppErr, setWhatsAppErr] = useState('')
     const [isPhoneValid, setIsPhoneValid] = useState(true)
@@ -234,38 +240,38 @@ export const CreatingProfileUpdateHome = () => {
 
         {isLoading2 === true ? 
             (<MyLoader />) : (
-            <div className='lg:p-20 lg:pt-28 lg:pl-[18rem] p-5 pt-20'>
+            <div className='lg:p-20 lg:pt-28 lg:pl-[18rem] p-0 pt-20'>
 
-                <div className='flex lg:gap-1 items-center gap-1 pb-10'>
+                <div className='flex lg:gap-5 flex-wrap items-center gap-2 py-3 px-5 mb-5 bg-neutral-100 border border-neutral-200'>
                     <button onClick={showOne} 
-                        className={showEachState === 1 ? 'bg-black py-2.5 px-3 rounded-full text-white lg:text-sm text-xs' : ' text-sm px-1 py-2.5'}>
+                        className={showEachState === 1 ? 'border border-green-900 py-2 px-5 rounded-full text-green-900 lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         Basic
                     </button>
-
-                    <p><MdArrowRightAlt /></p>
-
+                    |
+                    <button onClick={showFive} 
+                        className={showEachState === 5 ? 'border border-green-900 py-2 px-5 rounded-full text-green-900 lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
+                        NIN
+                    </button>
+                    |
                     <button onClick={showFour} 
-                        className={showEachState === 4 ? 'bg-black py-2.5 px-3 rounded-full text-white lg:text-sm text-xs' : ' text-sm px-1 py-2.5'}>
+                        className={showEachState === 4 ? 'border border-green-900 py-2 px-5 rounded-full text-green-900 lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         Skills
                     </button>
-
-                    <p><MdArrowRightAlt /></p>
-
+                    |
                     <button onClick={showTwo} 
-                        className={showEachState === 2 ? 'bg-black py-2.5 px-3 rounded-full text-white lg:text-sm text-xs' : ' text-sm px-1 py-2.5'}>
+                        className={showEachState === 2 ? 'border border-green-900 py-2 px-5 rounded-full text-green-900 lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         Cover
                     </button>
-
-                    <p><MdArrowRightAlt /></p>
+                    |
                     <button onClick={showThree} 
-                        className={showEachState === 3 ? 'bg-black py-2.5 px-3 rounded-full text-white lg:text-sm text-xs' : ' text-sm px-1 py-2.5'}>
+                        className={showEachState === 3 ? 'border border-green-900 py-2 px-3 rounded-full text-green-900 lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         Collections
                     </button>
                 </div>
 
 
                 {showEachState === 1 && (
-                    <form action="" className='flex lg:flex-row flex-col lg:gap-14 gap-5 relative' onSubmit={handleProfileUpdate}>
+                    <form action="" className='flex lg:flex-row flex-col px-5 lg:gap-14 gap-5 relative' onSubmit={handleProfileUpdate}>
                         <div className='lg:w-1/2 w-full flex flex-col gap-5'>
 
 
@@ -476,6 +482,10 @@ export const CreatingProfileUpdateHome = () => {
 
                 {showEachState === 4 && (
                     <CreativeSkills setEachState={setEachState}/>
+                )}
+
+                {showEachState === 5 && (
+                    <UploadNIN setEachState={setEachState}/>
                 )}
 
 
