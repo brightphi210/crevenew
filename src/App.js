@@ -1,5 +1,7 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
+import { useEffect, useState } from 'react';
 import Homepage from './Pages/Homepage';
 import Login from './Pages/AuthPage/Login';
 import Register from './Pages/AuthPage/Register';
@@ -28,9 +30,67 @@ import UserProfile from './Pages/UserDash/UserProfile';
 import CreativeChatDash from './Pages/CreativeDash/CreativeChatDash';
 import UserChatDash from './Pages/UserDash/UserChatDash';
 import Help from './Pages/Help';
+import { BASE_URL } from './Components/Auth/BaseUrl';
 AOS.init();
 
 function App() {
+
+  let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
+  const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
+
+
+    const logout = async (e) => {
+        localStorage.removeItem('token')
+        window.location.href = '/';
+    }
+
+
+  async function refreshToken() {
+    try {
+      const response = await fetch(`${BASE_URL}/api/token/refresh/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('token', data.access);
+      } else {
+        console.error('Failed to refresh token');
+        logout();
+      }
+    } catch (error) {
+      console.error('Error refreshing token:', error);
+      logout();
+    }
+  }
+
+
+  useEffect(() => {
+    const refreshInterval = setInterval(() => {
+      refreshToken();
+    }, 60000);
+
+    const logoutInterval = setInterval(() => {
+      logout();
+    }, 24 * 60 * 60 * 1000); // 24 hours
+  
+
+    return () => {
+      clearInterval(refreshInterval);
+      clearInterval(logoutInterval);
+    };
+  }, []);
+
+
+
+
+
+
+  
   
   
   return (
