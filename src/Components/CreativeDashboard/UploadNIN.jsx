@@ -22,7 +22,7 @@ const UploadNIN = () => {
 
 
   return (
-    <div>
+    <div className='px-5'>
         {image === null ? 
             <div className='flex flex-col justify-center gap-10 pt-[12rem] m-auto'>
                 <div className='flex justify-center m-auto items-center h-0 pb-0 '>
@@ -50,8 +50,8 @@ const UploadNIN = () => {
             </div>
 
             : 
-            <div className='rounded-md w-[60%]'>
-                <div className=' w-full 2xl:h-[30rem] xl:h-[20rem] lg:h-[20rem] md:h-[20rem] h-[10rem] bg-slate-100 border border-neutral-200 overflow-hidden relative rounded-sm '>
+            <div className='rounded-md lg:w-[60%] w-full'>
+                <div className=' w-full 2xl:h-[30rem] xl:h-[20rem] lg:h-[20rem] md:h-[20rem] h-[15rem] bg-slate-100 border border-neutral-200 overflow-hidden relative rounded-sm '>
                     <img src={image} alt='' className='rounded-sm w-full h-full object-cover' />
 
                     <button onClick={()=>setImage(null)} className='absolute top-2 right-2 p-2 rounded-full bg-neutral-200 text-red-600  text-base'>

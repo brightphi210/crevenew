@@ -236,7 +236,7 @@ export const CreatingProfileUpdateHome = () => {
 
 
   return (
-    <div>
+    <div className=''>
 
         {isLoading2 === true ? 
             (<MyLoader />) : (
@@ -449,7 +449,7 @@ export const CreatingProfileUpdateHome = () => {
                                 ></textarea>
                             </div>
 
-                            <button disabled={!isPhoneValid} className="btn 2xl:w-fit xl:w-fit lg:w-fit md:w-fit w-full mt-5 px-20 bg-black rounded-full hover:bg-neutral-800 text-white ">{isLoading === true ? <span class="loader"></span> : 'Submit' }</button>
+                            <button disabled={!isPhoneValid} className="btn 2xl:w-fit xl:w-fit lg:w-fit md:w-fit w-full lg:my-5 mb-10 mt-2  px-20 bg-black rounded-full hover:bg-neutral-800 text-white ">{isLoading === true ? <span class="loader"></span> : 'Submit' }</button>
 
                         </div>
 
