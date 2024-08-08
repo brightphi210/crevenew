@@ -406,7 +406,9 @@ useEffect(() => {
 
           <div className='color p-5 w-full text-white rounded-xl mt-3 flex flex-col gap-5'>
             <p className='text-sm flex items-center gap-5 cursor-pointe text-neutral-400'>Upgrade to pro <FaUnlockKeyhole /></p>
-            <p className='text-sm flex items-center gap-5 cursor-pointer'>Help Center <MdHelpCenter /></p>
+            <Link to={'/' + 'help'}>
+              <p className='text-sm flex items-center gap-5 cursor-pointer'>Help Center <MdHelpCenter /></p>
+            </Link>
             <p className='text-sm flex items-center gap-5 cursor-pointer' onClick={()=>document.getElementById('my_modal_3').showModal()}>Join Community <GrUpgrade /></p>
           </div>
         </div>
