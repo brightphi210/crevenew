@@ -310,8 +310,8 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
                         <div className='flex m-auto justify-center'>
                             <img src={successImg} alt="" />
                         </div>
-                        <h2 className='text-center'>Profile Updated</h2>
-                        <p className='text-center text-xs'>Your profile has been updated, continue </p>
+                        <h2 className='text-center'>Collection Added Successfully</h2>
+                        <p className='text-center text-xs'>Your Collections have beed added, continue</p>
 
                         <Link to={'/creative-dashboard-profile'}>
                             <button className="btn btn-active text-xs btn-neutral w-9/12 justify-center m-auto mt-8 flex items-center gap-4">Account <FaArrowRight /></button>

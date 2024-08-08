@@ -79,7 +79,6 @@ const CreativeProfileCoverUpdate = ({ MdDelete, AiOutlineCloudUpload, setEachSta
         fetchProfile();
     }, []);
 
-    // console.log(cover_image);
 
     return (
         <div className='px-5'>
@@ -87,7 +86,7 @@ const CreativeProfileCoverUpdate = ({ MdDelete, AiOutlineCloudUpload, setEachSta
             {isLoading ? 
                 <MyLoader /> :
                 <div >
-                    <p className="text-xs pb-3">Cover Image</p>
+                    <p className="text-lg pb-3">Cover Image</p>
 
                     <div onClick={() => document.querySelector(".input-field").click()} className='2xl:w-1/2 xl:w-1/2 lg:w-1/2 md:w-full'>
                         <input type="file" accept='image/*' className='input-field' hidden
