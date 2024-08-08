@@ -72,7 +72,7 @@ function App() {
   useEffect(() => {
     const refreshInterval = setInterval(() => {
       refreshToken();
-    }, 60000);
+    }, 24 * 60 * 60 * 1000);
 
     const logoutInterval = setInterval(() => {
       logout();
