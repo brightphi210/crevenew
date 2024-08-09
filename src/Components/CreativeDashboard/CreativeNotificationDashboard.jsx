@@ -5,6 +5,7 @@ import { IoNotifications } from "react-icons/io5";
 import { LuSearch } from "react-icons/lu";
 import { MdDelete } from "react-icons/md";
 import { BiSolidNotification } from "react-icons/bi";
+import NoData from '../allLoadingState/NoData'
 
 const CreativeNotificationDashboard = () => {
 
@@ -39,7 +40,9 @@ export const CreativeNotificationHome = () => {
     <div className='lg:p-20 lg:pt-28 lg:pl-[18rem] p-5 pt-20'>
       <h2 className='flex items items-center gap-3 text-2xl font-semibold'><IoNotifications />Notification</h2>
 
-      <div className='flex lg:flex-row flex-col gap-2 lg:items-center py-5'>
+      <NoData />
+
+      {/* <div className='flex lg:flex-row flex-col gap-2 lg:items-center py-5'>
         <p className='lg:text-sm text-xs '>180 Notifications</p>
 
         <div className='relative  lg:ml-auto '>
@@ -69,7 +72,7 @@ export const CreativeNotificationHome = () => {
             </div>
         </div>
         
-      </div>
+      </div> */}
     </div>
 
   )

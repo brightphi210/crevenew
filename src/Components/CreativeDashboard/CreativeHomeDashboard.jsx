@@ -647,14 +647,14 @@ export const ProfileModal = ({showModal}) => {
   return (
     <div>
       <dialog id="my_modal_1" className="modal">
-        <div className="modal-box  p-0 rounded-md 2xl:h-fit lg:max-w-[60%] w-[95%]" >
+        <div className="modal-box  p-0 rounded-md 2xl:h-[80%] 2xl:max-w-[60%] xl:max-w-[80%] w-[95%]" >
           {/* <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕</button> */}
 
 
-          <div className='flex lg:flex-row flex-col'>
+          <div className='flex lg:flex-row flex-col h-full'>
 
-            <div className='bg-neutral-100 2xl:block xl:block lg:hidden w-full lg:h-full h-[20rem] overflow-hidden'> 
+            <div className='bg-neutral-200 2xl:block xl:block lg:hidden w-full lg:h-full h-[20rem] overflow-hidden'> 
               <img src={completeImage} alt="" className='w-full h-full object-cover'/>
             </div>
 
