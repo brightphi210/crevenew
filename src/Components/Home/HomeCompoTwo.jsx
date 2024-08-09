@@ -78,7 +78,7 @@ const HomeCompoTwo = () => {
 
         <div className='lg:pt-20 lg:pb-16 py-5 lg:px-[10rem] 2xl:px-[20rem] w-full xl:px-[10rem] '>
             <h2></h2>
-            <div className='2xl:h-[40rem] xl:h-[45rem] lg:h-[50rem] h-[43rem] w-full overflow-hidden relative bg-black lg:rounded-2xl'>
+            <div className='2xl:h-[50rem] xl:h-[50rem] lg:h-[55rem] md:h-[50rem] h-[43rem] w-full overflow-hidden relative bg-black lg:rounded-2xl'>
                 <div className='absolute top-[5rem] lg:left-10 px-5 z-10 lg:w-[90%] w-full'>
                     <p className='text-lg text-white pb-5'>For Client</p>
                     <h2 className=' lg:text-6xl text-5xl text-white font-bold pt-[2rem]'>Find talent <br className='lg:block hidden'/> your way</h2>
@@ -88,33 +88,33 @@ const HomeCompoTwo = () => {
                         quick turnarounds to big transformations.
                     </p>
 
-                    <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 grid-cols-2 lg:gap-4 gap-2 pt-10 w-full'>
+                    <div className='grid 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-2 grid-cols-2 lg:gap-4 gap-2 pt-10 w-full'>
 
                         <Link to={'' + '/user-dashboard-creative/'}>
-                        <div className='bg-accent text-white lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
-                            <h2 className='2xl:text-xl xl:text-lg lg:text-lg text-lg font-semibold'>Browse  talent <br className='lg:block hidden'/> of your choice</h2>
+                        <div className='bg-accent text-white h-full lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
+                            <h2 className='2xl:text-base xl:text-base lg:text-base  text-sm font-semibold'>Browse  talent of your choice</h2>
                             <p className='lg:pt-3 pt-2 flex items-center text-sm gap-3'>Continue <FaArrowRightLong /></p>
                         </div>
                         </Link>
 
                         <Link to={'' + '/user-dashboard-creative/'}>
-                        <div className='bg-accent text-white lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
-                            <h2 className='2xl:text-xl xl:text-lg lg:text-lg text-lg font-semibold'>Send Request/ <br className='lg:block hidden'/>chat talent</h2>
+                        <div className='bg-accent text-white h-full lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
+                            <h2 className='2xl:text-base xl:text-base lg:text-base  text-sm font-semibold'>Send Request/chat talent</h2>
                             <p className='lg:pt-3 pt-2 flex items-center text-sm gap-3'>Continue <FaArrowRightLong /></p>
                         </div>
                         </Link>
 
                         <Link to={'' + '/user-dashboard-creative/'}>
-                        <div className='bg-accent text-white lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
-                            <h2 className='2xl:text-xl xl:text-lg lg:text-lg text-lg font-semibold'>Call talent/ <br className='lg:block hidden'/>await response</h2>
+                        <div className='bg-accent text-white h-full lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
+                            <h2 className='2xl:text-base xl:text-base lg:text-base  text-sm font-semibold'>Call talent/ await response</h2>
                             <p className='lg:pt-3 pt-2 flex items-center text-sm gap-3'>Continue <FaArrowRightLong /></p>
                         </div>
                         </Link>
 
 
                         <Link to={'' + '/user-dashboard-creative/'}>
-                        <div className='bg-accent text-white lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
-                            <h2 className='2xl:text-xl xl:text-lg lg:text-lg text-lg font-semibold'>Hire talent & <br className='lg:block hidden'/> get your job done</h2>
+                        <div className='bg-accent text-white h-full lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
+                            <h2 className='2xl:text-base xl:text-base lg:text-base  text-sm font-semibold'>Get your job done</h2>
                             <p className='lg:pt-3 pt-2 flex items-center text-sm gap-3'>Continue <FaArrowRightLong /></p>
                         </div>
                         </Link>
@@ -180,93 +180,6 @@ const HomeCompoTwo = () => {
                 </div>
             </div>
         </div>
-
-
-        {/* <div className='lg:py-20 lg:px-[10rem] 2xl:px-[20rem] xl:px-[10rem] px-5'>
-            <h2 className='py-5 text-center 2xl:text-3xl pb-5 text-xl'>Top Creatives</h2>
-
-            <div className='grid lg:grid-cols-3 grid-cols-1 lg:gap-10 gap-10 2xl:mb-0 xl:mb-0 lg:mb-0 mb-10'>
-
-                <div className=' '>
-                    <div className='rounded-lg overflow-hidden w-full'>
-                        <img src={prof2} alt="" className='rounded-lg object-cover w-full'/>
-                    </div>
-
-                    <div className='flex pt-5 gap-3 items-center'>
-                        <div className='w-8 overflow-hidden'>
-                            <img src={avatar} className='w-full h-full object-cover' alt="" />
-                        </div>
-
-                        <div>
-                            <h2 className='2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-sm'>John Doe</h2>
-                            <p className='2xl:text-[11px] xl:text-[9px] lg:text-[9px] text-xs'>Fasion Designer</p>
-                        </div>
-
-                        <div className=' ml-auto'>
-                            <button className='bg-white border  border-gray-300 flex items-center gap-2 py-2 2xl:px-5 xl:px-2 lg:px-2 px-5 2xl:text-sm xl:text-[9px] lg:text-[9px] text-xs text-black rounded-md'>
-                                <FaArrowRightLong />
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-                <div className=''>
-                    <div className='rounded-lg overflow-hidden w-full'>
-                        <img src={prof3} alt="" className='rounded-lg object-cover w-full'/>
-                    </div>
-
-                    <div className='flex pt-5 gap-3 items-center'>
-                    <div className='w-8 overflow-hidden'>
-                            <img src={avatar} className='w-full h-full object-cover' alt="" />
-                        </div>
-
-                        <div>
-                            <h2 className='2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-sm'>John Doe</h2>
-                            <p className='2xl:text-[11px] xl:text-[9px] lg:text-[9px] text-xs'>Fasion Designer</p>
-                        </div>
-
-                        <div className=' ml-auto'>
-                            <button className='bg-white border border-gray-300 flex items-center gap-2 py-2 2xl:px-5 xl:px-2 lg:px-2 px-5 2xl:text-sm xl:text-[9px] lg:text-[9px] text-xs text-black rounded-md'>
-                                <FaArrowRightLong />
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <div className=''>
-                    <div className='rounded-lg overflow-hidden w-full'>
-                        <img src={prof4} alt="" className='rounded-lg object-cover w-full'/>
-                    </div>
-
-                    <div className='flex pt-5 gap-3 items-center'>
-                        <div className='w-8 overflow-hidden'>
-                            <img src={avatar} className='w-full h-full object-cover' alt="" />
-                        </div>
-
-                        <div>
-                            <h2 className='2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-sm'>John Doe</h2>
-                            <p className='2xl:text-[11px] xl:text-[9px] lg:text-[9px] text-xs'>Fasion Designer</p>
-                        </div>
-
-                        <div className=' ml-auto'>
-                            <button className='bg-white border border-gray-300 flex items-center gap-2 py-2 2xl:px-5 xl:px-2 lg:px-2 px-5 2xl:text-sm xl:text-[9px] lg:text-[9px] text-xs text-black rounded-md'>
-                                <FaArrowRightLong />
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <Link to={'/allTalents'}>
-                <button className='bg-black lg:mt-10 2xl:py-4 2xl:px-20 xl:px-10 lg:px-10 text-sm  py-3 xl:py-2 lg:py-2 px-14 rounded-md border-none flex m-auto  mt-2 text-white items-center gap-2'>View More <FaArrowRightLong /></button>
-            </Link>
-        </div> */}
 
         <div className='grid lg:grid-cols-2 grid-cols-1 mt-16 2xl:mx-[20rem] lg:mx-[10rem] xl:mx-[10rem] color lg:rounded-md overflow-hidden'>
             <div className='lg:h-full h-[20rem] overflow-hidden'>

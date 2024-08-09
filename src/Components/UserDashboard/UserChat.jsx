@@ -76,9 +76,7 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
     const handleClick = (chat) => {
         setSelectedChat(chat);
         setMessageSide(false);
-        console.log('This is selected chat', chat);
         setMessages1(chat?.messages || []);
-        // document.getElementById('my_modal_4').showModal()
     };
 
     useEffect(() => {
@@ -91,12 +89,39 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
         const channel = pusher.subscribe(selectedChat.room_name);
         channel.bind('message', function (data) {
               setMessages((prevMessages) => [...prevMessages, data]);
+              console.log('This is my data', data)
         });
+
+
         return () => {
             channel.unbind_all();
-            channel.unsubscribe();
+            pusher.unsubscribe(selectedChat.room_name);
         };
+   
     }, [selectedChat]);
+
+
+    // useEffect(() => {
+    //     if (!selectedChat) return;
+    
+    //     const pusher = new Pusher('ffd0f41c2f813018fb0d', {
+    //         cluster: 'mt1',
+    //     });
+    
+    //     const channel = pusher.subscribe(selectedChat.room_name);
+    
+    //     channel.bind('message', function (data) {
+    //         if (data.room_name === selectedChat.room_name) {
+    //             setMessages((prevMessages) => [...prevMessages, data]);
+    //         }
+    //     });
+    
+    //     return () => {
+    //         channel.unbind_all();
+    //         pusher.unsubscribe(selectedChat.room_name);
+    //     };
+    // }, [selectedChat]);
+    
 
 
     const [chatLoading, setChatLoading] = useState(false)
@@ -122,8 +147,6 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
             }
 
             const data = await response.json();
-            // setMessages((prevMessages) => [...prevMessages, data]);
-            console.log('This is messages', messages);
             setChatLoading(false);
             setMessage('');
         } catch (error) {
@@ -245,14 +268,12 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
                                                             <p className='text-xs opacity-70 text-left'>You</p>
                                                             <p className='lg:text-base text-sm'>{msg?.body}</p>
                                                         </div>
-                                                        {/* <p className='bg-neutral-200 p-2 px-3 flex justify-center items-center rounded-full text-xs'>{msg?.sender?.fullname?.slice(0, 1)}</p> */}
                                                     </div>
                                                 </div> 
                                             ) : (
 
                                                 <div className="chat chat-start my-2">
                                                     <div className='flex items-center gap-3'>
-                                                    {/* <p className='bg-neutral-200 p-2 px-3 flex justify-center items-center rounded-full text-xs'>{msg?.sender?.fullname?.slice(0, 1)}</p> */}
                                                     <div className="chat-bubble bg-neutral-100  text-black max-w-xs break-words">
                                                         <p className='text-xs opacity-70 text-left'>{msg?.sender?.fullname}</p>
                                                         <p className='lg:text-base text-sm'>{msg?.body}</p>
@@ -276,14 +297,12 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
                                                             <p className='text-xs opacity-70 text-left'>You</p>
                                                             <p className='lg:text-base text-sm'>{msg?.message?.body}</p>
                                                         </div>
-                                                        {/* <p className='bg-neutral-200 p-2 px-3 flex justify-center items-center rounded-full text-xs'>{msg?.message?.fullname?.slice(0, 1)}</p> */}
                                                     </div>
                                                 </div> 
                                             ) : (
 
                                                 <div className="chat chat-start my-2">
                                                     <div className='flex items-center gap-3'>
-                                                    {/* <p className='bg-neutral-200 p-2 px-3 flex justify-center items-center rounded-full text-xs'>{msg?.message?.fullname?.slice(0, 1)}</p> */}
                                                     <div className="chat-bubble bg-neutral-100  text-black max-w-xs break-words">
                                                         <p className='text-xs opacity-70 text-left'>{msg?.message?.fullname}</p>
                                                         <p className='lg:text-base text-sm'>{msg?.message?.body}</p>
