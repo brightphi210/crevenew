@@ -49,7 +49,7 @@ const OTPCom = () => {
         });
 
         const data = await response.json();
-        setTimeLeft(120);
+        setTimeLeft(30);
         setCanResend(false);
 
         if (response.ok || response.statusCode === 200) {
@@ -60,22 +60,21 @@ const OTPCom = () => {
     };
 
 
-    const [timeLeft, setTimeLeft] = useState(120); // 120 seconds for 2 minutes
+    const [timeLeft, setTimeLeft] = useState(30); // 120 seconds for 2 minutes
     const [canResend, setCanResend] = useState(false);
 
-        useEffect(() => {
-            if (timeLeft === 0) {
-            setCanResend(true);
-            return;
-            }
-        
-            const intervalId = setInterval(() => {
-            setTimeLeft((prevTime) => prevTime - 1);
-            }, 1000);
-        
-            return () => clearInterval(intervalId);
-        }, [timeLeft]);
-
+    useEffect(() => {
+        if (timeLeft === 0) {
+        setCanResend(true);
+        return;
+        }
+    
+        const intervalId = setInterval(() => {
+        setTimeLeft((prevTime) => prevTime - 1);
+        }, 1000);
+    
+        return () => clearInterval(intervalId);
+    }, [timeLeft]);
 
 
     return (

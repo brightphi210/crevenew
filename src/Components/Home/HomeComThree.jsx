@@ -89,7 +89,7 @@ const HomeComThree = () => {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <div className='border border-slate-300 lg:h-[20rem] h-[15rem] py-4 px-6 rounded-lg'>
+                    <div className='bg-neutral-100 hover:bg-neutral-200 hover:transition-all hover:ease-linear border border-slate-300 lg:h-[20rem] h-[15rem] py-4 px-6 rounded-lg'>
                         <p className='text-3xl 2xl:text-3xl xl:text-xl lg:text-xl'><FaQuoteLeft /></p>
                         <p className='text-lg 2xl:text-lg xl:text-lg lg:text-lg py-5 leading-[1.4rem]'>
                             I love the seamlessness of the UI/UX
@@ -113,7 +113,7 @@ const HomeComThree = () => {
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <div className='border border-slate-300 lg:h-[20rem] h-[15rem] py-4 px-6 rounded-lg'>
+                    <div className='bg-neutral-100 hover:bg-neutral-200 hover:transition-all hover:ease-linear border border-slate-300 lg:h-[20rem] h-[15rem] py-4 px-6 rounded-lg'>
                         <p className='text-3xl 2xl:text-3xl xl:text-xl lg:text-xl'><FaQuoteLeft /></p>
                         <p className='text-lg 2xl:text-lg xl:text-lg lg:text-lg py-5 leading-[1.4rem]'>
                             I will love to the fact that creve is free for every professionals
