@@ -654,7 +654,7 @@ export const ProfileModal = ({showModal}) => {
 
           <div className='flex lg:flex-row flex-col h-full'>
 
-            <div className='bg-neutral-200 2xl:block xl:block lg:hidden w-full lg:h-full h-[20rem] overflow-hidden'> 
+            <div className='bg-neutral-200 2xl:block xl:block lg:hidden w-full lg:h-full h-[15rem] overflow-hidden'> 
               <img src={completeImage} alt="" className='w-full h-full object-cover'/>
             </div>
 
@@ -680,7 +680,7 @@ export const ProfileModal = ({showModal}) => {
 
               <p className="pt-10 text-center text-xs ">Once the steps above is done your good to go 😊</p>
 
-              <Link to={'/creative-dashboard-profile-update'}><button className='mt-3 mycolor2 text-white w-full p-3 py-3 lg:text-sm text-lg rounded-full'>Complete profile</button></Link>
+              <Link to={'/creative-dashboard-profile-update'}><button className='mt-3 mycolor2 text-white w-full p-3 py-3 lg:text-sm text-sm rounded-full'>Complete profile</button></Link>
             </div>
 
           </div>
