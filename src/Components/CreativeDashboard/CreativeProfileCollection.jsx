@@ -195,7 +195,7 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
                     <p className="text-xs pb-3">Upload Maximum of 6 collections</p>
                 </div>
 
-                {images_list && images_list.length >= 6 || images_list && images_list.length === 0 ? '' :
+                {images_list && images_list.length >= 8 || images_list && images_list.length === 0 ? '' :
                     <button className="lg:ml-auto ml-auto bg-neutral-500 py-2.5 px-3.5 text-white rounded-full text-xs flex gap-2 items-center " 
                         onClick={()=>document.getElementById('my_modal_2').showModal()}>Add<MdAdd className='text-sm'/>
                     </button>
@@ -249,12 +249,12 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
 
 
             <dialog id="my_modal_2" className="modal">
-                <div className="modal-box  p-5 rounded-md  h-[100vh] lg:max-w-[35%] w-[95%]" >
+                <div className="modal-box  p-5 rounded-md h-[95%] lg:max-w-[45%] w-[95%]" >
                     <button onClick={()=>{document.getElementById('my_modal_2').close()}} 
                         className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕
                     </button>
 
-                    <div className='pt-10'>
+                    <div className='2xl:pt-10'>
                         <h2 className='text-xl pb-3 border-b border-b-neutral-100'>Upload Collections</h2>
 
                         {images.length > 0 &&
@@ -266,23 +266,23 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
 
 
                         {images.length === 0 && 
-                        <div className='flex flex-col justify-center gap-20 pt-[15rem] m-auto'>
+                        <div className='flex flex-col justify-center gap-20 2xl:pt-[12rem] xl:pt-[8rem] lg:pt-[8rem] pt-[12rem] m-auto'>
                             <div className='flex justify-center m-auto items-center h-0 pb-0 '>
-                                <img src={noData} alt="" className='w-[15rem]'/>
+                                <img src={noData} alt="" className='w-[12rem]'/>
                             </div>
 
                             <label htmlFor="" for="dropzone" className='cursor-pointer text-center'>
                                 <input type="file" id='dropzone' disabled={isDisabled} multiple className="hidden m-auto mt-3 file-input w-fit rounded-full text-xs bg-neutral-100" onChange={handlePostImage}/>
-                                <p className='text-sm pt-6'>Click to upload Maximum of 6 items and Minimum of 3</p>
+                                <p className='text-sm pt-6'>Upload Maximum of 8 items and Minimum of 2</p>
                                 <p className='text-sm pt-2'>Image should not be greater than 3mb</p>
                                 <p className='flex bg-white border border-neutral-300 text-sm w-fit p-3 px-8 text-black gap-3 items-center m-auto mt-5 rounded-full'>Upload <RiUploadCloudLine className='text-lg'/></p>
                             </label>
                         </div>
                         }
 
-                        <div className='mt-4 lg:grid 2xl:grid-cols-2 grid grid-cols-2 gap-2 rounded-md '>
+                        <div className='mt-4 lg:grid 2xl:grid-cols-3 grid grid-cols-2 gap-2 rounded-md '>
                             {previewUrls.map((url, index) => (
-                                <div className='2xl:w-full w-full 2xl:h-60 xl:h-40 lg:h-20 md:h-20  h-40 bg-slate-200 border border-neutral-100 overflow-hidden relative rounded-lg '>
+                                <div className='2xl:w-full w-full 2xl:h-[15rem] xl:h-60 lg:h-50 md:h-50  h-40 bg-slate-200 border border-neutral-100 overflow-hidden relative rounded-lg '>
                                     <img key={index} src={url} alt={`Preview ${index}`} className='rounded-sm w-full h-full object-cover' />
                                     <p onClick={() => handleDeleteImage(index)} className='absolute bg-white top-1 right-1 flex justify-center items-center p-1 rounded-full'><IoCloseSharp className='cursor-pointer lg:text-md text-xs text-red-700'/></p>
                                 </div>
@@ -291,7 +291,7 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
                     </div>
 
                     {images.length > 0 &&
-                        <button disabled={images.length < 3} onClick={handleProfileUpdate} className=" btn 2xl:w-fit mt-5 xl:w-fit lg:w-fit md:w-fit w-full flex items-center gap-2 px-10 xl:text-xs lg:text-xs md:text-xs rounded-full bg-black hover:bg-neutral-800 text-white">
+                        <button disabled={images.length < 2} onClick={handleProfileUpdate} className=" btn 2xl:w-fit mt-5 xl:w-fit lg:w-fit md:w-fit w-full flex items-center gap-2 px-10 xl:text-xs lg:text-xs md:text-xs rounded-full bg-black hover:bg-neutral-800 text-white">
                             {isLoading2 === true ? <span class="loader"></span> : <>Submit<MdArrowForward /></> }
                         </button>
                     }

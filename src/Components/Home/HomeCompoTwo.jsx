@@ -92,21 +92,21 @@ const HomeCompoTwo = () => {
 
                         <Link to={'' + '/user-dashboard-creative/'}>
                         <div className='bg-accent text-white h-full lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
-                            <h2 className='2xl:text-base xl:text-base lg:text-base  text-sm font-semibold'>Browse  talent of your choice</h2>
+                            <h2 className='2xl:text-lg xl:text-base lg:text-base  text-sm font-semibold'>Browse  talent of your choice</h2>
                             <p className='lg:pt-3 pt-2 flex items-center text-sm gap-3'>Continue <FaArrowRightLong /></p>
                         </div>
                         </Link>
 
                         <Link to={'' + '/user-dashboard-creative/'}>
                         <div className='bg-accent text-white h-full lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
-                            <h2 className='2xl:text-base xl:text-base lg:text-base  text-sm font-semibold'>Send Request/chat talent</h2>
+                            <h2 className='2xl:text-lg xl:text-base lg:text-base  text-sm font-semibold'>Send Request/chat talent</h2>
                             <p className='lg:pt-3 pt-2 flex items-center text-sm gap-3'>Continue <FaArrowRightLong /></p>
                         </div>
                         </Link>
 
                         <Link to={'' + '/user-dashboard-creative/'}>
                         <div className='bg-accent text-white h-full lg:p-5 p-4 rounded-xl' data-aos="fade-up" data-aos-duration="1000"> 
-                            <h2 className='2xl:text-base xl:text-base lg:text-base  text-sm font-semibold'>Call talent/ await response</h2>
+                            <h2 className='2xl:text-lg xl:text-base lg:text-base  text-sm font-semibold'>Call talent/ await response</h2>
                             <p className='lg:pt-3 pt-2 flex items-center text-sm gap-3'>Continue <FaArrowRightLong /></p>
                         </div>
                         </Link>
