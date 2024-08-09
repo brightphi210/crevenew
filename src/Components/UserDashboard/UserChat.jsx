@@ -84,44 +84,27 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
         Pusher.logToConsole = true;
 
         const pusher = new Pusher('ffd0f41c2f813018fb0d', {
-            cluster: 'mt1'
+            cluster: 'mt1',
+            encrypted: true,
         });
-        const channel = pusher.subscribe(selectedChat.room_name);
+        // const channel = pusher.subscribe(selectedChat.room_name);
+        const channelName = selectedChat?.room_name; 
+        const channel = pusher.subscribe(channelName);
         channel.bind('message', function (data) {
-              setMessages((prevMessages) => [...prevMessages, data]);
-              console.log('This is my data', data)
+            if (data?.message?.room_name === channelName) {
+                setMessages((prevMessages) => [...prevMessages, data]);
+                console.log('This is messages', data);
+                console.log('This is room1', data?.message?.room_name)
+                console.log('This is room2', selectedChat?.room_name)
+            }
         });
-
 
         return () => {
             channel.unbind_all();
-            pusher.unsubscribe(selectedChat.room_name);
+            pusher.unsubscribe(channelName);
         };
    
     }, [selectedChat]);
-
-
-    // useEffect(() => {
-    //     if (!selectedChat) return;
-    
-    //     const pusher = new Pusher('ffd0f41c2f813018fb0d', {
-    //         cluster: 'mt1',
-    //     });
-    
-    //     const channel = pusher.subscribe(selectedChat.room_name);
-    
-    //     channel.bind('message', function (data) {
-    //         if (data.room_name === selectedChat.room_name) {
-    //             setMessages((prevMessages) => [...prevMessages, data]);
-    //         }
-    //     });
-    
-    //     return () => {
-    //         channel.unbind_all();
-    //         pusher.unsubscribe(selectedChat.room_name);
-    //     };
-    // }, [selectedChat]);
-    
 
 
     const [chatLoading, setChatLoading] = useState(false)

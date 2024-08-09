@@ -247,22 +247,18 @@ export const CreatingProfileUpdateHome = () => {
                         className={showEachState === 1 ? 'border border-green-900 py-2 px-5 rounded-full text-green-900 lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         Basic
                     </button>
-                    |
                     <button onClick={showFive} 
                         className={showEachState === 5 ? 'border border-green-900 py-2 px-5 rounded-full text-green-900 lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         NIN
                     </button>
-                    |
                     <button onClick={showFour} 
                         className={showEachState === 4 ? 'border border-green-900 py-2 px-5 rounded-full text-green-900 lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         Skills
                     </button>
-                    |
                     <button onClick={showTwo} 
                         className={showEachState === 2 ? 'border border-green-900 py-2 px-5 rounded-full text-green-900 lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         Cover
                     </button>
-                    |
                     <button onClick={showThree} 
                         className={showEachState === 3 ? 'border border-green-900 py-2 px-3 rounded-full text-green-900 lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         Collections
@@ -271,24 +267,24 @@ export const CreatingProfileUpdateHome = () => {
 
 
                 {showEachState === 1 && (
-                    <form action="" className='flex lg:flex-row flex-col px-5 lg:gap-14 gap-5 relative' onSubmit={handleProfileUpdate}>
+                    <form action="" className='flex lg:flex-row flex-col px-5 lg:gap-14  gap-5 relative' onSubmit={handleProfileUpdate}>
                         <div className='lg:w-1/2 w-full flex flex-col gap-5'>
 
 
                             <div>
-                                <p className="text-xs pb-3">Work Type</p>
-                                <select className="select text-xs select-bordered border-neutral-500 w-full max-w-full" 
+                                <p className="text-sm pb-3">Work Type</p>
+                                <select className="select text-xs select-bordered border-neutral-300 w-full max-w-full" 
                                     value={work_type} onChange={(e) =>{setWorkType(e.target.value)}} required>
-                                    <option className='text-xs'required >Select Work Type</option>
-                                    <option className='text-xs'required value={'Remote'}>Remote</option>
-                                    <option className='text-xs' value={'Hybrid'}>Hybrid</option>
-                                    <option className='text-xs' value={'On-site'}>On-site</option>
+                                    <option className='text-sm'required >Select Work Type</option>
+                                    <option className='text-sm'required value={'Remote'}>Remote</option>
+                                    <option className='text-sm' value={'Hybrid'}>Hybrid</option>
+                                    <option className='text-sm' value={'On-site'}>On-site</option>
                                 </select>
                             </div>
                             
 
                             <div>
-                                <p className="text-xs pb-3">Location</p>
+                                <p className="text-sm pb-3">Location</p>
                                 {/* <input type="text" 
                                     placeholder="Location e.g #64, grace lane, port harcourt" 
                                     className="input text-xs input-bordered border-neutral-500 w-full max-w-full" 
@@ -305,17 +301,17 @@ export const CreatingProfileUpdateHome = () => {
                                     options={{
                                     types: ['address'],
                                     }}
-                                    className="input text-xs input-bordered border-neutral-500 w-full max-w-full" 
+                                    className="input text-sm input-bordered border-neutral-300 w-full max-w-full" 
                                     defaultValue={address}
                                 />
                             </div>
 
 
                             <div>
-                                <p className="text-xs pb-3">Language</p>
+                                <p className="text-sm pb-3">Language</p>
                                 <input type="text" 
                                     placeholder="Language e.g English, French etc." 
-                                    className="input text-xs input-bordered w-full border-neutral-500 max-w-full" 
+                                    className="input text-sm input-bordered w-full border-neutral-300 max-w-full" 
                                     value={language}
                                     required
                                     onChange={(e)=>setLanguage(e.target.value)}
@@ -323,11 +319,11 @@ export const CreatingProfileUpdateHome = () => {
                             </div>
 
                             <div>
-                                <p className="text-xs pb-3">Category</p>
-                                <select className="select text-xs  select-bordered w-full border-neutral-500 max-w-full"  value={selectedOption} onChange={handleShowDigital}>
-                                    <option className='text-xs' value={''}>Select Category</option>
-                                    <option className='text-xs' value={'DigitalSkills'}>Digital Skills</option>
-                                    <option className='text-xs' value={'Non-DigitalSkills'}>Non-Digital Skills</option>
+                                <p className="text-sm pb-3">Category</p>
+                                <select className="select text-sm  select-bordered w-full border-neutral-300 max-w-full"  value={selectedOption} onChange={handleShowDigital}>
+                                    <option className='text-sm' value={''}>Select Category</option>
+                                    <option className='text-sm' value={'DigitalSkills'}>Digital Skills</option>
+                                    <option className='text-sm' value={'Non-DigitalSkills'}>Non-Digital Skills</option>
                                 </select>
                             </div>
 
@@ -335,19 +331,19 @@ export const CreatingProfileUpdateHome = () => {
                             {selectedOption === 'DigitalSkills' && (
 
                                 <div>
-                                    <p className="text-xs pb-3">Digital</p>
-                                    <select className="select text-xs select-bordered w-full border-neutral-500 max-w-full" required value={digital_skills} onChange={(e)=>setDigitalSkills(e.target.value)}>
-                                        <option className='text-xs' value={''}>Select Digital Skill</option>
-                                        <option className='text-xs' value={'BackendDevelopment'}>Backend Developement</option>
-                                        <option className='text-xs' value={'MobileDevelopment'}>Mobile Developement</option>
-                                        <option className='text-xs' value={'UI/UX_Design'}>UI/UX</option>
-                                        <option className='text-xs' value={'Graphics_Design'}>Graphic Design</option>
-                                        <option className='text-xs' value={'Content_Creation'}>Content Creation</option>
-                                        <option className='text-xs' value={'Frontend_Development'}>Frontend Developement</option>
-                                        <option className='text-xs' value={'Photography'}>Photography</option>
-                                        <option className='text-xs' value={'WebsiteDevelopment'}>Website Developement</option>
-                                        <option className='text-xs' value={'Blockchain Developement'}>Blockchain Developement</option>
-                                        <option className='text-xs' value={'Video_editing'}>Video Editing</option>
+                                    <p className="text-sm pb-3">Digital</p>
+                                    <select className="select text-sm select-bordered w-full border-neutral-500 max-w-full" required value={digital_skills} onChange={(e)=>setDigitalSkills(e.target.value)}>
+                                        <option className='text-sm' value={''}>Select Digital Skill</option>
+                                        <option className='text-sm' value={'BackendDevelopment'}>Backend Developement</option>
+                                        <option className='text-sm' value={'MobileDevelopment'}>Mobile Developement</option>
+                                        <option className='text-sm' value={'UI/UX_Design'}>UI/UX</option>
+                                        <option className='text-sm' value={'Graphics_Design'}>Graphic Design</option>
+                                        <option className='text-sm' value={'Content_Creation'}>Content Creation</option>
+                                        <option className='text-sm' value={'Frontend_Development'}>Frontend Developement</option>
+                                        <option className='text-sm' value={'Photography'}>Photography</option>
+                                        <option className='text-sm' value={'WebsiteDevelopment'}>Website Developement</option>
+                                        <option className='text-sm' value={'Blockchain Developement'}>Blockchain Developement</option>
+                                        <option className='text-sm' value={'Video_editing'}>Video Editing</option>
                                     </select>
                                 </div>
                             ) }
@@ -355,46 +351,46 @@ export const CreatingProfileUpdateHome = () => {
                             {selectedOption === 'Non-DigitalSkills' && (
 
                                 <div>
-                                    <p className="text-xs pb-3">Non-Digital</p>
-                                    <select className="select text-xs select-bordered w-full max-w-full border-neutral-500" value={nondigital_skills} onChange={(e)=>setNondigital_Skills(e.target.value)}>
-                                        <option className='text-xs' value={''}>Select Non-Digital Skill</option>
-                                        <option className='text-xs' value={'Plumbing'}>Plumbing</option>
-                                        <option className='text-xs' value={'Catering'}>Catering</option>   
-                                        <option className='text-xs' value={'Hair_Stylist'}>Hair Stylist</option>
-                                        <option className='text-xs' value={'Electronics/Repairs'}>Electronics/Repairs</option>
-                                        <option className='text-xs' value={'Furniture-Making'}>Furniture Making</option>
-                                        <option className='text-xs' value={'Cobbling'}>Cobbling</option>
-                                        <option className='text-xs' value={'Mechanic'}>Mechanic</option>
-                                        <option className='text-xs' value={'Fashion-Designer'}>Fashion Designing</option>
-                                        <option className='text-xs' value={'Cleaning'}>Cleaning</option>
-                                        <option className='text-xs' value={'Barbing'}>Barbing</option>
+                                    <p className="text-sm pb-3">Non-Digital</p>
+                                    <select className="select text-xs select-bordered w-full max-w-full border-neutral-300" value={nondigital_skills} onChange={(e)=>setNondigital_Skills(e.target.value)}>
+                                        <option className='text-sm' value={''}>Select Non-Digital Skill</option>
+                                        <option className='text-sm' value={'Plumbing'}>Plumbing</option>
+                                        <option className='text-sm' value={'Catering'}>Catering</option>   
+                                        <option className='text-sm' value={'Hair_Stylist'}>Hair Stylist</option>
+                                        <option className='text-sm' value={'Electronics/Repairs'}>Electronics/Repairs</option>
+                                        <option className='text-sm' value={'Furniture-Making'}>Furniture Making</option>
+                                        <option className='text-sm' value={'Cobbling'}>Cobbling</option>
+                                        <option className='text-sm' value={'Mechanic'}>Mechanic</option>
+                                        <option className='text-sm' value={'Fashion-Designer'}>Fashion Designing</option>
+                                        <option className='text-sm' value={'Cleaning'}>Cleaning</option>
+                                        <option className='text-sm' value={'Barbing'}>Barbing</option>
                                     </select>
                                 </div>
                             )}
 
                             <div>
-                                <p className="text-xs pb-3">Whatsapp Number</p>
+                                <p className="text-sm pb-3">Whatsapp Number</p>
                                 <input 
                                     type="text" 
                                     placeholder="whatsapp number e.g 07098822807" 
                                     value={whatsapp_link}
                                     required
                                     onChange={validateWhatsappNumber}
-                                    className="input text-xs input-bordered w-full max-w-full border-neutral-500" 
+                                    className="input text-sm input-bordered w-full max-w-full border-neutral-300" 
                                 />
-                                <p className='text-red-600 text-xs pt-3'>{whatsAppErr}</p>
+                                <p className='text-red-600 text-sm pt-3'>{whatsAppErr}</p>
                             </div>
 
 
                             <div>
-                                <p className="text-xs pb-3">Phone Number</p>
+                                <p className="text-sm pb-3">Phone Number</p>
                                 <input 
                                     type="text" 
                                     placeholder="phone number e.g 09044338996" 
                                     required
                                     value={phone_number}
                                     onChange={validatePhoneNumber}
-                                    className="input text-xs input-bordered w-full max-w-full border-neutral-500" 
+                                    className="input text-sm input-bordered w-full max-w-full border-neutral-300" 
                                 />
                                 <p className='text-red-600 text-xs pt-3'>{phoneErr}</p>
                             </div>
@@ -404,44 +400,44 @@ export const CreatingProfileUpdateHome = () => {
                         <div className='lg:w-1/2 w-full flex flex-col gap-5'>
 
                             <div>
-                                <p className="text-xs pb-3">Website - Optional</p>
+                                <p className="text-sm pb-3">Website - Optional</p>
                                 <input 
                                     type="text" 
                                     placeholder="website e.g https://example.com"  
                                     value={website_link}
                                     onChange={(e)=>setWebsite_Link(e.target.value)}
-                                    className="input text-xs input-bordered w-full max-w-full border-neutral-500" />
+                                    className="input text-sm input-bordered w-full max-w-full border-neutral-300" />
                             </div>
 
 
                             <div>
-                                <p className="text-xs pb-3">Profession</p>
+                                <p className="text-sm pb-3">Profession</p>
                                 <input 
                                     type="text" 
                                     required
                                     value={display_name}
                                     onChange={(e)=>setDisplay_Name(e.target.value)}
                                     placeholder="profession e.g Senior Furniture Maker"  
-                                    className="input text-xs input-bordered w-full max-w-full border-neutral-500" />
+                                    className="input text-sm input-bordered w-full max-w-full border-neutral-300" />
                             </div>
 
 
                             <div>
-                                <p className="text-xs pb-3">Price</p>
+                                <p className="text-sm pb-3">Price</p>
                                 <input 
                                     type="number" 
                                     value={starting_price}
                                     required
                                     onChange={(e)=>setStarting_Price(e.target.value)}
                                     placeholder="starting price e.g 5,000"  
-                                    className="input text-xs input-bordered w-full max-w-full border-neutral-500" />
+                                    className="input text-sm input-bordered w-full max-w-full border-neutral-300" />
                             </div>
 
 
                             <div>
-                                <p className="text-xs pb-3">Bio</p>
+                                <p className="text-sm pb-3">Bio</p>
                                 <textarea 
-                                    className="textarea textarea-bordered w-full border-neutral-500 max-w-full min-h-[15rem] max-h-[15rem] h-[15rem]" 
+                                    className="textarea textarea-bordered w-full border-neutral-300 max-w-full min-h-[15rem] max-h-[15rem] h-[15rem]" 
                                     placeholder="Bio"
                                     value={about}
                                     required
@@ -489,7 +485,6 @@ export const CreatingProfileUpdateHome = () => {
                 )}
 
 
-
                 <dialog id="my_modal_1" className="modal">
                     <div className="modal-box  p-0 rounded-md flex justify-center items-center h-[25rem]" >
                         <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
@@ -505,7 +500,7 @@ export const CreatingProfileUpdateHome = () => {
                             <p className='text-center text-xs'>Your profile has been updated, continue </p>
 
                             {/* <Link to={'/creative-dashboard-profile'}> */}
-                                <button onClick={()=>{setEachState(4); document.getElementById('my_modal_1').close()}} className="btn btn-active text-xs btn-neutral w-9/12 justify-center m-auto mt-8 flex items-center gap-4">Continue <FaArrowRight /></button>
+                                <button onClick={()=>{setEachState(5); document.getElementById('my_modal_1').close()}} className="btn btn-active text-xs btn-neutral w-9/12 justify-center m-auto mt-8 flex items-center gap-4">Continue <FaArrowRight /></button>
                             {/* </Link> */}
                         </div>
                     </div>

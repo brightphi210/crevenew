@@ -77,9 +77,9 @@ const UserNavbar = ({handleShow, show}) => {
             </div>
 
             <div className='flex flex-row gap-5 ml-auto items-center'>
-                <Link to={'/user-dashboard-home'}>
+                {/* <Link to={'/user-dashboard-home'}>
                     <p className='text-xl cursor-pointer p-2 border border-neutral-200 rounded-full  text-neutral-700'><IoNotificationsOutline /></p>
-                </Link>
+                </Link> */}
 
                 <Link to={'/user-dashboard-chat'}>
                     <p className='text-xl cursor-pointer text-neutral-700 border border-neutral-300 flex rounded-full p-2 items-center justify-center '><IoMailUnread /></p>

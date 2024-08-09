@@ -331,8 +331,7 @@ const SingleUserCreativeDash = () => {
     };
 
 
-    
-
+    // console.log('This is creative Data', creativeData);
   return (
 
     <div className='bg-neutral-100 h-full'>
@@ -384,7 +383,7 @@ const SingleUserCreativeDash = () => {
             {isLoading === true ? <MyLoader /> : <>
                 <div className='w-full flex lg:pt-[7rem] px-3 pt-[6rem] items-center py-3  '>
                     <p onClick={goBack} className='items-center text-lg flex justify-center text-black bg-neutral-200 lg:p-3 p-2 rounded-full w-fit cursor-pointer'><FaArrowLeft className='cursor-pointer'/></p>
-                    <button onClick={()=>document.getElementById('my_modal_5').showModal()} className='bg-black text-white py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-200 ml-auto'>Chat Talent</button>
+                    <button onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-black text-white py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-200 ml-auto'>Send Request</button>
 
                 </div>
             
@@ -404,14 +403,12 @@ const SingleUserCreativeDash = () => {
                                     <p className='text-sm'>{creativeData.display_name} <span className='text-xs text-neutral-400'>reviews({creativeData?.reviewed?.length})</span></p>
                                 </div>
                             )}
-
-                            {/* <button className='mycolor2 rounded-full text-white font-bold text-sm gap-3 ml-auto w-fit flex items-center py-2 px-5'> <GoUnverified className=''/></button> */}
                         </div>
                     </div>
 
                     <div className='ml-auto flex items-center gap-2 '>
                         <p onClick={handleFavoritemClick} className='bg-white border border-green-900 py-2 lg:px-2 px-2 cursor-pointer rounded-full lg:text-sm text-xs  w-fit flex items-center gap-2'>{isFavorite ? <MdOutlineFavorite className='text-lg text-green-900'/> : <MdFavoriteBorder className='text-lg text-green-900'/>}</p>
-                        <button onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-white text-black py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-200'>Request</button>
+                        <button onClick={()=>document.getElementById('my_modal_5').showModal()} className='bg-white text-black py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-400'>Message</button>
                     </div>
                 </div>
 
@@ -473,7 +470,7 @@ const SingleUserCreativeDash = () => {
 
 
 
-                            <div className='pt-5'>
+                            <div className='pt-5 border-t border-t-neutral-200 '>
                                 <p className='text-sm font-semibold'>Category</p>
                                 <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.digital_skills}</p>
                                 <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.nondigital_skills}</p>
@@ -507,7 +504,7 @@ const SingleUserCreativeDash = () => {
                                 </Link>
                             </div>
 
-                            <div className='flex gap-3'>
+                            <div className='flex gap-3 pt-3 mt-5 border-t border-t-neutral-200'>
                                 <button onClick={()=>document.getElementById('my_modal_2').showModal()} className='bg-accent py-3 px-5 mt-5 text-sm text-white rounded-md w-full'>Drop Reviews</button>
                                 <button onClick={handleShare} className='bg-black py-3 px-5 mt-5 text-sm text-white flex justify-center items-center m-auto gap-3 rounded-md w-full'>Share <IoShareSocialSharp /></button>
                             </div>
