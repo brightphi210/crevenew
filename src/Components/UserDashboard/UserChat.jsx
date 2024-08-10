@@ -73,10 +73,20 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
     const [messages1, setMessages1] = useState([]);
     const [message, setMessage] = useState('');
 
+    // const handleClick = (chat) => {
+    //     setSelectedChat(chat);
+    //     setMessageSide(false);
+    //     setMessages1(chat?.messages || []);
+    // };
+
+
     const handleClick = (chat) => {
         setSelectedChat(chat);
         setMessageSide(false);
-        setMessages1(chat?.messages || []);
+        setMessages1((prevMessages) => ({
+            ...prevMessages,
+            [chat.room_name]: chat.messages || []
+        }));
     };
 
     useEffect(() => {
@@ -90,12 +100,22 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
         // const channel = pusher.subscribe(selectedChat.room_name);
         const channelName = selectedChat?.room_name; 
         const channel = pusher.subscribe(channelName);
+        // channel.bind('message', function (data) {
+        //     if (data?.message?.room_name === channelName) {
+        //         setMessages((prevMessages) => [...prevMessages, data]);
+        //         console.log('This is messages', data);
+        //         console.log('This is room1', data?.message?.room_name)
+        //         console.log('This is room2', selectedChat?.room_name)
+        //     }
+        // });
+
         channel.bind('message', function (data) {
             if (data?.message?.room_name === channelName) {
-                setMessages((prevMessages) => [...prevMessages, data]);
+                setMessages((prevMessages) => ({
+                    ...prevMessages,
+                    [channelName]: [...(prevMessages[channelName] || []), data]
+                }));
                 console.log('This is messages', data);
-                console.log('This is room1', data?.message?.room_name)
-                console.log('This is room2', selectedChat?.room_name)
             }
         });
 
@@ -132,6 +152,10 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
             }
 
             const data = await response.json();
+            setMessages((prevMessages) => ({
+                ...prevMessages,
+                [selectedChat.room_name]: [...(prevMessages[selectedChat.room_name] || []), data]
+            }));
             setChatLoading(false);
             setMessage('');
         } catch (error) {
@@ -241,25 +265,27 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
                         <div ref={chatContainerRef} className='w-full lg:py-20 py-28 lg:pb-5 pb-5 lg:h-[90vh] h-[90vh] overflow-y-scroll'>
 
                                 <div className='2xl:pl-[20rem] xl:pl-[20rem] lg:pl-[20rem] lg:pr-10 px-5 lg:pt-0 p-10'>
-                                    {messages1.slice().reverse().map((msg, index) => (
+                                    {messages1[selectedChat.room_name]?.slice().reverse().map((msg, index) => (
                                         
                                         <div className='flex flex-col gap-3 w-full' key={index}>
 
-                                            {msg?.sender?.email === userToken.email ? (
+                                            {msg?.sender?.email === userToken?.email ? (
 
                                                 <div class="chat chat-end my-2">
                                                     <div className='flex items-center gap-3'>
-                                                        <div class="chat-bubble mycolor4  text-white max-w-xs break-words">
+                                                    {/* className={`inline-block px-3 py-2 ${msg?.sender?.email === userToken?.email ? 'bg-[#f2b3b0] text-white rounded-tl-lg rounded-bl-lg rounded-br-lg' : 'bg-neutral-200 rounded-tr-lg rounded-br-lg rounded-bl-lg'}`} */}
+                                                        <div class=" rounded-tr-xl  rounded-tl-xl rounded-bl-xl px-3 py-2 mycolor4  text-white max-w-xs break-words">
                                                             <p className='text-xs opacity-70 text-left'>You</p>
                                                             <p className='lg:text-base text-sm'>{msg?.body}</p>
                                                         </div>
                                                     </div>
                                                 </div> 
+                                                
                                             ) : (
 
                                                 <div className="chat chat-start my-2">
                                                     <div className='flex items-center gap-3'>
-                                                    <div className="chat-bubble bg-neutral-100  text-black max-w-xs break-words">
+                                                    <div className="rounded-tr-xl  rounded-tl-xl rounded-bl-xl px-3 py-2 bg-neutral-100  text-black max-w-xs break-words">
                                                         <p className='text-xs opacity-70 text-left'>{msg?.sender?.fullname}</p>
                                                         <p className='lg:text-base text-sm'>{msg?.body}</p>
                                                     </div>
@@ -269,8 +295,18 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
                                         </div>
                                     ))}
 
+                                    {/* {messages[selectedChat.room_name]?.map((msg, index) => (
+                                        <div key={index}>
+                                            <div className={`px-5 py-3 ${msg?.sender?.email === userToken?.email ? 'text-right' : 'text-left'}`}>
+                                                <div className={`inline-block px-3 py-2 ${msg?.sender?.email === userToken?.email ? 'bg-[#f2b3b0] text-white rounded-tl-lg rounded-bl-lg rounded-br-lg' : 'bg-neutral-200 rounded-tr-lg rounded-br-lg rounded-bl-lg'}`}>
+                                                    <p className='text-xs'>{msg.body}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))} */}
 
-                                    {messages?.map((msg, index) => (
+
+                                    {messages[selectedChat.room_name]?.map((msg, index) => (
                                         
                                         <div className='flex flex-col gap-3 w-full' key={index}>
 
@@ -278,7 +314,7 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
 
                                                 <div class="chat chat-end my-2">
                                                     <div className='flex items-center gap-3'>
-                                                        <div class="chat-bubble mycolor4  text-white max-w-xs break-words">
+                                                        <div class="rounded-tr-xl  rounded-tl-xl rounded-bl-xl px-3 py-2 mycolor4  text-white max-w-xs break-words">
                                                             <p className='text-xs opacity-70 text-left'>You</p>
                                                             <p className='lg:text-base text-sm'>{msg?.message?.body}</p>
                                                         </div>
@@ -288,7 +324,7 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
 
                                                 <div className="chat chat-start my-2">
                                                     <div className='flex items-center gap-3'>
-                                                    <div className="chat-bubble bg-neutral-100  text-black max-w-xs break-words">
+                                                    <div className="rounded-tr-xl  rounded-tl-xl rounded-bl-xl px-3 py-2 bg-neutral-100  text-black max-w-xs break-words">
                                                         <p className='text-xs opacity-70 text-left'>{msg?.message?.fullname}</p>
                                                         <p className='lg:text-base text-sm'>{msg?.message?.body}</p>
                                                     </div>
