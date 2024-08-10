@@ -152,10 +152,10 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
             }
 
             const data = await response.json();
-            setMessages((prevMessages) => ({
-                ...prevMessages,
-                [selectedChat.room_name]: [...(prevMessages[selectedChat.room_name] || []), data]
-            }));
+            // setMessages((prevMessages) => ({
+            //     ...prevMessages,
+            //     [selectedChat.room_name]: [...(prevMessages[selectedChat.room_name] || []), data]
+            // }));
             setChatLoading(false);
             setMessage('');
         } catch (error) {
