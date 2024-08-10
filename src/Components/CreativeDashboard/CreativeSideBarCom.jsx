@@ -38,29 +38,29 @@ const CreativeSideBarCom = ({show}) => {
             <p className='text-xs text-neutral-400 p-6 lg:pt-0 lg:p-6 pb-3 border-b-neutral-600 border-b flex items-center gap-3 '>Menu <FaLongArrowAltRight /></p>
             <ul className='flex flex-col gap-8 2xl:gap-8 xl:gap-6 lg:gap-6 md:gap-3 p-6 pb-10 2xl:pb-10 xl:pb-3 lg:pb-2'>
                 <Link to={'/creative-dashboard-home'}>
-                  <li className='2xl:text-base xl:text-xs lg:text-xs text-base hover:text-accent cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
+                  <li className='text-lg hover:text-accent cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
                 </Link>
 
                 <Link to={'/creative-dashboard-profile'}>
-                  <li className='2xl:text-base xl:text-xs lg:text-xs text-base hover:text-accent cursor-pointer flex items-center gap-3'><CiUser className=''/> Account</li>
+                  <li className='text-lg hover:text-accent cursor-pointer flex items-center gap-3'><CiUser className=''/> Account</li>
                 </Link>
 
                 <Link to={'/user-dashboard-chat'}>
-                  <li className='2xl:text-base xl:text-xs lg:text-xs text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoMailUnread className=''/> Messages</li>
+                  <li className='text-lg hover:text-accent cursor-pointer flex items-center gap-3'><IoMailUnread className=''/> Messages</li>
                 </Link>
 
 
                 <Link to={'/creative-dashboard-bookingsAll'} >
-                  <li className='2xl:text-base xl:text-xs lg:text-xs text-base hover:text-accent cursor-pointer flex items-center gap-3'><BiMessageSquare className=''/> Requests</li>
+                  <li className='text-lg hover:text-accent cursor-pointer flex items-center gap-3'><BiMessageSquare className=''/> Requests</li>
                 </Link>
 
                 
                 <Link to={'/creative-dashboard-notificationAll'}>
-                  <li className='2xl:text-base xl:text-xs lg:text-xs text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoNotificationsOutline className=''/> Notifications</li>
+                  <li className='text-lg hover:text-accent cursor-pointer flex items-center gap-3'><IoNotificationsOutline className=''/> Notifications</li>
                 </Link>
 
                 <Link to={'/creative-dashboard-FAQs'}>
-                  <li className='2xl:text-base xl:text-xs lg:text-xs text-base hover:text-accent cursor-pointer flex items-center gap-3'><FaQuestion className=''/>FAQ</li>
+                  <li className='text-lg hover:text-accent cursor-pointer flex items-center gap-3'><FaQuestion className=''/>FAQ</li>
                 </Link>
             </ul>
         </div>
@@ -70,10 +70,10 @@ const CreativeSideBarCom = ({show}) => {
             <ul className='flex flex-col gap-5 2xl:gap-8 xl:gap-5 lg:gap-3 md:gap-3 p-6'>
 
                 <Link to={'/' + 'creative-dashboard-settings'}>
-                  <li className='2xl:text-base xl:text-[10px] lg:text-[10px] text-base hover:text-accent cursor-pointer flex items-center gap-3'><IoSettingsSharp className=''/> Settings</li>
+                  <li className='text-lg hover:text-accent cursor-pointer flex items-center gap-3'><IoSettingsSharp className=''/> Settings</li>
                 </Link>
-                <li className='2xl:text-base xl:text-[10px] lg:text-[10px] text-base text-neutral-400 cursor-default flex items-center gap-3'><FaLock className=''/> Creve Pro</li>
-                <li className='2xl:text-base xl:text-[10px] lg:text-[10px] text-base hover:text-accent cursor-pointer flex items-center gap-3' onClick={logout}><BiLogOutCircle className=''/> Logout</li>
+                <li className='text-lg text-neutral-400 cursor-default flex items-center gap-3'><FaLock className=''/> Creve Pro</li>
+                <li className='text-lg hover:text-accent cursor-pointer flex items-center gap-3' onClick={logout}><BiLogOutCircle className=''/> Logout</li>
             </ul>
         </div>
 
