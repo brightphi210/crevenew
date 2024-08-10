@@ -108,12 +108,14 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
 
 
     const [chatLoading, setChatLoading] = useState(false)
+    const url = `${BASE_URL}/chat/messages/${selectedChat && selectedChat?.room_name}/`
+
     const submit = async (e) => {
         e.preventDefault();
         setChatLoading(true);
         if (message.trim() === '') return;
         try {
-            const response = await fetch(`${BASE_URL}/chat/messages/${selectedChat.room_name}/`, {
+            const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

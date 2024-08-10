@@ -167,9 +167,9 @@ export const CreativeBookings = () => {
 
       <div className="drawer drawer-end">
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-side">
+        <div className="drawer-side z-50">
           <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-          <ul className="menu bg-base-200 text-base-content min-h-full lg:w-[25%] w-[90%] p-6 pt-32">
+          <ul className="menu bg-base-200 text-base-content min-h-full 2xl:w-[25%] xl:w-[50%] lg:w-[50%] md:w-[80%] w-[90%] p-6 pt-32">
             <div className='flex justify-center'>
 
               {selectedRequest && 

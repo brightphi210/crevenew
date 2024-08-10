@@ -480,14 +480,14 @@ useEffect(() => {
 
       <div className="drawer drawer-end">
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-side">
-          <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-          <ul className="menu bg-base-200 text-base-content min-h-full lg:w-[25%] w-[90%] p-6 pt-32">
+        <div className="drawer-side z-50">
+          <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay z-50"></label>
+          <ul className="menu z-50 bg-base-200 text-base-content min-h-full 2xl:w-[25%] xl:w-[50%] lg:w-[50%] md:w-[80%] w-[90%] p-6 pt-32">
             <div className='flex justify-center'>
 
               {selectedRequest && 
               <div className='text-center'>
-                  <div className='rounded-full flex justify-center bg-neutral-200 items-center m-auto w-20 h-20 overflow-hidden'>
+                  <div className='rounded-full flex justify-center  bg-neutral-200 items-center m-auto w-20 h-20 overflow-hidden'>
                     <img src={selectedRequest.client_profile.profile_pics} className='w-full h-full ' alt="" />
                     {/* <p className='font-bold text-3xl'>{selectedRequest.client_profile.user.fullname.slice(0,2).toUpperCase()}</p> */}
                   </div>
