@@ -10,6 +10,7 @@ import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
 import { FiSettings } from "react-icons/fi";
 import { AiTwotoneEdit } from 'react-icons/ai';
+import { GoDotFill } from 'react-icons/go';
 const CreativeNavBarCom = ({handleShow, show}) => {
 
 
@@ -48,7 +49,6 @@ const CreativeNavBarCom = ({handleShow, show}) => {
       }
   };
 
-
   useEffect(() => {
       fetchProfile();
   }, []);
@@ -63,6 +63,32 @@ const CreativeNavBarCom = ({handleShow, show}) => {
       localStorage.removeItem('token')
       navigate('/')
   }
+
+
+  const [users, setUsers] = useState([]);
+  const url5 =`${BASE_URL}/chat/`
+  const fetchMessages = async () => {
+      try {
+      const response = await fetch(url5, {
+          method: 'GET',
+          headers: {
+              'Authorization' : `Bearer ${authUser.access}`,
+          },
+      })
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setUsers(data)
+
+      } catch (error) {
+          console.log(error);
+      } finally {
+      }
+  }
+  useEffect(() => {
+      fetchMessages();
+  }, []);
 
 
 
@@ -86,8 +112,13 @@ const CreativeNavBarCom = ({handleShow, show}) => {
         </Link>
 
         <Link to={'/user-dashboard-chat'}>
-          <p className='text-xl cursor-pointer text-neutral-700 border border-neutral-300 flex rounded-full p-2 items-center justify-center '><IoMailUnread /></p>
-        </Link>
+              <p className='text-xl relative cursor-pointer text-neutral-700 border border-neutral-300 flex rounded-full p-2 items-center justify-center '>
+                  <IoMailUnread />
+                  {users?.length > 0 && (
+                      <p className='absolute top-[-5px] right-[-5px] p-0 bg-white text-red-600  rounded-full text-lg'><GoDotFill /></p>
+                  )}
+              </p>
+          </Link>
 
         <div className="dropdown dropdown-bottom">
             <div tabIndex={0} role="button" className='bg-neutral-200 rounded-full w-9 h-9 overflow-hidden'>

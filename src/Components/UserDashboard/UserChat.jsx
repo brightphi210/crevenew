@@ -52,8 +52,6 @@ const UserChat = () => {
     }, []);
 
 
-    console.log('This is user role' , userToken);
-    
 
   return (
     <div className=''>
@@ -186,10 +184,6 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
     const goBack = () =>{
       navigate(-1);
     }
-
-
-    
-
 
 
     return (
