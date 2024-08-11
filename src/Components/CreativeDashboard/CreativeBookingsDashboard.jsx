@@ -193,7 +193,7 @@ export const CreativeBookings = () => {
                     </button>
 
                     <Link to={`tel:${selectedRequest.phone}`} className='w-full'>
-                          <p className='text-white bg-black  rounded-full py-2.5 text-sm'>Call Now</p>
+                          <p className='text-white bg-black  rounded-full py-2.5 text-sm'>Call Client</p>
                     </Link>
                   </div>
 
