@@ -334,7 +334,7 @@ const SingleUserCreativeDash = () => {
     // console.log('This is creative Data', creativeData);
   return (
 
-    <div className='bg-neutral-100 h-full'>
+    <div className='bg-white h-full'>
         <div>
             <UserNavbar show={show} handleShow={handleShow}/>
             <div className='z-40 lg:hidden'>
@@ -397,7 +397,7 @@ const SingleUserCreativeDash = () => {
                             {creativeData.user && (
 
                                 <div>
-                                    <h2 className='text-lg font-bold flex gap-2 items-center'>{creativeData.user.fullname}
+                                    <h2 className='text-sm font-bold flex gap-2 items-center'>{creativeData.user.fullname}
                                         {creativeData?.verified === true ? <MdVerified className='text-green-500'/>  : <GoUnverified className='text-red-500 font-bold'/> }
                                     </h2>
                                     <p className='text-sm'>{creativeData.display_name} <span className='text-xs text-neutral-400'>reviews({creativeData?.reviewed?.length})</span></p>
@@ -442,7 +442,7 @@ const SingleUserCreativeDash = () => {
                             )}
                         </div>
 
-                        <div className='bg-white border border-neutral-200  w-full lg:rounded-xl lg:p-10 p-5 h-fit'>
+                        <div className='bg-neutral-50 border border-neutral-200  w-full lg:rounded-xl lg:p-10 p-5 h-fit'>
 
                             <div className='flex items-center '>
                                 <h2 className='font-bold 2xl:text-sm xl:text-xs lg:text-xs text-sm '>Details</h2>
@@ -513,7 +513,7 @@ const SingleUserCreativeDash = () => {
                     </div>
                 </div>
 
-                <div className='lg:w-[65%] w-[95%] lg:m-0 lg:mt-10 m-auto rounded-2xl  pt-5 lg:p-10 p-5 mt-5 bg-white'>
+                <div className='lg:w-[65%] w-[95%] lg:m-0 lg:mt-10 m-auto rounded-2xl  pt-5 lg:p-10 p-5 mt-5 bg-neutral-100'>
                     <h2 className='text-base py-3 text-center pb-8'> - Reviews -</h2>
 
 

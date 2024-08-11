@@ -247,21 +247,25 @@ export const CreatingProfileUpdateHome = () => {
                         className={showEachState === 1 ? 'border border-green-900 py-2 px-5 rounded-full text-green-900 lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         Basic
                     </button>
-                    <button onClick={showFive} 
-                        className={showEachState === 5 ? 'border border-green-900 py-2 px-5 rounded-full text-green-900 lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
-                        NIN
-                    </button>
-                    <button onClick={showFour} 
-                        className={showEachState === 4 ? 'border border-green-900 py-2 px-5 rounded-full text-green-900 lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
-                        Skills
-                    </button>
+             
                     <button onClick={showTwo} 
                         className={showEachState === 2 ? 'border border-green-900 py-2 px-5 rounded-full text-green-900 lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         Cover
                     </button>
+                    
+                    <button onClick={showFour} 
+                        className={showEachState === 4 ? 'border border-green-900 py-2 px-5 rounded-full text-green-900 lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
+                        Skills
+                    </button>
+            
                     <button onClick={showThree} 
                         className={showEachState === 3 ? 'border border-green-900 py-2 px-3 rounded-full text-green-900 lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         Collections
+                    </button>
+
+                    <button onClick={showFive} 
+                        className={showEachState === 5 ? 'border border-green-900 py-2 px-5 rounded-full text-green-900 lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
+                        NIN
                     </button>
                 </div>
 
@@ -487,9 +491,9 @@ export const CreatingProfileUpdateHome = () => {
 
                 <dialog id="my_modal_1" className="modal">
                     <div className="modal-box  p-0 rounded-md flex justify-center items-center h-[25rem]" >
-                        <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
+                        {/* <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
                             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕
-                        </button>
+                        </button> */}
 
 
                         <div className=''>
@@ -499,9 +503,7 @@ export const CreatingProfileUpdateHome = () => {
                             <h2 className='text-center'>Profile Updated</h2>
                             <p className='text-center text-xs'>Your profile has been updated, continue </p>
 
-                            {/* <Link to={'/creative-dashboard-profile'}> */}
-                                <button onClick={()=>{setEachState(5); document.getElementById('my_modal_1').close()}} className="btn btn-active text-xs btn-neutral w-9/12 justify-center m-auto mt-8 flex items-center gap-4">Continue <FaArrowRight /></button>
-                            {/* </Link> */}
+                            <button onClick={()=>{setEachState(2); document.getElementById('my_modal_1').close()}} className="btn btn-active text-xs btn-neutral w-9/12 justify-center m-auto mt-8 flex items-center gap-4">Continue <FaArrowRight /></button>
                         </div>
                     </div>
                 </dialog>

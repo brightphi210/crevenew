@@ -323,12 +323,12 @@ export const UserHomeDashboardHome = () => {
           {filteredItems.length > 0 && 
             <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5'>
 
-              {filteredItems.slice(0, 20).map((talent) =>(
+              {filteredItems.slice(0, 12).map((talent) =>(
 
                 <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
 
                   <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
-                    <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
+                    <div className='2xl:h-[20rem] xl-h-[17rem] bg-neutral-50 lg:h-[15rem] h-[20rem] overflow-hidden rounded-md'>
                       <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
                     </div>
                   </Link>
