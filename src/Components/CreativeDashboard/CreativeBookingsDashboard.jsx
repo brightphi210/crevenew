@@ -188,7 +188,7 @@ export const CreativeBookings = () => {
                   </div>
 
                   <div className='mt-5 flex flex-col justify-center lg:gap-5 gap-3 lg:px-10 px-5 w-full'>
-                    <button onClick={()=>copyToClipboard(selectedRequest.phone)} className="btn rounded-full lg:w-full w-full btn-neutral text-sm  text-black bg-white border border-neutral-200 min-h-[2.6rem] max-h-[2.6rem] flex items-center gap-2">
+                    <button onClick={()=>copyToClipboard(selectedRequest.phone)} className="justify-center m-auto rounded-full lg:w-full w-full btn-neutral text-sm  text-black bg-white border border-neutral-200 min-h-[2.6rem] max-h-[2.6rem] flex items-center gap-2">
                       {copySuccess ? copySuccess : <><FaRegCopy />Copy Contact</> }
                     </button>
 
