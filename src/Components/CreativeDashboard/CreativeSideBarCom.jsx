@@ -76,7 +76,6 @@ const CreativeSideBarCom = ({show}) => {
                 <li className='text-lg hover:text-accent cursor-pointer flex items-center gap-3' onClick={logout}><BiLogOutCircle className=''/> Logout</li>
             </ul>
         </div>
-
       </div> 
     </div>
   )

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import vd1 from '../Images/dribbble.mp4'
 import { Link, useNavigate } from 'react-router-dom'
-import { FaEye, FaEyeSlash } from 'react-icons/fa'
+import { FaArrowAltCircleLeft, FaEye, FaEyeSlash } from 'react-icons/fa'
 import { BASE_URL } from '../Auth/BaseUrl'
 import { jwtDecode } from "jwt-decode";
 
@@ -104,9 +104,9 @@ const LoginCom = () => {
     }, [showError]);
 
   return (
-    <div class="bg-white flex lg:flex-row flex-col justify-center items-center lg:h-screen lg:pt-0 ">
+    <div class="bg-white flex lg:flex-row flex-col justify-center items-center lg:h-screen lg:pt-0 pt-[3rem] ">
 
-      <div class="lg:w-1/2 w-full bg-neutral-300 lg:h-screen h-[35vh]  lg:block">
+      <div class="lg:w-1/2 w-full bg-neutral-300 lg:h-screen h-[35vh] lg:block hidden">
         <video 
             src={'https://res.cloudinary.com/dphb7gqus/video/upload/v1722106113/mypics/integrations_y0s1td.mp4'}
             autoPlay 
@@ -119,6 +119,7 @@ const LoginCom = () => {
       </div>
 
       <div class="lg:p-36 md:p-52 sm:20 p-8 px-5 w-full lg:w-1/2 relative">
+      <Link to={'/'}><p className='text-2xl cursor-pointer pb-10'><FaArrowAltCircleLeft /></p></Link>
         <h1 class="text-2xl font-semibold mb-4">Login</h1>
         <div>
 

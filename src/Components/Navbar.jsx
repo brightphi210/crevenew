@@ -54,9 +54,9 @@ const Navbar = () => {
                         <li className='cursor-pointer'>HOME</li>
                     </Link>
 
-                    <Link to={'/allTalents'}>
+                    {/* <Link to={'/allTalents'}>
                         <li className='cursor-pointer'>TALENT</li>
-                    </Link>
+                    </Link> */}
 
                     <Link to={'/about'}>
                         <li className='cursor-pointer'>ABOUT</li>
@@ -81,9 +81,9 @@ const Navbar = () => {
                 </Link>
 
 
-                <Link to={'/allTalents'}>
+                {/* <Link to={'/allTalents'}>
                     <li className='cursor-pointer'>Talents</li>
-                </Link>
+                </Link> */}
 
                 <Link to={'/about'}>
                     <li className='cursor-pointer'>About</li>
