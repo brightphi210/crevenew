@@ -399,9 +399,9 @@ const SingleUserCreativeDash = () => {
                 </div>
             
                 <div className='flex  relative lg:mt-[3rem] mt-2 pt-4 px-3 border-t border-t-neutral-200'>
-                    <div className=''>
+                    <div className='flex lg:flex-row flex-col gap-3 w-full'>
                         <div className='flex items-center gap-2'>
-                            <div className='w-14 h-14 rounded-full overflow-hidden'>
+                            <div className='w-14 h-14 rounded-full border border-neutral-200 overflow-hidden'>
                                 <img src={creativeData.profile_pics} alt="" className='w-14 h-14 object-cover'/>
                             </div>
 
@@ -414,6 +414,10 @@ const SingleUserCreativeDash = () => {
                                     <p className='text-sm'>{creativeData.display_name} <span className='text-xs text-neutral-400'>reviews({creativeData?.reviewed?.length})</span></p>
                                 </div>
                             )}
+                        </div>
+
+                        <div className='lg:ml-auto'>
+                            <p className='font-semibold 2xl:text-sm xl:text-sm lg:text-sm text-sm flex gap-2 items-start pt-2'><GrLocation className='text-green-700 lg:text-xl text-2xl'/>{creativeData.location}</p>
                         </div>
                     </div>
                 </div>
@@ -491,12 +495,6 @@ const SingleUserCreativeDash = () => {
                             <div className='pt-5'>
                                 <p className='text-sm font-semibold '>Language</p>
                                 <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'><IoLanguage className='mycolor text-base'/>{creativeData.language}</p>
-                            </div>
-
-                            
-                            <div className='pt-5'>
-                                <p className='text-sm font-semibold '>Location</p>
-                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'><GrLocation className='mycolor text-base'/>{creativeData.location}</p>
                             </div>
 
                             <div className='pt-5'>
