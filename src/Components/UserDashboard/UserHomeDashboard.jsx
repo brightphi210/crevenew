@@ -321,8 +321,9 @@ export const UserHomeDashboardHome = () => {
         {isLoading === true ? <MyLoader /> : 
         <>
           {filteredItems.length > 0 && 
-            <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5'>
 
+          <div>
+            <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5'>
               {filteredItems.slice(0, 12).map((talent) =>(
 
                 <div className='bg-white  rounded-xl cursor-pointer relative' key={talent.id}>
@@ -360,6 +361,13 @@ export const UserHomeDashboardHome = () => {
 
                 </div>
               ))}
+            </div>
+
+            {filteredItems.length > 12 &&
+                <div className='flex items-center justify-center mt-20'>
+                  <button className='bg-black text-sm text-white p-3 px-10 rounded-full'>See More</button>
+                </div>
+              }
             </div>
           }
 
