@@ -40,13 +40,13 @@ const Navbar = () => {
                 </Link>
             </div>
 
-            <div className='lg:hidden w-10 block'>
+            <p className='lg:hidden block text-2xl text-green-700' onClick={toggle}> {!show ? <RxDashboard /> : <BsDashCircle />}</p>
+
+            <div className='lg:hidden w-8 block'>
                 <Link to={'/'}>
                     <img src={logo1} alt="" className='cursor-pointer'/>
                 </Link>
             </div>
-
-            <p className='lg:hidden block text-2xl text-green-700' onClick={toggle}> {!show ? <RxDashboard /> : <BsDashCircle />}</p>
 
             {show && (
                 <ul data-aos="fade-up" data-aos-duration="600" className='lg:hidden text-base font-bold rounded-lg drop-shadow-xl flex flex-col w-[10rem] m-auto left-10  absolute color text-white top-20 p-10 items-left ml-auto lg:gap-10 gap-5 '>

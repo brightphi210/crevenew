@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import img from '../Images/Avatars.png'
-import { FaArrowLeft, FaLocationDot } from "react-icons/fa6";
+import { FaArrowLeft } from "react-icons/fa6";
 
 
 import { MdWorkOutline } from "react-icons/md";
 import { GoTools, GoUnverified } from "react-icons/go";
 import { GoDotFill } from "react-icons/go";
-import { IoArrowForwardOutline, IoLanguage } from "react-icons/io5";
+import { IoLanguage } from "react-icons/io5";
 import { GrLocation } from "react-icons/gr";
 import { MdOutlineWhatsapp } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
 import { PiPhoneCallFill } from "react-icons/pi";
 import { MdFavoriteBorder } from "react-icons/md";
 import { MdOutlineFavorite } from "react-icons/md";
-import { IoMailUnread } from "react-icons/io5";
 
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
@@ -25,12 +23,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import noData from '../Images/nodata2.png'
 import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
 import { Link, useNavigate, useNavigation, useParams } from 'react-router-dom';
-import { HiOutlineArrowLeft } from 'react-icons/hi2';
-import { RiSendPlane2Line } from "react-icons/ri";
 import { IoShareSocialSharp } from "react-icons/io5";
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import { useMemo } from "react";
@@ -43,6 +38,7 @@ import { TbAlertTriangle } from 'react-icons/tb';
 import Pusher from "pusher-js";
 import MyLoader from '../allLoadingState/MyLoader';
 import { MdVerified } from "react-icons/md";
+import { BsChat } from 'react-icons/bs';
 
 
 const SingleUserCreativeDash = () => {
@@ -330,8 +326,6 @@ const SingleUserCreativeDash = () => {
         }
     };
 
-
-    // console.log('This is creative Data', creativeData);
   return (
 
     <div className='bg-white h-full'>
@@ -383,32 +377,44 @@ const SingleUserCreativeDash = () => {
             {isLoading === true ? <MyLoader /> : <>
                 <div className='w-full flex lg:pt-[7rem] px-3 pt-[6rem] items-center py-3  '>
                     <p onClick={goBack} className='items-center text-lg flex justify-center text-black bg-neutral-200 lg:p-3 p-2 rounded-full w-fit cursor-pointer'><FaArrowLeft className='cursor-pointer'/></p>
-                    <button onClick={()=>document.getElementById('my_modal_3').showModal()} className='bg-black text-white py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-200 ml-auto'>Send Request</button>
+
+                    <div className='ml-auto flex items-center gap-2 '>
+                        <button onClick={()=>document.getElementById('my_modal_3').showModal()} 
+                            className='bg-black text-white py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-200 ml-auto'>
+                            Get in touch
+                        </button>
+                        
+                        <button onClick={()=>document.getElementById('my_modal_5').showModal()} 
+                            className='bg-white border border-neutral-300 text-green-950 p-2.5 rounded-full text-lg'>
+                            <BsChat />
+                        </button>
+
+                        <p onClick={handleFavoritemClick} 
+                            className='bg-white border border-neutral-300 p-2.5 cursor-pointer rounded-full  w-fit flex items-center gap-2'>
+                            {isFavorite ? <MdOutlineFavorite className='text-lg text-green-950'/> : <MdFavoriteBorder className='text-lg text-green-950'/>}
+                        </p>
+
+                    </div>
 
                 </div>
             
-                <div className='flex  relative lg:pt-[2rem] pt-[1rem] px-3'>
+                <div className='flex  relative lg:mt-[3rem] mt-2 pt-4 px-3 border-t border-t-neutral-200'>
                     <div className=''>
-                        <div className='flex  items-center gap-2'>
-                            <div className='w-10 h-10 rounded-full overflow-hidden'>
-                                <img src={creativeData.profile_pics} alt="" className='h-10 w-10 object-cover'/>
+                        <div className='flex items-center gap-2'>
+                            <div className='w-14 h-14 rounded-full overflow-hidden'>
+                                <img src={creativeData.profile_pics} alt="" className='w-14 h-14 object-cover'/>
                             </div>
 
                             {creativeData.user && (
 
                                 <div>
-                                    <h2 className='text-sm font-bold flex gap-2 items-center'>{creativeData.user.fullname}
+                                    <h2 className='text-lg font-bold flex gap-2 items-center'>{creativeData.user.fullname}
                                         {creativeData?.verified === true ? <MdVerified className='text-green-500'/>  : <GoUnverified className='text-red-500 font-bold'/> }
                                     </h2>
                                     <p className='text-sm'>{creativeData.display_name} <span className='text-xs text-neutral-400'>reviews({creativeData?.reviewed?.length})</span></p>
                                 </div>
                             )}
                         </div>
-                    </div>
-
-                    <div className='ml-auto flex items-center gap-2 '>
-                        <p onClick={handleFavoritemClick} className='bg-white border border-green-900 py-2 lg:px-2 px-2 cursor-pointer rounded-full lg:text-sm text-xs  w-fit flex items-center gap-2'>{isFavorite ? <MdOutlineFavorite className='text-lg text-green-900'/> : <MdFavoriteBorder className='text-lg text-green-900'/>}</p>
-                        <button onClick={()=>document.getElementById('my_modal_5').showModal()} className='bg-white text-black py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-400'>Message</button>
                     </div>
                 </div>
 
@@ -426,7 +432,7 @@ const SingleUserCreativeDash = () => {
 
                             {creativeData.images && (
 
-                            <div className='lg:grid lg:grid-cols-4 grid grid-cols-2 items-center gap-4 pt-6 lg:px-0 px-5'>
+                            <div className='lg:grid lg:grid-cols-3 grid grid-cols-2 items-center gap-4 pt-6 lg:px-0 px-5'>
                                 {creativeData.images.map((Image)=>(
 
                                     <PhotoProvider>
@@ -505,8 +511,8 @@ const SingleUserCreativeDash = () => {
                             </div>
 
                             <div className='flex gap-3 pt-3 mt-5 border-t border-t-neutral-200'>
-                                <button onClick={()=>document.getElementById('my_modal_2').showModal()} className='bg-accent py-3 px-5 mt-5 text-sm text-white rounded-md w-full'>Drop Reviews</button>
-                                <button onClick={handleShare} className='bg-black py-3 px-5 mt-5 text-sm text-white flex justify-center items-center m-auto gap-3 rounded-md w-full'>Share <IoShareSocialSharp /></button>
+                                <button onClick={()=>document.getElementById('my_modal_2').showModal()} className='bg-accent py-3 px-2 mt-5 text-sm text-white rounded-full w-full'>Drop Review</button>
+                                <button onClick={handleShare} className='bg-black py-3 px-2 mt-5 text-sm text-white flex justify-center items-center m-auto gap-3 rounded-full w-full'>Share <IoShareSocialSharp /></button>
                             </div>
 
                         </div>
