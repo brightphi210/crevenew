@@ -188,20 +188,22 @@ export const CreativeBookings = () => {
                   </div>
 
                   <div className='mt-5 flex flex-col justify-center lg:gap-5 gap-3 lg:px-10 px-5 w-full'>
-                    <button onClick={()=>copyToClipboard(selectedRequest.phone)} className="btn rounded-full lg:w-full w-full btn-neutral text-sm  text-white min-h-[2.6rem] max-h-[2.6rem] flex items-center gap-2">
+                    <button onClick={()=>copyToClipboard(selectedRequest.phone)} className="btn rounded-full lg:w-full w-full btn-neutral text-sm  text-black bg-white border border-neutral-200 min-h-[2.6rem] max-h-[2.6rem] flex items-center gap-2">
                       {copySuccess ? copySuccess : <><FaRegCopy />Copy Contact</> }
                     </button>
 
                     <Link to={`tel:${selectedRequest.phone}`} className='w-full'>
-                          <p className='text-white bg-black  rounded-full py-2.5 text-sm'>Call Client</p>
+                          <p className='text-white bg-black rounded-full py-2.5 text-sm'>Call Client</p>
                     </Link>
                   </div>
 
-
-                  
-
                   <p className='text-green-600 bg-green-50 flex items-center mt-5 p-3 rounded-lg gap-3 border border-green-600'><TbAlertTriangle />Copy clients number to call </p>
-                  <p className='absolute bottom-20 m-auto right-0 left-0 flex justify-center w-fit text-xs gap-2'>Need any help ? <span className='text-blue-500 underline cursor-pointer'>Contact us</span></p>
+                  <p className='absolute bottom-20 m-auto right-0 left-0 flex justify-center w-fit text-xs gap-2'>Need any help ? 
+                    
+                    <Link to={'https://wa.link/tdyb88'}>
+                      <span className='text-blue-500 underline cursor-pointer'>Contact us</span>
+                    </Link>
+                  </p>
 
               </div>
               }

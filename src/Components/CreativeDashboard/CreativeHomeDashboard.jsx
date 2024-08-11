@@ -43,6 +43,8 @@ import { TbAlertTriangle } from "react-icons/tb";
 import { GoArrowRight } from "react-icons/go";
 
 import shss from '../Images/find-talent-2x.jpg'
+import { Verified } from 'lucide-react';
+import { VscUnverified } from 'react-icons/vsc';
 
 
 const CreativeHomeDashboard = () => {
@@ -88,32 +90,43 @@ export const CreativeHome = () => {
   const url =`${BASE_URL}/creativeprofile/${userToken.profile_id}/`
 
   const [showModal, setShowModal] = useState(false)
-  const [showModal2, setShowModal2] = useState(false)
-
+  const [isVerified, setIsVerified] = useState(() => {
+    // Retrieve isVerified from local storage on initial render
+    const savedIsVerified = localStorage.getItem('isVerified');
+    return savedIsVerified ? JSON.parse(savedIsVerified) : false;
+  });
 
   const fetchProfile = async () => {
       setIsLoading(true);
 
       try {
-        const respose = await fetch(url, {
+        const response = await fetch(url, {
             method: 'GET',
             headers: {
                 'Authorization' : `Bearer ${authUser.access}`,
             },
         })
-        if (!respose.ok) {
+        if (!response.ok) {
             setIsLoading(false);
             throw new Error('Network response was not ok');
         }
-        const data = await respose.json();
+        const data = await response.json();
 
-        if (data.display_name === null || data.phone_number === null || data?.dskills.length === 0 || data?.images.length === 0) {
+        if (
+          data?.display_name === null ||
+          data?.phone_number === null ||
+          data?.dskills?.length === 0 ||
+          data?.images?.length === 0
+        ) {
           setShowModal(true);
+        } else if (data?.verified === true) {
+          setIsVerified(true);
+          localStorage.setItem('isVerified', 'true'); // Set verified state in local storage
+        } else {
+          setIsVerified(false);
+          localStorage.setItem('isVerified', 'false'); // Set verified state in local storage
         }
 
-        else if (data.display_name === null || data.phone_number === null || data?.dskills.length === 0 || data?.images.length === 0) {
-          setShowModal2(true);
-        }
 
         console.log(data);
         setProfileData(data)
@@ -128,7 +141,7 @@ export const CreativeHome = () => {
       fetchProfile();
   }, []);
 
-  console.log('This is profileData', profileData);
+  console.log('This is profileData', typeof(isVerified));
   
 
 
@@ -151,7 +164,6 @@ export const CreativeHome = () => {
 
 const [completeMessage, setCompleteMessage] = useState(true)
 
-
 useEffect(() => {
   const timer = setTimeout(() => {
     if (showModal === true) {
@@ -170,17 +182,41 @@ useEffect(() => {
 
     <div className='lg:p-16  lg:pl-[18rem] p-5 px-3 pt-20 lg:pt-28'>
 
-      {completeMessage === true ?
-      
-        <div className='bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] gap-4 rounded-lg items-center p-3 lg:px-10 px-5 flex mb-5'>
-            <div>
-              <h2 className='underline text-green-600 cursor-pointer pb-2 flex items-center gap-3 text-sm'>Complete your profile <GoArrowRight /></h2>
-              <p className='text-xs'>Please complete you profile, Upload NIN Document, add collections</p>
-            </div>
-            <p className='ml-auto flex items-center justify-center cursor-pointer bg-neutral-100  rounded-full w-10 lg:h-10 h-8 text-xl'><MdOutlineClose /></p>
-        </div>
 
-      : ''}
+ <>
+      {isLoading ? (
+        <p className='pb-5'>Loading . . .</p>
+      ) : (
+        <>
+          {isVerified === false && (
+            <div className='bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] gap-4 rounded-lg items-center p-3 lg:px-10 px-5 flex mb-5'>
+              <div>
+                <h2 className='text-orange-600 cursor-pointer pb-2 flex items-center gap-3 text-sm'>Account is not yet verified <VscUnverified /></h2>
+                <p className='text-xs'>Account will be verified in 24hrs if profile is completed</p>
+              </div>
+              <p
+                onClick={() => setIsVerified('')}
+                className='ml-auto flex items-center justify-center cursor-pointer bg-neutral-100  rounded-full w-8 lg:h-8 h-8 text-xl'
+              >
+                <MdOutlineClose />
+              </p>
+            </div>
+          )}
+
+          {isVerified === true && (
+            <div className='bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] gap-4 rounded-lg items-center p-3 lg:px-10 px-5 flex mb-5'>
+              <h2 className='text-green-600 cursor-pointer pb-2 flex items-center gap-3 text-sm'>Account has been verified <Verified className='text-sm'/></h2>
+              <p
+                onClick={() => setIsVerified('')}
+                className='ml-auto flex items-center justify-center cursor-pointer bg-neutral-100 rounded-full w-8 lg:h-8 h-8 text-xl'
+              >
+                <MdOutlineClose />
+              </p>
+            </div>
+          )}
+        </>
+      )}
+    </>
  
       <div className='flex 2xl:flex-row flex-col xl:flex-row lg:flex-col gap-10'>
 
@@ -330,6 +366,7 @@ useEffect(() => {
                     <label onClick={() => handleClick(book)} className='bg-accent text-white p-3 px-5 text-sm  rounded-md cursor-pointer' drawer-conten  htmlFor="my-drawer-4">View</label>
                     {/* <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1' onClick={() => handleClick(book)}>View <MdArrowOutward /></button> */}
                   </div>
+                  
                   </div>
                 </div>)}
 
@@ -500,23 +537,29 @@ useEffect(() => {
                     <p className='lg:text-sm text-xs text-center lg:leading-[30px] leading-[28px] font-light'>{selectedRequest.description}</p>
                   </div>
 
-                  <div className='mt-5 flex justify-center lg:gap-5 gap-3 lg:px-10 px-5 w-full'>
-                    <button onClick={()=>copyToClipboard(selectedRequest.phone)} className="btn lg:w-full w-full btn-neutral text-base  text-white min-h-[2.6rem] max-h-[2.6rem] flex items-center gap-2">
-                      {copySuccess ? copySuccess : <><FaRegCopy />Contact</> }
+                  <div className='mt-5 flex flex-col justify-center lg:gap-5 gap-3 lg:px-10 px-5 w-full'>
+                    <button onClick={()=>copyToClipboard(selectedRequest.phone)} className="btn rounded-full lg:w-full w-full btn-neutral text-sm  text-black bg-white border border-neutral-200 min-h-[2.6rem] max-h-[2.6rem] flex items-center gap-2">
+                      {copySuccess ? copySuccess : <><FaRegCopy />Copy Contact</> }
                     </button>
+
+                    <Link to={`tel:${selectedRequest.phone}`} className='w-full'>
+                          <p className='text-white bg-black rounded-full py-2.5 text-sm'>Call Client</p>
+                    </Link>
                   </div>
 
                   <p className='text-green-600 bg-green-50 flex items-center mt-5 p-3 rounded-lg gap-3 border border-green-600'><TbAlertTriangle />Copy clients number to call </p>
-
-
-                  <p className='absolute bottom-20 m-auto right-0 left-0 flex justify-center w-fit text-xs gap-2'>Need any help ? <span className='text-blue-500 underline'>Contact us</span></p>
+                  <p className='absolute bottom-20 m-auto right-0 left-0 flex justify-center w-fit text-xs gap-2'>Need any help ? 
+                    
+                    <Link to={'https://wa.link/tdyb88'}>
+                      <span className='text-blue-500 underline cursor-pointer'>Contact us</span>
+                    </Link>
+                  </p>
               </div>
               }
             </div>
           </ul>
         </div>
       </div>
-
 
       <dialog id="my_modal_5" className="modal">
           <div className="modal-box h-[20rem] flex justify-center items-center">
@@ -541,8 +584,6 @@ useEffect(() => {
           </form>
 
         </dialog>
-
-
 
         <dialog id="my_modal_6" className="modal">
           <div className="modal-box lg:max-w-[40%] w-[95%] p-0 h-[90%] flex rounded-md">
