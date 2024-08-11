@@ -187,10 +187,14 @@ export const CreativeBookings = () => {
                     <p className='lg:text-sm text-xs text-center lg:leading-[30px] leading-[28px] font-light'>{selectedRequest.description}</p>
                   </div>
 
-                  <div className='mt-5 flex justify-center lg:gap-5 gap-3 lg:px-10 px-5 w-full'>
-                    <button onClick={()=>copyToClipboard(selectedRequest.phone)} className="btn lg:w-full w-full btn-neutral text-sm  text-white min-h-[2.6rem] max-h-[2.6rem] flex items-center gap-2">
+                  <div className='mt-5 flex flex-col justify-center lg:gap-5 gap-3 lg:px-10 px-5 w-full'>
+                    <button onClick={()=>copyToClipboard(selectedRequest.selectedRequest)} className="btn rounded-full lg:w-full w-full btn-neutral text-sm  text-white min-h-[2.6rem] max-h-[2.6rem] flex items-center gap-2">
                       {copySuccess ? copySuccess : <><FaRegCopy />Copy Contact</> }
                     </button>
+
+                    <Link to={`tel:${selectedRequest.selectedRequest}`} className='w-full'>
+                          <p className='text-white bg-black  rounded-full py-2.5 text-sm'>Call Now</p>
+                    </Link>
                   </div>
 
                   <p className='text-green-600 bg-green-50 flex items-center mt-5 p-3 rounded-lg gap-3 border border-green-600'><TbAlertTriangle />Copy clients number to call </p>
