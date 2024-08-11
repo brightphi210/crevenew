@@ -13,7 +13,7 @@ import { MdArrowForward } from "react-icons/md";
 import MyLoader from '../allLoadingState/MyLoader';
 
 
-const CreativeProfileCollection = ({IoCloseSharp}) => {
+const CreativeProfileCollection = ({IoCloseSharp, setEachState}) => {
 
     let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
     const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
@@ -204,7 +204,7 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
 
             <div className='2xl:w-full xl:w-full lg:w-full md:w-full pb-10'>
                 {images_list && images_list.length >= 0 && 
-                    <div className='mt-4 lg:grid 2xl:grid-cols-6 xl:grid-cols-4 grid grid-cols-2 gap-2   rounded-md'>
+                    <div className='mt-4 lg:grid 2xl:grid-cols-5 xl:grid-cols-4 grid grid-cols-2 gap-2   rounded-md'>
                         {checkdata.map((url, index) => (
                             <div className=' w-full 2xl:h-[18rem] xl:h-[14rem] lg:h-[15rem] md:h-[20rem]  h-[10rem] bg-slate-100 border border-neutral-200 overflow-hidden relative rounded-lg '>
                                 <img key={index} src={url.image} alt={`Preview ${index}`} className='rounded-lg w-full h-full object-cover' />
@@ -301,9 +301,9 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
 
             <dialog id="my_modal_1" className="modal">
                 <div className="modal-box  p-0 rounded-md flex justify-center items-center h-[25rem]" >
-                    <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
+                    {/* <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
                         className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕
-                    </button>
+                    </button> */}
 
 
                     <div className=''>
@@ -313,9 +313,11 @@ const CreativeProfileCollection = ({IoCloseSharp}) => {
                         <h2 className='text-center'>Collection Added Successfully</h2>
                         <p className='text-center text-xs'>Your Collections have beed added, continue</p>
 
-                        <Link to={'/creative-dashboard-profile'}>
-                            <button className="btn btn-active text-xs btn-neutral w-9/12 justify-center m-auto mt-8 flex items-center gap-4">Account <FaArrowRight /></button>
-                        </Link>
+
+                        <button onClick={()=>{setEachState(5); document.getElementById('my_modal_1').close()}} 
+                            className="btn btn-active text-xs btn-neutral w-9/12 justify-center m-auto mt-8 flex items-center gap-4">Continue <FaArrowRight />
+                        </button>
+                  
                     </div>
                 </div>
             </dialog>

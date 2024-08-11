@@ -9,6 +9,7 @@ import { BASE_URL } from '../Auth/BaseUrl';
 import { FaArrowRight } from 'react-icons/fa';
 import successImg from '../Images/gif1.gif'
 import MyLoader from '../allLoadingState/MyLoader';
+import { Link } from 'react-router-dom';
 
 
 
@@ -169,9 +170,9 @@ const UploadNIN = ({setEachState}) => {
                     <h2 className='text-center'>NIN Document Uploaded Succesfully</h2>
                     <p className='text-center text-xs'>Verification of NIN in Progress, continue </p>
 
-                    <button onClick={()=>{setEachState(4); document.getElementById('my_modal_1').close()}} 
-                        className="btn btn-active text-xs btn-neutral w-9/12 justify-center m-auto mt-8 flex items-center gap-4">Continue <FaArrowRight />
-                    </button>
+                    <Link to={'/creative-dashboard-profile'}>
+                        <button className="btn btn-active text-xs btn-neutral w-9/12 justify-center m-auto mt-8 flex items-center gap-4">Account <FaArrowRight /></button>
+                    </Link>
                 </div>
             </div>
         </dialog>

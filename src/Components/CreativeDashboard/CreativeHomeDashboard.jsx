@@ -279,7 +279,7 @@ useEffect(() => {
 
       <div className='bg-white 2xl:p-10 xl:p-5 lg:p-5 p-3 mt-5 mb-10 lg:w-full w-[95%] m-auto grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-2 grid-cols-1 2xl:gap-10 lg:gap-5 gap-5  2xl:rounded-3xl xl:rounded-xl lg:rounded-xl rounded-md'>
 
-        <div className='bg-neutral-100 p-5 rounded-xl'>
+        <div className='bg-white border border-neutral-300 p-5 rounded-xl'>
           <p className='text-sm'>Welcome to </p>
           <div className='flex items-center gap-2 py-3'>
             <img src={logo} alt="" className='w-5 h-5'/>
@@ -312,7 +312,7 @@ useEffect(() => {
         </div>
 
 
-      <div className='bg-lime-50 border border-lime-300 text-black  w-full p-5 rounded-xl flex justify-center items-center'>
+      <div className='bg-white border border-neutral-300 text-black  w-full p-5 rounded-xl flex justify-center items-center'>
           <div className=''>
             <div className='border-2 border-neutral-200 bg-neutral-200 w-20 h-20 rounded-full overflow-hidden flex m-auto'>
               <img src={profileData.profile_pics} alt="" className='w-full h-full object-cover'/>

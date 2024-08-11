@@ -267,9 +267,9 @@ const CreativeSkills = ({setEachState}) => {
 
         <dialog id="my_modal_1" className="modal">
             <div className="modal-box  p-0 rounded-md flex justify-center items-center h-[25rem]" >
-                <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
+                {/* <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
                     className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕
-                </button>
+                </button> */}
 
 
                 <div className=''>
@@ -283,7 +283,7 @@ const CreativeSkills = ({setEachState}) => {
                         <button className="btn btn-active text-xs btn-neutral w-9/12 h-0 py-3 px-6 justify-center m-auto mt-8 flex items-center gap-4">Continue <FaArrowRight /></button>
                     </Link> */}
 
-                    <button onClick={()=>{setEachState(2); document.getElementById('my_modal_1').close()}} className="btn btn-active text-xs btn-neutral w-9/12 justify-center m-auto mt-8 flex items-center gap-4">Continue <FaArrowRight /></button>
+                    <button onClick={()=>{setEachState(3); document.getElementById('my_modal_1').close()}} className="btn btn-active text-xs btn-neutral w-9/12 justify-center m-auto mt-8 flex items-center gap-4">Continue <FaArrowRight /></button>
 
                 </div>
             </div>

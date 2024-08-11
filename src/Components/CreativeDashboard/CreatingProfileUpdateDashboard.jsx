@@ -477,6 +477,7 @@ export const CreatingProfileUpdateHome = () => {
                 {showEachState === 3 && (
                     <CreativeProfileCollection 
                         IoCloseSharp={IoCloseSharp}
+                        setEachState={setEachState}
                     />
                 )}
 
