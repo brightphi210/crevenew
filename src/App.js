@@ -31,6 +31,7 @@ import CreativeChatDash from './Pages/CreativeDash/CreativeChatDash';
 import UserChatDash from './Pages/UserDash/UserChatDash';
 import Help from './Pages/Help';
 import { BASE_URL } from './Components/Auth/BaseUrl';
+import HowtoPage from './Pages/HowtoPage';
 AOS.init();
 
 function App() {
@@ -107,6 +108,7 @@ function App() {
           <Route path='/blog' element={<BlogPage />}/>
           <Route path='/help' element={<Help />}/>
           <Route path='/allTalents' element={<HomeTalentPage />}/>
+          <Route path='/howto' element={<HowtoPage />}/>
           <Route path='/user-dashboard-chat' element={<UserChatDash />}/>
 
 

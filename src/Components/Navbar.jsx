@@ -49,9 +49,9 @@ const Navbar = () => {
             </div>
 
             {show && (
-                <ul data-aos="fade-up" data-aos-duration="600" className='lg:hidden text-base font-bold rounded-lg drop-shadow-xl flex flex-col w-[10rem] m-auto left-10  absolute color text-white top-20 p-10 items-left ml-auto lg:gap-10 gap-5 '>
+                <ul data-aos="fade-up" data-aos-duration="600" className='lg:hidden text-base font-bold rounded-lg drop-shadow-xl flex flex-col w-[95%] m-auto left-3  absolute color text-white top-20 p-10 items-left ml-auto lg:gap-10 gap-5 '>
                     <Link to={'/'}>
-                        <li className='cursor-pointer'>HOME</li>
+                        <li className='cursor-pointer'>Home</li>
                     </Link>
 
                     {/* <Link to={'/allTalents'}>
@@ -59,16 +59,20 @@ const Navbar = () => {
                     </Link> */}
 
                     <Link to={'/about'}>
-                        <li className='cursor-pointer'>ABOUT</li>
+                        <li className='cursor-pointer'>About</li>
                     </Link>
 
 
                     <Link to={'/blog'}>
-                        <li className='cursor-pointer'>BLOG</li>
+                        <li className='cursor-pointer'>Blog</li>
                     </Link>
 
                     <Link to={'/help'}>
-                        <li className='cursor-pointer'>SUPPORT</li>
+                        <li className='cursor-pointer'>Support</li>
+                    </Link>
+
+                    <Link to={'/howto'}>
+                        <li className='cursor-pointer'>How to use</li>
                     </Link>
                 </ul>
             )}
@@ -97,6 +101,10 @@ const Navbar = () => {
 
                 <Link to={'/help'}>
                     <li className='cursor-pointer'>Support</li>
+                </Link>
+
+                <Link to={'/howto'}>
+                    <li className='cursor-pointer'>How to use</li>
                 </Link>
                 
             </ul>
