@@ -14,7 +14,7 @@ const Howto = () => {
 
             <div>
                 <h2 className='lg:text-3xl text-lg pb-5 text-center px-5 pt-5'>How to hire a Talnet on creve</h2>
-                <iframe className='w-full  2xl:h-[40rem] xl:h-[40rem] lg:h-[40rem] md:h-[30rem] h-[15rem] lg:rounded-xl col-span-1'
+                <iframe className='w-full bg-neutral-200  2xl:h-[40rem] xl:h-[40rem] lg:h-[40rem] md:h-[30rem] h-[16rem] lg:rounded-xl col-span-1'
                     src="https://www.youtube.com/embed/h2QT6_zHnDk?si=rQmXVZk5yRguffa3">
                 </iframe>
             </div>
