@@ -74,13 +74,6 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
     const [messages1, setMessages1] = useState([]);
     const [message, setMessage] = useState('');
 
-    // const handleClick = (chat) => {
-    //     setSelectedChat(chat);
-    //     setMessageSide(false);
-    //     setMessages1(chat?.messages || []);
-    // };
-
-
     const handleClick = (chat) => {
         setSelectedChat(chat);
         setMessageSide(false);
@@ -92,23 +85,15 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
 
     useEffect(() => {
         if (!selectedChat) return;
-        Pusher.logToConsole = true;
+        // Pusher.logToConsole = true;
 
         const pusher = new Pusher('ffd0f41c2f813018fb0d', {
             cluster: 'mt1',
             encrypted: true,
         });
-        // const channel = pusher.subscribe(selectedChat.room_name);
         const channelName = selectedChat?.room_name; 
         const channel = pusher.subscribe(channelName);
-        // channel.bind('message', function (data) {
-        //     if (data?.message?.room_name === channelName) {
-        //         setMessages((prevMessages) => [...prevMessages, data]);
-        //         console.log('This is messages', data);
-        //         console.log('This is room1', data?.message?.room_name)
-        //         console.log('This is room2', selectedChat?.room_name)
-        //     }
-        // });
+       
 
         channel.bind('message', function (data) {
             if (data?.message?.room_name === channelName) {
@@ -116,7 +101,6 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
                     ...prevMessages,
                     [channelName]: [...(prevMessages[channelName] || []), data]
                 }));
-                console.log('This is messages', data);
             }
         });
 
@@ -257,8 +241,6 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
                 </div>
 
                 <div className='w-full '>
-
-
                     <div className='lg:hidden z-20 flex items-center fixed bg-neutral-200 w-full mt-[3.8rem] py-2 lg:pr-10 px-5'>
                         <p className='text-xl font-bold bg-white p-2 rounded-full flex w-fit' onClick={()=>setMessageSide(true)}><BiArrowBack /></p>
                         <p className='text-xs ml-auto italic'>ENCRYPTED CHAT</p>
@@ -273,76 +255,76 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
                         </div>  :
                         <div ref={chatContainerRef} className='w-full lg:py-20 py-28 lg:pb-5 pb-5 lg:h-[90vh] h-[90vh] overflow-y-scroll'>
 
-                                <div className='2xl:pl-[20rem] xl:pl-[20rem] lg:pl-[20rem] lg:pr-10 px-5 lg:pt-0 p-10'>
-                                    {messages1[selectedChat.room_name]?.slice().reverse().map((msg, index) => (
-                                        
-                                        <div className='flex flex-col gap-3 w-full' key={index}>
+                            <div className='2xl:pl-[20rem] xl:pl-[20rem] lg:pl-[20rem] lg:pr-10 px-5 lg:pt-0 p-10'>
+                                {messages1[selectedChat.room_name]?.slice().reverse().map((msg, index) => (
+                                    
+                                    <div className='flex flex-col gap-3 w-full' key={index}>
 
-                                            {msg?.sender?.email === userToken?.email ? (
+                                        {msg?.sender?.email === userToken?.email ? (
 
-                                                <div class="chat chat-end my-2">
-                                                    <div className='flex items-center gap-3'>
-                                                    {/* className={`inline-block px-3 py-2 ${msg?.sender?.email === userToken?.email ? 'bg-[#f2b3b0] text-white rounded-tl-lg rounded-bl-lg rounded-br-lg' : 'bg-neutral-200 rounded-tr-lg rounded-br-lg rounded-bl-lg'}`} */}
-                                                        <div class=" rounded-tr-xl  rounded-tl-xl rounded-bl-xl px-3 py-2 mycolor4  text-white max-w-xs break-words">
-                                                            <p className='text-xs opacity-70 text-left'>You</p>
-                                                            <p className='lg:text-base text-sm'>{msg?.body}</p>
-                                                        </div>
-                                                    </div>
-                                                </div> 
-                                                
-                                            ) : (
-
-                                                <div className="chat chat-start my-2">
-                                                    <div className='flex items-center gap-3'>
-                                                    <div className="rounded-tr-xl  rounded-tl-xl rounded-bl-xl px-3 py-2 bg-neutral-100  text-black max-w-xs break-words">
-                                                        <p className='text-xs opacity-70 text-left'>{msg?.sender?.fullname}</p>
+                                            <div class="chat chat-end my-2">
+                                                <div className='flex items-center gap-3'>
+                                                {/* className={`inline-block px-3 py-2 ${msg?.sender?.email === userToken?.email ? 'bg-[#f2b3b0] text-white rounded-tl-lg rounded-bl-lg rounded-br-lg' : 'bg-neutral-200 rounded-tr-lg rounded-br-lg rounded-bl-lg'}`} */}
+                                                    <div class=" rounded-tr-xl  rounded-tl-xl rounded-bl-xl px-3 py-2 mycolor4  text-white max-w-xs break-words">
+                                                        <p className='text-xs opacity-70 text-left'>You</p>
                                                         <p className='lg:text-base text-sm'>{msg?.body}</p>
                                                     </div>
                                                 </div>
-                                            </div>                    
-                                            )}
-                                        </div>
-                                    ))}
+                                            </div> 
+                                            
+                                        ) : (
 
-                                    {/* {messages[selectedChat.room_name]?.map((msg, index) => (
-                                        <div key={index}>
-                                            <div className={`px-5 py-3 ${msg?.sender?.email === userToken?.email ? 'text-right' : 'text-left'}`}>
-                                                <div className={`inline-block px-3 py-2 ${msg?.sender?.email === userToken?.email ? 'bg-[#f2b3b0] text-white rounded-tl-lg rounded-bl-lg rounded-br-lg' : 'bg-neutral-200 rounded-tr-lg rounded-br-lg rounded-bl-lg'}`}>
-                                                    <p className='text-xs'>{msg.body}</p>
+                                            <div className="chat chat-start my-2">
+                                                <div className='flex items-center gap-3'>
+                                                <div className="rounded-tr-xl  rounded-tl-xl rounded-bl-xl px-3 py-2 bg-neutral-100  text-black max-w-xs break-words">
+                                                    <p className='text-xs opacity-70 text-left'>{msg?.sender?.fullname}</p>
+                                                    <p className='lg:text-base text-sm'>{msg?.body}</p>
                                                 </div>
                                             </div>
+                                        </div>                    
+                                        )}
+                                    </div>
+                                ))}
+
+                                {/* {messages[selectedChat.room_name]?.map((msg, index) => (
+                                    <div key={index}>
+                                        <div className={`px-5 py-3 ${msg?.sender?.email === userToken?.email ? 'text-right' : 'text-left'}`}>
+                                            <div className={`inline-block px-3 py-2 ${msg?.sender?.email === userToken?.email ? 'bg-[#f2b3b0] text-white rounded-tl-lg rounded-bl-lg rounded-br-lg' : 'bg-neutral-200 rounded-tr-lg rounded-br-lg rounded-bl-lg'}`}>
+                                                <p className='text-xs'>{msg.body}</p>
+                                            </div>
                                         </div>
-                                    ))} */}
+                                    </div>
+                                ))} */}
 
 
-                                    {messages[selectedChat.room_name]?.map((msg, index) => (
-                                        
-                                        <div className='flex flex-col gap-3 w-full' key={index}>
+                                {messages[selectedChat.room_name]?.map((msg, index) => (
+                                    
+                                    <div className='flex flex-col gap-3 w-full' key={index}>
 
-                                            {msg?.message?.sender === userToken.email ? (
+                                        {msg?.message?.sender === userToken.email ? (
 
-                                                <div class="chat chat-end my-2">
-                                                    <div className='flex items-center gap-3'>
-                                                        <div class="rounded-tr-xl  rounded-tl-xl rounded-bl-xl px-3 py-2 mycolor4  text-white max-w-xs break-words">
-                                                            <p className='text-xs opacity-70 text-left'>You</p>
-                                                            <p className='lg:text-base text-sm'>{msg?.message?.body}</p>
-                                                        </div>
-                                                    </div>
-                                                </div> 
-                                            ) : (
-
-                                                <div className="chat chat-start my-2">
-                                                    <div className='flex items-center gap-3'>
-                                                    <div className="rounded-tr-xl  rounded-tl-xl rounded-bl-xl px-3 py-2 bg-neutral-100  text-black max-w-xs break-words">
-                                                        <p className='text-xs opacity-70 text-left'>{msg?.message?.fullname}</p>
+                                            <div class="chat chat-end my-2">
+                                                <div className='flex items-center gap-3'>
+                                                    <div class="rounded-tr-xl  rounded-tl-xl rounded-bl-xl px-3 py-2 mycolor4  text-white max-w-xs break-words">
+                                                        <p className='text-xs opacity-70 text-left'>You</p>
                                                         <p className='lg:text-base text-sm'>{msg?.message?.body}</p>
                                                     </div>
                                                 </div>
-                                            </div>                    
-                                            )}
-                                        </div>
-                                    ))}
-                                </div>
+                                            </div> 
+                                        ) : (
+
+                                            <div className="chat chat-start my-2">
+                                                <div className='flex items-center gap-3'>
+                                                <div className="rounded-tr-xl  rounded-tl-xl rounded-bl-xl px-3 py-2 bg-neutral-100  text-black max-w-xs break-words">
+                                                    <p className='text-xs opacity-70 text-left'>{msg?.message?.fullname}</p>
+                                                    <p className='lg:text-base text-sm'>{msg?.message?.body}</p>
+                                                </div>
+                                            </div>
+                                        </div>                    
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     }
 

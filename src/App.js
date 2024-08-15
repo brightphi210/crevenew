@@ -40,48 +40,51 @@ function App() {
   const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
 
 
-  const logout = async (e) => {
-    localStorage.removeItem('token');
-    window.location.href = '/';
-}
-
-async function refreshToken() {
-    try {
-        const response = await fetch(`${BASE_URL}/api/token/refresh/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-            localStorage.setItem('token', data.access);
-        } else {
-            console.error('Failed to refresh token');
-            logout();
-        }
-    } catch (error) {
-        console.error('Error refreshing token:', error);
-        logout();
+    const logout = async (e) => {
+        localStorage.removeItem('token')
+        window.location.href = '/';
     }
-}
 
-useEffect(() => {
-  const refreshInterval = setInterval(() => {
-      refreshToken();
-  }, 12 * 60 * 60 * 1000); // refresh token every 1 hour
 
-  const logoutInterval = setInterval(() => {
+  async function refreshToken() {
+    try {
+      const response = await fetch(`${BASE_URL}/api/token/refresh/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('token', data.access);
+      } else {
+        console.error('Failed to refresh token');
+        logout();
+      }
+    } catch (error) {
+      console.error('Error refreshing token:', error);
       logout();
-  }, 12 * 60 * 1000); // logout every 1 minute
+    }
+  }
 
-  return () => {
+
+  useEffect(() => {
+    const refreshInterval = setInterval(() => {
+      refreshToken();
+    }, 12 * 60 * 60 * 1000);
+
+    const logoutInterval = setInterval(() => {
+      logout();
+    }, 12 * 60 * 60 * 1000); // 24 hours
+  
+
+    return () => {
       clearInterval(refreshInterval);
       clearInterval(logoutInterval);
-  };
-}, []);
+    };
+  }, []);
 
 
 
