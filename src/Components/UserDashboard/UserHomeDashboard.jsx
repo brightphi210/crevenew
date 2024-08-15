@@ -204,7 +204,7 @@ export const UserHomeDashboardHome = () => {
   }, [location]);
   
   return (
-    <div className='2xl:pl-[20rem] xl:pl-[15rem] lg:pl-[15rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full'>
+    <div className='2xl:pl-[16rem] xl:pl-[15rem] lg:pl-[15rem] 2xl:pr-[3rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full'>
 
       <div className='lg:flex items-center block px-5'>
 

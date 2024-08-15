@@ -242,7 +242,7 @@ export const UserCreativeDashboardCom = () => {
 
 
   return (
-    <div className='2xl:pl-[20rem] xl:pl-[15rem] lg:pl-[15rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  py-28 w-full'>
+    <div className='2xl:pl-[16rem] xl:pl-[15rem] lg:pl-[15rem] 2xl:pr-[3rem] xl:pr-[3rem] lg:pr-[3rem]  py-28 w-full'>
       <div className='flex items-center px-4'>
 
       <div className="flex items-center gap-3 lg:w-full">

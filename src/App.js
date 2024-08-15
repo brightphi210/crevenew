@@ -40,51 +40,48 @@ function App() {
   const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
 
 
-    const logout = async (e) => {
-        localStorage.removeItem('token')
-        window.location.href = '/';
-    }
+  const logout = async (e) => {
+    localStorage.removeItem('token');
+    window.location.href = '/';
+}
 
-
-  async function refreshToken() {
+async function refreshToken() {
     try {
-      const response = await fetch(`${BASE_URL}/api/token/refresh/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        const response = await fetch(`${BASE_URL}/api/token/refresh/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            localStorage.setItem('token', data.access);
+        } else {
+            console.error('Failed to refresh token');
+            logout();
         }
-      });
-  
-      if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem('token', data.access);
-      } else {
-        console.error('Failed to refresh token');
-        logout();
-      }
     } catch (error) {
-      console.error('Error refreshing token:', error);
-      logout();
+        console.error('Error refreshing token:', error);
+        logout();
     }
-  }
+}
 
-
-  useEffect(() => {
-    const refreshInterval = setInterval(() => {
+useEffect(() => {
+  const refreshInterval = setInterval(() => {
       refreshToken();
-    }, 24 * 60 * 60 * 1000);
+  }, 12 * 60 * 60 * 1000); // refresh token every 1 hour
 
-    const logoutInterval = setInterval(() => {
+  const logoutInterval = setInterval(() => {
       logout();
-    }, 24 * 60 * 60 * 1000); // 24 hours
-  
+  }, 12 * 60 * 1000); // logout every 1 minute
 
-    return () => {
+  return () => {
       clearInterval(refreshInterval);
       clearInterval(logoutInterval);
-    };
-  }, []);
+  };
+}, []);
 
 
 
