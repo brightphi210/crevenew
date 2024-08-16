@@ -77,7 +77,7 @@ function App() {
 
     const logoutInterval = setInterval(() => {
       logout();
-    }, 12 * 60 * 60 * 1000); // 24 hours
+    }, 12 * 60 * 60 * 1000);
   
 
     return () => {

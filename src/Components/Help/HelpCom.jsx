@@ -31,7 +31,7 @@ const HelpCom = () => {
 
             <div className="collapse collapse-arrow bg-white rounded-none border-b border-b-neutral-200 mt-5">
                 <input type="radio" name="my-accordion-2" />
-                <div className="collapse-title text-base font-medium">What Makes creve unique ?</div>
+                <div className="collapse-title text-base font-medium">What Makes Creve unique ?</div>
                     <div className="collapse-content">
                     <p className='text-sm text-justify'>
                         Creve is a unique platform that combines the best of online and offline gig marketplaces. 
@@ -58,7 +58,7 @@ const HelpCom = () => {
                 <div className="collapse-title text-base font-medium">Can I drop review for creatives ?</div>
                     <div className="collapse-content">
                     <p className='text-sm text-justify'>
-                        Yes you can drop a review for a creative, under their profile section u can leave a review for them..
+                        Yes you can drop a review for a creative, under their profile section, you can leave a review for them..
                     </p>
                 </div>
             </div>

@@ -169,7 +169,7 @@ export const CreativeBookings = () => {
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
         <div className="drawer-side z-50">
           <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-          <ul className="menu bg-base-200 text-base-content min-h-full 2xl:w-[25%] xl:w-[50%] lg:w-[50%] md:w-[80%] w-[90%] p-6 pt-32">
+          <ul className="menu z-50 bg-base-200 text-base-content min-h-full 2xl:w-[25%] xl:w-[40%] lg:w-[40%] md:w-[80%] w-[90%] p-6 2xl:pt-20 xl:pt-20 lg:pt-10 pt-32">
             <div className='flex justify-center'>
 
               {selectedRequest && 
@@ -198,7 +198,7 @@ export const CreativeBookings = () => {
                   </div>
 
                   <p className='text-green-600 bg-green-50 flex items-center mt-5 p-3 rounded-lg gap-3 border border-green-600'><TbAlertTriangle />Copy clients number to call </p>
-                  <p className='absolute bottom-20 m-auto right-0 left-0 flex justify-center w-fit text-xs gap-2'>Need any help ? 
+                  <p className='absolute 2xl:bottom-10 xl:bottom-10 lg:bottom-5 bottom-20 m-auto right-0 left-0 flex justify-center w-fit text-xs gap-2'>Need any help ? 
                     
                     <Link to={'https://wa.link/tdyb88'}>
                       <span className='text-blue-500 underline cursor-pointer'>Contact us</span>
