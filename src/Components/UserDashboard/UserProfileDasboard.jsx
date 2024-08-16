@@ -52,8 +52,6 @@ export const UserProfileDash = () => {
 
         const formData = new FormData()
         formData.append('profile_pics', cover_image)
-
-
         try {
             
             const respose = await fetch(url, {
@@ -74,7 +72,6 @@ export const UserProfileDash = () => {
                 console.log(data);
                 setIsLoading(false)
             }
-
 
         } catch (error) {
             console.log('There was an error', error);
@@ -172,28 +169,12 @@ export const UserProfileDash = () => {
         </button>
 
 
-        {/* <div className='mt-5 pt-5 2xl:w-full border-t border-neutral-200'>
+        <div className='mt-5 pt-5 2xl:w-full border-t border-neutral-200'>
 
             <form action="" className='flex flex-col gap-4 2xl:w-1/2'>
-                
-                <input type="text" 
-                    placeholder="Update Name..." 
-                    required 
-                    // value={question}
-                    className="input input-bordered w-full rounded-md text-xs" 
-                    // onChange={handleQuestionChange}
-                />
-
-                <input type="email" 
-                    placeholder="Update Email..."   
-                    required 
-                    // value={question}
-                    className="input input-bordered w-full rounded-md text-xs" 
-                    // onChange={handleQuestionChange}
-                />
 
                 <input type="password" 
-                    placeholder="Update Password..."   
+                    placeholder="Add Location ..."   
                     required 
                     // value={question}
                     className="input input-bordered w-full rounded-md text-xs" 
@@ -205,8 +186,8 @@ export const UserProfileDash = () => {
         <button 
             // onClick={handleProfileUpdate} 
             className="btn lg:w-fit md:w-fit w-1/2 min-h-2rem lg:px-10 xl:text-xs lg:text-xs  
-            bg-black hover:bg-neutral-800 text-white lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">Update
-        </button> */}
+            bg-black hover:bg-neutral-800 text-white lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">Add Location
+        </button>
     </div>
 
 

@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 
 import noData from '../Images/nodata2.png'
 import MyLoader from '../allLoadingState/MyLoader';
+import locationImage from '../Images/loca.jpg'
 
 const UserHomeDashboard = () => {
 
@@ -43,8 +44,6 @@ export default UserHomeDashboard
 
 
 export const UserHomeDashboardHome = () => {
-  
-
   const [show, setShow] = useState(false)
   const [showModal, setShowModal] = useState('')
 
@@ -211,6 +210,8 @@ export const UserHomeDashboardHome = () => {
         <div className='flex items-center'>
           <h2 className='text-2xl pb-3 lg:p-0'>Hi, {isLoading === true ? '- - - - -' : <>{profileData.user && profileData.user.fullname}! </>} </h2>
         </div>
+
+        <button onClick={()=>document.getElementById('my_modal_3').showModal()}>Show Modal</button>
 
         {/* <div className='flex items-center gap-3 ml-auto'>
             <FaLocationDot size={18} className='text-green-600'/>
@@ -386,6 +387,33 @@ export const UserHomeDashboardHome = () => {
         }
 
       </div>
+
+
+      <dialog id="my_modal_3" className="modal">
+          <div className="modal-box lg:max-w-[35%] w-[95%] p-0 2xl:h-[70%] xl:h-[70%] lg:h-[70%] h-[60%] flex rounded-md">
+
+            <form method="dialog">
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+
+
+            <div className='overflow-y-scroll h-[90%] w-full lg:mt-5 p-7 lg:pt-5 mt-8'>
+
+                <div className='w-[50%] flex justify-center m-auto rounded-lg'>
+                  <img src={locationImage} alt="" className='w-full rounded-lg'/>
+                </div>
+
+                <div className='pt-5'>
+                  <h2 className='text-xl font-bold text-center'>Add Location</h2>
+                  <p className='pt-3 text-center text-sm'>Add your location to get talents nearest to you </p>
+
+                  <Link to={'/user-dashboard-profile'}>
+                    <button className='bg-black text-white lg:w-[50%] flex justify-center m-auto w-full rounded-full p-3 mt-10'>Add Location</button>
+                  </Link>
+                </div>
+            </div>
+          </div>
+        </dialog>
     </div>
   )
 }

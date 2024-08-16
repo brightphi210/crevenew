@@ -117,10 +117,10 @@ export const CreativeBookings = () => {
             <p className='text-xs pt-2'>List of all Request from clients</p>
           </div>
 
-          <div className='relative lg:w-1/2 w-full ml-auto'>
+          {/* <div className='relative lg:w-1/2 w-full ml-auto'>
             <input type="text" placeholder="Search Bookings" className="input px-5 text-xs input-bordered w-full rounded-full" />
             <button className='absolute right-2 top-1 color text-white p-3 rounded-full '><LuSearch /></button>
-          </div>
+          </div> */}
         </div>
 
         <div className='w-full lg:mt-10 mt-5 pt-5 gap-10 overflow-y-scroll h-[70vh]'>
