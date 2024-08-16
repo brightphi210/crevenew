@@ -253,6 +253,7 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
                                 <p className='text-xs'>No Message</p>
                             </div>
                         </div>  :
+                        <>
                         <div ref={chatContainerRef} className='w-full lg:py-20 py-28 lg:pb-5 pb-5 lg:h-[90vh] h-[90vh] overflow-y-scroll'>
 
                             <div className='2xl:pl-[20rem] xl:pl-[20rem] lg:pl-[20rem] lg:pr-10 px-5 lg:pt-0 p-10'>
@@ -326,45 +327,48 @@ export const UserChatDashboard = ({users, userToken, authUser, isLoadinga}) => {
                                 ))}
                             </div>
                         </div>
+                        
+                        <div className='fixed justify-center right-0  2xl:w-[90%] xl:w-[84%] lg:w-[80%] w-full 2xl:px-[10rem] xl:px-[3rem] lg:px-[3rem] bottom-0 py-5 pt-5 border-t bg-white border-neutral-200   px-5'>
+
+                            <form onSubmit={submit} className='flex relative items-center gap-3 w-full'>
+
+                            <div className='relative w-full flex'>
+                                <input type="text" 
+                                    placeholder="Enter Message" 
+                                    className="input text-xs input-bordered 
+                                    w-full resize-none lg:max-h-[6rem] min-h-[2rem] 
+                                    max-h-[6rem] overflow-auto py-3 lg:pr-20 pr-10 rounded-lg" 
+                                    autoComplete="on" 
+                                    required
+                                    value={message}
+                                    disabled={chatLoading === true}
+                                    onChange={e => setMessage(e.target.value)}
+                                />
+                                <div onClick={() => setShowPicker((val) => !val)} className='absolute right-3 lg:ml-5 ml-16 lg:bottom-1 bottom-2 top-3 lg:p-3 p-3  bg-white flex justify-center items-center  rounded-full cursor-pointer' >
+                                <img
+                                    className="emoji-icon lg:w-6 w-6"
+                                    src="https://icons.getbootstrap.com/assets/icons/emoji-smile.svg"
+                                />
+                                </div>
+                            </div>
+
+
+                            {showPicker && (
+                                <span className='absolute bottom-[80px] right-0'>
+                                    <Picker data={data} onEmojiSelect={addEmoji} className=""/>
+                                </span>
+                            )}
+
+                                <button disabled={message.trim() === ''} type='submit'  className="border-none mycolor4 text-white text-base flex gap-3 items-center p-3 rounded-full justify-center ">
+                                    {chatLoading === false ?  <IoSend /> : <span className="loading loading-spinner loading-sm"></span>}
+                                </button>
+                            </form>
+                        </div> 
+
+                        </>
                     }
 
 
-                    <div className='fixed justify-center right-0  2xl:w-[90%] xl:w-[84%] lg:w-[80%] w-full 2xl:px-[10rem] xl:px-[3rem] lg:px-[3rem] bottom-0 py-5 pt-5 border-t bg-white border-neutral-200   px-5'>
-
-                        <form onSubmit={submit} className='flex relative items-center gap-3 w-full'>
-
-                        <div className='relative w-full flex'>
-                            <input type="text" 
-                                placeholder="Enter Message" 
-                                className="input text-xs input-bordered 
-                                w-full resize-none lg:max-h-[6rem] min-h-[2rem] 
-                                max-h-[6rem] overflow-auto py-3 lg:pr-20 pr-10 rounded-lg" 
-                                autoComplete="on" 
-                                required
-                                value={message}
-                                disabled={chatLoading === true}
-                                onChange={e => setMessage(e.target.value)}
-                            />
-                            <div onClick={() => setShowPicker((val) => !val)} className='absolute right-3 lg:ml-5 ml-16 lg:bottom-1 bottom-2 top-3 lg:p-3 p-3  bg-white flex justify-center items-center  rounded-full cursor-pointer' >
-                            <img
-                                className="emoji-icon lg:w-6 w-6"
-                                src="https://icons.getbootstrap.com/assets/icons/emoji-smile.svg"
-                            />
-                            </div>
-                        </div>
-
-
-                        {showPicker && (
-                            <span className='absolute bottom-[80px] right-0'>
-                                <Picker data={data} onEmojiSelect={addEmoji} className=""/>
-                            </span>
-                        )}
-
-                            <button disabled={message.trim() === ''} type='submit'  className="border-none mycolor4 text-white text-base flex gap-3 items-center p-3 rounded-full justify-center ">
-                                {chatLoading === false ?  <IoSend /> : <span className="loading loading-spinner loading-sm"></span>}
-                            </button>
-                        </form>
-                    </div> 
                 </div>
             </div>
         </div>

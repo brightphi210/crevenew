@@ -42,7 +42,7 @@ const CreativeSideBarCom = ({show}) => {
                 </Link>
 
                 <Link to={'/creative-dashboard-profile'}>
-                  <li className='text-lg hover:text-accent cursor-pointer flex items-center gap-3'><CiUser className=''/> Account</li>
+                  <li className='text-lg hover:text-accent cursor-pointer flex items-center gap-3'><CiUser className=''/> Profile Setup</li>
                 </Link>
 
                 <Link to={'/user-dashboard-chat'}>
@@ -70,7 +70,7 @@ const CreativeSideBarCom = ({show}) => {
             <ul className='flex flex-col gap-5 2xl:gap-8 xl:gap-5 lg:gap-3 md:gap-3 p-6'>
 
                 <Link to={'/' + 'creative-dashboard-settings'}>
-                  <li className='text-lg hover:text-accent cursor-pointer flex items-center gap-3'><IoSettingsSharp className=''/> Settings</li>
+                  <li className='text-lg hover:text-accent cursor-pointer flex items-center gap-3'><IoSettingsSharp className=''/> Profile Pic</li>
                 </Link>
                 <li className='text-lg text-neutral-400 cursor-default flex items-center gap-3'><FaLock className=''/> Creve Pro</li>
                 <li className='text-lg hover:text-accent cursor-pointer flex items-center gap-3' onClick={logout}><BiLogOutCircle className=''/> Logout</li>
