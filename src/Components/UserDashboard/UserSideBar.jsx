@@ -17,7 +17,7 @@ const menuItems = [
   { label: 'Request', icon: <BiMessageSquare />, path: 'user-dashboard-books' },
   { label: 'Messages', icon: <MdOutlineMarkEmailUnread />, path: 'user-dashboard-chat' },
   { label: 'Saved', icon: <MdOutlineFavoriteBorder />, path: 'user-dashboard-favourites' },
-  { label: 'Settings', icon: <FiSettings />, path: 'user-dashboard-profile' },
+  { label: 'Profile', icon: <FiSettings />, path: 'user-dashboard-profile' },
 ];
 
 const UserSideBar = ({show}) => {

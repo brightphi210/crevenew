@@ -46,6 +46,25 @@ const BlogCom = () => {
     });
     
 
+    const baseUrl = window.location.origin;
+    const profileUrl = `${baseUrl}/user-dashboard-single-creative/${eachBlog?.id}/`;
+    const handleShare = async () => {
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: 'Check out this Blog on Creve',
+              text: 'Stay upto date with our blog insites',
+              url: profileUrl
+            });
+          } catch (error) {
+            console.error('Error sharing content:', error);
+          }
+        } else {
+          console.error('Web Share API not supported in this browser');
+        }
+    };
+
+
 
     console.log('This is blog data', blogData);
     console.log('This is each blog data', eachBlog);
@@ -138,7 +157,7 @@ const BlogCom = () => {
 
                         <p className=' lg:leading-[40px] leading-[30px] lg:text-base text-sm text-justify'>{eachBlog?.description}</p>
                         <div className='flex items-center gap-2 mt-6 pt-4 border-t border-neutral-300'>
-                            <button className='bg-green-900 text-sm lg:w-[30%] w-full  text-white py-3 px-6 rounded-full'>Share</button>
+                            <button onClick={handleShare} className='bg-green-900 text-sm lg:w-[30%] w-full  text-white py-3 px-6 rounded-full'>Share</button>
                             <button onClick={()=>document.getElementById('my_modal_3').close()} className='border border-neutral-300 text-sm lg:w-[20%] w-full text-gray-800 py-3 px-6 rounded-full'>Close</button>
                         </div>
                     </div>

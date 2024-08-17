@@ -89,9 +89,6 @@ const UserNavbar = ({handleShow, show}) => {
     }, []);
 
 
-    console.log('THis is chats', users);
-    
-    
   return (
     <div>
         <div className={'flex flex-row items-center shadow-sm fixed right-0 left-0 bg-white py-4 lg:px-20 px-5  z-50 backdrop-filter backdrop-blur-3xl bg-opacity-80'}>

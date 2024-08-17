@@ -5,16 +5,15 @@ import UserSideBar from './UserSideBar'
 
 import { FaLocationDot } from "react-icons/fa6";
 import { IoArrowForwardOutline } from "react-icons/io5";
-import { IoMdArrowForward } from "react-icons/io";
-import { MdFavoriteBorder } from "react-icons/md";
-import { MdFavorite } from "react-icons/md";
 import { GoTools } from "react-icons/go";
 import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
 import { Link } from 'react-router-dom';
 
 import { IoFilter } from "react-icons/io5";
-import { RiSearch2Line } from "react-icons/ri";
+import { MdVerified } from "react-icons/md";
+import { GoUnverified } from "react-icons/go";
+
 
 import noData from '../Images/nodata2.png'
 import MyLoader from '../allLoadingState/MyLoader';
@@ -88,73 +87,16 @@ export const UserCreativeDashboardCom = () => {
     fetchTalents();
   }, []);
 
-
-  // const handleShow1 = (id) => {
-  //   setShow((prev) => ({
-  //     ...prev,
-  //     [id]: false,
-  //   }));
-
-  //   setShowModal(false);
-  //   setTimeout(() => {
-  //     setShowModal('');
-  //   }, 3000);
-  // };
-
-
-  // const handleShow2 = (id) => {
-  //   setShow((prev) => ({
-  //     ...prev,
-  //     [id]: true,
-  //   }));
-
-  //   setShowModal(true);
-  //   setTimeout(() => {
-  //     setShowModal('');
-  //   }, 3000);
-  // };
-
-
-  const handleShowOne = () => {
-    setShowOne(true);
-    setShowTwo(false);
-    setShowThree(false);
-  }
-
-  // const handleShowTwo = () => {
-  //   setShowOne(false);
-  //   setShowTwo(true);
-  //   setShowThree(false);
-  // }
-
-  // const handleShowThree = () => {
-  //   setShowOne(false);
-  //   setShowTwo(false);
-  //   setShowThree(true);
-  // }
-
-
-  const [searchTermInput, setSearchTermInput] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-
-
   const handleSearchInput = (event) => {
     setSearchTerm(event.target.value);
     
   };
 
-
   const [showSide, setShowSide] = useState(true);
-  // const handleButtonClick = (e) => {
-  //   e.preventDefault();
-  //   setSearchTerm(searchTermInput); 
-  // };
-
-
   const handleFilter = (term) => {
     setSearchTerm(term.toLowerCase());
 };
-
 
   const filteredItems = allTalents.filter(item => {
     const searchTermLower = searchTerm.toLowerCase();
@@ -170,62 +112,6 @@ export const UserCreativeDashboardCom = () => {
   });
 
 
-
-  const [location, setLocation] = useState({ lat : null, lng:null});
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setLocation({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          });
-        },
-        (error) => {
-          setError(error.message);
-        }
-      );
-    } else {
-      setError('Geolocation is not supported by this browser.');
-    }
-  }, []);
-
-
-  const apiKey1 = 'AIzaSyA_HnIpk-nlGgMh-G1Evi-WX2T_wwqTmGs';
-
-  const [address, setAddress] = useState('');
-  const getAddress = async () => {
-    try {
-      const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${apiKey1}`
-      );
-      const data = await response.json();
-      
-      setAddress(data.city)
-      if (data.results && data.results.length > 0) {
-        const formattedAddress = data.results[5]?.formatted_address;
-        setAddress(formattedAddress);
-        console.log('Formatted Address:', formattedAddress);
-      } else {
-        console.warn('No results found in geocode response.');
-      }
-      
-      
-    } catch (error) {
-      console.error('Error getting address: ', error);
-    }
-  };
-
-  useEffect(() => {
-    if (location.lat !== null && location.lng !== null) {
-      getAddress();
-    }
-  }, [location]);
-  
-
-
   const [selectedOption, setSelectedOption] = useState('');
   const handleRadioChange = (event) => {
     const newOption = event.target.value;
@@ -233,13 +119,44 @@ export const UserCreativeDashboardCom = () => {
     setSearchTerm(newOption);
   };
 
-  const data = [
-    { id: 1, type: 'Hybrid', name: 'Item 1' },
-    { id: 2, type: 'On-site', name: 'Item 2' },
-    { id: 3, type: 'Remote', name: 'Item 3' },
-    { id: 4, type: 'Hybrid', name: 'Item 4' },
-  ];
 
+  const [address, setAddress] = useState('')
+  const urla =`${BASE_URL}/userprofile/${userToken.profile_id}/`
+    const fetchProfile = async () => {
+      setIsLoading(true);
+      try {
+
+      const respose = await fetch(urla, {
+          method: 'GET',
+          headers: {
+              'Authorization' : `Bearer ${authUser.access}`,
+          },
+      })
+
+      if (!respose.ok) {
+          setIsLoading(false);
+          throw new Error('Network response was not ok');
+      }
+      const data = await respose.json();
+
+      setAddress(data.address)
+      console.log(data);
+
+
+      } catch (error) {
+          console.log(error);
+      } finally {  
+      setIsLoading(false);
+      }
+  };
+
+  useEffect(() => {
+      fetchProfile();
+  }, []);
+
+
+  console.log('These are talents', allTalents);
+  
 
   return (
     <div className='2xl:pl-[16rem] xl:pl-[15rem] lg:pl-[15rem] 2xl:pr-[3rem] xl:pr-[3rem] lg:pr-[3rem]  py-28 w-full'>
@@ -257,7 +174,7 @@ export const UserCreativeDashboardCom = () => {
             showOne ? 'bg-black text-white' : 'bg-neutral-100 text-black'
           } py-2 lg:px-4 px-3 border rounded-full lg:text-sm text-xs`}
         >
-          Discover
+          All
         </button>
 
         <button
@@ -271,7 +188,7 @@ export const UserCreativeDashboardCom = () => {
             showTwo ? 'bg-black text-white' : 'bg-neutral-100 text-black'
           } py-2 lg:px-4 px-3 border rounded-full lg:text-sm text-xs`}
         >
-          Digital
+          Tech
         </button>
         
         <button
@@ -285,7 +202,7 @@ export const UserCreativeDashboardCom = () => {
             showThree ? 'bg-black text-white' : 'bg-neutral-100 text-black'
           } py-2 lg:px-4 px-3 border rounded-full lg:text-sm text-xs`}
         >
-          Non-Digital
+          Artisans
         </button>
       </div>
 
@@ -329,28 +246,40 @@ export const UserCreativeDashboardCom = () => {
             <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5 pt-10 lg:px-0 px-5'>
               {filteredItems.length > 0 &&
                 <>
-                  {filteredItems.map((talent) =>(
+                  {filteredItems.filter(talent => talent.location !== null && talent.cover_image !== 'https://creve.store/media/coverimage.png').map((talent) => (
                     <div className='bg-white  rounded-xl cursor-pointer relative shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]' key={talent.id}>
                       <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
-                        <div className='2xl:h-[20rem] xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
+                        <div className='2xl:h-[20rem] relative xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
                           <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
+
+                     
                         </div>
                       </Link>
 
                       <div className='flex items-center pt-3 p-3'>
 
-                        <div className='flex items-center gap-2'>
-                          <div className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 overflow-hidden w-7 h-7 rounded-full'>
+                        <div className='flex items-start gap-2'>
+                          <div className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 overflow-hidden border border-neutral-200 w-7 h-7 rounded-full'>
                             <img src={talent.profile_pics} alt="" className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 w-7 h-7 object-cover'/>
                           </div>
 
                           <div>
-                            <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm font-semibold'>{talent.user.fullname}</h3>
+                            <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm font-semibold flex gap-2'>
+                              {talent.user.fullname}
+                              <div className=''>
+                                {talent.verified === true && 
+                                  <button className='flex gap-2 shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] bg-white text-green-600 text-lg rounded-full justify-center items-center'><MdVerified className=''/></button>
+                                  }
+                              </div>
+                            </h3>
                             <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] text-xs flex items-center gap-2'>{talent.display_name} <GoTools /></p>
                           </div>
+
+                     
                         </div>
 
                         <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`} className='ml-auto'>
+                     
                           <button className=' bg-neutral-200 p-2 rounded-full text-black 2xl:text-md xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
                         </Link>
                       </div>
@@ -386,9 +315,21 @@ export const UserCreativeDashboardCom = () => {
             <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
             <ul className="menu bg-white text-base-content min-h-full overflow-y-scroll lg:w-[25rem] w-[20rem] lg:p-10 lg:pt-28 p-5 pt-28">
 
-              <li className='lg:pb-8 pb-3 lg:text-lg text-xl font-semibold'>Filter Creatives with options below</li>
+              <li className='lg:pb-8 pb-3 lg:text-sm text-sm font-semibold'>Filter Creatives with options below</li>
 
               <ul className='flex flex-col gap-4 lg:pt-0 pt-5'>
+
+
+              <h2 className='p-2 pl-5 bg-green-50 border border-green-300 rounded-full'>My Location</h2>
+                <div className='flex items-center gap-4'>
+                  <li>Location </li>
+                  <input 
+                    type="radio" 
+                    value={address}
+                    checked={selectedOption === address}
+                    onChange={handleRadioChange}
+                    className="radio h-[1.2rem] w-[1.2rem] rounded-full border border-neutral-400 ml-auto" />
+                </div>
              
 
                 <h2 className='p-2 pl-5 bg-green-50 border border-green-300 rounded-full'>Work Type</h2>

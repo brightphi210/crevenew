@@ -7,6 +7,8 @@ import { jwtDecode } from 'jwt-decode'
 import { FiEdit } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { FaArrowRight } from 'react-icons/fa6'
+import GooglePlacesAutocomplete from 'react-google-autocomplete';
+
 
 const UserProfileDasboard = () => {
 
@@ -45,6 +47,13 @@ export const UserProfileDash = () => {
     const [coverImage, setCoverImage] = useState(null)
      
 
+
+    const [address, setAddress] = useState('');
+    const handlePlaceSelected = (place) => {
+      const address = place.formatted_address;
+      setAddress(address);
+    };
+
     const url =`${BASE_URL}/userprofile/${userToken.profile_id}/`
     const handleProfileUpdate = async (e) =>{
         setIsLoading(true)
@@ -52,6 +61,7 @@ export const UserProfileDash = () => {
 
         const formData = new FormData()
         formData.append('profile_pics', cover_image)
+        formData.append('address', address)
         try {
             
             const respose = await fetch(url, {
@@ -78,6 +88,43 @@ export const UserProfileDash = () => {
             setIsLoading(false)
         }
     }
+
+    
+
+    const url2 =`${BASE_URL}/userprofile/${userToken.profile_id}/`
+    const handleProfileUpdate2 = async (e) =>{
+        setIsLoading(true)
+        e.preventDefault() 
+
+        const formData = new FormData()
+        formData.append('address', address)
+        try {
+            
+            const respose = await fetch(url2, {
+                method: 'PUT',
+                headers: {
+                    'Authorization' : `Bearer ${authUser.access}`,
+                },
+                body: formData
+            })
+            
+            if(respose.status === 200 || respose.ok){
+                setIsLoading(false)
+                document.getElementById('my_modal_1').showModal();
+            }   
+
+            else{
+                const data = await respose.json()
+                console.log(data);
+                setIsLoading(false)
+            }
+
+        } catch (error) {
+            console.log('There was an error', error);
+            setIsLoading(false)
+        }
+    }
+
     
 
 
@@ -99,6 +146,7 @@ export const UserProfileDash = () => {
         const data = await respose.json();
 
         setCover_Image(data.profile_pics)
+        setAddress(data.address)
         console.log(data);
 
 
@@ -162,6 +210,8 @@ export const UserProfileDash = () => {
 
         </div>
 
+
+
         <button 
             onClick={handleProfileUpdate} 
             className="btn lg:w-fit md:w-fit w-1/2 min-h-2rem lg:px-10 xl:text-xs lg:text-xs  
@@ -169,25 +219,29 @@ export const UserProfileDash = () => {
         </button>
 
 
-        <div className='mt-5 pt-5 2xl:w-full border-t border-neutral-200'>
+           <form onSubmit={handleProfileUpdate2} className='mt-5 pt-5 2xl:w-[50%] w-full border-t border-neutral-200'>
 
-            <form action="" className='flex flex-col gap-4 2xl:w-1/2'>
-
-                <input type="password" 
-                    placeholder="Add Location ..."   
-                    required 
-                    // value={question}
-                    className="input input-bordered w-full rounded-md text-xs" 
-                    // onChange={handleQuestionChange}
+            <div>
+                <GooglePlacesAutocomplete
+                    apiKey="AIzaSyA_HnIpk-nlGgMh-G1Evi-WX2T_wwqTmGs"
+                    onPlaceSelected={handlePlaceSelected}
+                    value={address}
+                    required                                                                                                                                                                                            
+                    onChange={(e)=>setAddress(e.target.value)}
+                    options={{
+                    types: ['address'],
+                    }}
+                    className="input text-sm input-bordered border-neutral-300 w-full max-w-full" 
+                    defaultValue={address}
                 />
-            </form>
-        </div>
+            </div>
+            <button 
+                type='submit'
+                className="btn lg:w-full md:w-fit w-full min-h-2rem lg:px-10 xl:text-xs lg:text-xs  
+                bg-black hover:bg-neutral-800 text-white lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">{isLoading === true ? <span class="loader"></span> : 'Update' }
+            </button>
+        </form>
 
-        <button 
-            // onClick={handleProfileUpdate} 
-            className="btn lg:w-fit md:w-fit w-1/2 min-h-2rem lg:px-10 xl:text-xs lg:text-xs  
-            bg-black hover:bg-neutral-800 text-white lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">Add Location
-        </button>
     </div>
 
 

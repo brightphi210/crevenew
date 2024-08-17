@@ -118,21 +118,9 @@ export const UserHomeDashboardHome = () => {
         fetchProfile();
     }, []);
 
-
-  const [searchTermInput, setSearchTermInput] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSearchInput = (event) => {
-    setSearchTermInput(event.target.value);
-  };
 
-
-  const [showSide, setShowSide] = useState(true);
-  const handleButtonClick = (e) => {
-    e.preventDefault();
-    setSearchTerm(searchTermInput); 
-    // setShowSide(false)
-  };
 
   const filteredItems = allTalents.filter(item => {
     const searchTermLower = searchTerm.toLowerCase();
@@ -146,65 +134,6 @@ export const UserHomeDashboardHome = () => {
     );
   });
 
-
-  // const [location, setLocation] = useState({ lat : null, lng:null});
-  // const [error, setError] = useState(null);
-
-  // useEffect(() => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(
-  //       (position) => {
-  //         setLocation({
-  //           lat: position.coords.latitude,
-  //           lng: position.coords.longitude
-  //         });
-  //       },
-  //       (error) => {
-  //         setError(error.message);
-  //       }
-  //     );
-  //   } else {
-  //     setError('Geolocation is not supported by this browser.');
-  //   }
-  // }, []);
-
-
- 
-
-
-
-
-  // const [address, setAddress] = useState('');
-  // const getAddress = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${apiKey1}`
-  //     );
-  //     const data = await response.json();
-
-  //     console.log('This is the datas', data);
-      
-      
-  //     if (data.results && data.results.length > 0) {
-  //       const formattedAddress = data.results[5]?.formatted_address;
-  //       setAddress(formattedAddress);
-  //       // console.log('Formatted Address:', formattedAddress);
-  //     } else {
-  //       console.warn('No results found in geocode response.');
-  //     }
-      
-      
-  //   } catch (error) {
-  //     console.error('Error getting address: ', error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (location.lat !== null && location.lng !== null) {
-  //     getAddress();
-  //   }
-  // }, [location]);
-  
   return (
     <div className='2xl:pl-[16rem] xl:pl-[15rem] lg:pl-[15rem] 2xl:pr-[3rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full'>
 
@@ -214,18 +143,12 @@ export const UserHomeDashboardHome = () => {
           <h2 className='text-2xl pb-3 lg:p-0'>Hi, {isLoading === true ? '- - - - -' : <>{profileData.user && profileData.user.fullname}! </>} </h2>
         </div>
 
-        <button onClick={()=>document.getElementById('my_modal_3').showModal()}>Show Modal</button>
+        {/* <button onClick={()=>document.getElementById('my_modal_3').showModal()}>Show Modal</button> */}
 
-        {/* <div className='flex items-center gap-3 ml-auto'>
+        <div className='flex items-center gap-3 ml-auto'>
             <FaLocationDot size={18} className='text-green-600'/>
-            <span className='text-sm'>{isLoading === true ? '- - -' : <>{address}</>}</span>
-        </div> */}
-        {/* <div className='relative 2xl:w-4/12  xl:w-1/2  lg:w-1/2 w-full flex ml-auto'>
-            <>
-            <input onChange={handleSearchInput} value={searchTermInput} type="text" placeholder="Search here . . ." className="input rounded-full text-sm input-bordered 2xl:p-7 xl:p-5 lg:p-5 w-full flex m-auto " />
-            <button onClick={handleButtonClick} className='absolute lg:top-2 top-1.5 right-3 text-xs bg-black text-white 2xl:py-3 xl:py-2 lg:py-2 px-4 py-2.5 rounded-full '>Search</button>
-            </>
-        </div> */}
+            <span className='text-sm'>{isLoading === true ? '- - -' : <>{profileData.address}</>}</span>
+        </div>
       </div>
 
       {showModal === true &&
