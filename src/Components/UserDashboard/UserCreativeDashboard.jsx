@@ -247,7 +247,7 @@ export const UserCreativeDashboardCom = () => {
               {filteredItems.length > 0 &&
                 <>
                   {filteredItems.filter(talent => talent.location !== null && talent.cover_image !== 'https://creve.store/media/coverimage.png').map((talent) => (
-                    <div className='bg-white  rounded-xl cursor-pointer relative shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]' key={talent.id}>
+                    <div className='bg-white  rounded-xl cursor-pointer relative border border-neutral-100' key={talent.id}>
                       <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
                         <div className='2xl:h-[20rem] relative xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
                           <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
