@@ -336,22 +336,32 @@ const SingleUserCreativeDash = () => {
     const [lat, setLat] = useState()
     const [lon, setLon] = useState()
     const key = apiKey1
-    let urlnew = `https://maps.googleapis.com/maps/api/geocode/json?address=+${'Emenike St, Diobu'},+${'Rivers'},+${'500101'}&key=${key}`
     useEffect(() => {
-      fetch(urlnew)
-        .then(res => res.json())
-        .then(res => {
-          if (res.status === 'OK') {
-            console.log('Cordinates' + JSON.stringify(res))
-            setLat(res.results[0].geometry.location.lat)
-            setLon(res.results[0].geometry.location.lng)
-          } else if (res.status === 'ZERO_RESULTS') {
-            alert(
-              'Unable to process this location. Please revise location fields and try submitting again.'
-            )
-          }
-        })
-    },[lat, lon])
+        // Ensure creativeData and location are defined before proceeding
+        if (creativeData && creativeData.location) {
+            const location = creativeData.location;
+            // let urlnew = `https://maps.googleapis.com/maps/api/geocode/json?address=+${'Emenike St, Diobu'},+${'Rivers'},+${'500101'}&key=${key}`
+          const urlnew = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=${key}`;
+          console.log('This is the link', urlnew);
+      
+          fetch(urlnew)
+            .then(res => res.json())
+            .then(res => {
+              if (res.status === 'OK') {
+                console.log('Coordinates', JSON.stringify(res));
+                setLat(res.results[0].geometry.location.lat);
+                setLon(res.results[0].geometry.location.lng);
+              } else if (res.status === 'ZERO_RESULTS') {
+                alert(
+                  'Unable to process this location. Please revise location fields and try submitting again.'
+                );
+              }
+            })
+            .catch(error => {
+              console.error('Error fetching location:', error);
+            });
+        }
+      }, [creativeData]);
   
     const renderMarker = (map, maps) => {
       let marker = new maps.Marker({
@@ -360,11 +370,7 @@ const SingleUserCreativeDash = () => {
         title: 'Talent Location'
       })
       return marker;
-    };
-
-
-    console.log('This is user data', creativeData);
-    
+    };    
 
   return (
 
@@ -436,113 +442,113 @@ const SingleUserCreativeDash = () => {
 
                     </div>
 
-                </div>
-            
-                <div className='flex  relative lg:mt-[3rem] mt-2 pt-4 px-3 border-t border-t-neutral-200'>
-                    <div className='flex lg:flex-row flex-col gap-3 w-full'>
-                        <div className='flex items-center gap-2'>
-                            <div className='w-14 h-14 rounded-full border border-neutral-200 overflow-hidden'>
-                                <img src={creativeData.profile_pics} alt="" className='w-14 h-14 object-cover'/>
-                            </div>
-
-                            {creativeData.user && (
-
-                                <div>
-                                    <h2 className='text-lg font-bold flex gap-2 items-center'>{creativeData.user.fullname}
-                                        {creativeData?.verified === true ? <MdVerified className='text-green-500'/>  : <GoUnverified className='text-red-500 font-bold'/> }
-                                    </h2>
-                                    <p className='text-sm'>{creativeData.display_name} <span className='text-xs text-neutral-400'>reviews({creativeData?.reviewed?.length})</span></p>
+                    </div>
+                
+                    <div className='flex  relative lg:mt-[3rem] mt-2 pt-4 px-3 border-t border-t-neutral-200'>
+                        <div className='flex lg:flex-row flex-col gap-3 w-full'>
+                            <div className='flex items-center gap-2'>
+                                <div className='w-14 h-14 rounded-full border border-neutral-200 overflow-hidden'>
+                                    <img src={creativeData.profile_pics} alt="" className='w-14 h-14 object-cover'/>
                                 </div>
-                            )}
-                        </div>
 
-                        <div className='lg:ml-auto'>
-                            <p className='font-semibold 2xl:text-sm xl:text-sm lg:text-sm text-sm flex gap-2 items-start pt-2'><GrLocation className='text-green-700 lg:text-xl text-2xl'/>{creativeData.location}</p>
-                        </div>
-                    </div>
-                </div>
+                                {creativeData.user && (
 
-                <div>
-                    <div className='grid lg:grid-cols-3 grid-cols-1 gap-10 pt-10'>
-
-                        <div className='lg:col-span-2'>
-                            <div className='2xl:h-[40rem] xl:h-[30rem] lg:h-[25rem] md:h-[35rem] h-[20rem] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-white overflow-hidden lg:rounded-2xl'>
-                                <PhotoProvider>
-                                    <PhotoView src={creativeData.cover_image}>
-                                        <img src={creativeData.cover_image} alt="" className='w-full cursor-pointer hover:transform hover:scale-105 transition-all ease-linear h-full object-cover'/>
-                                    </PhotoView>
-                                </PhotoProvider>
+                                    <div>
+                                        <h2 className='text-lg font-bold flex gap-2 items-center'>{creativeData.user.fullname}
+                                            {creativeData?.verified === true ? <MdVerified className='text-green-500'/>  : <GoUnverified className='text-red-500 font-bold'/> }
+                                        </h2>
+                                        <p className='text-sm'>{creativeData.display_name} <span className='text-xs text-neutral-400'>reviews({creativeData?.reviewed?.length})</span></p>
+                                    </div>
+                                )}
                             </div>
 
-                            {creativeData.images && (
+                            <div className='lg:ml-auto'>
+                                <p className='font-semibold 2xl:text-sm xl:text-sm lg:text-sm text-sm flex gap-2 items-start pt-2'><GrLocation className='text-green-700 lg:text-xl text-2xl'/>{creativeData.location}</p>
+                            </div>
+                        </div>
+                    </div>
 
-                            <div className='lg:grid lg:grid-cols-3 grid grid-cols-2 items-center gap-4 pt-6 lg:px-0 px-5'>
-                                {creativeData.images.map((Image)=>(
+                    <div>
+                        <div className='grid lg:grid-cols-3 grid-cols-1 gap-10 pt-10'>
 
+                            <div className='lg:col-span-2'>
+                                <div className='2xl:h-[40rem] xl:h-[30rem] lg:h-[25rem] md:h-[35rem] h-[20rem] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-white overflow-hidden lg:rounded-2xl'>
                                     <PhotoProvider>
-                                        <div className='lg:h-[13rem] h-[11rem]  shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-white lg:w-full w-full overflow-hidden rounded-md'>
-                                            <PhotoView src={Image.image}>
-                                                <img src={Image.image} alt="" className='cursor-pointer lg:h-[13rem] h-[11rem] w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
-                                            </PhotoView>
-                                        </div>
+                                        <PhotoView src={creativeData.cover_image}>
+                                            <img src={creativeData.cover_image} alt="" className='w-full cursor-pointer hover:transform hover:scale-105 transition-all ease-linear h-full object-cover'/>
+                                        </PhotoView>
                                     </PhotoProvider>
-                                ))}
-                            </div>
+                                </div>
 
-                            )}
+                                {creativeData.images && (
 
-                <div className='lg:w-[100%] w-[95%] lg:m-0 lg:mt-10 m-auto rounded-2xl  pt-5 lg:p-10 p-5 mt-5 bg-neutral-100'>
-                    <h2 className='text-base py-3 text-center pb-8'> - Reviews -</h2>
+                                <div className='lg:grid lg:grid-cols-3 grid grid-cols-2 items-center gap-4 pt-6 lg:px-0 px-5'>
+                                    {creativeData.images.map((Image)=>(
 
-
-                    <div className='w-full'>
-
-                        {creativeData.reviewed && 
-                            <>
-                                <Swiper
-                                    cssMode={true}
-                                    navigation={true}
-                                    pagination={true}
-                                    mousewheel={true}
-                                    loop={true}
-                                    keyboard={true}
-                                    modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-                                    className="mySwiper"
-                                    >
-                                    {creativeData?.reviewed.map((review)=> <>
-                                    <SwiperSlide>
-                                        <div>
-                                            <div className='flex flex-row items-center gap-3 m-auto justify-center'>
-                                                <div className='border border-neutral-300 w-8 h-8 overflow-hidden rounded-full'>
-                                                    <img src={review.reviewer.profile_pics} alt="" className='w-8 h-8 object-cover'/>
-                                                </div>
-                                                <h2>{review.reviewer.user.fullname}</h2>
+                                        <PhotoProvider>
+                                            <div className='lg:h-[13rem] h-[11rem]  shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-white lg:w-full w-full overflow-hidden rounded-md'>
+                                                <PhotoView src={Image.image}>
+                                                    <img src={Image.image} alt="" className='cursor-pointer lg:h-[13rem] h-[11rem] w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
+                                                </PhotoView>
                                             </div>
+                                        </PhotoProvider>
+                                    ))}
+                                </div>
 
-                                            <p className='text-xs text-center w-9/12 flex justify-center m-auto pt-4 mb-10'>{review.content}</p>
-                                        </div>
-                                    </SwiperSlide>
-                                    </>)}
+                                )}
 
-                                </Swiper>
+                    <div className='lg:w-[100%] w-[95%] lg:m-0 lg:mt-10 m-auto rounded-2xl  pt-5 lg:p-10 p-5 mt-5 bg-neutral-100'>
+                        <h2 className='text-base py-3 text-center pb-8'> - Reviews -</h2>
 
+
+                        <div className='w-full'>
+
+                            {creativeData.reviewed && 
+                                <>
+                                    <Swiper
+                                        cssMode={true}
+                                        navigation={true}
+                                        pagination={true}
+                                        mousewheel={true}
+                                        loop={true}
+                                        keyboard={true}
+                                        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+                                        className="mySwiper"
+                                        >
+                                        {creativeData?.reviewed.map((review)=> <>
+                                        <SwiperSlide>
+                                            <div>
+                                                <div className='flex flex-row items-center gap-3 m-auto justify-center'>
+                                                    <div className='border border-neutral-300 w-8 h-8 overflow-hidden rounded-full'>
+                                                        <img src={review.reviewer.profile_pics} alt="" className='w-8 h-8 object-cover'/>
+                                                    </div>
+                                                    <h2>{review.reviewer.user.fullname}</h2>
+                                                </div>
+
+                                                <p className='text-xs text-center w-9/12 flex justify-center m-auto pt-4 mb-10'>{review.content}</p>
+                                            </div>
+                                        </SwiperSlide>
+                                        </>)}
+
+                                    </Swiper>
+
+                                </>
+                            }
+
+                            
+                            <>
+                                {creativeData?.reviewed && creativeData?.reviewed.length <= 0 && <p className='text-center text-sm'>No Review Found</p>}
                             </>
-                        }
-
-                        
-                        <>
-                            {creativeData?.reviewed && creativeData?.reviewed.length <= 0 && <p className='text-center text-sm'>No Review Found</p>}
-                        </>
-                    </div>
-                </div>
                         </div>
+                    </div>
+                    </div>
 
                         <div>
                             <div className='w-full h-full bg-neutral-200 mb-5' style={{width : '100%', height : '50vh'}}>
                                 <GoogleMapReact
                                     bootstrapURLKeys={{ key: key }}
                                     center={{lat: lat, lng: lon}}
-                                    zoom={10}
+                                    zoom={15}
                                     yesIWantToUseGoogleMapApiInternals= {true}
                                     onGoogleApiLoaded={({ map, maps }) => {
                                     renderMarker(map, maps)
@@ -618,9 +624,6 @@ const SingleUserCreativeDash = () => {
                     </div>
                 </div>
 
-
-
-
             </>}
 
             <dialog id="my_modal_3" className="modal">
@@ -667,7 +670,7 @@ const SingleUserCreativeDash = () => {
                         </div>
 
                         <div className='flex items-center text-sm pt-5'>
-                            <button className='underline' onClick={()=>document.getElementById('my_modal_3').close()}>Nevermind</button>
+                            <p className='underline' onClick={()=>document.getElementById('my_modal_3').close()}>Nevermind</p>
                             <button disabled={!isBooked} type='submit' className={`ml-auto py-3 px-4 color text-white rounded-full ${!isBooked ? 'opacity-50 cursor-not-allowed' : ''}`} >
                                 {isLoading2 === true ? <span className="loading loading-spinner loading-sd"></span> : 'Send Request' }
                             </button>
@@ -698,7 +701,7 @@ const SingleUserCreativeDash = () => {
                         </div>
 
                         <div className='flex items-center text-sm pt-5'>
-                            <button className='underline' onClick={()=>document.getElementById('my_modal_2').close()}>Nevermind</button>
+                            <p className='underline' onClick={()=>document.getElementById('my_modal_2').close()}>Nevermind</p>
                             <button className='ml-auto py-3 px-5 color text-xs text-white rounded-full'>{isLoading2 === true ? <span className="loading loading-spinner loading-sd"></span> : 'Send Review'}</button>
                         </div>
                     </form>
