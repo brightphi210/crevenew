@@ -232,7 +232,7 @@ export const UserHomeDashboardHome = () => {
         </div>
       </div>
 
-      <div className='pt-10 lg:px-0 px-7 pb-20 '>
+      <div className='pt-10 lg:px-0 px-5 pb-20 '>
 
         <div className='py-5 pb-10 flex items-center'>
           <h2 className='text-xl '>Top Creatives</h2>
@@ -249,7 +249,7 @@ export const UserHomeDashboardHome = () => {
         <>
           {filteredItems.length > 0 && 
 
-            <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5 pt-10 lg:px-0 px-5'>
+            <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5 pt-10 lg:px-0'>
             {filteredItems.length > 0 &&
               <>
                 {filteredItems.filter(talent => talent.location !== null && talent.cover_image !== 'https://creve.store/media/coverimage.png').map((talent) => (
