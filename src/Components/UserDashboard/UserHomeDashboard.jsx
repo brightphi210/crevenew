@@ -147,60 +147,63 @@ export const UserHomeDashboardHome = () => {
   });
 
 
-  const [location, setLocation] = useState({ lat : null, lng:null});
-  const [error, setError] = useState(null);
+  // const [location, setLocation] = useState({ lat : null, lng:null});
+  // const [error, setError] = useState(null);
 
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setLocation({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          });
-        },
-        (error) => {
-          setError(error.message);
-        }
-      );
-    } else {
-      setError('Geolocation is not supported by this browser.');
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         setLocation({
+  //           lat: position.coords.latitude,
+  //           lng: position.coords.longitude
+  //         });
+  //       },
+  //       (error) => {
+  //         setError(error.message);
+  //       }
+  //     );
+  //   } else {
+  //     setError('Geolocation is not supported by this browser.');
+  //   }
+  // }, []);
 
 
-  const apiKey1 = 'AIzaSyA_HnIpk-nlGgMh-G1Evi-WX2T_wwqTmGs';
+ 
 
-  const [address, setAddress] = useState('');
-  const getAddress = async () => {
-    try {
-      const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${apiKey1}`
-      );
-      const data = await response.json();
 
-      console.log('This is the datas', data);
+
+
+  // const [address, setAddress] = useState('');
+  // const getAddress = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${apiKey1}`
+  //     );
+  //     const data = await response.json();
+
+  //     console.log('This is the datas', data);
       
       
-      if (data.results && data.results.length > 0) {
-        const formattedAddress = data.results[5]?.formatted_address;
-        setAddress(formattedAddress);
-        // console.log('Formatted Address:', formattedAddress);
-      } else {
-        console.warn('No results found in geocode response.');
-      }
+  //     if (data.results && data.results.length > 0) {
+  //       const formattedAddress = data.results[5]?.formatted_address;
+  //       setAddress(formattedAddress);
+  //       // console.log('Formatted Address:', formattedAddress);
+  //     } else {
+  //       console.warn('No results found in geocode response.');
+  //     }
       
       
-    } catch (error) {
-      console.error('Error getting address: ', error);
-    }
-  };
+  //   } catch (error) {
+  //     console.error('Error getting address: ', error);
+  //   }
+  // };
 
-  useEffect(() => {
-    if (location.lat !== null && location.lng !== null) {
-      getAddress();
-    }
-  }, [location]);
+  // useEffect(() => {
+  //   if (location.lat !== null && location.lng !== null) {
+  //     getAddress();
+  //   }
+  // }, [location]);
   
   return (
     <div className='2xl:pl-[16rem] xl:pl-[15rem] lg:pl-[15rem] 2xl:pr-[3rem] xl:pr-[5rem] lg:pr-[3rem]  pt-28 w-full'>
@@ -413,7 +416,7 @@ export const UserHomeDashboardHome = () => {
                 </div>
             </div>
           </div>
-        </dialog>
+      </dialog>
     </div>
   )
 }

@@ -39,6 +39,8 @@ import Pusher from "pusher-js";
 import MyLoader from '../allLoadingState/MyLoader';
 import { MdVerified } from "react-icons/md";
 import { BsChat } from 'react-icons/bs';
+import GoogleMapReact from 'google-map-react'
+
 
 
 const SingleUserCreativeDash = () => {
@@ -136,7 +138,6 @@ const SingleUserCreativeDash = () => {
                 document.getElementById('my_modal_3').close()
                 setIsLoading2(false);
             } else {
-                console.log('Failed to book');
                 setIsLoading2(false);
             }
         } catch (error) {
@@ -178,7 +179,6 @@ const SingleUserCreativeDash = () => {
                 document.getElementById('my_modal_2').close()
                 setIsLoading2(false);
             } else {
-                console.log('Failed to Review');
                 setIsLoading2(false);
             }
         } catch (error) {
@@ -256,7 +256,7 @@ const SingleUserCreativeDash = () => {
         }
         const data = await response.json();
 
-        console.log(data);
+        // console.log(data);
         setAllTalents(data)
 
         } catch (error) {
@@ -277,7 +277,7 @@ const SingleUserCreativeDash = () => {
     const [isSending, setIsSending] = useState(false);
 
     useEffect(() => {
-        Pusher.logToConsole = true;
+        // Pusher.logToConsole = true;
 
         const pusher = new Pusher('ffd0f41c2f813018fb0d', {
             cluster: 'mt1'
@@ -285,7 +285,7 @@ const SingleUserCreativeDash = () => {
 
         const channel = pusher.subscribe(`Chat_between_${userToken?.profile_id}_and_${id}`);
         channel.bind('connected', function (data) {
-            console.log('Received message:', data.message);
+            // console.log('Received message:', data.message);
         });
     }, []);
 
@@ -325,6 +325,46 @@ const SingleUserCreativeDash = () => {
             setIsSending(false);
         }
     };
+
+
+
+
+
+
+    const apiKey1 = 'AIzaSyA_HnIpk-nlGgMh-G1Evi-WX2T_wwqTmGs';
+
+    const [lat, setLat] = useState()
+    const [lon, setLon] = useState()
+    const key = apiKey1
+    let urlnew = `https://maps.googleapis.com/maps/api/geocode/json?address=+${'Emenike St, Diobu'},+${'Rivers'},+${'500101'}&key=${key}`
+    useEffect(() => {
+      fetch(urlnew)
+        .then(res => res.json())
+        .then(res => {
+          if (res.status === 'OK') {
+            console.log('Cordinates' + JSON.stringify(res))
+            setLat(res.results[0].geometry.location.lat)
+            setLon(res.results[0].geometry.location.lng)
+          } else if (res.status === 'ZERO_RESULTS') {
+            alert(
+              'Unable to process this location. Please revise location fields and try submitting again.'
+            )
+          }
+        })
+    },[lat, lon])
+  
+    const renderMarker = (map, maps) => {
+      let marker = new maps.Marker({
+        position: {lat: lat, lng: lon},
+        map,
+        title: 'Talent Location'
+      })
+      return marker;
+    };
+
+
+    console.log('This is user data', creativeData);
+    
 
   return (
 
@@ -450,74 +490,8 @@ const SingleUserCreativeDash = () => {
                             </div>
 
                             )}
-                        </div>
 
-                        <div className='bg-neutral-50 border border-neutral-200  w-full lg:rounded-xl lg:p-10 p-5 h-fit'>
-
-                            <div className='flex items-center '>
-                                <h2 className='font-bold 2xl:text-sm xl:text-xs lg:text-xs text-sm '>Details</h2>
-                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm  font-semibold ml-auto'><span className='font-normal'>Starting Price </span>: {creativeData.starting_price}</p>
-                            </div>
-
-                            <div className='pt-5 '>
-                                <p className='text-sm text-justify 2xl:text-sm xl:text-xs lg:text-xs'>{creativeData.about}</p>
-                            </div>
-
-                            <div className='flex items-center gap-2 pt-5'>
-                                <p className='bg-neutral-200  p-2 rounded-full'><PiPhoneCallFill /></p>
-                                <button className='font-semibold '>{creativeData.phone_number}</button>
-                            </div>
-
-
-                            <div className='py-5 flex flex-wrap gap-3'>
-                                {creativeData.dskills &&
-                                    creativeData.dskills.map((skill, index) => (
-                                    <button className='border border-neutral-300 py-2 px-4 text-xs rounded-md flex gap-1 items-center' key={index}>
-                                        <GoDotFill className='mycolor'/>{skill.skill}
-                                    </button>
-                                ))}
-                            </div>
-
-
-
-                            <div className='pt-5 border-t border-t-neutral-200 '>
-                                <p className='text-sm font-semibold'>Category</p>
-                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.digital_skills}</p>
-                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.nondigital_skills}</p>
-                            </div>
-
-
-                            <div className='pt-5'>
-                                <p className='text-sm font-semibold '>Work Type</p>
-                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'><MdWorkOutline className='mycolor text-base'/>{creativeData.work_type}</p>
-                            </div>
-
-                            <div className='pt-5'>
-                                <p className='text-sm font-semibold '>Language</p>
-                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'><IoLanguage className='mycolor text-base'/>{creativeData.language}</p>
-                            </div>
-
-                            <div className='pt-5'>
-                                <p className='text-sm font-semibold '>Contact</p>
-                                <Link to={creativeData.whatsapp_link}>
-                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm pt-4 flex gap-2 items-center'><MdOutlineWhatsapp className='mycolor text-base'/>Whatsapp</p>
-                                </Link>
-
-                                <Link to={creativeData.website_link}>
-                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm pt-4 flex gap-2 items-center'><GrLanguage className='mycolor text-base'/>Website</p>
-                                </Link>
-                            </div>
-
-                            <div className='flex gap-3 pt-3 mt-5 border-t border-t-neutral-200'>
-                                <button onClick={()=>document.getElementById('my_modal_2').showModal()} className='bg-accent py-3 px-2 mt-5 text-sm text-white rounded-full w-full'>Drop Review</button>
-                                <button onClick={handleShare} className='bg-black py-3 px-2 mt-5 text-sm text-white flex justify-center items-center m-auto gap-3 rounded-full w-full'>Share <IoShareSocialSharp /></button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div className='lg:w-[65%] w-[95%] lg:m-0 lg:mt-10 m-auto rounded-2xl  pt-5 lg:p-10 p-5 mt-5 bg-neutral-100'>
+                <div className='lg:w-[100%] w-[95%] lg:m-0 lg:mt-10 m-auto rounded-2xl  pt-5 lg:p-10 p-5 mt-5 bg-neutral-100'>
                     <h2 className='text-base py-3 text-center pb-8'> - Reviews -</h2>
 
 
@@ -561,6 +535,92 @@ const SingleUserCreativeDash = () => {
                         </>
                     </div>
                 </div>
+                        </div>
+
+                        <div>
+                            <div className='w-full h-full bg-neutral-200 mb-5' style={{width : '100%', height : '50vh'}}>
+                                <GoogleMapReact
+                                    bootstrapURLKeys={{ key: key }}
+                                    center={{lat: lat, lng: lon}}
+                                    zoom={10}
+                                    yesIWantToUseGoogleMapApiInternals= {true}
+                                    onGoogleApiLoaded={({ map, maps }) => {
+                                    renderMarker(map, maps)
+                                    }}
+                                >
+                                </GoogleMapReact>
+                            </div>
+
+                            <div className='bg-neutral-50 border border-neutral-200  w-full lg:rounded-xl lg:p-10 p-5 h-fit'>
+
+                                <div className='flex items-center '>
+                                    <h2 className='font-bold 2xl:text-sm xl:text-xs lg:text-xs text-sm '>Details</h2>
+                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm  font-semibold ml-auto'><span className='font-normal'>Starting Price </span>: {creativeData.starting_price}</p>
+                                </div>
+
+                                <div className='pt-5 '>
+                                    <p className='text-sm text-justify 2xl:text-sm xl:text-xs lg:text-xs'>{creativeData.about}</p>
+                                </div>
+
+                                <div className='flex items-center gap-2 pt-5'>
+                                    <p className='bg-neutral-200  p-2 rounded-full'><PiPhoneCallFill /></p>
+                                    <button className='font-semibold '>{creativeData.phone_number}</button>
+                                </div>
+
+
+                                <div className='py-5 flex flex-wrap gap-3'>
+                                    {creativeData.dskills &&
+                                        creativeData.dskills.map((skill, index) => (
+                                        <button className='border border-neutral-300 py-2 px-4 text-xs rounded-md flex gap-1 items-center' key={index}>
+                                            <GoDotFill className='mycolor'/>{skill.skill}
+                                        </button>
+                                    ))}
+                                </div>
+
+
+
+                                <div className='pt-5 border-t border-t-neutral-200 '>
+                                    <p className='text-sm font-semibold'>Category</p>
+                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.digital_skills}</p>
+                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.nondigital_skills}</p>
+                                </div>
+
+
+                                <div className='pt-5'>
+                                    <p className='text-sm font-semibold '>Work Type</p>
+                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'><MdWorkOutline className='mycolor text-base'/>{creativeData.work_type}</p>
+                                </div>
+
+                                <div className='pt-5'>
+                                    <p className='text-sm font-semibold '>Language</p>
+                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'><IoLanguage className='mycolor text-base'/>{creativeData.language}</p>
+                                </div>
+
+                                <div className='pt-5'>
+                                    <p className='text-sm font-semibold '>Contact</p>
+                                    <Link to={creativeData.whatsapp_link}>
+                                        <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm pt-4 flex gap-2 items-center'><MdOutlineWhatsapp className='mycolor text-base'/>Whatsapp</p>
+                                    </Link>
+
+                                    <Link to={creativeData.website_link}>
+                                        <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm pt-4 flex gap-2 items-center'><GrLanguage className='mycolor text-base'/>Website</p>
+                                    </Link>
+                                </div>
+
+                                <div className='flex gap-3 pt-3 mt-5 border-t border-t-neutral-200'>
+                                    <button onClick={()=>document.getElementById('my_modal_2').showModal()} className='bg-accent py-3 px-2 mt-5 text-sm text-white rounded-full w-full'>Drop Review</button>
+                                    <button onClick={handleShare} className='bg-black py-3 px-2 mt-5 text-sm text-white flex justify-center items-center m-auto gap-3 rounded-full w-full'>Share <IoShareSocialSharp /></button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
             </>}
 
             <dialog id="my_modal_3" className="modal">
