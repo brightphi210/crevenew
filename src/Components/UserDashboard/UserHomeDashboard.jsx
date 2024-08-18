@@ -243,7 +243,7 @@ export const UserHomeDashboardHome = () => {
                 </SwiperSlide>
 
                 <SwiperSlide>
-                  <div className='bg-purple-300 text-white sect p-5 rounded-md relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden border border-purple-200' >
+                  <div className='bg-purple-500 text-white sect p-5 rounded-md relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden border border-purple-200' >
                     <div className='relative isolate z-20'>
                       <h2 className='2xl:text-xl xl:text-xl lg:text-lg text-lg font-bold'>Become a Talent</h2>
                       <p className='py-3 lg:text-sm text-base'>Join other talents and earn</p>
