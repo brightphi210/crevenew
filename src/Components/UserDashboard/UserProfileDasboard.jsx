@@ -8,6 +8,7 @@ import { FiEdit } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { FaArrowRight } from 'react-icons/fa6'
 import GooglePlacesAutocomplete from 'react-google-autocomplete';
+import MyLoader from '../allLoadingState/MyLoader'
 
 
 const UserProfileDasboard = () => {
@@ -41,6 +42,8 @@ export const UserProfileDash = () => {
     let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
     const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
     const [isLoading, setIsLoading] = useState(false)
+    const [isLoading2, setIsLoading2] = useState(false)
+    const [isLoading3, setIsLoading3] = useState(false)
     const [cover_image, setCover_Image] = useState(null)
     const [image, setImage] = useState(null) 
     const [fileName, setFileName] = useState('') 
@@ -56,7 +59,7 @@ export const UserProfileDash = () => {
 
     const url =`${BASE_URL}/userprofile/${userToken.profile_id}/`
     const handleProfileUpdate = async (e) =>{
-        setIsLoading(true)
+        setIsLoading3(true)
         e.preventDefault() 
 
         const formData = new FormData()
@@ -73,19 +76,19 @@ export const UserProfileDash = () => {
             })
             
             if(respose.status === 200 || respose.ok){
-                setIsLoading(false)
+                setIsLoading3(false)
                 document.getElementById('my_modal_1').showModal();
             }   
 
             else{
                 const data = await respose.json()
                 console.log(data);
-                setIsLoading(false)
+                setIsLoading3(false)
             }
 
         } catch (error) {
             console.log('There was an error', error);
-            setIsLoading(false)
+            setIsLoading3(false)
         }
     }
 
@@ -93,7 +96,7 @@ export const UserProfileDash = () => {
 
     const url2 =`${BASE_URL}/userprofile/${userToken.profile_id}/`
     const handleProfileUpdate2 = async (e) =>{
-        setIsLoading(true)
+        setIsLoading2(true)
         e.preventDefault() 
 
         const formData = new FormData()
@@ -109,19 +112,19 @@ export const UserProfileDash = () => {
             })
             
             if(respose.status === 200 || respose.ok){
-                setIsLoading(false)
+                setIsLoading2(false)
                 document.getElementById('my_modal_1').showModal();
             }   
 
             else{
                 const data = await respose.json()
                 console.log(data);
-                setIsLoading(false)
+                setIsLoading2(false)
             }
 
         } catch (error) {
             console.log('There was an error', error);
-            setIsLoading(false)
+            setIsLoading2(false)
         }
     }
 
@@ -167,82 +170,86 @@ export const UserProfileDash = () => {
 
     <h2 className='text-2xl font-bold pb-10'>Settings</h2>
 
-    <div className='bg-white'>
 
-        <div onClick={()=> document.querySelector(".input-field").click()} className='2xl:w-fit xl:w-fit lg:w-fit md:w-fit lg:block flex justify-center '>
-            <input  type="file" accept='image/*' className='input-field' hidden
-                onChange={({target: {files}}) =>{
-                    files[0] && setFileName(files[0].name)
-                    if(files){
-                        setImage(URL.createObjectURL(files[0]))
-                        setCoverImage(files[0])
-                        setCover_Image(files[0])
-                    }
-                }}
-            />
 
-            {image || cover_image ?
-                <div className=' lg:w-[8rem] lg:h-[8rem] h-[8rem] w-[8rem] overflow-hidden rounded-full bg-neutral-50 border border-neutral-300'>
-                    {image && (
-                        <img src={image} alt='' className='w-full h-full object-cover cursor-pointer'/> 
-                    )}
+    {isLoading === true ? <MyLoader />  :
+        <div className='bg-white'>
 
-                    <div className='relative lg:w-[8rem] lg:h-[8rem] w-[8rem] h-[8rem]'>
+            <div onClick={()=> document.querySelector(".input-field").click()} className='2xl:w-fit xl:w-fit lg:w-fit md:w-fit lg:block flex justify-center '>
+                <input  type="file" accept='image/*' className='input-field' hidden
+                    onChange={({target: {files}}) =>{
+                        files[0] && setFileName(files[0].name)
+                        if(files){
+                            setImage(URL.createObjectURL(files[0]))
+                            setCoverImage(files[0])
+                            setCover_Image(files[0])
+                        }
+                    }}
+                />
 
-                        {cover_image && (
-                            <img src={cover_image} alt='' className='w-full h-full object-cover cursor-pointer'/> 
+                {image || cover_image ?
+                    <div className=' lg:w-[8rem] lg:h-[8rem] h-[8rem] w-[8rem] overflow-hidden rounded-full bg-neutral-50 border border-neutral-300'>
+                        {image && (
+                            <img src={image} alt='' className='w-full h-full object-cover cursor-pointer'/> 
                         )}
 
+                        <div className='relative lg:w-[8rem] lg:h-[8rem] w-[8rem] h-[8rem]'>
 
-                        <div className='absolute bg-white rounded-full bottom-5 right-6 w-fit  p-2 cursor-pointer'>
-                            <p className='text-sm p-1'><FiEdit /></p>
+                            {cover_image && (
+                                <img src={cover_image} alt='' className='w-full h-full object-cover cursor-pointer'/> 
+                            )}
+
+
+                            <div className='absolute bg-white rounded-full bottom-5 right-6 w-fit  p-2 cursor-pointer'>
+                                <p className='text-sm p-1'><FiEdit /></p>
+                            </div>
+                        </div>
+                        
+                    </div> :
+
+                    <div className='lg:w-[8rem] w-[8rem] lg:h-[8rem] h-[8rem] flex justify-center items-center cursor-pointer border border-neutral-300 rounded-full'>
+                        <div className=''>
+                            <p className='text-xs'>PICS </p>
                         </div>
                     </div>
-                    
-                </div> :
+                }
 
-                <div className='lg:w-[8rem] w-[8rem] lg:h-[8rem] h-[8rem] flex justify-center items-center cursor-pointer border border-neutral-300 rounded-full'>
-                    <div className=''>
-                        <p className='text-xs'>PICS </p>
-                    </div>
+            </div>
+
+
+
+            <button 
+                onClick={handleProfileUpdate} 
+                className="btn lg:w-fit md:w-fit w-1/2 min-h-2rem lg:px-10 xl:text-xs lg:text-xs  
+                bg-black hover:bg-neutral-800 text-white lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">{isLoading3 === true ? <span class="loader"></span> : 'Update' }
+            </button>
+
+
+            <form onSubmit={handleProfileUpdate2} className='mt-5 pt-5 2xl:w-[50%] w-full border-t border-neutral-200'>
+
+                <div>
+                    <GooglePlacesAutocomplete
+                        apiKey="AIzaSyA_HnIpk-nlGgMh-G1Evi-WX2T_wwqTmGs"
+                        onPlaceSelected={handlePlaceSelected}
+                        value={address}
+                        required                                                                                                                                                                                            
+                        onChange={(e)=>setAddress(e.target.value)}
+                        options={{
+                        types: ['address'],
+                        }}
+                        className="input text-sm input-bordered border-neutral-300 w-full max-w-full" 
+                        defaultValue={address}
+                    />
                 </div>
-            }
+                <button 
+                    type='submit'
+                    className="btn lg:w-full md:w-fit w-full min-h-2rem lg:px-10 xl:text-xs lg:text-xs  
+                    bg-black hover:bg-neutral-800 text-white lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">{isLoading2 === true ? <span class="loader"></span> : 'Update' }
+                </button>
+            </form>
 
         </div>
-
-
-
-        <button 
-            onClick={handleProfileUpdate} 
-            className="btn lg:w-fit md:w-fit w-1/2 min-h-2rem lg:px-10 xl:text-xs lg:text-xs  
-            bg-black hover:bg-neutral-800 text-white lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">{isLoading === true ? <span class="loader"></span> : 'Update' }
-        </button>
-
-
-           <form onSubmit={handleProfileUpdate2} className='mt-5 pt-5 2xl:w-[50%] w-full border-t border-neutral-200'>
-
-            {/* <div>
-                <GooglePlacesAutocomplete
-                    apiKey="AIzaSyA_HnIpk-nlGgMh-G1Evi-WX2T_wwqTmGs"
-                    onPlaceSelected={handlePlaceSelected}
-                    value={address}
-                    required                                                                                                                                                                                            
-                    onChange={(e)=>setAddress(e.target.value)}
-                    options={{
-                    types: ['address'],
-                    }}
-                    className="input text-sm input-bordered border-neutral-300 w-full max-w-full" 
-                    defaultValue={address}
-                />
-            </div> */}
-            <button 
-                type='submit'
-                className="btn lg:w-full md:w-fit w-full min-h-2rem lg:px-10 xl:text-xs lg:text-xs  
-                bg-black hover:bg-neutral-800 text-white lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">{isLoading === true ? <span class="loader"></span> : 'Update' }
-            </button>
-        </form>
-
-    </div>
+     }
 
 
 
