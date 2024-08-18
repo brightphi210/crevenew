@@ -221,7 +221,7 @@ export const UserProfileDash = () => {
 
            <form onSubmit={handleProfileUpdate2} className='mt-5 pt-5 2xl:w-[50%] w-full border-t border-neutral-200'>
 
-            <div>
+            {/* <div>
                 <GooglePlacesAutocomplete
                     apiKey="AIzaSyA_HnIpk-nlGgMh-G1Evi-WX2T_wwqTmGs"
                     onPlaceSelected={handlePlaceSelected}
@@ -234,7 +234,7 @@ export const UserProfileDash = () => {
                     className="input text-sm input-bordered border-neutral-300 w-full max-w-full" 
                     defaultValue={address}
                 />
-            </div>
+            </div> */}
             <button 
                 type='submit'
                 className="btn lg:w-full md:w-fit w-full min-h-2rem lg:px-10 xl:text-xs lg:text-xs  
