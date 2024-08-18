@@ -17,6 +17,12 @@ import noData from '../Images/nodata2.png'
 import MyLoader from '../allLoadingState/MyLoader';
 import locationImage from '../Images/loca.jpg'
 
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Pagination, Autoplay, Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
 const UserHomeDashboard = () => {
 
   const [show, setShow] = useState(false)
@@ -187,54 +193,99 @@ export const UserHomeDashboardHome = () => {
         </div>
       }
 
-      <div className='shadow-[rgba(7,_65,_210,_0.03)_0px_9px_30px] bg-white 2xl:p-10 xl:p-5 lg:p-5 p-5 mt-5 lg:w-full w-[95%] m-auto grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 grid-cols-1 2xl:gap-10 lg:gap-5 gap-5 items-center 2xl:rounded-3xl xl:rounded-xl lg:rounded-xl rounded-md'>
+      <div className='shadow-[rgba(7,_65,_210,_0.03)_0px_9px_30px] bg-white 2xl:p-10 xl:p-5 lg:p-5 p-0 mt-5 lg:w-full w-[95%] m-auto  items-center 2xl:rounded-md xl:rounded-md lg:rounded-md rounded-md'>
+          <Swiper
+                slidesPerView={1}
+                spaceBetween={40}
+                navigation={true}
+                loop={true}
+                pagination={{
+                    clickable: true,
+                }}
 
-        <div className='bg-neutral-50 p-5 rounded-xl border border-neutral-200'>
-          <p className='text-sm'>Welcome to </p>
-          <div className='flex items-center gap-2 py-3'>
-            <img src={logo} alt="" className='w-5 h-5'/>
-            <h2 className='text-xl font-semibold'>Creve</h2>
-          </div>
-          <p className='2xl:text-sm xl:text-sm lg:text-[10px] text-sm'>You are highly welcome to creve, you can now browse creatives/talents around your locaton and hire at ease</p>
-        </div>
+                autoplay={{
+                    delay: 5000,
+                    disableOnInteraction: false,
+                }}
+                breakpoints={{
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 10,
+                },
 
-        <div className='lg:bg-white sect p-5 rounded-xl relative w-full h-full overflow-hidden border border-l-purple-200' >
-          <div className='relative isolate z-20'>
-            <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg text-purple-800 font-bold'>Become a Talent</h2>
-            <p className='py-3 lg:text-sm text-base'>Become a talent and earn</p>
-            <Link to={'/register'}>
-              <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-purple-200 text-xs '>Get Started</button>
-            </Link>
-          </div>
-        </div>
+                900: {
+                  slidesPerView: 3,
+                  spaceBetween: 10,
+                },
 
-        
-        <div className='bg-white sect1 p-5 rounded-xl relative w-full h-full overflow-hidden border border-orange-200' >
-          <div className='relative isolate z-20 '>
-            <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg text-orange-700 font-bold'>Our  Blog</h2>
-            <p className='py-3 lg:text-sm text-base '>Browse our and get latest update</p>
-            <Link to={'/' + 'blog'}>
-              <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-orange-200 text-xs'>Browser</button>
-            </Link>
-        </div>
-        </div>
 
-        
-        <div className='bg-white sect2 p-5 rounded-xl relative w-full h-full overflow-hidden border border-lime-200' >
-          <div className='relative isolate z-20'>
-            <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg text-lime-800 font-bold'>Community</h2>
-            <p className='py-3 lg:text-sm text-base '>Join  community of like minds </p>
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 10,
+                },
+                }}
+                modules={[Pagination, Autoplay, Navigation]}
+                className="mySwiper"
+            >
+                <SwiperSlide>
+                    <div className='bg-black text-white p-5 rounded-md border w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] border-neutral-200'>
+                      <p className='text-sm'>Welcome to </p>
+                      <div className='flex items-center gap-2 py-3'>
+                        <img src={logo} alt="" className='w-5 h-5'/>
+                        <h2 className='text-xl font-semibold'>Creve</h2>
+                      </div>
+                      <p className='2xl:text-sm xl:text-sm lg:text-[10px] text-sm'>You are highly welcome to creve, you can now browse creatives/talents around your locaton and hire at ease</p>
+                    </div>
+                </SwiperSlide>
 
-            <Link to={'https://t.me/+nflgbLBXe5xlMjI8'}>
-              <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-lime-200 text-xs'>Join Now</button>
-            </Link>
-        </div>
-        </div>
+                <SwiperSlide>
+                  <div className='bg-purple-300 text-white sect p-5 rounded-md relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden border border-purple-200' >
+                    <div className='relative isolate z-20'>
+                      <h2 className='2xl:text-xl xl:text-xl lg:text-lg text-lg font-bold'>Become a Talent</h2>
+                      <p className='py-3 lg:text-sm text-base'>Join other talents and earn</p>
+                      <Link to={'/register'}>
+                        <button className='bg-white  text-purple-800 mt-5 py-2 px-5 rounded-full font-semibold border border-purple-200 text-sm '>Get Started</button>
+                      </Link>
+                    </div>
+                  </div>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                  <div className='bg-orange-400 text-white sect1 p-5 rounded-md relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden border border-orange-200' >
+                    <div className='relative isolate z-20 '>
+                      <h2 className='2xl:text-xl xl:text-xl lg:text-lg text-lg  font-bold'>Our  Blog</h2>
+                      <p className='py-3 lg:text-sm text-base '>Browse our and get latest update</p>
+                      <Link to={'/' + 'blog'}>
+                        <button className='bg-white text-orange-500 mt-5 py-2 px-5 rounded-full font-semibold border border-orange-200 text-sm'>Browser</button>
+                      </Link>
+                    </div>
+                  </div>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                <div className='bg-lime-800 text-white sect2 p-5 rounded-md relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden border border-lime-200' >
+                  <div className='relative isolate z-20'>
+                    <h2 className='2xl:text-xl xl:text-xl lg:text-lg text-lg font-bold'>Community</h2>
+                    <p className='py-3 lg:text-sm text-base '>Join  community of like minds </p>
+
+                    <Link to={'https://t.me/+nflgbLBXe5xlMjI8'}>
+                      <button className='bg-white text-lime-600 mt-5 py-2 px-5 rounded-full font-semibold border border-lime-200 text-xs'>Join Now</button>
+                    </Link>
+                  </div>
+                </div>
+                </SwiperSlide>
+
+
+        </Swiper>
       </div>
 
-      <div className='pt-10 lg:px-0 px-5 pb-20 '>
+      <div className='pt-4 lg:px-0 px-5 pb-5 '>
 
-        <div className='py-5 pb-10 flex items-center'>
+        <div className='py-5 flex items-center'>
           <h2 className='text-xl '>Top Creatives</h2>
 
           <div className='ml-auto flex items-center gap-10'>
@@ -249,7 +300,7 @@ export const UserHomeDashboardHome = () => {
         <>
           {filteredItems.length > 0 && 
 
-            <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5 pt-10 lg:px-0'>
+            <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5 pt-0 lg:px-0'>
             {filteredItems.length > 0 &&
               <>
                 {filteredItems.filter(talent => talent.location !== null && talent.cover_image !== 'https://creve.store/media/coverimage.png').map((talent) => (

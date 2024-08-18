@@ -326,46 +326,6 @@ const SingleUserCreativeDash = () => {
         }
     };
 
-
-    const [lat, setLat] = useState()
-    const [lon, setLon] = useState()
-    const key = 'AIzaSyA_HnIpk-nlGgMh-G1Evi-WX2T_wwqTmGs'
-    useEffect(() => {
-        // Ensure creativeData and location are defined before proceeding
-        if (creativeData && creativeData.location) {
-            const location = creativeData.location;
-            let urlnew = `https://maps.googleapis.com/maps/api/geocode/json?address=+${'Emenike St, Diobu'},+${'Rivers'},+${'500101'}&key=${key}`
-        //   const urlnew = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=${key}`;
-          console.log('This is the link', urlnew);
-      
-          fetch(urlnew)
-            .then(res => res.json())
-            .then(res => {
-              if (res.status === 'OK') {
-                console.log('Coordinates', JSON.stringify(res));
-                setLat(res.results[0].geometry.location.lat);
-                setLon(res.results[0].geometry.location.lng);
-              } else if (res.status === 'ZERO_RESULTS') {
-                alert(
-                  'Unable to process this location. Please revise location fields and try submitting again.'
-                );
-              }
-            })
-            .catch(error => {
-              console.error('Error fetching location:', error);
-            });
-        }
-      }, [creativeData]);
-  
-    const renderMarker = (map, maps) => {
-      let marker = new maps.Marker({
-        position: {lat: lat, lng: lon},
-        map,
-        title: 'Talent Location'
-      })
-      return marker;
-    };    
-
   return (
 
     <div className='bg-white h-full'>
@@ -466,7 +426,7 @@ const SingleUserCreativeDash = () => {
                     <div className='grid lg:grid-cols-3 grid-cols-1 gap-10 pt-10'>
 
                         <div className='lg:col-span-2'>
-                            <div className='2xl:h-[40rem] xl:h-[30rem] lg:h-[25rem] md:h-[35rem] h-[20rem] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-white overflow-hidden lg:rounded-2xl'>
+                            <div className='2xl:h-[40rem] xl:h-[30rem] lg:h-[25rem] md:h-[35rem] h-[20rem] bg-white overflow-hidden lg:rounded-md'>
                                 <PhotoProvider>
                                     <PhotoView src={creativeData.cover_image}>
                                         <img src={creativeData.cover_image} alt="" className='w-full cursor-pointer hover:transform hover:scale-105 transition-all ease-linear h-full object-cover'/>
@@ -491,126 +451,113 @@ const SingleUserCreativeDash = () => {
 
                             )}
 
-                <div className='lg:w-[100%] w-[95%] lg:m-0 lg:mt-10 m-auto rounded-2xl  pt-5 lg:p-10 p-5 mt-5 bg-neutral-100'>
-                    <h2 className='text-base py-3 text-center pb-8'> - Reviews -</h2>
-                    <div className='w-full'>
+                            <div className='lg:w-[100%] w-[95%] lg:m-0 lg:mt-10 m-auto rounded-md  pt-5 lg:p-10 p-5 mt-5 bg-neutral-100'>
+                                <h2 className='text-base py-3 text-center pb-8'> - Reviews -</h2>
+                                <div className='w-full'>
 
-                        {creativeData.reviewed && 
-                            <>
-                                <Swiper
-                                    cssMode={true}
-                                    navigation={true}
-                                    pagination={true}
-                                    mousewheel={true}
-                                    loop={true}
-                                    keyboard={true}
-                                    modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-                                    className="mySwiper"
-                                    >
-                                    {creativeData?.reviewed.map((review)=> <>
-                                    <SwiperSlide>
-                                        <div>
-                                            <div className='flex flex-row items-center gap-3 m-auto justify-center'>
-                                                <div className='border border-neutral-300 w-8 h-8 overflow-hidden rounded-full'>
-                                                    <img src={review.reviewer.profile_pics} alt="" className='w-8 h-8 object-cover'/>
-                                                </div>
-                                                <h2>{review.reviewer.user.fullname}</h2>
-                                            </div>
+                                    {creativeData.reviewed && 
+                                        <>
+                                            <Swiper
+                                                cssMode={true}
+                                                navigation={true}
+                                                pagination={true}
+                                                mousewheel={true}
+                                                loop={true}
+                                                keyboard={true}
+                                                modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+                                                className="mySwiper"
+                                                >
+                                                {creativeData?.reviewed.map((review)=> <>
+                                                <SwiperSlide>
+                                                    <div>
+                                                        <div className='flex flex-row items-center gap-3 m-auto justify-center'>
+                                                            <div className='border border-neutral-300 w-8 h-8 overflow-hidden rounded-full'>
+                                                                <img src={review.reviewer.profile_pics} alt="" className='w-8 h-8 object-cover'/>
+                                                            </div>
+                                                            <h2>{review.reviewer.user.fullname}</h2>
+                                                        </div>
 
-                                            <p className='text-xs text-center w-9/12 flex justify-center m-auto pt-4 mb-10'>{review.content}</p>
-                                        </div>
-                                    </SwiperSlide>
-                                    </>)}
+                                                        <p className='text-xs text-center w-9/12 flex justify-center m-auto pt-4 mb-10'>{review.content}</p>
+                                                    </div>
+                                                </SwiperSlide>
+                                                </>)}
 
-                                </Swiper>
+                                            </Swiper>
 
-                            </>
-                        }
+                                        </>
+                                    }
 
-                        
-                        <>
-                            {creativeData?.reviewed && creativeData?.reviewed.length <= 0 && <p className='text-center text-sm'>No Review Found</p>}
-                        </>
-                    </div>
-                </div>
+                                    
+                                    <>
+                                        {creativeData?.reviewed && creativeData?.reviewed.length <= 0 && <p className='text-center text-sm'>No Review Found</p>}
+                                    </>
+                                </div>
+                            </div>
                         </div>
 
-                        <div>
-                            <div className='w-full h-full bg-neutral-200 mb-5' style={{width : '100%', height : '50vh'}}>
-                                <GoogleMapReact
-                                    bootstrapURLKeys={{ key: key }}
-                                    center={{lat: lat, lng: lon}}
-                                    zoom={15}
-                                    yesIWantToUseGoogleMapApiInternals= {true}
-                                    onGoogleApiLoaded={({ map, maps }) => {
-                                    renderMarker(map, maps)
-                                    }}
-                                >
-                                </GoogleMapReact>
+            
+
+                        <div className='bg-neutral-50 border border-neutral-200  w-full lg:rounded-md lg:p-10 p-5 h-fit'>
+
+                            <div className='flex items-center '>
+                                <h2 className='font-bold 2xl:text-sm xl:text-xs lg:text-xs text-sm '>Details</h2>
+                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm  font-semibold ml-auto'><span className='font-normal'>Starting Price </span>: {creativeData.starting_price}</p>
                             </div>
 
-                            <div className='bg-neutral-50 border border-neutral-200  w-full lg:rounded-xl lg:p-10 p-5 h-fit'>
-
-                                <div className='flex items-center '>
-                                    <h2 className='font-bold 2xl:text-sm xl:text-xs lg:text-xs text-sm '>Details</h2>
-                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm  font-semibold ml-auto'><span className='font-normal'>Starting Price </span>: {creativeData.starting_price}</p>
-                                </div>
-
-                                <div className='pt-5 '>
-                                    <p className='text-sm text-justify 2xl:text-sm xl:text-xs lg:text-xs'>{creativeData.about}</p>
-                                </div>
-
-                                <div className='flex items-center gap-2 pt-5'>
-                                    <p className='bg-neutral-200  p-2 rounded-full'><PiPhoneCallFill /></p>
-                                    <button className='font-semibold '>{creativeData.phone_number}</button>
-                                </div>
-
-
-                                <div className='py-5 flex flex-wrap gap-3'>
-                                    {creativeData.dskills &&
-                                        creativeData.dskills.map((skill, index) => (
-                                        <button className='border border-neutral-300 py-2 px-4 text-xs rounded-md flex gap-1 items-center' key={index}>
-                                            <GoDotFill className='mycolor'/>{skill.skill}
-                                        </button>
-                                    ))}
-                                </div>
-
-
-
-                                <div className='pt-5 border-t border-t-neutral-200 '>
-                                    <p className='text-sm font-semibold'>Category</p>
-                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.digital_skills}</p>
-                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.nondigital_skills}</p>
-                                </div>
-
-
-                                <div className='pt-5'>
-                                    <p className='text-sm font-semibold '>Work Type</p>
-                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'><MdWorkOutline className='mycolor text-base'/>{creativeData.work_type}</p>
-                                </div>
-
-                                <div className='pt-5'>
-                                    <p className='text-sm font-semibold '>Language</p>
-                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'><IoLanguage className='mycolor text-base'/>{creativeData.language}</p>
-                                </div>
-
-                                <div className='pt-5'>
-                                    <p className='text-sm font-semibold '>Contact</p>
-                                    <Link to={creativeData.whatsapp_link}>
-                                        <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm pt-4 flex gap-2 items-center'><MdOutlineWhatsapp className='mycolor text-base'/>Whatsapp</p>
-                                    </Link>
-
-                                    <Link to={creativeData.website_link}>
-                                        <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm pt-4 flex gap-2 items-center'><GrLanguage className='mycolor text-base'/>Website</p>
-                                    </Link>
-                                </div>
-
-                                <div className='flex gap-3 pt-3 mt-5 border-t border-t-neutral-200'>
-                                    <button onClick={()=>document.getElementById('my_modal_2').showModal()} className='bg-accent py-3 px-2 mt-5 text-sm text-white rounded-full w-full'>Drop Review</button>
-                                    <button onClick={handleShare} className='bg-black py-3 px-2 mt-5 text-sm text-white flex justify-center items-center m-auto gap-3 rounded-full w-full'>Share <IoShareSocialSharp /></button>
-                                </div>
-
+                            <div className='pt-5 '>
+                                <p className='text-sm text-justify 2xl:text-sm xl:text-xs lg:text-xs'>{creativeData.about}</p>
                             </div>
+
+                            <div className='flex items-center gap-2 pt-5'>
+                                <p className='bg-neutral-200  p-2 rounded-full'><PiPhoneCallFill /></p>
+                                <button className='font-semibold '>{creativeData.phone_number}</button>
+                            </div>
+
+
+                            <div className='py-5 flex flex-wrap gap-3'>
+                                {creativeData.dskills &&
+                                    creativeData.dskills.map((skill, index) => (
+                                    <button className='border border-neutral-300 py-2 px-4 text-xs rounded-md flex gap-1 items-center' key={index}>
+                                        <GoDotFill className='mycolor'/>{skill.skill}
+                                    </button>
+                                ))}
+                            </div>
+
+
+
+                            <div className='pt-5 border-t border-t-neutral-200 '>
+                                <p className='text-sm font-semibold'>Category</p>
+                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.digital_skills}</p>
+                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.nondigital_skills}</p>
+                            </div>
+
+
+                            <div className='pt-5'>
+                                <p className='text-sm font-semibold '>Work Type</p>
+                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'><MdWorkOutline className='mycolor text-base'/>{creativeData.work_type}</p>
+                            </div>
+
+                            <div className='pt-5'>
+                                <p className='text-sm font-semibold '>Language</p>
+                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'><IoLanguage className='mycolor text-base'/>{creativeData.language}</p>
+                            </div>
+
+                            <div className='pt-5'>
+                                <p className='text-sm font-semibold '>Contact</p>
+                                <Link to={creativeData.whatsapp_link}>
+                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm pt-4 flex gap-2 items-center'><MdOutlineWhatsapp className='mycolor text-base'/>Whatsapp</p>
+                                </Link>
+
+                                <Link to={creativeData.website_link}>
+                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm pt-4 flex gap-2 items-center'><GrLanguage className='mycolor text-base'/>Website</p>
+                                </Link>
+                            </div>
+
+                            <div className='flex gap-3 pt-3 mt-5 border-t border-t-neutral-200'>
+                                <button onClick={()=>document.getElementById('my_modal_2').showModal()} className='bg-accent py-3 px-2 mt-5 text-sm text-white rounded-full w-full'>Drop Review</button>
+                                <button onClick={handleShare} className='bg-black py-3 px-2 mt-5 text-sm text-white flex justify-center items-center m-auto gap-3 rounded-full w-full'>Share <IoShareSocialSharp /></button>
+                            </div>
+
                         </div>
                     </div>
                 </div>
