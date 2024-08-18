@@ -436,7 +436,7 @@ const SingleUserCreativeDash = () => {
 
                             {creativeData.images && (
 
-                            <div className='lg:grid lg:grid-cols-3 grid grid-cols-2 items-center gap-4 pt-6 lg:px-0 px-5'>
+                            <div className='lg:grid lg:grid-cols-3 grid grid-cols-2 items-center lg:gap-4 gap-2 pt-3 lg:px-0 px-3'>
                                 {creativeData.images.map((Image)=>(
 
                                     <PhotoProvider>
@@ -450,8 +450,76 @@ const SingleUserCreativeDash = () => {
                             </div>
 
                             )}
+                        </div>
 
-                            <div className='lg:w-[100%] w-[95%] lg:m-0 lg:mt-10 m-auto rounded-md  pt-5 lg:p-10 p-5 mt-5 bg-neutral-100'>
+            
+
+                        <div className='bg-neutral-50 border border-neutral-200  w-full lg:rounded-md lg:p-5 p-5 h-fit'>
+
+                            <div className='flex items-center '>
+                                <h2 className='font-bold 2xl:text-sm xl:text-xs lg:text-xs text-sm '>Details</h2>
+                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm  font-semibold ml-auto'><span className='font-normal'>Starting Price </span>: {creativeData.starting_price}</p>
+                            </div>
+
+                            <div className='py-5 mt-5 border-y border-y-neutral-200'>
+                                <p className='text-sm font-bold pb-3'>Bio</p>
+                                <p className='text-sm 2xl:text-sm xl:text-xs lg:text-xs'>{creativeData.about}</p>
+
+                                <p className='text-sm ml-auto pt-5'><b>3</b> Years Experience</p>
+
+                            </div>
+
+                            <div className='flex items-center gap-2 py-5 border-b border-b-neutral-200'>
+                                <p className='bg-neutral-200  p-2 rounded-full'><PiPhoneCallFill /></p>
+                                <button className='font-semibold '>{creativeData.phone_number}</button>
+                            </div>
+
+                            <p className='text-sm font-bold pt-5'>Skills</p>
+                            <div className='py-5 pt-3 flex flex-wrap gap-3'>
+                                {creativeData.dskills &&
+                                    creativeData.dskills.map((skill, index) => (
+                                    <button className='border border-neutral-300 py-2 px-4 text-xs rounded-md flex gap-1 items-center' key={index}>
+                                        <GoDotFill className='mycolor'/>{skill.skill}
+                                    </button>
+                                ))}
+                            </div>
+
+
+                            <div className=''>
+
+                                <div className='py-5 border-y border-y-neutral-200 '>
+                                    <p className='text-sm font-semibold'>Category</p>
+                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.digital_skills}</p>
+                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.nondigital_skills}</p>
+                                </div>
+
+
+                                <div className='pt-5 flex items-center'>
+                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center'><MdWorkOutline className='mycolor text-base'/>{creativeData.work_type}</p>
+                                    <p className='text-xs font-light text-neutral-400'>- Work-type</p>
+                                </div>
+
+                                <div className='pt-5 flex items-center'>
+                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center'><IoLanguage className='mycolor text-base'/>{creativeData.language}</p>
+                                    <p className='text-xs font-light text-neutral-400'>- Language</p>
+                                </div>
+
+                                <div className='pt-5 flex items-center'>
+                                    <Link to={creativeData.website_link}>
+                                        <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center'><GrLanguage className='mycolor text-base'/>Website</p>
+                                    </Link>
+                                </div>
+                            </div>
+
+                            <div className='flex gap-3 pt-3 mt-5 border-t border-t-neutral-200'>
+                                <button onClick={()=>document.getElementById('my_modal_2').showModal()} className='bg-accent py-3 px-2 mt-5 text-sm text-white rounded-full w-full'>Drop Review</button>
+                                <button onClick={handleShare} className='bg-black py-3 px-2 mt-5 text-sm text-white flex justify-center items-center m-auto gap-3 rounded-full w-full'>Share <IoShareSocialSharp /></button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div className='lg:w-[100%] w-[95%] lg:m-0 lg:mt-10 m-auto rounded-md  pt-5 lg:p-10 p-5 mt-5 bg-neutral-100'>
                                 <h2 className='text-base py-3 text-center pb-8'> - Reviews -</h2>
                                 <div className='w-full'>
 
@@ -493,73 +561,6 @@ const SingleUserCreativeDash = () => {
                                     </>
                                 </div>
                             </div>
-                        </div>
-
-            
-
-                        <div className='bg-neutral-50 border border-neutral-200  w-full lg:rounded-md lg:p-10 p-5 h-fit'>
-
-                            <div className='flex items-center '>
-                                <h2 className='font-bold 2xl:text-sm xl:text-xs lg:text-xs text-sm '>Details</h2>
-                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm  font-semibold ml-auto'><span className='font-normal'>Starting Price </span>: {creativeData.starting_price}</p>
-                            </div>
-
-                            <div className='pt-5 '>
-                                <p className='text-sm text-justify 2xl:text-sm xl:text-xs lg:text-xs'>{creativeData.about}</p>
-                            </div>
-
-                            <div className='flex items-center gap-2 pt-5'>
-                                <p className='bg-neutral-200  p-2 rounded-full'><PiPhoneCallFill /></p>
-                                <button className='font-semibold '>{creativeData.phone_number}</button>
-                            </div>
-
-
-                            <div className='py-5 flex flex-wrap gap-3'>
-                                {creativeData.dskills &&
-                                    creativeData.dskills.map((skill, index) => (
-                                    <button className='border border-neutral-300 py-2 px-4 text-xs rounded-md flex gap-1 items-center' key={index}>
-                                        <GoDotFill className='mycolor'/>{skill.skill}
-                                    </button>
-                                ))}
-                            </div>
-
-
-
-                            <div className='pt-5 border-t border-t-neutral-200 '>
-                                <p className='text-sm font-semibold'>Category</p>
-                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.digital_skills}</p>
-                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.nondigital_skills}</p>
-                            </div>
-
-
-                            <div className='pt-5'>
-                                <p className='text-sm font-semibold '>Work Type</p>
-                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'><MdWorkOutline className='mycolor text-base'/>{creativeData.work_type}</p>
-                            </div>
-
-                            <div className='pt-5'>
-                                <p className='text-sm font-semibold '>Language</p>
-                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'><IoLanguage className='mycolor text-base'/>{creativeData.language}</p>
-                            </div>
-
-                            <div className='pt-5'>
-                                <p className='text-sm font-semibold '>Contact</p>
-                                <Link to={creativeData.whatsapp_link}>
-                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm pt-4 flex gap-2 items-center'><MdOutlineWhatsapp className='mycolor text-base'/>Whatsapp</p>
-                                </Link>
-
-                                <Link to={creativeData.website_link}>
-                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm pt-4 flex gap-2 items-center'><GrLanguage className='mycolor text-base'/>Website</p>
-                                </Link>
-                            </div>
-
-                            <div className='flex gap-3 pt-3 mt-5 border-t border-t-neutral-200'>
-                                <button onClick={()=>document.getElementById('my_modal_2').showModal()} className='bg-accent py-3 px-2 mt-5 text-sm text-white rounded-full w-full'>Drop Review</button>
-                                <button onClick={handleShare} className='bg-black py-3 px-2 mt-5 text-sm text-white flex justify-center items-center m-auto gap-3 rounded-full w-full'>Share <IoShareSocialSharp /></button>
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
 
             </>}
