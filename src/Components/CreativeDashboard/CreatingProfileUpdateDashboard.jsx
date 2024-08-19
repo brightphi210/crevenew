@@ -56,6 +56,7 @@ export const CreatingProfileUpdateHome = () => {
     const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
 
     const [selectedOption, setSelectedOption] = useState('')
+    const [experience, setExperience] = useState('')
     const [digital_skills, setDigitalSkills] = useState('')
     const [work_type, setWorkType] = useState('')
     const [summary_of_profile, setSummary_Of_Profile] = useState('')
@@ -121,7 +122,8 @@ export const CreatingProfileUpdateHome = () => {
         setWebsite_Link(data.website_link)
         setSelectedOption(data.category)
         setPhoneNumber(data.phone_number)
-        setImage_list(data.images)        
+        setImage_list(data.images)   
+        setExperience(data.experience)     
 
         } catch (error) {
             console.log(error);
@@ -153,6 +155,7 @@ export const CreatingProfileUpdateHome = () => {
         formData.append('whatsapp_link', whatsapp_link)
         formData.append('phone_number', phone_number)
         formData.append('website_link', website_link)
+        formData.append('experience', experience)
 
         try {
             
@@ -427,6 +430,18 @@ export const CreatingProfileUpdateHome = () => {
 
 
                             <div>
+                                <p className="text-sm pb-3">Years of Experience</p>
+                                <input 
+                                    type="number" 
+                                    required
+                                    value={experience}
+                                    onChange={(e)=>setExperience(e.target.value)}
+                                    placeholder="experience e.g 5"  
+                                    className="input text-sm input-bordered w-full max-w-full border-neutral-300" />
+                            </div>
+
+
+                            <div>
                                 <p className="text-sm pb-3">Price</p>
                                 <input 
                                     type="number" 
@@ -492,9 +507,9 @@ export const CreatingProfileUpdateHome = () => {
 
                 <dialog id="my_modal_1" className="modal">
                     <div className="modal-box  p-0 rounded-md flex justify-center items-center h-[25rem]" >
-                        {/* <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
+                        <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
                             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕
-                        </button> */}
+                        </button>
 
 
                         <div className=''>

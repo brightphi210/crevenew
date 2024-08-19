@@ -119,7 +119,7 @@ export const CreativeHome = () => {
           data?.images?.length === 0
         ) {
           setShowModal(true);
-        } else if (data?.verified === true) {
+        } else if (data?.verification?.verified === true) {
           setIsVerified(true);
           localStorage.setItem('isVerified', 'true'); // Set verified state in local storage
         } else {

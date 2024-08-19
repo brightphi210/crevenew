@@ -413,7 +413,7 @@ const SingleUserCreativeDash = () => {
 
                                 <div>
                                     <h2 className='text-lg font-bold flex gap-2 items-center'>{creativeData.user.fullname}
-                                        {creativeData?.verified === true ? <MdVerified className='text-green-500'/>  : <GoUnverified className='text-red-500 font-bold'/> }
+                                        {creativeData?.verification?.verified === true ? <MdVerified className='text-green-500'/>  : <GoUnverified className='text-red-500 font-bold'/> }
                                     </h2>
                                     <p className='text-sm'>{creativeData.display_name} <span className='text-xs text-neutral-400'>reviews({creativeData?.reviewed?.length})</span></p>
                                 </div>
@@ -469,7 +469,7 @@ const SingleUserCreativeDash = () => {
                                 <p className='text-sm font-bold pb-3'>Bio</p>
                                 <p className='text-sm 2xl:text-sm xl:text-xs lg:text-xs'>{creativeData.about}</p>
 
-                                <p className='text-sm ml-auto pt-5'><b>3</b> Years Experience</p>
+                                <p className='text-sm ml-auto pt-5'><b>{creativeData.experience}</b> Years Experience</p>
 
                             </div>
 
@@ -513,6 +513,32 @@ const SingleUserCreativeDash = () => {
                                         <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center'><GrLanguage className='mycolor text-base'/>Website</p>
                                     </Link>
                                 </div>
+                            </div>
+
+                            <div className='bg-neutral-100 border border-neutral-200 rounded-lg text-black mt-5 p-3'>
+                                <h2 className='text-sm font-bold pb-3'>FAQs</h2>
+
+                                {creativeData?.questions?.length === 0 ? 
+                                
+                                    <><p className='text-center text-xs py-5'>No FAQs Added yet</p></>
+                                : 
+                                  
+                                <div>
+                                    {creativeData.questions && 
+                                        creativeData.questions.map((faq, index) =>(
+                                            
+                                            <div className="collapse bg-white text-black h-fit collapse-arrow rounded-md  mb-2" key={index}>
+                                                <input type="checkbox" />
+                        
+                                                <div className="collapse-title lg:text-sm text-sm font-medium bg-neutral-10">{faq.question}</div>
+                                                <div className="collapse-content border-t border-t-neutral-200">
+                                                    <p className='lg:w-1/2 w-full text-justify text-sm pt-3'>{faq.answer}</p>
+                                                </div>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                                }
                             </div>
 
                             <div className='flex gap-3 pt-3 mt-5 border-t border-t-neutral-200'>
