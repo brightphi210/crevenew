@@ -191,8 +191,8 @@ const CreativeProfileCollection = ({IoCloseSharp, setEachState}) => {
         : <>
             <div className='flex w-full items-center gap-10'>
                 <div >
-                    <h2 className='text-2xl'>Collections</h2>
-                    <p className="text-xs pb-3">Upload Maximum of 6 collections</p>
+                    <h2 className='text-2xl'>Works</h2>
+                    <p className="text-xs pb-3">Upload Maximum of 6 Samples</p>
                 </div>
 
                 {images_list && images_list.length >= 8 || images_list && images_list.length === 0 ? '' :
@@ -221,8 +221,8 @@ const CreativeProfileCollection = ({IoCloseSharp, setEachState}) => {
             {images_list && images_list.length === 0 &&
                 <div className='flex justify-center items-center h-[50vh]'>
                     <div>
-                        <p className='text-sm pb-3'>No Collections, added</p>
-                        <button className="bg-black py-3 px-8 text-white rounded-full text-sm flex m-auto" onClick={()=>document.getElementById('my_modal_2').showModal()}>Add Collections</button>
+                        <p className='text-sm pb-3 text-center'>No Works, added</p>
+                        <button className="bg-black py-3 px-8 text-white rounded-full text-sm flex m-auto" onClick={()=>document.getElementById('my_modal_2').showModal()}>Add Works</button>
                     </div>
                 </div>
             }

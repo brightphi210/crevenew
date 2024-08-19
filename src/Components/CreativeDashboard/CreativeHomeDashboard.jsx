@@ -277,9 +277,9 @@ useEffect(() => {
       </div>
 
 
-      <div className='bg-white 2xl:p-10 xl:p-5 lg:p-5 p-3 mt-5 mb-10 lg:w-full w-[95%] m-auto grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 2xl:gap-10 lg:gap-5 gap-5  2xl:rounded-3xl xl:rounded-xl lg:rounded-xl rounded-md'>
+      <div className='bg-white 2xl:p-10 xl:p-5 lg:p-5 p-3 mt-5 mb-10 lg:w-full w-[95%] m-auto grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 2xl:gap-5 lg:gap-5 gap-5  2xl:rounded-3xl xl:rounded-xl lg:rounded-xl rounded-md'>
 
-        <div className='bg-white border border-neutral-300 p-5 rounded-xl'>
+        <div className=' border border-neutral-300 p-5 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] rounded-xl'>
           <p className='text-sm'>Welcome to </p>
           <div className='flex items-center gap-2 py-3'>
             <img src={logo} alt="" className='w-5 h-5'/>
@@ -288,41 +288,42 @@ useEffect(() => {
           <p className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm'>You are highly welcome to creve, you can now browse creatives/talents around your locaton and hire at ease</p>
         </div>
 
-        <div className='bg-white sect1 p-5 rounded-xl relative w-full h-full overflow-hidden' >
+        <div className='bg-blue-400 text-white sect1 p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden' >
             <div className='relative isolate z-20 '>
-              <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg text-orange-700 font-bold'>Our  Blog</h2>
+              <h2 className='2xl:text-3xl xl:text-xl lg:text-sm text-lg  font-bold'>Our  Blog</h2>
               <p className='py-3 text-sm '>Browse our blog and get latest update</p>
               <Link to={'/' + 'blog'}>
-                <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-orange-200 text-xs'>Browser</button>
+                <button className='bg-white text-blue-600 mt-5 py-2 px-5 rounded-full font-semibold border border-blue-200 text-xs'>Browser</button>
               </Link>
           </div>
         </div>
 
 
-        <div className='bg-white sect2 p-5 rounded-xl relative w-full h-full overflow-hidden' >
+        <div className='bg-lime-800 text-white sect2 p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden' >
           <div className='relative isolate z-20'>
-              <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg text-lime-800 font-bold'>Community</h2>
+              <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg  font-bold'>Community</h2>
               <p className='py-3 text-sm '>Join  community of like minds </p>
 
               <Link to={'https://t.me/+nflgbLBXe5xlMjI8'}>
-                <button className='bg-white mt-5 py-2 px-5 rounded-full font-semibold border border-lime-200 text-xs'>Join Now</button>
+                <button className='bg-white text-lime-800 mt-5 py-2 px-5 rounded-full font-semibold border border-lime-200 text-xs'>Join Now</button>
               </Link>
           </div>
 
         </div>
 
 
-      <div className='bg-white border border-neutral-300 text-black  w-full p-5 rounded-xl flex justify-center items-center'>
-          <div className=''>
-            <div className='border-2 border-neutral-200 bg-neutral-200 w-20 h-20 rounded-full overflow-hidden flex m-auto'>
+      <div className='bg-black border relative border-neutral-300 text-white flex justify-center items-center  w-full p-5 rounded-xl 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem]'>
+          <Link to={'/creative-dashboard-profile-update'}>
+            <button className=' text-white underline absolute top-4 right-4 rounded-full p-2 bg-neutral-500 w-fit text-xs flex justify-center m-auto  mt-2 gap-2'><MdModeEditOutline className='text-sm '/></button>
+          </Link>
+          
+          <div className=' p-4 gap-3'>
+            <div className='border-2 flex m-auto border-neutral-200 bg-neutral-200 w-20 h-2w-20 rounded-full overflow-hidden'>
               <img src={profileData.profile_pics} alt="" className='w-full h-full object-cover'/>
             </div>
-            <div className='text-center pt-2'>
-              <h2 className='lg:text-sm text-sm'>{userToken.name} <span className='text-xs text-neutral-500'>({userToken.role})</span></h2>
-              <p className='text-xs py-2'>{profileData.display_name}</p>
-              <Link to={'/creative-dashboard-profile-update'}>
-                <button className=' text-white rounded-full w-fit color text-sm py-3 px-3 flex justify-center m-auto  mt-2 gap-2'><MdModeEditOutline className='text-lg'/>Edit Profile</button>
-              </Link>
+            <div className='text-center'>
+              <h2 className='lg:text-sm py-2 text-sm'>{userToken.name} <span className='text-xs text-neutral-300'>({userToken.role})</span></h2>
+              <p className='text-xs'>{profileData.display_name}</p>
             </div>
           </div>
       </div>

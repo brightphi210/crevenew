@@ -84,7 +84,7 @@ export const CreatingProfileUpdateHome = () => {
 
     const [address, setAddress] = useState('');
     const handlePlaceSelected = (place) => {
-      const address = place.formatted_address;
+      const address = place?.formatted_address;
       setAddress(address);
     };
 
@@ -260,7 +260,7 @@ export const CreatingProfileUpdateHome = () => {
             
                     <button onClick={showThree} 
                         className={showEachState === 3 ? 'border border-green-900 py-2 px-3 rounded-full text-green-900 lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
-                        Collections
+                        Works
                     </button>
 
                     <button onClick={showFive} 
@@ -279,8 +279,8 @@ export const CreatingProfileUpdateHome = () => {
                                 <p className="text-sm pb-3">Work Type</p>
                                 <select className="select text-xs select-bordered border-neutral-300 w-full max-w-full" 
                                     value={work_type} onChange={(e) =>{setWorkType(e.target.value)}} required>
-                                    <option className='text-sm'required >Select Work Type</option>
-                                    <option className='text-sm'required value={'Remote'}>Remote</option>
+                                    <option className='text-sm'required value={''}>Select Work Type</option>
+                                    <option className='text-sm' value={'Remote'}>Remote</option>
                                     <option className='text-sm' value={'Hybrid'}>Hybrid</option>
                                     <option className='text-sm' value={'On-site'}>On-site</option>
                                 </select>
@@ -303,7 +303,7 @@ export const CreatingProfileUpdateHome = () => {
                                     required
                                     onChange={(e)=>setAddress(e.target.value)}
                                     options={{
-                                    types: ['address'],
+                                        types: ['address'],
                                     }}
                                     className="input text-sm input-bordered border-neutral-300 w-full max-w-full" 
                                     defaultValue={address}
@@ -324,7 +324,7 @@ export const CreatingProfileUpdateHome = () => {
 
                             <div>
                                 <p className="text-sm pb-3">Category</p>
-                                <select className="select text-sm  select-bordered w-full border-neutral-300 max-w-full"  value={selectedOption} onChange={handleShowDigital}>
+                                <select className="select text-sm  select-bordered w-full border-neutral-300 max-w-full" required value={selectedOption} onChange={handleShowDigital}>
                                     <option className='text-sm' value={''}>Select Category</option>
                                     <option className='text-sm' value={'DigitalSkills'}>Digital Skills</option>
                                     <option className='text-sm' value={'Non-DigitalSkills'}>Non-Digital Skills</option>
@@ -356,7 +356,7 @@ export const CreatingProfileUpdateHome = () => {
 
                                 <div>
                                     <p className="text-sm pb-3">Non-Digital</p>
-                                    <select className="select text-xs select-bordered w-full max-w-full border-neutral-300" value={nondigital_skills} onChange={(e)=>setNondigital_Skills(e.target.value)}>
+                                    <select className="select text-xs select-bordered w-full max-w-full border-neutral-300" required value={nondigital_skills} onChange={(e)=>setNondigital_Skills(e.target.value)}>
                                         <option className='text-sm' value={''}>Select Non-Digital Skill</option>
                                         <option className='text-sm' value={'Plumbing'}>Plumbing</option>
                                         <option className='text-sm' value={'Catering'}>Catering</option>   
