@@ -279,7 +279,7 @@ useEffect(() => {
 
       <div className='bg-white 2xl:p-10 xl:p-5 lg:p-5 p-3 mt-5 mb-10 lg:w-full w-[95%] m-auto grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 2xl:gap-5 lg:gap-5 gap-5  2xl:rounded-3xl xl:rounded-xl lg:rounded-xl rounded-md'>
 
-        <div className=' border border-neutral-300 p-5 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] rounded-xl'>
+        <div className=' border border-neutral-300 p-5 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] rounded-md'>
           <p className='text-sm'>Welcome to </p>
           <div className='flex items-center gap-2 py-3'>
             <img src={logo} alt="" className='w-5 h-5'/>
@@ -288,7 +288,7 @@ useEffect(() => {
           <p className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm'>You are highly welcome to creve, you can now browse creatives/talents around your locaton and hire at ease</p>
         </div>
 
-        <div className='bg-blue-400 text-white sect1 p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden' >
+        <div className='bg-blue-400 text-white sect1 p-5 rounded-md relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden' >
             <div className='relative isolate z-20 '>
               <h2 className='2xl:text-3xl xl:text-xl lg:text-sm text-lg  font-bold'>Our  Blog</h2>
               <p className='py-3 text-sm '>Browse our blog and get latest update</p>
@@ -299,7 +299,7 @@ useEffect(() => {
         </div>
 
 
-        <div className='bg-lime-800 text-white sect2 p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden' >
+        <div className='bg-lime-800 text-white sect2 p-5 rounded-md relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden' >
           <div className='relative isolate z-20'>
               <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg  font-bold'>Community</h2>
               <p className='py-3 text-sm '>Join  community of like minds </p>
@@ -312,7 +312,7 @@ useEffect(() => {
         </div>
 
 
-      <div className='bg-black border relative border-neutral-300 text-white flex justify-center items-center  w-full p-5 rounded-xl 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem]'>
+      <div className='bg-black border relative border-neutral-300 text-white flex justify-center items-center  w-full p-5 rounded-md 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem]'>
           <Link to={'/creative-dashboard-profile-update'}>
             <button className=' text-white underline absolute top-4 right-4 rounded-full p-2 bg-neutral-500 w-fit text-xs flex justify-center m-auto  mt-2 gap-2'><MdModeEditOutline className='text-sm '/></button>
           </Link>
