@@ -326,6 +326,10 @@ const SingleUserCreativeDash = () => {
         }
     };
 
+
+    console.log('this is user data', creativeData);
+    
+
   return (
 
     <div className='bg-white h-full'>
@@ -520,47 +524,47 @@ const SingleUserCreativeDash = () => {
                     </div>
 
                     <div className='lg:w-[100%] w-[95%] lg:m-0 lg:mt-10 m-auto rounded-md  pt-5 lg:p-10 p-5 mt-5 bg-neutral-100'>
-                                <h2 className='text-base py-3 text-center pb-8'> - Reviews -</h2>
-                                <div className='w-full'>
+                        <h2 className='text-base py-3 text-center pb-8'> - Reviews -</h2>
+                        <div className='w-full'>
 
-                                    {creativeData.reviewed && 
-                                        <>
-                                            <Swiper
-                                                cssMode={true}
-                                                navigation={true}
-                                                pagination={true}
-                                                mousewheel={true}
-                                                loop={true}
-                                                keyboard={true}
-                                                modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-                                                className="mySwiper"
-                                                >
-                                                {creativeData?.reviewed.map((review)=> <>
-                                                <SwiperSlide>
-                                                    <div>
-                                                        <div className='flex flex-row items-center gap-3 m-auto justify-center'>
-                                                            <div className='border border-neutral-300 w-8 h-8 overflow-hidden rounded-full'>
-                                                                <img src={review.reviewer.profile_pics} alt="" className='w-8 h-8 object-cover'/>
-                                                            </div>
-                                                            <h2>{review.reviewer.user.fullname}</h2>
-                                                        </div>
-
-                                                        <p className='text-xs text-center w-9/12 flex justify-center m-auto pt-4 mb-10'>{review.content}</p>
+                            {creativeData.reviewed && 
+                                <>
+                                    <Swiper
+                                        cssMode={true}
+                                        navigation={true}
+                                        pagination={true}
+                                        mousewheel={true}
+                                        loop={true}
+                                        keyboard={true}
+                                        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+                                        className="mySwiper"
+                                        >
+                                        {creativeData?.reviewed.map((review)=> <>
+                                        <SwiperSlide>
+                                            <div>
+                                                <div className='flex flex-row items-center gap-3 m-auto justify-center'>
+                                                    <div className='border border-neutral-300 w-8 h-8 overflow-hidden rounded-full'>
+                                                        <img src={review.reviewer.profile_pics} alt="" className='w-8 h-8 object-cover'/>
                                                     </div>
-                                                </SwiperSlide>
-                                                </>)}
+                                                    <h2>{review.reviewer.user.fullname}</h2>
+                                                </div>
 
-                                            </Swiper>
+                                                <p className='text-xs text-center w-9/12 flex justify-center m-auto pt-4 mb-10'>{review.content}</p>
+                                            </div>
+                                        </SwiperSlide>
+                                        </>)}
 
-                                        </>
-                                    }
+                                    </Swiper>
 
-                                    
-                                    <>
-                                        {creativeData?.reviewed && creativeData?.reviewed.length <= 0 && <p className='text-center text-sm'>No Review Found</p>}
-                                    </>
-                                </div>
-                            </div>
+                                </>
+                            }
+
+                            
+                            <>
+                                {creativeData?.reviewed && creativeData?.reviewed.length <= 0 && <p className='text-center text-sm'>No Review Found</p>}
+                            </>
+                        </div>
+                    </div>
                 </div>
 
             </>}
