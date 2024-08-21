@@ -651,20 +651,11 @@ useEffect(() => {
                         document to verify your identity. This adds credibility to your profile.
                       </li>
                     </ol>
-
-
-
- 
- 
- 
                   </div>
                 </div>
-
             </div>
           </div>
-
         </dialog>
-
     </div>
   )
 }
@@ -689,8 +680,8 @@ export const ProfileModal = ({showModal}) => {
     <div>
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box  p-0 rounded-md 2xl:h-[80%] 2xl:max-w-[60%] xl:max-w-[80%] w-[95%]" >
-          {/* <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
-            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕</button> */}
+          <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
+            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕</button>
 
 
           <div className='flex lg:flex-row flex-col h-full'>

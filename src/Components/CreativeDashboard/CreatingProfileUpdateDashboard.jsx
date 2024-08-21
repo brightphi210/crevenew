@@ -325,6 +325,20 @@ export const CreatingProfileUpdateHome = () => {
                                 />
                             </div>
 
+
+                            {/* <div>
+                                <p className="text-sm pb-3">Language</p>
+                                <select className="select text-sm  select-bordered w-full border-neutral-300 max-w-full" 
+                                    required value={language} 
+                                    onChange={(e)=>setLanguage(e.target.value)}
+                                >
+                                    <option className='text-sm' value={''}>Select Language</option>
+                                    <option className='text-sm' value={'English'}>English</option>
+                                    <option className='text-sm' value={'French'}>French</option>
+                                    <option className='text-sm' value={'French'}>Spanish</option>
+                                </select>
+                            </div> */}
+
                             <div>
                                 <p className="text-sm pb-3">Category</p>
                                 <select className="select text-sm  select-bordered w-full border-neutral-300 max-w-full" required value={selectedOption} onChange={handleShowDigital}>
