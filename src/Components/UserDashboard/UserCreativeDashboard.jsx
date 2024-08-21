@@ -179,7 +179,7 @@ export const UserCreativeDashboardCom = () => {
 
         <button
           onClick={() => {
-            handleFilter('Digital');
+            handleFilter('Tech');
             setShowOne(false);
             setShowTwo(true);
             setShowThree(false);
@@ -193,7 +193,7 @@ export const UserCreativeDashboardCom = () => {
         
         <button
           onClick={() => {
-            handleFilter('Non-Digital');
+            handleFilter('Artisans');
             setShowOne(false);
             setShowTwo(false);
             setShowThree(true);

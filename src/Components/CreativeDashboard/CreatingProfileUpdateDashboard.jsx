@@ -329,13 +329,13 @@ export const CreatingProfileUpdateHome = () => {
                                 <p className="text-sm pb-3">Category</p>
                                 <select className="select text-sm  select-bordered w-full border-neutral-300 max-w-full" required value={selectedOption} onChange={handleShowDigital}>
                                     <option className='text-sm' value={''}>Select Category</option>
-                                    <option className='text-sm' value={'DigitalSkills'}>Digital Skills</option>
-                                    <option className='text-sm' value={'Non-DigitalSkills'}>Non-Digital Skills</option>
+                                    <option className='text-sm' value={'Tech'}>Digital Skills</option>
+                                    <option className='text-sm' value={'Artisans'}>Non-Digital Skills</option>
                                 </select>
                             </div>
 
                 
-                            {selectedOption === 'DigitalSkills' && (
+                            {selectedOption === 'Tech' && (
 
                                 <div>
                                     <p className="text-sm pb-3">Digital</p>
@@ -355,7 +355,7 @@ export const CreatingProfileUpdateHome = () => {
                                 </div>
                             ) }
                             
-                            {selectedOption === 'Non-DigitalSkills' && (
+                            {selectedOption === 'Artisans' && (
 
                                 <div>
                                     <p className="text-sm pb-3">Non-Digital</p>
