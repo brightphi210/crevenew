@@ -343,7 +343,7 @@ useEffect(() => {
                   <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg  font-bold'>Community</h2>
                   <p className='py-3 text-sm '>Join  community of like minds </p>
 
-                  <Link to={'https://t.me/+nflgbLBXe5xlMjI8'}>
+                  <Link to={'https://chat.whatsapp.com/FNQzOFlRnIKK3ChV8iOHWx'}>
                     <button className='bg-white text-lime-800 mt-5 py-2 px-5 rounded-full font-semibold border border-lime-200 text-xs'>Join Now</button>
                   </Link>
               </div>

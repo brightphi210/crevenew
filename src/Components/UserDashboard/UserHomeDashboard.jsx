@@ -243,40 +243,40 @@ export const UserHomeDashboardHome = () => {
                 </SwiperSlide>
 
                 <SwiperSlide>
-                  <div className='bg-purple-500 text-white sect p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden border border-purple-200' >
+                    <div className='bg-purple-500 text-white sect p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden border border-purple-200' >
+                      <div className='relative isolate z-20'>
+                        <h2 className='2xl:text-xl xl:text-xl lg:text-lg text-lg font-bold'>Become a Talent</h2>
+                        <p className='py-3 lg:text-sm text-base'>Join other talents and earn</p>
+                        <Link to={'/register'}>
+                          <button className='bg-white  text-purple-800 mt-5 py-2 px-5 rounded-full font-semibold border border-purple-200 text-sm '>Get Started</button>
+                        </Link>
+                      </div>
+                    </div>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <div className='bg-blue-600 text-white sect1 p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden border border-orange-200' >
+                      <div className='relative isolate z-20 '>
+                        <h2 className='2xl:text-xl xl:text-xl lg:text-lg text-lg  font-bold'>Our  Blog</h2>
+                        <p className='py-3 lg:text-sm text-base '>Browse our and get latest update</p>
+                        <Link to={'/' + 'blog'}>
+                          <button className='bg-white text-blue-500 mt-5 py-2 px-5 rounded-full font-semibold border border-blue-200 text-sm'>Browser</button>
+                        </Link>
+                      </div>
+                    </div>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                  <div className='bg-lime-800 text-white sect2 p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden border border-lime-200' >
                     <div className='relative isolate z-20'>
-                      <h2 className='2xl:text-xl xl:text-xl lg:text-lg text-lg font-bold'>Become a Talent</h2>
-                      <p className='py-3 lg:text-sm text-base'>Join other talents and earn</p>
-                      <Link to={'/register'}>
-                        <button className='bg-white  text-purple-800 mt-5 py-2 px-5 rounded-full font-semibold border border-purple-200 text-sm '>Get Started</button>
+                      <h2 className='2xl:text-xl xl:text-xl lg:text-lg text-lg font-bold'>Community</h2>
+                      <p className='py-3 lg:text-sm text-base '>Join  community of like minds </p>
+
+                      <Link to={'https://chat.whatsapp.com/F0782triuIhDgblx0YW1Mj'}>
+                        <button className='bg-white text-lime-600 mt-5 py-2 px-5 rounded-full font-semibold border border-lime-200 text-xs'>Join Now</button>
                       </Link>
                     </div>
                   </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className='bg-blue-600 text-white sect1 p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden border border-orange-200' >
-                    <div className='relative isolate z-20 '>
-                      <h2 className='2xl:text-xl xl:text-xl lg:text-lg text-lg  font-bold'>Our  Blog</h2>
-                      <p className='py-3 lg:text-sm text-base '>Browse our and get latest update</p>
-                      <Link to={'/' + 'blog'}>
-                        <button className='bg-white text-blue-500 mt-5 py-2 px-5 rounded-full font-semibold border border-blue-200 text-sm'>Browser</button>
-                      </Link>
-                    </div>
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                <div className='bg-lime-800 text-white sect2 p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden border border-lime-200' >
-                  <div className='relative isolate z-20'>
-                    <h2 className='2xl:text-xl xl:text-xl lg:text-lg text-lg font-bold'>Community</h2>
-                    <p className='py-3 lg:text-sm text-base '>Join  community of like minds </p>
-
-                    <Link to={'https://t.me/+nflgbLBXe5xlMjI8'}>
-                      <button className='bg-white text-lime-600 mt-5 py-2 px-5 rounded-full font-semibold border border-lime-200 text-xs'>Join Now</button>
-                    </Link>
-                  </div>
-                </div>
                 </SwiperSlide>
 
 

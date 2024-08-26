@@ -112,9 +112,9 @@ const UserNavbar = ({handleShow, show}) => {
                 <Link to={'/user-dashboard-chat'}>
                     <p className='text-xl relative cursor-pointer text-neutral-700 border border-neutral-300 flex rounded-full p-2 items-center justify-center '>
                         <IoMailUnread />
-                        {users?.length > 0 && (
+                        {/* {users?.length > 0 && (
                             <p className='absolute top-[-5px] right-[-5px] p-0 bg-white text-red-600  rounded-full text-lg'><GoDotFill /></p>
-                        )}
+                        )} */}
                     </p>
                 </Link>
 
