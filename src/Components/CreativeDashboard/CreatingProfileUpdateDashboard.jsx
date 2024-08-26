@@ -245,7 +245,7 @@ export const CreatingProfileUpdateHome = () => {
             (<MyLoader />) : (
             <div className='lg:p-20 lg:pt-28 lg:pl-[18rem] p-0 pt-20'>
 
-                <div className='flex lg:gap-5 lg:flex-wrap items-center gap-2 py-2 px-3 mb-5 bg-black rounded-full text-white border border-neutral-200'>
+                <div className='flex lg:gap-5 flex-wrap items-center gap-2 py-2 px-3 mb-5 bg-black rounded-full text-white border border-neutral-200'>
                     <button onClick={showOne} 
                         className={showEachState === 1 ? 'border border-green-50 bg-green-50 py-2 px-5 rounded-full text-black  lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         Basic
@@ -265,10 +265,11 @@ export const CreatingProfileUpdateHome = () => {
                         className={showEachState === 3 ? 'border border-green-50 bg-green-50 py-2 px-3 rounded-full text-black  lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         Works
                     </button>
-                    {/* <button onClick={showFive} 
+                    -
+                    <button onClick={showFive} 
                         className={showEachState === 5 ? 'border border-green-50 bg-green-50 py-2 px-5 rounded-full text-black  lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         NIN
-                    </button> */}
+                    </button>
                 </div>
 
 
