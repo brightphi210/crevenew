@@ -276,62 +276,99 @@ useEffect(() => {
         </div>
       </div>
 
+      <div className='shadow-[rgba(7,_65,_210,_0.03)_0px_9px_30px] bg-white 2xl:p-5 xl:p-5 lg:p-5 p-0 mt-5 lg:w-full w-[95%] m-auto  items-center 2xl:rounded-md xl:rounded-md lg:rounded-md rounded-md'>
+      <Swiper
+          slidesPerView={1}
+          spaceBetween={40}
+          navigation={true}
+          loop={true}
+          pagination={{
+              clickable: true,
+          }}
 
-      <div className='bg-white 2xl:p-10 xl:p-5 lg:p-5 p-3 mt-5 mb-10 lg:w-full w-[95%] m-auto grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 2xl:gap-5 lg:gap-5 gap-5  2xl:rounded-3xl xl:rounded-xl lg:rounded-xl rounded-md'>
+          autoplay={{
+              delay: 15000,
+              disableOnInteraction: false,
+          }}
+          breakpoints={{
+          640: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+          },
+          768: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+          },
 
-        <div className=' border border-neutral-300 p-5 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] rounded-md'>
-          <p className='text-sm'>Welcome to </p>
-          <div className='flex items-center gap-2 py-3'>
-            <img src={logo} alt="" className='w-5 h-5'/>
-            <h2 className='text-xl font-semibold'>Creve</h2>
-          </div>
-          <p className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm'>You are highly welcome to creve, you can now browse creatives/talents around your locaton and hire at ease</p>
-        </div>
-
-        <div className='bg-blue-400 text-white sect1 p-5 rounded-md relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden' >
-            <div className='relative isolate z-20 '>
-              <h2 className='2xl:text-3xl xl:text-xl lg:text-sm text-lg  font-bold'>Our  Blog</h2>
-              <p className='py-3 text-sm '>Browse our blog and get latest update</p>
-              <Link to={'/' + 'blog'}>
-                <button className='bg-white text-blue-600 mt-5 py-2 px-5 rounded-full font-semibold border border-blue-200 text-xs'>Browser</button>
-              </Link>
-          </div>
-        </div>
-
-
-        <div className='bg-lime-800 text-white sect2 p-5 rounded-md relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden' >
-          <div className='relative isolate z-20'>
-              <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg  font-bold'>Community</h2>
-              <p className='py-3 text-sm '>Join  community of like minds </p>
-
-              <Link to={'https://t.me/+nflgbLBXe5xlMjI8'}>
-                <button className='bg-white text-lime-800 mt-5 py-2 px-5 rounded-full font-semibold border border-lime-200 text-xs'>Join Now</button>
-              </Link>
-          </div>
-
-        </div>
+          900: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
 
 
-      <div className='bg-black border relative border-neutral-300 text-white flex justify-center items-center  w-full p-5 rounded-md 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem]'>
-          <Link to={'/creative-dashboard-profile-update'}>
-            <button className=' text-white underline absolute top-4 right-4 rounded-full p-2 bg-neutral-500 w-fit text-xs flex justify-center m-auto  mt-2 gap-2'><MdModeEditOutline className='text-sm '/></button>
-          </Link>
-          
-          <div className=' p-4 gap-3'>
-            <div className='border-2 flex m-auto border-neutral-200 bg-neutral-200 w-20 h-2w-20 rounded-full overflow-hidden'>
-              <img src={profileData.profile_pics} alt="" className='w-full h-full object-cover'/>
+          1024: {
+              slidesPerView: 4,
+              spaceBetween: 10,
+          },
+          }}
+          modules={[Pagination, Autoplay, Navigation]}
+          className="mySwiper"
+      >
+          <SwiperSlide>
+              <div className='bg-neutral-100 text-black p-5 rounded-xl border w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] border-neutral-200'>
+                <p className='text-sm'>Welcome to </p>
+                <div className='flex items-center gap-2 py-3'>
+                  <img src={logo} alt="" className='w-5 h-5'/>
+                  <h2 className='text-xl font-semibold'>Creve</h2>
+                </div>
+                <p className='2xl:text-sm xl:text-sm lg:text-[10px] text-sm'>You are highly welcome to creve, you can now browse creatives/talents around your locaton and hire at ease</p>
+              </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className='bg-blue-400 text-white sect1 p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden' >
+                <div className='relative isolate z-20 '>
+                  <h2 className='2xl:text-3xl xl:text-xl lg:text-sm text-lg  font-bold'>Our  Blog</h2>
+                  <p className='py-3 text-sm '>Browse our blog and get latest update</p>
+                  <Link to={'/' + 'blog'}>
+                    <button className='bg-white text-blue-600 mt-5 py-2 px-5 rounded-full font-semibold border border-blue-200 text-xs'>Browser</button>
+                  </Link>
+              </div>
             </div>
-            <div className='text-center'>
-              <h2 className='lg:text-sm py-2 text-sm'>{userToken.name} <span className='text-xs text-neutral-300'>({userToken.role})</span></h2>
-              <p className='text-xs'>{profileData.display_name}</p>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className='bg-lime-800 text-white sect2 p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden' >
+              <div className='relative isolate z-20'>
+                  <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg  font-bold'>Community</h2>
+                  <p className='py-3 text-sm '>Join  community of like minds </p>
+
+                  <Link to={'https://t.me/+nflgbLBXe5xlMjI8'}>
+                    <button className='bg-white text-lime-800 mt-5 py-2 px-5 rounded-full font-semibold border border-lime-200 text-xs'>Join Now</button>
+                  </Link>
+              </div>
             </div>
-          </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className='bg-black border relative border-neutral-300 text-white flex justify-center items-center  w-full p-5 rounded-xl 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem]'>
+                <Link to={'/creative-dashboard-profile-update'}>
+                  <button className=' text-white underline absolute top-4 right-4 rounded-full p-2 bg-neutral-500 w-fit text-xs flex justify-center m-auto  mt-2 gap-2'><MdModeEditOutline className='text-sm '/></button>
+                </Link>
+                
+                <div className=' p-4 gap-3'>
+                  <div className='border-2 flex m-auto border-neutral-200 bg-neutral-200 w-20 h-20 rounded-full overflow-hidden'>
+                    <img src={profileData.profile_pics} alt="" className='w-full h-full object-cover'/>
+                  </div>
+                  <div className='text-center'>
+                    <h2 className='lg:text-sm py-2 text-sm'>{userToken.name} <span className='text-xs text-neutral-300'>({userToken.role})</span></h2>
+                    <p className='text-xs'>{profileData.display_name}</p>
+                  </div>
+                </div>
+            </div>
+          </SwiperSlide>
+      </Swiper>
       </div>
-
-
-
-      </div>
-
       <div className='mt-10 flex 2xl:flex-row xl:flex-row lg:flex-col flex-col  w-full gap-10'>
         <div className=' bg-white 2xl:w-[77%] xl:w-[70%] lg:w-full lg:p-5 py-5 px-2 rounded-xl'>
           <h2 className='text-sm font-semibold'>Messages</h2>

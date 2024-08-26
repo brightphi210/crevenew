@@ -204,7 +204,7 @@ export const UserHomeDashboardHome = () => {
                 }}
 
                 autoplay={{
-                    delay: 5000,
+                    delay: 15000,
                     disableOnInteraction: false,
                 }}
                 breakpoints={{
@@ -232,7 +232,7 @@ export const UserHomeDashboardHome = () => {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <div className='bg-black text-white p-5 rounded-md border w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] border-neutral-200'>
+                    <div className='bg-black text-white p-5 rounded-xl border w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] border-neutral-200'>
                       <p className='text-sm'>Welcome to </p>
                       <div className='flex items-center gap-2 py-3'>
                         <img src={logo} alt="" className='w-5 h-5'/>
@@ -243,7 +243,7 @@ export const UserHomeDashboardHome = () => {
                 </SwiperSlide>
 
                 <SwiperSlide>
-                  <div className='bg-purple-500 text-white sect p-5 rounded-md relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden border border-purple-200' >
+                  <div className='bg-purple-500 text-white sect p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden border border-purple-200' >
                     <div className='relative isolate z-20'>
                       <h2 className='2xl:text-xl xl:text-xl lg:text-lg text-lg font-bold'>Become a Talent</h2>
                       <p className='py-3 lg:text-sm text-base'>Join other talents and earn</p>
@@ -255,7 +255,7 @@ export const UserHomeDashboardHome = () => {
                 </SwiperSlide>
 
                 <SwiperSlide>
-                  <div className='bg-blue-600 text-white sect1 p-5 rounded-md relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden border border-orange-200' >
+                  <div className='bg-blue-600 text-white sect1 p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden border border-orange-200' >
                     <div className='relative isolate z-20 '>
                       <h2 className='2xl:text-xl xl:text-xl lg:text-lg text-lg  font-bold'>Our  Blog</h2>
                       <p className='py-3 lg:text-sm text-base '>Browse our and get latest update</p>
@@ -267,7 +267,7 @@ export const UserHomeDashboardHome = () => {
                 </SwiperSlide>
 
                 <SwiperSlide>
-                <div className='bg-lime-800 text-white sect2 p-5 rounded-md relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden border border-lime-200' >
+                <div className='bg-lime-800 text-white sect2 p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden border border-lime-200' >
                   <div className='relative isolate z-20'>
                     <h2 className='2xl:text-xl xl:text-xl lg:text-lg text-lg font-bold'>Community</h2>
                     <p className='py-3 lg:text-sm text-base '>Join  community of like minds </p>
