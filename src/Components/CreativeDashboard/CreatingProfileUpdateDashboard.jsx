@@ -245,27 +245,23 @@ export const CreatingProfileUpdateHome = () => {
             (<MyLoader />) : (
             <div className='lg:p-20 lg:pt-28 lg:pl-[18rem] p-0 pt-20'>
 
-                <div className='flex lg:gap-5 flex-wrap items-center gap-2 py-2 px-3 mb-5 bg-black rounded-full text-white border border-neutral-200'>
+                <div className='flex lg:gap-5 flex-wrap items-center gap-2 py-2 px-3 mb-5 bg-black rounded-lg text-white border border-neutral-200'>
                     <button onClick={showOne} 
                         className={showEachState === 1 ? 'border border-green-50 bg-green-50 py-2 px-5 rounded-full text-black  lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         Basic
                     </button>
-                        -
                     <button onClick={showTwo} 
                         className={showEachState === 2 ? 'border border-green-50 bg-green-50 py-2 px-5 rounded-full text-black  lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         Banner
                     </button>
-                        -
                     <button onClick={showFour} 
                         className={showEachState === 4 ? 'border border-green-50 bg-green-50 py-2 px-5 rounded-full text-black  lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         Skills
                     </button>
-                        -
                     <button onClick={showThree} 
                         className={showEachState === 3 ? 'border border-green-50 bg-green-50 py-2 px-3 rounded-full text-black  lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         Works
                     </button>
-                    -
                     <button onClick={showFive} 
                         className={showEachState === 5 ? 'border border-green-50 bg-green-50 py-2 px-5 rounded-full text-black  lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
                         NIN
@@ -351,7 +347,7 @@ export const CreatingProfileUpdateHome = () => {
 
                                 <div>
                                     <p className="text-sm pb-3">Digital</p>
-                                    <select className="select text-sm select-bordered w-full border-neutral-500 max-w-full" required value={digital_skills} onChange={(e)=>setDigitalSkills(e.target.value)}>
+                                    <select className="select text-sm select-bordered w-full border-neutral-300 max-w-full" required value={digital_skills} onChange={(e)=>setDigitalSkills(e.target.value)}>
                                         <option className='text-sm' value={''}>Select Digital Skill</option>
                                         <option className='text-sm' value={'BackendDevelopment'}>Backend Developement</option>
                                         <option className='text-sm' value={'MobileDevelopment'}>Mobile Developement</option>
