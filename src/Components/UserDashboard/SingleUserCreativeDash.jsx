@@ -12,6 +12,8 @@ import { GrLanguage } from "react-icons/gr";
 import { PiPhoneCallFill } from "react-icons/pi";
 import { MdFavoriteBorder } from "react-icons/md";
 import { MdOutlineFavorite } from "react-icons/md";
+import { MdOutlineArrowForward } from "react-icons/md";
+
 
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
@@ -40,6 +42,8 @@ import MyLoader from '../allLoadingState/MyLoader';
 import { MdVerified } from "react-icons/md";
 import { BsChat } from 'react-icons/bs';
 import GoogleMapReact from 'google-map-react'
+import avatar from '../Images/Avatars.png'
+import { talentsData } from '../Mock/allTalents';
 
 
 
@@ -591,6 +595,37 @@ const SingleUserCreativeDash = () => {
                             </>
                         </div>
                     </div>
+
+                    <div className='lg:pt-20 p-3 pt-10'>
+
+                        <h2 className='lg:text-2xl text-xl pb-5'>Similar Talents</h2>
+                        <div className='grid 2xl:grid-cols-4 lg:p-0  xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-5 '>
+
+                            {talentsData?.map((talent, index)=>(
+
+                                <div key={index} className='col-span-1 rounded-lg shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]'>
+                                    <div className='bg-neutral-200 w-full rounded-lg 2xl:h-[20rem] xl:h-[17rem] lg:h-[15rem] md:h-[18rem] h-[11rem] overflow-hidden '>
+                                        <img className='w-full h-full object-cover rounded-lg cursor-pointer hover:transform hover:scale-105 transition-all ease-linear' src={talent?.pics} alt="" />
+                                    </div>
+
+                                    <div>
+                                        <div className='flex items-center lg:gap-4 gap-3 p-3 pt-5'>
+                                            <div className='flex items-center justify-center lg:w-8 w-6 lg:h-8 h-6'>
+                                                <img src={talent?.prof} alt=""  className='lg:w-8 w-6 lg:h-8 h-6'/>
+                                            </div>
+
+                                            <div>
+                                                <h2 className='lg:text-sm text-xs'>{talent?.name}</h2>
+                                                <p className='lg:text-xs text-[10px]'>{talent?.title}</p>
+                                            </div>
+
+                                            <p className='lg:flex hidden ml-auto cursor-pointer items-center bg-neutral-200 p-2 text-sm rounded-full'><MdOutlineArrowForward /></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
 
             </>}
@@ -687,7 +722,7 @@ const SingleUserCreativeDash = () => {
                             <img src={successImg} alt="" className='w-28'/>
                         </div>
                         <h2 className='text-2xl py-3 pb-2 font-bold'>{creativeData.phone_number}</h2>
-                        <h3 className="font-medium text-lg pb-6">Your message was Sent!</h3>
+                        <h3 className="font-medium text-lg pb-6">Your booking request was Sent!</h3>
 
                         <div className='flex gap-3'>
                             <Link to={`tel:${creativeData.phone_number}`} className='w-full'>
@@ -697,7 +732,10 @@ const SingleUserCreativeDash = () => {
                         </div>
 
                         <p className='text-green-600 bg-green-50 flex justify-center m-auto items-center mt-10 p-2.5 text-sm rounded-lg gap-3 border border-green-600'><TbAlertTriangle />Copy Talents number to call </p>
-                        <p className='m-auto flex justify-center w-fit text-xs gap-2 pt-6'>Need any help ? <span className='text-blue-500 underline cursor-pointer'>Contact us</span></p>
+
+                        <Link to={'https://chat.whatsapp.com/K3CgZedlHFhJQO7T3UsUd5'}>
+                            <p className='m-auto flex justify-center w-fit text-xs gap-2 pt-6'>Need any help ? <span className='text-blue-500 underline cursor-pointer'>Contact us</span></p>
+                        </Link>
                     </div>
                 </div>
             </dialog>

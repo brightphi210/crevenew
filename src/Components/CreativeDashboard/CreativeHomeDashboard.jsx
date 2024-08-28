@@ -276,7 +276,7 @@ useEffect(() => {
         </div>
       </div>
 
-      <div className='shadow-[rgba(7,_65,_210,_0.03)_0px_9px_30px] bg-white 2xl:p-5 xl:p-5 lg:p-5 p-0 mt-5 lg:w-full w-[95%] m-auto  items-center 2xl:rounded-md xl:rounded-md lg:rounded-md rounded-md'>
+      <div className='shadow-[rgba(7,_65,_210,_0.03)_0px_9px_30px] bg-white 2xl:p-5 xl:p-5 lg:p-5 p-0 mt-5 lg:w-full w-[100%] m-auto  items-center 2xl:rounded-md xl:rounded-md lg:rounded-md rounded-md'>
       <Swiper
           slidesPerView={1}
           spaceBetween={40}
@@ -326,19 +326,19 @@ useEffect(() => {
           </SwiperSlide>
 
           <SwiperSlide>
-            <div className='bg-blue-400 text-white sect1 p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden' >
+            <div className='bg-blue-600 text-white sect1 p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden' >
                 <div className='relative isolate z-20 '>
                   <h2 className='2xl:text-3xl xl:text-xl lg:text-sm text-lg  font-bold'>Our  Blog</h2>
                   <p className='py-3 text-sm '>Browse our blog and get latest update</p>
                   <Link to={'/' + 'blog'}>
-                    <button className='bg-white text-blue-600 mt-5 py-2 px-5 rounded-full font-semibold border border-blue-200 text-xs'>Browser</button>
+                    <button className='bg-white text-accent mt-5 py-2 px-5 rounded-full font-semibold border border-blue-200 text-xs'>Browser</button>
                   </Link>
               </div>
             </div>
           </SwiperSlide>
 
           <SwiperSlide>
-            <div className='bg-lime-800 text-white sect2 p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden' >
+            <div className='bg-green-800 text-white sect2 p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden' >
               <div className='relative isolate z-20'>
                   <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg  font-bold'>Community</h2>
                   <p className='py-3 text-sm '>Join  community of like minds </p>
