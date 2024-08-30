@@ -69,9 +69,9 @@ const RegisterCom = () => {
   };
 
   return (
-    <div class="bg-white flex lg:flex-row flex-col justify-center items-center lg:h-screen lg:pt-0 pt-[2rem]">
+    <div class="bg-white flex lg:flex-row flex-col justify-center 2xl:items-center 2xl:h-screen lg:pt-0 pt-[2rem]">
 
-    <div class="lg:w-1/2 w-full bg-neutral-300 lg:h-screen h-[30vh] lg:block hidden">
+    <div class="lg:w-1/2 w-full bg-neutral-300 lg:h-screen h-[30vh] 2xl:block xl:hidden lg:hidden hidden">
       <video 
           src={'https://res.cloudinary.com/dphb7gqus/video/upload/v1722106065/mypics/dribbble_lfe49k.mp4'}
           autoPlay 
@@ -83,7 +83,7 @@ const RegisterCom = () => {
         />
     </div>
 
-    <div class="2xl:p-36 xl:p-36 lg:p-36  p-8 px-5 w-full 2xl:w-1/2 xl:w-3/4 lg:w-full">
+    <div class="2xl:p-20 xl:p-36 lg:p-36 xl:pt-[5rem] lg:pt-[5rem]  p-8 px-5 w-full 2xl:w-1/2 xl:w-3/4 lg:w-full">
       <Link to={'/'}><p className='text-2xl cursor-pointer pb-10'><FaArrowAltCircleLeft /></p></Link>
       <h1 class="text-2xl font-semibold mb-4">Register</h1>
       
