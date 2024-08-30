@@ -124,7 +124,7 @@ const RegisterCom = () => {
         <div>
           <input 
             type="text" 
-            placeholder="Enter Fullname e.g Chidi Obi" 
+            placeholder="Fullname e.g Chidi Obi" 
             className="input input-bordered w-full text-sm py-7 rounded-md" required
             value={fullname}
             onChange={(e)=>setfullName(e.target.value)}
@@ -134,7 +134,7 @@ const RegisterCom = () => {
         <div>
           <input 
             type="email" 
-            placeholder="Enter Email e.g joe@gmail.com"  
+            placeholder="Email Address e.g joe@gmail.com"  
             className="input input-bordered w-full text-sm py-7 rounded-md" required
             value={email}
             onChange={(e)=>setEmail(e.target.value)}
@@ -144,7 +144,7 @@ const RegisterCom = () => {
         <div className='relative'>
           <input 
             type={show === true ? "text" : "password"} 
-            placeholder="Enter Password e.g @John6431" 
+            placeholder="Password e.g @John6431" 
             className="input input-bordered w-full text-sm py-7 rounded-md" 
             required
             value={password}
@@ -157,6 +157,13 @@ const RegisterCom = () => {
           </div>
         </div>
 
+        <div className='lg:text-xs text-justify text-xs flex flex-col gap-3 text-neutral-400'>
+          <p>Password must contain a special character (e.g @, $, #) ,   
+            Capital letter (e.g A, B, C) , 
+            lowercase letter (e.g a, b, c) ,  numbers (e.g 1, 2, 3)
+          </p>
+          <p>Password must be at least 8 characters long</p>
+        </div>
 
         <p className='text-xs text-red-500'>{error}</p>
         <p className='text-xs text-red-500'>{error2}</p>

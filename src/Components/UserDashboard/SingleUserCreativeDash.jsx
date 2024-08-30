@@ -44,6 +44,7 @@ import { BsChat } from 'react-icons/bs';
 import GoogleMapReact from 'google-map-react'
 import avatar from '../Images/Avatars.png'
 import { talentsData } from '../Mock/allTalents';
+import NoData from '../allLoadingState/NoData';
 
 
 
@@ -331,9 +332,40 @@ const SingleUserCreativeDash = () => {
     };
 
 
-    console.log('this is user data', creativeData);
-    
 
+    // ======================= Filtered Talents ==============================
+    const [filteredTalents, setFilteredTalents] = useState([])
+    const [isFilteredLoaded, setIsFilteredLoaded] = useState(false)
+    const fetchFilteredTalents = async () => {
+        setIsFilteredLoaded(true);
+        try {
+            const response = await fetch(`${BASE_URL}/talents/${id}/`, {
+                method: 'GET',
+                headers: {
+                    'Authorization' : `Bearer ${authUser.access}`,
+                },
+            })
+            if (!response.ok) {
+                setIsFilteredLoaded(false);
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            setFilteredTalents(data);
+        }
+        catch (error) {
+            console.error('There was a problem with the fetch operation:', error);
+        } finally {
+            setIsFilteredLoaded(false);
+        }
+    }    
+
+
+    useEffect(() => {
+        fetchFilteredTalents();
+    }, []);
+
+    console.log('This is Filtered Talents', filteredTalents);
+    
   return (
 
     <div className='bg-white h-full'>
@@ -597,34 +629,39 @@ const SingleUserCreativeDash = () => {
                     </div>
 
                     <div className='lg:pt-20 p-3 pt-10'>
+                        {isFilteredLoaded === true ? <MyLoader />  :    
+                            <>  
+                                {filteredTalents.length === 0 ? <NoData /> : 
+                                    <>
+                                        <h2 className='lg:text-lg text-lg pb-5'>Similar Talents Profile</h2>
+                                        <div className='grid 2xl:grid-cols-4 lg:p-0  xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-5 '>
+                                            {filteredTalents.filter(talent => talent.location !== null && talent.cover_image !== 'https://creve.store/media/coverimage.png').map((talent, index) => (
+                                                <div key={index} className='col-span-1 rounded-lg shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]'>
+                                                    <div className='bg-neutral-200 w-full rounded-lg 2xl:h-[20rem] xl:h-[17rem] lg:h-[15rem] md:h-[18rem] h-[10rem] overflow-hidden '>
+                                                        <img className='w-full h-full object-cover rounded-lg cursor-pointer hover:transform hover:scale-105 transition-all ease-linear' src={talent?.cover_image} alt="" />
+                                                    </div>
 
-                        <h2 className='lg:text-2xl text-xl pb-5'>Similar Talents</h2>
-                        <div className='grid 2xl:grid-cols-4 lg:p-0  xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-5 '>
+                                                    <div>
+                                                        <div className='flex items-center lg:gap-4 gap-3 p-3 pt-5'>
+                                                            <div className='flex items-center justify-center lg:w-8 w-6 lg:h-8 h-6 rounded-full'>
+                                                                <img src={talent?.profile_pics} alt=""  className='lg:w-8 w-6 lg:h-8 h-6'/>
+                                                            </div>
 
-                            {talentsData?.map((talent, index)=>(
+                                                            <div>
+                                                                <h2 className='lg:text-sm text-xs'>{talent?.user?.fullname}</h2>
+                                                                <p className='lg:text-xs text-[10px]'>{talent?.display_name}</p>
+                                                            </div>
 
-                                <div key={index} className='col-span-1 rounded-lg shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]'>
-                                    <div className='bg-neutral-200 w-full rounded-lg 2xl:h-[20rem] xl:h-[17rem] lg:h-[15rem] md:h-[18rem] h-[11rem] overflow-hidden '>
-                                        <img className='w-full h-full object-cover rounded-lg cursor-pointer hover:transform hover:scale-105 transition-all ease-linear' src={talent?.pics} alt="" />
-                                    </div>
-
-                                    <div>
-                                        <div className='flex items-center lg:gap-4 gap-3 p-3 pt-5'>
-                                            <div className='flex items-center justify-center lg:w-8 w-6 lg:h-8 h-6'>
-                                                <img src={talent?.prof} alt=""  className='lg:w-8 w-6 lg:h-8 h-6'/>
-                                            </div>
-
-                                            <div>
-                                                <h2 className='lg:text-sm text-xs'>{talent?.name}</h2>
-                                                <p className='lg:text-xs text-[10px]'>{talent?.title}</p>
-                                            </div>
-
-                                            <p className='lg:flex hidden ml-auto cursor-pointer items-center bg-neutral-200 p-2 text-sm rounded-full'><MdOutlineArrowForward /></p>
+                                                            <p className='lg:flex hidden ml-auto cursor-pointer items-center bg-neutral-200 p-2 text-sm rounded-full'><MdOutlineArrowForward /></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
                                         </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                                    </>
+                                }
+                            </>
+                        }
                     </div>
                 </div>
 
