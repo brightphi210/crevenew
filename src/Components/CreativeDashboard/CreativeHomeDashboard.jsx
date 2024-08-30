@@ -17,7 +17,7 @@ import { MdHelpCenter } from "react-icons/md";
 import { FaUnlockKeyhole } from "react-icons/fa6";
 import { FaCheckCircle, FaRegCopy } from "react-icons/fa";
 
-import { RiNotificationOffLine } from "react-icons/ri";
+import { RiNotificationOffLine, RiVerifiedBadgeFill } from "react-icons/ri";
 import { IoNotificationsOffOutline } from "react-icons/io5";
 import { MdOutlineClose } from "react-icons/md";
 
@@ -40,7 +40,7 @@ import empty2 from '../Images/No data-rafiki.png'
 import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
 import { TbAlertTriangle } from "react-icons/tb";
-import { GoArrowRight } from "react-icons/go";
+import { GoArrowRight, GoUnverified } from "react-icons/go";
 
 import shss from '../Images/find-talent-2x.jpg'
 import { Verified } from 'lucide-react';
@@ -183,7 +183,7 @@ useEffect(() => {
     <div className='lg:p-16  lg:pl-[18rem] p-5 px-3 pt-20 lg:pt-28'>
 
 
- <>
+    {/* <>
       {isLoading ? (
         <p className='pb-5'>Loading . . .</p>
       ) : (
@@ -216,7 +216,7 @@ useEffect(() => {
           )}
         </>
       )}
-    </>
+    </> */}
  
       <div className='flex 2xl:flex-row flex-col xl:flex-row lg:flex-col gap-10'>
 
@@ -314,6 +314,38 @@ useEffect(() => {
           modules={[Pagination, Autoplay, Navigation]}
           className="mySwiper"
       >
+
+
+          <SwiperSlide>
+            <div className='bg-black border relative border-neutral-300 text-white flex justify-center items-center  w-full p-5 rounded-xl 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem]'>
+                <Link to={'/creative-dashboard-profile-update'}>
+                  <button className=' text-white underline absolute top-4 right-4 rounded-full p-2 bg-neutral-500 w-fit text-xs flex justify-center m-auto  mt-2 gap-2'><MdModeEditOutline className='text-sm '/></button>
+                </Link>
+                
+                <div className=' p-4 gap-3'>
+                  <div className='relative'>
+                    <div className='border-2 flex m-auto border-neutral-200 bg-neutral-200 w-24 h-24 rounded-full overflow-hidden'>
+                      <img src={profileData.profile_pics} alt="" className='w-full h-full object-cover'/>
+                    </div>
+
+                    <div className='absolute top-1 right-0'>
+                      {profileData?.verification?.verified === true ? (
+                          <button className='bg-black text-2xl text-accent p-0 rounded-full flex items-center'><RiVerifiedBadgeFill /></button>
+                      ) : (
+                          
+                          <button className='bg-black text-red-400 text-2xl p-0 rounded-full flex items-center'><GoUnverified className='font-bold' /></button>
+                      )}
+                    </div>
+                  </div>
+                  <div className='text-center'>
+                    <h2 className='lg:text-sm py-2 text-sm'>{userToken.name} <span className='text-xs text-neutral-300'>({userToken.role})</span></h2>
+                    <p className='text-xs'>{profileData.display_name}</p>
+                  </div>
+                </div>
+            </div>
+          </SwiperSlide>
+
+
           <SwiperSlide>
               <div className='bg-neutral-100 text-black p-5 rounded-xl border w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] border-neutral-200'>
                 <p className='text-sm'>Welcome to </p>
@@ -331,7 +363,7 @@ useEffect(() => {
                   <h2 className='2xl:text-3xl xl:text-xl lg:text-sm text-lg  font-bold'>Our  Blog</h2>
                   <p className='py-3 text-sm '>Browse our blog and get latest update</p>
                   <Link to={'/' + 'blog'}>
-                    <button className='bg-white text-accent mt-5 py-2 px-5 rounded-full font-semibold border border-blue-200 text-xs'>Browser</button>
+                    <button className='bg-white text-blue-600 mt-5 py-2 px-5 rounded-full font-semibold border border-blue-200 text-xs'>Browser</button>
                   </Link>
               </div>
             </div>
@@ -350,25 +382,11 @@ useEffect(() => {
             </div>
           </SwiperSlide>
 
-          <SwiperSlide>
-            <div className='bg-black border relative border-neutral-300 text-white flex justify-center items-center  w-full p-5 rounded-xl 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem]'>
-                <Link to={'/creative-dashboard-profile-update'}>
-                  <button className=' text-white underline absolute top-4 right-4 rounded-full p-2 bg-neutral-500 w-fit text-xs flex justify-center m-auto  mt-2 gap-2'><MdModeEditOutline className='text-sm '/></button>
-                </Link>
-                
-                <div className=' p-4 gap-3'>
-                  <div className='border-2 flex m-auto border-neutral-200 bg-neutral-200 w-20 h-20 rounded-full overflow-hidden'>
-                    <img src={profileData.profile_pics} alt="" className='w-full h-full object-cover'/>
-                  </div>
-                  <div className='text-center'>
-                    <h2 className='lg:text-sm py-2 text-sm'>{userToken.name} <span className='text-xs text-neutral-300'>({userToken.role})</span></h2>
-                    <p className='text-xs'>{profileData.display_name}</p>
-                  </div>
-                </div>
-            </div>
-          </SwiperSlide>
+
       </Swiper>
       </div>
+
+      
       <div className='mt-10 flex 2xl:flex-row xl:flex-row lg:flex-col flex-col  w-full gap-10'>
         <div className=' bg-white 2xl:w-[77%] xl:w-[70%] lg:w-full lg:p-5 py-5 px-2 rounded-xl'>
           <h2 className='text-sm font-semibold'>Messages</h2>
@@ -533,7 +551,7 @@ useEffect(() => {
 
                 <div className='flex gap-3 mt-4'>
                   <button className='mycolor3 py-3 px-5 text-xs rounded-md w-full' onClick={()=>{document.getElementById('my_modal_3').close()}}>Close</button>
-                  <Link to={'https://t.me/+nflgbLBXe5xlMjI8'} className='w-full'>
+                  <Link to={'https://chat.whatsapp.com/FNQzOFlRnIKK3ChV8iOHWx'} className='w-full'>
                     <p className='mycolor2 text-white py-3 px-5 text-xs rounded-md text-center'>Join Now</p>
                   </Link>
                 </div>
