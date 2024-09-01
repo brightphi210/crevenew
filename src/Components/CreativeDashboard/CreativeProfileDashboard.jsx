@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import CreativeSideBarCom from './CreativeSideBarCom'
 import CreativeNavBarCom from './CreativeNavBarCom'
-import prof from '../Images/Avatars.png'
 import { FaLocationDot } from "react-icons/fa6";
-import { FaStar } from "react-icons/fa";
 import { MdModeEditOutline } from "react-icons/md";
 import { TbSmartHome } from "react-icons/tb";
 import { FaGlobe } from "react-icons/fa";
@@ -16,13 +14,6 @@ import { GoUnverified } from "react-icons/go";
 
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
-
-import item1 from '../Images/item1.jpg'
-import item3 from '../Images/item3.jpg'
-import item4 from '../Images/item4.jpg'
-import item5 from '../Images/item5.jpg'
-import item6 from '../Images/item6.jpg'
-
 import comm from '../Images/hero.svg'
 
 
@@ -34,7 +25,6 @@ import 'swiper/css/pagination';
 import { Link } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import { BASE_URL } from '../Auth/BaseUrl';
-import Loader from '../Loader';
 import { GoDotFill } from "react-icons/go";
 import MyLoader from '../allLoadingState/MyLoader';
 

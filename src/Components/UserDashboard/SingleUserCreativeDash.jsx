@@ -41,9 +41,6 @@ import Pusher from "pusher-js";
 import MyLoader from '../allLoadingState/MyLoader';
 import { MdVerified } from "react-icons/md";
 import { BsChat } from 'react-icons/bs';
-import GoogleMapReact from 'google-map-react'
-import avatar from '../Images/Avatars.png'
-import { talentsData } from '../Mock/allTalents';
 import NoData from '../allLoadingState/NoData';
 
 

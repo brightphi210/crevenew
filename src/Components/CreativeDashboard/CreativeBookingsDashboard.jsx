@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import CreativeSideBarCom from './CreativeSideBarCom'
 import CreativeNavBarCom from './CreativeNavBarCom'
-import { MdModeEditOutline } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import { FaRegCopy } from "react-icons/fa6";
-import { LuSearch } from "react-icons/lu";
-import { BsWhatsapp } from "react-icons/bs";
-
-import data from '../Mock/data.json'
 import { BASE_URL } from '../Auth/BaseUrl'
 import { jwtDecode } from 'jwt-decode'
-
-import noData from '../Images/nodata2.png'
 import { TbAlertTriangle } from 'react-icons/tb'
 import MyLoader from '../allLoadingState/MyLoader'
 import NoData from '../allLoadingState/NoData'
@@ -211,33 +204,6 @@ export const CreativeBookings = () => {
           </ul>
         </div>
       </div>
-
-
-
-
-      {/* {showBoookingsDesc === false ? 
-
-<div className='bg-neutral-100 2xl:w-1/4 w-full p-5 2xl:pt-20 rounded-lg'>
-      <p className='2xl:text-[8rem] text-[5rem] flex m-auto justify-center'><TbClick /></p>
-      <h2 className='text-center pt-5'>Click to see details</h2>
-  </div>:
-
-<div className='bg-neutral-100 lg:w-1/4 w-full p-5 lg:pt-20 rounded-lg'>
-    <div className='flex m-auto w-32'>
-      <img src={prof} alt="" />
-    </div>
-
-    <div className='text-center pt-5'>
-      <h2 className='font-semibold'>John Doe</h2>
-      <p className='text-xs py-2 font-semibold'>johndoe@gmail.com</p>
-
-
-      <p className='text-xs w-10/12 flex m-auto'>Lorem, ipsum dolor  neque explicabo eum iusto deleniti. Voluptatum, mollitia.</p>
-    </div>
-
-    <button className='flex m-auto w-9/12 justify-center bg-black mt-5 text-xs py-3 px-5 rounded-md text-white'>Contact Client</button>
-</div>
-} */}
     </div>
   )
 }
