@@ -307,9 +307,7 @@ export const UserHomeDashboardHome = () => {
                   <div className='bg-white  rounded-xl cursor-pointer relative border border-neutral-100' key={talent.id}>
                     <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
                       <div className='2xl:h-[20rem] relative xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
-                        <img src={talent.cover_image} alt="" className='w-full h-full object-cover'/>
-
-                  
+                        <img src={talent.cover_image} alt="" loading='lazy' className='w-full h-full object-cover'/>
                       </div>
                     </Link>
 
