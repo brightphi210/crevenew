@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import logo from '../Images/Creve1.png'
 import { Link, useNavigate } from 'react-router-dom';
 import { IoMailUnread, IoNotificationsOutline } from "react-icons/io5";
-import { MdFavoriteBorder } from "react-icons/md";
+import { MdFavoriteBorder, MdOutlineCallMissedOutgoing, MdOutlineFavoriteBorder, MdOutlineMarkEmailUnread } from "react-icons/md";
 
 import { RxDashboard } from "react-icons/rx";
 import { BsDashCircle } from "react-icons/bs";
@@ -12,6 +12,10 @@ import { jwtDecode } from 'jwt-decode';
 import { AiTwotoneEdit } from "react-icons/ai";
 import { IoLogOutOutline } from "react-icons/io5";
 import { GoDotFill } from 'react-icons/go';
+import { GrHomeRounded } from 'react-icons/gr';
+import { BiMessageSquare } from 'react-icons/bi';
+import { FiSettings } from 'react-icons/fi';
+import { IoMdClose } from 'react-icons/io';
 
 const UserNavbar = ({handleShow, show}) => {
     const [profileData, setProfileData] = useState({})
@@ -63,6 +67,7 @@ const UserNavbar = ({handleShow, show}) => {
     }
 
 
+
     const [users, setUsers] = useState([]);
     const url5 =`${BASE_URL}/chat/`
     const fetchMessages = async () => {
@@ -89,32 +94,69 @@ const UserNavbar = ({handleShow, show}) => {
     }, []);
 
 
+
+    const menuItems = [
+        { label: 'Home', path: 'user-dashboard-home' },
+        { label: 'Creatives',path: 'user-dashboard-creative' },
+        { label: 'Request',path: 'user-dashboard-books' },
+        { label: 'Saved', path: 'user-dashboard-favourites' },
+        { label: 'Profile', path: 'user-dashboard-profile' },
+    ];
+
+
+    const [activeIndex, setActiveIndex] = useState('');
+
+    const handleItemClick = (index) => {
+        setActiveIndex(index);
+        navigate(`/${menuItems[index].path}`);
+    };
+
   return (
     <div>
-        <div className={'flex flex-row items-center shadow-sm fixed right-0 left-0 bg-white py-4 lg:px-20 px-5  z-50 backdrop-filter backdrop-blur-3xl bg-opacity-80'}>
+        <div className={'flex flex-row items-center shadow-sm fixed right-0 left-0 bg-white py-4 2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] px-5  z-50 backdrop-filter backdrop-blur-3xl bg-opacity-80'}>
 
-            <div className='cursor-pointer mr-5'>
-                <Link to={'/'}>
-                    <img src={logo} alt="" className='w-7'/>
-                </Link>
+            <Link to={'/'} className='hidden lg:block'>
+                <img src={logo} alt="" className='w-7'/>
+            </Link>
+
+
+            <div className='cursor-pointer lg:relative fixed lg:bg-white bg-black lg:h-fit h-[100vh] w-[80%] top-0 right-0 z-40 lg:flex hidden items-center'>
+                <ul className='flex lg:flex-row flex-col pl-10 lg:gap-10 gap-5 z-50 2xl:text-sm xl:text-sm lg:text-sm text-base'>
+                    {menuItems.map((item, index) => (
+                        <div key={index} onClick={() => handleItemClick(index)}>
+                            <li className={'flex gap-2 items-center cursor-pointer font-bold'}>{item.label}</li>
+                        </div>
+                    ))}
+                </ul>
             </div>
 
 
             <div onClick={handleShow}>
-                {show === false ? <p className='text-2xl block lg:hidden '><RxDashboard /></p> : <p className='text-2xl block lg:hidden'><BsDashCircle /></p>}
+                {show === false ? <p className='text-2xl block lg:hidden '><RxDashboard /></p> : <p className='text-2xl block lg:hidden'><IoMdClose /></p>}
+            </div>
+
+            <div className={`cursor-pointer lg:relative fixed transition-transform duration-500 ${show ? 'translate-x-0' : 'translate-x-full'} 
+                transform top-0 right-0 z-40 lg:hidden flex bg-neutral-100 h-[100vh] w-[80%] lg:h-fit backdrop-filter backdrop-blur-3xl bg-opacity-100`}>
+                {show && (
+                    <ul className="flex lg:flex-row flex-col pl-10 pt-10 gap-10 z-50 2xl:text-sm xl:text-sm lg:text-sm text-base">
+                    {menuItems.map((item, index) => (
+                        <li
+                        key={index}
+                        onClick={() => handleItemClick(index)}
+                        className="flex gap-2 items-center cursor-pointer font-bold"
+                        >
+                        {item.label}
+                        </li>
+                    ))}
+                    </ul>
+                )}
             </div>
 
             <div className='flex flex-row gap-5 ml-auto items-center'>
-                {/* <Link to={'/user-dashboard-home'}>
-                    <p className='text-xl cursor-pointer p-2 border border-neutral-200 rounded-full  text-neutral-700'><IoNotificationsOutline /></p>
-                </Link> */}
 
                 <Link to={'/user-dashboard-chat'}>
                     <p className='text-xl relative cursor-pointer text-neutral-700 border border-neutral-300 flex rounded-full p-2 items-center justify-center '>
                         <IoMailUnread />
-                        {/* {users?.length > 0 && (
-                            <p className='absolute top-[-5px] right-[-5px] p-0 bg-white text-red-600  rounded-full text-lg'><GoDotFill /></p>
-                        )} */}
                     </p>
                 </Link>
 
