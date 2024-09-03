@@ -261,7 +261,7 @@ export const UserCreativeDashboardCom = () => {
                 <>
                   {/* {filteredItems.filter(talent => talent.location !== null && talent.cover_image !== 'https://creve.store/media/coverimage.png').map((talent) => ( */}
                   {filteredItems.filter(talent => talent.location !== null).map((talent) => (
-                    <div className='bg-white  rounded-md cursor-pointer hover:transition-all hover:ease-in-out hover:shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] relative border border-neutral-200 p-3' key={talent.id}>
+                    <div className='bg-white  rounded-md cursor-pointer hover:transition-all hover:ease-in-out hover:shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] relative border border-neutral-300 p-3' key={talent.id}>
                       <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
 
                           <div className='relative'>
@@ -282,7 +282,7 @@ export const UserCreativeDashboardCom = () => {
                               <p className='text-xs m-auto justify-center flex items-center gap-1'>{talent.display_name} <GoTools /></p>
                           </div>
 
-                          <p className='border border-neutral-200 font-bold p-2 px-5 w-full rounded-full text-center text-sm mt-4 cursor-pointer'>Hire {talent?.user?.fullname}</p>
+                          <p className='border border-neutral-300 font-bold p-2 px-5 w-full rounded-full text-center text-sm mt-4 cursor-pointer'>Hire {talent?.user?.fullname}</p>
 
                           <div className='flex m-auto justify-center items-center gap-4 pt-5'>
                           <p className='text-xs flex items-center gap-2'><FaLocationDot className='text-green-500'/>{talent?.location?.slice(0, 30)}. . .</p>
