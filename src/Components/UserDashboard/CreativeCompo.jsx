@@ -101,7 +101,9 @@ const CreativeCompo = () => {
 
                         <div className='text-center pt-10'>
                             <h2 className='text-lg uppercase font-bold flex items-center m-auto justify-center gap-1'>{talent.user.fullname}
-                                <p className='text-xl text-green-500 bg-white shadow-lg flex rounded-full items-center'><RiVerifiedBadgeFill /></p>
+                                {talent?.verification?.verified === true && 
+                                    <p className='text-xl text-green-500 bg-white shadow-lg flex rounded-full items-center'><RiVerifiedBadgeFill /></p>
+                                }
                             </h2>
                             <p className='text-xs m-auto justify-center flex items-center gap-1'>{talent.display_name} <GoTools /></p>
                         </div>
