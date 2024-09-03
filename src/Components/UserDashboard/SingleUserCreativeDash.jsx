@@ -484,7 +484,7 @@ const SingleUserCreativeDash = () => {
 
 
                         {creativeData.user && (
-                            <div className='pt-28'>
+                            <div className='pt-16'>
                                 <h2 className='text-lg font-bold flex gap-2 items-center'>{creativeData.user.fullname}
                                     {creativeData?.verification?.verified === true ? <MdVerified className='text-green-500'/>  : <GoUnverified className='text-red-500 font-bold'/> }
                                 </h2>
