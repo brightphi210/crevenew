@@ -69,7 +69,7 @@ const CreativeCompo = () => {
 
         {isLoading === true ? 
         
-            <div className='lg:grid flex flex-col lg:grid-cols-4 gap-5'>
+            <div className='lg:grid flex flex-col 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3  gap-5'>
             <span className='loadera w-full col-span-1'></span>
             <span className='loadera w-full col-span-1'></span>
             <span className='loadera w-full col-span-1'></span>
@@ -96,12 +96,14 @@ const CreativeCompo = () => {
                                 <img src={talent.profile_pics} alt="" loading='lazy' className='w-[70px] h-[70px] object-cover'/>
                             </div>
 
-                            <p className='absolute top-[5rem] left-[12rem] text-xl text-green-500 bg-white p-0.5 flex rounded-full items-center'><RiVerifiedBadgeFill /></p>
+                            
                         </div>
 
                         <div className='text-center pt-10'>
-                        <h2 className='text-lg uppercase font-bold'>{talent.user.fullname}</h2>
-                        <p className='text-xs m-auto justify-center flex items-center gap-1'>{talent.display_name} <GoTools /></p>
+                            <h2 className='text-lg uppercase font-bold flex items-center m-auto justify-center gap-1'>{talent.user.fullname}
+                                <p className='text-xl text-green-500 bg-white shadow-lg flex rounded-full items-center'><RiVerifiedBadgeFill /></p>
+                            </h2>
+                            <p className='text-xs m-auto justify-center flex items-center gap-1'>{talent.display_name} <GoTools /></p>
                         </div>
 
                         <p className='border border-neutral-200 font-bold p-2 px-5 w-full rounded-full text-center text-sm mt-4 cursor-pointer'>Hire {talent?.user?.fullname}</p>
