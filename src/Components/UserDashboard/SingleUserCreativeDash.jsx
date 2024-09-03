@@ -473,9 +473,15 @@ const SingleUserCreativeDash = () => {
             {isLoading === true ? <MyLoader /> : 
                 <div className='lg:px-[5rem] px-5 lg:grid lg:grid-cols-5 flex flex-col lg:gap-10 gap-5'>
                     <div className='relative 2xl:col-span-1 xl:col-span-1 lg:col-span-1'>
-                        <div className='w-28 h-28 absolute top-[-10px] rounded-full border-4 border-white bg-white overflow-hidden'>
-                            <img src={creativeData.profile_pics} alt="" className='w-28 h-28 object-cover'/>
+                        
+                        <div className='flex'>
+                            <div className='w-28 h-28 absolute top-[-10px] rounded-full border-4 border-white bg-white overflow-hidden'>
+                                <img src={creativeData.profile_pics} alt="" className='w-28 h-28 object-cover'/>
+                            </div>
+
+                            <button onClick={goBack} className='bg-white text-black flex items-center justify-center gap-3 border border-neutral-300 rounded-full py-2 px-6 text-sm ml-auto mt-5'><FaArrowLeft/>Back</button>
                         </div>
+
 
                         {creativeData.user && (
                             <div className='pt-28'>
