@@ -120,7 +120,7 @@ const UserNavbar = ({handleShow, show}) => {
             </Link>
 
 
-            <div className='cursor-pointer lg:relative fixed lg:bg-white bg-black lg:h-fit h-[100vh] w-[80%] top-0 right-0 z-40 lg:flex hidden items-center'>
+            <div className='cursor-pointer lg:relative fixed lg:bg-transparent bg-black lg:h-fit h-[100vh] w-[80%] top-0 right-0 z-40 lg:flex hidden items-center'>
                 <ul className='flex lg:flex-row flex-col pl-10 lg:gap-10 gap-5 z-50 2xl:text-sm xl:text-sm lg:text-sm text-base'>
                     {menuItems.map((item, index) => (
                         <div key={index} onClick={() => handleItemClick(index)}>

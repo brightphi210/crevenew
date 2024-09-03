@@ -19,9 +19,6 @@ const UserRequestBookings = () => {
     <div>
         <UserNavbar show={show} handleShow={handleShow}/>
         <div className='flex bg-neutral-100 h-screen'>
-            <div className='z-40'>
-                <UserSideBar show={show} />
-            </div>
             <UserRequestBookingsDashboard />
         </div>
     </div>
@@ -73,7 +70,7 @@ export const UserRequestBookingsDashboard = () => {
 
     
   return (
-    <div className='2xl:pl-[20rem] xl:pl-[15rem] lg:pl-[15rem] 2xl:pr-[5rem] xl:pr-[5rem] lg:pr-[3rem]  py-28 w-full px-5'>
+    <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] py-28 w-full'>
         <h2 className='text-2xl'>All Request</h2>
 
         {isLoading === true ? <MyLoader />  : <>

@@ -70,14 +70,14 @@ const CreativeCompo = () => {
         {isLoading === true ? 
         
             <div className='lg:grid flex flex-col 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3  gap-5'>
-            <span className='loadera w-full col-span-1'></span>
-            <span className='loadera w-full col-span-1'></span>
-            <span className='loadera w-full col-span-1'></span>
-            <span className='loadera w-full col-span-1'></span>
-            <span className='loadera w-full col-span-1'></span>
-            <span className='loadera w-full col-span-1'></span>
-            <span className='loadera w-full col-span-1'></span>
-            <span className='loadera w-full col-span-1'></span>
+                <span className='loadera w-full col-span-1'></span>
+                <span className='loadera w-full col-span-1'></span>
+                <span className='loadera w-full col-span-1'></span>
+                <span className='loadera w-full col-span-1'></span>
+                <span className='loadera w-full col-span-1'></span>
+                <span className='loadera w-full col-span-1'></span>
+                <span className='loadera w-full col-span-1'></span>
+                <span className='loadera w-full col-span-1'></span>
             </div> : 
         <>
 

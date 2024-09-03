@@ -166,113 +166,108 @@ export const UserProfileDash = () => {
 
 
   return (
-    <div className='2xl:p-20 2xl:pt-28 2xl:pl-[18rem] lg:pl-[18rem] p-5 pt-20  '>
+    <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] py-28 w-full'>
+        <h2 className='text-2xl font-bold pb-10'>Settings</h2>
 
-    <h2 className='text-2xl font-bold pb-10'>Settings</h2>
+        {isLoading === true ? <MyLoader />  :
+            <div className='bg-white'>
 
+                <div onClick={()=> document.querySelector(".input-field").click()} className='2xl:w-fit xl:w-fit lg:w-fit md:w-fit lg:block flex justify-center '>
+                    <input  type="file" accept='image/*' className='input-field' hidden
+                        onChange={({target: {files}}) =>{
+                            files[0] && setFileName(files[0].name)
+                            if(files){
+                                setImage(URL.createObjectURL(files[0]))
+                                setCoverImage(files[0])
+                                setCover_Image(files[0])
+                            }
+                        }}
+                    />
 
-
-    {isLoading === true ? <MyLoader />  :
-        <div className='bg-white'>
-
-            <div onClick={()=> document.querySelector(".input-field").click()} className='2xl:w-fit xl:w-fit lg:w-fit md:w-fit lg:block flex justify-center '>
-                <input  type="file" accept='image/*' className='input-field' hidden
-                    onChange={({target: {files}}) =>{
-                        files[0] && setFileName(files[0].name)
-                        if(files){
-                            setImage(URL.createObjectURL(files[0]))
-                            setCoverImage(files[0])
-                            setCover_Image(files[0])
-                        }
-                    }}
-                />
-
-                {image || cover_image ?
-                    <div className=' lg:w-[8rem] lg:h-[8rem] h-[8rem] w-[8rem] overflow-hidden rounded-full bg-neutral-50 border border-neutral-300'>
-                        {image && (
-                            <img src={image} alt='' className='w-full h-full object-cover cursor-pointer'/> 
-                        )}
-
-                        <div className='relative lg:w-[8rem] lg:h-[8rem] w-[8rem] h-[8rem]'>
-
-                            {cover_image && (
-                                <img src={cover_image} alt='' className='w-full h-full object-cover cursor-pointer'/> 
+                    {image || cover_image ?
+                        <div className=' lg:w-[8rem] lg:h-[8rem] h-[8rem] w-[8rem] overflow-hidden rounded-full bg-neutral-50 border border-neutral-300'>
+                            {image && (
+                                <img src={image} alt='' className='w-full h-full object-cover cursor-pointer'/> 
                             )}
 
+                            <div className='relative lg:w-[8rem] lg:h-[8rem] w-[8rem] h-[8rem]'>
 
-                            <div className='absolute bg-white rounded-full bottom-5 right-6 w-fit  p-2 cursor-pointer'>
-                                <p className='text-sm p-1'><FiEdit /></p>
+                                {cover_image && (
+                                    <img src={cover_image} alt='' className='w-full h-full object-cover cursor-pointer'/> 
+                                )}
+
+
+                                <div className='absolute bg-white rounded-full bottom-5 right-6 w-fit  p-2 cursor-pointer'>
+                                    <p className='text-sm p-1'><FiEdit /></p>
+                                </div>
+                            </div>
+                            
+                        </div> :
+
+                        <div className='lg:w-[8rem] w-[8rem] lg:h-[8rem] h-[8rem] flex justify-center items-center cursor-pointer border border-neutral-300 rounded-full'>
+                            <div className=''>
+                                <p className='text-xs'>PICS </p>
                             </div>
                         </div>
-                        
-                    </div> :
+                    }
 
-                    <div className='lg:w-[8rem] w-[8rem] lg:h-[8rem] h-[8rem] flex justify-center items-center cursor-pointer border border-neutral-300 rounded-full'>
-                        <div className=''>
-                            <p className='text-xs'>PICS </p>
-                        </div>
-                    </div>
-                }
-
-            </div>
-
-
-
-            <button 
-                onClick={handleProfileUpdate} 
-                className="btn lg:w-fit md:w-fit w-1/2 min-h-2rem lg:px-10 xl:text-xs lg:text-xs  
-                bg-black hover:bg-neutral-800 text-white lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">{isLoading3 === true ? <span class="loader"></span> : 'Update' }
-            </button>
-
-
-            <form onSubmit={handleProfileUpdate2} className='mt-5 pt-5 2xl:w-[50%] w-full border-t border-neutral-200'>
-
-                <div>
-                    <GooglePlacesAutocomplete
-                        apiKey="AIzaSyA_HnIpk-nlGgMh-G1Evi-WX2T_wwqTmGs"
-                        onPlaceSelected={handlePlaceSelected}
-                        value={address}
-                        required                                                                                                                                                                                            
-                        onChange={(e)=>setAddress(e.target.value)}
-                        options={{
-                        types: ['address'],
-                        }}
-                        className="input text-sm input-bordered border-neutral-300 w-full max-w-full" 
-                        defaultValue={address}
-                    />
                 </div>
+
+
+
                 <button 
-                    type='submit'
-                    className="btn lg:w-full md:w-fit w-full min-h-2rem lg:px-10 xl:text-xs lg:text-xs  
-                    bg-black hover:bg-neutral-800 text-white lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">{isLoading2 === true ? <span class="loader"></span> : 'Update' }
+                    onClick={handleProfileUpdate} 
+                    className="btn lg:w-fit md:w-fit w-1/2 min-h-2rem lg:px-10 xl:text-xs lg:text-xs  
+                    bg-black hover:bg-neutral-800 text-white lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">{isLoading3 === true ? <span class="loader"></span> : 'Update' }
                 </button>
-            </form>
-
-        </div>
-     }
 
 
+                <form onSubmit={handleProfileUpdate2} className='mt-5 pt-5 2xl:w-[50%] w-full border-t border-neutral-200'>
 
-    <dialog id="my_modal_1" className="modal">
-    <div className="modal-box  p-0 rounded-md flex justify-center items-center h-[25rem]" >
-        <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
-            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕
-        </button>
+                    <div>
+                        <GooglePlacesAutocomplete
+                            apiKey="AIzaSyA_HnIpk-nlGgMh-G1Evi-WX2T_wwqTmGs"
+                            onPlaceSelected={handlePlaceSelected}
+                            value={address}
+                            required                                                                                                                                                                                            
+                            onChange={(e)=>setAddress(e.target.value)}
+                            options={{
+                            types: ['address'],
+                            }}
+                            className="input text-sm input-bordered border-neutral-300 w-full max-w-full" 
+                            defaultValue={address}
+                        />
+                    </div>
+                    <button 
+                        type='submit'
+                        className="btn lg:w-full md:w-fit w-full min-h-2rem lg:px-10 xl:text-xs lg:text-xs  
+                        bg-black hover:bg-neutral-800 text-white lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">{isLoading2 === true ? <span class="loader"></span> : 'Update' }
+                    </button>
+                </form>
 
-
-        <div className=''>
-            <div className='flex m-auto justify-center'>
-                <img src={successImg} alt="" />
             </div>
-            <h2 className='text-center'>Profile Updated</h2>
-            <p className='text-center text-xs'>Your profile has been updated, continue </p>
+        }
 
-            <Link to={'/user-dashboard-home'}>
-                <button className="btn btn-active text-xs btn-neutral w-9/12 justify-center m-auto mt-8 flex items-center gap-4">Continue <FaArrowRight /></button>
-            </Link>
-        </div>
+        <dialog id="my_modal_1" className="modal">
+            <div className="modal-box  p-0 rounded-md flex justify-center items-center h-[25rem]" >
+                <button onClick={()=>{document.getElementById('my_modal_1').close()}} 
+                    className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-white text-black hover:text-white">✕
+                </button>
+
+
+                <div className=''>
+                    <div className='flex m-auto justify-center'>
+                        <img src={successImg} alt="" />
+                    </div>
+                    <h2 className='text-center'>Profile Updated</h2>
+                    <p className='text-center text-xs'>Your profile has been updated, continue </p>
+
+                    <Link to={'/user-dashboard-home'}>
+                        <button className="btn btn-active text-xs btn-neutral w-9/12 justify-center m-auto mt-8 flex items-center gap-4">Continue <FaArrowRight /></button>
+                    </Link>
+                </div>
+            </div>
+        </dialog>
     </div>
-    </dialog>
-</div>
   )
 }

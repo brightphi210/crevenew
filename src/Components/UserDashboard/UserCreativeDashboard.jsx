@@ -18,6 +18,7 @@ import { GoUnverified } from "react-icons/go";
 import noData from '../Images/nodata2.png'
 import MyLoader from '../allLoadingState/MyLoader';
 import { LuSearch } from 'react-icons/lu';
+import { RiVerifiedBadgeFill } from 'react-icons/ri';
 
 const UserCreativeDashboard = () => {
 
@@ -32,9 +33,6 @@ const UserCreativeDashboard = () => {
     <div>
         <UserNavbar show={show} handleShow={handleShow}/>
         <div className='flex bg-white'>
-            <div className='z-40'>
-                <UserSideBar show={show} />
-            </div>
             <UserCreativeDashboardCom />
         </div>
     </div>
@@ -159,7 +157,7 @@ export const UserCreativeDashboardCom = () => {
   
 
   return (
-    <div className='2xl:pl-[16rem] xl:pl-[15rem] lg:pl-[15rem] 2xl:pr-[3rem] xl:pr-[3rem] lg:pr-[3rem]  py-28 w-full'>
+    <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] py-28 w-full'>
       <div className='flex items-center px-4'>
 
       <div className="flex items-center gap-3 lg:w-full">
@@ -241,52 +239,56 @@ export const UserCreativeDashboardCom = () => {
           </>
       </div>
 
-      {isLoading === true ? <MyLoader /> :
+      {isLoading === true ? 
+            <div className='lg:grid flex flex-col 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3  gap-5 pt-10'>
+            <span className='loadera w-full col-span-1'></span>
+            <span className='loadera w-full col-span-1'></span>
+            <span className='loadera w-full col-span-1'></span>
+            <span className='loadera w-full col-span-1'></span>
+            <span className='loadera w-full col-span-1'></span>
+            <span className='loadera w-full col-span-1'></span>
+            <span className='loadera w-full col-span-1'></span>
+            <span className='loadera w-full col-span-1'></span>
+            <span className='loadera w-full col-span-1'></span>
+            <span className='loadera w-full col-span-1'></span>
+            <span className='loadera w-full col-span-1'></span>
+            <span className='loadera w-full col-span-1'></span>
+        </div>
+      :
           <>
-            <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5 pt-10 lg:px-0 px-5'>
+            <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5 pt-10 px-5 lg:px-0'>
               {filteredItems.length > 0 &&
                 <>
-                  {filteredItems.filter(talent => talent.location !== null && talent.cover_image !== 'https://creve.store/media/coverimage.png').map((talent) => (
-                    <div className='bg-white  rounded-xl cursor-pointer relative border border-neutral-100' key={talent.id}>
+                  {/* {filteredItems.filter(talent => talent.location !== null && talent.cover_image !== 'https://creve.store/media/coverimage.png').map((talent) => ( */}
+                  {filteredItems.filter(talent => talent.location !== null).map((talent) => (
+                    <div className='bg-white  rounded-md cursor-pointer hover:transition-all hover:ease-in-out hover:shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] relative border border-neutral-200 p-3' key={talent.id}>
                       <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
-                        <div className='2xl:h-[20rem] relative xl-h-[15rem] bg-neutral-50 lg:h-[12rem] h-[20rem] overflow-hidden rounded-md'>
-                          <img src={talent.cover_image} alt="" loading='lazy' className='w-full h-full object-cover'/>
-                        </div>
-                      </Link>
 
-                      <div className='flex items-center pt-3 p-3'>
-
-                        <div className='flex items-start gap-2'>
-                          <div className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 overflow-hidden border border-neutral-200 w-7 h-7 rounded-full'>
-                            <img src={talent.profile_pics} alt="" className='2xl:w-8 xl:w-6 lg:w-6 2xl:h-8 xl:h-6 lg:h-6 w-7 h-7 object-cover'/>
-                          </div>
-
-                          <div>
-                            <h3 className='2xl:text-sm xl:text-xs lg:text-[10px] text-sm font-semibold flex gap-2'>
-                              {talent.user.fullname}
-                              <div className=''>
-                                {talent.verified === true && 
-                                  <button className='flex gap-2 shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] bg-white text-green-600 text-lg rounded-full justify-center items-center'><MdVerified className=''/></button>
-                                  }
+                          <div className='relative'>
+                              <div className=' bg-neutral-300 lg:h-[5rem] h-[5rem] overflow-hidden rounded-sm'>
+                                  <img src={talent.cover_image} alt="" loading='lazy' className='w-full h-full object-cover'/>
                               </div>
-                            </h3>
-                            <p className='2xl:text-[10px] xl:text-[10px] lg:text-[10px] text-xs flex items-center gap-2'>{talent.display_name} <GoTools /></p>
+                              <div className='absolute right-0 left-0 m-auto flex top-10 h-[70px] w-[70px] overflow-hidden border-2 shadow-lg bg-white border-white rounded-full'>
+                                  <img src={talent.profile_pics} alt="" loading='lazy' className='w-[70px] h-[70px] object-cover'/>
+                              </div>
                           </div>
 
-                     
-                        </div>
+                          <div className='text-center pt-10'>
+                              <h2 className='text-lg uppercase font-bold flex items-center m-auto justify-center gap-1'>{talent.user.fullname}
+                                  {talent?.verification?.verified === true && 
+                                      <p className='text-xl text-green-500 bg-white shadow-lg flex rounded-full items-center'><RiVerifiedBadgeFill /></p>
+                                  }
+                              </h2>
+                              <p className='text-xs m-auto justify-center flex items-center gap-1'>{talent.display_name} <GoTools /></p>
+                          </div>
 
-                        <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`} className='ml-auto'>
-                     
-                          <button className=' bg-neutral-200 p-2 rounded-full text-black 2xl:text-md xl:text-sm lg:text-[10px]'><IoArrowForwardOutline /></button>
-                        </Link>
-                      </div>
-                      
-                      <div className='flex items-center p-3 '>
-                        <p className='text-xs flex items-center gap-2'><FaLocationDot className='text-accent'/>{talent?.location?.slice(0, 35)}. . .</p>
-                        <p className='ml-auto text-xs '>{talent.work_type}</p>
-                      </div>
+                          <p className='border border-neutral-200 font-bold p-2 px-5 w-full rounded-full text-center text-sm mt-4 cursor-pointer'>Hire {talent?.user?.fullname}</p>
 
+                          <div className='flex m-auto justify-center items-center gap-4 pt-5'>
+                          <p className='text-xs flex items-center gap-2'><FaLocationDot className='text-green-500'/>{talent?.location?.slice(0, 30)}. . .</p>
+                          <p className='text-xs ml-auto'>{talent.work_type}</p>
+                          </div>
+                      </Link>
                     </div>
                   ))}
                 </> 
