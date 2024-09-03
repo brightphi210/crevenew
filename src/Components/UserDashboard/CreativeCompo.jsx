@@ -57,12 +57,8 @@ const CreativeCompo = () => {
     
       useEffect(() => {
         fetchTalents();
-      }, []);
-
-
-      console.log('All Talents', allTalents);
-      
-      
+    }, []);
+    
 
   return (
     <div>

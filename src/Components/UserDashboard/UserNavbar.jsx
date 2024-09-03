@@ -113,7 +113,7 @@ const UserNavbar = ({handleShow, show}) => {
 
   return (
     <div>
-        <div className={'flex flex-row items-center shadow-sm fixed right-0 left-0 bg-white py-4 2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] px-5  z-50 backdrop-filter backdrop-blur-3xl bg-opacity-80'}>
+        <div className={'flex flex-row items-center shadow-sm fixed right-0 left-0 bg-white py-4 2xl:px-[5rem] xl:px-[5rem] lg:px-[5rem] px-5  z-50 backdrop-filter backdrop-blur-3xl bg-opacity-80'}>
 
             <Link to={'/'} className='hidden lg:block'>
                 <img src={logo} alt="" className='w-7'/>

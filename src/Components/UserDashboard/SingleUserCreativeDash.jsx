@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { FaArrowLeft } from "react-icons/fa6";
+import { FaArrowLeft, FaLocationDot } from "react-icons/fa6";
 
 
 import { MdWorkOutline } from "react-icons/md";
@@ -42,6 +42,7 @@ import MyLoader from '../allLoadingState/MyLoader';
 import { MdVerified } from "react-icons/md";
 import { BsChat } from 'react-icons/bs';
 import NoData from '../allLoadingState/NoData';
+import { RiVerifiedBadgeFill } from 'react-icons/ri';
 
 
 
@@ -356,24 +357,71 @@ const SingleUserCreativeDash = () => {
         }
     }    
 
-
     useEffect(() => {
         fetchFilteredTalents();
     }, []);
 
-    console.log('This is Filtered Talents', filteredTalents);
+
+
+    const [showWorks, setShowWorks] = useState(true);
+    const [showSkills, setShowSkills] = useState(false);
+    const [showBio, setShowBio] = useState(false);
+    const [showReviews, setShowReviews] = useState(false);
+    const [showFAQs, setShowFQAs] = useState(false);
+
+
+    const handleShowWorks = () => {
+        setShowWorks(true);
+        setShowSkills(false);
+        setShowBio(false);
+        setShowReviews(false);
+        setShowFQAs(false);
+    }
+
+    const handleShowSkills = () => {
+        setShowWorks(false);
+        setShowSkills(true);
+        setShowBio(false);
+        setShowReviews(false);
+        setShowFQAs(false);
+    }
+
+    const handleShowBio = () => {
+        setShowWorks(false);
+        setShowSkills(false);
+        setShowBio(true);
+        setShowReviews(false);
+        setShowFQAs(false);
+    }
+
+    const handleShowReviews = () => {
+        setShowWorks(false);
+        setShowSkills(false);
+        setShowBio(false);
+        setShowReviews(true);
+        setShowFQAs(false);
+
+    }
+
+    const handleShowFAQs = () => {
+        setShowWorks(false);
+        setShowSkills(false);
+        setShowBio(false);
+        setShowReviews(false);
+        setShowFQAs(true);
+    }
+
+
+    console.log('This is Filtered Talents', creativeData);
     
   return (
 
     <div className='bg-white h-full'>
         <div>
             <UserNavbar show={show} handleShow={handleShow}/>
-            <div className='z-40 lg:hidden'>
-                <UserSideBar show={show} />
-            </div>
         </div>
 
-        <div className={isLoading === true ? 'bg-neutral-100 pb-10 h-screen flex justify-center  px-0' : ' pb-10 2xl:px-[15rem] xl:px-[5rem] lg:px-[5rem] px-0'}>
+        <div className=''>
 
             {showModal === true &&
                 <div role="alert" data-aos="fade-up" data-aos-duration="500"  className="alert z-50 alert-success fixed text-green-700 lg:w-fit w-[80%] m-auto right-0 left-0  top-24 h-[3rem] flex justify-center items-center rounded-full bg-green-100 border border-green-500">
@@ -411,260 +459,225 @@ const SingleUserCreativeDash = () => {
                 </div>
             }
 
-            {isLoading === true ? <MyLoader /> : <>
-                <div className='w-full flex lg:pt-[7rem] px-3 pt-[6rem] items-center py-3  '>
-                    <p onClick={goBack} className='items-center text-lg flex justify-center text-black bg-neutral-200 lg:p-3 p-2 rounded-full w-fit cursor-pointer'><FaArrowLeft className='cursor-pointer'/></p>
 
-                    <div className='ml-auto flex items-center gap-2 '>
-                        <button onClick={()=>document.getElementById('my_modal_3').showModal()} 
-                            className='bg-black text-white py-3 lg:px-5 px-4 rounded-full lg:text-sm text-xs border border-neutral-200 ml-auto'>
-                            Get in touch
-                        </button>
-                        
-                        <button onClick={()=>document.getElementById('my_modal_5').showModal()} 
-                            className='bg-white border border-neutral-300 text-green-950 p-2.5 rounded-full text-lg'>
-                            <BsChat />
-                        </button>
-
-                        <p onClick={handleFavoritemClick} 
-                            className='bg-white border border-neutral-300 p-2.5 cursor-pointer rounded-full  w-fit flex items-center gap-2'>
-                            {isFavorite ? <MdOutlineFavorite className='text-lg text-green-950'/> : <MdFavoriteBorder className='text-lg text-green-950'/>}
-                        </p>
-
-                    </div>
-
-                </div>
-                
-                <div className='flex  relative lg:mt-[3rem] mt-2 pt-4 px-3 border-t border-t-neutral-200'>
-                    <div className='flex lg:flex-row flex-col gap-3 w-full'>
-                        <div className='flex items-center gap-2'>
-                            <div className='w-14 h-14 rounded-full border border-neutral-200 overflow-hidden'>
-                                <img src={creativeData.profile_pics} alt="" className='w-14 h-14 object-cover'/>
-                            </div>
-
-                            {creativeData.user && (
-
-                                <div>
-                                    <h2 className='text-lg font-bold flex gap-2 items-center'>{creativeData.user.fullname}
-                                        {creativeData?.verification?.verified === true ? <MdVerified className='text-green-500'/>  : <GoUnverified className='text-red-500 font-bold'/> }
-                                    </h2>
-                                    <p className='text-sm'>{creativeData.display_name} <span className='text-xs text-neutral-400'>reviews({creativeData?.reviewed?.length})</span></p>
-                                </div>
-                            )}
-                        </div>
-
-                        <div className='lg:ml-auto'>
-                            <p className='font-semibold 2xl:text-sm xl:text-sm lg:text-sm text-sm flex gap-2 items-start pt-2'><GrLocation className='text-green-700 lg:text-xl text-2xl'/>{creativeData.location}</p>
-                        </div>
-                    </div>
-                </div>
-
+            <div className='text-white bg-gradient-to-b  from-gray-900 to-teal-950 flex justify-center lg:h-[12rem] h-[10rem] lg:pt-[5rem] pt-[4rem] items-center w-full'>
                 <div>
-                    <div className='grid lg:grid-cols-3 grid-cols-1 gap-10 pt-10'>
+                    <h2 className='text-base text-center font-bold'>{creativeData?.user?.email}</h2>
+                    <p className='text-xs flex gap-2 items-start pt-2'>
+                        <GrLocation className='text-green-400 text-xl'/>{creativeData.location}
+                    </p>
+                </div>
+            </div>
 
-                        <div className='lg:col-span-2'>
-                            <div className='2xl:h-[40rem] xl:h-[30rem] lg:h-[25rem] md:h-[35rem] h-[20rem] bg-white overflow-hidden lg:rounded-md'>
-                                <PhotoProvider>
-                                    <PhotoView src={creativeData.cover_image}>
-                                        <img src={creativeData.cover_image} alt="" className='w-full cursor-pointer hover:transform hover:scale-105 transition-all ease-linear h-full object-cover'/>
-                                    </PhotoView>
-                                </PhotoProvider>
-                            </div>
 
-                            {creativeData.images && (
-
-                            <div className='lg:grid lg:grid-cols-3 grid grid-cols-2 items-center lg:gap-4 gap-2 pt-3 lg:px-0 px-3'>
-                                {creativeData.images.map((Image)=>(
-
-                                    <PhotoProvider>
-                                        <div className='lg:h-[13rem] h-[11rem]  shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-white lg:w-full w-full overflow-hidden rounded-md'>
-                                            <PhotoView src={Image.image}>
-                                                <img src={Image.image} alt="" className='cursor-pointer lg:h-[13rem] h-[11rem] w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
-                                            </PhotoView>
-                                        </div>
-                                    </PhotoProvider>
-                                ))}
-                            </div>
-
-                            )}
+            {isLoading === true ? <MyLoader /> : 
+                <div className='lg:px-[5rem] px-5 lg:grid lg:grid-cols-5 flex flex-col lg:gap-10 gap-5'>
+                    <div className='relative 2xl:col-span-1 xl:col-span-1 lg:col-span-1'>
+                        <div className='w-28 h-28 absolute top-[-10px] rounded-full border-4 border-white bg-white overflow-hidden'>
+                            <img src={creativeData.profile_pics} alt="" className='w-28 h-28 object-cover'/>
                         </div>
 
-            
-
-                        <div className='bg-neutral-50 border border-neutral-200  w-full lg:rounded-md lg:p-5 p-5 h-fit'>
-
-                            <div className='flex items-center '>
-                                <h2 className='font-bold 2xl:text-sm xl:text-xs lg:text-xs text-sm '>Details</h2>
-                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm  font-semibold ml-auto'><span className='font-normal'>Starting Price </span>: {creativeData.starting_price}</p>
+                        {creativeData.user && (
+                            <div className='pt-28'>
+                                <h2 className='text-lg font-bold flex gap-2 items-center'>{creativeData.user.fullname}
+                                    {creativeData?.verification?.verified === true ? <MdVerified className='text-green-500'/>  : <GoUnverified className='text-red-500 font-bold'/> }
+                                </h2>
+                                <p className='text-sm'>{creativeData.display_name} <span className='text-xs text-neutral-400'></span></p>
                             </div>
+                        )}
 
-                            <div className='py-5 mt-5 border-y border-y-neutral-200'>
-                                <p className='text-sm font-bold pb-3'>Bio</p>
-                                <p className='text-sm 2xl:text-sm xl:text-xs lg:text-xs'>{creativeData.about}</p>
-
-                                <p className='text-sm ml-auto pt-5'><b>{creativeData.experience}</b> Years Experience</p>
-
-                            </div>
-
-                            <div className='flex items-center gap-2 py-5 border-b border-b-neutral-200'>
-                                <p className='bg-neutral-200  p-2 rounded-full'><PiPhoneCallFill /></p>
-                                <button className='font-semibold '>{creativeData.phone_number}</button>
-                            </div>
-
-                            <p className='text-sm font-bold pt-5'>Skills</p>
-                            <div className='py-5 pt-3 flex flex-wrap gap-3'>
-                                {creativeData.dskills &&
-                                    creativeData.dskills.map((skill, index) => (
-                                    <button className='border border-neutral-300 py-2 px-4 text-xs rounded-md flex gap-1 items-center' key={index}>
-                                        <GoDotFill className='mycolor'/>{skill.skill}
-                                    </button>
-                                ))}
-                            </div>
+                        <div className='py-5 border-b border-b-neutral-300'>
+                            <button className='font-semibold text-sm flex items-center gap-2'>
+                                <p className='bg-neutral-200  p-1 rounded-full'><PiPhoneCallFill /></p> 
+                                {creativeData.phone_number}
+                            </button>
+                            <p className='text-sm pt-3'><b>{creativeData.experience}</b> Yrs. Experience</p>
+                        </div>
 
 
-                            <div className=''>
+                        <div className='flex flex-col w-full gap-3 pt-5 '>
+                            <button onClick={()=>document.getElementById('my_modal_3').showModal()} 
+                                className='bg-black text-white py-3 lg:px-5 w-full px-4 rounded-full lg:text-sm text-xs border border-neutral-200'>
+                                Get in touch
+                            </button>
+                            
+                            <button onClick={()=>document.getElementById('my_modal_5').showModal()} 
+                                className='bg-green-50 w-full justify-center flex text-sm m-auto gap-3 items-center border border-green-300 text-green-950 p-2.5 rounded-full'>
+                                <BsChat /> Message
+                            </button>
 
-                                <div className='py-5 border-y border-y-neutral-200 '>
-                                    <p className='text-sm font-semibold'>Category</p>
-                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.digital_skills}</p>
-                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.nondigital_skills}</p>
-                                </div>
+                            <p onClick={handleFavoritemClick} 
+                                className='bg-white border w-full border-neutral-300 text-sm p-2.5 cursor-pointer rounded-full flex m-auto justify-center items-center gap-2'>
+                                {isFavorite ? <p className='flex items-center  gap-3'><MdOutlineFavorite className='text-green-950'/> Saved</p> : 
+                                <p className='flex items-center gap-3'><MdFavoriteBorder className='text-green-950'/>save</p>}
+                            </p>
 
-
-                                <div className='pt-5 flex items-center'>
-                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center'><MdWorkOutline className='mycolor text-base'/>{creativeData.work_type}</p>
-                                    <p className='text-xs font-light text-neutral-400'>- Work-type</p>
-                                </div>
-
-                                <div className='pt-5 flex items-center'>
-                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center'><IoLanguage className='mycolor text-base'/>{creativeData.language}</p>
-                                    <p className='text-xs font-light text-neutral-400'>- Language</p>
-                                </div>
-
-                                <div className='pt-5 flex items-center'>
-                                    <Link to={creativeData.website_link}>
-                                        <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center'><GrLanguage className='mycolor text-base'/>Website</p>
-                                    </Link>
-                                </div>
-                            </div>
-
-                            <div className='bg-neutral-100 border border-neutral-200 rounded-lg text-black mt-5 p-3'>
-                                <h2 className='text-sm font-bold pb-3'>FAQs</h2>
-
-                                {creativeData?.questions?.length === 0 ? 
-                                
-                                    <><p className='text-center text-xs py-5'>No FAQs Added yet</p></>
-                                : 
-                                  
-                                <div>
-                                    {creativeData.questions && 
-                                        creativeData.questions.map((faq, index) =>(
-                                            
-                                            <div className="collapse bg-white text-black h-fit collapse-arrow rounded-md  mb-2" key={index}>
-                                                <input type="checkbox" />
+                        </div>
                         
-                                                <div className="collapse-title lg:text-sm text-sm font-medium bg-neutral-10">{faq.question}</div>
-                                                <div className="collapse-content border-t border-t-neutral-200">
-                                                    <p className='lg:w-1/2 w-full text-justify text-sm pt-3'>{faq.answer}</p>
-                                                </div>
-                                            </div>
-                                        ))
-                                    }
-                                </div>
-                                }
-                            </div>
+                        <div className=''>
 
-                            <div className='flex gap-3 pt-3 mt-5 border-t border-t-neutral-200'>
-                                <button onClick={()=>document.getElementById('my_modal_2').showModal()} className='bg-accent py-3 px-2 mt-5 text-sm text-white rounded-full w-full'>Drop Review</button>
-                                <button onClick={handleShare} className='bg-black py-3 px-2 mt-5 text-sm text-white flex justify-center items-center m-auto gap-3 rounded-full w-full'>Share <IoShareSocialSharp /></button>
-                            </div>
+                        <div className='mt-5 pt-2 border-t  border-t-neutral-200'>
+                            <p className='text-sm font-semibold'>Category</p>
+                            <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.digital_skills}</p>
+                            <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.nondigital_skills}</p>
+                        </div>
 
+
+                        <div className='flex items-center mt-3 pt-2 border-t  border-t-neutral-200'>
+                            <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center'><MdWorkOutline className='text-green-500 text-base'/>{creativeData.work_type}</p>
+                            <p className='text-xs font-light text-neutral-400'>- Work-type</p>
+                        </div>
+
+                        <div className='pt-5 flex items-center'>
+                            <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center'><IoLanguage className='text-green-500 text-base'/>{creativeData.language}</p>
+                            <p className='text-xs font-light text-neutral-400'>- Language</p>
+                        </div>
+
+                        <div className='pt-5 flex items-center'>
+                            <Link to={creativeData.website_link}>
+                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex underline gap-2 items-center'><GrLanguage className='text-green-500 text-base'/>Website</p>
+                            </Link>
+                        </div>
                         </div>
                     </div>
 
-                    <div className='lg:w-[100%] w-[95%] lg:m-0 lg:mt-10 m-auto rounded-md  pt-5 lg:p-10 p-5 mt-5 bg-neutral-100'>
-                        <h2 className='text-base py-3 text-center pb-8'> - Reviews -</h2>
-                        <div className='w-full'>
 
-                            {creativeData.reviewed && 
-                                <>
-                                    <Swiper
-                                        cssMode={true}
-                                        navigation={true}
-                                        pagination={true}
-                                        mousewheel={true}
-                                        loop={true}
-                                        keyboard={true}
-                                        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-                                        className="mySwiper"
-                                        >
-                                        {creativeData?.reviewed.map((review)=> <>
-                                        <SwiperSlide>
-                                            <div>
-                                                <div className='flex flex-row items-center gap-3 m-auto justify-center'>
-                                                    <div className='border border-neutral-300 w-8 h-8 overflow-hidden rounded-full'>
-                                                        <img src={review.reviewer.profile_pics} alt="" className='w-8 h-8 object-cover'/>
-                                                    </div>
-                                                    <h2>{review.reviewer.user.fullname}</h2>
+                    <div className='2xl:col-span-4 xl:col-span-4 lg:col-span-4 lg:pt-10'>
+                        <div className='py-10'>
+                            <ul className='flex mb-5 border-b gap-4 border-b-neutral-300 text-sm relative'>
+                                <li onClick={handleShowWorks} className={`hover:border-b-2 hover:transition-all ease-linear ${showWorks === true && 'border-b-2 border-neutral-500'} pb-3 border-neutral-300 cursor-pointer`}>Works</li>
+                                <li onClick={handleShowBio} className={`hover:border-b-2 hover:transition-all ease-linear ${showBio === true && 'border-b-2 border-neutral-500'} pb-3 border-neutral-300 cursor-pointer`}>Bio</li>
+                                <li onClick={handleShowSkills} className={`hover:border-b-2 hover:transition-all ease-linear ${showSkills === true && 'border-b-2 border-neutral-500'} pb-3 border-neutral-300 cursor-pointer`}>Skills</li>
+                                <li onClick={handleShowFAQs} className={`hover:border-b-2 hover:transition-all ease-linear ${showFAQs === true && 'border-b-2 border-neutral-500'} pb-3 border-neutral-300 cursor-pointer`}>FAQs</li>
+                                <li onClick={handleShowReviews} className={`hover:border-b-2 hover:transition-all ease-linear ${showReviews === true && 'border-b-2 border-neutral-500'} pb-3 border-neutral-300 cursor-pointer`}>Reviews ({creativeData?.reviewed?.length})</li>
+                            </ul>
+
+                            {showWorks === true && 
+                            <>
+                                {creativeData?.images?.length === 0 && <p className='text-center text-sm py-5'>No Data Found</p>}
+
+                                {creativeData.images && (
+                                    <div className='lg:grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 grid grid-cols-2 items-center lg:gap-4 gap-2 pt-3 lg:px-0'>
+                                        {creativeData.images.map((Image)=>(
+
+                                            <PhotoProvider>
+                                                <div className='lg:h-[15rem] h-[10rem]  shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-white lg:w-full w-full overflow-hidden rounded-md'>
+                                                    <PhotoView src={Image.image}>
+                                                        <img src={Image.image} alt="" className='cursor-pointer h-full w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
+                                                    </PhotoView>
                                                 </div>
+                                            </PhotoProvider>
+                                        ))}
+                                    </div>
+                                )}
+                            </>}
 
-                                                <p className='text-xs text-center w-9/12 flex justify-center m-auto pt-4 mb-10'>{review.content}</p>
-                                            </div>
-                                        </SwiperSlide>
-                                        </>)}
+                            {showBio === true && 
+                            (<div className='bg-neutral-100 p-4'>
+                                <div className='flex items-center '>
+                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm  font-semibold'><span className='font-normal'>Starting Price </span>: {creativeData.starting_price}</p>
+                                </div>
 
-                                    </Swiper>
+                                <div className='mt-5'>
+                                    <p className='text-sm font-bold pb-3'>Bio</p>
+                                    <p className='text-sm 2xl:text-sm xl:text-xs lg:text-xs'>{creativeData.about}</p>
 
-                                </>
+                                </div>
+                            </div>)}
+
+                            {showSkills === true && 
+                                <div className='py-5 pt-3 flex flex-wrap gap-3'>
+                                    {creativeData.dskills &&
+                                        creativeData.dskills.map((skill, index) => (
+                                        <button className='border border-neutral-300 py-2 px-4 text-xs rounded-md flex gap-1 items-center' key={index}>
+                                            <GoDotFill className='mycolor'/>{skill.skill}
+                                        </button>
+                                    ))}
+                                </div>
                             }
 
+                            {showFAQs === true && 
+                            <div className='bg-neutral-100 border border-neutral-200 rounded-lg text-black mt-5 p-3'>
+                                    {creativeData?.questions?.length === 0 ? 
+                                    
+                                        <><p className='text-center text-xs py-5'>No FAQs Added yet</p></>
+                                    : 
+                                        
+                                    <div>
+                                        {creativeData.questions && 
+                                            creativeData.questions.map((faq, index) =>(
+                                                
+                                                <div className="collapse bg-white text-black h-fit collapse-arrow rounded-md  mb-2" key={index}>
+                                                    <input type="checkbox" />
                             
-                            <>
-                                {creativeData?.reviewed && creativeData?.reviewed.length <= 0 && <p className='text-center text-sm'>No Review Found</p>}
-                            </>
+                                                    <div className="collapse-title lg:text-sm text-sm font-medium bg-neutral-10">{faq.question}</div>
+                                                    <div className="collapse-content border-t border-t-neutral-200">
+                                                        <p className='lg:w-1/2 w-full text-justify text-sm pt-3'>{faq.answer}</p>
+                                                    </div>
+                                                </div>
+                                            ))
+                                        }
+                                    </div>
+                                    }
+                            </div>
+                            }
+
+
+                            {showReviews === true && (
+                                <div className='lg:w-[100%] w-[100%] lg:m-0 lg:mt-10 m-auto rounded-md  pt-5 lg:p-10 p-5 mt-5 bg-neutral-100'>
+                                    <div className='w-full'>
+                                        {creativeData.reviewed && 
+                                            <>
+                                                <Swiper
+                                                    cssMode={true}
+                                                    navigation={true}
+                                                    pagination={true}
+                                                    mousewheel={true}
+                                                    loop={true}
+                                                    keyboard={true}
+                                                    modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+                                                    className="mySwiper"
+                                                    >
+                                                    {creativeData?.reviewed.map((review)=> <>
+                                                    <SwiperSlide>
+                                                        <div>
+                                                            <div className='flex flex-row items-center gap-3 m-auto justify-center'>
+                                                                <div className='border border-neutral-300 w-8 h-8 overflow-hidden rounded-full'>
+                                                                    <img src={review.reviewer.profile_pics} alt="" className='w-8 h-8 object-cover'/>
+                                                                </div>
+                                                                <h2>{review.reviewer.user.fullname}</h2>
+                                                            </div>
+
+                                                            <p className='text-xs text-center w-9/12 flex justify-center m-auto pt-4 mb-10'>{review.content}</p>
+                                                        </div>
+                                                    </SwiperSlide>
+                                                    </>)}
+
+                                                </Swiper>
+
+                                            </>
+                                        }
+                                        <>
+                                            {creativeData?.reviewed && creativeData?.reviewed.length <= 0 && <p className='text-center text-sm'>No Review Found</p>}
+                                        </>
+                                    </div>
+                                </div> 
+                            )}
+                        
+
+                            <div className='flex gap-3 pt-3 mt-5 border-t border-t-neutral-200'>
+                                <button onClick={()=>document.getElementById('my_modal_2').showModal()} className='bg-accent py-3 lg:px-10 mt-5 text-sm text-white rounded-full lg:w-fit w-full'>Drop Review</button>
+                                <button onClick={handleShare} className='bg-black mt-5 text-sm text-center text-white gap-3 py-3 lg:px-10 rounded-full lg:w-fit w-full'>Share</button>
+                            </div>
+
                         </div>
                     </div>
-
-                    <div className='lg:pt-20 p-3 pt-10'>
-                        {isFilteredLoaded === true ? <MyLoader />  :    
-                            <>  
-                                {filteredTalents.length === 0 ? <NoData /> : 
-                                    <>
-                                        <h2 className='lg:text-lg text-lg pb-5'>Similar Talents Profile</h2>
-                                        <div className='grid 2xl:grid-cols-4 lg:p-0  xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-5 '>
-                                            {filteredTalents.filter(talent => talent.location !== null && talent.cover_image !== 'https://creve.store/media/coverimage.png' && talent.id !== creativeData.id).map((talent, index) => (
-                                                <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
-                                                    <div key={index} className='col-span-1 rounded-lg shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]'>
-                                                        <div className='bg-neutral-200 w-full rounded-lg 2xl:h-[20rem] xl:h-[17rem] lg:h-[15rem] md:h-[18rem] h-[10rem] overflow-hidden '>
-                                                            <img className='w-full h-full object-cover rounded-lg cursor-pointer hover:transform hover:scale-105 transition-all ease-linear' src={talent?.cover_image} alt="" />
-                                                        </div>
-                                                        <div>
-                                                            <div className='flex items-center lg:gap-4 gap-3 p-3 pt-5'>
-                                                                <div className='flex items-center justify-center lg:w-8 w-6 lg:h-8 h-6 rounded-full'>
-                                                                    <img src={talent?.profile_pics} alt=""  className='lg:w-8 w-6 lg:h-8 h-6'/>
-                                                                </div>
-
-                                                                <div>
-                                                                    <h2 className='lg:text-sm text-xs'>{talent?.user?.fullname}</h2>
-                                                                    <p className='lg:text-xs text-[10px]'>{talent?.display_name}</p>
-                                                                </div>
-
-                                                                <p className='lg:flex hidden ml-auto cursor-pointer items-center bg-neutral-200 p-2 text-sm rounded-full'><MdOutlineArrowForward /></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </Link>
-
-                                            ))}
-                                        </div>
-                                    </>
-                                }
-                            </>
-                        }
-                    </div>
                 </div>
+            }
+                
 
-            </>}
+
+
 
             <dialog id="my_modal_3" className="modal">
                 <div className="modal-box rounded-md lg:p-10 p-5 lg:w-full w-[96%] lg:h-fit h-screen">
