@@ -70,12 +70,12 @@ export const UserRequestBookingsDashboard = () => {
 
     
   return (
-    <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] py-28 w-full'>
+    <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] py-28 w-full px-5'>
         <h2 className='text-2xl'>All Request</h2>
 
         {isLoading === true ? <MyLoader />  : <>
             {allRequest.length > 0 && <>
-                <div className='bg-white h-[70vh] lg:p-20 p-5 w-full mt-5 rounded-2xl overflow-y-scroll'>
+                <div className='bg-white h-[80vh] lg:p-20 p-5 w-full mt-5 rounded-xl overflow-y-scroll'>
                     {allRequest.map((request)=>(
 
                         <div className='flex mb-5 flex-col gap-3  border-y border-neutral-200 py-2'>

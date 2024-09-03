@@ -81,7 +81,7 @@ export const UserFavoriteDashboard = () => {
     );
 
   return (
-      <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] py-28 w-full overflow-y-auto'>
+      <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] py-28 px-3 w-full overflow-y-auto'>
       <h2 className='text-2xl pb-5'>Favorites Talents</h2>
 
 

@@ -23,10 +23,7 @@ const UserProfileDasboard = () => {
     <div>
         <UserNavbar show={show} handleShow={handleShow}/>
         <div className='flex w-full'>
-            <div className='z-40 w-full'>
-                <UserSideBar show={show} />
-                <UserProfileDash />
-            </div>
+            <UserProfileDash />
         </div>
     </div>
   )
@@ -166,8 +163,8 @@ export const UserProfileDash = () => {
 
 
   return (
-    <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] py-28 w-full'>
-        <h2 className='text-2xl font-bold pb-10'>Settings</h2>
+    <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] px-5 py-28 w-full'>
+        <h2 className='text-2xl font-bold pb-10'>Profile Setup</h2>
 
         {isLoading === true ? <MyLoader />  :
             <div className='bg-white'>
@@ -185,20 +182,20 @@ export const UserProfileDash = () => {
                     />
 
                     {image || cover_image ?
-                        <div className=' lg:w-[8rem] lg:h-[8rem] h-[8rem] w-[8rem] overflow-hidden rounded-full bg-neutral-50 border border-neutral-300'>
+                        <div className=' lg:w-[6rem] lg:h-[6rem] h-[6rem] w-[6rem] overflow-hidden rounded-full bg-neutral-50 border border-neutral-300'>
                             {image && (
                                 <img src={image} alt='' className='w-full h-full object-cover cursor-pointer'/> 
                             )}
 
-                            <div className='relative lg:w-[8rem] lg:h-[8rem] w-[8rem] h-[8rem]'>
+                            <div className='relative lg:w-[6rem] lg:h-[6rem] w-[6rem] h-[6rem]'>
 
                                 {cover_image && (
                                     <img src={cover_image} alt='' className='w-full h-full object-cover cursor-pointer'/> 
                                 )}
 
 
-                                <div className='absolute bg-white rounded-full bottom-5 right-6 w-fit  p-2 cursor-pointer'>
-                                    <p className='text-sm p-1'><FiEdit /></p>
+                                <div className='absolute bg-white rounded-full bottom-3 right-3 w-fit  p-1 cursor-pointer'>
+                                    <p className='text-xs p-1'><FiEdit /></p>
                                 </div>
                             </div>
                             
@@ -217,12 +214,12 @@ export const UserProfileDash = () => {
 
                 <button 
                     onClick={handleProfileUpdate} 
-                    className="btn lg:w-fit md:w-fit w-1/2 min-h-2rem lg:px-10 xl:text-xs lg:text-xs  
-                    bg-black hover:bg-neutral-800 text-white lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">{isLoading3 === true ? <span class="loader"></span> : 'Update' }
+                    className=" lg:w-fit w-fit py-3 px-10 rounded-full text-xs  
+                    bg-white  text-black border border-neutral-300  lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">{isLoading3 === true ? <span class="loader"></span> : 'Update' }
                 </button>
 
 
-                <form onSubmit={handleProfileUpdate2} className='mt-5 pt-5 2xl:w-[50%] w-full border-t border-neutral-200'>
+                <form onSubmit={handleProfileUpdate2} className='mt-5 pt-5 2xl:w-[50%] w-full '>
 
                     <div>
                         <GooglePlacesAutocomplete
@@ -234,14 +231,14 @@ export const UserProfileDash = () => {
                             options={{
                             types: ['address'],
                             }}
-                            className="input text-sm input-bordered border-neutral-300 w-full max-w-full" 
+                            className="input text-sm input-bordered border-neutral-300 lg:w-[50%] w-full" 
                             defaultValue={address}
                         />
                     </div>
                     <button 
                         type='submit'
-                        className="btn lg:w-full md:w-fit w-full min-h-2rem lg:px-10 xl:text-xs lg:text-xs  
-                        bg-black hover:bg-neutral-800 text-white lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">{isLoading2 === true ? <span class="loader"></span> : 'Update' }
+                        className=" lg:w-fit w-fit py-3 px-10 text-xs  
+                        bg-white text-black border border-neutral-300 rounded-full lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">{isLoading2 === true ? <span class="loader"></span> : 'Update' }
                     </button>
                 </form>
 
