@@ -122,7 +122,7 @@ export const UserHomeDashboardHome = () => {
       <div>
         <p className='text-center 2xl:text-6xl lg:text-4xl px-5 text-3xl font-bold lg:pt-20 pt-5 lg:pb-10 pb-5'>
           Hire The World’s  <br className='lg:block hidden'/>
-          Best Talents on Creve
+          Best <span className='bg-gradient-to-r from-sky-500 to-teal-500 bg-clip-text text-transparent'>Talents</span> on Creve
         </p>
       </div>
 

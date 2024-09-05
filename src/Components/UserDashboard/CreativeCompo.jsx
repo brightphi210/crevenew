@@ -81,7 +81,7 @@ const CreativeCompo = () => {
             {filteredItems.length > 0 &&
             <>
                 {filteredItems.filter(talent => talent.location !== null).map((talent) => (
-                    <div className='bg-white  rounded-md cursor-pointer hover:transition-all hover:ease-in-out hover:shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] relative border border-neutral-300 p-3' key={talent.id}>
+                    <div className='bg-white  rounded-md cursor-pointer hover:transition-all hover:ease-in-out hover:bg-neutral-50 shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] relative  p-3' key={talent.id}>
                         <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
 
                         <div className='relative'>
@@ -104,7 +104,7 @@ const CreativeCompo = () => {
                             <p className='text-xs m-auto justify-center flex items-center gap-1'>{talent.display_name} <GoTools /></p>
                         </div>
 
-                        <p className='border border-neutral-300 font-bold p-2 px-5 w-full rounded-full text-center text-sm mt-4 cursor-pointer'>Hire {talent?.user?.fullname}</p>
+                        <p className='shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] font-bold p-2 px-5 w-full rounded-full text-center text-sm mt-4 cursor-pointer'>Hire {talent?.user?.fullname}</p>
 
                         <div className='flex m-auto justify-center items-center gap-4 pt-5'>
                         <p className='text-xs flex items-center gap-2'><FaLocationDot className='text-green-500'/>{talent?.location?.slice(0, 30)}. . .</p>
