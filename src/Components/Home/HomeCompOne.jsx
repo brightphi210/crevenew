@@ -30,7 +30,7 @@ const HomeCompOne = () => {
 
                 <div className='flex gap-2 justify-center m-auto lg:mt-3 mt-0'>
                     
-                    <Link to={'/allTalents'}>
+                    <Link to={'/' + 'user-dashboard-home'}>
                         <button className='bg-gradient-to-r from-sky-500 to-teal-500 shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] text-xs  text-white py-4 2xl:text-lg xl:py-3 lg:py-3 cursor-pointer px-8 lg:mt-3 mt-6 rounded-full flex items-center gap-3'>
                             Hire Now <FaArrowRightLong />
                         </button>
