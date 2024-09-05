@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import noData from '../Images/nodata2.png'
 import { FaLocationDot } from "react-icons/fa6";
 import { RiVerifiedBadgeFill } from 'react-icons/ri';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 
 const CreativeCompo = () => {
@@ -60,6 +61,9 @@ const CreativeCompo = () => {
     }, []);
     
 
+  console.log('This is all talents', allTalents);
+
+
   return (
     <div>
 
@@ -80,14 +84,24 @@ const CreativeCompo = () => {
             <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5 pt-0 lg:px-0'>
             {filteredItems.length > 0 &&
             <>
-                {filteredItems.filter(talent => talent.location !== null).map((talent) => (
+                {filteredItems.filter(talent => talent.location !== null && talent.cover_image !== 'https://creve.store/media/coverimage.png').map((talent) => (
                     <div className='bg-white  rounded-md cursor-pointer hover:transition-all hover:ease-in-out hover:bg-neutral-50 shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] relative  p-3' key={talent.id}>
                         <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
 
                         <div className='relative'>
+
                             <div className=' bg-neutral-300 lg:h-[5rem] h-[5rem] overflow-hidden rounded-sm'>
-                                <img src={talent.cover_image} alt="" loading='lazy' className='w-full h-full object-cover'/>
+                                <LazyLoadImage
+                                    alt={talent.cover_image}
+                                    src={talent.cover_image}
+                                    placeholderSrc={talent.cover_image}
+                                    effect='blur'
+                                    loading='lazy'
+                                />
+                                {/* <img src={talent.cover_image} alt="" loading='lazy' className='w-full h-full object-cover'/> */}
                             </div>
+
+
                             <div className='absolute right-0 left-0 m-auto flex top-10 h-[70px] w-[70px] overflow-hidden border-2 shadow-lg bg-white border-white rounded-full'>
                                 <img src={talent.profile_pics} alt="" loading='lazy' className='w-[70px] h-[70px] object-cover'/>
                             </div>

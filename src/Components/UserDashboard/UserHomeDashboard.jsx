@@ -36,11 +36,7 @@ export default UserHomeDashboard
 
 
 export const UserHomeDashboardHome = () => {
-  const [show, setShow] = useState(false)
   const [showModal, setShowModal] = useState('')
-
-
-  const [allTalents, setAllTalents] = useState([])
   let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
   const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
   const [isLoading, setIsLoading] = useState(false)
@@ -49,36 +45,36 @@ export const UserHomeDashboardHome = () => {
   const [profileData, setProfileData] = useState({})
   const url2 =`${BASE_URL}/userprofile/${userToken.profile_id}/`
   
-   const fetchProfile = async () => {
-  
-        setIsLoading(true);
-  
-        try {
-  
-        const respose = await fetch(url2, {
-            method: 'GET',
-            headers: {
-                'Authorization' : `Bearer ${authUser.access}`,
-            },
-        })
-        if (!respose.ok) {
-            setIsLoading(false);
-            throw new Error('Network response was not ok');
-        }
-        const data = await respose.json();
-  
-        setProfileData(data)
-  
-        } catch (error) {
-            console.log(error);
-        } finally {
-        setIsLoading(false);
-        }
-    };
-  
-    useEffect(() => {
-        fetchProfile();
-    }, []);
+  const fetchProfile = async () => {
+
+      setIsLoading(true);
+
+      try {
+
+      const respose = await fetch(url2, {
+          method: 'GET',
+          headers: {
+              'Authorization' : `Bearer ${authUser.access}`,
+          },
+      })
+      if (!respose.ok) {
+          setIsLoading(false);
+          throw new Error('Network response was not ok');
+      }
+      const data = await respose.json();
+
+      setProfileData(data)
+
+      } catch (error) {
+          console.log(error);
+      } finally {
+      setIsLoading(false);
+      }
+  };
+
+  useEffect(() => {
+      fetchProfile();
+  }, []);
 
 
   return (
@@ -120,13 +116,13 @@ export const UserHomeDashboardHome = () => {
       }
 
       <div>
-        <p className='text-center 2xl:text-6xl lg:text-4xl px-5 text-3xl font-bold lg:pt-20 pt-5 lg:pb-10 pb-5'>
-          Hire The World’s  <br className='lg:block hidden'/>
-          Best <span className='bg-gradient-to-r from-sky-500 to-teal-500 bg-clip-text text-transparent'>Talents</span> on Creve
+        <p className='text-center 2xl:text-6xl lg:text-4xl px-3 text-4xl font-bold lg:pt-20 pt-5 lg:pb-10 pb-5'>
+          Hire the best  <br className='lg:block hidden'/>
+          <span className='bg-gradient-to-r from-sky-500 to-teal-500 bg-clip-text text-transparent'>Talents</span> Around you
         </p>
       </div>
 
-      <div className='pt-4 lg:px-0 px-5 pb-5 '>
+      <div className='pt-4 lg:px-0 px-3 pb-5 '>
         <div className='py-5 flex items-center'>
           <h2 className='text-xl '>Top Creatives</h2>
 

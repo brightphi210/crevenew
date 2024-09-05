@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import MyLoader from '../allLoadingState/MyLoader';
 import NoData from '../allLoadingState/NoData';
 import { RiVerifiedBadgeFill } from 'react-icons/ri';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const UserFavorite = () => {
 
@@ -110,8 +111,17 @@ export const UserFavoriteDashboard = () => {
 
                     <div className='relative'>
                         <div className=' bg-neutral-300 lg:h-[5rem] h-[5rem] overflow-hidden rounded-sm'>
-                            <img src={talent.cover_image} alt="" loading='lazy' className='w-full h-full object-cover'/>
+                                <LazyLoadImage
+                                    alt={talent.cover_image}
+                                    src={talent.cover_image}
+                                    placeholderSrc={talent.cover_image}
+                                    effect='blur'
+                                    loading='lazy'
+                                />
+                                {/* <img src={talent.cover_image} alt="" loading='lazy' className='w-full h-full object-cover'/> */}
                         </div>
+
+                        
                         <div className='absolute right-0 left-0 m-auto flex top-10 h-[70px] w-[70px] overflow-hidden border-2 shadow-lg bg-white border-white rounded-full'>
                             <img src={talent.profile_pics} alt="" loading='lazy' className='w-[70px] h-[70px] object-cover'/>
                         </div>
