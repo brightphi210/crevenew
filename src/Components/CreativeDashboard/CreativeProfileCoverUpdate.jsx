@@ -86,9 +86,9 @@ const CreativeProfileCoverUpdate = ({ MdDelete, AiOutlineCloudUpload, setEachSta
             {isLoading ? 
                 <MyLoader /> :
                 <div >
-                    <p className="text-lg pb-3">Cover Image</p>
+                    <p className="text-lg pb-3">Banner Image</p>
 
-                    <div onClick={() => document.querySelector(".input-field").click()} className='2xl:w-1/2 xl:w-1/2 lg:w-1/2 md:w-full'>
+                    <div onClick={() => document.querySelector(".input-field").click()} className='2xl:w-full xl:w-full lg:w-full md:w-full'>
                         <input type="file" accept='image/*' className='input-field' hidden
                             onChange={({ target: { files } }) => {
                                 if (files[0]) {
@@ -105,12 +105,12 @@ const CreativeProfileCoverUpdate = ({ MdDelete, AiOutlineCloudUpload, setEachSta
                         />
 
                         {image || cover_image ?
-                            <div className='2xl:w-full xl:w-full lg:w-full md:w-full 2xl:h-[35rem] xl:h-[25rem] lg:h-[25rem] h-[20rem] overflow-hidden rounded-md bg-neutral-50 border border-neutral-300'>
+                            <div className='2xl:w-full xl:w-full lg:w-full md:w-full 2xl:h-[10rem] xl:h-[10rem] lg:h-[10rem] h-[7rem] overflow-hidden rounded-md bg-neutral-50 border border-neutral-300'>
                                 {image && (
                                     <img src={image} alt='' className='w-full h-full object-cover cursor-pointer' />
                                 )}
 
-                                <div className='relative 2xl:h-[35rem] xl:h-[25rem] lg:h-[25rem] h-[25rem]'>
+                                <div className='relative 2xl:h-[10rem] xl:h-[10rem] lg:h-[10rem] h-[7rem]'>
 
                                     {cover_image && (
                                         <img src={cover_image} alt='' className='w-full h-full object-cover cursor-pointer' />
@@ -122,10 +122,10 @@ const CreativeProfileCoverUpdate = ({ MdDelete, AiOutlineCloudUpload, setEachSta
                                 </div>
                             </div>
                             :
-                            <div className='2xl:w-full xl:w-full lg:w-full md:w-full 2xl:h-[25rem] h-[20rem] flex justify-center items-center cursor-pointer border border-neutral-300 rounded-lg'>
+                            <div className='2xl:w-full xl:w-full lg:w-full md:w-full 2xl:h-[10rem] h-[7rem] flex justify-center items-center cursor-pointer border border-neutral-300 rounded-lg'>
                                 <div className=''>
                                     <p className='flex justify-center text-6xl'><AiOutlineCloudUpload /></p>
-                                    <p className='text-xs'>Upload Cover Image </p>
+                                    <p className='text-xs'>Upload Banner Image </p>
                                 </div>
                             </div>
                         }

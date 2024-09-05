@@ -411,9 +411,6 @@ const SingleUserCreativeDash = () => {
         setShowFQAs(true);
     }
 
-
-    console.log('This is Filtered Talents', creativeData);
-    
   return (
 
     <div className='bg-white h-full'>
@@ -461,12 +458,16 @@ const SingleUserCreativeDash = () => {
 
 
             <div className='text-white bg-gradient-to-b  from-gray-900 to-teal-950 flex justify-center lg:h-[12rem] h-[10rem] lg:pt-[5rem] pt-[4rem] items-center w-full'>
-                <div>
-                    <h2 className='text-base text-center font-bold'>{creativeData?.user?.email}</h2>
-                    <p className='text-xs flex gap-2 items-start pt-2'>
-                        <GrLocation className='text-green-400 text-xl'/>{creativeData.location}
-                    </p>
-                </div>
+                
+                {isLoading === false &&
+                
+                    <div>
+                        <h2 className='text-base text-center font-bold'>{creativeData?.user?.email}</h2>
+                        <p className='text-xs flex gap-2 items-start pt-2'>
+                            <GrLocation className='text-green-400 text-xl'/>{creativeData.location}
+                        </p>
+                    </div>
+                }
             </div>
 
 
@@ -479,12 +480,12 @@ const SingleUserCreativeDash = () => {
                                 <img src={creativeData.profile_pics} alt="" className='w-28 h-28 object-cover'/>
                             </div>
 
-                            <button onClick={goBack} className='bg-white text-black flex items-center justify-center gap-3 border border-neutral-300 rounded-full py-2 px-6 text-sm ml-auto mt-5'><FaArrowLeft/>Back</button>
+                            <button onClick={goBack} className='bg-white lg:hidden text-black flex items-center justify-center gap-3 border border-neutral-300 rounded-full py-2 px-6 text-sm ml-auto mt-5'><FaArrowLeft/>Back</button>
                         </div>
 
 
                         {creativeData.user && (
-                            <div className='pt-16'>
+                            <div className='lg:pt-32 pt-16'>
                                 <h2 className='text-lg font-bold flex gap-2 items-center'>{creativeData.user.fullname}
                                     {creativeData?.verification?.verified === true ? <MdVerified className='text-green-500'/>  : <GoUnverified className='text-red-500 font-bold'/> }
                                 </h2>
@@ -549,6 +550,9 @@ const SingleUserCreativeDash = () => {
 
 
                     <div className='2xl:col-span-4 xl:col-span-4 lg:col-span-4 lg:pt-10'>
+
+                        <button onClick={goBack} className='bg-white block  text-black lg:flex items-center justify-center gap-3 border border-neutral-300 rounded-full py-2 px-6 text-sm ml-auto mt-5'><FaArrowLeft/>Back</button>
+
                         <div className='py-10'>
                             <ul className='flex mb-5 border-b gap-4 border-b-neutral-300 text-sm relative'>
                                 <li onClick={handleShowWorks} className={`hover:border-b-2 hover:transition-all ease-linear ${showWorks === true && 'border-b-2 border-neutral-500'} pb-3 border-neutral-300 cursor-pointer`}>Works</li>
