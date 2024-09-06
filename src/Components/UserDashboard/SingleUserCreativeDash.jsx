@@ -12,13 +12,8 @@ import { GrLanguage } from "react-icons/gr";
 import { PiPhoneCallFill } from "react-icons/pi";
 import { MdFavoriteBorder } from "react-icons/md";
 import { MdOutlineFavorite } from "react-icons/md";
-import { MdOutlineArrowForward } from "react-icons/md";
-
-
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
-
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
 import 'swiper/css';
@@ -28,22 +23,18 @@ import 'swiper/css/pagination';
 import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
 import { Link, useNavigate, useNavigation, useParams } from 'react-router-dom';
-import { IoShareSocialSharp } from "react-icons/io5";
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import { useMemo } from "react";
 
 import validator from 'validator' 
 import successImg from '../Images/gif1.gif'
 import UserNavbar from './UserNavbar';
-import UserSideBar from './UserSideBar';
 import { TbAlertTriangle } from 'react-icons/tb';
 import Pusher from "pusher-js";
 import MyLoader from '../allLoadingState/MyLoader';
 import { MdVerified } from "react-icons/md";
 import { BsChat } from 'react-icons/bs';
-import NoData from '../allLoadingState/NoData';
-import { RiVerifiedBadgeFill } from 'react-icons/ri';
-
+import Footer from '../Footer'
+import { useLoadScript } from '@react-google-maps/api';
 
 
 const SingleUserCreativeDash = () => {
@@ -572,7 +563,7 @@ const SingleUserCreativeDash = () => {
                                             <PhotoProvider>
                                                 <div className='lg:h-[15rem] h-[10rem]  shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-white lg:w-full w-full overflow-hidden rounded-md'>
                                                     <PhotoView src={Image.image}>
-                                                        <img src={Image.image} alt="" className='cursor-pointer h-full w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
+                                                        <img src={Image.image} loading='lazy' alt="" className='cursor-pointer h-full w-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
                                                     </PhotoView>
                                                 </div>
                                             </PhotoProvider>
@@ -865,6 +856,8 @@ const SingleUserCreativeDash = () => {
                 </div>
             </dialog>
         </div>
+
+        <Footer />
     </div>
   )
 }

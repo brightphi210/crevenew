@@ -11,6 +11,7 @@ import MyLoader from '../allLoadingState/MyLoader';
 import NoData from '../allLoadingState/NoData';
 import { RiVerifiedBadgeFill } from 'react-icons/ri';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import Footer from '../Footer';
 
 const UserFavorite = () => {
 
@@ -26,6 +27,7 @@ const UserFavorite = () => {
         <div className='flex bg-neutral-100 h-screen'>
             <UserFavoriteDashboard />
         </div>
+        <Footer />
     </div>
   )
 }

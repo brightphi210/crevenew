@@ -12,6 +12,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import CreativeCompo from './CreativeCompo';
+import Footer from '../Footer';
 
 const UserHomeDashboard = () => {
 
@@ -27,6 +28,7 @@ const UserHomeDashboard = () => {
       <div className='bg-neutral-50 h-full'>
         <UserHomeDashboardHome />
       </div>
+      <Footer />
     </div>
   )
 }

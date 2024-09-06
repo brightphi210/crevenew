@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import { FaArrowRight } from 'react-icons/fa6'
 import GooglePlacesAutocomplete from 'react-google-autocomplete';
 import MyLoader from '../allLoadingState/MyLoader'
+import Footer from '../Footer'
 
 
 const UserProfileDasboard = () => {
@@ -25,6 +26,7 @@ const UserProfileDasboard = () => {
         <div className='flex w-full'>
             <UserProfileDash />
         </div>
+        <Footer />
     </div>
   )
 }

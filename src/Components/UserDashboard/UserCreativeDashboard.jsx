@@ -20,6 +20,7 @@ import MyLoader from '../allLoadingState/MyLoader';
 import { LuSearch } from 'react-icons/lu';
 import { RiVerifiedBadgeFill } from 'react-icons/ri';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import Footer from '../Footer';
 
 const UserCreativeDashboard = () => {
 
@@ -36,6 +37,7 @@ const UserCreativeDashboard = () => {
         <div className='flex bg-white'>
             <UserCreativeDashboardCom />
         </div>
+        <Footer />
     </div>
   )
 }
@@ -154,8 +156,6 @@ export const UserCreativeDashboardCom = () => {
   }, []);
 
 
-  console.log('These are talents', allTalents);
-  
 
   return (
     <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] py-28 w-full'>

@@ -5,6 +5,7 @@ import { jwtDecode } from 'jwt-decode'
 import { BASE_URL } from '../Auth/BaseUrl'
 import MyLoader from '../allLoadingState/MyLoader'
 import NoData from '../allLoadingState/NoData'
+import Footer from '../Footer'
 
 const UserRequestBookings = () => {
 
@@ -21,6 +22,7 @@ const UserRequestBookings = () => {
         <div className='flex bg-neutral-100 h-screen'>
             <UserRequestBookingsDashboard />
         </div>
+        <Footer />
     </div>
   )
 }
