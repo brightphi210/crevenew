@@ -106,7 +106,7 @@ export const UserFavoriteDashboard = () => {
             <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5'>
 
               {favoriteProfiles.map((talent) =>(
-                 <div className='bg-white  rounded-md cursor-pointer hover:transition-all hover:ease-in-out hover:bg-neutral-50 shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] relative  p-3' key={talent.id}>
+                 <div data-aos="fade-up" data-aos-duration="1000" className='bg-white  rounded-md cursor-pointer hover:transition-all hover:ease-in-out hover:bg-neutral-50 shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] relative  p-3' key={talent.id}>
                  <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
 
                  <div className='relative'>
@@ -153,7 +153,7 @@ export const UserFavoriteDashboard = () => {
              </Link>
 
 
-             </div>
+                  </div>
               ))}
             </div>
           }
