@@ -115,10 +115,10 @@ export const UserHomeDashboardHome = () => {
         </div>
       }
 
-      <div>
-        <p className='text-center 2xl:text-6xl lg:text-4xl px-3 text-4xl font-bold lg:pt-20 pt-5 lg:pb-10 pb-5'>
+      <div className=''>
+        <p className='text-center text-black 2xl:text-6xl lg:text-4xl px-3 text-4xl font-bold lg:pt-20 pt-5 lg:pb-10 pb-5'>
           Hire the best  <br className='lg:block hidden'/>
-          <span className='bg-gradient-to-r from-sky-500 to-teal-500 bg-clip-text text-transparent'>Talents</span> Around you
+          <span className='bg-gradient-to-r from-sky-600 to-teal-700 bg-clip-text text-transparent'>Talents</span> Around you
         </p>
       </div>
 

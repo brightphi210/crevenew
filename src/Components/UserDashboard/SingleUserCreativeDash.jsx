@@ -400,7 +400,6 @@ const SingleUserCreativeDash = () => {
         setShowBio(false);
         setShowReviews(true);
         setShowFQAs(false);
-
     }
 
     const handleShowFAQs = () => {
@@ -498,25 +497,25 @@ const SingleUserCreativeDash = () => {
                                 <p className='bg-neutral-200  p-1 rounded-full'><PiPhoneCallFill /></p> 
                                 {creativeData.phone_number}
                             </button>
-                            <p className='text-sm pt-3'><b>{creativeData.experience}</b> Yrs. Experience</p>
+                            <p className='text-sm pt-3'><b>{creativeData.experience}</b> yrs. of experience</p>
                         </div>
 
 
                         <div className='flex flex-col w-full gap-3 pt-5 '>
                             <button onClick={()=>document.getElementById('my_modal_3').showModal()} 
-                                className='bg-black text-white py-3 lg:px-5 w-full px-4 rounded-full lg:text-sm text-xs border border-neutral-200'>
+                                className='bg-black text-white py-3 lg:px-5 w-full px-4 rounded-full lg:text-sm text-sm font-semibold border border-neutral-200'>
                                 Get in touch
                             </button>
                             
                             <button onClick={()=>document.getElementById('my_modal_5').showModal()} 
-                                className='bg-green-50 w-full justify-center flex text-sm m-auto gap-3 items-center border border-green-300 text-green-950 p-2.5 rounded-full'>
+                                className='bg-green-50 w-full justify-center flex text-sm m-auto gap-3 items-center border border-green-500 text-green-950 p-2.5 rounded-full'>
                                 <BsChat /> Message
                             </button>
 
                             <p onClick={handleFavoritemClick} 
                                 className='bg-white border w-full border-neutral-300 text-sm p-2.5 cursor-pointer rounded-full flex m-auto justify-center items-center gap-2'>
-                                {isFavorite ? <p className='flex items-center  gap-3'><MdOutlineFavorite className='text-green-950'/> Saved</p> : 
-                                <p className='flex items-center gap-3'><MdFavoriteBorder className='text-green-950'/>save</p>}
+                                {isFavorite ? <p className='flex items-center text-sm gap-3'><MdOutlineFavorite className='text-green-950'/> Saved</p> : 
+                                <p className='flex items-center text-sm gap-3'><MdFavoriteBorder className='text-green-950'/>Save</p>}
                             </p>
 
                         </div>
@@ -551,7 +550,7 @@ const SingleUserCreativeDash = () => {
 
                     <div className='2xl:col-span-4 xl:col-span-4 lg:col-span-4 lg:pt-10'>
 
-                        <button onClick={goBack} className='bg-white block  text-black lg:flex items-center justify-center gap-3 border border-neutral-300 rounded-full py-2 px-6 text-sm ml-auto mt-5'><FaArrowLeft/>Back</button>
+                        <button onClick={goBack} className='bg-white hidden  text-black lg:flex items-center justify-center gap-3 border border-neutral-300 rounded-full py-2 px-6 text-sm ml-auto mt-5'><FaArrowLeft/>Back</button>
 
                         <div className='py-10'>
                             <ul className='flex mb-5 border-b gap-4 border-b-neutral-300 text-sm relative'>
@@ -584,13 +583,13 @@ const SingleUserCreativeDash = () => {
 
                             {showBio === true && 
                             (<div className='bg-neutral-100 p-4'>
-                                <div className='flex items-center '>
-                                    <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm  font-semibold'><span className='font-normal'>Starting Price </span>: {creativeData.starting_price}</p>
+                                <div className='flex items-center border-b border-b-neutral-300 pb-5'>
+                                    <p className='2xl:text-lg xl:text-sm lg:text-sm text-base  font-semibold'><span className='font-normal'>Starting Price </span>: &#8358; {creativeData.starting_price}</p>
                                 </div>
 
                                 <div className='mt-5'>
                                     <p className='text-sm font-bold pb-3'>Bio</p>
-                                    <p className='text-sm 2xl:text-sm xl:text-xs lg:text-xs'>{creativeData.about}</p>
+                                    <p className='text-sm text-justify 2xl:text-sm xl:text-sm lg:text-sm'>{creativeData.about}</p>
 
                                 </div>
                             </div>)}
@@ -676,7 +675,7 @@ const SingleUserCreativeDash = () => {
                         
 
                             <div className='flex gap-3 pt-3 mt-5 border-t border-t-neutral-200'>
-                                <button onClick={()=>document.getElementById('my_modal_2').showModal()} className='bg-accent py-3 lg:px-10 mt-5 text-sm text-white rounded-full lg:w-fit w-full'>Drop Review</button>
+                                <button onClick={()=>document.getElementById('my_modal_2').showModal()} className='bg-green-700 py-3 lg:px-10 mt-5 text-sm text-white rounded-full lg:w-fit w-full'>Drop Review</button>
                                 <button onClick={handleShare} className='bg-black mt-5 text-sm text-center text-white gap-3 py-3 lg:px-10 rounded-full lg:w-fit w-full'>Share</button>
                             </div>
 

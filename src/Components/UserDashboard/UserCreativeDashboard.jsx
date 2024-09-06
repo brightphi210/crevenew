@@ -262,44 +262,54 @@ export const UserCreativeDashboardCom = () => {
                 <>
                   {/* {filteredItems.filter(talent => talent.location !== null && talent.cover_image !== 'https://creve.store/media/coverimage.png').map((talent) => ( */}
                   {filteredItems.filter(talent => talent.location !== null && talent.cover_image !== 'https://creve.store/media/coverimage.png').map((talent) => (
-                    <div className='bg-white  rounded-md cursor-pointer hover:transition-all hover:ease-in-out hover:shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] relative shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] p-3' key={talent.id}>
-                      <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
-
+                          <div className='bg-white  rounded-md cursor-pointer hover:transition-all hover:ease-in-out hover:bg-neutral-50 shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] relative  p-3' key={talent.id}>
+                          <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
+  
                           <div className='relative'>
-
+  
                               <div className=' bg-neutral-300 lg:h-[5rem] h-[5rem] overflow-hidden rounded-sm'>
-                                  <LazyLoadImage
+                                  {/* <LazyLoadImage
                                       alt={talent.cover_image}
                                       src={talent.cover_image}
                                       placeholderSrc={talent.cover_image}
                                       effect='blur'
                                       loading='lazy'
-                                  />
-                                  {/* <img src={talent.cover_image} alt="" loading='lazy' className='w-full h-full object-cover'/> */}
+                                  /> */}
+                                  <img src={talent.cover_image} alt="" loading='lazy' className='w-full h-full object-cover'/>
                               </div>
-
-                              <div className='absolute right-0 left-0 m-auto flex top-10 h-[70px] w-[70px] overflow-hidden border-2 shadow-lg bg-white border-white rounded-full'>
-                                  <img src={talent.profile_pics} alt="" loading='lazy' className='w-[70px] h-[70px] object-cover'/>
+  
+  
+                              <div className='absolute right-0 left-0 m-auto flex top-10 h-[75px] w-[75px] overflow-hidden border-4 shadow-lg bg-white border-white rounded-full'>
+                                  <img src={talent.profile_pics} alt="" loading='lazy' className='w-[75px] h-[75px] object-cover'/>
                               </div>
+  
+                              
                           </div>
-
-                          <div className='text-center pt-10'>
+  
+                          <div className='text-center pt-14'>
                               <h2 className='text-lg uppercase font-bold flex items-center m-auto justify-center gap-1'>{talent.user.fullname}
                                   {talent?.verification?.verified === true && 
                                       <p className='text-xl text-green-500 bg-white shadow-lg flex rounded-full items-center'><RiVerifiedBadgeFill /></p>
                                   }
                               </h2>
-                              <p className='text-xs m-auto justify-center flex items-center gap-1'>{talent.display_name} <GoTools /></p>
                           </div>
-
-                          <p className='border border-neutral-300 font-bold p-2 px-5 w-full rounded-full text-center text-sm mt-4 cursor-pointer'>Hire {talent?.user?.fullname}</p>
-
-                          <div className='flex m-auto justify-center items-center gap-4 pt-5'>
-                          <p className='text-xs flex items-center gap-2'><FaLocationDot className='text-green-500'/>{talent?.location?.slice(0, 30)}. . .</p>
-                          <p className='text-xs ml-auto'>{talent.work_type}</p>
+                          
+                          <div className='flex items-center gap-3 w-full m-auto justify-center '>
+                              <p className='text-xs flex w-fit rounded-full text-green-800 bg-green-100 py-2 px-5 my-2  items-center gap-1'>{talent.display_name} <GoTools /></p>
+                              <p className='text-xs bg-neutral-100 rounded-full py-2 px-5 '>{talent.work_type}</p>
+                          </div>
+                          <p className='shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-white
+                              text-black flex justify-center w-[80%] m-auto font-bold p-3 px-5  rounded-full text-center text-sm mt-4 cursor-pointer'>
+                              Hire {talent?.user?.fullname}
+                          </p>
+  
+                          <div className='flex m-auto justify-center items-center gap-4 py-5'>
+                              <p className='text-sm flex items-center gap-2'><FaLocationDot className='text-green-500'/>{talent?.location?.slice(0, 30)}. . .</p>
                           </div>
                       </Link>
-                    </div>
+  
+  
+                      </div>
                   ))}
                 </> 
               }

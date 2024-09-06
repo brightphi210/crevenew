@@ -215,7 +215,8 @@ export const UserProfileDash = () => {
                 <button 
                     onClick={handleProfileUpdate} 
                     className=" lg:w-fit w-fit py-3 px-10 rounded-full text-xs  
-                    bg-white  text-black border border-neutral-300  lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">{isLoading3 === true ? <span class="loader"></span> : 'Update' }
+                    bg-black text-white lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">
+                        {isLoading3 === true ? <div className='flex items-center gap-3'> <span class="loader"></span> Loading</div>  : 'Update' }
                 </button>
 
 
@@ -238,7 +239,8 @@ export const UserProfileDash = () => {
                     <button 
                         type='submit'
                         className=" lg:w-fit w-fit py-3 px-10 text-xs  
-                        bg-white text-black border border-neutral-300 rounded-full lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">{isLoading2 === true ? <span class="loader"></span> : 'Update' }
+                        bg-black text-white rounded-full lg:block lg:m-0 lg:mt-5 flex text-center m-auto mt-5">
+                            {isLoading2 === true ? <div className='flex items-center gap-3'> <span class="loader"></span> Loading</div>  : 'Update' }
                     </button>
                 </form>
 
