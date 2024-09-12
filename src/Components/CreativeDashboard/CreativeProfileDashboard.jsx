@@ -237,13 +237,11 @@ export const CreativeProfile= () => {
 
                             <div>
                                 <PhotoProvider>
-
                                     <PhotoView src={profileData.cover_image}>
                                         <div className='w-full 2xl:h-[10rem] xl:h-[10rem] lg:h-[10rem] h-[8rem] overflow-hidden  lg:rounded-lg rounded-md cursor-pointer bg-neutral-200'>
                                             <img src={profileData.cover_image} alt="" className='w-full h-full object-cover hover:transform hover:scale-105 transition-all ease-linear'/>
                                         </div>
                                     </PhotoView>
-
 
                                     <div className="2xl:grid 2xl:grid-cols-4 xl:grid xl:grid-cols-3 lg:grid lg:grid-cols-3 gap-5 w-full mt-5 grid grid-cols-2 ">
                                         {profileData.images && (
@@ -294,7 +292,6 @@ export const CreativeProfile= () => {
                                 </div>
                                 </>}
                             </div>
-
                             <>
                                 {profileData.reviewed && profileData.reviewed.length <= 0 && <p className='text-center text-sm'>No Review Found</p>}
                             </>

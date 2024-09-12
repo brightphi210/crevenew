@@ -452,7 +452,7 @@ const SingleUserCreativeDash = () => {
                 {isLoading === false &&
                 
                     <div>
-                        <h2 className='text-base text-center font-bold'>{creativeData?.user?.email}</h2>
+                        {/* <h2 className='text-base text-center font-bold'>{creativeData?.user?.email}</h2> */}
                         <p className='text-xs flex gap-2 items-start pt-2'>
                             <GrLocation className='text-green-400 text-xl'/>{creativeData.location}
                         </p>
@@ -484,10 +484,10 @@ const SingleUserCreativeDash = () => {
                         )}
 
                         <div className='py-5 border-b border-b-neutral-300'>
-                            <button className='font-semibold text-sm flex items-center gap-2'>
+                            {/* <button className='font-semibold text-sm flex items-center gap-2'>
                                 <p className='bg-neutral-200  p-1 rounded-full'><PiPhoneCallFill /></p> 
                                 {creativeData.phone_number}
-                            </button>
+                            </button> */}
                             <p className='text-sm pt-3'><b>{creativeData.experience}</b> yrs. of experience</p>
                         </div>
 

@@ -349,14 +349,14 @@ export const CreatingProfileUpdateHome = () => {
                                     <p className="text-sm pb-3">Digital</p>
                                     <select className="select text-sm select-bordered w-full border-neutral-300 max-w-full" required value={digital_skills} onChange={(e)=>setDigitalSkills(e.target.value)}>
                                         <option className='text-sm' value={''}>Select Digital Skill</option>
-                                        <option className='text-sm' value={'BackendDevelopment'}>Backend Developement</option>
+                                        {/* <option className='text-sm' value={'BackendDevelopment'}>Backend Developement</option> */}
                                         <option className='text-sm' value={'MobileDevelopment'}>Mobile Developement</option>
                                         <option className='text-sm' value={'UI/UX_Design'}>UI/UX</option>
                                         <option className='text-sm' value={'Graphics_Design'}>Graphic Design</option>
                                         <option className='text-sm' value={'Content_Creation'}>Content Creation</option>
-                                        <option className='text-sm' value={'Frontend_Development'}>Frontend Developement</option>
+                                        {/* <option className='text-sm' value={'Frontend_Development'}>Frontend Developement</option> */}
                                         <option className='text-sm' value={'Photography'}>Photography</option>
-                                        <option className='text-sm' value={'WebsiteDevelopment'}>Website Developement</option>
+                                        {/* <option className='text-sm' value={'WebsiteDevelopment'}>Website Developement</option> */}
                                         <option className='text-sm' value={'Blockchain Developement'}>Blockchain Developement</option>
                                         <option className='text-sm' value={'Video_editing'}>Video Editing</option>
                                     </select>

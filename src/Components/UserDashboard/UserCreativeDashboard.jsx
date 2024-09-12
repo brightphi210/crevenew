@@ -261,7 +261,7 @@ export const UserCreativeDashboardCom = () => {
               {filteredItems.length > 0 &&
                 <>
                   {/* {filteredItems.filter(talent => talent.location !== null && talent.cover_image !== 'https://creve.store/media/coverimage.png').map((talent) => ( */}
-                  {filteredItems.filter(talent => talent.location !== null && talent.cover_image !== 'https://creve.store/media/coverimage.png').map((talent) => (
+                  {filteredItems.filter(talent => talent.location !== null && talent.cover_image !== 'https://creve.store/media/coverimage.png' && talent.images.length !==0).map((talent) => (
                       <div data-aos="fade-up" data-aos-duration="1000" className='bg-white  rounded-md cursor-pointer hover:transition-all hover:ease-in-out hover:bg-neutral-50 shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] relative  p-3' key={talent.id}>
                       <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
 
