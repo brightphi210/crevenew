@@ -186,8 +186,6 @@ export const CreatingProfileUpdateHome = () => {
             setIsLoading(false)
         }
     }
-    console.log('This is error', error1);
-
 
 
     const [showEachState, setEachState] = useState(1)

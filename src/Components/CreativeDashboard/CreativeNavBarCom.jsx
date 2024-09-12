@@ -38,8 +38,6 @@ const CreativeNavBarCom = ({handleShow, show}) => {
           throw new Error('Network response was not ok');
       }
       const data = await respose.json();
-
-      console.log(data);
       setProfileData(data)
 
       } catch (error) {

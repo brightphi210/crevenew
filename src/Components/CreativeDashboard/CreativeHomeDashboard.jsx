@@ -91,7 +91,6 @@ export const CreativeHome = () => {
 
   const [showModal, setShowModal] = useState(false)
   const [isVerified, setIsVerified] = useState(() => {
-    // Retrieve isVerified from local storage on initial render
     const savedIsVerified = localStorage.getItem('isVerified');
     return savedIsVerified ? JSON.parse(savedIsVerified) : false;
   });
@@ -128,7 +127,6 @@ export const CreativeHome = () => {
         }
 
 
-        console.log(data);
         setProfileData(data)
       } catch (error) {
           console.log(error);
@@ -141,9 +139,6 @@ export const CreativeHome = () => {
       fetchProfile();
   }, []);
 
-  console.log('This is profileData', typeof(isVerified));
-  
-
 
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [copySuccess, setCopySuccess] = useState('');
@@ -151,7 +146,6 @@ export const CreativeHome = () => {
   const handleClick = (book) => {
     setSelectedRequest(book);
     setCopySuccess('')
-    // document.getElementById('my_modal_2').showModal()
   };
 
 

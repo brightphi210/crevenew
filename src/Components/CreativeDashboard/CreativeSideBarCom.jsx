@@ -21,8 +21,6 @@ const CreativeSideBarCom = ({show}) => {
   const [token, setToken] = useState(() => localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
 
   const userToken = token?.access ? jwtDecode(token.access) : null;
-  console.log('This is the token', userToken);
-
   const logout = async (e) => {
       e.preventDefault()
       setToken(null)

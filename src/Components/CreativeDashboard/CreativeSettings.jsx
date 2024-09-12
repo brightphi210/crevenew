@@ -40,8 +40,6 @@ export const CreativeSettingDashboard = () => {
 
     let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
     const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
-
-
     const [isLoading, setIsLoading] = useState(false)
 
     const [cover_image, setCover_Image] = useState(null)
@@ -49,7 +47,6 @@ export const CreativeSettingDashboard = () => {
     const [fileName, setFileName] = useState('') 
     const [coverImage, setCoverImage] = useState(null)
      
-
     const url =`${BASE_URL}/creativeprofile/${userToken.profile_id}/`
     const handleProfileUpdate = async (e) =>{
         setIsLoading(true)
@@ -57,10 +54,7 @@ export const CreativeSettingDashboard = () => {
 
         const formData = new FormData()
         formData.append('profile_pics', cover_image)
-
-
         try {
-            
             const respose = await fetch(url, {
                 method: 'PUT',
                 headers: {
@@ -76,10 +70,8 @@ export const CreativeSettingDashboard = () => {
 
             else{
                 const data = await respose.json()
-                console.log(data);
                 setIsLoading(false)
             }
-
 
         } catch (error) {
             console.log('There was an error', error);
@@ -87,8 +79,6 @@ export const CreativeSettingDashboard = () => {
         }
     }
     
-
-
     const fetchProfile = async () => {
         setIsLoading(true);
         try {
@@ -105,10 +95,7 @@ export const CreativeSettingDashboard = () => {
             throw new Error('Network response was not ok');
         }
         const data = await respose.json();
-
         setCover_Image(data.profile_pics)
-        console.log(data);
-
 
         } catch (error) {
             console.log(error);
@@ -127,7 +114,6 @@ export const CreativeSettingDashboard = () => {
         <div className='2xl:p-20 2xl:pt-28 2xl:pl-[18rem] lg:pl-[18rem] p-5 pt-20  '>
 
             <h2 className='text-2xl font-bold pb-10'>Settings</h2>
-
             <div className=''>
 
                 <div onClick={()=> document.querySelector(".input-field").click()} className='2xl:w-fit xl:w-fit lg:w-fit md:w-fit lg:block flex justify-center '>
@@ -176,45 +162,7 @@ export const CreativeSettingDashboard = () => {
                     className="btn lg:w-fit md:w-fit w-1/2 min-h-2rem lg:px-10 xl:text-xs lg:text-xs  
                     bg-black hover:bg-neutral-800 text-white lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">{isLoading === true ? <span class="loader"></span> : 'Update' }
                 </button>
-
-
-                {/* <div className='mt-5 pt-5 2xl:w-full border-t border-neutral-200'>
-
-                    <form action="" className='flex flex-col gap-4 2xl:w-1/2'>
-                        
-                        <input type="text" 
-                            placeholder="Update Name..." 
-                            required 
-                            // value={question}
-                            className="input input-bordered w-full rounded-md text-xs" 
-                            // onChange={handleQuestionChange}
-                        />
-
-                        <input type="email" 
-                            placeholder="Update Email..."   
-                            required 
-                            // value={question}
-                            className="input input-bordered w-full rounded-md text-xs" 
-                            // onChange={handleQuestionChange}
-                        />
-
-                        <input type="password" 
-                            placeholder="Update Password..."   
-                            required 
-                            // value={question}
-                            className="input input-bordered w-full rounded-md text-xs" 
-                            // onChange={handleQuestionChange}
-                        />
-                    </form>
-                </div>
-
-                <button 
-                    className="btn lg:w-fit md:w-fit w-1/2 min-h-2rem lg:px-10 xl:text-xs lg:text-xs  
-                    bg-black hover:bg-neutral-800 text-white lg:block lg:m-0 lg:mt-5 flex  m-auto mt-5">Update
-                </button> */}
             </div>
-
-
 
             <dialog id="my_modal_1" className="modal">
             <div className="modal-box  p-0 rounded-md flex justify-center items-center h-[25rem]" >

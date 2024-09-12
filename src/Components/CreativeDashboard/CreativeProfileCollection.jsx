@@ -18,8 +18,6 @@ const CreativeProfileCollection = ({IoCloseSharp, setEachState}) => {
     let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
     const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
 
-
-
     const [previewUrls, setPreviewUrls] = useState([]);
     const [isLoading2, setIsLoading2] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
@@ -28,8 +26,6 @@ const CreativeProfileCollection = ({IoCloseSharp, setEachState}) => {
     const [checkdata, setCheckdata] = useState([]);
     const [images_list, setImage_list] = useState([]) 
     const [images, setImages] = useState([]) 
-
-
 
     const handlePostImage = (event) => {
         const files = Array.from(event.target.files);
@@ -55,12 +51,10 @@ const CreativeProfileCollection = ({IoCloseSharp, setEachState}) => {
         setPreviewUrls((prevUrls) => [...prevUrls, ...newPreviewUrls]);
     };
 
-
     const handleDeleteImage = (index) => {
         setImages((prevImages) => prevImages.filter((_, i) => i !== index));
         setPreviewUrls((prevUrls) => prevUrls.filter((_, i) => i !== index));
     };
-
 
     const url =`${BASE_URL}/gallery/`
 
@@ -118,9 +112,6 @@ const CreativeProfileCollection = ({IoCloseSharp, setEachState}) => {
             throw new Error('Network response was not ok');
         }
         const data = await respose.json();
-
-        // console.log('This is collecton', data);
-
         setImage_list(data)
         setCheckdata(data)
         
@@ -172,16 +163,12 @@ const CreativeProfileCollection = ({IoCloseSharp, setEachState}) => {
             }
 
             const data = await response.json();
-            console.log('Delete successful', data);
             setCheckdata(prevSkills => prevSkills.filter(checkdata => checkdata.id !== selectedRequest));
             setSelectedRequest(null);
         } catch (error) {
             console.error('There was a problem with the delete request:', error);
         }
     };
-
-
-    console.log(checkdata);
 
 
   return (

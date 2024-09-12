@@ -63,11 +63,8 @@ export const CreativeProfile= () => {
     const [isLoading, setIsLoading] = useState(false)
     const url =`${BASE_URL}/creativeprofile/${userToken.profile_id}/`
 
-
     const fetchProfile = async () => {
-
         setIsLoading(true);
-
         try {
 
         const respose = await fetch(url, {
@@ -81,8 +78,6 @@ export const CreativeProfile= () => {
             throw new Error('Network response was not ok');
         }
         const data = await respose.json();
-
-        console.log(data);
         setProfileData(data)
 
         } catch (error) {
@@ -112,9 +107,6 @@ export const CreativeProfile= () => {
     const formattedPhoneNumber = profileData.whatsapp_link && profileData.whatsapp_link.replace(/\D/g, ''); // Remove non-numeric characters
     const encodedMessage = encodeURIComponent(chatmessage || '');
     const whatsappURL = `https://wa.me/${formattedPhoneNumber}${encodedMessage ? `?text=${encodedMessage}` : ''}`;
-  
-
-    console.log(profileData);
   return (
 
     <div>

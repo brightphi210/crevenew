@@ -50,7 +50,6 @@ const UploadNIN = ({setEachState}) => {
 
             else{
                 const data = await respose.json()
-                console.log(data);
                 setIsLoading(false)
             }
         } catch (error) {
@@ -79,7 +78,6 @@ const UploadNIN = ({setEachState}) => {
             const data = await response.json();
 
             setFetchedNiN(data)
-            console.log(data);
         } catch (error) {
             console.log(error);
         } finally {

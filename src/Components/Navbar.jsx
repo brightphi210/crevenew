@@ -11,11 +11,8 @@ import { BsDashSquare } from "react-icons/bs";
 const Navbar = () => {
 
     const navigate = useNavigate()
-
     const [token, setToken] = useState(() => localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
-
     const userToken = token?.access ? jwtDecode(token.access) : null;
-    console.log('This is the token', userToken);
 
     const logout = async (e) => {
         e.preventDefault()
@@ -26,7 +23,6 @@ const Navbar = () => {
 
 
     const [show, setShow] = useState(false);
-
     const toggle = () => {
         setShow(!show);
     }

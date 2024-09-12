@@ -9,8 +9,6 @@ const PrivateRoute = ({role}) => {
     let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
     const userToken = authUser?.access ? jwtDecode(authUser.access) : null;
 
-    console.log(userToken);
-
     if (!userToken) {
         return <Navigate to="/login" />;
     }
