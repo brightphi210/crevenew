@@ -178,7 +178,7 @@ const CreativeProfileCollection = ({IoCloseSharp, setEachState}) => {
         : <>
             <div className='flex w-full items-center gap-10'>
                 <div >
-                    <h2 className='text-2xl'>Works</h2>
+                    <h2 className='text-2xl'>Uplaod Works Samples</h2>
                     <p className="text-xs pb-3">Upload Maximum of 6 Samples</p>
                 </div>
 

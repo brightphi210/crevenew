@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import { useEffect, useState } from 'react';
 import Homepage from './Pages/Homepage';
@@ -20,14 +20,12 @@ import 'aos/dist/aos.css';
 import HomeTalentPage from './Pages/HomeTalentPage';
 import AboutPage from './Pages/AboutPage';
 import BlogPage from './Pages/BlogPage';
-import CreativeSettingDash from './Pages/CreativeDash/CreativeSettingDash';
 import CreativeFAQsDash from './Pages/CreativeDash/CreativeFAQsDash';
 import SingleUserCreative from './Pages/UserDash/SingleUserCreative';
 import UserCreativeDash from './Pages/UserDash/UserCreativeDash';
 import UserRequestBookings from './Components/UserDashboard/UserRequestBookings';
 import UserFavoriteDash from './Pages/UserDash/UserFavoriteDash';
 import UserProfile from './Pages/UserDash/UserProfile';
-import CreativeChatDash from './Pages/CreativeDash/CreativeChatDash';
 import UserChatDash from './Pages/UserDash/UserChatDash';
 import Help from './Pages/Help';
 import { BASE_URL } from './Components/Auth/BaseUrl';
@@ -121,7 +119,6 @@ function App() {
             <Route path='/creative-dashboard-profile-update' element={<CreativeProfileUpdataDash />}/>
             <Route path='/creative-dashboard-notificationAll' element={<CreativeNotificationDashboard />}/>
             <Route path='/creative-dashboard-bookingsAll' element={<CreativeBookingsDash />}/>
-            <Route path='/creative-dashboard-settings' element={<CreativeSettingDash />}/>
             <Route path='/creative-dashboard-FAQs' element={<CreativeFAQsDash />}/>
           </Route>
           

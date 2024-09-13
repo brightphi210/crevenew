@@ -106,7 +106,7 @@ const RegisterCom = () => {
 
 
           <span onClick={handleClick2} className='flex lg:w-full w-full 2xl:text-xl xl:text-lg lg:text-lg font-bold  text-lg cursor-pointer bg-red-50 items-center gap-2 border border-red-200 py-3 px-3 rounded-md text-black'>
-            Become a Freelancer
+            Render a service
             <input 
               type="radio" 
               name="radio-2" 

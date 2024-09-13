@@ -5,33 +5,22 @@ import CreativeNavBarCom from './CreativeNavBarCom'
 import { IoCloseSharp } from "react-icons/io5";
 
 import validator from 'validator' 
-
-import { AiOutlineCloudUpload } from 'react-icons/ai';
-import { MdDelete } from 'react-icons/md';
 import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
 import { FaArrowRight } from "react-icons/fa6";
-
 import successImg from '../Images/gif1.gif'
-import { Link } from 'react-router-dom';
-import Loader from '../Loader';
-import CreativeProfileCoverUpdate from './CreativeProfileCoverUpdate';
 import CreativeProfileCollection from './CreativeProfileCollection';
-
 import GooglePlacesAutocomplete from 'react-google-autocomplete';
 import CreativeSkills from './CreativeSkills';
 import MyLoader from '../allLoadingState/MyLoader';
-
-
-import { MdArrowRightAlt } from "react-icons/md";
 import UploadNIN from './UploadNIN';
+import { FiEdit } from 'react-icons/fi';
 
 const CreatingProfileUpdateDashboard = () => {
     const [show, setShow] = useState(false)
     const handleShow = () => {
       setShow(!show)
     }
-
 
 
   return (
@@ -74,8 +63,10 @@ export const CreatingProfileUpdateHome = () => {
     const [success, setSuccess] = useState(false)
     const [message, setMessage] = useState(false)
     const [error1, setError1] = useState('')
-
-
+    const [cover_image, setCover_Image] = useState(null)
+    const [image, setImage] = useState(null) 
+    const [fileName, setFileName] = useState('') 
+    const [coverImage, setCoverImage] = useState(null)
 
 
     const handleShowDigital = (e) =>{ 
@@ -123,7 +114,8 @@ export const CreatingProfileUpdateHome = () => {
         setSelectedOption(data.category)
         setPhoneNumber(data.phone_number)
         setImage_list(data.images)   
-        setExperience(data.experience)     
+        setExperience(data.experience)  
+        setCover_Image(data.profile_pics)   
 
         } catch (error) {
             console.log(error);
@@ -156,6 +148,7 @@ export const CreatingProfileUpdateHome = () => {
         formData.append('phone_number', phone_number)
         formData.append('website_link', website_link)
         formData.append('experience', experience)
+        formData.append('profile_pics', cover_image)
 
         try {
             
@@ -238,32 +231,17 @@ export const CreatingProfileUpdateHome = () => {
 
   return (
     <div className=''>
-
         {isLoading2 === true ? 
             (<MyLoader />) : (
             <div className='lg:p-20 lg:pt-28 lg:pl-[18rem] p-0 pt-20'>
 
-                <div className='flex lg:gap-5 flex-wrap items-center gap-2 py-2 px-3 mb-5 bg-black rounded-lg text-white border border-neutral-200'>
-                    <button onClick={showOne} 
-                        className={showEachState === 1 ? 'border border-green-50 bg-green-50 py-2 px-5 rounded-full text-black  lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
-                        Basic
-                    </button>
-                    <button onClick={showTwo} 
-                        className={showEachState === 2 ? 'border border-green-50 bg-green-50 py-2 px-5 rounded-full text-black  lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
-                        Banner
-                    </button>
-                    <button onClick={showFour} 
-                        className={showEachState === 4 ? 'border border-green-50 bg-green-50 py-2 px-5 rounded-full text-black  lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
-                        Skills
-                    </button>
-                    <button onClick={showThree} 
-                        className={showEachState === 3 ? 'border border-green-50 bg-green-50 py-2 px-3 rounded-full text-black  lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
-                        Works
-                    </button>
-                    <button onClick={showFive} 
-                        className={showEachState === 5 ? 'border border-green-50 bg-green-50 py-2 px-5 rounded-full text-black  lg:text-sm text-xs' : ' text-xs px-1 py-2'}>
-                        NIN
-                    </button>
+                <div className="breadcrumbs lg:w-full w-full text-sm mb-10">
+                    <ul className='px-5'>
+                        <li onClick={showOne}  className={showEachState === 1 ? 'border-b-2 pb-2 cursor-pointer border-b-green-500 text-black lg:text-sm text-sm' : 'text-sm pb-2 cursor-pointer' }>Edit Profile</li>
+                        <li onClick={showFour}  className={showEachState === 4 ? 'border-b-2 pb-2 cursor-pointer border-b-green-500 text-black lg:text-sm text-sm' : 'text-sm pb-2 cursor-pointer' }>Skills Setup</li>
+                        <li onClick={showThree}  className={showEachState === 3 ? 'border-b-2 pb-2 cursor-pointer border-b-green-500 text-black lg:text-sm text-sm' : 'text-sm pb-2 cursor-pointer' }>Add Works Samples</li>
+                        <li onClick={showFive}  className={showEachState === 5 ? 'border-b-2 pb-2 cursor-pointer border-b-green-500 text-black lg:text-sm text-sm' : 'text-sm pb-2 cursor-pointer' }>Add NIN Document</li>
+                    </ul>
                 </div>
 
 
@@ -271,28 +249,49 @@ export const CreatingProfileUpdateHome = () => {
                     <form action="" className='flex lg:flex-row flex-col px-5 lg:gap-14  gap-5 relative' onSubmit={handleProfileUpdate}>
                         <div className='lg:w-1/2 w-full flex flex-col gap-5'>
 
+                            <div onClick={()=> document.querySelector(".input-field").click()} className='2xl:w-fit xl:w-fit lg:w-fit md:w-fit w-fit lg:block flex '>
+                                <input  type="file" accept='image/*' className='input-field' hidden
+                                    onChange={({target: {files}}) =>{
+                                        files[0] && setFileName(files[0].name)
+                                        if(files){
+                                            setImage(URL.createObjectURL(files[0]))
+                                            setCoverImage(files[0])
+                                            setCover_Image(files[0])
+                                        }
+                                    }}
+                                />
 
-                            <div>
-                                <p className="text-sm pb-3">Work Type</p>
-                                <select className="select text-xs select-bordered border-neutral-300 w-full max-w-full" 
-                                    value={work_type} onChange={(e) =>{setWorkType(e.target.value)}} required>
-                                    <option className='text-sm'required value={''}>Select Work Type</option>
-                                    <option className='text-sm' value={'Remote'}>Remote</option>
-                                    <option className='text-sm' value={'Hybrid'}>Hybrid</option>
-                                    <option className='text-sm' value={'On-site'}>On-site</option>
-                                </select>
+                                {image || cover_image ?
+                                    <div className=' lg:w-[10rem] lg:h-[10rem] h-[10rem] w-[10rem] overflow-hidden rounded-full bg-neutral-50 border border-neutral-300'>
+                                        {image && (
+                                            <img src={image} alt='' className='w-full h-full object-cover cursor-pointer'/> 
+                                        )}
+
+                                        <div className='relative lg:w-[10rem] lg:h-[10rem] w-[10rem] h-[10rem]'>
+
+                                            {cover_image && (
+                                                <img src={cover_image} alt='' className='w-full h-full object-cover cursor-pointer'/> 
+                                            )}
+
+
+                                            <div className='absolute bg-white rounded-full bottom-4 right-5 w-fit  p-2 cursor-pointer'>
+                                                <p className='text-sm p-1 text-red-500'><FiEdit /></p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div> :
+
+                                    <div className='lg:w-[8rem] w-[8rem] lg:h-[8rem] h-[8rem] flex justify-center items-center cursor-pointer border border-neutral-300 rounded-full'>
+                                        <div className=''>
+                                            <p className='text-xs'>PICS </p>
+                                        </div>
+                                    </div>
+                                }
+
                             </div>
-                            
 
                             <div>
                                 <p className="text-sm pb-3">Location</p>
-                                {/* <input type="text" 
-                                    placeholder="Location e.g #64, grace lane, port harcourt" 
-                                    className="input text-xs input-bordered border-neutral-500 w-full max-w-full" 
-                                    value={location}
-                                    required
-                                    onChange={(e)=>setLocation(e.target.value)}
-                                /> */}
                                 <GooglePlacesAutocomplete
                                     apiKey="AIzaSyA_HnIpk-nlGgMh-G1Evi-WX2T_wwqTmGs"
                                     onPlaceSelected={handlePlaceSelected}
@@ -306,20 +305,7 @@ export const CreatingProfileUpdateHome = () => {
                                     defaultValue={address}
                                 />
                             </div>
-
-
-                            {/* <div>
-                                <p className="text-sm pb-3">Language</p>
-                                <input type="text" 
-                                    placeholder="Language e.g English, French etc." 
-                                    className="input text-sm input-bordered w-full border-neutral-300 max-w-full" 
-                                    value={language}
-                                    required
-                                    onChange={(e)=>setLanguage(e.target.value)}
-                                />
-                            </div> */}
-
-
+                            
                             <div>
                                 <p className="text-sm pb-3">Language</p>
                                 <select className="select text-sm  select-bordered w-full border-neutral-300 max-w-full" 
@@ -333,69 +319,22 @@ export const CreatingProfileUpdateHome = () => {
 
                             <div>
                                 <p className="text-sm pb-3">Category</p>
-                                <select className="select text-sm  select-bordered w-full border-neutral-300 max-w-full" required value={selectedOption} onChange={handleShowDigital}>
+                                <select className="select text-sm select-bordered w-full max-w-full border-neutral-300" required value={nondigital_skills} onChange={(e)=>setNondigital_Skills(e.target.value)}>
                                     <option className='text-sm' value={''}>Select Category</option>
-                                    <option className='text-sm' value={'Tech'}>Digital Skills</option>
-                                    <option className='text-sm' value={'Artisans'}>Non-Digital Skills</option>
+                                    <option className='text-sm' value={'Plumbing'}>Plumbing</option>
+                                    <option className='text-sm' value={'Catering'}>Catering</option>   
+                                    <option className='text-sm' value={'Hair_Stylist'}>Hair Stylist</option>
+                                    <option className='text-sm' value={'Electronics/Repairs'}>Electronics/Repairs</option>
+                                    <option className='text-sm' value={'Furniture-Making'}>Furniture Making</option>
+                                    <option className='text-sm' value={'Cobbling'}>Cobbling</option>
+                                    <option className='text-sm' value={'Mechanic'}>Mechanic</option>
+                                    <option className='text-sm' value={'Fashion-Designer'}>Fashion Designing</option>
+                                    <option className='text-sm' value={'Cleaning'}>Cleaning</option>
+                                    <option className='text-sm' value={'Barbing'}>Barbing</option>
                                 </select>
                             </div>
 
-                
-                            {selectedOption === 'Tech' && (
-
-                                <div>
-                                    <p className="text-sm pb-3">Digital</p>
-                                    <select className="select text-sm select-bordered w-full border-neutral-300 max-w-full" required value={digital_skills} onChange={(e)=>setDigitalSkills(e.target.value)}>
-                                        <option className='text-sm' value={''}>Select Digital Skill</option>
-                                        {/* <option className='text-sm' value={'BackendDevelopment'}>Backend Developement</option> */}
-                                        <option className='text-sm' value={'MobileDevelopment'}>Mobile Developement</option>
-                                        <option className='text-sm' value={'UI/UX_Design'}>UI/UX</option>
-                                        <option className='text-sm' value={'Graphics_Design'}>Graphic Design</option>
-                                        <option className='text-sm' value={'Content_Creation'}>Content Creation</option>
-                                        {/* <option className='text-sm' value={'Frontend_Development'}>Frontend Developement</option> */}
-                                        <option className='text-sm' value={'Photography'}>Photography</option>
-                                        {/* <option className='text-sm' value={'WebsiteDevelopment'}>Website Developement</option> */}
-                                        <option className='text-sm' value={'Blockchain Developement'}>Blockchain Developement</option>
-                                        <option className='text-sm' value={'Video_editing'}>Video Editing</option>
-                                    </select>
-                                </div>
-                            ) }
-                            
-                            {selectedOption === 'Artisans' && (
-
-                                <div>
-                                    <p className="text-sm pb-3">Non-Digital</p>
-                                    <select className="select text-xs select-bordered w-full max-w-full border-neutral-300" required value={nondigital_skills} onChange={(e)=>setNondigital_Skills(e.target.value)}>
-                                        <option className='text-sm' value={''}>Select Non-Digital Skill</option>
-                                        <option className='text-sm' value={'Plumbing'}>Plumbing</option>
-                                        <option className='text-sm' value={'Catering'}>Catering</option>   
-                                        <option className='text-sm' value={'Hair_Stylist'}>Hair Stylist</option>
-                                        <option className='text-sm' value={'Electronics/Repairs'}>Electronics/Repairs</option>
-                                        <option className='text-sm' value={'Furniture-Making'}>Furniture Making</option>
-                                        <option className='text-sm' value={'Cobbling'}>Cobbling</option>
-                                        <option className='text-sm' value={'Mechanic'}>Mechanic</option>
-                                        <option className='text-sm' value={'Fashion-Designer'}>Fashion Designing</option>
-                                        <option className='text-sm' value={'Cleaning'}>Cleaning</option>
-                                        <option className='text-sm' value={'Barbing'}>Barbing</option>
-                                    </select>
-                                </div>
-                            )}
-
-                            <div>
-                                <p className="text-sm pb-3">Whatsapp Number</p>
-                                <input 
-                                    type="text" 
-                                    placeholder="whatsapp number e.g 07098822807" 
-                                    value={whatsapp_link}
-                                    required
-                                    onChange={validateWhatsappNumber}
-                                    className="input text-sm input-bordered w-full max-w-full border-neutral-300" 
-                                />
-                                <p className='text-red-600 text-sm pt-3'>{whatsAppErr}</p>
-                            </div>
-
-
-                            <div>
+                            {/* <div>
                                 <p className="text-sm pb-3">Phone Number</p>
                                 <input 
                                     type="text" 
@@ -406,22 +345,11 @@ export const CreatingProfileUpdateHome = () => {
                                     className="input text-sm input-bordered w-full max-w-full border-neutral-300" 
                                 />
                                 <p className='text-red-600 text-xs pt-3'>{phoneErr}</p>
-                            </div>
+                            </div> */}
                     
                         </div>
 
                         <div className='lg:w-1/2 w-full flex flex-col gap-5'>
-
-                            <div>
-                                <p className="text-sm pb-3">Website - Optional</p>
-                                <input 
-                                    type="text" 
-                                    placeholder="website e.g https://example.com"  
-                                    value={website_link}
-                                    onChange={(e)=>setWebsite_Link(e.target.value)}
-                                    className="input text-sm input-bordered w-full max-w-full border-neutral-300" />
-                            </div>
-
 
                             <div>
                                 <p className="text-sm pb-3">Profession</p>
@@ -446,54 +374,21 @@ export const CreatingProfileUpdateHome = () => {
                                     className="input text-sm input-bordered w-full max-w-full border-neutral-300" />
                             </div>
 
-
-                            <div>
-                                <p className="text-sm pb-3">Price</p>
-                                <input 
-                                    type="number" 
-                                    value={starting_price}
-                                    required
-                                    onChange={(e)=>setStarting_Price(e.target.value)}
-                                    placeholder="starting price e.g 5,000"  
-                                    className="input text-sm input-bordered w-full max-w-full border-neutral-300" />
-                            </div>
-
-
                             <div>
                                 <p className="text-sm pb-3">Bio</p>
                                 <textarea 
-                                    className="textarea textarea-bordered w-full border-neutral-300 max-w-full min-h-[15rem] max-h-[15rem] h-[15rem]" 
+                                    className="textarea textarea-bordered w-full border-neutral-300 max-w-full min-h-[10rem] max-h-[10rem] h-[10rem]" 
                                     placeholder="Bio"
                                     value={about}
                                     required
                                     onChange={(e)=>setAbout(e.target.value)}
                                 ></textarea>
                             </div>
-
                             <button disabled={!isPhoneValid} className="btn 2xl:w-fit xl:w-fit lg:w-fit md:w-fit w-full lg:my-5 mb-10 mt-2  px-20 bg-black rounded-full hover:bg-neutral-800 text-white ">{isLoading === true ? <span class="loader"></span> : 'Submit' }</button>
 
                         </div>
-
-
-                        {message === true ? (
-
-                            <div role="alert" className="alert alert-error flex py-3 rounded-lg fixed top-[5rem] lg:right-[5rem] right-5 w-fit px-10">
-                                <svg onClick={()=>setMessage(false)} xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                <span className='text-white text-xs'>Please fill out proper details</span>
-                            </div>
-                        ) : ( '')}
-
                     </form>
                 )}
-
-                {showEachState === 2 && (
-                    <CreativeProfileCoverUpdate 
-                        MdDelete={MdDelete}
-                        AiOutlineCloudUpload={AiOutlineCloudUpload}
-                        setEachState={setEachState}
-                    />
-                )}
-
 
                 {showEachState === 3 && (
                     <CreativeProfileCollection 

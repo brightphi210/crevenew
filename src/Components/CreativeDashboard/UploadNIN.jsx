@@ -97,7 +97,6 @@ const UploadNIN = ({setEachState}) => {
 
         {isLoading2 ? 
             <MyLoader /> :
-
             <>
                 {fetchedNiN?.length === 0 ? 
                     <>
