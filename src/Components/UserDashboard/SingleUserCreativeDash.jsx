@@ -574,10 +574,6 @@ const SingleUserCreativeDash = () => {
 
                             {showBio === true && 
                             (<div className='bg-neutral-100 p-4'>
-                                <div className='flex items-center border-b border-b-neutral-300 pb-5'>
-                                    <p className='2xl:text-lg xl:text-sm lg:text-sm text-base  font-semibold'><span className='font-normal'>Starting Price </span>: &#8358; {creativeData.starting_price}</p>
-                                </div>
-
                                 <div className='mt-5'>
                                     <p className='text-sm font-bold pb-3'>Bio</p>
                                     <p className='text-sm text-justify 2xl:text-sm xl:text-sm lg:text-sm'>{creativeData.about}</p>

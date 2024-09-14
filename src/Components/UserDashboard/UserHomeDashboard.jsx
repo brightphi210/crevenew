@@ -80,7 +80,7 @@ export const UserHomeDashboardHome = () => {
 
 
   return (
-    <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem]  pt-28 w-full'>
+    <div className='2xl:px-[15rem] xl:px-[10rem] lg:px-[5rem]  pt-28 w-full'>
       {showModal === true &&
         <div role="alert" data-aos="fade-up" data-aos-duration="500"  className="alert z-50 alert-success text-green-700 lg:w-fit w-[80%] m-auto right-0 left-0  top-24 h-[3rem] flex justify-center items-center rounded-full bg-green-100 border border-green-500 absolute">
           <svg
@@ -117,23 +117,38 @@ export const UserHomeDashboardHome = () => {
         </div>
       }
 
-      <div className=''>
-        <p className='text-center text-black 2xl:text-6xl lg:text-4xl px-3 text-4xl font-bold lg:pt-20 pt-5 lg:pb-10 pb-5'>
-          Hire the best  <br className='lg:block hidden'/>
+      <div className='lg:pt-20 pt-5 lg:pb-10 pb-5 text-center'>
+        <p className='text-black 2xl:text-6xl lg:text-4xl px-3 text-4xl font-bold '>
+          Find the best  <br className='hidden'/>
           <span className='bg-gradient-to-r from-sky-600 to-teal-700 bg-clip-text text-transparent'>Talents</span> Around you
         </p>
+        <p>Find top rated candidates for your business nationwide</p>
       </div>
 
-      <div className='pt-4 lg:px-0 px-3 pb-5 '>
-        <div className='py-5 flex items-center'>
-          <h2 className='text-xl '>Top Creatives</h2>
 
-          <div className='ml-auto flex items-center gap-10'>
-            <Link to={'/' + 'user-dashboard-creative'}>
-              <button className='flex items-center gap-2 underline'>Browse All <IoMdArrowForward /></button>
-            </Link>
-          </div>
+      <div className='flex items-center justify-center gap-10'>
+        <div className='flex gap-3 w-[50%] '>
+          <input type="text" placeholder="Search by Location, Category, Skills, Name" className="input bg-neutral-200 h-[3.5rem] input-bordered border-none w-full" />
+          <button className='bg-black text-white py-3 px-5 rounded-md'>Search</button>
         </div>
+
+
+        <select className="select ml-auto select-bordered w-[30%] h-[3.5rem]">
+          <option disabled selected>Who shot first?</option>
+          <option>Fashion Designers</option>
+          <option>Cobblers(Footware Makers)</option>
+          <option>Furniture Makers</option>
+          <option>Hair Stylist</option>
+          <option>Barbbers</option>
+          <option>Photographers</option>
+          <option>Phone/Electronics</option>
+          <option>Mechanics</option>
+          <option>Clearner</option>
+        </select>
+      </div>
+
+
+      <div className='lg:py-10 lg:px-0 px-3 pb-5 '>
         <CreativeCompo />
       </div>
 
