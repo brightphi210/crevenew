@@ -125,11 +125,11 @@ export const UserHomeDashboardHome = () => {
               Find the best  <br className='lg:block hidden'/>
               <span className='bg-gradient-to-r from-sky-200 to-teal-300 bg-clip-text text-transparent'>Talents</span> Around you
             </p>
-            <p className='lg:text-lg text-sm pt-4 text-white'>Find top rated candidates for your business nationwide</p>
+            <p className='lg:text-lg text-sm lg:pt-2 pt-4 text-white'>Find top rated candidates for your business nationwide</p>
           </div>
 
 
-          <div className='flex lg:flex-row flex-col lg:px-0 px-5 lg:items-center lg:justify-center gap-3 w-full mt-5'>
+          <div className='flex lg:flex-row flex-col lg:px-0 px-5 lg:justify-center gap-3 w-full lg:mt-2 mt-5'>
 
             <select className="select select-bordered rounded-md 2xl:h-[3rem] xl:h-[1rem] lg:h-[0.5rem] h-[3rem] lg:w-fit w-full">
               <option className='2xl:text-sm lg:text-xs text-xs' disabled selected>Filter</option>
@@ -146,7 +146,7 @@ export const UserHomeDashboardHome = () => {
 
             <form className='flex gap-3 w-[100%] relative'>
               <input type="text" required placeholder="Search by Location, Category, Skills" className="w-full 2xl:py-3.5 lg:py-3 2xl:text-sm lg:text-xs text-xs py-3 rounded-md px-3 outline-none" />
-              <button className='bg-black text-white 2xl:text-sm lg:text-xs text-xs py-2 px-4 rounded-md absolute right-2 2xl:top-1.5 xl:top-1 lg:top-1 top-1'>Search</button>
+              <button className='bg-black text-white 2xl:text-sm lg:text-xs text-xs py-2 px-4 rounded-md absolute right-2 2xl:top-1.5 xl:top-1 lg:top-2 top-1'>Search</button>
             </form>
 
           </div>

@@ -119,7 +119,9 @@ const CreativeCompo = () => {
                                 <div className='flex items-center gap-4'>
                                     <p className='text-sm flex items-center gap-2'><FaLocationDot className='text-green-700'/>{talent?.location?.slice(0, 10)}. . </p>
                                 </div>
-                                <p className='text-xs ml-auto py-2 px-5 rounded-md bg-green-950  text-white'>View Profile</p>
+                                <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`} className='ml-auto'>
+                                    <p className='text-xs  py-2 px-5 rounded-md bg-green-950  text-white'>View Profile</p>
+                                </Link>
                             </div>
                         </div>
                         ))}                 
