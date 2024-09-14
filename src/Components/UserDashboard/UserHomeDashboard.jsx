@@ -80,7 +80,7 @@ export const UserHomeDashboardHome = () => {
 
 
   return (
-    <div className='2xl:px-[15rem] xl:px-[10rem] lg:px-[5rem]  pt-28 w-full'>
+    <div className=''>
       {showModal === true &&
         <div role="alert" data-aos="fade-up" data-aos-duration="500"  className="alert z-50 alert-success text-green-700 lg:w-fit w-[80%] m-auto right-0 left-0  top-24 h-[3rem] flex justify-center items-center rounded-full bg-green-100 border border-green-500 absolute">
           <svg
@@ -117,38 +117,44 @@ export const UserHomeDashboardHome = () => {
         </div>
       }
 
-      <div className='lg:pt-20 pt-5 lg:pb-10 pb-5 text-center'>
-        <p className='text-black 2xl:text-6xl lg:text-4xl px-3 text-4xl font-bold '>
-          Find the best  <br className='hidden'/>
-          <span className='bg-gradient-to-r from-sky-600 to-teal-700 bg-clip-text text-transparent'>Talents</span> Around you
-        </p>
-        <p>Find top rated candidates for your business nationwide</p>
-      </div>
+
+      <div className='lg:pt-28 pt-5 lg:pb-10 pb-5 flex items-center justify-center w-full text-center bgUrlUser'>
+        <div className='lg:w-[50%] w-full content'>
+          <div>
+            <p className='text-white 2xl:text-6xl xl:text-4xl lg:text-4xl px-3 text-4xl font-bold '>
+              Find the best  <br className='lg:block hidden'/>
+              <span className='bg-gradient-to-r from-sky-200 to-teal-300 bg-clip-text text-transparent'>Talents</span> Around you
+            </p>
+            <p className='lg:text-lg text-sm pt-4 text-white'>Find top rated candidates for your business nationwide</p>
+          </div>
 
 
-      <div className='flex items-center justify-center gap-10'>
-        <div className='flex gap-3 w-[50%] '>
-          <input type="text" placeholder="Search by Location, Category, Skills, Name" className="input bg-neutral-200 h-[3.5rem] input-bordered border-none w-full" />
-          <button className='bg-black text-white py-3 px-5 rounded-md'>Search</button>
+          <div className='flex lg:flex-row flex-col lg:px-0 px-5 lg:items-center lg:justify-center gap-3 w-full mt-5'>
+
+            <select className="select select-bordered rounded-md 2xl:h-[3rem] xl:h-[1rem] lg:h-[0.5rem] h-[3rem] lg:w-fit w-full">
+              <option className='2xl:text-sm lg:text-xs text-xs' disabled selected>Filter</option>
+              <option className='2xl:text-sm lg:text-xs text-xs'>Fashion Designers</option>
+              <option className='2xl:text-sm lg:text-xs text-xs'>Cobblers</option>
+              <option className='2xl:text-sm lg:text-xs text-xs'>Furniture Makers</option>
+              <option className='2xl:text-sm lg:text-xs text-xs'>Hair Stylist</option>
+              <option className='2xl:text-sm lg:text-xs text-xs'>Barbbers</option>
+              <option className='2xl:text-sm lg:text-xs text-xs'>Photographers</option>
+              <option className='2xl:text-sm lg:text-xs text-xs'>Phone/Electronics</option>
+              <option className='2xl:text-sm lg:text-xs text-xs'>Mechanics</option>
+              <option className='2xl:text-sm lg:text-xs text-xs'>Clearner</option>
+            </select>
+
+            <form className='flex gap-3 w-[100%] relative'>
+              <input type="text" required placeholder="Search by Location, Category, Skills" className="w-full 2xl:py-3.5 lg:py-3 2xl:text-sm lg:text-xs text-xs py-3 rounded-md px-3 outline-none" />
+              <button className='bg-black text-white 2xl:text-sm lg:text-xs text-xs py-2 px-4 rounded-md absolute right-2 2xl:top-1.5 xl:top-1 lg:top-1 top-1'>Search</button>
+            </form>
+
+          </div>
         </div>
-
-
-        <select className="select ml-auto select-bordered w-[30%] h-[3.5rem]">
-          <option disabled selected>Who shot first?</option>
-          <option>Fashion Designers</option>
-          <option>Cobblers(Footware Makers)</option>
-          <option>Furniture Makers</option>
-          <option>Hair Stylist</option>
-          <option>Barbbers</option>
-          <option>Photographers</option>
-          <option>Phone/Electronics</option>
-          <option>Mechanics</option>
-          <option>Clearner</option>
-        </select>
       </div>
 
 
-      <div className='lg:py-10 lg:px-0 px-3 pb-5 '>
+      <div className='2xl:px-[15rem] xl:px-[10rem] lg:px-[5rem] px-5 pt-10 w-full'>
         <CreativeCompo />
       </div>
 
