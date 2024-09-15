@@ -35,6 +35,8 @@ import { MdVerified } from "react-icons/md";
 import { BsChat } from 'react-icons/bs';
 import Footer from '../Footer'
 import { useLoadScript } from '@react-google-maps/api';
+import { PiWarningCircleFill } from "react-icons/pi";
+
 
 
 const SingleUserCreativeDash = () => {
@@ -495,7 +497,7 @@ const SingleUserCreativeDash = () => {
                         <div className='flex flex-col w-full gap-3 pt-5 '>
                             <button onClick={()=>document.getElementById('my_modal_3').showModal()} 
                                 className='bg-black text-white py-3 lg:px-5 w-full px-4 rounded-full lg:text-sm text-sm font-semibold border border-neutral-200'>
-                                Get in touch
+                                Hire Now
                             </button>
                             
                             <button onClick={()=>document.getElementById('my_modal_5').showModal()} 
@@ -530,11 +532,6 @@ const SingleUserCreativeDash = () => {
                             <p className='text-xs font-light text-neutral-400'>- Language</p>
                         </div>
 
-                        <div className='pt-5 flex items-center'>
-                            <Link to={creativeData.website_link}>
-                                <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex underline gap-2 items-center'><GrLanguage className='text-green-500 text-base'/>Website</p>
-                            </Link>
-                        </div>
                         </div>
                     </div>
 
@@ -662,7 +659,7 @@ const SingleUserCreativeDash = () => {
                         
 
                             <div className='flex gap-3 pt-3 mt-5 border-t border-t-neutral-200'>
-                                <button onClick={()=>document.getElementById('my_modal_2').showModal()} className='bg-green-700 py-3 lg:px-10 mt-5 text-sm text-white rounded-full lg:w-fit w-full'>Drop Review</button>
+                                <button onClick={()=>document.getElementById('my_modal_1').showModal()} className='bg-green-700 py-3 lg:px-10 mt-5 text-sm text-white rounded-full lg:w-fit w-full'>Drop Review</button>
                                 <button onClick={handleShare} className='bg-black mt-5 text-sm text-center text-white gap-3 py-3 lg:px-10 rounded-full lg:w-fit w-full'>Share</button>
                             </div>
 
@@ -670,9 +667,6 @@ const SingleUserCreativeDash = () => {
                     </div>
                 </div>
             }
-                
-
-
 
 
             <dialog id="my_modal_3" className="modal">
@@ -757,29 +751,44 @@ const SingleUserCreativeDash = () => {
                 </div>
             </dialog>
 
+            
+
             <dialog id="my_modal_1" className="modal">
-                <div className="modal-box rounded-2xl lg:p-10 py-10 lg:w-full w-[96%]">
+                <div className="modal-box rounded-2xl lg:p-10 px-3 lg:py-10 py-7 lg:w-full w-[96%]">
                     <form method="dialog">
-                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
                     <div className='text-center px-4'>
+
+                        <p className='bg-red-100 text-red-600 rounded-lg p-3 text-sm flex'>
+                            Do not send money directly to a talent, make your payment through the platform to avoid being scarmed
+                        </p>
                         <div className='flex m-auto justify-center'>
                             <img src={successImg} alt="" className='w-28'/>
                         </div>
-                        <h2 className='text-2xl py-3 pb-2 font-bold'>{creativeData.phone_number}</h2>
-                        <h3 className="font-medium text-lg pb-6">Your booking request was Sent!</h3>
+                        
+                        <h3 className="font-medium text-xl pb-2">Your booking request was sent!</h3>
+                        <p className='text-gray-600 text-sm'>We will get back to you shortly.</p>
 
-                        <div className='flex gap-3'>
+                        <div className='flex gap-3 pt-10 w-full '>
+                        
+                            <Link to={'/user-dashboard-books'} className='w-full'>
+                                <button className='text-white bg-black w-full  rounded-full py-2.5 text-sm'>View Booking</button>
+                            </Link>
+                            <button className='text-neutral-700 cursor-not-allowed bg-neutral-200 w-full rounded-full py-2 text-sm'>Awaits approval . .</button>
+                        </div>
+
+                        {/* <div className='flex gap-3'>
                             <Link to={`tel:${creativeData.phone_number}`} className='w-full'>
                                 <p className='text-white bg-black  rounded-full py-2.5 text-sm'>Call Now</p>
                             </Link>
                             <button className='text-black bg-white border border-neutral-400 w-full rounded-full py-2 text-sm' onClick={()=>copyToClipboard(creativeData.phone_number)}>{copySuccess ? copySuccess : 'Copy'}</button>
-                        </div>
+                        </div> */}
 
-                        <p className='text-green-600 bg-green-50 flex justify-center m-auto items-center mt-10 p-2.5 text-sm rounded-lg gap-3 border border-green-600'><TbAlertTriangle />Copy Talents number to call </p>
+                        {/* <p className='text-green-600 bg-green-50 flex justify-center m-auto items-center mt-10 p-2.5 text-sm rounded-lg gap-3 border border-green-600'><TbAlertTriangle />Copy Talents number to call </p> */}
 
-                        <Link to={'https://chat.whatsapp.com/K3CgZedlHFhJQO7T3UsUd5'}>
-                            <p className='m-auto flex justify-center w-fit text-xs gap-2 pt-6'>Need any help ? <span className='text-blue-500 underline cursor-pointer'>Contact us</span></p>
+                        <Link to={'https://chat.whatsapp.com/K3CgZedlHFhJQO7T3UsUd5'} className='w-fit'>
+                            <p className='m-auto flex justify-center w-fit text-xs gap-2 mt-10'>If you need any help, <span className='text-blue-500 underline cursor-pointer'>Please Contact us</span></p>
                         </Link>
                     </div>
                 </div>

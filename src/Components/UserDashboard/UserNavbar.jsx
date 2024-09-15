@@ -98,7 +98,7 @@ const UserNavbar = ({handleShow, show}) => {
     const menuItems = [
         { label: 'Home', path: 'user-dashboard-home' },
         { label: 'Creatives',path: 'user-dashboard-creative' },
-        { label: 'Request',path: 'user-dashboard-books' },
+        { label: 'Bookings',path: 'user-dashboard-books' },
         { label: 'Saved', path: 'user-dashboard-favourites' },
         { label: 'Profile', path: 'user-dashboard-profile' },
     ];
