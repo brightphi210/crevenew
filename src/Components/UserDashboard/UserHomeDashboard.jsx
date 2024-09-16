@@ -118,7 +118,7 @@ export const UserHomeDashboardHome = () => {
       }
 
 
-      <div className='lg:pt-28 pt-5 lg:pb-10 pb-5 flex items-center justify-center w-full text-center bgUrlUser'>
+      <div className='lg:pt-28 pt-24 lg:pb-10 pb-5 flex items-center justify-center w-full text-center bgUrlUser'>
         <div className='lg:w-[50%] w-full content'>
           <div>
             <p className='text-white 2xl:text-6xl xl:text-4xl lg:text-4xl px-3 text-4xl font-bold '>

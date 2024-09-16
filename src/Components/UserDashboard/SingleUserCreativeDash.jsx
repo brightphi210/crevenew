@@ -450,9 +450,7 @@ const SingleUserCreativeDash = () => {
 
 
             <div className='text-white bg-gradient-to-b  from-gray-950 to-teal-950 flex justify-center lg:h-[8rem] h-[8rem] lg:pt-[4rem] pt-[4rem] items-center w-full'>
-                
                 {isLoading === false &&
-                
                     <div>
                         <p className='text-xs flex gap-2 items-start pt-2'>
                             <GrLocation className='text-green-400 text-xl'/>{creativeData.state} {creativeData.city}
