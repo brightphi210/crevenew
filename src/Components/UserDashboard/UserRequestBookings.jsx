@@ -87,7 +87,7 @@ export const UserRequestBookingsDashboard = () => {
 
         {isLoading === true ? <MyLoader />  : <>
             {allRequest.length > 0 && <>
-                <div className='grid grid-cols-4 w-full mt-5'>
+                <div className='grid lg:grid-cols-4 grid-cols-1 gap-3 w-full mt-5 mb-10'>
                     {allRequest.map((request)=>(
                         
                         <div className='col-span-1 mb-5 flex-col gap-3 bg-white rounded-lg border border-neutral-300 p-10'>
@@ -108,11 +108,11 @@ export const UserRequestBookingsDashboard = () => {
                                 <p className='text-xs'>{request.description}</p>
                             </div>
 
-                            <div className='flex items-center gap-3'>
-                                <button className='bg-neutral-200 text-black rounded-full py-3 w-full text-xs my-3 '>Cancle Job</button>
-                                <button className='bg-black text-white rounded-full py-3 w-full text-xs my-3 '>Call Talent</button>
+                            <div className='flex items-center gap-3 my-5'>
+                                <button className='bg-neutral-200 text-black rounded-full py-3 w-full text-xs'>Cancle Job</button>
+                                <button className='bg-green-950 text-white rounded-full py-3 w-full text-xs'>Call Talent</button>
                             </div>
-                            <p className='text-xs'>Request Pending - Waiting for talent to respond</p>
+                            <p className='text-xs text-green-600 font-semibold'>Request Pending - Waiting for talent to respond</p>
                         </div>
                     ))}
                 </div>
