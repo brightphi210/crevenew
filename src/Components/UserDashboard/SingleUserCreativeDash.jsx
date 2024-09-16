@@ -449,14 +449,13 @@ const SingleUserCreativeDash = () => {
             }
 
 
-            <div className='text-white bg-gradient-to-b  from-gray-900 to-teal-950 flex justify-center lg:h-[12rem] h-[10rem] lg:pt-[5rem] pt-[4rem] items-center w-full'>
+            <div className='text-white bg-gradient-to-b  from-gray-950 to-teal-950 flex justify-center lg:h-[8rem] h-[8rem] lg:pt-[4rem] pt-[4rem] items-center w-full'>
                 
                 {isLoading === false &&
                 
                     <div>
-                        {/* <h2 className='text-base text-center font-bold'>{creativeData?.user?.email}</h2> */}
                         <p className='text-xs flex gap-2 items-start pt-2'>
-                            <GrLocation className='text-green-400 text-xl'/>{creativeData.location}
+                            <GrLocation className='text-green-400 text-xl'/>{creativeData.state} {creativeData.city}
                         </p>
                     </div>
                 }
@@ -486,10 +485,6 @@ const SingleUserCreativeDash = () => {
                         )}
 
                         <div className='py-5 border-b border-b-neutral-300'>
-                            {/* <button className='font-semibold text-sm flex items-center gap-2'>
-                                <p className='bg-neutral-200  p-1 rounded-full'><PiPhoneCallFill /></p> 
-                                {creativeData.phone_number}
-                            </button> */}
                             <p className='text-sm pt-3'><b>{creativeData.experience}</b> yrs. of experience</p>
                         </div>
 
@@ -519,12 +514,6 @@ const SingleUserCreativeDash = () => {
                             <p className='text-sm font-semibold'>Category</p>
                             <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.digital_skills}</p>
                             <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center pt-2'>{creativeData.nondigital_skills}</p>
-                        </div>
-
-
-                        <div className='flex items-center mt-3 pt-2 border-t  border-t-neutral-200'>
-                            <p className='2xl:text-sm xl:text-xs lg:text-xs text-sm flex gap-2 items-center'><MdWorkOutline className='text-green-500 text-base'/>{creativeData.work_type}</p>
-                            <p className='text-xs font-light text-neutral-400'>- Work-type</p>
                         </div>
 
                         <div className='pt-5 flex items-center'>

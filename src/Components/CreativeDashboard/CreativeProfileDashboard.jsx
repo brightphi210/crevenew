@@ -107,6 +107,10 @@ export const CreativeProfile= () => {
     const formattedPhoneNumber = profileData.whatsapp_link && profileData.whatsapp_link.replace(/\D/g, ''); // Remove non-numeric characters
     const encodedMessage = encodeURIComponent(chatmessage || '');
     const whatsappURL = `https://wa.me/${formattedPhoneNumber}${encodedMessage ? `?text=${encodedMessage}` : ''}`;
+
+
+    console.log('This is Profile Data', profileData);
+    
   return (
 
     <div>
@@ -165,13 +169,8 @@ export const CreativeProfile= () => {
                         <hr />
 
                         <div className='py-4'>
-                            <h2 className='text-sm font-semibold'>Work Type</h2>
-                            <p className='text-sm pt-4 flex items-center gap-2'><TbSmartHome className='text-accent text-sm'/>{profileData.work_type}</p>
-                        </div>
-
-                        <div className='py-4'>
                             <h2 className='text-sm font-semibold'>Location</h2>
-                            <p className='flex pt-4 items-center gap-2 text-sm'><FaLocationDot className='text-accent text-sm'/>{profileData.location}</p>
+                            <p className='flex pt-4 items-center gap-2 text-sm'><FaLocationDot className='text-accent text-sm'/>{profileData.address} {profileData.state} {profileData.city}</p>
                         </div>
 
                         <div className='py-4'>
@@ -182,23 +181,12 @@ export const CreativeProfile= () => {
                         <div className='py-4'>
                             <h2 className='text-sm pb-4 font-semibold'>Contact</h2>
 
-                            {/* <a href={whatsappURL} target="_blank" rel="noopener noreferrer"> */}
-                                <p className='text-sm mb-2 flex items-center gap-2'><TbBrandWhatsapp className='text-accent text-lg'/>{profileData.whatsapp_link}</p>
-                            {/* </a> */}
-
-                            {/* <Link to={profileData.whatsapp_link}>
-                                <p className='text-sm mb-2 flex items-center gap-2'><TbBrandWhatsapp className='text-accent text-sm'/>whatsapp</p>
-                            </Link> */}
-
                             <a href={`tel:${profileData.phone_number}`}>
                                 <p className='text-sm py-2 flex items-center gap-2'><MdOutlinePhoneInTalk className='text-accent text-lg'/>
                                 {profileData.phone_number}
                                 </p>
                             </a>
 
-                            <Link to={profileData.website_link}>
-                                <p className='text-sm mt-2 flex items-center gap-2'><FaGlobe className='text-accent text-lg'/>website</p>
-                            </Link>
                         </div>
 
                     </div>
@@ -211,7 +199,6 @@ export const CreativeProfile= () => {
 
                             <div className='flex lg:flex-row gap-3 flex-col lg:items-center'>
                                 <h2 className='text-xl flex items-center gap-3'><FaToolbox />{profileData.display_name}</h2>
-                                <p className='lg:ml-auto text-sm'>Starting Price : <strong>N{profileData.starting_price}</strong></p>
                             </div>
 
                             <div className='py-5 flex flex-wrap gap-3'>

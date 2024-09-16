@@ -85,7 +85,7 @@ const CreativeCompo = () => {
             <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 2xl:gap-4 xl:gap-4 lg:gap-4 gap-5 pt-0 lg:px-0 mb-10'>
             {filteredItems.length > 0 &&
                 <>
-                    {filteredItems.filter(talent => talent.location !== null && talent.images.length !==0 && talent.dskills.length !==0).map((talent) => (
+                    {filteredItems.filter(talent => talent.images.length !==0 && talent.dskills.length !==0).map((talent) => (
                         <div className='bg-white relative border border-neutral-300 rounded-xl p-5 cursor-pointer' key={talent.id}>
 
                                 <div className='absolute flex gap-2 items-center right-10 top-10'>
@@ -120,7 +120,7 @@ const CreativeCompo = () => {
 
                                 <div className='pt-5'>
 
-                                    <p className='text-xs flex justify-center m-auto gap-2 pb-3'><FaLocationDot className='text-green-700'/>{talent?.location?.slice(0, 20)}. . </p>
+                                    <p className='text-xs flex justify-center m-auto gap-2 pb-3'><FaLocationDot className='text-green-700'/>{talent.city}</p>
                                     
                                     <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`} className=''>
                                         <p className='text-xs py-3 rounded-full flex justify-center m-auto text-center w-full bg-green-950 text-white'>View Profile</p>
