@@ -95,18 +95,6 @@ const SingleUserCreativeDash = () => {
     const [isLoading2, setIsLoading2] = useState(false)
     const [phoneErr, setPhoneErr] = useState('')
 
-    const validatePhone = (e) => {
-        setPhone(e.target.value)
-      
-        if (validator.isMobilePhone(phone)) {
-           setPhoneErr('')
-           setIsBooked(true)
-        } else {
-            setIsBooked(false)
-           setPhoneErr('Enter valid Phone Number !')
-        }
-    }
-
     const makeRequest = async (e) =>{
         e.preventDefault();
         setIsLoading2(true);
@@ -141,14 +129,6 @@ const SingleUserCreativeDash = () => {
             setIsLoading2(false);
         }
     }
-    const [copySuccess, setCopySuccess] = useState('');
-
-    const copyToClipboard = (text) => {
-        navigator.clipboard.writeText(text).then(
-          () => setCopySuccess('Copied!'),
-          (err) => setCopySuccess('Failed to copy!')
-        );
-    };
 
     const [content, setContent] = useState('')
     const url3 =`${BASE_URL}/reviews/${id}/`
@@ -208,12 +188,6 @@ const SingleUserCreativeDash = () => {
       }, 3000);
 
     };
-
-
-    const { isLoaded } = useLoadScript({
-        googleMapsApiKey: 'bdc_82430c2e13ed42838148a7bf2b145370',
-    });
-    const center = useMemo(() => ({ lat: 5.420000076293945, lng: 73.856743 }), []);
 
 
     const baseUrl = window.location.origin;
@@ -677,18 +651,6 @@ const SingleUserCreativeDash = () => {
                         </div>
 
                         <div>
-                            <p className="py-4 pb-2 text-sm font-semibold">Provide you phone number...</p>
-                            <input 
-                                type="tel"  
-                                required placeholder="Phone Number e.g 09086655698" 
-                                className="input text-sm py-7 input-bordered w-full" 
-                                value={phone}
-                                onChange={validatePhone}
-                            />
-                            <p className='text-red-500 text-sm pt-3'>{phoneErr}</p>
-                        </div>
-
-                        <div>
                             <p className="py-3 pb-2 text-sm font-semibold">Tell us more about the project</p>
                             <textarea 
                                 required 
@@ -701,7 +663,8 @@ const SingleUserCreativeDash = () => {
 
                         <div className='flex items-center text-sm pt-5'>
                             <p className='underline' onClick={()=>document.getElementById('my_modal_3').close()}>Nevermind</p>
-                            <button disabled={!isBooked} type='submit' className={`ml-auto py-3 px-4 color text-white rounded-full ${!isBooked ? 'opacity-50 cursor-not-allowed' : ''}`} >
+                            <button disabled={title === '' || description === ''} type='submit' 
+                                className={`ml-auto py-3 px-4 color text-white rounded-full ${title === '' && description === '' ? 'opacity-50 cursor-not-allowed' : ''}`} >
                                 {isLoading2 === true ? <span className="loading loading-spinner loading-sd"></span> : 'Send Request' }
                             </button>
                         </div>
@@ -741,13 +704,13 @@ const SingleUserCreativeDash = () => {
             
 
             <dialog id="my_modal_1" className="modal">
-                <div className="modal-box rounded-2xl lg:p-10 px-3 lg:py-10 py-7 lg:w-full w-[96%]">
+                <div className="modal-box rounded-2xl lg:p-10 px-3 lg:py-10 py-10 lg:w-full w-[96%]">
                     <form method="dialog">
                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
                     <div className='text-center px-4'>
 
-                        <p className='bg-red-100 text-red-600 rounded-lg p-3 text-sm flex'>
+                        <p className='bg-red-100 text-red-600 rounded-lg p-3 text-xs flex'>
                             Do not send money directly to a talent, make your payment through the platform to avoid being scarmed
                         </p>
                         <div className='flex m-auto justify-center'>
@@ -762,7 +725,6 @@ const SingleUserCreativeDash = () => {
                             <Link to={'/user-dashboard-books'} className='w-full'>
                                 <button className='text-white bg-black w-full  rounded-full py-2.5 text-sm'>View Booking</button>
                             </Link>
-                            <button className='text-neutral-700 cursor-not-allowed bg-neutral-200 w-full rounded-full py-2 text-sm'>Awaits approval . .</button>
                         </div>
 
                         {/* <div className='flex gap-3'>

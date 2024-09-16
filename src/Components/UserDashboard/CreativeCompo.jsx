@@ -21,21 +21,6 @@ const CreativeCompo = () => {
     const [isLoading, setIsLoading] = useState(false)
     const url =`${BASE_URL}/creativeprofile/`
 
-
-    const [searchTerm, setSearchTerm] = useState('');
-
-    const filteredItems = allTalents.filter(item => {
-        const searchTermLower = searchTerm.toLowerCase();
-        return (
-          (item.location && item.location.toLowerCase().includes(searchTermLower)) ||
-          (item.category && item.category.toLowerCase().includes(searchTermLower)) ||
-          (item.digital_skills && item.digital_skills.toLowerCase().includes(searchTermLower)) ||
-          (item.work_type && item.work_type.toLowerCase().includes(searchTermLower)) ||
-          (item.display_name && item.display_name.toLowerCase().includes(searchTermLower))||
-          (item.user.fullname && item.user.fullname.toLowerCase().includes(searchTermLower))
-        );
-      });
-
     const fetchTalents = async() => {
         setIsLoading(true);
         try {
@@ -65,6 +50,10 @@ const CreativeCompo = () => {
     }, []);
     
 
+
+    // console.log('All talents', allTalents);
+    
+
   return (
     <div>
 
@@ -83,9 +72,9 @@ const CreativeCompo = () => {
         <>
 
             <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 2xl:gap-4 xl:gap-4 lg:gap-4 gap-5 pt-0 lg:px-0 mb-10'>
-            {filteredItems.length > 0 &&
+            {allTalents.length > 0 &&
                 <>
-                    {filteredItems.filter(talent => talent.images.length !==0 && talent.dskills.length !==0).map((talent) => (
+                    {allTalents.filter(talent => talent.images.length !==0 && talent.dskills.length !==0).map((talent) => (
                         <div className='bg-white relative border border-neutral-300 rounded-xl p-5 cursor-pointer' key={talent.id}>
 
                                 <div className='absolute flex gap-2 items-center right-10 top-10'>
@@ -120,7 +109,7 @@ const CreativeCompo = () => {
 
                                 <div className='pt-5'>
 
-                                    <p className='text-xs flex justify-center m-auto gap-2 pb-3'><FaLocationDot className='text-green-700'/>{talent.city}</p>
+                                    <p className='text-xs flex justify-center m-auto gap-2 pb-3'><FaLocationDot className='text-green-700'/>{talent?.city && talent?.city}</p>
                                     
                                     <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`} className=''>
                                         <p className='text-xs py-3 rounded-full flex justify-center m-auto text-center w-full bg-green-950 text-white'>View Profile</p>
@@ -138,7 +127,7 @@ const CreativeCompo = () => {
             </div>
 
 
-            {filteredItems.length <= 0 && ( 
+            {allTalents.length <= 0 && ( 
                 <div className='flex items-center w-fit justify-center m-auto h-[50vh] text-center'>
                     <div className=''>
                         <img src={noData} alt="" className='w-[15rem] flex m-auto opacity-70'/>

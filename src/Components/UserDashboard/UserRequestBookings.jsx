@@ -6,6 +6,7 @@ import { BASE_URL } from '../Auth/BaseUrl'
 import MyLoader from '../allLoadingState/MyLoader'
 import NoData from '../allLoadingState/NoData'
 import Footer from '../Footer'
+import { format } from 'date-fns';
 
 const UserRequestBookings = () => {
 
@@ -55,9 +56,17 @@ export const UserRequestBookingsDashboard = () => {
               throw new Error('Network response was not ok');
           }
           const data = await response.json();
+
+          const formattedBookings = data.map((booking) => {
+            return {
+              ...booking,
+              formattedDate: format(new Date(booking.datetime), 'yyyy-MM-dd'), // Format as YYYY-MM-DD
+              formattedTime: format(new Date(booking.datetime), 'HH:mm:ss'),   // Format time as HH:MM:SS
+            };
+          });
     
           console.log(data);
-          setRequest(data)
+          setRequest(formattedBookings)
     
           } catch (error) {
               console.log(error);
@@ -70,6 +79,7 @@ export const UserRequestBookingsDashboard = () => {
         fetchRequest();
       }, []);
 
+      
     
   return (
     <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] py-28 w-full px-5'>
@@ -77,24 +87,32 @@ export const UserRequestBookingsDashboard = () => {
 
         {isLoading === true ? <MyLoader />  : <>
             {allRequest.length > 0 && <>
-                <div className='bg-white h-[80vh] lg:p-20 p-5 w-full mt-5 rounded-xl overflow-y-scroll'>
+                <div className='grid grid-cols-4 w-full mt-5'>
                     {allRequest.map((request)=>(
-
-                        <div className='flex mb-5 flex-col gap-3  border-y border-neutral-200 py-2'>
+                        
+                        <div className='col-span-1 mb-5 flex-col gap-3 bg-white rounded-lg border border-neutral-300 p-10'>
                             {request.talent_profile && 
                             <div className='flex gap-2 items-center'>
-                                <div className='w-7 h-7 flex justify-center items-center overflow-hidden rounded-full'>
-                                    <img src={request.talent_profile.profile_pics} alt="" className='w-8 h-8 object-cover'/>
+                                <div className='w-14 h-14 flex justify-center items-center overflow-hidden rounded-full border border-neutral-200'>
+                                    <img src={request.talent_profile.profile_pics} alt="" className='w-14 h-14 object-cover'/>
                                 </div>
-                                <p className='text-sm'>{request.talent_profile.user.fullname}</p>
+                                <div>
+                                    <p className='text-lg font-semibold'>{request.talent_profile.user.fullname}</p>
+                                    <p className='text-xs'>{request.formattedDate} {request.formattedTime}</p>
+                                </div>
                             </div>
                             }
-                            <div className='lg:flex items-center gap-3 block '>
+
+                            <div className='pt-5'>
                                 <h2 className='text-base font-semibold lg:pb-0 pb-2'>{request.title}</h2>
                                 <p className='text-xs'>{request.description}</p>
-                                {/* <p className='lg:ml-auto text-xs'>July 20</p> */}
                             </div>
 
+                            <div className='flex items-center gap-3'>
+                                <button className='bg-neutral-200 text-black rounded-full py-3 w-full text-xs my-3 '>Cancle Job</button>
+                                <button className='bg-black text-white rounded-full py-3 w-full text-xs my-3 '>Call Talent</button>
+                            </div>
+                            <p className='text-xs'>Request Pending - Waiting for talent to respond</p>
                         </div>
                     ))}
                 </div>
