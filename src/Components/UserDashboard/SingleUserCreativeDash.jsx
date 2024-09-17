@@ -427,7 +427,7 @@ const SingleUserCreativeDash = () => {
                 {isLoading === false &&
                     <div>
                         <p className='text-xs flex gap-2 items-start pt-2'>
-                            <GrLocation className='text-green-400 text-xl'/>{creativeData.state} {creativeData.city}
+                            <GrLocation className='text-green-400 text-xl'/>{creativeData.city}
                         </p>
                     </div>
                 }
