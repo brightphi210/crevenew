@@ -10,6 +10,7 @@ import { GoArrowRight } from "react-icons/go";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { v4 as uuidv4 } from "uuid";
 import { shop100Pay } from "@100pay-hq/checkout";
+import { Link } from 'react-router-dom'
 
 const UserRequestBookings = () => {
 
@@ -41,7 +42,7 @@ export const UserRequestBookingsDashboard = () => {
     const url =`${BASE_URL}/books/`
 
 
-    // console.log('User Details', userToken);
+    // console.log('User Details', userToken);  
     
     const [amount, setAmount] = useState('')
     const [description, setDescription] = useState('')
@@ -120,7 +121,6 @@ export const UserRequestBookingsDashboard = () => {
             };
           });
     
-        //   console.log(data);
           setRequest(formattedBookings)
     
           } catch (error) {
@@ -134,6 +134,9 @@ export const UserRequestBookingsDashboard = () => {
         fetchRequest();
       }, []);
     
+
+      console.log('All Request', allRequest);
+      
   return (
     <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] py-28 w-full px-5'>
         <h2 className='text-2xl'>All Request</h2>
@@ -153,9 +156,7 @@ export const UserRequestBookingsDashboard = () => {
                                     <p className='text-sm font-semibold text-neutral-700'>{request.talent_profile.user.fullname}</p>
                                     <p className='text-xs'>{request.formattedDate} {request.formattedTime}</p>
                                 </div>
-
                                 <p className='ml-auto'><span className="loader5"></span> </p>
-                                
                             </div>
                             }
 
@@ -166,14 +167,17 @@ export const UserRequestBookingsDashboard = () => {
                                 </div>
 
                                 {/* onClick={payWith100Pay} */}
-                                <div className='flex items-center gap-3 my-5'>
-                                    <button className='border border-neutral-200 py-2 rounded-full text-xs w-full'>Cancle Request</button>
+                                <div className='flex flex-col items-center gap-3 my-5'>
+                                    <Link to={`tel:${request.phone_number}`} className='w-full'>
+                                        <button className='border border-neutral-300 py-2 rounded-full text-xs w-full'>Call Talent</button>
+                                    </Link>
+
                                     <button  onClick={()=>{document.getElementById('my_modal_3').showModal(); setSelectedBook(request)}} 
-                                        className='text-xs bg-black text-white py-2 rounded-full m-auto justify-center font-semibold w-full flex items-center gap-3'>Proceed <GoArrowRight />
+                                        className='text-xs bg-black text-white py-2 rounded-full m-auto justify-center font-semibold w-full flex items-center gap-3'>Proceed to payment <GoArrowRight />
                                     </button>
                                 </div>
 
-                                <p className=' bg-green-50 text-[10px] rounded-full gap-3 py-1 px-2 text-green-700 font-medium flex items-center m-auto justify-center'>
+                                <p className=' bg-orange-50 text-xs italic rounded-full gap-3 py-1 px-2 text-orange-500 font-medium flex items-center m-auto justify-center'>
                                     Request Pending - Waiting for talent to respond
                                 </p>
                             </div>

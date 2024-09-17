@@ -535,7 +535,6 @@ const SingleUserCreativeDash = () => {
                                 <div className='mt-5'>
                                     <p className='text-sm font-bold pb-3'>Bio</p>
                                     <p className='text-sm text-justify 2xl:text-sm xl:text-sm lg:text-sm'>{creativeData.about}</p>
-
                                 </div>
                             </div>)}
 
@@ -640,6 +639,17 @@ const SingleUserCreativeDash = () => {
                     <form action="" onSubmit={makeRequest}>
 
                         <div>
+                            <p className="py-4 pb-2 text-sm font-semibold">Enter your Phone Number</p>
+                            <input 
+                                type="number"  
+                                required placeholder="e.g 08062119957." 
+                                className="input text-sm py-7 input-bordered w-full" 
+                                value={phone}
+                                onChange={(e)=>setPhone(e.target.value)}
+                            />
+                        </div>
+
+                        <div>
                             <p className="py-4 pb-2 text-sm font-semibold">What are you looking to work on...</p>
                             <input 
                                 type="text"  
@@ -664,7 +674,7 @@ const SingleUserCreativeDash = () => {
                         <div className='flex items-center text-sm pt-5'>
                             <p className='underline' onClick={()=>document.getElementById('my_modal_3').close()}>Nevermind</p>
                             <button disabled={title === '' || description === ''} type='submit' 
-                                className={`ml-auto py-3 px-4 color text-white rounded-full ${title === '' && description === '' ? 'opacity-50 cursor-not-allowed' : ''}`} >
+                                className={`ml-auto py-3 px-4 color text-white rounded-full ${title === '' || description === '' ? 'opacity-50 cursor-not-allowed' : ''}`} >
                                 {isLoading2 === true ? <span className="loading loading-spinner loading-sd"></span> : 'Send Request' }
                             </button>
                         </div>
