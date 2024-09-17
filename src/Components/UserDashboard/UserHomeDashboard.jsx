@@ -25,9 +25,7 @@ const UserHomeDashboard = () => {
   return (
     <div>
       <UserNavbar show={show} handleShow={handleShow}/>
-      <div className='bg-neutral-50 h-full'>
         <UserHomeDashboardHome />
-      </div>
       <Footer />
     </div>
   )
