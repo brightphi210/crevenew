@@ -43,10 +43,12 @@ export const UserRequestBookingsDashboard = () => {
 
     // console.log('User Details', userToken);
     
-
     const [amount, setAmount] = useState('')
     const [description, setDescription] = useState('')
     const [phone, setPhone] = useState('')
+    
+    const isButtonDisabled = !phone || !description || !amount;
+
     const chargeData = {
       ref_id: uuidv4(), // Unique transaction reference ID
       api_key: "LIVE;PK;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjY2ZTQxNTM5YTcwNDRmMDA0OWUyZTQ3MSIsInVzZXJJZCI6IjY2ZTQxNTM5YTcwNDRmMDA0OWUyZTQ2ZSIsImlhdCI6MTcyNjIyMzY3M30.xFq6YscIVp3vuobMDmChduTl5rSnCjU7kgwfQDtPgzU", // Replace with your 100Pay API key
@@ -223,7 +225,7 @@ export const UserRequestBookingsDashboard = () => {
 
                         <p className='pt-5 pb-3 text-xs text-neutral-500 text-center'>Make payment with the options below 👇👇</p>
                         <div className='flex flex-col items-center gap-3'>
-                            <button onClick={()=>{payWith100Pay(); document.getElementById('my_modal_3').close();}} className="text-xs rounded-full py-2.5 w-full bg-green-950 text-white">Pay via Crypto</button>
+                            <button disabled={isButtonDisabled} onClick={()=>{payWith100Pay(); document.getElementById('my_modal_3').close();}} className={`text-xs rounded-full py-2.5 w-full bg-green-950 text-white ${isButtonDisabled && 'cursor-not-allowed text-neutral-300 bg-green-900'}`}>Pay via Crypto</button>
                             <button className="text-xs rounded-full py-2.5 w-full bg-white border border-neutral-300 text-black">Pay via Escrow</button>
                         </div>
                     </div>
