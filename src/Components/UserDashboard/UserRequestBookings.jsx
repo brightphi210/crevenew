@@ -41,7 +41,7 @@ export const UserRequestBookingsDashboard = () => {
     const url =`${BASE_URL}/books/`
 
 
-    console.log('User Details', userToken);
+    // console.log('User Details', userToken);
     
 
     const [amount, setAmount] = useState('')
@@ -118,7 +118,7 @@ export const UserRequestBookingsDashboard = () => {
             };
           });
     
-          console.log(data);
+        //   console.log(data);
           setRequest(formattedBookings)
     
           } catch (error) {
