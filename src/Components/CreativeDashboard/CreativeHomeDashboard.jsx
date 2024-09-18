@@ -3,25 +3,18 @@ import CreativeNavBarCom from './CreativeNavBarCom';
 import CreativeSideBarCom from './CreativeSideBarCom';
 import voucher from '../Images/vouvher.png'
 import laptop from '../Images/laptop.png'
-import prof from '../Images/Avatars.png'
 import community from '../Images/community2.png'
 import logo from '../Images/Creve1.png'
-
-
-import { MdModeEditOutline } from "react-icons/md";
-import { MdArrowOutward } from "react-icons/md";
 
 import { IoNotificationsCircle } from "react-icons/io5";
 import { GrUpgrade } from "react-icons/gr";
 import { MdHelpCenter } from "react-icons/md";
 import { FaUnlockKeyhole } from "react-icons/fa6";
-import { FaCheckCircle, FaRegCopy } from "react-icons/fa";
+import { FaCheckCircle, FaEdit, FaRegCopy } from "react-icons/fa";
 
-import { RiNotificationOffLine, RiVerifiedBadgeFill } from "react-icons/ri";
+import {RiDashboardHorizontalLine, RiVerifiedBadgeFill } from "react-icons/ri";
 import { IoNotificationsOffOutline } from "react-icons/io5";
-import { MdOutlineClose } from "react-icons/md";
-
-
+import { MdOutlinePendingActions } from "react-icons/md";
 
 import completeImage from '../Images/Buffer-bro.png'
 import { Link } from 'react-router-dom';
@@ -36,15 +29,15 @@ import { Navigation, Pagination, Mousewheel, Keyboard, Autoplay } from 'swiper/m
 
 
 import empty1 from '../Images/No data-cuate.png'
-import empty2 from '../Images/No data-rafiki.png'
 import { BASE_URL } from '../Auth/BaseUrl';
 import { jwtDecode } from 'jwt-decode';
 import { TbAlertTriangle } from "react-icons/tb";
-import { GoArrowRight, GoUnverified } from "react-icons/go";
+import { GoUnverified } from "react-icons/go";
 
 import shss from '../Images/find-talent-2x.jpg'
 import { Verified } from 'lucide-react';
 import { VscUnverified } from 'react-icons/vsc';
+import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
 
 
 const CreativeHomeDashboard = () => {
@@ -175,45 +168,7 @@ useEffect(() => {
 
 
     <div className='lg:p-16  lg:pl-[18rem] p-5 px-3 pt-20 lg:pt-28'>
-
-
-    {/* <>
-      {isLoading ? (
-        <p className='pb-5'>Loading . . .</p>
-      ) : (
-        <>
-          {isVerified === false && (
-            <div className='bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] gap-4 rounded-lg items-center p-3 lg:px-10 px-5 flex mb-5'>
-              <div>
-                <h2 className='text-orange-600 cursor-pointer pb-2 flex items-center gap-3 text-sm'>Account is not yet verified <VscUnverified /></h2>
-                <p className='text-xs'>Account will be verified in 24hrs if profile is completed</p>
-              </div>
-              <p
-                onClick={() => setIsVerified('')}
-                className='ml-auto flex items-center justify-center cursor-pointer bg-neutral-100  rounded-full w-8 lg:h-8 h-8 text-xl'
-              >
-                <MdOutlineClose />
-              </p>
-            </div>
-          )}
-
-          {isVerified === true && (
-            <div className='bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] gap-4 rounded-lg items-center p-3 lg:px-10 px-5 flex mb-5'>
-              <h2 className='text-green-600 cursor-pointer pb-2 flex items-center gap-3 text-sm'>Account has been verified <Verified className='text-sm'/></h2>
-              <p
-                onClick={() => setIsVerified('')}
-                className='ml-auto flex items-center justify-center cursor-pointer bg-neutral-100 rounded-full w-8 lg:h-8 h-8 text-xl'
-              >
-                <MdOutlineClose />
-              </p>
-            </div>
-          )}
-        </>
-      )}
-    </> */}
- 
       <div className='flex 2xl:flex-row flex-col xl:flex-row lg:flex-col gap-10'>
-
         <div className='w-full bg-black  rounded-xl text-white'>
 
           <Swiper
@@ -234,7 +189,7 @@ useEffect(() => {
             className="mySwiper"
           >
             <SwiperSlide>
-              <div className='p-10 lg:px-20 px-8 flex 2xl:flex-row lg:flex-row flex-col items-center'>
+              <div className='p-5 lg:px-10 px-5 flex 2xl:flex-row lg:flex-row flex-col items-center'>
                 <div className=''>
                   <p className='2xl:text-sm lg:text-sm xl:text-[12px] text-xs'>
                     Join Freelancer Plus now to unlock new features to help you <br className='lg:block hidden'/>
@@ -244,14 +199,14 @@ useEffect(() => {
                   <button onClick={()=>document.getElementById('my_modal_5').showModal()} className=' mycolor2 text-white py-3 px-10 rounded-md text-xs'>Learn More</button>
                 </div>
 
-                <div className='lg:ml-auto'>
+                <div className='lg:ml-auto lg:block hidden'>
                   <img src={voucher} alt="" className='lg:w-40 lg:mt-0 w-1/2 mt-10'/>
                 </div>
               </div>
 
             </SwiperSlide>
             <SwiperSlide>
-              <div className='p-10 lg:px-20 px-8 flex lg:flex-row flex-col items-center'>
+              <div className='p-5 lg:px-10 px-5 flex lg:flex-row flex-col items-center'>
                 <div className=''>
                   <p className='2xl:text-sm lg:text-sm text-xs xl:text-[12px]'>
                     Creve 101 will guide you through the basics of our platform.
@@ -260,7 +215,7 @@ useEffect(() => {
                   <button onClick={()=>document.getElementById('my_modal_6').showModal()} className='mycolor2 text-white py-3 px-10 rounded-md text-xs'>Learn More</button>
                 </div>
 
-                <div className='lg:ml-auto'>
+                <div className='lg:ml-auto lg:block hidden'>
                   <img src={laptop} alt="" className='lg:w-40 lg:mt-0 w-10/12 mt-10 '/>
                 </div>
               </div>
@@ -270,117 +225,47 @@ useEffect(() => {
         </div>
       </div>
 
-      <div className='shadow-[rgba(7,_65,_210,_0.03)_0px_9px_30px] bg-white 2xl:p-5 xl:p-5 lg:p-5 p-0 mt-5 lg:w-full w-[100%] m-auto  items-center 2xl:rounded-md xl:rounded-md lg:rounded-md rounded-md'>
-      <Swiper
-          slidesPerView={1}
-          spaceBetween={40}
-          navigation={true}
-          loop={true}
-          pagination={{
-              clickable: true,
-          }}
 
-          autoplay={{
-              delay: 15000,
-              disableOnInteraction: false,
-          }}
-          breakpoints={{
-          640: {
-              slidesPerView: 2,
-              spaceBetween: 10,
-          },
-          768: {
-              slidesPerView: 3,
-              spaceBetween: 10,
-          },
-
-          900: {
-            slidesPerView: 3,
-            spaceBetween: 10,
-          },
-
-
-          1024: {
-              slidesPerView: 4,
-              spaceBetween: 10,
-          },
-          }}
-          modules={[Pagination, Autoplay, Navigation]}
-          className="mySwiper"
-      >
-
-
-          <SwiperSlide>
-            <div className='bg-black border relative border-neutral-300 text-white flex justify-center items-center  w-full p-5 rounded-xl 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem]'>
-                <Link to={'/creative-dashboard-profile-update'}>
-                  <button className=' text-white underline absolute top-4 right-4 rounded-full p-2 bg-neutral-500 w-fit text-xs flex justify-center m-auto  mt-2 gap-2'><MdModeEditOutline className='text-sm '/></button>
-                </Link>
-                
-                <div className=' p-4 gap-3'>
-                  <div className='relative'>
-                    <div className='border-2 flex m-auto border-neutral-200 bg-neutral-200 w-24 h-24 rounded-full overflow-hidden'>
-                      <img src={profileData.profile_pics} alt="" className='w-full h-full object-cover'/>
-                    </div>
-
-                    <div className='absolute top-1 right-0'>
-                      {profileData?.verification?.verified === true ? (
-                          <button className='bg-black text-2xl text-accent p-0 rounded-full flex items-center'><RiVerifiedBadgeFill /></button>
-                      ) : (
-                          
-                          <button className='bg-black text-red-400 text-2xl p-0 rounded-full flex items-center'><GoUnverified className='font-bold' /></button>
-                      )}
-                    </div>
-                  </div>
-                  <div className='text-center'>
-                    <h2 className='lg:text-sm py-2 text-sm'>{userToken.name} <span className='text-xs text-neutral-300'>({userToken.role})</span></h2>
-                    <p className='text-xs'>{profileData.display_name}</p>
-                  </div>
-                </div>
+      <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 grid-cols-2 mt-5 lg:gap-5 gap-3'>
+  
+        <div className='gap-3 bg-white lg:p-5 lg:px-8 p-5 rounded-xl relative'>
+          <div className=''>
+            <div className='border-2 flex  border-neutral-200 bg-neutral-200 w-16 h-16 rounded-full overflow-hidden'>
+              <img src={profileData.profile_pics} alt="" className='w-full h-full object-cover'/>
             </div>
-          </SwiperSlide>
+          </div>
+          <div className=''>
+            <h2 className='lg:text-sm py-2 text-sm font-semibold'>{userToken.name}</h2>
+            <p className='text-xs'>{profileData.display_name}</p>
+          </div>
+          
+          <Link to={'/creative-dashboard-profile-update'}>
+            <p className='absolute  cursor-pointer lg:text-lg text-sm lg:top-5 lg:right-5 top-3 right-3 p-3 flex items-center bg-gray-500 text-white rounded-full'><FaEdit /></p>
+          </Link>
+        </div>
 
+        <div className=' bg-white lg:p-5 lg:px-8 p-5 rounded-xl flex flex-col gap-3'>
+          <p className='bg-blue-700 flex items-center rounded-full p-3 lg:text-2xl text-lg text-white w-fit '><RiDashboardHorizontalLine /></p>
+          <p className='lg:text-base text-sm'>Total Requests</p>
+          <h2 className='lg:text-2xl text-lg font-semibold'>100</h2>
+        </div>
 
-          <SwiperSlide>
-              <div className='bg-neutral-100 text-black p-5 rounded-xl border w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] border-neutral-200'>
-                <p className='text-sm'>Welcome to </p>
-                <div className='flex items-center gap-2 py-3'>
-                  <img src={logo} alt="" className='w-5 h-5'/>
-                  <h2 className='text-xl font-semibold'>Creve</h2>
-                </div>
-                <p className='2xl:text-sm xl:text-sm lg:text-[10px] text-sm'>You are highly welcome to creve, you can now browse creatives/talents around your locaton and hire at ease</p>
-              </div>
-          </SwiperSlide>
+        <div className=' bg-white lg:p-5 lg:px-8 p-5 rounded-xl flex flex-col gap-3'>
+          <p className='bg-green-700 flex items-center rounded-full p-3 lg:text-2xl text-lg text-white w-fit '><MdOutlinePendingActions /></p>
+          <p className='lg:text-base text-sm'>Pending Requests</p>
+          <h2 className='lg:text-2xl text-lg font-semibold'>100</h2>
+        </div>
 
-          <SwiperSlide>
-            <div className='bg-blue-600 text-white sect1 p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden' >
-                <div className='relative isolate z-20 '>
-                  <h2 className='2xl:text-3xl xl:text-xl lg:text-sm text-lg  font-bold'>Our  Blog</h2>
-                  <p className='py-3 text-sm '>Browse our blog and get latest update</p>
-                  <Link to={'/' + 'blog'}>
-                    <button className='bg-white text-blue-600 mt-5 py-2 px-5 rounded-full font-semibold border border-blue-200 text-xs'>Browser</button>
-                  </Link>
-              </div>
-            </div>
-          </SwiperSlide>
+        <div className=' bg-white lg:p-5 lg:px-8  p-5 rounded-xl flex flex-col gap-3'>
+          <p className='bg-purple-700 flex items-center rounded-full p-3 lg:text-2xl text-lg text-white w-fit '><IoMdCheckmarkCircleOutline /></p>
+          <p className='lg:text-base text-sm'>Approved Requests</p>
+          <h2 className='lg:text-2xl text-lg font-semibold'>100</h2>
+        </div>
 
-          <SwiperSlide>
-            <div className='bg-green-800 text-white sect2 p-5 rounded-xl relative w-full 2xl:h-[12rem] xl:h-[15rem] lg:h-[18rem] h-[12rem] overflow-hidden' >
-              <div className='relative isolate z-20'>
-                  <h2 className='2xl:text-3xl xl:text-xl lg:text-lg text-lg  font-bold'>Community</h2>
-                  <p className='py-3 text-sm '>Join  community of like minds </p>
-
-                  <Link to={'https://chat.whatsapp.com/FNQzOFlRnIKK3ChV8iOHWx'}>
-                    <button className='bg-white text-lime-800 mt-5 py-2 px-5 rounded-full font-semibold border border-lime-200 text-xs'>Join Now</button>
-                  </Link>
-              </div>
-            </div>
-          </SwiperSlide>
-
-
-      </Swiper>
       </div>
 
-      
+
+
       <div className='mt-10 flex 2xl:flex-row xl:flex-row lg:flex-col flex-col  w-full gap-10'>
         <div className=' bg-white 2xl:w-[77%] xl:w-[70%] lg:w-full lg:p-5 py-5 px-2 rounded-xl'>
           <h2 className='text-sm font-semibold'>Messages</h2>
@@ -400,30 +285,38 @@ useEffect(() => {
             </div> :
             <div>
               {profileData.books && 
-              <div className='lg:flex-row items-center gap-3 ' >
+              <>
+              <div className='grid 2xl:grid-cols-3 xl:grid-cols-2 lg:grid-cols-2 grid-cols-1 items-center gap-3 ' >
                 {profileData.books.slice(0, 4).map((book)=>
-                <div className='bg-neutral-100 p-4 my-5 rounded-md '>
-                  <h2 className='text-lg font-semibold pb-2 mb-4 border-b border-b-neutral-200'>{book.title.slice(0, 25)}. .</h2>
+                  <div className='bg-white border border-neutral-200 p-5 my-5 rounded-lg '>
+                    <div className=''>
+                      <div className='flex gap-2 items-center'>
+                        <div className='w-8 h-8 justify-center items-center flex rounded-full overflow-hidden'>
+                          <img src={book.client_profile.profile_pics} alt="" className='w-8 h-8 object-cover'/>
+                        </div>
+                        <div>
+                          <h2 className='2xl:text-sm xl:text-sm lg:text-sm text-sm'>{book.client_profile.user.fullname}</h2>
+                          <p className='text-[10px]'>{book.datetime}</p>
+                        </div>
+                      </div>
 
-                  <div className='flex items-center'>
-                  <div className='flex gap-2 items-center'>
-                    <div className='w-8 h-8 justify-center items-center flex rounded-full overflow-hidden'>
-                      <img src={book.client_profile.profile_pics} alt="" className='w-8 h-8 object-cover'/>
+                      <div className='p-3 bg-neutral-100 my-5 rounded-md'>
+                        <h2 className='text-sm font-semibold pb-2'>{book.title}</h2>
+                        <p className='text-xs'>{book.description}</p>
+                      </div>
+
+                      <div>
+                        <label onClick={() => handleClick(book)} className='mycolor2 text-white p-2 px-5 text-sm text-center m-auto rounded-full w-full block cursor-pointer' drawer-conten  htmlFor="my-drawer-4">View Request</label>
+                      </div>
                     </div>
-                    <h2 className='2xl:text-sm xl:text-sm lg:text-sm text-sm'>{book.client_profile.user.fullname}</h2>
                   </div>
-                  <div className='ml-auto flex '>
-                    <label onClick={() => handleClick(book)} className='bg-accent text-white p-3 px-5 text-sm  rounded-md cursor-pointer' drawer-conten  htmlFor="my-drawer-4">View</label>
-                    {/* <button className='lg:text-xs text-xs mycolor2  text-white py-2 px-3 rounded-md flex gap-1' onClick={() => handleClick(book)}>View <MdArrowOutward /></button> */}
-                  </div>
-                  
-                  </div>
-                </div>)}
+                )}
 
-                <Link to={'/creative-dashboard-bookingsAll'}>
-                <button className='bg-black text-xs px-20 py-3 text-white border border-neutral-300 rounded-md w-full 2xl:w-fit lg:w-fit'>See All</button>
-              </Link>
               </div>
+                <Link to={'/creative-dashboard-bookingsAll'}>
+                  <button className='bg-black text-xs px-20 py-3 text-white border border-neutral-300 rounded-md w-full 2xl:w-fit lg:w-fit'>See All</button>
+                </Link>
+              </>
               }
 
             </div>

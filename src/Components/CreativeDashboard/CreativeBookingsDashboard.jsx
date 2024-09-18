@@ -75,7 +75,6 @@ export const CreativeBookings = () => {
         }
   };
 
-
   useEffect(() => {
       fetchProfile();
   }, []);
@@ -88,8 +87,6 @@ export const CreativeBookings = () => {
     setSelectedRequest(eachData);
     setCopySuccess('')
   };
-
-
 
 
   const copyToClipboard = (text) => {

@@ -98,7 +98,7 @@ export const UserRequestBookingsDashboard = () => {
       );
     };
 
-    const fetchRequest = async() => {
+    const fetchRequest = async () => {
         setIsLoading(true);
         try {
           const response = await fetch(url, {
@@ -112,16 +112,10 @@ export const UserRequestBookingsDashboard = () => {
               throw new Error('Network response was not ok');
           }
           const data = await response.json();
-
-          const formattedBookings = data.map((booking) => {
-            return {
-              ...booking,
-              formattedDate: format(new Date(booking.datetime), 'yyyy-MM-dd'), // Format as YYYY-MM-DD
-              formattedTime: format(new Date(booking.datetime), 'HH:mm:ss'),   // Format time as HH:MM:SS
-            };
-          });
-    
-          setRequest(formattedBookings)
+          
+          console.log(data);
+          
+          setRequest(data)
     
           } catch (error) {
               console.log(error);
@@ -153,8 +147,8 @@ export const UserRequestBookingsDashboard = () => {
                                     <img src={request.talent_profile.profile_pics} alt="" className='w-12 h-12 object-cover'/>
                                 </div>
                                 <div className=''>
-                                    <p className='text-sm font-semibold text-neutral-700'>{request.talent_profile.user.fullname}</p>
-                                    <p className='text-xs'>{request.formattedDate} {request.formattedTime}</p>
+                                    <p className='text-base font-semibold text-neutral-700'>{request.talent_profile.user.fullname}</p>
+                                    <p className='text-[10px]'>{request.datetime}</p>
                                 </div>
                                 <p className='ml-auto'><span className="loader5"></span> </p>
                             </div>
