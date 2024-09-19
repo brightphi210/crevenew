@@ -41,8 +41,6 @@ import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
 
 
 const CreativeHomeDashboard = () => {
-  const [token, setToken] = useState(() => localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
-
   const [show, setShow] = useState(false)
 
   const handleShow = () => {
@@ -57,7 +55,6 @@ const CreativeHomeDashboard = () => {
       <div className='w-full'>
         <CreativeNavBarCom show={show} handleShow={handleShow}/>
         <CreativeHome />
-        
       </div>
     </div>
   )

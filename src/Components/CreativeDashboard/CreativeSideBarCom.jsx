@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { MdOutlineDashboard } from "react-icons/md";
 import { IoBookmarkOutline } from "react-icons/io5";
 import { IoNotificationsOutline } from "react-icons/io5";
-import { FaLongArrowAltRight } from "react-icons/fa";
+import { FaLongArrowAltRight, FaWallet } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { IoSettingsSharp } from "react-icons/io5";
 import { FaLock } from "react-icons/fa6";
@@ -36,6 +36,10 @@ const CreativeSideBarCom = ({show}) => {
             <ul className='flex flex-col gap-6 2xl:gap-6 xl:gap-6 lg:gap-6 md:gap-3 p-6 pb-10 2xl:pb-10 xl:pb-3 lg:pb-2'>
                 <Link to={'/creative-dashboard-home'}>
                   <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
+                </Link>
+
+                <Link to={'/creative-dashboard-wallet'}>
+                  <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><FaWallet className=''/>Wallet</li>
                 </Link>
 
                 <Link to={'/creative-dashboard-profile'}>

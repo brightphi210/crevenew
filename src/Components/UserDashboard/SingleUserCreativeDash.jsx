@@ -711,8 +711,6 @@ const SingleUserCreativeDash = () => {
                 </div>
             </dialog>
 
-            
-
             <dialog id="my_modal_1" className="modal">
                 <div className="modal-box rounded-2xl lg:p-10 px-3 lg:py-10 py-10 lg:w-full w-[96%]">
                     <form method="dialog">
@@ -753,7 +751,6 @@ const SingleUserCreativeDash = () => {
                 </div>
             </dialog>
 
-
             <dialog id="my_modal_4" className="modal">
                 <div className="modal-box rounded-2xl lg:p-10 p-6 py-10 lg:w-full w-[96%]">
                     <form method="dialog">
@@ -768,7 +765,6 @@ const SingleUserCreativeDash = () => {
                     </div>
                 </div>
             </dialog>
-
 
             <dialog id="my_modal_6" className="modal">
                 <div className="modal-box rounded-2xl lg:p-10 p-6 py-10 lg:w-full w-[96%]">
@@ -787,7 +783,6 @@ const SingleUserCreativeDash = () => {
                 </div>
             </dialog>
 
-            
             <dialog id="my_modal_5" className="modal">
                 <div className="modal-box rounded-md lg:p-10 p-5 lg:w-full w-[96%] lg:h-fit h-screen">
                     <form method="dialog">

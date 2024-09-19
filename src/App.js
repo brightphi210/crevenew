@@ -30,6 +30,7 @@ import UserChatDash from './Pages/UserDash/UserChatDash';
 import Help from './Pages/Help';
 import { BASE_URL } from './Components/Auth/BaseUrl';
 import HowtoPage from './Pages/HowtoPage';
+import CreativeWalletDash from './Pages/CreativeDash/CreativeWalletDash';
 AOS.init();
 
 function App() {
@@ -120,6 +121,7 @@ function App() {
             <Route path='/creative-dashboard-notificationAll' element={<CreativeNotificationDashboard />}/>
             <Route path='/creative-dashboard-bookingsAll' element={<CreativeBookingsDash />}/>
             <Route path='/creative-dashboard-FAQs' element={<CreativeFAQsDash />}/>
+            <Route path='/creative-dashboard-wallet' element={<CreativeWalletDash />}/>
           </Route>
           
         </Routes>
