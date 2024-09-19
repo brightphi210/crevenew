@@ -321,7 +321,7 @@ useEffect(() => {
 
               
                 <Link to={'/creative-dashboard-bookingsAll'}>
-                  <button className='bg-black text-xs px-20 py-3 text-white border border-neutral-300 rounded-md w-full 2xl:w-fit lg:w-fit'>View All Approved Request</button>
+                  <button className='bg-black text-xs px-20 py-3 text-white border border-neutral-300 rounded-full w-full 2xl:w-fit lg:w-fit'>View All Approved Request</button>
                 </Link>
               </>
               }
