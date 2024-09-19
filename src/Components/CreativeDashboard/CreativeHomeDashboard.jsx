@@ -88,6 +88,9 @@ export const CreativeHome = () => {
     return savedIsVerified ? JSON.parse(savedIsVerified) : false;
   });
 
+
+  // ================Fetch Profile ========================
+
   const fetchProfile = async () => {
       setIsLoading(true);
 
@@ -133,21 +136,45 @@ export const CreativeHome = () => {
   }, []);
 
 
-  const [selectedRequest, setSelectedRequest] = useState(null);
-  const [copySuccess, setCopySuccess] = useState('');
+  // ======================= Update Profile =================
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [isUpdateLoading, setIsUpdateLoading] = useState(false)
 
-  const handleClick = (book) => {
-    setSelectedRequest(book);
-    setCopySuccess('')
+  const updateBookingStatus = async (bookingId) => {
+    setIsUpdateLoading(true);
+    try {
+      const response = await fetch(`https://creve.store/approve-request/${bookingId}/`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization' : `Bearer ${authUser.access}`,
+        },
+        body: JSON.stringify({ status: true }),
+      });
+
+      if (response.ok) {
+        fetchProfile();
+        document.getElementById('my-drawer-4').checked = false;
+        setIsUpdateLoading(false);
+        setShowSuccess(true);
+      } else {
+        console.error('Failed to update booking status');
+        setIsUpdateLoading(false);
+      }
+    } catch (error) {
+      console.error('Error updating booking status:', error);
+      setIsUpdateLoading(false);
+    }
   };
 
 
-  const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text).then(
-      () => setCopySuccess('Copied!'),
-      (err) => setCopySuccess('Failed to copy!')
-    );
-};
+  // ==================== Select a particular booking ===================
+  const [selectedRequest, setSelectedRequest] = useState(null);
+
+  const handleClick = (book) => {
+    setSelectedRequest(book);
+  };
+
 
 const [completeMessage, setCompleteMessage] = useState(true)
 
@@ -165,11 +192,32 @@ useEffect(() => {
 }, [showModal]);
   
 
-  console.log('All Request', profileData);
+  // console.log('All Request', profileData);
 
   return (
 
-    <div className='lg:p-16  lg:pl-[18rem] p-5 px-3 pt-20 lg:pt-28'>
+    <div className='lg:p-16  lg:pl-[18rem] p-5 px-3 pt-20 lg:pt-28 relative'>
+
+      {showSuccess === true && 
+        <div role="alert" className="alert alert-success fixed bg-green-50 text-green-900 text-sm top-28 left-0 right-0 m-auto w-fit justify-center flex z-50">
+          <>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 shrink-0 stroke-current"
+            fill="none"
+            viewBox="0 0 24 24">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span className=''>You have Successfully Approved Request</span>
+          </>
+        </div>
+      }
+
+
       <div className='flex 2xl:flex-row flex-col xl:flex-row lg:flex-col gap-10'>
         <div className='w-full bg-black  rounded-xl text-white'>
 
@@ -249,24 +297,22 @@ useEffect(() => {
         <div className=' bg-white lg:p-5 lg:px-8 p-5 rounded-xl flex flex-col gap-3'>
           <p className='bg-blue-700 flex items-center rounded-full p-3 lg:text-2xl text-lg text-white w-fit '><RiDashboardHorizontalLine /></p>
           <p className='lg:text-base text-sm'>Total Requests</p>
-          <h2 className='lg:text-2xl text-lg font-semibold'>100</h2>
+          <h2 className='lg:text-2xl text-lg font-semibold'>{profileData?.books && profileData?.books?.length}</h2>
         </div>
 
         <div className=' bg-white lg:p-5 lg:px-8 p-5 rounded-xl flex flex-col gap-3'>
           <p className='bg-green-700 flex items-center rounded-full p-3 lg:text-2xl text-lg text-white w-fit '><MdOutlinePendingActions /></p>
           <p className='lg:text-base text-sm'>Pending Requests</p>
-          <h2 className='lg:text-2xl text-lg font-semibold'>100</h2>
+          <h2 className='lg:text-2xl text-lg font-semibold'>{profileData?.books && profileData?.books?.filter((book) => book?.status === false).length}</h2>
         </div>
 
         <div className=' bg-white lg:p-5 lg:px-8  p-5 rounded-xl flex flex-col gap-3'>
           <p className='bg-purple-700 flex items-center rounded-full p-3 lg:text-2xl text-lg text-white w-fit '><IoMdCheckmarkCircleOutline /></p>
           <p className='lg:text-base text-sm'>Approved Requests</p>
-          <h2 className='lg:text-2xl text-lg font-semibold'>100</h2>
+          <h2 className='lg:text-2xl text-lg font-semibold'>{profileData?.books && profileData?.books?.filter((book) => book?.status === true).length}</h2>
         </div>
 
       </div>
-
-
 
       <div className='mt-10 flex 2xl:flex-row xl:flex-row lg:flex-col flex-col  w-full gap-10'>
         <div className=' bg-white 2xl:w-[77%] xl:w-[70%] lg:w-full lg:p-5 py-5 px-2 rounded-xl'>
@@ -281,48 +327,51 @@ useEffect(() => {
           {profileData.books && profileData.books.length <= 0 ? 
             <div className='flex justify-center items-center h-full'>
               <div className='p-5'>
-                <img src={empty1} alt="" className='w-[8rem] 2xl:w-[15rem] flex m-auto '/>
-                <h2 className='text-lg  text-center text-neutral-300'>No Pending Request</h2>
+                <img src={empty1} alt="" className='w-[8rem] 2xl:w-[10rem] flex m-auto '/>
+                <h2 className='text-sm text-center text-neutral-300'>Nothing Here!!</h2>
               </div>
             </div> :
             <div>
               {profileData?.books &&  
               <>
-              {/* {profileData?.books?.status === false && */}
                 <div className='grid 2xl:grid-cols-3 xl:grid-cols-2 lg:grid-cols-2 grid-cols-1 items-center gap-3 ' >
-                  {profileData.books.filter((book) => book.status === false).map((book)=>
-                    <div className='bg-white border border-neutral-200 p-5 my-5 rounded-lg '>
-                      <div className=''>
-                        <div className='flex gap-2 items-center'>
-                          <div className='w-8 h-8 justify-center items-center flex rounded-full overflow-hidden'>
-                            <img src={book.client_profile.profile_pics} alt="" className='w-8 h-8 object-cover'/>
+
+                  {profileData.books.filter((book) => book.status === false).length > 0 ? 
+                  
+                  (
+                    profileData.books.filter((book) => book.status === false).map((book)=>
+                      <div className='bg-white border border-neutral-200 p-5 my-5 rounded-lg '>
+                        <div className=''>
+                          <div className='flex gap-2 items-center'>
+                            <div className='w-8 h-8 justify-center items-center flex rounded-full overflow-hidden'>
+                              <img src={book.client_profile.profile_pics} alt="" className='w-8 h-8 object-cover'/>
+                            </div>
+                            <div>
+                              <h2 className='2xl:text-sm xl:text-sm lg:text-sm text-sm'>{book.client_profile.user.fullname}</h2>
+                              <p className='text-[10px]'>{book.datetime}</p>
+                            </div>
                           </div>
+
+                          <div className='p-3 bg-neutral-100 my-5 rounded-md'>
+                            <h2 className='text-sm font-semibold pb-2'>{book.title}</h2>
+                            <p className='text-xs'>{book.description.slice(0, 30)}. . .</p>
+                          </div>
+
                           <div>
-                            <h2 className='2xl:text-sm xl:text-sm lg:text-sm text-sm'>{book.client_profile.user.fullname}</h2>
-                            <p className='text-[10px]'>{book.datetime}</p>
+                            <label onClick={() => handleClick(book)} className='mycolor2 text-white p-2 px-5 text-sm text-center m-auto rounded-full w-full block cursor-pointer' drawer-conten  htmlFor="my-drawer-4">View Request</label>
                           </div>
-                        </div>
 
-                        <div className='p-3 bg-neutral-100 my-5 rounded-md'>
-                          <h2 className='text-sm font-semibold pb-2'>{book.title}</h2>
-                          <p className='text-xs'>{book.description.slice(0, 30)}. . .</p>
                         </div>
-
-                        <div>
-                          <label onClick={() => handleClick(book)} className='mycolor2 text-white p-2 px-5 text-sm text-center m-auto rounded-full w-full block cursor-pointer' drawer-conten  htmlFor="my-drawer-4">View Request</label>
-                        </div>
-
                       </div>
+                    ) 
+                  ) : 
+                    // <p className='text-center text-sm m-auto justify-center flex w-full pt-10'>No Pending Request here!!</p>
+                    <div className='p-5'>
+                      <img src={empty1} alt="" className='w-[8rem] 2xl:w-[10rem] flex m-auto '/>
+                      <h2 className='text-sm text-center text-neutral-300'>No Pending Request</h2>
                     </div>
-                  )}
-
+                  }
                 </div>
-              {/* } */}
-
-              
-                <Link to={'/creative-dashboard-bookingsAll'}>
-                  <button className='bg-black text-xs px-20 py-3 text-white border border-neutral-300 rounded-full w-full 2xl:w-fit lg:w-fit'>View All Approved Request</button>
-                </Link>
               </>
               }
 
@@ -431,36 +480,38 @@ useEffect(() => {
       <ProfileModal showModal={showModal}/>
 
       <div className="drawer drawer-end">
-        <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+        <input 
+          id="my-drawer-4" 
+          type="checkbox" 
+          className="drawer-toggle" 
+        />
         <div className="drawer-side z-50">
-          <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay z-50"></label>
+          <label htmlFor="my-drawer-4" 
+            aria-label="close sidebar" 
+            className="drawer-overlay z-50">
+          </label>
           <ul className="menu z-50 bg-base-200 text-base-content min-h-full 2xl:w-[25%] xl:w-[40%] lg:w-[40%] md:w-[80%] w-[90%] lg:p-10 p-5 2xl:pt-20 xl:pt-20 lg:pt-16 pt-16">
             <div className='flex justify-center'>
               {selectedRequest  && 
               <div className='text-center'>
-                {/* <div className='flex flex-col items-center'> */}
-                    <div className='rounded-full flex justify-center m-auto bg-neutral-200 w-14 h-14 overflow-hidden'>
-                      <img src={selectedRequest.client_profile.profile_pics} className='w-full h-full object-cover' alt="" />
-                    </div>
+                  <div className='rounded-full flex justify-center m-auto bg-neutral-200 w-14 h-14 overflow-hidden'>
+                    <img src={selectedRequest.client_profile.profile_pics} className='w-full h-full object-cover' alt="" />
+                  </div>
 
-                    <div className=''>
-                      <h2 className='text-sm font-bold pt-2'>{selectedRequest.client_profile.user.fullname}</h2>
-                      <p className='text-xs font-bold text-neutral-500 py-2'>{selectedRequest.datetime}</p>
-                    </div>
-                  {/* </div> */}
+                  <div className=''>
+                    <h2 className='text-sm font-bold pt-2'>{selectedRequest.client_profile.user.fullname}</h2>
+                    <p className='text-xs font-bold text-neutral-500 py-2'>{selectedRequest.datetime}</p>
+                  </div>
 
                   <div className='bg-white p-5 rounded-lg mt-5'>
                     <p className='text-lg pt-3 font-semibold'>{selectedRequest.title}</p>
                     <p className='lg:text-sm text-sm  text-center lg:leading-[30px] leading-[28px] font-light'>{selectedRequest.description}</p>
                   </div>
 
-
                   <div className='mt-5 flex flex-col justify-center lg:gap-5 gap-3 lg:px-10 px-5 w-full'>
-                    {/* <button onClick={()=>copyToClipboard(selectedRequest.phone)} className="rounded-full lg:w-full w-full btn-neutral text-sm justify-center  text-black bg-white border border-neutral-200 min-h-[2.6rem] m-auto max-h-[2.6rem] flex items-center gap-2">
-                      {copySuccess ? copySuccess : <><FaRegCopy />Copy Contact</> }
-                    </button> */}
-
-                    <p className='text-white cursor-pointer bg-black rounded-full py-2.5 text-sm px-10'>Approve Request</p>
+                    <p onClick={()=>updateBookingStatus(selectedRequest.id)} className='text-white cursor-pointer bg-black rounded-full py-2.5 text-sm px-10'>
+                      {isUpdateLoading === true ? 'Approving..' : 'Approve Request'}
+                    </p>
                   </div>
 
                   <p className='absolute 2xl:bottom-10 xl:bottom-10 lg:bottom-5 bottom-20 m-auto right-0 left-0 flex justify-center w-fit text-xs gap-2'>Need any help ? 
