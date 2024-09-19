@@ -11,6 +11,7 @@ import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { v4 as uuidv4 } from "uuid";
 import { shop100Pay } from "@100pay-hq/checkout";
 import { Link } from 'react-router-dom'
+import { IoWarning } from 'react-icons/io5'
 
 const UserRequestBookings = () => {
 
@@ -135,6 +136,8 @@ export const UserRequestBookingsDashboard = () => {
     <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] py-28 w-full px-5'>
         <h2 className='text-2xl'>All Request</h2>
 
+        <p className='bg-orange-100 text-orange-800 py-2.5 px-5 rounded-lg text-xs mt-3 text-center flex items-center m-auto justify-center gap-3'><IoWarning />Refresh Page to see latest status update</p>
+
         {isLoading === true ? <MyLoader />  : <>
             {allRequest.length > 0 && <>
                 <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-5 w-full mt-5 mb-10'>
@@ -157,23 +160,34 @@ export const UserRequestBookingsDashboard = () => {
                             <div className='p-5'>
                                 <div className='my-5 bg-neutral-100 p-5 rounded-lg'>
                                     <h2 className='text-base flex items-center gap-3 text-neutral-600 font-semibold lg:pb-2 pb-2'><MdKeyboardDoubleArrowRight />{request.title}</h2>
-                                    <p className='text-xs text-neutral-600'>{request.description}</p>
+                                    <p className='text-xs text-neutral-600'>{request.description.slice(0, 30)}. . .</p>
                                 </div>
 
                                 {/* onClick={payWith100Pay} */}
                                 <div className='flex flex-col items-center gap-3 my-5'>
-                                    <Link to={`tel:${request.phone_number}`} className='w-full'>
-                                        <button className='border border-neutral-300 py-2 rounded-full text-xs w-full'>Call Talent</button>
-                                    </Link>
+
+                                    {request.status === true &&
+                                      <Link to={`tel:${request.phone_number}`} className='w-full'>
+                                          <button className='border border-neutral-300 py-2 rounded-full text-xs w-full'>Call Talent</button>
+                                      </Link>
+                                    }
 
                                     <button  onClick={()=>{document.getElementById('my_modal_3').showModal(); setSelectedBook(request)}} 
-                                        className='text-xs bg-black text-white py-2 rounded-full m-auto justify-center font-semibold w-full flex items-center gap-3'>Proceed to payment <GoArrowRight />
+                                        className='text-xs bg-black text-white py-2 rounded-full m-auto justify-center font-semibold w-full flex items-center gap-3'>
+                                          {request.status === true ? <>Proceed to payment <GoArrowRight /></> : <>View Request <GoArrowRight /></>}
+                                          
                                     </button>
                                 </div>
 
-                                <p className=' bg-orange-50 text-xs italic rounded-full gap-3 py-1 px-2 text-orange-500 font-medium flex items-center m-auto justify-center'>
+                                {request.status === true ?
+                                  <p className=' bg-green-50 text-xs italic rounded-full gap-3 py-1 px-2 text-green-700  flex items-center m-auto justify-center'>
+                                      Request has been approved, Proceed to Payment
+                                  </p>
+                                :
+                                <p className=' bg-orange-50 text-xs italic rounded-full gap-3 py-3 px-2 text-orange-900 flex items-center m-auto justify-center'>
                                     Request Pending - Waiting for talent to respond
                                 </p>
+}
                             </div>
                         </div>
                     ))}
@@ -187,7 +201,7 @@ export const UserRequestBookingsDashboard = () => {
 
 
         <dialog id="my_modal_3" className="modal">
-            <div className="modal-box lg:max-w-[30%] w-[95%]">
+            <div className="modal-box lg:max-w-[30%] w-[95%] p-5">
                 <form method="dialog">
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                 </form>
@@ -210,7 +224,8 @@ export const UserRequestBookingsDashboard = () => {
                     <h2 className='text-base flex items-center gap-3 text-neutral-600 font-semibold lg:pb-2 pb-2'><MdKeyboardDoubleArrowRight />{selectedBook.title}</h2>
                     <p className='text-xs text-neutral-600'>{selectedBook.description}</p>
                 </div>
-
+                
+                {selectedBook.status === true ? 
                 <div className='border-t border-t-neutral-200 pt-3'>
                     <h2 className='text-sm font-semibold pb-5'>Proceed Payment</h2>
 
@@ -227,7 +242,12 @@ export const UserRequestBookingsDashboard = () => {
                             <button className="text-xs rounded-full py-2.5 w-full bg-white border border-neutral-300 text-black">Pay via Escrow</button>
                         </div>
                     </div>
+                </div> :
+                <div className=' bg-orange-50 text-center text-orange-950 text-sm py-10 px-10'>
+                  <p className='text-3xl text-center flex m-auto justify-center pb-4'><IoWarning /></p>
+                  <h2 className='text-center'>Your request is still Pending, your request will be accepted soon . .</h2>
                 </div>
+              }
             </div>
         </dialog>
     </div>

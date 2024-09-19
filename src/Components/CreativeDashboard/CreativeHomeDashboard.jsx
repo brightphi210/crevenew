@@ -164,8 +164,10 @@ useEffect(() => {
   return () => clearTimeout(timer);
 }, [showModal]);
   
-  return (
 
+  console.log('All Request', profileData);
+
+  return (
 
     <div className='lg:p-16  lg:pl-[18rem] p-5 px-3 pt-20 lg:pt-28'>
       <div className='flex 2xl:flex-row flex-col xl:flex-row lg:flex-col gap-10'>
@@ -268,7 +270,7 @@ useEffect(() => {
 
       <div className='mt-10 flex 2xl:flex-row xl:flex-row lg:flex-col flex-col  w-full gap-10'>
         <div className=' bg-white 2xl:w-[77%] xl:w-[70%] lg:w-full lg:p-5 py-5 px-2 rounded-xl'>
-          <h2 className='text-sm font-semibold'>Messages</h2>
+          <h2 className='text-sm font-semibold'>Pending Request</h2>
 
           {isLoading === true ?
           <div className='pt-20 flex justify-center items-center'>
@@ -280,41 +282,46 @@ useEffect(() => {
             <div className='flex justify-center items-center h-full'>
               <div className='p-5'>
                 <img src={empty1} alt="" className='w-[8rem] 2xl:w-[15rem] flex m-auto '/>
-                <h2 className='text-lg  text-center text-neutral-300'>No Messages Yet</h2>
+                <h2 className='text-lg  text-center text-neutral-300'>No Pending Request</h2>
               </div>
             </div> :
             <div>
-              {profileData.books && 
+              {profileData?.books &&  
               <>
-              <div className='grid 2xl:grid-cols-3 xl:grid-cols-2 lg:grid-cols-2 grid-cols-1 items-center gap-3 ' >
-                {profileData.books.slice(0, 4).map((book)=>
-                  <div className='bg-white border border-neutral-200 p-5 my-5 rounded-lg '>
-                    <div className=''>
-                      <div className='flex gap-2 items-center'>
-                        <div className='w-8 h-8 justify-center items-center flex rounded-full overflow-hidden'>
-                          <img src={book.client_profile.profile_pics} alt="" className='w-8 h-8 object-cover'/>
+              {/* {profileData?.books?.status === false && */}
+                <div className='grid 2xl:grid-cols-3 xl:grid-cols-2 lg:grid-cols-2 grid-cols-1 items-center gap-3 ' >
+                  {profileData.books.filter((book) => book.status === false).map((book)=>
+                    <div className='bg-white border border-neutral-200 p-5 my-5 rounded-lg '>
+                      <div className=''>
+                        <div className='flex gap-2 items-center'>
+                          <div className='w-8 h-8 justify-center items-center flex rounded-full overflow-hidden'>
+                            <img src={book.client_profile.profile_pics} alt="" className='w-8 h-8 object-cover'/>
+                          </div>
+                          <div>
+                            <h2 className='2xl:text-sm xl:text-sm lg:text-sm text-sm'>{book.client_profile.user.fullname}</h2>
+                            <p className='text-[10px]'>{book.datetime}</p>
+                          </div>
                         </div>
+
+                        <div className='p-3 bg-neutral-100 my-5 rounded-md'>
+                          <h2 className='text-sm font-semibold pb-2'>{book.title}</h2>
+                          <p className='text-xs'>{book.description.slice(0, 30)}. . .</p>
+                        </div>
+
                         <div>
-                          <h2 className='2xl:text-sm xl:text-sm lg:text-sm text-sm'>{book.client_profile.user.fullname}</h2>
-                          <p className='text-[10px]'>{book.datetime}</p>
+                          <label onClick={() => handleClick(book)} className='mycolor2 text-white p-2 px-5 text-sm text-center m-auto rounded-full w-full block cursor-pointer' drawer-conten  htmlFor="my-drawer-4">View Request</label>
                         </div>
-                      </div>
 
-                      <div className='p-3 bg-neutral-100 my-5 rounded-md'>
-                        <h2 className='text-sm font-semibold pb-2'>{book.title}</h2>
-                        <p className='text-xs'>{book.description}</p>
-                      </div>
-
-                      <div>
-                        <label onClick={() => handleClick(book)} className='mycolor2 text-white p-2 px-5 text-sm text-center m-auto rounded-full w-full block cursor-pointer' drawer-conten  htmlFor="my-drawer-4">View Request</label>
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-              </div>
+                </div>
+              {/* } */}
+
+              
                 <Link to={'/creative-dashboard-bookingsAll'}>
-                  <button className='bg-black text-xs px-20 py-3 text-white border border-neutral-300 rounded-md w-full 2xl:w-fit lg:w-fit'>See All</button>
+                  <button className='bg-black text-xs px-20 py-3 text-white border border-neutral-300 rounded-md w-full 2xl:w-fit lg:w-fit'>View All Approved Request</button>
                 </Link>
               </>
               }
@@ -327,62 +334,58 @@ useEffect(() => {
 
 
         <div className=' 2xl:w-[23%] xl:w-[30%] lg:w-full w-full'>
+          <div className='bg-white p-5 w-full rounded-xl '>
+            <p className='text-sm font-semibold'>Notifications</p>  
+            
+            {notification === null ? 
+            
+            (
 
-
-
-            <div className='bg-white p-5 w-full rounded-xl '>
-              <p className='text-sm font-semibold'>Notifications</p>  
-              
-              {notification === null ? 
-              
-              (
-
-                <div className='p-5  '>
-                  <div className='flex items-center justify-center p-5 my-3 bg-white m-auto w-fit rounded-full'>
-                    <p className='mycolor text-5xl'><IoNotificationsOffOutline /></p>
-                  </div>
-                    <h2 className='text-lg  text-center text-neutral-300'>No Notification Yet</h2>
+              <div className='p-5  '>
+                <div className='flex items-center justify-center p-5 my-3 bg-white m-auto w-fit rounded-full'>
+                  <p className='mycolor text-5xl'><IoNotificationsOffOutline /></p>
                 </div>
-              ) : 
+                  <h2 className='text-lg  text-center text-neutral-300'>No Notification Yet</h2>
+              </div>
+            ) : 
 
-              (
+            (
 
-                <div className=''>
+              <div className=''>
+              <div className='my-3 hover:bg-neutral-200 flex items-center gap-3 p-3 rounded-md'>
+                  <p className='text-cyan-500 mycolor text-4xl'><IoNotificationsCircle /></p>
+                  <div>
+                    <h2 className='text-sm flex items-center gap-2 2xl:text-xs'>Your account is verified</h2>
+                    <p className='text-xs text-neutral-400'>2 days ago</p>
+                  </div>
+                  
+                </div>
+
                 <div className='my-3 hover:bg-neutral-200 flex items-center gap-3 p-3 rounded-md'>
-                    <p className='text-cyan-500 mycolor text-4xl'><IoNotificationsCircle /></p>
-                    <div>
-                      <h2 className='text-sm flex items-center gap-2 2xl:text-xs'>Your account is verified</h2>
-                      <p className='text-xs text-neutral-400'>2 days ago</p>
-                    </div>
-                    
+                  <p className='text-cyan-500 mycolor text-4xl'><IoNotificationsCircle /></p>
+                  <div>
+                    <h2 className='text-sm flex items-center gap-2 2xl:text-xs'>Login Successful</h2>
+                    <p className='text-xs text-neutral-400'>2 days ago</p>
                   </div>
-
-                  <div className='my-3 hover:bg-neutral-200 flex items-center gap-3 p-3 rounded-md'>
-                    <p className='text-cyan-500 mycolor text-4xl'><IoNotificationsCircle /></p>
-                    <div>
-                      <h2 className='text-sm flex items-center gap-2 2xl:text-xs'>Login Successful</h2>
-                      <p className='text-xs text-neutral-400'>2 days ago</p>
-                    </div>
-                    
-                  </div>
-
-                  <div className='my-3 hover:bg-neutral-200 flex items-center gap-3 p-3 rounded-md'>
-                    <p className='text-cyan-500 mycolor text-4xl'><IoNotificationsCircle /></p>
-                    <div>
-                      <h2 className='text-sm flex items-center gap-2 2xl:text-xs'>Login Successful</h2>
-                      <p className='text-xs text-neutral-400'>2 days ago</p>
-                    </div>
-                    
-                  </div>
-
-                  <Link to={'/creative-dashboard-notificationAll'}>
-                    <button className='bg-black text-xs px-5 py-3 text-white 2xl:w-full w-full lg:w-fit rounded-md'>See All</button>
-                  </Link>
-
+                  
                 </div>
-              )}
-            </div>
 
+                <div className='my-3 hover:bg-neutral-200 flex items-center gap-3 p-3 rounded-md'>
+                  <p className='text-cyan-500 mycolor text-4xl'><IoNotificationsCircle /></p>
+                  <div>
+                    <h2 className='text-sm flex items-center gap-2 2xl:text-xs'>Login Successful</h2>
+                    <p className='text-xs text-neutral-400'>2 days ago</p>
+                  </div>
+                  
+                </div>
+
+                <Link to={'/creative-dashboard-notificationAll'}>
+                  <button className='bg-black text-xs px-5 py-3 text-white 2xl:w-full w-full lg:w-fit rounded-md'>See All</button>
+                </Link>
+
+              </div>
+            )}
+          </div>
 
           <div className='color p-5 w-full text-white rounded-xl mt-3 flex flex-col gap-5'>
             <p className='text-sm flex items-center gap-5 cursor-pointe text-neutral-400'>Upgrade to pro <FaUnlockKeyhole /></p>
@@ -393,67 +396,36 @@ useEffect(() => {
           </div>
         </div>
 
-          {/* <dialog id="my_modal_2" className="modal">
-            <div className="modal-box 2xl:w-[25rem] lx:w-[25rem]  lg:w-[25rem] w-[95%] h-full absolute 2xl:right-10 2xl:top-20 xl:right-10 xl:top-20 lg:right-10 lg:top-20 2xl:h-[55vh] 2xl:max-h-[h-55vh] xl:h-[70vh] xl:max-h-[h-70vh] lg:max-h-[h-70vh] lg:h-[70vh] rounded-lg z-auto overflow-y-scroll">
-              <button onClick={()=>{document.getElementById('my_modal_2').close()}} 
-                className="btn btn-sm btn-circle btn-ghost absolute right-5 top-5 bg-white text-black hover:text-white">✕
-              </button>
+        <dialog id="my_modal_3" className="modal">
+          <div className="modal-box 2xl:w-[25rem] lx:w-[25rem] p-0 lg:w-[25rem] w-[90%]  2xl:h-[50vh] xl:h-[50vh] lg:h-[50vh] h-fit rounded-lg">
+            
 
-              {selectedRequest && 
-              <div className=' py-5 px-3'>
-                <div className='w-20 h-20 flex rounded-full overflow-hidden justify-center m-auto'>
-                  <img src={selectedRequest.client_profile.profile_pics} className='h-full object-cover w-full' alt="" />
-                  {console.log({selectedRequest})}
-                </div>
-
-                <div className='text-center'>
-                  <h2 className='text-base pt-3'>{selectedRequest.client_profile.user.fullname}</h2>
-                  <p className='text-xl py-2'>{selectedRequest.phone}</p>
-                  <div className='pt-2 border-t border-t-neutral-200 mt-5'>
-                    <h2 className='text-xl'>{selectedRequest.title}</h2>
-                    <p className='text-sm mt-3 text'>{selectedRequest.description}</p>
-                  </div>
-                  <button className="btn btn-active hover:bg-black bg-black w-full text-xs px-5 py-3 rounded-md mt-5 text-white ">Contact</button>
-                  <p className='text-red-500 pt-5 text-xs'>Copy the above Number of client to call</p>
-                </div>
-              </div>
-              }
+            <div className='w-full 2xl:block xl:hidden lg:hidden '>
+              <img src={community} alt="" className='w-full 2xl:h-fit h-[15rem] object-cover' />
             </div>
-            <form method="dialog" className="modal-backdrop">
-              <button>close</button>
-            </form>
-          </dialog> */}
 
-          <dialog id="my_modal_3" className="modal">
-            <div className="modal-box 2xl:w-[25rem] lx:w-[25rem] p-0 lg:w-[25rem] w-[90%]  2xl:h-[50vh] xl:h-[50vh] lg:h-[50vh] h-fit rounded-lg">
-              
+            <div className='p-5 pt-10'>
+              <h2>Welcome to your dashboard 👋 </h2>
+              <p className='text-xs py-5'>We’re glad to have you onboard. join our unique community to get latest updates from us.</p>
 
-              <div className='w-full 2xl:block xl:hidden lg:hidden '>
-                <img src={community} alt="" className='w-full 2xl:h-fit h-[15rem] object-cover' />
+              <div className='flex gap-3 mt-4'>
+                <button className='mycolor3 py-3 px-5 text-xs rounded-md w-full' onClick={()=>{document.getElementById('my_modal_3').close()}}>Close</button>
+                <Link to={'https://chat.whatsapp.com/FNQzOFlRnIKK3ChV8iOHWx'} className='w-full'>
+                  <p className='mycolor2 text-white py-3 px-5 text-xs rounded-md text-center'>Join Now</p>
+                </Link>
               </div>
-
-              <div className='p-5 pt-10'>
-                <h2>Welcome to your dashboard 👋 </h2>
-                <p className='text-xs py-5'>We’re glad to have you onboard. join our unique community to get latest updates from us.</p>
-
-                <div className='flex gap-3 mt-4'>
-                  <button className='mycolor3 py-3 px-5 text-xs rounded-md w-full' onClick={()=>{document.getElementById('my_modal_3').close()}}>Close</button>
-                  <Link to={'https://chat.whatsapp.com/FNQzOFlRnIKK3ChV8iOHWx'} className='w-full'>
-                    <p className='mycolor2 text-white py-3 px-5 text-xs rounded-md text-center'>Join Now</p>
-                  </Link>
-                </div>
-              </div>
-              
-              
-              <button onClick={()=>{document.getElementById('my_modal_3').close()}} 
-                className="btn btn-sm btn-circle btn-ghost absolute right-5 top-5 bg-white text-black hover:text-white">✕
-              </button>
-
             </div>
-            <form method="dialog" className="modal-backdrop">
-              <button>close</button>
-            </form>
-          </dialog>
+            
+            
+            <button onClick={()=>{document.getElementById('my_modal_3').close()}} 
+              className="btn btn-sm btn-circle btn-ghost absolute right-5 top-5 bg-white text-black hover:text-white">✕
+            </button>
+
+          </div>
+          <form method="dialog" className="modal-backdrop">
+            <button>close</button>
+          </form>
+        </dialog>
       </div> 
 
       <ProfileModal showModal={showModal}/>
@@ -462,34 +434,35 @@ useEffect(() => {
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
         <div className="drawer-side z-50">
           <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay z-50"></label>
-          <ul className="menu z-50 bg-base-200 text-base-content min-h-full 2xl:w-[25%] xl:w-[40%] lg:w-[40%] md:w-[80%] w-[90%] p-6 2xl:pt-20 xl:pt-20 lg:pt-10 pt-32">
+          <ul className="menu z-50 bg-base-200 text-base-content min-h-full 2xl:w-[25%] xl:w-[40%] lg:w-[40%] md:w-[80%] w-[90%] lg:p-10 p-5 2xl:pt-20 xl:pt-20 lg:pt-16 pt-16">
             <div className='flex justify-center'>
-
-              {selectedRequest && 
+              {selectedRequest  && 
               <div className='text-center'>
-                  <div className='rounded-full flex justify-center  bg-neutral-200 items-center m-auto w-20 h-20 overflow-hidden'>
-                    <img src={selectedRequest.client_profile.profile_pics} className='w-full h-full object-cover' alt="" />
+                {/* <div className='flex flex-col items-center'> */}
+                    <div className='rounded-full flex justify-center m-auto bg-neutral-200 w-14 h-14 overflow-hidden'>
+                      <img src={selectedRequest.client_profile.profile_pics} className='w-full h-full object-cover' alt="" />
+                    </div>
+
+                    <div className=''>
+                      <h2 className='text-sm font-bold pt-2'>{selectedRequest.client_profile.user.fullname}</h2>
+                      <p className='text-xs font-bold text-neutral-500 py-2'>{selectedRequest.datetime}</p>
+                    </div>
+                  {/* </div> */}
+
+                  <div className='bg-white p-5 rounded-lg mt-5'>
+                    <p className='text-lg pt-3 font-semibold'>{selectedRequest.title}</p>
+                    <p className='lg:text-sm text-sm  text-center lg:leading-[30px] leading-[28px] font-light'>{selectedRequest.description}</p>
                   </div>
 
-                  <div>
-                    <h2 className='text-sm font-bold pt-5'>{selectedRequest.client_profile.user.fullname}</h2>
-                    <p className='text-xl font-bold text-neutral-500 py-3'>{selectedRequest.phone}</p>
-                    
-                    <p className='text-xs pt-3'>{selectedRequest.title}</p>
-                    <p className='lg:text-sm text-xs text-center lg:leading-[30px] leading-[28px] font-light'>{selectedRequest.description}</p>
-                  </div>
 
                   <div className='mt-5 flex flex-col justify-center lg:gap-5 gap-3 lg:px-10 px-5 w-full'>
-                    <button onClick={()=>copyToClipboard(selectedRequest.phone)} className="rounded-full lg:w-full w-full btn-neutral text-sm justify-center  text-black bg-white border border-neutral-200 min-h-[2.6rem] m-auto max-h-[2.6rem] flex items-center gap-2">
+                    {/* <button onClick={()=>copyToClipboard(selectedRequest.phone)} className="rounded-full lg:w-full w-full btn-neutral text-sm justify-center  text-black bg-white border border-neutral-200 min-h-[2.6rem] m-auto max-h-[2.6rem] flex items-center gap-2">
                       {copySuccess ? copySuccess : <><FaRegCopy />Copy Contact</> }
-                    </button>
+                    </button> */}
 
-                    <Link to={`tel:${selectedRequest.phone}`} className='w-full'>
-                          <p className='text-white bg-black rounded-full py-2.5 text-sm'>Call Client</p>
-                    </Link>
+                    <p className='text-white cursor-pointer bg-black rounded-full py-2.5 text-sm px-10'>Approve Request</p>
                   </div>
 
-                  <p className='text-green-600 bg-green-50 flex items-center mt-5 p-3 rounded-lg gap-3 border border-green-600'><TbAlertTriangle />Copy clients number to call </p>
                   <p className='absolute 2xl:bottom-10 xl:bottom-10 lg:bottom-5 bottom-20 m-auto right-0 left-0 flex justify-center w-fit text-xs gap-2'>Need any help ? 
                     
                     <Link to={'https://wa.link/tdyb88'}>
@@ -533,8 +506,6 @@ useEffect(() => {
             <form method="dialog">
                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
             </form>
-
-
             <div className='overflow-y-scroll h-[90%] w-full lg:mt-5 p-7 lg:pt-5 mt-8'>
 
                 <div className='w-full rounded-lg'>

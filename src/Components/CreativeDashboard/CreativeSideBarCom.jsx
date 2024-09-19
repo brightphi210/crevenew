@@ -42,16 +42,14 @@ const CreativeSideBarCom = ({show}) => {
                   <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><CiUser className=''/> Profile Overview</li>
                 </Link>
 
+                <Link to={'/creative-dashboard-bookingsAll'} >
+                  <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><BiMessageSquare className=''/>Approved Requests</li>
+                </Link>
+                
                 <Link to={'/user-dashboard-chat'}>
                   <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoMailUnread className=''/> Messages</li>
                 </Link>
 
-
-                <Link to={'/creative-dashboard-bookingsAll'} >
-                  <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><BiMessageSquare className=''/> Requests</li>
-                </Link>
-
-                
                 <Link to={'/creative-dashboard-notificationAll'}>
                   <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><IoNotificationsOutline className=''/> Notifications</li>
                 </Link>
