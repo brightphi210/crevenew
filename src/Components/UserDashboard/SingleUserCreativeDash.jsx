@@ -638,7 +638,7 @@ const SingleUserCreativeDash = () => {
 
                     <form action="" onSubmit={makeRequest}>
 
-                        <div>
+                        {/* <div>
                             <p className="py-4 pb-2 text-sm font-semibold">Enter your Phone Number</p>
                             <input 
                                 type="number"  
@@ -647,7 +647,7 @@ const SingleUserCreativeDash = () => {
                                 value={phone}
                                 onChange={(e)=>setPhone(e.target.value)}
                             />
-                        </div>
+                        </div> */}
 
                         <div>
                             <p className="py-4 pb-2 text-sm font-semibold">What are you looking to work on...</p>

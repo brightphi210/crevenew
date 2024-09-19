@@ -168,6 +168,17 @@ export const CreativeHome = () => {
   };
 
 
+
+  useEffect(() => {
+    if (showSuccess) {
+      const timer = setTimeout(() => {
+        setShowSuccess(false);
+      }, 3000);
+
+      return () => clearTimeout(timer); // Clean up the timer on component unmount
+    }
+  }, [showSuccess]);
+
   // ==================== Select a particular booking ===================
   const [selectedRequest, setSelectedRequest] = useState(null);
 
@@ -365,8 +376,7 @@ useEffect(() => {
                       </div>
                     ) 
                   ) : 
-                    // <p className='text-center text-sm m-auto justify-center flex w-full pt-10'>No Pending Request here!!</p>
-                    <div className='p-5'>
+                    <div className='p-5 col-span-3'>
                       <img src={empty1} alt="" className='w-[8rem] 2xl:w-[10rem] flex m-auto '/>
                       <h2 className='text-sm text-center text-neutral-300'>No Pending Request</h2>
                     </div>
