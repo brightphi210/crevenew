@@ -184,20 +184,20 @@ export const CreativeHome = () => {
   };
 
 
-const [completeMessage, setCompleteMessage] = useState(true)
+  const [completeMessage, setCompleteMessage] = useState(true)
 
-useEffect(() => {
-  const timer = setTimeout(() => {
-    if (showModal === true) {
-      setCompleteMessage(true);
-    } else {
-      setCompleteMessage(false);
-    }
-  }, 2000); 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (showModal === true) {
+        setCompleteMessage(true);
+      } else {
+        setCompleteMessage(false);
+      }
+    }, 2000); 
 
 
-  return () => clearTimeout(timer);
-}, [showModal]);
+    return () => clearTimeout(timer);
+  }, [showModal]);
   
 
   // console.log('All Request', profileData);

@@ -38,12 +38,12 @@ const CreativeSideBarCom = ({show}) => {
                   <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><MdOutlineDashboard className=''/>Dashboard</li>
                 </Link>
 
-                <Link to={'/creative-dashboard-wallet'}>
-                  <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><FaWallet className=''/>Wallet</li>
-                </Link>
-
                 <Link to={'/creative-dashboard-profile'}>
                   <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><CiUser className=''/> Profile Overview</li>
+                </Link>
+
+                <Link to={'/creative-dashboard-wallet'}>
+                  <li className='text-sm hover:text-accent cursor-pointer flex items-center gap-3'><FaWallet className=''/>Wallet</li>
                 </Link>
 
                 <Link to={'/creative-dashboard-bookingsAll'} >

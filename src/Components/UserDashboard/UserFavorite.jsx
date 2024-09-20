@@ -9,7 +9,7 @@ import { jwtDecode } from 'jwt-decode';
 import { Link } from 'react-router-dom';
 import MyLoader from '../allLoadingState/MyLoader';
 import NoData from '../allLoadingState/NoData';
-import { RiVerifiedBadgeFill } from 'react-icons/ri';
+import { RiMedalFill, RiVerifiedBadgeFill } from 'react-icons/ri';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Footer from '../Footer';
 
@@ -85,15 +85,11 @@ export const UserFavoriteDashboard = () => {
 
   return (
       <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] py-28 px-3 w-full overflow-y-auto'>
-      <h2 className='text-2xl pb-5'>Favorites Talents</h2>
+      <h2 className='text-2xl pb-5'>All Saved Talents</h2>
 
 
       {isLoading === true ?             
-      <div className='lg:grid flex flex-col 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3  gap-5 pt-10'>
-            <span className='loadera w-full col-span-1'></span>
-            <span className='loadera w-full col-span-1'></span>
-            <span className='loadera w-full col-span-1'></span>
-            <span className='loadera w-full col-span-1'></span>
+        <div className='lg:grid flex flex-col 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3  gap-5 pt-10'>
             <span className='loadera w-full col-span-1'></span>
             <span className='loadera w-full col-span-1'></span>
             <span className='loadera w-full col-span-1'></span>
@@ -108,54 +104,44 @@ export const UserFavoriteDashboard = () => {
             <div className='grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 2xl:gap-5 xl:gap-5 lg:gap-4 gap-5'>
 
               {favoriteProfiles.map((talent) =>(
-                 <div data-aos="fade-up" data-aos-duration="1000" className='bg-white  rounded-md cursor-pointer hover:transition-all hover:ease-in-out hover:bg-neutral-50 shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] relative  p-3' key={talent.id}>
-                 <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`}>
-
-                 <div className='relative'>
-
-                     <div className=' bg-neutral-300 lg:h-[5rem] h-[5rem] overflow-hidden rounded-sm'>
-                         {/* <LazyLoadImage
-                             alt={talent.cover_image}
-                             src={talent.cover_image}
-                             placeholderSrc={talent.cover_image}
-                             effect='blur'
-                             loading='lazy'
-                         /> */}
-                         <img src={talent.cover_image} alt="" loading='lazy' className='w-full h-full object-cover'/>
-                     </div>
-
-
-                     <div className='absolute right-0 left-0 m-auto flex top-10 h-[75px] w-[75px] overflow-hidden border-4 shadow-lg bg-white border-white rounded-full'>
-                         <img src={talent.profile_pics} alt="" loading='lazy' className='w-[75px] h-[75px] object-cover'/>
-                     </div>
-
-                     
-                 </div>
-
-                 <div className='text-center pt-14'>
-                     <h2 className='text-lg uppercase font-bold flex items-center m-auto justify-center gap-1'>{talent.user.fullname}
-                         {talent?.verification?.verified === true && 
-                             <p className='text-xl text-green-500 bg-white shadow-lg flex rounded-full items-center'><RiVerifiedBadgeFill /></p>
-                         }
-                     </h2>
-                 </div>
-                 
-                 <div className='flex items-center gap-3 w-full m-auto justify-center '>
-                     <p className='text-xs flex w-fit rounded-full text-green-800 bg-green-100 py-2 px-5 my-2  items-center gap-1'>{talent.display_name} <GoTools /></p>
-                     <p className='text-xs bg-neutral-100 rounded-full py-2 px-5 '>{talent.work_type}</p>
-                 </div>
-                 <p className='shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-white
-                     text-black flex justify-center w-[80%] m-auto font-bold p-3 px-5  rounded-full text-center text-sm mt-4 cursor-pointer'>
-                     Hire {talent?.user?.fullname}
-                 </p>
-
-                 <div className='flex m-auto justify-center items-center gap-4 py-5'>
-                     <p className='text-sm flex items-center gap-2'><FaLocationDot className='text-green-500'/>{talent?.location?.slice(0, 30)}. . .</p>
-                 </div>
-             </Link>
-
-
+                <div className='bg-white relative border border-neutral-300 rounded-xl p-5 cursor-pointer' key={talent.id}>
+                  <div className='absolute flex gap-2 items-center right-10 top-10'>
+                      {talent?.verification?.verified === true && 
+                          <p className='text-xl text-green-500 bg-white shadow-lg flex rounded-full items-center'><RiVerifiedBadgeFill /></p>
+                      }
+                      <p className='text-xl flex items-center justify-center text-orange-600 rounded-full'><RiMedalFill /></p>
                   </div>
+
+                  <div className='mb-3'>
+                      <div className='flex flex-col justify-center items-center gap-4'>
+                          <div className='h-[6.5rem] w-[6.5rem] overflow-hidden border-4 shadow-lg bg-white border-white rounded-full'>
+                              <img src={talent.profile_pics} alt="" loading='lazy' className='w-[6.5rem] h-[6.5rem] object-cover'/>
+                          </div>
+                          <div className=''>
+                              <h2 className='text-base uppercase font-bold flex gap-2 items-center'>{talent.user.fullname}</h2>
+                              <p className='text-xs flex w-fit m-auto rounded-lg text-green-800 py-2 items-center gap-1'>{talent.display_name} <GoTools /></p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div className=''>
+                      <ul className='flex justify-center flex-wrap items-center gap-2 text-[10px]'>
+                          {talent.dskills &&
+                              talent.dskills.slice(0, 2).map((skill, index) => (
+                                  <li className='py-2 px-4 rounded-full bg-gray-100' key={index}>{skill?.skill}</li>
+                              ))
+                          }
+                      </ul>
+                  </div>
+
+                  <div className='pt-5'>
+                      <p className='text-xs flex justify-center m-auto gap-2 pb-3'><FaLocationDot className='text-green-700'/>{talent?.city && talent?.city}</p>
+                      
+                      <Link to={'/' + `user-dashboard-single-creative/${talent.id}/`} className=''>
+                          <p className='text-xs py-3 rounded-full flex justify-center m-auto text-center w-full bg-green-950 text-white'>View Profile</p>
+                      </Link>
+                  </div>
+                </div>
               ))}
             </div>
           }

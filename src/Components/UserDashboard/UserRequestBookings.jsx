@@ -53,7 +53,7 @@ export const UserRequestBookingsDashboard = () => {
 
     const chargeData = {
       ref_id: uuidv4(), // Unique transaction reference ID
-      api_key: "LIVE;PK;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjY2ZTQxNTM5YTcwNDRmMDA0OWUyZTQ3MSIsInVzZXJJZCI6IjY2ZTQxNTM5YTcwNDRmMDA0OWUyZTQ2ZSIsImlhdCI6MTcyNjIyMzY3M30.xFq6YscIVp3vuobMDmChduTl5rSnCjU7kgwfQDtPgzU", // Replace with your 100Pay API key
+      api_key: "LIVE;PK;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjY2ZTc1ZGVmYmJkNjYxMDExZmI1ZDUwYyIsInVzZXJJZCI6IjY2ZTc1ZGVmYmJkNjYxMDExZmI1ZDUwOSIsImlhdCI6MTcyNjQzODg5Nn0.rWA_EDWkYxFnyBY82hs7p_mFkK3dixSx8Fv3vKeBpNE",
       billing: {
         amount: amount, // Amount to be charged
         currency: 'NGN', // Currency in which the payment will be made
@@ -80,7 +80,7 @@ export const UserRequestBookingsDashboard = () => {
         console.log(`Transaction successful with reference: ${reference}`);
       },
       onError: (error) => {
-        console.error("An error occurred:", error);
+        alert("An error occurred:", error);
       },
       onPayment(reference) {
         console.log("Payment completed with reference:", reference);
@@ -136,7 +136,7 @@ export const UserRequestBookingsDashboard = () => {
     <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] py-28 w-full px-5'>
         <h2 className='text-2xl'>All Request</h2>
 
-        <p className='bg-orange-100 text-orange-800 py-2.5 px-5 rounded-lg text-xs mt-3 text-center flex items-center m-auto justify-center gap-3'><IoWarning />Refresh Page to see latest status update</p>
+        <p className='bg-orange-50 border border-orange-200 text-orange-800 py-3 px-5 rounded-lg text-xs mt-3 text-center flex items-center m-auto justify-center gap-3'><IoWarning />Refresh Page to see latest status update</p>
 
         {isLoading === true ? <MyLoader />  : <>
             {allRequest.length > 0 && <>

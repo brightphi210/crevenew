@@ -116,7 +116,7 @@ const CreativeCompo = () => {
                                     </Link>
                                 </div>
                         </div>
-                        ))}                 
+                    ))}                 
 
                     {/* <div className='flex rounded-sm gap-2 justify-center m-auto my-10 w-full p-2'>
                         <button className='bg-white py-2 px-4 rounded-sm flex m-auto justify-center items-center gap-2 text-xs'>Previous <FaBackward /></button>
