@@ -14,20 +14,20 @@ const Footer = () => {
         
 
         <div className='flex lg:flex-row flex-col gap-8 justify-between pb-10'>
-            <div className=''>
+            {/* <div className=''>
 
                 <h2 className='font-semibold text-sm text-neutral-500'>Categories</h2>
                 <ul className='flex flex-col gap-3 pt-7 2xl:text-lg xl:text-sm lg:text-sm text-sm'>
                     <Link to={'/' + 'allTalents'}><li>Digital</li></Link>
                     <Link to={'/' + 'allTalents'}><li>Non-DIgital</li></Link>
                 </ul>
-            </div>
+            </div> */}
 
 
             <div className=''>
                 <h2 className='font-semibold text-sm text-neutral-500'>Client</h2>
                 <ul className='flex flex-col gap-3 pt-7 2xl:text-lg xl:text-xs lg:text-xs text-sm'>
-                    <Link to={'/allTalents'}><li>Hire with ease</li></Link>
+                    {/* <Link to={'/allTalents'}><li>Hire with ease</li></Link> */}
                     <Link to={'/register'}><li>Become a talent</li></Link>
                     
                     
