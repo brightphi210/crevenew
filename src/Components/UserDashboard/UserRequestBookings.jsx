@@ -52,7 +52,8 @@ export const UserRequestBookingsDashboard = () => {
     const isButtonDisabled = !phone || !description || !amount;
 
     const chargeData = {
-      ref_id: uuidv4(), // Unique transaction reference ID
+      // ref_id: uuidv4(), // Unique transaction reference ID
+      ref_id: selectedBook?.talent_profile?.user.id,
       api_key: "LIVE;PK;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjY2ZTc1ZGVmYmJkNjYxMDExZmI1ZDUwYyIsInVzZXJJZCI6IjY2ZTc1ZGVmYmJkNjYxMDExZmI1ZDUwOSIsImlhdCI6MTcyNjQzODg5Nn0.rWA_EDWkYxFnyBY82hs7p_mFkK3dixSx8Fv3vKeBpNE",
       billing: {
         amount: amount, // Amount to be charged
@@ -123,14 +124,15 @@ export const UserRequestBookingsDashboard = () => {
           } finally {
           setIsLoading(false);
           }
-      }
+    }
     
-      useEffect(() => {
-        fetchRequest();
-      }, []);
+    useEffect(() => {
+      fetchRequest();
+    }, []);
     
 
-      console.log('All Request', allRequest);
+      // console.log('All Request', selectedBook);
+      // console.log('Charge Data', chargeData);
       
   return (
     <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] py-28 w-full px-5'>

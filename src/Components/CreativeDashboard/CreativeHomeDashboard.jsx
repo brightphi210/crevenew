@@ -517,7 +517,9 @@ export const CreativeHome = () => {
 
                   <div className='mt-5 flex flex-col justify-center lg:gap-5 gap-3 lg:px-10 px-5 w-full'>
                     <p onClick={()=>updateBookingStatus(selectedRequest.id)} className='text-white cursor-pointer bg-black rounded-full py-2.5 text-sm px-10'>
-                      {isUpdateLoading === true ? 'Approving..' : 'Approve Request'}
+                      {isUpdateLoading === true ? <p className='flex items-center gap-3'>
+                        <span className="loading loading-spinner loading-sm"></span>Approving . . .
+                      </p> : 'Approve Request'}
                     </p>
                   </div>
 
