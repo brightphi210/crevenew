@@ -73,7 +73,7 @@ export const UserRequestBookingsDashboard = () => {
         order_id: "OR2", // Optional order ID
         charge_ref: "REF", // Optional charge reference
       },
-      call_back_url: "http://localhost:8000/verifyorder/", // URL to which the user will be redirected after payment
+      call_back_url: "https://www.creve.live/user-payment-successful", // URL to which the user will be redirected after payment
       onClose: () => {
         console.log("User closed the payment modal.");
         setAmount('')
