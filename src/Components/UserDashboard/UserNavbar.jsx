@@ -121,12 +121,13 @@ const UserNavbar = ({handleShow, show}) => {
 
 
             <div className='cursor-pointer lg:relative fixed lg:bg-transparent bg-black lg:h-fit h-[100vh] w-[80%] top-0 right-0 z-40 lg:flex hidden items-center'>
-                <ul className='flex lg:flex-row flex-col pl-10 lg:gap-10 gap-5 z-50 2xl:text-sm xl:text-sm lg:text-sm text-base'>
+                <ul className='flex lg:flex-row items-center flex-col pl-10 lg:gap-10 gap-5 z-50 2xl:text-sm xl:text-sm lg:text-sm text-base'>
                     {menuItems.map((item, index) => (
                         <div key={index} onClick={() => handleItemClick(index)}>
                             <li className={'flex gap-2 items-center cursor-pointer font-bold'}>{item.label}</li>
                         </div>
                     ))}
+                    <button onClick={logout} className='bg-black text-white text-sm rounded-full py-2.5 px-5'>Logout</button>
                 </ul>
             </div>
 
@@ -148,6 +149,8 @@ const UserNavbar = ({handleShow, show}) => {
                         {item.label}
                         </li>
                     ))}
+
+                    <button onClick={logout} className='bg-black text-white text-sm rounded-full py-2.5 px-5'>Logout</button>
                     </ul>
                 )}
             </div>
