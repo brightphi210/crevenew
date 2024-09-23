@@ -131,7 +131,6 @@ const UserNavbar = ({handleShow, show}) => {
                 </ul>
             </div>
 
-
             <div onClick={handleShow}>
                 {show === false ? <p className='text-2xl block lg:hidden '><RxDashboard /></p> : <p className='text-2xl block lg:hidden'><IoMdClose /></p>}
             </div>
