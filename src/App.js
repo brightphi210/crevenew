@@ -31,6 +31,7 @@ import Help from './Pages/Help';
 import { BASE_URL } from './Components/Auth/BaseUrl';
 import HowtoPage from './Pages/HowtoPage';
 import CreativeWalletDash from './Pages/CreativeDash/CreativeWalletDash';
+import PaymentSuccessful from './Components/UserDashboard/PaymentSuccessful';
 AOS.init();
 
 function App() {
@@ -112,6 +113,7 @@ function App() {
             <Route path='/user-dashboard-books/' element={<UserRequestBookings />}/>
             <Route path='/user-dashboard-profile/' element={<UserProfile />}/>
             <Route path='/user-dashboard-favourites/' element={<UserFavoriteDash />}/>
+            <Route path='/user-payment-successful' element={<PaymentSuccessful />}/>
           </Route>
 
           <Route element={<PrivateRoute role="Creative"/>}>

@@ -42,12 +42,12 @@ export const UserRequestBookingsDashboard = () => {
     const [isLoading, setIsLoading] = useState(false)
     const url =`${BASE_URL}/books/`
 
-
-    // console.log('User Details', userToken);  
-    
     const [amount, setAmount] = useState('')
     const [description, setDescription] = useState('')
     const [phone, setPhone] = useState('')
+
+    const [showAllRequest, setShowAllRequest] = useState(1);
+    const [isPaymentLoading, setIsPaymentLoading] = useState(false);
     
     const isButtonDisabled = !phone || !description || !amount;
 
@@ -76,16 +76,22 @@ export const UserRequestBookingsDashboard = () => {
       call_back_url: "http://localhost:8000/verifyorder/", // URL to which the user will be redirected after payment
       onClose: () => {
         console.log("User closed the payment modal.");
+        setAmount('')
+        setDescription('')
+        setPhone('')
+        setIsPaymentLoading(false);
       },
       callback: (reference) => {
         console.log(`Transaction successful with reference: ${reference}`);
+        setIsPaymentLoading(false);
       },
       onError: (error) => {
         alert("An error occurred:", error);
+        setIsPaymentLoading(false);
       },
       onPayment(reference) {
         console.log("Payment completed with reference:", reference);
-        
+        setIsPaymentLoading(false);
       },
     };
     
@@ -94,6 +100,7 @@ export const UserRequestBookingsDashboard = () => {
     };
     
     const payWith100Pay = async () => {
+      setIsPaymentLoading(true);
       shop100Pay.setup(
         chargeData,
         displayOptions
@@ -131,8 +138,6 @@ export const UserRequestBookingsDashboard = () => {
     }, []);
     
 
-      // console.log('All Request', selectedBook);
-      // console.log('Charge Data', chargeData);
       
   return (
     <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] py-28 w-full px-5'>
@@ -141,7 +146,9 @@ export const UserRequestBookingsDashboard = () => {
         <p className='bg-orange-50 border border-orange-200 text-orange-800 py-3 px-5 rounded-lg text-xs mt-3 text-center flex items-center m-auto justify-center gap-3'><IoWarning />Refresh Page to see latest status update</p>
 
         {isLoading === true ? <MyLoader />  : <>
-            {allRequest.length > 0 && <>
+            {allRequest.length > 0 && 
+            <>
+              {showAllRequest === 1 && 
                 <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-5 w-full mt-5 mb-10'>
                     {allRequest.map((request)=>(
                         
@@ -165,19 +172,16 @@ export const UserRequestBookingsDashboard = () => {
                                     <p className='text-xs text-neutral-600'>{request.description.slice(0, 30)}. . .</p>
                                 </div>
 
-                                {/* onClick={payWith100Pay} */}
                                 <div className='flex flex-col items-center gap-3 my-5'>
-
                                     {request.status === true &&
                                       <Link to={`tel:${request.phone_number}`} className='w-full'>
-                                          <button className='border border-neutral-300 py-2 rounded-full text-xs w-full'>Call Talent</button>
+                                          <button className='border border-neutral-300 py-2.5 rounded-full text-sm w-full'>Call Talent</button>
                                       </Link>
                                     }
 
-                                    <button  onClick={()=>{document.getElementById('my_modal_3').showModal(); setSelectedBook(request)}} 
-                                        className='text-xs bg-black text-white py-2 rounded-full m-auto justify-center font-semibold w-full flex items-center gap-3'>
+                                    <button  onClick={()=>{setShowAllRequest(2); setSelectedBook(request)}} 
+                                        className='text-sm bg-black text-white py-2.5 rounded-full m-auto justify-center font-semibold w-full flex items-center gap-3'>
                                           {request.status === true ? <>Proceed to payment <GoArrowRight /></> : <>View Request <GoArrowRight /></>}
-                                          
                                     </button>
                                 </div>
 
@@ -193,7 +197,59 @@ export const UserRequestBookingsDashboard = () => {
                             </div>
                         </div>
                     ))}
+                </div> 
+              }
+
+              {showAllRequest === 2 &&
+                <div className="2xl:w-[50%] xl:w-[65%] lg:w-[80%] px-5 w-full flex justify-center m-auto bg-neutral-100 rounded-lg lg:my-5 mt-5 mb-0 py-5 relative">
+                  <div>
+                      <button className="absolute top-5 right-5 py-2 px-3 w-fit flex bg-white rounded-full" onClick={()=>setShowAllRequest(1)}>✕</button>
+                      {selectedBook.talent_profile &&
+                          <div className='flex gap-5 items-center border-b border-b-neutral-200 p-5 py-3'>
+                              <div className='w-12 h-12 flex justify-center items-center overflow-hidden rounded-full border border-neutral-200'>
+                                  <img src={selectedBook.talent_profile.profile_pics} alt="" className='w-12 h-12 object-cover'/>
+                              </div>
+                              <div className=''>
+                                  <p className='text-sm font-semibold text-neutral-700'>{selectedBook.talent_profile.user.fullname}</p>
+                                  <p className='text-xs'>{selectedBook.formattedDate} {selectedBook.formattedTime}</p>
+                              </div>
+                          </div>
+                      }
+
+                      <div className='my-5 bg-white p-5 rounded-lg'>
+                          <h2 className='text-base flex items-center gap-3 text-neutral-600 font-semibold lg:pb-2 pb-2'><MdKeyboardDoubleArrowRight />{selectedBook.title}</h2>
+                          <p className='text-xs text-neutral-600'>{selectedBook.description}</p>
+                      </div>
+                      
+                      {selectedBook.status === true ? 
+                        <div className='border-t border-t-neutral-200 pt-3'>
+                            <h2 className='text-lg font-semibold pb-5'>Proceed Payment</h2>
+
+                            <div>
+                                <input value={phone} onChange={(e)=>{setPhone(e.target.value)}} type="number" placeholder="Phone: e.g 09062119957 " className="input input-bordered text-sm w-full mb-3" />
+                                <input value={amount} onChange={(e)=>{setAmount(e.target.value)}} type="number" placeholder="Amount: e.g 20000 " className="input input-bordered text-sm w-full mb-3" />
+
+                                <textarea value={description} onChange={(e)=>{setDescription(e.target.value)}} className="textarea text-sm textarea-bordered w-full max-h-[5rem] min-h-[5rem]" placeholder="Description e.g Payment for cleaning service"></textarea>
+
+
+                                <p className='pt-5 pb-3 text-xs text-neutral-500 text-center'>Make payment with the options below 👇👇</p>
+                                <div className='flex flex-col items-center gap-3'>
+                                    <button disabled={isButtonDisabled} onClick={()=>{payWith100Pay()}} className={`text-sm rounded-full py-2.5 w-full bg-green-950 text-white 
+                                      ${isButtonDisabled && 'cursor-not-allowed text-neutral-300 bg-green-900'}`}>{isPaymentLoading === true ? 
+                                      <span className='flex items-center gap-2 m-auto justify-center '><span className="loading loading-spinner loading-sm"></span>Loading . . .</span> : 'Pay via Crypto'}</button>
+                                    <button className="text-sm rounded-full py-2.5 w-full bg-white border border-neutral-300 text-black">Pay via Escrow</button>
+                                </div>
+                            </div>
+                        </div> :
+
+                        <div className=' bg-orange-50 text-center text-orange-950 text-sm py-10 px-10'>
+                          <p className='text-3xl text-center flex m-auto justify-center pb-4'><IoWarning /></p>
+                          <h2 className='text-center'>Your request is still Pending, your request will be accepted soon . .</h2>
+                        </div>
+                      }
+                  </div>
                 </div>
+              }
             </>}
 
             {allRequest.length <= 0 && <>
@@ -202,56 +258,7 @@ export const UserRequestBookingsDashboard = () => {
         </>}
 
 
-        <dialog id="my_modal_3" className="modal">
-            <div className="modal-box lg:max-w-[30%] w-[95%] p-5">
-                <form method="dialog">
-                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                </form>
 
-                {selectedBook.talent_profile &&
-                    <div className='flex gap-5 items-center border-b border-b-neutral-200 p-5 py-3'>
-                        <div className='w-12 h-12 flex justify-center items-center overflow-hidden rounded-full border border-neutral-200'>
-                            <img src={selectedBook.talent_profile.profile_pics} alt="" className='w-12 h-12 object-cover'/>
-                        </div>
-                        <div className=''>
-                            <p className='text-sm font-semibold text-neutral-700'>{selectedBook.talent_profile.user.fullname}</p>
-                            <p className='text-xs'>{selectedBook.formattedDate} {selectedBook.formattedTime}</p>
-                        </div>
-
-                        <p className='ml-auto'><span className="loader5"></span> </p>
-                    </div>
-                }
-
-                <div className='my-5 bg-neutral-100 p-5 rounded-lg'>
-                    <h2 className='text-base flex items-center gap-3 text-neutral-600 font-semibold lg:pb-2 pb-2'><MdKeyboardDoubleArrowRight />{selectedBook.title}</h2>
-                    <p className='text-xs text-neutral-600'>{selectedBook.description}</p>
-                </div>
-                
-                {selectedBook.status === true ? 
-                <div className='border-t border-t-neutral-200 pt-3'>
-                    <h2 className='text-sm font-semibold pb-5'>Proceed Payment</h2>
-
-                    <div>
-                        <input value={phone} onChange={(e)=>{setPhone(e.target.value)}} type="number" placeholder="Phone: e.g 09062119957 " className="input input-bordered text-xs w-full mb-3" />
-                        <input value={amount} onChange={(e)=>{setAmount(e.target.value)}} type="number" placeholder="Amount: e.g 20000 " className="input input-bordered text-xs w-full mb-3" />
-
-                        <textarea value={description} onChange={(e)=>{setDescription(e.target.value)}} className="textarea text-xs textarea-bordered w-full max-h-[5rem] min-h-[5rem]" placeholder="Description e.g Payment for cleaning service"></textarea>
-
-
-                        <p className='pt-5 pb-3 text-xs text-neutral-500 text-center'>Make payment with the options below 👇👇</p>
-                        <div className='flex flex-col items-center gap-3'>
-                            <button disabled={isButtonDisabled} onClick={()=>{payWith100Pay(); document.getElementById('my_modal_3').close();}} className={`text-xs rounded-full py-2.5 w-full bg-green-950 text-white ${isButtonDisabled && 'cursor-not-allowed text-neutral-300 bg-green-900'}`}>Pay via Crypto</button>
-                            <button className="text-xs rounded-full py-2.5 w-full bg-white border border-neutral-300 text-black">Pay via Escrow</button>
-                        </div>
-                    </div>
-                </div> :
-                <div className=' bg-orange-50 text-center text-orange-950 text-sm py-10 px-10'>
-                  <p className='text-3xl text-center flex m-auto justify-center pb-4'><IoWarning /></p>
-                  <h2 className='text-center'>Your request is still Pending, your request will be accepted soon . .</h2>
-                </div>
-              }
-            </div>
-        </dialog>
     </div>
   )
 }
