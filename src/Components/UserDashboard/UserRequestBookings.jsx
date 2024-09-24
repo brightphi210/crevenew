@@ -12,6 +12,7 @@ import { v4 as uuidv4 } from "uuid";
 import { shop100Pay } from "@100pay-hq/checkout";
 import { Link } from 'react-router-dom'
 import { IoWarning } from 'react-icons/io5'
+import { useNavigate } from 'react-router-dom'
 
 const UserRequestBookings = () => {
 
@@ -35,6 +36,9 @@ export default UserRequestBookings
 
 
 export const UserRequestBookingsDashboard = () => {
+
+    const navigate = useNavigate();
+
     const [allRequest, setRequest] = useState([])
     const [selectedBook, setSelectedBook] = useState({})
     let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
@@ -73,7 +77,7 @@ export const UserRequestBookingsDashboard = () => {
         order_id: "OR2", // Optional order ID
         charge_ref: "REF", // Optional charge reference
       },
-      call_back_url: "https://www.creve.live/user-payment-successful", // URL to which the user will be redirected after payment
+      // call_back_url: "https://www.creve.live/user-payment-successful", // URL to which the user will be redirected after payment
       onClose: () => {
         console.log("User closed the payment modal.");
         setAmount('')
@@ -92,6 +96,7 @@ export const UserRequestBookingsDashboard = () => {
       onPayment(reference) {
         console.log("Payment completed with reference:", reference);
         setIsPaymentLoading(false);
+        navigate('/user-payment-successful')
       },
     };
     
