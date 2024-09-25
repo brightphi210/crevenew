@@ -56,8 +56,7 @@ export const UserRequestBookingsDashboard = () => {
     const isButtonDisabled = !phone || !description || !amount;
 
     const chargeData = {
-      // ref_id: uuidv4(), // Unique transaction reference ID
-      ref_id: selectedBook?.talent_profile?.user.id,
+      ref_id: uuidv4(), // Unique transaction reference ID
       api_key: "LIVE;PK;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjY2ZTc1ZGVmYmJkNjYxMDExZmI1ZDUwYyIsInVzZXJJZCI6IjY2ZTc1ZGVmYmJkNjYxMDExZmI1ZDUwOSIsImlhdCI6MTcyNjQzODg5Nn0.rWA_EDWkYxFnyBY82hs7p_mFkK3dixSx8Fv3vKeBpNE",
       billing: {
         amount: amount, // Amount to be charged
@@ -76,6 +75,8 @@ export const UserRequestBookingsDashboard = () => {
         is_approved: "yes",
         order_id: "OR2", // Optional order ID
         charge_ref: "REF", // Optional charge reference
+        user_id: selectedBook?.client_profile?.user.id,
+        talent_id: selectedBook?.talent_profile?.user.id,
       },
       call_back_url: "https://www.creve.live/user-payment-successful", // URL to which the user will be redirected after payment
       onClose: () => {
