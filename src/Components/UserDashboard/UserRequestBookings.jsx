@@ -75,7 +75,7 @@ export const UserRequestBookingsDashboard = () => {
         is_approved: "yes",
         order_id: "OR2", // Optional order ID
         charge_ref: "REF", // Optional charge reference
-        user_id: selectedBook?.client_profile?.user.id,
+        client_id: selectedBook?.client_profile?.user.id,
         talent_id: selectedBook?.talent_profile?.user.id
       },
       call_back_url: "https://www.creve.live/user-payment-successful", // URL to which the user will be redirected after payment
