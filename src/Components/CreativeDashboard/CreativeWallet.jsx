@@ -38,6 +38,9 @@ export default CreativeWallet
 
 export const CreativeWalletHome = () =>{
     const amount = 100000
+
+
+
     return(
         <div className='2xl:p-20 2xl:pt-28 2xl:pl-[18rem] lg:pl-[18rem] p-5 pt-20'>
 
@@ -64,7 +67,7 @@ export const CreativeWalletHome = () =>{
                 </div>
 
                 <div className='lg:ml-auto'>
-                    <button className='flex items-center py-2 px-5 text-xs gap-3 bg-gradient-to-r from-cyan-600 to-teal-400 text-white rounded-full'>Withdraw <ArrowRight /></button>
+                    <button onClick={()=>document.getElementById('my_modal_3').showModal()} className='flex items-center py-2 px-5 text-xs gap-3 bg-gradient-to-r from-cyan-600 to-teal-400 text-white rounded-full'>Withdraw <ArrowRight /></button>
                 </div>
             </div>
 
@@ -102,6 +105,20 @@ export const CreativeWalletHome = () =>{
                     <h2 className='text-xs text-neutral-500'>No Transaction History</h2>
                 </div>
             </div>
+
+
+
+            <dialog id="my_modal_3" className="modal">
+                <div className="modal-box">
+                    <form method="dialog">
+                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+                    
+                    <form action="">
+                        <h2>Place a Withdrawal below</h2>
+                    </form>
+                </div>
+            </dialog>
         </div>
     )
 }

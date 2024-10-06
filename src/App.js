@@ -32,6 +32,7 @@ import { BASE_URL } from './Components/Auth/BaseUrl';
 import HowtoPage from './Pages/HowtoPage';
 import CreativeWalletDash from './Pages/CreativeDash/CreativeWalletDash';
 import PaymentSuccessful from './Components/UserDashboard/PaymentSuccessful';
+import WalletContextProvider from './WalletProvider';
 AOS.init();
 
 function App() {
@@ -89,45 +90,47 @@ function App() {
   
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
+      <WalletContextProvider>
+        <BrowserRouter>
+          <Routes>
 
-          <Route path='/' element={<Homepage />}/>
-          <Route path='/login' element={<Login />}/>
-          <Route path='/register' element={<Register />}/>
-          <Route path='/otp' element={<OTP />}/>
+            <Route path='/' element={<Homepage />}/>
+            <Route path='/login' element={<Login />}/>
+            <Route path='/register' element={<Register />}/>
+            <Route path='/otp' element={<OTP />}/>
 
-          <Route path='/about' element={<AboutPage />}/>
-          <Route path='/blog' element={<BlogPage />}/>
-          <Route path='/help' element={<Help />}/>
-          <Route path='/allTalents' element={<HomeTalentPage />}/>
-          <Route path='/howto' element={<HowtoPage />}/>
-          <Route path='/user-dashboard-chat' element={<UserChatDash />}/>
+            <Route path='/about' element={<AboutPage />}/>
+            <Route path='/blog' element={<BlogPage />}/>
+            <Route path='/help' element={<Help />}/>
+            <Route path='/allTalents' element={<HomeTalentPage />}/>
+            <Route path='/howto' element={<HowtoPage />}/>
+            <Route path='/user-dashboard-chat' element={<UserChatDash />}/>
 
 
-          <Route element={<PrivateRoute role="Client"/>}>
-            <Route path='/users-dashboard-chat' element={<UserChatDash />}/>
-            <Route path='/user-dashboard-home' element={<UserHomeDash />}/>
-            <Route path='/user-dashboard-single-creative/:id/' element={<SingleUserCreative />}/>
-            <Route path='/user-dashboard-creative/' element={<UserCreativeDash />}/>
-            <Route path='/user-dashboard-books/' element={<UserRequestBookings />}/>
-            <Route path='/user-dashboard-profile/' element={<UserProfile />}/>
-            <Route path='/user-dashboard-favourites/' element={<UserFavoriteDash />}/>
-            <Route path='/user-payment-successful' element={<PaymentSuccessful />}/>
-          </Route>
+            <Route element={<PrivateRoute role="Client"/>}>
+              <Route path='/users-dashboard-chat' element={<UserChatDash />}/>
+              <Route path='/user-dashboard-home' element={<UserHomeDash />}/>
+              <Route path='/user-dashboard-single-creative/:id/' element={<SingleUserCreative />}/>
+              <Route path='/user-dashboard-creative/' element={<UserCreativeDash />}/>
+              <Route path='/user-dashboard-books/' element={<UserRequestBookings />}/>
+              <Route path='/user-dashboard-profile/' element={<UserProfile />}/>
+              <Route path='/user-dashboard-favourites/' element={<UserFavoriteDash />}/>
+              <Route path='/user-payment-successful' element={<PaymentSuccessful />}/>
+            </Route>
 
-          <Route element={<PrivateRoute role="Creative"/>}>
-            <Route path='/creative-dashboard-home' element={<CreaiveHomeDash />}/>
-            <Route path='/creative-dashboard-profile' element={<CreativeProfileDash />}/>
-            <Route path='/creative-dashboard-profile-update' element={<CreativeProfileUpdataDash />}/>
-            <Route path='/creative-dashboard-notificationAll' element={<CreativeNotificationDashboard />}/>
-            <Route path='/creative-dashboard-bookingsAll' element={<CreativeBookingsDash />}/>
-            <Route path='/creative-dashboard-FAQs' element={<CreativeFAQsDash />}/>
-            <Route path='/creative-dashboard-wallet' element={<CreativeWalletDash />}/>
-          </Route>
-          
-        </Routes>
-      </BrowserRouter>
+            <Route element={<PrivateRoute role="Creative"/>}>
+              <Route path='/creative-dashboard-home' element={<CreaiveHomeDash />}/>
+              <Route path='/creative-dashboard-profile' element={<CreativeProfileDash />}/>
+              <Route path='/creative-dashboard-profile-update' element={<CreativeProfileUpdataDash />}/>
+              <Route path='/creative-dashboard-notificationAll' element={<CreativeNotificationDashboard />}/>
+              <Route path='/creative-dashboard-bookingsAll' element={<CreativeBookingsDash />}/>
+              <Route path='/creative-dashboard-FAQs' element={<CreativeFAQsDash />}/>
+              <Route path='/creative-dashboard-wallet' element={<CreativeWalletDash />}/>
+            </Route>
+            
+          </Routes>
+        </BrowserRouter>
+      </WalletContextProvider>
     </div>
   );
 }

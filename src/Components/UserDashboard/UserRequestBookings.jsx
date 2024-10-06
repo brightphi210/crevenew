@@ -14,6 +14,17 @@ import { Link } from 'react-router-dom'
 import { IoWarning } from 'react-icons/io5'
 import { useNavigate } from 'react-router-dom'
 
+import { useConnection, useWallet } from '@solana/wallet-adapter-react';
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import { PublicKey, Transaction, SystemProgram, LAMPORTS_PER_SOL } from '@solana/web3.js';
+import { convertNairaToSol } from '../currencyConversion'
+
+
+import { Buffer } from 'buffer';
+
+
+
+
 const UserRequestBookings = () => {
 
     const [show, setShow] = useState(false)
@@ -35,9 +46,13 @@ const UserRequestBookings = () => {
 export default UserRequestBookings
 
 
-export const UserRequestBookingsDashboard = () => {
-
+export const UserRequestBookingsDashboard = () => {  
+  
     const navigate = useNavigate();
+    if (typeof window !== 'undefined') {
+      window.Buffer = Buffer;
+    }
+    
 
     const [allRequest, setRequest] = useState([])
     const [selectedBook, setSelectedBook] = useState({})
@@ -46,9 +61,17 @@ export const UserRequestBookingsDashboard = () => {
     const [isLoading, setIsLoading] = useState(false)
     const url =`${BASE_URL}/books/`
 
-    const [amount, setAmount] = useState('')
+
+
     const [description, setDescription] = useState('')
     const [phone, setPhone] = useState('')
+    
+    const [amount, setAmount] = useState('')
+    const { connection } = useConnection()
+    const { publicKey, sendTransaction } = useWallet()
+    const [status, setStatus] = useState('')
+    const [stage, setStage] = useState(1)
+
 
     const [showAllRequest, setShowAllRequest] = useState(1);
     const [isPaymentLoading, setIsPaymentLoading] = useState(false);
@@ -86,6 +109,7 @@ export const UserRequestBookingsDashboard = () => {
         setPhone('')
         setIsPaymentLoading(false);
       },
+
       callback: (reference) => {
         console.log(`Transaction successful with reference: ${reference}`);
         setIsPaymentLoading(false);
@@ -94,7 +118,7 @@ export const UserRequestBookingsDashboard = () => {
         alert("An error occurred:", error);
         setIsPaymentLoading(false);
       },
-      onPayment(reference) {
+      onPayment(reference, on) {
         console.log("Payment completed with reference:", reference);
         setIsPaymentLoading(false);
         navigate('/user-payment-successful')
@@ -144,12 +168,71 @@ export const UserRequestBookingsDashboard = () => {
     }, []);
     
 
+    const [isPending, setIsPending] = useState(false)
+
+    const handlePayment = async (e) => {
+      setIsPending(true)
+
+      e.preventDefault();
+      if (!publicKey) {
+        setStatus('Please connect your wallet');
+        setIsPending(false);
+        return;
+      }
+  
+      try {
+        // Convert Naira to SOL
+        const solAmount = parseFloat(amount) / 100000;
+  
+        const recipient = new PublicKey('MscnkrFh4wkBcHHosbYuMKB2weZN7ACNZso2UtGYrKy');
+        
+        const transaction = new Transaction().add(
+          SystemProgram.transfer({
+            fromPubkey: publicKey,
+            toPubkey: recipient,
+            lamports: solAmount * LAMPORTS_PER_SOL
+          })
+        );
+  
+        const { blockhash } = await connection.getLatestBlockhash();
+        transaction.recentBlockhash = blockhash;
+        transaction.feePayer = publicKey;
+  
+        // setStatus('Sending transaction...');
+        setIsPending(false);
+        document.getElementById('my_modal_2').showModal()
+        document.getElementById('my_modal_3').close()
+        
+  
+        const signature = await sendTransaction(transaction, connection);
+  
+        // setStatus('Confirming transaction...');
+        document.getElementById('my_modal_3').showModal()
+        document.getElementById('my_modal_2').close()
+  
+        const confirmation = await connection.confirmTransaction(signature, 'confirmed');
+  
+        if (confirmation.value.err) {
+          setStatus('Transaction failed. Please try again.');
+        } else {
+          // setStatus('Payment successful!');
+
+
+
+          navigate('/user-payment-successful')
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        setStatus('Payment failed. Please try again.');
+      }
+    };
+
       
   return (
-    <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] py-28 w-full px-5'>
+    <div className='2xl:px-[10rem] xl:px-[5rem] lg:px-[5rem] py-28 w-full px-5 bg-neutral-100'>
         <h2 className='text-2xl'>All Request</h2>
 
-        <p className='bg-orange-50 border border-orange-200 text-orange-800 py-3 px-5 rounded-lg text-xs mt-3 text-center flex items-center m-auto justify-center gap-3'><IoWarning />Refresh Page to see latest status update</p>
+        <p className='bg-orange-50 border border-orange-200 text-orange-700 py-3 px-5 rounded-lg text-xs mt-3 text-center flex items-center m-auto justify-center gap-3'><IoWarning />Refresh Page to see latest status update</p>
 
         {isLoading === true ? <MyLoader />  : <>
             {allRequest.length > 0 && 
@@ -207,54 +290,126 @@ export const UserRequestBookingsDashboard = () => {
               }
 
               {showAllRequest === 2 &&
-                <div className="2xl:w-[50%] xl:w-[65%] lg:w-[80%] px-5 w-full flex justify-center m-auto bg-neutral-100 rounded-lg lg:my-5 mt-5 mb-0 py-5 relative">
-                  <div>
-                      <button className="absolute top-5 right-5 py-2 px-3 w-fit flex bg-white rounded-full" onClick={()=>setShowAllRequest(1)}>✕</button>
-                      {selectedBook.talent_profile &&
-                          <div className='flex gap-5 items-center border-b border-b-neutral-200 p-5 py-3'>
-                              <div className='w-12 h-12 flex justify-center items-center overflow-hidden rounded-full border border-neutral-200'>
-                                  <img src={selectedBook.talent_profile.profile_pics} alt="" className='w-12 h-12 object-cover'/>
-                              </div>
-                              <div className=''>
-                                  <p className='text-sm font-semibold text-neutral-700'>{selectedBook.talent_profile.user.fullname}</p>
-                                  <p className='text-xs'>{selectedBook.formattedDate} {selectedBook.formattedTime}</p>
-                              </div>
-                          </div>
-                      }
+                // <div className="2xl:w-[50%] xl:w-[65%] lg:w-[80%] px-5 w-full flex justify-center m-auto bg-neutral-100 rounded-lg lg:my-5 mt-5 mb-0 py-5 relative">
+                //   <div>
+                //       <button className="absolute top-5 right-5 py-2 px-3 w-fit flex bg-white rounded-full" onClick={()=>setShowAllRequest(1)}>✕</button>
+                //       {selectedBook.talent_profile &&
+                //           <div className='flex gap-5 items-center border-b border-b-neutral-200 p-5 py-3'>
+                //               <div className='w-12 h-12 flex justify-center items-center overflow-hidden rounded-full border border-neutral-200'>
+                //                   <img src={selectedBook.talent_profile.profile_pics} alt="" className='w-12 h-12 object-cover'/>
+                //               </div>
+                //               <div className=''>
+                //                   <p className='text-sm font-semibold text-neutral-700'>{selectedBook.talent_profile.user.fullname}</p>
+                //                   <p className='text-xs'>{selectedBook.formattedDate} {selectedBook.formattedTime}</p>
+                //               </div>
+                //           </div>
+                //       }
 
-                      <div className='my-5 bg-white p-5 rounded-lg'>
-                          <h2 className='text-base flex items-center gap-3 text-neutral-600 font-semibold lg:pb-2 pb-2'><MdKeyboardDoubleArrowRight />{selectedBook.title}</h2>
-                          <p className='text-xs text-neutral-600'>{selectedBook.description}</p>
-                      </div>
+                //       <div className='my-5 bg-white p-5 rounded-lg'>
+                //           <h2 className='text-base flex items-center gap-3 text-neutral-600 font-semibold lg:pb-2 pb-2'><MdKeyboardDoubleArrowRight />{selectedBook.title}</h2>
+                //           <p className='text-xs text-neutral-600'>{selectedBook.description}</p>
+                //       </div>
                       
-                      {selectedBook.status === true ? 
-                        <div className='border-t border-t-neutral-200 pt-3'>
-                            <h2 className='text-lg font-semibold pb-5'>Proceed Payment</h2>
+                //       {selectedBook.status === true ? 
+                //         <div className='border-t border-t-neutral-200 pt-3'>
+                //             <h2 className='text-lg font-semibold pb-5'>Proceed Payment</h2>
 
-                            <div>
-                                <input value={phone} onChange={(e)=>{setPhone(e.target.value)}} type="number" placeholder="Phone: e.g 09062119957 " className="input input-bordered text-sm w-full mb-3" />
-                                <input value={amount} onChange={(e)=>{setAmount(e.target.value)}} type="number" placeholder="Amount: e.g 20000 " className="input input-bordered text-sm w-full mb-3" />
+                //             <div>
+                //                 <input value={phone} onChange={(e)=>{setPhone(e.target.value)}} type="number" placeholder="Phone: e.g 09062119957 " className="input input-bordered text-sm w-full mb-3" />
+                //                 <input value={amount} onChange={(e)=>{setAmount(e.target.value)}} type="number" placeholder="Amount: e.g 20000 " className="input input-bordered text-sm w-full mb-3" />
 
-                                <textarea value={description} onChange={(e)=>{setDescription(e.target.value)}} className="textarea text-sm textarea-bordered w-full max-h-[5rem] min-h-[5rem]" placeholder="Description e.g Payment for cleaning service"></textarea>
+                //                 <textarea value={description} onChange={(e)=>{setDescription(e.target.value)}} className="textarea text-sm textarea-bordered w-full max-h-[5rem] min-h-[5rem]" placeholder="Description e.g Payment for cleaning service"></textarea>
 
 
-                                <p className='pt-5 pb-3 text-xs text-neutral-500 text-center'>Make payment with the options below 👇👇</p>
-                                <div className='flex flex-col items-center gap-3'>
-                                    <button disabled={isButtonDisabled} onClick={()=>{payWith100Pay()}} className={`text-sm rounded-full py-2.5 w-full bg-green-950 text-white 
-                                      ${isButtonDisabled && 'cursor-not-allowed text-neutral-300 bg-green-900'}`}>{isPaymentLoading === true ? 
-                                      <span className='flex items-center gap-2 m-auto justify-center '><span className="loading loading-spinner loading-sm"></span>Loading . . .</span> : 'Pay via Crypto'}</button>
-                                    <button className="text-sm rounded-full py-2.5 w-full bg-white border border-neutral-300 text-black">Pay via Escrow</button>
-                                </div>
-                            </div>
-                        </div> :
+                //                 <p className='pt-5 pb-3 text-xs text-neutral-500 text-center'>Make payment with the options below 👇👇</p>
+                //                 <div className='flex flex-col items-center gap-3'>
+                //                     <button disabled={isButtonDisabled} onClick={()=>{payWith100Pay()}} className={`text-sm rounded-full py-2.5 w-full bg-green-950 text-white 
+                //                       ${isButtonDisabled && 'cursor-not-allowed text-neutral-300 bg-green-900'}`}>{isPaymentLoading === true ? 
+                //                       <span className='flex items-center gap-2 m-auto justify-center '><span className="loading loading-spinner loading-sm"></span>Loading . . .</span> : 'Pay via Crypto'}</button>
+                //                     <button className="text-sm rounded-full py-2.5 w-full bg-white border border-neutral-300 text-black">Pay via Escrow</button>
+                //                 </div>
+                //             </div>
+                //         </div> :
 
-                        <div className=' bg-orange-50 text-center text-orange-950 text-sm py-10 px-10'>
-                          <p className='text-3xl text-center flex m-auto justify-center pb-4'><IoWarning /></p>
-                          <h2 className='text-center'>Your request is still Pending, your request will be accepted soon . .</h2>
-                        </div>
-                      }
+                //         <div className=' bg-orange-50 text-center text-orange-950 text-sm py-10 px-10'>
+                //           <p className='text-3xl text-center flex m-auto justify-center pb-4'><IoWarning /></p>
+                //           <h2 className='text-center'>Your request is still Pending, your request will be accepted soon . .</h2>
+                //         </div>
+                //       }
+                //   </div>
+                // </div>
+
+                // <div className="2xl:w-[50%] xl:w-[65%] lg:w-[80%] px-5 w-full flex justify-center m-auto rounded-lg lg:my-5 mt-5 mb-0 py-5">
+                //   <div className="p-10 w-full bg-white rounded-lg shadow-md">
+
+                //     <div className='flex items-center mb-4'>
+                //       <h1 className="text-2xl font-bold">Solana Pay Integration</h1>
+
+                //       <button className="ml-auto py-2 px-3 w-fit flex bg-neutral-100 text-black font-semibold rounded-full" onClick={()=>setShowAllRequest(1)}>✕</button>
+                //     </div>
+
+
+                //     <WalletMultiButton className="mb-4 w-full" />
+                //     <div className="mb-4 pt-5">
+                //       <label htmlFor="amount" className="block mb-2 text-sm font-medium text-gray-700">Amount (USDC)</label>
+                //       <input
+                //         type="number"
+                //         id="amount"
+                //         value={amount}
+                //         onChange={(e) => setAmount(e.target.value)}
+                //         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                //         placeholder="Enter amount in USDC"
+                //       />
+                //     </div>
+                //     <button
+                //       onClick={handlePayment}
+                //       className="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                //     >Pay with Solana</button>
+                //     {status && (<p className="mt-4 text-sm text-gray-600">{status}</p>)}
+                //   </div>
+                // </div>
+
+                <form onSubmit={handlePayment} className="2xl:w-[50%] xl:w-[65%] lg:w-[80%] w-full flex justify-center m-auto rounded-lg lg:my-5 mt-5 mb-0 py-5">
+                  <div className="lg:p-8 p-5 w-full bg-white rounded-lg shadow-md">
+                    <div className='flex items-center mb-4'>
+                      <h1 className="text-xl font-bold">Solana Pay Integration</h1>
+                      <button className="ml-auto py-2 px-3 w-fit flex bg-neutral-100 text-black font-semibold rounded-full" onClick={() => setShowAllRequest(1)}>✕</button>
+                    </div>
+
+                    <WalletMultiButton className="mb-4 w-full" />
+                    <div className="mb-5 pt-5">
+                      <label htmlFor="amount" className="block mb-2 text-sm font-medium text-gray-700">Amount (Naira)</label>
+                      <input
+                        type="number"
+                        id="amount"
+                        value={amount}
+                        required
+                        onChange={(e) => setAmount(e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Enter amount in Naira"
+                      />
+                    </div>
+
+                    <div className="mb-4 pt-0">
+                      <label htmlFor="amount" className="block mb-2 text-sm font-medium text-gray-700">Description</label>
+                      <textarea
+                        type="text"
+                        value={description}
+                        required
+                        onChange={(e) => setDescription(e.target.value)}
+                        className="w-full px-3 py-2 border  border-gray-300 max-h-[7rem] min-h-[7rem] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Enter amount in Naira"
+                      />
+                    </div>
+                    <button
+                      type='submit'
+                      className="w-full px-4 py-2 text-white bg-neutral-800 rounded-md hover:bg-black focus:outline-none focus:ring-2 focus:ring-neutral-700-500 focus:ring-offset-2"
+                    >
+                      {isPending === true ? <span className="loading loading-spinner loading-sm"></span> : 'Pay with Solana'}
+                    </button>
+                    {status && (<p className="mt-4 text-base text-red-600">{status}</p>)}
                   </div>
-                </div>
+                </form>
               }
             </>}
 
@@ -264,6 +419,30 @@ export const UserRequestBookingsDashboard = () => {
         </>}
 
 
+        <dialog id="my_modal_2" className="modal">
+          <div className="modal-box rounded-md flex justify-center items-center h-[20rem]">
+            <form method="dialog">
+            </form>
+            
+            <div className='flex items-center gap-4 justify-center m-auto flex-col'>
+              <span class="loaderx"></span>
+              <h3 className="font-bold text-sm">Sending transaction. .</h3>
+            </div>
+          </div>
+        </dialog>
+
+
+        <dialog id="my_modal_3" className="modal">
+          <div className="modal-box rounded-md flex justify-center items-center h-[20rem]">
+            <form method="dialog">
+            </form>
+            
+            <div className='flex items-center gap-4 justify-center m-auto flex-col'>
+              <span class="loadery"></span>
+              <h3 className="font-bold text-sm">Confirming transaction...</h3>
+            </div>
+          </div>
+        </dialog>
 
     </div>
   )
