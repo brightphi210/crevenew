@@ -9,13 +9,16 @@ const HomeCompOne = () => {
         
         <div className='w-full lg:px-0 px-6 lg:pt-0 lg:pb-0 pt-[8rem] pb-10'>
             <div className=' text-black text-center' data-aos="fade-up" data-aos-duration="1000">
-                <h2 className='2xl:text-6xl xl:text-5xl lg:text-5xl text-4xl font-bold 2xl:leading-[80px] leading-snug uppercase'>Discover Top <br className='lg:block'/>  <span className='bg-gradient-to-r from-sky-500 to-teal-500 bg-clip-text text-transparent'>Talent</span>  Near You</h2>
+                <h2 className='2xl:text-6xl xl:text-5xl lg:text-5xl text-4xl font-bold 2xl:leading-[80px] leading-snug uppercase'>Discover 
+                    <span className='bg-gradient-to-r from-sky-500 to-teal-500 bg-clip-text text-transparent'> Vetted </span> <br className='lg:block'/>  
+                    <span className='bg-gradient-to-r from-sky-500 to-teal-500 bg-clip-text text-transparent'>Talents </span>  Near You
+                </h2>
                 <p className='2xl:text-lg xl:text-sm lg:text-sm text-sm text-slate-700 py-5  w-full'> 
-                    Creve is a revolutionary platform designed for everyone,  <br className='lg:block hidden'/>
-                    bridging the gap between clients and talents seamlessly. 
+                    Creve is a freelance platform that connects verified  <br className='lg:block hidden'/>
+                    Artisans to potential customers who needs there services 
                 </p>
                 
-                <form action="" className='relative lg:w-1/3 w-full m-auto' >
+                {/* <form action="" className='relative lg:w-1/3 w-full m-auto' >
                     <input type="text" placeholder='Search here' 
                         className='2xl:py-4 xl:py-3 lg:py-3 px-5 py-4 border border-slate-300  mt-0 w-full text-xs  outline-none rounded-full'
                         required
@@ -26,7 +29,7 @@ const HomeCompOne = () => {
                         <FaArrowRightLong />
                     </button>
 
-                </form>
+                </form> */}
 
                 <div className='flex gap-2 justify-center m-auto lg:mt-3 mt-0'>
                     

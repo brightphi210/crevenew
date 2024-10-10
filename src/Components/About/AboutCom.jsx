@@ -18,35 +18,19 @@ const AboutCom = () => {
             <p className='border-b border-green-500 pb-2 mb-3 w-fit text-2xl'>About Us</p>
             <h2 className='text-justify 2xl:text-xk xl:text-lg lg:text-lg text-sm'>
                 Creve was born out of a simple idea: to create a 
-                space where talents of all kinds could thrive. Our founders 
-                envisioned a platform that would break down barriers and provide 
-                equal opportunities for individuals to showcase their skills and 
-                for clients to discover exceptional talent.
+                space where customers could connect with vetted artisans.
+
+                Creve was birthed to solve the problem of not finding professional Artisans to delivers your task
     
                 <br />
                 <br />
-                Our mission is to empower talent by providing the tools and resources they 
-                need to succeed. Whether you are an artist, a developer, a writer, or any 
-                other type of professional, Creve is here to support you on your journey. 
-                We believe that by connecting talented individuals with the right opportunities, 
-                we can drive innovation and creativity across industries.
-                <br />
-                <br />
-                At Creve, we are constantly evolving to meet the needs of our community. 
-                We listen to feedback and continuously improve our platform to ensure it 
-                remains the best place for talent and clients to connect. Join us and be 
-                a part of a community where your skills and potential are truly valued.
+                Our mission is to make every client happy by helping, solve there needs easily and securely.
             </h2>
 
 
 
             <p className='border-b border-green-500 pb-2 mb-3 w-fit text-2xl pt-10'>Why Choose Us?</p>
             <div className='flex lg:flex-row flex-col gap-5 pt-5'>
-                <h2 className='bg-neutral-100 2xl:text-lg xl:text-lg lg:text-lg p-5 rounded-lg text-sm'>
-                    Diverse Opportunities: Whether you're 
-                    working with code or with your hands, 
-                    find projects that match your skills and interests.
-                </h2>
 
                 <h2 className='bg-neutral-100 2xl:text-lg xl:text-lg lg:text-lg p-5 rounded-lg text-sm'>
                     Trusted Community: Join a network 
@@ -161,22 +145,11 @@ const AboutCom = () => {
 
 
             
-            <p className='border-b border-green-500 lg:pt-5 pt-5 pb-2 mb-3 w-fit text-2xl'>For Digital Talents:</p>
-            <h2 className='2xl:text-lg xl:text-lg lg:text-lg text-sm'>
-            
-                Harness the potential of your digital skills and connect 
-                with clients who value your expertise. Whether you are a web developer, 
-                graphic designer, digital marketer, content creator, or any other digital 
-                professional, our platform offers you the chance to showcase your work, 
-                find exciting projects, and grow your career.
-            </h2>
+            <p className='border-b border-green-500 lg:pt-5 pt-5 pb-2 mb-3 w-fit text-2xl'>For Talents:</p>
 
-
-            <p className='border-b border-green-500 lg:pt-10 py-10  pb-2 mb-3 w-fit text-2xl'>For Non-Digital Talents:</p>
             <h2 className='2xl:text-lg xl:text-lg lg:text-lg text-sm pb-20'>
                 We celebrate the art of traditional skills and craftsmanship. 
-                From artisans and musicians to personal trainers and event planners, 
-                our platform provides a space for non-digital professionals to shine. 
+                our platform provides a space for professionals to shine. 
                 Connect with clients looking for your unique talents and take your 
                 craft to new heights.
             </h2>

@@ -20,8 +20,8 @@ const HomeCompoTwo = () => {
            
            <div className='bg-neutral-100 p-5 rounded-lg' data-aos="fade-up" data-aos-duration="1000">
                 <p className='text-3xl mb-5 flex items-center justify-center h-fit rounded-full p-3 bg-neutral-200 w-fit'><GoTasklist /></p>
-                <h2 className='text-2xl pb-5'>Over 10 categories</h2>
-                <p className='text-sm'>Get results from skilled freelancers from all over the world, for every task, at any price point.</p>
+                <h2 className='text-2xl pb-5'>Over 10+ categories</h2>
+                <p className='text-sm'>Get results from vetted artisans around you, for every task, at any price point.</p>
            </div>
 
            <div className='bg-neutral-100 p-5 rounded-lg' data-aos="fade-up" data-aos-duration="1000">
@@ -39,7 +39,7 @@ const HomeCompoTwo = () => {
            <div className='bg-neutral-100 p-5 rounded-lg' data-aos="fade-up" data-aos-duration="1000">
                 <p className='text-3xl mb-5 flex items-center justify-center h-fit rounded-full p-3 bg-neutral-200 w-fit'><IoCheckmarkDoneCircleOutline /></p>
                 <h2 className='text-2xl pb-5'>Easy Hiring Process</h2>
-                <p className='text-sm'>Hire Verified talents as easy as posible, send request and get your job done.</p>
+                <p className='text-sm'>Hire Verified Artisans as easy as posible, send request and get your job done.</p>
            </div>
            
             {/* <div data-aos="fade-up" data-aos-duration="1000" className='text-center bg-white rounded-xl border border-neutral-200 w-full py-5 pb-10 flex justify-center items-center'>
@@ -134,7 +134,7 @@ const HomeCompoTwo = () => {
                     <h2 className='text-xl'>Furniture Making</h2>
                     <div className='flex gap-10 pt-5'>
                         <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.58/5</p>
-                        <p className=''>20 skills</p>
+                        <p className=''>15+ skills</p>
                     </div>
                 </div>
 
@@ -142,32 +142,32 @@ const HomeCompoTwo = () => {
                     <h2 className='text-xl'>Fashion Designing</h2>
                     <div className='flex gap-10 pt-5'>
                         <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.00/5</p>
-                        <p className=''>35 skills</p>
+                        <p className=''>10+ skills</p>
                     </div>
                 </div>
-
-                <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
-                    <h2 className='text-xl'>Web Development</h2>
-                    <div className='flex gap-10 pt-5'>
-                        <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.45/5</p>
-                        <p className=''>40 skills</p>
-                    </div>
-                </div>
-
-                <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
-                    <h2 className='text-xl'>Mobile dev</h2>
-                    <div className='flex gap-10 pt-5'>
-                        <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.10/5</p>
-                        <p className=''>10 skills</p>
-                    </div>
-                </div>
-
 
                 <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
                     <h2 className='text-xl'>Cobbling</h2>
                     <div className='flex gap-10 pt-5'>
+                        <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.45/5</p>
+                        <p className=''>10+ skills</p>
+                    </div>
+                </div>
+
+                <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
+                    <h2 className='text-xl'>Photographers</h2>
+                    <div className='flex gap-10 pt-5'>
+                        <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.10/5</p>
+                        <p className=''>20+ skills</p>
+                    </div>
+                </div>
+
+
+                <div className='p-8 bg-neutral-100 rounded-xl cursor-pointer' data-aos="fade-up" data-aos-duration="1000">
+                    <h2 className='text-xl'>Barbers</h2>
+                    <div className='flex gap-10 pt-5'>
                         <p className='flex items-center gap-3'><FaStar className='text-green-600'/>4.20/5</p>
-                        <p className=''>30 skills</p>
+                        <p className=''>20+ skills</p>
                     </div>
                 </div>
 
@@ -175,7 +175,7 @@ const HomeCompoTwo = () => {
                     <h2 className='text-xl'>Electronics/Repairs</h2>
                     <div className='flex gap-10 pt-5'>
                         <p className='flex items-center gap-3'><FaStar className='text-green-600'/>3.5/5</p>
-                        <p className=''>20 skills</p>
+                        <p className=''>20+ skills</p>
                     </div>
                 </div>
             </div>
@@ -183,14 +183,14 @@ const HomeCompoTwo = () => {
 
         <div className='grid lg:grid-cols-2 grid-cols-1 mt-16 2xl:mx-[20rem] lg:mx-[10rem] xl:mx-[10rem] color lg:rounded-md overflow-hidden'>
             <div className='lg:h-full h-[20rem] overflow-hidden'>
-                <img  src={'https://res.cloudinary.com/dphb7gqus/image/upload/v1722103452/mypics/person_dksyle.webp'} alt="" className='lg:rounded-md w-full h-full object-cover'/>
+                <img  src={'https://res.cloudinary.com/dphb7gqus/image/upload/v1728548990/newUserBG_brdze8.jpg'} alt="" className='lg:rounded-md w-full h-full object-cover'/>
             </div>
             <div className='text-white py-14 px-10 w-full' data-aos="fade-up" data-aos-duration="1000">
                 <p>For talent</p>
                 <h2 className='text-6xl font-semibold py-10'>Find great <br /> work</h2>
                 <p>
                     Meet clients you’re excited to work with and take
-                    <br className='lg:block hidden'/>your career or business to new heights.
+                    <br className='lg:block hidden'/>your career to new heights.
                 </p>
 
 

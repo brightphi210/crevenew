@@ -67,9 +67,9 @@ const Navbar = () => {
                         <li className='cursor-pointer'>Support</li>
                     </Link>
 
-                    <Link to={'/howto'}>
+                    {/* <Link to={'/howto'}>
                         <li className='cursor-pointer'>How to use</li>
-                    </Link>
+                    </Link> */}
                 </ul>
             )}
 
@@ -99,9 +99,9 @@ const Navbar = () => {
                     <li className='cursor-pointer'>Support</li>
                 </Link>
 
-                <Link to={'/howto'}>
+                {/* <Link to={'/howto'}>
                     <li className='cursor-pointer'>How to use</li>
-                </Link>
+                </Link> */}
                 
             </ul>
 
